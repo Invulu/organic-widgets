@@ -119,6 +119,11 @@ class Organic_Widgets {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-organic-widgets-public.php';
 
+		/**
+		 * The class responsible for adding the custom page templates for the site
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-organic-page-template.php';
+
 		$this->loader = new Organic_Widgets_Loader();
 
 	}
@@ -150,7 +155,9 @@ class Organic_Widgets {
 	private function define_admin_hooks() {
 
 		$plugin_admin = new Organic_Widgets_Admin( $this->get_plugin_name(), $this->get_version() );
+		$plugin_page_template = new Organic_Page_Template( $this->get_plugin_name(), $this->get_version() );
 
+		$this->loader->add_action( 'plugins_loaded', $plugin_page_template, 'get_instance' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 
