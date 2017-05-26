@@ -86,7 +86,7 @@ class Organic_Page_Template {
 		);
 
 
-		// Add your templates to this array.
+		// Add templates to this array.
 		$this->templates = array(
 			'templates/organic-custom-template.php' => 'Organic Custom',
 		);
