@@ -19,31 +19,14 @@ if ( locate_template( 'organic-custom-template.php' ) != '' ) {
   <!-- BEGIN .post class -->
   <div <?php post_class(); ?> id="page-<?php the_ID(); ?>">
 
-  	<!-- BEGIN .row -->
-  	<div class="row">
-
-  		<!-- BEGIN .content -->
-  		<div class="content">
-
-  			<!-- BEGIN .sixteen columns -->
-  			<div class="sixteen columns">
-
-  				<!-- BEGIN .post-area no-sidebar -->
-  				<div class="post-area no-sidebar">
+  			<!-- BEGIN .organic-ocw-container -->
+  			<div class="organic-ocw-container">
 
   					<?php include( 'content/loop-page.php' ); ?>
-
-  				<!-- END .post-area no-sidebar -->
-  				</div>
 
   			<!-- END .sixteen columns -->
   			</div>
 
-  		<!-- END .content -->
-  		</div>
-
-  	<!-- END .row -->
-  	</div>
 
   <!-- END .post class -->
   </div>

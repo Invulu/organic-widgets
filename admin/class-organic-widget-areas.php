@@ -65,7 +65,6 @@ class Organic_Widget_Areas {
 			$page_template = get_page_template_slug($page->ID);
 
 	    if ( $page_template == 'templates/organic-custom-template.php' ) {
-
 				register_sidebar( array(
             'name' => $page->post_title .' (Widgets)',
             'id' => 'page-'.$page->ID . '-widget-area',
@@ -75,10 +74,47 @@ class Organic_Widget_Areas {
             'before_title' => '<span style="display:none;">',
           	'after_title' => '</span>'
         ) );
-
 			}
 
+		}// End Foreach
+
+	}
+
+	/**
+	 * Sync Organic Widget Configurations between Child/Parent Themes
+	 *
+	 * @since    1.0.0
+	 */
+	public function sync_widget_areas() {
+
+		// Check if two themes are related
+		$old_theme = wp_get_theme( get_option('theme_switched') );
+		$old_theme_parent = $old_theme->parent();
+		$new_theme = wp_get_theme();
+		$new_theme_parent = $new_theme->parent();
+
+		// If old theme is parent of new theme
+		if ( $new_theme_parent == $old_theme || $old_theme_parent == $new_theme )  {
+
+
+			
+
+
 		}
+
+
+
+
+
+		// Get old theme's widget settings for organic custom widget areas
+
+
+		// Overwrite new theme's widget settings for organic custom widget areas
+
+
+
+		// Check for conflicts between double assigned widgets?
+
 
 	}
 
