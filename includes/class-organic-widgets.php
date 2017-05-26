@@ -124,6 +124,11 @@ class Organic_Widgets {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-organic-page-template.php';
 
+		/**
+		 * The class responsible for registering widget areas
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-organic-widget-areas.php';
+
 		$this->loader = new Organic_Widgets_Loader();
 
 	}
@@ -156,8 +161,10 @@ class Organic_Widgets {
 
 		$plugin_admin = new Organic_Widgets_Admin( $this->get_plugin_name(), $this->get_version() );
 		$plugin_page_template = new Organic_Page_Template( $this->get_plugin_name(), $this->get_version() );
+		$plugin_widget_areas = new Organic_Widget_Areas( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'plugins_loaded', $plugin_page_template, 'get_instance' );
+		$this->loader->add_action( 'widgets_init', $plugin_widget_areas, 'register_widget_areas' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 
