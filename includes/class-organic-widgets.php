@@ -58,6 +58,15 @@ class Organic_Widgets {
 	protected $version;
 
 	/**
+	 * The prefix for widget areas
+	 *
+	 * @since    1.0.0
+	 * @access   protected
+	 * @var      string    $version    The prefix for widget areas
+	 */
+	protected $widget_prefix;
+
+	/**
 	 * Define the core functionality of the plugin.
 	 *
 	 * Set the plugin name and the plugin version that can be used throughout the plugin.
@@ -70,6 +79,7 @@ class Organic_Widgets {
 
 		$this->plugin_name = 'organic-widgets';
 		$this->version = '1.0.0';
+		$this->widget_prefix = 'organic-widgets_';
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -169,7 +179,7 @@ class Organic_Widgets {
 		$this->loader->add_action( 'plugins_loaded', $plugin_page_template, 'get_instance' );
 
 		// Widget Area Hooks
-		$plugin_widget_areas = new Organic_Widget_Areas( $this->get_plugin_name(), $this->get_version() );
+		$plugin_widget_areas = new Organic_Widget_Areas( $this->get_plugin_name(), $this->get_version(), $this->get_widget_prefix() );
 		$this->loader->add_action( 'widgets_init', $plugin_widget_areas, 'register_widget_areas' );
 		$this->loader->add_action( 'switch_theme', $plugin_widget_areas, 'sync_widget_areas' );
 
@@ -229,6 +239,16 @@ class Organic_Widgets {
 	 */
 	public function get_version() {
 		return $this->version;
+	}
+
+	/**
+	 * Get the widget prefix
+	 *
+	 * @since     1.0.0
+	 * @return    string    The widget prefix
+	 */
+	public function get_widget_prefix() {
+		return $this->widget_prefix;
 	}
 
 }

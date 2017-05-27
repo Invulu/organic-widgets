@@ -38,16 +38,27 @@ class Organic_Widget_Areas {
 	private $version;
 
 	/**
+	 * The prefix for widget areas
+	 *
+	 * @since    1.0.0
+	 * @access   private
+	 * @var      string    $version    The prefix for widget areas
+	 */
+	private $widget_prefix;
+
+	/**
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    1.0.0
 	 * @param      string    $plugin_name       The name of this plugin.
 	 * @param      string    $version    The version of this plugin.
 	 */
-	public function __construct( $plugin_name, $version ) {
+	public function __construct( $plugin_name, $version, $widget_prefix ) {
 
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
+		$this->widget_prefix = $widget_prefix;
+		define( 'ORGANIC_WIDGET_PREFIX', $widget_prefix );
 
 	}
 
@@ -67,7 +78,7 @@ class Organic_Widget_Areas {
 	    if ( $page_template == 'templates/organic-custom-template.php' ) {
 				register_sidebar( array(
             'name' => $page->post_title .' (Widgets)',
-            'id' => 'page-'.$page->ID . '-widget-area',
+            'id' => $this->widget_prefix . 'page-'.$page->ID . '-widget-area',
             'description' => 'This is the ' . $page->post_title . ' sidebar',
             'before_widget' => '<div id="%1$s" class="organic-widget organic-widget_%2$s">',
             'after_widget' => '</div>',
@@ -96,8 +107,17 @@ class Organic_Widget_Areas {
 		// If old theme is parent of new theme
 		if ( $new_theme_parent == $old_theme || $old_theme_parent == $new_theme )  {
 
+			// error_log(print_r(get_theme_mods(),true));
+			$new_theme_mods = get_theme_mods();
+			foreach( $new_theme_mods['sidebars_widgets']['data'] as $widget_area_name => $widget_area ) {
 
-			
+				$length = strlen( $this->widget_prefix );
+
+				if ( $this->widget_prefix == substr( $widget_area_name, 0, $length ) ) {
+					error_log( $widget_area_name );
+					error_log( print_r($widget_area,true));
+				}
+			}
 
 
 		}

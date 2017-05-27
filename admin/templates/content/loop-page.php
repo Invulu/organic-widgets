@@ -15,10 +15,10 @@
 
 		<!-- BEGIN .article -->
 		<article class="article">
-      <?php error_log('page-'. get_the_ID() . '-widget-area'); ?>
-        <?php if ( is_active_sidebar( 'page-'. get_the_ID() . '-widget-area' ) ) { ?>
+      
+        <?php if ( is_active_sidebar( ORGANIC_WIDGET_PREFIX . 'page-'. get_the_ID() . '-widget-area' ) ) { ?>
 
-          <?php dynamic_sidebar( 'page-'. get_the_ID() . '-widget-area' ); ?>
+          <?php dynamic_sidebar( ORGANIC_WIDGET_PREFIX . 'page-'. get_the_ID() . '-widget-area'); ?>
 
         <?php } else { ?>
 
