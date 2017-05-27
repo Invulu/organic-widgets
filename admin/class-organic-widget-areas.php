@@ -107,17 +107,35 @@ class Organic_Widget_Areas {
 		// If old theme is parent of new theme
 		if ( $new_theme_parent == $old_theme || $old_theme_parent == $new_theme )  {
 
-			// error_log(print_r(get_theme_mods(),true));
+			$old_theme_mods = get_option('theme_mods_' . $old_theme->get_stylesheet() );
+			$old_theme_custom_widget_areas = array();
+			foreach( $old_theme_mods['sidebars_widgets']['data'] as $widget_area_name => $widget_area ) {
+
+				// Check for Organic Widgets
+				$length = strlen( $this->widget_prefix );
+				if ( $this->widget_prefix == substr( $widget_area_name, 0, $length ) ) {
+					$old_theme_custom_widget_areas[$widget_area_name] = $widget_area;
+				}
+
+			}
+
+
+
+			// Loop Through New Theme's Widget Areas
 			$new_theme_mods = get_theme_mods();
+			$new_theme_custom_widget_areas = array();
 			foreach( $new_theme_mods['sidebars_widgets']['data'] as $widget_area_name => $widget_area ) {
 
+				// Check for Organic Widgets
 				$length = strlen( $this->widget_prefix );
-
 				if ( $this->widget_prefix == substr( $widget_area_name, 0, $length ) ) {
-					error_log( $widget_area_name );
-					error_log( print_r($widget_area,true));
+
+					//If entry exists in both, replace new one with old
+					error_log('do replacement here');
 				}
+
 			}
+
 
 
 		}
