@@ -119,8 +119,6 @@ class Organic_Widget_Areas {
 
 			}
 
-
-
 			// Loop Through New Theme's Widget Areas
 			$new_theme_mods = get_theme_mods();
 			$new_theme_custom_widget_areas = array();
@@ -130,8 +128,15 @@ class Organic_Widget_Areas {
 				$length = strlen( $this->widget_prefix );
 				if ( $this->widget_prefix == substr( $widget_area_name, 0, $length ) ) {
 
-					//If entry exists in both, replace new one with old
-					error_log('do replacement here');
+					//If entry exists in both, sync widgets
+					if ( array_key_exists($widget_area_name, $old_theme_custom_widget_areas) ) {
+
+						$new_theme_mods['sidebars_widgets']['data'][$widget_area_name] = $old_theme_custom_widget_areas[$widget_area_name];
+						update_option('theme_mods_' . $new_theme->get_stylesheet(), $new_theme_mods );
+
+					}
+
+
 				}
 
 			}
@@ -140,19 +145,7 @@ class Organic_Widget_Areas {
 
 		}
 
-
-
-
-
-		// Get old theme's widget settings for organic custom widget areas
-
-
-		// Overwrite new theme's widget settings for organic custom widget areas
-
-
-
 		// Check for conflicts between double assigned widgets?
-
 
 	}
 
