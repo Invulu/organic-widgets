@@ -22,9 +22,9 @@ class Organic_Widgets_Team_Section_Widget extends WP_Widget {
 	function __construct() {
 		parent::__construct(
 			'organic_widgets_team_section', // Base ID
-			__( 'Team Section', $plugin->get_plugin_name ), // Name
+			__( 'Team Section', ORGANIC_WIDGETS_18N ), // Name
 			array(
-				'description' => __( 'A section displaying team members.', $plugin->get_plugin_name ),
+				'description' => __( 'A section displaying team members.', ORGANIC_WIDGETS_18N ),
 			) // Args
 		);
 
@@ -114,15 +114,15 @@ class Organic_Widgets_Team_Section_Widget extends WP_Widget {
 		?>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'organic_widgets_team_section_title' ); ?>"><?php _e('Title:', $plugin->get_plugin_name) ?></label>
+			<label for="<?php echo $this->get_field_id( 'organic_widgets_team_section_title' ); ?>"><?php _e('Title:', ORGANIC_WIDGETS_18N) ?></label>
 			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'organic_widgets_team_section_title' ); ?>" name="<?php echo $this->get_field_name( 'organic_widgets_team_section_title' ); ?>" value="<?php if ( $organic_widgets_team_section_title ) echo $organic_widgets_team_section_title; ?>" />
 		</p>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'organic_widgets_team_section_bg_image' ); ?>"><?php _e('Background Image:', $plugin->get_plugin_name) ?></label>
+			<label for="<?php echo $this->get_field_id( 'organic_widgets_team_section_bg_image' ); ?>"><?php _e('Background Image:', ORGANIC_WIDGETS_18N) ?></label>
 			<div class="uploader">
-				<input type="submit" class="button" name="<?php echo $this->get_field_name('uploader_button'); ?>" id="<?php echo $this->get_field_id('uploader_button'); ?>" value="<?php _e('Select an Image', $plugin->get_plugin_name); ?>" onclick="teamSectionWidgetImage.uploader( '<?php echo $this->id; ?>', '<?php echo $id_prefix; ?>' ); return false;" />
-				<input type="submit" class="organic_widgets-remove-image-button button" name="<?php echo $this->get_field_name('remover_button'); ?>" id="<?php echo $this->get_field_id('remover_button'); ?>" value="<?php _e('Remove Image', $plugin->get_plugin_name); ?>" onclick="teamSectionWidgetImage.remover( '<?php echo $this->id; ?>', '<?php echo $id_prefix; ?>', 'remover_button' ); return false;" <?php if ( $organic_widgets_team_section_bg_image_id < 1 ) { echo( 'style="display:none;"' ); } ?>/>
+				<input type="submit" class="button" name="<?php echo $this->get_field_name('uploader_button'); ?>" id="<?php echo $this->get_field_id('uploader_button'); ?>" value="<?php _e('Select an Image', ORGANIC_WIDGETS_18N); ?>" onclick="teamSectionWidgetImage.uploader( '<?php echo $this->id; ?>', '<?php echo $id_prefix; ?>' ); return false;" />
+				<input type="submit" class="organic_widgets-remove-image-button button" name="<?php echo $this->get_field_name('remover_button'); ?>" id="<?php echo $this->get_field_id('remover_button'); ?>" value="<?php _e('Remove Image', ORGANIC_WIDGETS_18N); ?>" onclick="teamSectionWidgetImage.remover( '<?php echo $this->id; ?>', '<?php echo $id_prefix; ?>', 'remover_button' ); return false;" <?php if ( $organic_widgets_team_section_bg_image_id < 1 ) { echo( 'style="display:none;"' ); } ?>/>
 				<div class="organic_widgets-widget-image-preview" id="<?php echo $this->get_field_id('preview'); ?>">
 					<?php echo $this->get_image_html($instance); ?>
 				</div>
@@ -204,8 +204,8 @@ class Organic_Widgets_Team_Section_Widget extends WP_Widget {
 		wp_enqueue_script( 'team-section-widget-js', plugin_dir_url( __FILE__ ) . 'js/team-section-widget.js', array( 'jquery', 'media-upload', 'media-views' ) );
 
 		wp_localize_script( 'team-section-widget-js', 'TeamSectionWidget', array(
-			'frame_title' => __( 'Select an Image', $plugin->get_plugin_name ),
-			'button_title' => __( 'Insert Into Widget', $plugin->get_plugin_name ),
+			'frame_title' => __( 'Select an Image', ORGANIC_WIDGETS_18N ),
+			'button_title' => __( 'Insert Into Widget', ORGANIC_WIDGETS_18N ),
 		) );
 
 		wp_enqueue_style( 'organic_widgets-team-section-widget-css', plugin_dir_url( __FILE__ ) . 'css/team-section-widget.css' );
