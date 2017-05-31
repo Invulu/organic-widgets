@@ -22,9 +22,9 @@ class Organic_Widgets_Content_Widget extends WP_Widget {
 	function __construct() {
 		parent::__construct(
 			'organic_widgets_featured_content', // Base ID
-			__( 'Featured Content', 'givingpress-pro' ), // Name
+			__( 'Featured Content', $plugin->get_plugin_name ), // Name
 			array(
-				'description' => __( 'A featured content widget for displaying a page summary or custom content.', 'givingpress-pro' ),
+				'description' => __( 'A featured content widget for displaying a page summary or custom content.', $plugin->get_plugin_name ),
 			) // Args
 		);
 
@@ -58,7 +58,7 @@ class Organic_Widgets_Content_Widget extends WP_Widget {
 					<?php if ( ! empty( $page_excerpt ) ) { ?>
 						<div class="excerpt"><?php echo $page_excerpt; ?></div>
 					<?php } ?>
-					<a class="button" href="<?php echo get_the_permalink( $page_id );?>"><?php esc_html_e( 'Read More', 'givingpress-pro' ); ?></a>
+					<a class="button" href="<?php echo get_the_permalink( $page_id );?>"><?php esc_html_e( 'Read More', $plugin->get_plugin_name ); ?></a>
 				</div>
 			</div>
 
@@ -102,7 +102,7 @@ class Organic_Widgets_Content_Widget extends WP_Widget {
 							<?php if ( ! empty( $organic_widgets_featured_content_link_title ) ) { ?>
 								<?php echo $organic_widgets_featured_content_link_title ?>
 							<?php } else { ?>
-								<?php esc_html_e( 'Read More', 'givingpress-pro' ); ?>
+								<?php esc_html_e( 'Read More', $plugin->get_plugin_name ); ?>
 							<?php } ?>
 						</a>
 					<?php } ?>
@@ -150,7 +150,7 @@ class Organic_Widgets_Content_Widget extends WP_Widget {
 		} else { $organic_widgets_featured_content_link_title = ''; }
 		?>
 
-		<p><b><?php _e('Choose Existing Page:', 'givingpress-pro') ?></b></p>
+		<p><b><?php _e('Choose Existing Page:', $plugin->get_plugin_name) ?></b></p>
 
 		<p>
 			<?php wp_dropdown_pages( array(
@@ -158,20 +158,20 @@ class Organic_Widgets_Content_Widget extends WP_Widget {
 				'selected' => $organic_widgets_featured_content_page_id,
 				'id' => $this->get_field_id( 'page_id' ),
 				'name' => $this->get_field_name( 'page_id' ),
-				'show_option_none' => __( '— Select Existing Page —', 'givingpress-pro' ),
+				'show_option_none' => __( '— Select Existing Page —', $plugin->get_plugin_name ),
 				'option_none_value' => '0',
 			) ); ?>
 		</p>
 
 		<hr />
 
-		<p><b><?php _e('Or Add Custom Content:', 'givingpress-pro') ?></b></p>
+		<p><b><?php _e('Or Add Custom Content:', $plugin->get_plugin_name) ?></b></p>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'organic_widgets_featured_content_bg_image' ); ?>"><?php _e('Background Image:', 'givingpress-pro') ?></label>
+			<label for="<?php echo $this->get_field_id( 'organic_widgets_featured_content_bg_image' ); ?>"><?php _e('Background Image:', $plugin->get_plugin_name) ?></label>
 			<div class="uploader">
-				<input type="submit" class="button" name="<?php echo $this->get_field_name('uploader_button'); ?>" id="<?php echo $this->get_field_id('uploader_button'); ?>" value="<?php _e('Select an Image', 'givingpress-pro'); ?>" onclick="featuredContentWidgetImage.uploader( '<?php echo $this->id; ?>', '<?php echo $id_prefix; ?>' ); return false;" />
-				<input type="submit" class="organic_widgets-remove-image-button button" name="<?php echo $this->get_field_name('remover_button'); ?>" id="<?php echo $this->get_field_id('remover_button'); ?>" value="<?php _e('Remove Image', 'givingpress-pro'); ?>" onclick="featuredContentWidgetImage.remover( '<?php echo $this->id; ?>', '<?php echo $id_prefix; ?>', 'remover_button' ); return false;" <?php if ( $organic_widgets_featured_content_bg_image_id < 1 ) { echo( 'style="display:none;"' ); } ?>/>
+				<input type="submit" class="button" name="<?php echo $this->get_field_name('uploader_button'); ?>" id="<?php echo $this->get_field_id('uploader_button'); ?>" value="<?php _e('Select an Image', $plugin->get_plugin_name); ?>" onclick="featuredContentWidgetImage.uploader( '<?php echo $this->id; ?>', '<?php echo $id_prefix; ?>' ); return false;" />
+				<input type="submit" class="organic_widgets-remove-image-button button" name="<?php echo $this->get_field_name('remover_button'); ?>" id="<?php echo $this->get_field_id('remover_button'); ?>" value="<?php _e('Remove Image', $plugin->get_plugin_name); ?>" onclick="featuredContentWidgetImage.remover( '<?php echo $this->id; ?>', '<?php echo $id_prefix; ?>', 'remover_button' ); return false;" <?php if ( $organic_widgets_featured_content_bg_image_id < 1 ) { echo( 'style="display:none;"' ); } ?>/>
 				<div class="organic_widgets-widget-image-preview" id="<?php echo $this->get_field_id('preview'); ?>">
 					<?php echo $this->get_image_html($instance); ?>
 				</div>
@@ -180,19 +180,19 @@ class Organic_Widgets_Content_Widget extends WP_Widget {
 			</div>
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'organic_widgets_featured_content_title' ); ?>"><?php _e('Title:', 'givingpress-pro') ?></label>
+			<label for="<?php echo $this->get_field_id( 'organic_widgets_featured_content_title' ); ?>"><?php _e('Title:', $plugin->get_plugin_name) ?></label>
 			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'organic_widgets_featured_content_title' ); ?>" name="<?php echo $this->get_field_name( 'organic_widgets_featured_content_title' ); ?>" value="<?php echo $organic_widgets_featured_content_title; ?>" />
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'organic_widgets_featured_content_summary' ); ?>"><?php _e('Summary:', 'givingpress-pro') ?></label>
+			<label for="<?php echo $this->get_field_id( 'organic_widgets_featured_content_summary' ); ?>"><?php _e('Summary:', $plugin->get_plugin_name) ?></label>
 			<textarea class="widefat" rows="6" cols="20" id="<?php echo $this->get_field_id( 'organic_widgets_featured_content_summary' ); ?>" name="<?php echo $this->get_field_name( 'organic_widgets_featured_content_summary' ); ?>"><?php echo $organic_widgets_featured_content_summary; ?></textarea>
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'organic_widgets_featured_content_link_url' ); ?>"><?php _e('Link URL:', 'givingpress-pro') ?></label>
+			<label for="<?php echo $this->get_field_id( 'organic_widgets_featured_content_link_url' ); ?>"><?php _e('Link URL:', $plugin->get_plugin_name) ?></label>
 			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'organic_widgets_featured_content_link_url' ); ?>" name="<?php echo $this->get_field_name( 'organic_widgets_featured_content_link_url' ); ?>" value="<?php echo $organic_widgets_featured_content_link_url; ?>" />
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'organic_widgets_featured_content_link_title' ); ?>"><?php _e('Link Text:', 'givingpress-pro') ?></label>
+			<label for="<?php echo $this->get_field_id( 'organic_widgets_featured_content_link_title' ); ?>"><?php _e('Link Text:', $plugin->get_plugin_name) ?></label>
 			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'organic_widgets_featured_content_link_title' ); ?>" name="<?php echo $this->get_field_name( 'organic_widgets_featured_content_link_title' ); ?>" value="<?php echo $organic_widgets_featured_content_link_title; ?>" />
 		</p>
 
@@ -276,12 +276,12 @@ class Organic_Widgets_Content_Widget extends WP_Widget {
 	 */
 	public function admin_setup() {
 		wp_enqueue_media();
-		
+
 		wp_enqueue_script( 'organic_widgets-featured-content-widget-js', plugin_dir_url( __FILE__ ) . 'js/featured-content-widget.js', array( 'jquery', 'media-upload', 'media-views' ) );
 
 		wp_localize_script( 'organic_widgets-featured-content-widget-js', 'FeaturedContentWidget', array(
-			'frame_title' => __( 'Select an Image', 'givingpress-pro' ),
-			'button_title' => __( 'Insert Into Widget', 'givingpress-pro' ),
+			'frame_title' => __( 'Select an Image', $plugin->get_plugin_name ),
+			'button_title' => __( 'Insert Into Widget', $plugin->get_plugin_name ),
 		) );
 
 		wp_enqueue_style( 'organic_widgets-featured-content-widget-css', plugin_dir_url( __FILE__ ) . 'css/featured-content-widget.css' );

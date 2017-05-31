@@ -142,6 +142,7 @@ class Organic_Widgets {
 		/**
 		 * The classes responsible for registering widgets
 		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widgets/blog-posts-section/blog-posts-section-widget.php'; 
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widgets/featured-content/featured-content-widget.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widgets/profile/profile-widget.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widgets/subpage-section/subpage-section-widget.php';

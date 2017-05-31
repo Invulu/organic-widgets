@@ -1,0 +1,11 @@
+.organic_widgets-remove-image-button {
+	background: #f9a7a7 !important;
+}
+.organic_widgets-widget-image-preview {
+	margin-top: 20px;
+}
+.organic_widgets-widget-image-preview img {
+	width:100%;
+	max-width:600px;
+	height:auto;
+}

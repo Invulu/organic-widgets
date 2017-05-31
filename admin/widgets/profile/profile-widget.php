@@ -22,9 +22,9 @@ class Organic_Widgets_Profile_Widget extends WP_Widget {
 	function __construct() {
 		parent::__construct(
 			'organic_widgets_profile', // Base ID
-			__( 'Profile', 'givingpress-pro' ), // Name
+			__( 'Profile', ORGANIC_WIDGETS_18N ), // Name
 			array(
-				'description' => __( 'Display a personal profile.', 'givingpress-pro' ),
+				'description' => __( 'Display a personal profile.', ORGANIC_WIDGETS_18N ),
 			) // Args
 		);
 
@@ -61,7 +61,7 @@ class Organic_Widgets_Profile_Widget extends WP_Widget {
 			<div class="holder radius-full">
 
 				<?php if ( $instance['organic_widgets_profile_bg_image_id'] > 0 ) { ?>
-					<div class="feature-img"><img src="<?php echo $instance['organic_widgets_profile_bg_image']; ?>" alt="<?php __( 'Profile Image', 'givingpress-pro' ) ?>" /></div>
+					<div class="feature-img"><img src="<?php echo $instance['organic_widgets_profile_bg_image']; ?>" alt="<?php __( 'Profile Image', ORGANIC_WIDGETS_18N ) ?>" /></div>
 				<?php } ?>
 
 				<!-- BEGIN .information -->
@@ -84,23 +84,23 @@ class Organic_Widgets_Profile_Widget extends WP_Widget {
 				<ul class="social-icons">
 
 					<?php if ( ! empty( $instance['organic_widgets_profile_personal_url'] ) ) { ?>
-						<li><a href="<?php echo $instance['organic_widgets_profile_personal_url']; ?>" target="_blank"><span><?php esc_html_e( 'Personal Link', 'givingpress-pro' ); ?></span></a></li>
+						<li><a href="<?php echo $instance['organic_widgets_profile_personal_url']; ?>" target="_blank"><span><?php esc_html_e( 'Personal Link', ORGANIC_WIDGETS_18N ); ?></span></a></li>
 					<?php } ?>
 
 					<?php if ( ! empty( $instance['organic_widgets_profile_twitter_url'] ) ) { ?>
-						<li><a href="<?php echo $instance['organic_widgets_profile_twitter_url']; ?>" target="_blank"><span><?php esc_html_e( 'Twitter', 'givingpress-pro' ); ?></span></a></li>
+						<li><a href="<?php echo $instance['organic_widgets_profile_twitter_url']; ?>" target="_blank"><span><?php esc_html_e( 'Twitter', ORGANIC_WIDGETS_18N ); ?></span></a></li>
 					<?php } ?>
 
 					<?php if ( ! empty( $instance['organic_widgets_profile_linkedin_url'] ) ) { ?>
-						<li><a href="<?php echo $instance['organic_widgets_profile_linkedin_url']; ?>" target="_blank"><span><?php esc_html_e( 'LinkedIn', 'givingpress-pro' ); ?></span></a></li>
+						<li><a href="<?php echo $instance['organic_widgets_profile_linkedin_url']; ?>" target="_blank"><span><?php esc_html_e( 'LinkedIn', ORGANIC_WIDGETS_18N ); ?></span></a></li>
 					<?php } ?>
 
 					<?php if ( ! empty( $instance['organic_widgets_profile_facebook_url'] ) ) { ?>
-						<li><a href="<?php echo $instance['organic_widgets_profile_facebook_url']; ?>" target="_blank"><span><?php esc_html_e( 'Facebook', 'givingpress-pro' ); ?></span></a></li>
+						<li><a href="<?php echo $instance['organic_widgets_profile_facebook_url']; ?>" target="_blank"><span><?php esc_html_e( 'Facebook', ORGANIC_WIDGETS_18N ); ?></span></a></li>
 					<?php } ?>
 
 					<?php if ( ! empty( $instance['organic_widgets_profile_email'] ) ) { ?>
-						<li><a href="mailto:<?php echo $instance['organic_widgets_profile_email']; ?>" target="_blank"><span><?php esc_html_e( 'Email', 'givingpress-pro' ); ?></span></a></li>
+						<li><a href="mailto:<?php echo $instance['organic_widgets_profile_email']; ?>" target="_blank"><span><?php esc_html_e( 'Email', ORGANIC_WIDGETS_18N ); ?></span></a></li>
 					<?php } ?>
 
 				</ul>
@@ -168,10 +168,10 @@ class Organic_Widgets_Profile_Widget extends WP_Widget {
 		?>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'organic_widgets_profile_bg_image' ); ?>"><?php _e( 'Profile Image:', 'givingpress-pro' ) ?></label>
+			<label for="<?php echo $this->get_field_id( 'organic_widgets_profile_bg_image' ); ?>"><?php _e( 'Profile Image:', ORGANIC_WIDGETS_18N ) ?></label>
 			<div class="uploader">
-				<input type="submit" class="button" name="<?php echo $this->get_field_name('uploader_button'); ?>" id="<?php echo $this->get_field_id('uploader_button'); ?>" value="<?php _e( 'Select an Image', 'givingpress-pro' ); ?>" onclick="profileWidgetImage.uploader( '<?php echo $this->id; ?>', '<?php echo $id_prefix; ?>' ); return false;" />
-				<input type="submit" class="organic_widgets-remove-image-button button" name="<?php echo $this->get_field_name('remover_button'); ?>" id="<?php echo $this->get_field_id('remover_button'); ?>" value="<?php _e('Remove Image', 'givingpress-pro'); ?>" onclick="profileWidgetImage.remover( '<?php echo $this->id; ?>', '<?php echo $id_prefix; ?>', 'remover_button' ); return false;" <?php if ( $instance['organic_widgets_profile_bg_image_id'] < 1 ) { echo( 'style="display:none;"' ); } ?>/>
+				<input type="submit" class="button" name="<?php echo $this->get_field_name('uploader_button'); ?>" id="<?php echo $this->get_field_id('uploader_button'); ?>" value="<?php _e( 'Select an Image', ORGANIC_WIDGETS_18N ); ?>" onclick="profileWidgetImage.uploader( '<?php echo $this->id; ?>', '<?php echo $id_prefix; ?>' ); return false;" />
+				<input type="submit" class="organic_widgets-remove-image-button button" name="<?php echo $this->get_field_name('remover_button'); ?>" id="<?php echo $this->get_field_id('remover_button'); ?>" value="<?php _e('Remove Image', ORGANIC_WIDGETS_18N); ?>" onclick="profileWidgetImage.remover( '<?php echo $this->id; ?>', '<?php echo $id_prefix; ?>', 'remover_button' ); return false;" <?php if ( $instance['organic_widgets_profile_bg_image_id'] < 1 ) { echo( 'style="display:none;"' ); } ?>/>
 				<div class="organic_widgets-widget-image-preview" id="<?php echo $this->get_field_id('preview'); ?>">
 					<?php echo $this->get_image_html($instance); ?>
 				</div>
@@ -180,45 +180,43 @@ class Organic_Widgets_Profile_Widget extends WP_Widget {
 			</div>
 		</p>
 
-		<?php error_log(print_r($instance,true)); ?>
-
 		<p>
-			<label for="<?php echo $this->get_field_id( 'organic_widgets_profile_title' ); ?>"><?php _e('Title:', 'givingpress-pro') ?></label>
+			<label for="<?php echo $this->get_field_id( 'organic_widgets_profile_title' ); ?>"><?php _e('Title:', ORGANIC_WIDGETS_18N) ?></label>
 			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'organic_widgets_profile_title' ); ?>" name="<?php echo $this->get_field_name( 'organic_widgets_profile_title' ); ?>" value="<?php if ( $instance['organic_widgets_profile_title'] ) echo $instance['organic_widgets_profile_title']; ?>" />
 		</p>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'organic_widgets_profile_subtitle' ); ?>"><?php _e('Subtitle:', 'givingpress-pro') ?></label>
+			<label for="<?php echo $this->get_field_id( 'organic_widgets_profile_subtitle' ); ?>"><?php _e('Subtitle:', ORGANIC_WIDGETS_18N) ?></label>
 			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'organic_widgets_profile_subtitle' ); ?>" name="<?php echo $this->get_field_name( 'organic_widgets_profile_subtitle' ); ?>" value="<?php if ( $instance['organic_widgets_profile_subtitle'] ) echo $instance['organic_widgets_profile_subtitle']; ?>" />
 		</p>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'organic_widgets_profile_summary' ); ?>"><?php _e('Summary:', 'givingpress-pro') ?></label>
+			<label for="<?php echo $this->get_field_id( 'organic_widgets_profile_summary' ); ?>"><?php _e('Summary:', ORGANIC_WIDGETS_18N) ?></label>
 			<textarea class="widefat" rows="6" cols="20" id="<?php echo $this->get_field_id( 'organic_widgets_profile_summary' ); ?>" name="<?php echo $this->get_field_name( 'organic_widgets_profile_summary' ); ?>"><?php echo $instance['organic_widgets_profile_summary']; ?></textarea>
 		</p>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'organic_widgets_profile_personal_url' ); ?>"><?php _e('Personal Link or Social Media URL:', 'givingpress-pro') ?></label>
+			<label for="<?php echo $this->get_field_id( 'organic_widgets_profile_personal_url' ); ?>"><?php _e('Personal Link or Social Media URL:', ORGANIC_WIDGETS_18N) ?></label>
 			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'organic_widgets_profile_personal_url' ); ?>" name="<?php echo $this->get_field_name( 'organic_widgets_profile_personal_url' ); ?>" value="<?php echo $instance['organic_widgets_profile_personal_url']; ?>" />
 		</p>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'organic_widgets_profile_twitter_url' ); ?>"><?php _e('Twitter Profile URL:', 'givingpress-pro') ?></label>
+			<label for="<?php echo $this->get_field_id( 'organic_widgets_profile_twitter_url' ); ?>"><?php _e('Twitter Profile URL:', ORGANIC_WIDGETS_18N) ?></label>
 			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'organic_widgets_profile_twitter_url' ); ?>" name="<?php echo $this->get_field_name( 'organic_widgets_profile_twitter_url' ); ?>" value="<?php echo $instance['organic_widgets_profile_twitter_url']; ?>" />
 		</p>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'organic_widgets_profile_linkedin_url' ); ?>"><?php _e('LinkedIn Profile URL:', 'givingpress-pro') ?></label>
+			<label for="<?php echo $this->get_field_id( 'organic_widgets_profile_linkedin_url' ); ?>"><?php _e('LinkedIn Profile URL:', ORGANIC_WIDGETS_18N) ?></label>
 			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'organic_widgets_profile_linkedin_url' ); ?>" name="<?php echo $this->get_field_name( 'organic_widgets_profile_linkedin_url' ); ?>" value="<?php echo $instance['organic_widgets_profile_linkedin_url']; ?>" />
 		</p>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'organic_widgets_profile_facebook_url' ); ?>"><?php _e('Facebook Profile URL:', 'givingpress-pro') ?></label>
+			<label for="<?php echo $this->get_field_id( 'organic_widgets_profile_facebook_url' ); ?>"><?php _e('Facebook Profile URL:', ORGANIC_WIDGETS_18N) ?></label>
 			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'organic_widgets_profile_facebook_url' ); ?>" name="<?php echo $this->get_field_name( 'organic_widgets_profile_facebook_url' ); ?>" value="<?php echo $instance['organic_widgets_profile_facebook_url']; ?>" />
 		</p>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'organic_widgets_profile_email' ); ?>"><?php _e('Email Address:', 'givingpress-pro') ?></label>
+			<label for="<?php echo $this->get_field_id( 'organic_widgets_profile_email' ); ?>"><?php _e('Email Address:', ORGANIC_WIDGETS_18N) ?></label>
 			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'organic_widgets_profile_email' ); ?>" name="<?php echo $this->get_field_name( 'organic_widgets_profile_email' ); ?>" value="<?php echo $instance['organic_widgets_profile_email']; ?>" />
 		</p>
 
@@ -310,8 +308,8 @@ class Organic_Widgets_Profile_Widget extends WP_Widget {
 		wp_enqueue_script( 'organic_widgets-profile-widget-js', plugin_dir_url( __FILE__ ) . 'js/profile-widget.js', array( 'jquery', 'media-upload', 'media-views' ) );
 
 		wp_localize_script( 'organic_widgets-profile-widget-js', 'ProfileWidget', array(
-			'frame_title' => __( 'Select an Image', 'givingpress-pro' ),
-			'button_title' => __( 'Insert Into Widget', 'givingpress-pro' ),
+			'frame_title' => __( 'Select an Image', ORGANIC_WIDGETS_18N ),
+			'button_title' => __( 'Insert Into Widget', ORGANIC_WIDGETS_18N ),
 		) );
 
 		wp_enqueue_style( 'organic_widgets-profile-widget-css', plugin_dir_url( __FILE__ ) . 'css/profile-widget.css' );

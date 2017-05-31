@@ -22,9 +22,9 @@ class Organic_Widgets_Subpage_Section_Widget extends WP_Widget {
 	function __construct() {
 		parent::__construct(
 			'organic_widgets_subpage_section', // Base ID
-			__( 'Subpage Section', 'givingpress-pro' ), // Name
+			__( 'Subpage Section', $plugin->get_plugin_name ), // Name
 			array(
-				'description' => __( 'A subpage\'s content displayed as a section of another page.', 'givingpress-pro' ),
+				'description' => __( 'A subpage\'s content displayed as a section of another page.', $plugin->get_plugin_name ),
 			) // Args
 		);
 
@@ -68,7 +68,7 @@ class Organic_Widgets_Subpage_Section_Widget extends WP_Widget {
 
 							<div class="post-area wide clearfix">
 
-								<?php the_content( esc_html__( 'Read More', 'givingpress-pro' ) ); ?>
+								<?php the_content( esc_html__( 'Read More', $plugin->get_plugin_name ) ); ?>
 
 							</div>
 
@@ -165,7 +165,7 @@ class Organic_Widgets_Subpage_Section_Widget extends WP_Widget {
 
 		?>
 
-		<p><b><?php _e('Choose Existing Page:', 'givingpress-pro') ?></b></p>
+		<p><b><?php _e('Choose Existing Page:', $plugin->get_plugin_name) ?></b></p>
 
 		<p>
 			<?php wp_dropdown_pages( array(
@@ -173,20 +173,20 @@ class Organic_Widgets_Subpage_Section_Widget extends WP_Widget {
 				'selected' => $organic_widgets_subpage_page_id,
 				'id' => $this->get_field_id( 'page_id' ),
 				'name' => $this->get_field_name( 'page_id' ),
-				'show_option_none' => __( '— Select Existing Page —', 'givingpress-pro' ),
+				'show_option_none' => __( '— Select Existing Page —', $plugin->get_plugin_name ),
 				'option_none_value' => '0',
 			) ); ?>
 		</p>
 
 		<hr />
 
-		<p><b><?php _e('Or Add Custom Content:', 'givingpress-pro') ?></b></p>
+		<p><b><?php _e('Or Add Custom Content:', $plugin->get_plugin_name) ?></b></p>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'organic_widgets_subpage_bg_image' ); ?>"><?php _e( 'Background Image:', 'givingpress-pro' ) ?></label>
+			<label for="<?php echo $this->get_field_id( 'organic_widgets_subpage_bg_image' ); ?>"><?php _e( 'Background Image:', $plugin->get_plugin_name ) ?></label>
 			<div class="uploader">
-				<input type="submit" class="button" name="<?php echo $this->get_field_name('uploader_button'); ?>" id="<?php echo $this->get_field_id('uploader_button'); ?>" value="<?php _e( 'Select an Image', 'givingpress-pro' ); ?>" onclick="subpageWidgetImage.uploader( '<?php echo $this->id; ?>', '<?php echo $id_prefix; ?>' ); return false;" />
-				<input type="submit" class="organic_widgets-remove-image-button button" name="<?php echo $this->get_field_name('remover_button'); ?>" id="<?php echo $this->get_field_id('remover_button'); ?>" value="<?php _e('Remove Image', 'givingpress-pro'); ?>" onclick="subpageWidgetImage.remover( '<?php echo $this->id; ?>', '<?php echo $id_prefix; ?>', 'remover_button' ); return false;" <?php if ( $organic_widgets_subpage_bg_image_id < 1 ) { echo( 'style="display:none;"' ); } ?>/>
+				<input type="submit" class="button" name="<?php echo $this->get_field_name('uploader_button'); ?>" id="<?php echo $this->get_field_id('uploader_button'); ?>" value="<?php _e( 'Select an Image', $plugin->get_plugin_name ); ?>" onclick="subpageWidgetImage.uploader( '<?php echo $this->id; ?>', '<?php echo $id_prefix; ?>' ); return false;" />
+				<input type="submit" class="organic_widgets-remove-image-button button" name="<?php echo $this->get_field_name('remover_button'); ?>" id="<?php echo $this->get_field_id('remover_button'); ?>" value="<?php _e('Remove Image', $plugin->get_plugin_name); ?>" onclick="subpageWidgetImage.remover( '<?php echo $this->id; ?>', '<?php echo $id_prefix; ?>', 'remover_button' ); return false;" <?php if ( $organic_widgets_subpage_bg_image_id < 1 ) { echo( 'style="display:none;"' ); } ?>/>
 				<div class="organic_widgets-widget-image-preview" id="<?php echo $this->get_field_id('preview'); ?>">
 					<?php echo $this->get_image_html($instance); ?>
 				</div>
@@ -195,11 +195,11 @@ class Organic_Widgets_Subpage_Section_Widget extends WP_Widget {
 			</div>
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'organic_widgets_subpage_title' ); ?>"><?php _e('Title:', 'givingpress-pro') ?></label>
+			<label for="<?php echo $this->get_field_id( 'organic_widgets_subpage_title' ); ?>"><?php _e('Title:', $plugin->get_plugin_name) ?></label>
 			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'organic_widgets_subpage_title' ); ?>" name="<?php echo $this->get_field_name( 'organic_widgets_subpage_title' ); ?>" value="<?php echo $organic_widgets_subpage_title; ?>" />
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'organic_widgets_subpage_summary' ); ?>"><?php _e('Summary:', 'givingpress-pro') ?></label>
+			<label for="<?php echo $this->get_field_id( 'organic_widgets_subpage_summary' ); ?>"><?php _e('Summary:', $plugin->get_plugin_name) ?></label>
 			<textarea class="widefat" rows="6" cols="20" id="<?php echo $this->get_field_id( 'organic_widgets_subpage_summary' ); ?>" name="<?php echo $this->get_field_name( 'organic_widgets_subpage_summary' ); ?>"><?php echo $organic_widgets_subpage_summary; ?></textarea>
 		</p>
 
@@ -281,8 +281,8 @@ class Organic_Widgets_Subpage_Section_Widget extends WP_Widget {
 		wp_enqueue_script( 'organic_widgets-subpage-widget-js', plugin_dir_url( __FILE__ ) . 'js/subpage-widget.js', array( 'jquery', 'media-upload', 'media-views' ) );
 
 		wp_localize_script( 'organic_widgets-subpage-widget-js', 'SubpageWidget', array(
-			'frame_title' => __( 'Select an Image', 'givingpress-pro' ),
-			'button_title' => __( 'Insert Into Widget', 'givingpress-pro' ),
+			'frame_title' => __( 'Select an Image', $plugin->get_plugin_name ),
+			'button_title' => __( 'Insert Into Widget', $plugin->get_plugin_name ),
 		) );
 
 		wp_enqueue_style( 'organic_widgets-subpage-widget-css', plugin_dir_url( __FILE__ ) . 'css/subpage-widget.css' );
