@@ -43,10 +43,9 @@ class Organic_Widgets_Content_Widget extends WP_Widget {
 		if ( ! empty( $instance['page_id'] ) ) {
 
 			echo $args['before_widget'];
-
 			$page_id = $instance['page_id'];
+			$page_excerpt = $this->organic_widgets_get_the_excerpt($page_id);
 			$page_title = get_the_title( $page_id );
-			$page_excerpt = organic_widgets_get_the_excerpt( $page_id );
 
 			?>
 
@@ -57,7 +56,7 @@ class Organic_Widgets_Content_Widget extends WP_Widget {
 						<h3 class="headline"><?php echo apply_filters( 'widget_title', $page_title ); ?></h3>
 					<?php } ?>
 					<?php if ( ! empty( $page_excerpt ) ) { ?>
-						<div class="excerpt"><?php echo organic_widgets_get_the_excerpt( $page_id ); ?></div>
+						<div class="excerpt"><?php echo $page_excerpt; ?></div>
 					<?php } ?>
 					<a class="button" href="<?php echo get_the_permalink( $page_id );?>"><?php esc_html_e( 'Read More', 'givingpress-pro' ); ?></a>
 				</div>
@@ -261,18 +260,31 @@ class Organic_Widgets_Content_Widget extends WP_Widget {
 	}
 
 	/**
+	 * Get The Excerpt By Id
+	 */
+	private function organic_widgets_get_the_excerpt( $post_id ) {
+		global $post;
+		$save_post = $post;
+		$post = get_post( $post_id );
+		$output = $post->post_content;
+		$post = $save_post;
+		return $output;
+	}
+
+	/**
 	 * Enqueue all the javascript.
 	 */
 	public function admin_setup() {
 		wp_enqueue_media();
-		wp_enqueue_script( 'organic_widgets-featured-content-widget-js', get_template_directory_uri() . '/widgets/featured-content/js/featured-content-widget.js', array( 'jquery', 'media-upload', 'media-views' ) );
+		
+		wp_enqueue_script( 'organic_widgets-featured-content-widget-js', plugin_dir_url( __FILE__ ) . 'js/featured-content-widget.js', array( 'jquery', 'media-upload', 'media-views' ) );
 
 		wp_localize_script( 'organic_widgets-featured-content-widget-js', 'FeaturedContentWidget', array(
 			'frame_title' => __( 'Select an Image', 'givingpress-pro' ),
 			'button_title' => __( 'Insert Into Widget', 'givingpress-pro' ),
 		) );
 
-		wp_enqueue_style( 'organic_widgets-featured-content-widget-css', get_template_directory_uri() . '/widgets/featured-content/css/featured-content-widget.css' );
+		wp_enqueue_style( 'organic_widgets-featured-content-widget-css', plugin_dir_url( __FILE__ ) . 'css/featured-content-widget.css' );
 	}
 
 } // class Organic_Widgets_Content_Widget

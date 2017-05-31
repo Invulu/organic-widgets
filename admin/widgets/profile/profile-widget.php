@@ -162,6 +162,8 @@ class Organic_Widgets_Profile_Widget extends WP_Widget {
 			</div>
 		</p>
 
+		<?php error_log(print_r($instance,true)); ?>
+
 		<p>
 			<label for="<?php echo $this->get_field_id( 'organic_widgets_profile_title' ); ?>"><?php _e('Title:', 'givingpress-pro') ?></label>
 			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'organic_widgets_profile_title' ); ?>" name="<?php echo $this->get_field_name( 'organic_widgets_profile_title' ); ?>" value="<?php if ( $organic_widgets_profile_title ) echo $organic_widgets_profile_title; ?>" />
@@ -287,14 +289,14 @@ class Organic_Widgets_Profile_Widget extends WP_Widget {
 	 */
 	public function admin_setup() {
 		wp_enqueue_media();
-		wp_enqueue_script( 'organic_widgets-profile-widget-js', get_template_directory_uri() . '/widgets/profile/js/profile-widget.js', array( 'jquery', 'media-upload', 'media-views' ) );
+		wp_enqueue_script( 'organic_widgets-profile-widget-js', plugin_dir_url( __FILE__ ) . 'js/profile-widget.js', array( 'jquery', 'media-upload', 'media-views' ) );
 
 		wp_localize_script( 'organic_widgets-profile-widget-js', 'ProfileWidget', array(
 			'frame_title' => __( 'Select an Image', 'givingpress-pro' ),
 			'button_title' => __( 'Insert Into Widget', 'givingpress-pro' ),
 		) );
 
-		wp_enqueue_style( 'organic_widgets-profile-widget-css', get_template_directory_uri() . '/widgets/profile/css/profile-widget.css' );
+		wp_enqueue_style( 'organic_widgets-profile-widget-css', plugin_dir_url( __FILE__ ) . 'css/profile-widget.css' );
 	}
 
 } // class Organic_Widgets_Profile_Widget

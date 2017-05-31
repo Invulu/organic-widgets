@@ -201,14 +201,14 @@ class Organic_Widgets_Team_Section_Widget extends WP_Widget {
 	 */
 	public function admin_setup() {
 		wp_enqueue_media();
-		wp_enqueue_script( 'team-section-widget-js', get_template_directory_uri() . '/widgets/team-section/js/team-section-widget.js', array( 'jquery', 'media-upload', 'media-views' ) );
+		wp_enqueue_script( 'team-section-widget-js', plugin_dir_url( __FILE__ ) . 'js/team-section-widget.js', array( 'jquery', 'media-upload', 'media-views' ) );
 
 		wp_localize_script( 'team-section-widget-js', 'TeamSectionWidget', array(
 			'frame_title' => __( 'Select an Image', 'givingpress-pro' ),
 			'button_title' => __( 'Insert Into Widget', 'givingpress-pro' ),
 		) );
 
-		wp_enqueue_style( 'organic_widgets-team-section-widget-css', get_template_directory_uri() . '/widgets/team-section/css/team-section-widget.css' );
+		wp_enqueue_style( 'organic_widgets-team-section-widget-css', plugin_dir_url( __FILE__ ) . 'css/team-section-widget.css' );
 	}
 
 } // class Organic_Widgets_Team_Section_Widget

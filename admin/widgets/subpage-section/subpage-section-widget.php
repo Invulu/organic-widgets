@@ -278,14 +278,14 @@ class Organic_Widgets_Subpage_Section_Widget extends WP_Widget {
 	 */
 	public function admin_setup() {
 		wp_enqueue_media();
-		wp_enqueue_script( 'organic_widgets-subpage-widget-js', get_template_directory_uri() . '/widgets/subpage-section/js/subpage-widget.js', array( 'jquery', 'media-upload', 'media-views' ) );
+		wp_enqueue_script( 'organic_widgets-subpage-widget-js', plugin_dir_url( __FILE__ ) . 'js/subpage-widget.js', array( 'jquery', 'media-upload', 'media-views' ) );
 
 		wp_localize_script( 'organic_widgets-subpage-widget-js', 'SubpageWidget', array(
 			'frame_title' => __( 'Select an Image', 'givingpress-pro' ),
 			'button_title' => __( 'Insert Into Widget', 'givingpress-pro' ),
 		) );
 
-		wp_enqueue_style( 'organic_widgets-subpage-widget-css', get_template_directory_uri() . '/widgets/subpage-section/css/subpage-widget.css' );
+		wp_enqueue_style( 'organic_widgets-subpage-widget-css', plugin_dir_url( __FILE__ ) . 'css/subpage-widget.css' );
 	}
 
 } // class Organic_Widgets_Subpage_Section_Widget
