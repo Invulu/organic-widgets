@@ -69,7 +69,7 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-organic-widgets.php';
 function run_organic_widgets() {
 
 	$plugin = new Organic_Widgets();
-	define( 'ORGANIC_WIDGETS_18N', $plugin->get_plugin_name );
+	define( 'ORGANIC_WIDGETS_18N', $plugin->get_plugin_name() );
 	$plugin->run();
 
 }
