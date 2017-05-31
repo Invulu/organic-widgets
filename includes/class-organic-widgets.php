@@ -139,6 +139,14 @@ class Organic_Widgets {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-organic-widget-areas.php';
 
+		/**
+		 * The classes responsible for registering widgets
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widgets/featured-content/featured-content-widget.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widgets/profile/profile-widget.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widgets/subpage-section/subpage-section-widget.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widgets/team-section/team-section-widget.php';
+
 		$this->loader = new Organic_Widgets_Loader();
 
 	}
