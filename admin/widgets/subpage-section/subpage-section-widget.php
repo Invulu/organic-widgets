@@ -162,6 +162,10 @@ class Organic_Widgets_Subpage_Section_Widget extends WP_Widget {
 			$organic_widgets_subpage_bg_image = $instance['organic_widgets_subpage_bg_image'];
 		} else { $organic_widgets_subpage_bg_image = false; }
 
+		if ( isset( $instance['organic_widgets_subpage_bg_image_color'] ) ) {
+			$organic_widgets_subpage_bg_image_id = $instance['organic_widgets_subpage_bg_image_color'];
+		} else { $organic_widgets_subpage_bg_image_id = false; }
+
 		if ( isset( $instance[ 'organic_widgets_subpage_title' ] ) ) {
 			$organic_widgets_subpage_title = $instance[ 'organic_widgets_subpage_title' ];
 		} else { $organic_widgets_subpage_title = ''; }
@@ -237,6 +241,8 @@ class Organic_Widgets_Subpage_Section_Widget extends WP_Widget {
 			$instance['organic_widgets_subpage_bg_image_id'] = strip_tags( $new_instance['organic_widgets_subpage_bg_image_id'] );
 		if ( isset( $new_instance['organic_widgets_subpage_bg_image'] ) )
 			$instance['organic_widgets_subpage_bg_image'] = strip_tags( $new_instance['organic_widgets_subpage_bg_image'] );
+		if ( isset( $new_instance['organic_widgets_subpage_bg_color'] ) )
+			$instance['organic_widgets_subpage_bg_color'] = strip_tags( $new_instance['organic_widgets_subpage_bg_color'] );
 		if ( isset( $new_instance['organic_widgets_subpage_title'] ) )
 			$instance['organic_widgets_subpage_title'] = strip_tags( $new_instance['organic_widgets_subpage_title'] );
 		if ( isset( $new_instance['organic_widgets_subpage_summary'] ) )
