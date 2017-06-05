@@ -176,7 +176,7 @@ class Organic_Widgets_Subpage_Section_Widget extends WP_Widget {
 
 		?>
 
-		<p><b><?php _e('Choose Existing Page:', ORGANIC_WIDGETS_18N) ?></b></p>
+		<h3><?php _e('Choose Existing Page:', ORGANIC_WIDGETS_18N) ?></h3>
 
 		<p>
 			<?php wp_dropdown_pages( array(
@@ -191,9 +191,10 @@ class Organic_Widgets_Subpage_Section_Widget extends WP_Widget {
 
 		<hr />
 
-		<p><b><?php _e('Or Add Custom Content:', ORGANIC_WIDGETS_18N) ?></b></p>
+		<h3><?php _e('Or Add Custom Content:', ORGANIC_WIDGETS_18N) ?></h3>
 
 		<p>
+			<h4>Section Background</h4>
 			<label for="<?php echo $this->get_field_id( 'organic_widgets_subpage_bg_image' ); ?>"><?php _e( 'Background Image:', ORGANIC_WIDGETS_18N ) ?></label>
 			<div class="uploader">
 				<input type="submit" class="button" name="<?php echo $this->get_field_name('uploader_button'); ?>" id="<?php echo $this->get_field_id('uploader_button'); ?>" value="<?php _e( 'Select an Image', ORGANIC_WIDGETS_18N ); ?>" onclick="subpageWidgetImage.uploader( '<?php echo $this->id; ?>', '<?php echo $id_prefix; ?>' ); return false;" />
@@ -206,15 +207,16 @@ class Organic_Widgets_Subpage_Section_Widget extends WP_Widget {
 			</div>
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_name('organic_widgets_subpage_bg_color'); ?>"></label>
+			<label for="<?php echo $this->get_field_name('organic_widgets_subpage_bg_color'); ?>"><?php _e( 'Background Color:', ORGANIC_WIDGETS_18N ) ?></label><br>
 			<input type="text" name="<?php echo $this->get_field_name('organic_widgets_subpage_bg_color'); ?>" value="" class="organic-widgets-color-picker" />
 		</p>
+		<hr />
 		<p>
-			<label for="<?php echo $this->get_field_id( 'organic_widgets_subpage_title' ); ?>"><?php _e('Title:', ORGANIC_WIDGETS_18N) ?></label>
+			<label for="<?php echo $this->get_field_id( 'organic_widgets_subpage_title' ); ?>"><?php _e('Section Title:', ORGANIC_WIDGETS_18N) ?></label>
 			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'organic_widgets_subpage_title' ); ?>" name="<?php echo $this->get_field_name( 'organic_widgets_subpage_title' ); ?>" value="<?php echo $organic_widgets_subpage_title; ?>" />
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'organic_widgets_subpage_summary' ); ?>"><?php _e('Summary:', ORGANIC_WIDGETS_18N) ?></label>
+			<label for="<?php echo $this->get_field_id( 'organic_widgets_subpage_summary' ); ?>"><?php _e('Section Content:', ORGANIC_WIDGETS_18N) ?></label>
 			<textarea class="widefat" rows="6" cols="20" id="<?php echo $this->get_field_id( 'organic_widgets_subpage_summary' ); ?>" name="<?php echo $this->get_field_name( 'organic_widgets_subpage_summary' ); ?>"><?php echo $organic_widgets_subpage_summary; ?></textarea>
 		</p>
 
