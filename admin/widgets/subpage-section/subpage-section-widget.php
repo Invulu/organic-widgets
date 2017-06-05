@@ -29,6 +29,13 @@ class Organic_Widgets_Subpage_Section_Widget extends WP_Widget {
 		);
 
 		add_action( 'sidebar_admin_setup', array( $this, 'admin_setup' ) );
+
+		// Add the color picker css file
+    wp_enqueue_style( 'wp-color-picker' );
+
+    // Include our custom jQuery file with WordPress Color Picker dependency
+    wp_enqueue_script( 'custom-script-handle', plugins_url( 'custom-script.js', __FILE__ ), array( 'wp-color-picker' ), false, true );
+
 	}
 	/**
 	 * Front-end display of widget.
@@ -193,6 +200,10 @@ class Organic_Widgets_Subpage_Section_Widget extends WP_Widget {
 				<input type="hidden" id="<?php echo $this->get_field_id('organic_widgets_subpage_bg_image_id'); ?>" name="<?php echo $this->get_field_name('organic_widgets_subpage_bg_image_id'); ?>" value="<?php echo abs($organic_widgets_subpage_bg_image_id); ?>" />
 				<input type="hidden" id="<?php echo $this->get_field_id('organic_widgets_subpage_bg_image'); ?>" name="<?php echo $this->get_field_name('organic_widgets_subpage_bg_image'); ?>" value="<?php echo $organic_widgets_subpage_bg_image; ?>" />
 			</div>
+		</p>
+		<p>
+			<label for="<?php echo $this->get_field_name('organic_widgets_subpage_bg_color'); ?>"></label>
+			<input type="text" name="<?php echo $this->get_field_name('organic_widgets_subpage_bg_color'); ?>" value="" class="organic-widgets-color-picker" />
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'organic_widgets_subpage_title' ); ?>"><?php _e('Title:', ORGANIC_WIDGETS_18N) ?></label>

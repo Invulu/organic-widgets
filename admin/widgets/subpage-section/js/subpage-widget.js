@@ -1,10 +1,14 @@
 /**
- * Tribe Image Widget Javascript
- * @author Modern Tribe, Inc.
- * Copyright 2013.
+ * Subpage Section Widget JS
  */
 jQuery(document).ready(function($){
 
+	// Initialize Color Pickers
+	$(function() {
+    $('.organic-widgets-color-picker').wpColorPicker();
+  });
+
+	// Image Uploader Widget
 	subpageWidgetImage = {
 
 		// Call this from the upload button to initiate the upload frame.

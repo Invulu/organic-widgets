@@ -1,6 +1,6 @@
 /**
-* Widget Image Uploader JS
-*/
+ * Team Section Widget JS
+ */
 jQuery(document).ready(function($){
 
 	teamSectionWidgetImage = {
@@ -53,7 +53,7 @@ jQuery(document).ready(function($){
 
 		// Render html for the image.
 		imgHTML : function( attachment ) {
-			
+
 			if ( attachment ) {
 				var img_html = '<img src="' + attachment.url + '" ';
 				img_html += '/>';
@@ -65,7 +65,7 @@ jQuery(document).ready(function($){
 
 		// Call this from the upload button to initiate the upload frame.
 		remover : function( widget_id, widget_id_string, field_name ) {
-			
+
 			teamSectionWidgetImage.render( widget_id, widget_id_string, false );
 
 			var field = $("#" + widget_id_string + field_name);

@@ -1,7 +1,5 @@
 /**
- * Tribe Image Widget Javascript
- * @author Modern Tribe, Inc.
- * Copyright 2013.
+ * Profile Section Widget JS
  */
 jQuery(document).ready(function($){
 

@@ -1,6 +1,6 @@
 /**
-* Widget Image Uploader JS
-*/
+ * Featured Section Widget JS
+ */
 jQuery(document).ready(function($){
 
 	console.log('heyo');
