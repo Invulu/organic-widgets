@@ -3,10 +3,6 @@
  */
 jQuery(document).ready(function($){
 
-	// Initialize Color Pickers
-  $('.organic-widgets-color-picker').wpColorPicker();
-
-
 	// Image Uploader Widget
 	subpageWidgetImage = {
 

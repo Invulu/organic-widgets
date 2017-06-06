@@ -70,6 +70,8 @@ function run_organic_widgets() {
 
 	$plugin = new Organic_Widgets();
 	define( 'ORGANIC_WIDGETS_18N', $plugin->get_plugin_name() );
+	define( 'ORGANIC_WIDGETS_ADMIN_JS_DIR', plugin_dir_url( __FILE__ ) . 'admin/js/' );
+	define( 'ORGANIC_WIDGETS_ADMIN_CSS_DIR', plugin_dir_url( __FILE__ ) . 'admin/css/' );
 	$plugin->run();
 
 }
