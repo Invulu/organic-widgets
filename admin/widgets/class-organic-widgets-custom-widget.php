@@ -19,12 +19,13 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
 	 */
 	protected function check_hex_color( $color_value ) {
 
-		error_log($color_value);
-	    if ( preg_match( '/^#[a-f0-9]{6}$/i', $color_value ) ) {
-	        return true;
-	    }
+    if ( preg_match( '/^#[a-f0-9]{6}$/i', $color_value ) ) {
+        return true;
+    }
 
-	    return false;
-	}
+    return false;
+
+  }
+
 
 } // class Organic_Widgets_Subpage_Section_Widget

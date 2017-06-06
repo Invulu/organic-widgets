@@ -34,8 +34,8 @@ jQuery(document).ready(function($){
 
 			$("#" + widget_id_string + 'preview').html(subpageWidgetImage.imgHTML( attachment ));
 			$("#" + widget_id_string + 'fields').slideDown();
-			$("#" + widget_id_string + 'organic_widgets_subpage_bg_image_id').val(attachment.id);
-			$("#" + widget_id_string + 'organic_widgets_subpage_bg_image').val(attachment.url);
+			$("#" + widget_id_string + 'bg_image_id').val(attachment.id);
+			$("#" + widget_id_string + 'bg_image').val(attachment.url);
 			$("#" + widget_id_string + 'size').val('organic_widgets-featured-large');
 
 

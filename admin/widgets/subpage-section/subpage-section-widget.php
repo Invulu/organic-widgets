@@ -87,18 +87,18 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 
 			<?php echo $args['after_widget'];
 
-		} elseif ( ! empty( $instance['organic_widgets_subpage_title'] ) || ! empty( $instance['organic_widgets_subpage_summary'] ) ) {
+		} elseif ( ! empty( $instance['subpage_title'] ) || ! empty( $instance['subpage_summary'] ) ) {
 
-			$organic_widgets_subpage_bg_image_id = isset( $instance['organic_widgets_subpage_bg_image_id'] ) ? $instance['organic_widgets_subpage_bg_image_id'] : false;
-			$organic_widgets_subpage_bg_image = ( isset( $instance['organic_widgets_subpage_bg_image'] ) && '' != $instance['organic_widgets_subpage_bg_image'] ) ? $instance['organic_widgets_subpage_bg_image'] : false;
-			$organic_widgets_subpage_title = $instance['organic_widgets_subpage_title'];
-			$organic_widgets_subpage_summary = $instance['organic_widgets_subpage_summary'];
+			$bg_image_id = isset( $instance['bg_image_id'] ) ? $instance['bg_image_id'] : false;
+			$bg_image = ( isset( $instance['bg_image'] ) && '' != $instance['bg_image'] ) ? $instance['bg_image'] : false;
+			$subpage_title = $instance['subpage_title'];
+			$subpage_summary = $instance['subpage_summary'];
 
 			echo $args['before_widget'];
 
 			?>
 
-			<div class="organic_widgets-subpage-section<?php if ( 0 < $organic_widgets_subpage_bg_image_id ) { ?> has-thumb text-white<?php } ?>" <?php if ( 0 < $organic_widgets_subpage_bg_image_id ) { ?>style="background-image:url(<?php echo $organic_widgets_subpage_bg_image; ?>);"<?php } ?>>
+			<div class="organic_widgets-subpage-section<?php if ( 0 < $bg_image_id ) { ?> has-thumb text-white<?php } ?>" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } ?>>
 
 				<div class="row"><!-- BEGIN .row -->
 
@@ -108,11 +108,11 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 
 							<div class="post-area wide clearfix">
 
-								<?php if ( ! empty( $organic_widgets_subpage_title ) ) { ?>
-									<h3 class="headline text-center"><?php echo esc_html( $organic_widgets_subpage_title ); ?></h3>
+								<?php if ( ! empty( $subpage_title ) ) { ?>
+									<h3 class="headline text-center"><?php echo esc_html( $subpage_title ); ?></h3>
 								<?php } ?>
-								<?php if ( ! empty( $organic_widgets_subpage_summary ) ) { ?>
-									<p class="summary"><?php echo $organic_widgets_subpage_summary ?></p>
+								<?php if ( ! empty( $subpage_summary ) ) { ?>
+									<p class="summary"><?php echo $subpage_summary ?></p>
 								<?php } ?>
 
 							</div>
@@ -145,29 +145,29 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 		$id_prefix = $this->get_field_id('');
 
 		if ( isset( $instance[ 'page_id' ] ) ) {
-			$organic_widgets_subpage_page_id = $instance[ 'page_id' ];
-		} else { $organic_widgets_subpage_page_id = 0; }
+			$page_id = $instance[ 'page_id' ];
+		} else { $page_id = 0; }
 
-		if ( isset( $instance['organic_widgets_subpage_bg_image_id'] ) ) {
-			$organic_widgets_subpage_bg_image_id = $instance['organic_widgets_subpage_bg_image_id'];
-		} else { $organic_widgets_subpage_bg_image_id = 0; }
+		if ( isset( $instance['bg_image_id'] ) ) {
+			$bg_image_id = $instance['bg_image_id'];
+		} else { $bg_image_id = 0; }
 
-		if ( isset( $instance['organic_widgets_subpage_bg_image_id'] ) && isset( $instance['organic_widgets_subpage_bg_image'] ) ) {
-			$organic_widgets_subpage_bg_image = $instance['organic_widgets_subpage_bg_image'];
-		} else { $organic_widgets_subpage_bg_image = false; }
+		if ( isset( $instance['bg_image_id'] ) && isset( $instance['bg_image'] ) ) {
+			$bg_image = $instance['bg_image'];
+		} else { $bg_image = false; }
 
-		if ( isset( $instance['organic_widgets_subpage_bg_color'] ) ) {
-			$organic_widgets_subpage_bg_color = $instance['organic_widgets_subpage_bg_color'];
-		} else { $organic_widgets_subpage_bg_color = false; }
+		if ( isset( $instance['bg_color'] ) ) {
+			$bg_color = $instance['bg_color'];
+		} else { $bg_color = false; }
 
 
-		if ( isset( $instance[ 'organic_widgets_subpage_title' ] ) ) {
-			$organic_widgets_subpage_title = $instance[ 'organic_widgets_subpage_title' ];
-		} else { $organic_widgets_subpage_title = ''; }
+		if ( isset( $instance[ 'subpage_title' ] ) ) {
+			$subpage_title = $instance[ 'subpage_title' ];
+		} else { $subpage_title = ''; }
 
-		if ( isset( $instance[ 'organic_widgets_subpage_summary' ] ) ) {
-			$organic_widgets_subpage_summary = $instance[ 'organic_widgets_subpage_summary' ];
-		} else { $organic_widgets_subpage_summary = ''; }
+		if ( isset( $instance[ 'subpage_summary' ] ) ) {
+			$subpage_summary = $instance[ 'subpage_summary' ];
+		} else { $subpage_summary = ''; }
 
 		?>
 
@@ -176,7 +176,7 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 		<p>
 			<?php wp_dropdown_pages( array(
 				'class' => 'widefat',
-				'selected' => $organic_widgets_subpage_page_id,
+				'selected' => $page_id,
 				'id' => $this->get_field_id( 'page_id' ),
 				'name' => $this->get_field_name( 'page_id' ),
 				'show_option_none' => __( '— Select Existing Page —', ORGANIC_WIDGETS_18N ),
@@ -190,29 +190,29 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 
 		<p>
 			<h4>Section Background</h4>
-			<label for="<?php echo $this->get_field_id( 'organic_widgets_subpage_bg_image' ); ?>"><?php _e( 'Background Image:', ORGANIC_WIDGETS_18N ) ?></label>
+			<label for="<?php echo $this->get_field_id( 'bg_image' ); ?>"><?php _e( 'Background Image:', ORGANIC_WIDGETS_18N ) ?></label>
 			<div class="uploader">
 				<input type="submit" class="button" name="<?php echo $this->get_field_name('uploader_button'); ?>" id="<?php echo $this->get_field_id('uploader_button'); ?>" value="<?php _e( 'Select an Image', ORGANIC_WIDGETS_18N ); ?>" onclick="subpageWidgetImage.uploader( '<?php echo $this->id; ?>', '<?php echo $id_prefix; ?>' ); return false;" />
-				<input type="submit" class="organic_widgets-remove-image-button button" name="<?php echo $this->get_field_name('remover_button'); ?>" id="<?php echo $this->get_field_id('remover_button'); ?>" value="<?php _e('Remove Image', ORGANIC_WIDGETS_18N); ?>" onclick="subpageWidgetImage.remover( '<?php echo $this->id; ?>', '<?php echo $id_prefix; ?>', 'remover_button' ); return false;" <?php if ( $organic_widgets_subpage_bg_image_id < 1 ) { echo( 'style="display:none;"' ); } ?>/>
+				<input type="submit" class="organic_widgets-remove-image-button button" name="<?php echo $this->get_field_name('remover_button'); ?>" id="<?php echo $this->get_field_id('remover_button'); ?>" value="<?php _e('Remove Image', ORGANIC_WIDGETS_18N); ?>" onclick="subpageWidgetImage.remover( '<?php echo $this->id; ?>', '<?php echo $id_prefix; ?>', 'remover_button' ); return false;" <?php if ( $bg_image_id < 1 ) { echo( 'style="display:none;"' ); } ?>/>
 				<div class="organic_widgets-widget-image-preview" id="<?php echo $this->get_field_id('preview'); ?>">
 					<?php echo $this->get_image_html($instance); ?>
 				</div>
-				<input type="hidden" id="<?php echo $this->get_field_id('organic_widgets_subpage_bg_image_id'); ?>" name="<?php echo $this->get_field_name('organic_widgets_subpage_bg_image_id'); ?>" value="<?php echo abs($organic_widgets_subpage_bg_image_id); ?>" />
-				<input type="hidden" id="<?php echo $this->get_field_id('organic_widgets_subpage_bg_image'); ?>" name="<?php echo $this->get_field_name('organic_widgets_subpage_bg_image'); ?>" value="<?php echo $organic_widgets_subpage_bg_image; ?>" />
+				<input type="hidden" id="<?php echo $this->get_field_id('bg_image_id'); ?>" name="<?php echo $this->get_field_name('bg_image_id'); ?>" value="<?php echo abs($bg_image_id); ?>" />
+				<input type="hidden" id="<?php echo $this->get_field_id('bg_image'); ?>" name="<?php echo $this->get_field_name('bg_image'); ?>" value="<?php echo $bg_image; ?>" />
 			</div>
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_name('organic_widgets_subpage_bg_color'); ?>"><?php _e( 'Background Color:', ORGANIC_WIDGETS_18N ) ?></label><br>
-			<input type="text" name="<?php echo $this->get_field_name('organic_widgets_subpage_bg_color'); ?>" value="<?php echo esc_attr($organic_widgets_subpage_bg_color); ?>" class="organic-widgets-color-picker" />
+			<label for="<?php echo $this->get_field_name('bg_color'); ?>"><?php _e( 'Background Color:', ORGANIC_WIDGETS_18N ) ?></label><br>
+			<input type="text" name="<?php echo $this->get_field_name('bg_color'); ?>" value="<?php echo esc_attr($bg_color); ?>" class="organic-widgets-color-picker" />
 		</p>
 		<hr />
 		<p>
-			<label for="<?php echo $this->get_field_id( 'organic_widgets_subpage_title' ); ?>"><?php _e('Section Title:', ORGANIC_WIDGETS_18N) ?></label>
-			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'organic_widgets_subpage_title' ); ?>" name="<?php echo $this->get_field_name( 'organic_widgets_subpage_title' ); ?>" value="<?php echo $organic_widgets_subpage_title; ?>" />
+			<label for="<?php echo $this->get_field_id( 'subpage_title' ); ?>"><?php _e('Section Title:', ORGANIC_WIDGETS_18N) ?></label>
+			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'subpage_title' ); ?>" name="<?php echo $this->get_field_name( 'subpage_title' ); ?>" value="<?php echo $subpage_title; ?>" />
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'organic_widgets_subpage_summary' ); ?>"><?php _e('Section Content:', ORGANIC_WIDGETS_18N) ?></label>
-			<textarea class="widefat" rows="6" cols="20" id="<?php echo $this->get_field_id( 'organic_widgets_subpage_summary' ); ?>" name="<?php echo $this->get_field_name( 'organic_widgets_subpage_summary' ); ?>"><?php echo $organic_widgets_subpage_summary; ?></textarea>
+			<label for="<?php echo $this->get_field_id( 'subpage_summary' ); ?>"><?php _e('Section Content:', ORGANIC_WIDGETS_18N) ?></label>
+			<textarea class="widefat" rows="6" cols="20" id="<?php echo $this->get_field_id( 'subpage_summary' ); ?>" name="<?php echo $this->get_field_name( 'subpage_summary' ); ?>"><?php echo $subpage_summary; ?></textarea>
 		</p>
 
 		<?php
@@ -234,19 +234,19 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 
 		if ( isset( $new_instance['page_id'] ) )
 			$instance['page_id'] = strip_tags( $new_instance['page_id'] );
-		if ( isset( $new_instance['organic_widgets_subpage_bg_image_id'] ) )
-			$instance['organic_widgets_subpage_bg_image_id'] = strip_tags( $new_instance['organic_widgets_subpage_bg_image_id'] );
-		if ( isset( $new_instance['organic_widgets_subpage_bg_image'] ) )
-			$instance['organic_widgets_subpage_bg_image'] = strip_tags( $new_instance['organic_widgets_subpage_bg_image'] );
-		if ( isset( $new_instance['organic_widgets_subpage_bg_color'] ) && $this->check_hex_color( $new_instance['organic_widgets_subpage_bg_color'] ) ) {
-			$instance['organic_widgets_subpage_bg_color'] = strip_tags( $new_instance['organic_widgets_subpage_bg_color'] );
+		if ( isset( $new_instance['bg_image_id'] ) )
+			$instance['bg_image_id'] = strip_tags( $new_instance['bg_image_id'] );
+		if ( isset( $new_instance['bg_image'] ) )
+			$instance['bg_image'] = strip_tags( $new_instance['bg_image'] );
+		if ( isset( $new_instance['bg_color'] ) && $this->check_hex_color( $new_instance['bg_color'] ) ) {
+			$instance['bg_color'] = strip_tags( $new_instance['bg_color'] );
 		} else {
-			$instance['organic_widgets_subpage_bg_color'] = false;
+			$instance['bg_color'] = false;
 		}
-		if ( isset( $new_instance['organic_widgets_subpage_title'] ) )
-			$instance['organic_widgets_subpage_title'] = strip_tags( $new_instance['organic_widgets_subpage_title'] );
-		if ( isset( $new_instance['organic_widgets_subpage_summary'] ) )
-			$instance['organic_widgets_subpage_summary'] = strip_tags( $new_instance['organic_widgets_subpage_summary'] );
+		if ( isset( $new_instance['subpage_title'] ) )
+			$instance['subpage_title'] = strip_tags( $new_instance['subpage_title'] );
+		if ( isset( $new_instance['subpage_summary'] ) )
+			$instance['subpage_summary'] = strip_tags( $new_instance['subpage_summary'] );
 
 		return $instance;
 	}
@@ -260,9 +260,9 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 	 */
 	private function get_image_html( $instance ) {
 
-		if ( isset( $instance['organic_widgets_subpage_bg_image_id'] ) ) {
-			$organic_widgets_subpage_bg_image_id = $instance['organic_widgets_subpage_bg_image_id'];
-		} else { $organic_widgets_subpage_bg_image_id = 0; }
+		if ( isset( $instance['bg_image_id'] ) ) {
+			$bg_image_id = $instance['bg_image_id'];
+		} else { $bg_image_id = 0; }
 
 		$output = '';
 
@@ -271,19 +271,19 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 		$attr = array();
 		$attr = apply_filters( 'image_widget_image_attributes', $attr, $instance );
 
-		$img_array = wp_get_attachment_image( $organic_widgets_subpage_bg_image_id, $size, false, $attr );
+		$img_array = wp_get_attachment_image( $bg_image_id, $size, false, $attr );
 
-		// If there is an organic_widgets_subpage_bg_image, use it to render the image. Eventually we should kill this and simply rely on organic_widgets_subpage_bg_image_ids.
-		if ( ! empty( $instance['organic_widgets_subpage_bg_image'] ) ) {
+		// If there is an bg_image, use it to render the image. Eventually we should kill this and simply rely on bg_image_ids.
+		if ( ! empty( $instance['bg_image'] ) ) {
 			// If all we have is an image src url we can still render an image.
-			$attr['src'] = $instance['organic_widgets_subpage_bg_image'];
+			$attr['src'] = $instance['bg_image'];
 			$attr = array_map( 'esc_attr', $attr );
 			$output .= "<img ";
 			foreach ( $attr as $name => $value ) {
 				$output .= sprintf( ' %s="%s"', $name, $value );
 			}
 			$output .= ' />';
-		} elseif( abs( $organic_widgets_subpage_bg_image_id ) > 0 ) {
+		} elseif( abs( $bg_image_id ) > 0 ) {
 			$output .= $img_array[0];
 		}
 
