@@ -4,9 +4,8 @@
 jQuery(document).ready(function($){
 
 	// Initialize Color Pickers
-	$(function() {
-    $('.organic-widgets-color-picker').wpColorPicker();
-  });
+  $('.organic-widgets-color-picker').wpColorPicker();
+
 
 	// Image Uploader Widget
 	subpageWidgetImage = {

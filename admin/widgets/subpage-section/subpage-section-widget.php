@@ -12,7 +12,7 @@ add_action( 'widgets_init', function(){
 /**
  * Adds Organic_Widgets_Subpage_Section_Widget widget.
  */
-class Organic_Widgets_Subpage_Section_Widget extends WP_Widget {
+class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widget {
 
 	const CUSTOM_IMAGE_SIZE_SLUG = 'organic_widgets_widget_image_upload';
 
@@ -32,9 +32,6 @@ class Organic_Widgets_Subpage_Section_Widget extends WP_Widget {
 
 		// Add the color picker css file
     wp_enqueue_style( 'wp-color-picker' );
-
-    // Include our custom jQuery file with WordPress Color Picker dependency
-    wp_enqueue_script( 'custom-script-handle', plugins_url( 'custom-script.js', __FILE__ ), array( 'wp-color-picker' ), false, true );
 
 	}
 	/**
@@ -243,8 +240,11 @@ class Organic_Widgets_Subpage_Section_Widget extends WP_Widget {
 			$instance['organic_widgets_subpage_bg_image_id'] = strip_tags( $new_instance['organic_widgets_subpage_bg_image_id'] );
 		if ( isset( $new_instance['organic_widgets_subpage_bg_image'] ) )
 			$instance['organic_widgets_subpage_bg_image'] = strip_tags( $new_instance['organic_widgets_subpage_bg_image'] );
-		if ( isset( $new_instance['organic_widgets_subpage_bg_color'] ) )
+		if ( isset( $new_instance['organic_widgets_subpage_bg_color'] ) && $this->check_hex_color( $new_instance['organic_widgets_subpage_bg_color'] ) ) {
 			$instance['organic_widgets_subpage_bg_color'] = strip_tags( $new_instance['organic_widgets_subpage_bg_color'] );
+		} else {
+			$instance['organic_widgets_subpage_bg_color'] = false;
+		}
 		if ( isset( $new_instance['organic_widgets_subpage_title'] ) )
 			$instance['organic_widgets_subpage_title'] = strip_tags( $new_instance['organic_widgets_subpage_title'] );
 		if ( isset( $new_instance['organic_widgets_subpage_summary'] ) )
@@ -297,7 +297,7 @@ class Organic_Widgets_Subpage_Section_Widget extends WP_Widget {
 	 */
 	public function admin_setup() {
 		wp_enqueue_media();
-		wp_enqueue_script( 'organic_widgets-subpage-widget-js', plugin_dir_url( __FILE__ ) . 'js/subpage-widget.js', array( 'jquery', 'media-upload', 'media-views' ) );
+		wp_enqueue_script( 'organic_widgets-subpage-widget-js', plugin_dir_url( __FILE__ ) . 'js/subpage-widget.js', array( 'jquery', 'media-upload', 'media-views', 'wp-color-picker' ) );
 
 		wp_localize_script( 'organic_widgets-subpage-widget-js', 'SubpageWidget', array(
 			'frame_title' => __( 'Select an Image', ORGANIC_WIDGETS_18N ),

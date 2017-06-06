@@ -3,8 +3,6 @@
  */
 jQuery(document).ready(function($){
 
-	console.log('heyo');
-
 	featuredContentWidgetImage = {
 
 		// Call this from the upload button to initiate the upload frame.
