@@ -27,5 +27,19 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
 
   }
 
+  /**
+   * Check if a given video url is valid
+   *
+   * @since    	1.0.0
+   * @param     string    $url      The video url to check
+   * @return    boolean   					True if $video_url is a valid hex code, else False
+   */
+  protected function check_video_url( $video_url ) {
+
+    error_log('check video url here');
+    return true;
+
+  }
+
 
 } // class Organic_Widgets_Subpage_Section_Widget

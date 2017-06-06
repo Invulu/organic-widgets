@@ -87,11 +87,11 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 
 			<?php echo $args['after_widget'];
 
-		} elseif ( ! empty( $instance['subpage_title'] ) || ! empty( $instance['subpage_summary'] ) ) {
+		} elseif ( ! empty( $instance['section_title'] ) || ! empty( $instance['subpage_summary'] ) ) {
 
 			$bg_image_id = isset( $instance['bg_image_id'] ) ? $instance['bg_image_id'] : false;
 			$bg_image = ( isset( $instance['bg_image'] ) && '' != $instance['bg_image'] ) ? $instance['bg_image'] : false;
-			$subpage_title = $instance['subpage_title'];
+			$section_title = $instance['section_title'];
 			$subpage_summary = $instance['subpage_summary'];
 
 			echo $args['before_widget'];
@@ -108,8 +108,8 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 
 							<div class="post-area wide clearfix">
 
-								<?php if ( ! empty( $subpage_title ) ) { ?>
-									<h3 class="headline text-center"><?php echo esc_html( $subpage_title ); ?></h3>
+								<?php if ( ! empty( $section_title ) ) { ?>
+									<h3 class="headline text-center"><?php echo esc_html( $section_title ); ?></h3>
 								<?php } ?>
 								<?php if ( ! empty( $subpage_summary ) ) { ?>
 									<p class="summary"><?php echo $subpage_summary ?></p>
@@ -156,18 +156,27 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 			$bg_image = $instance['bg_image'];
 		} else { $bg_image = false; }
 
+		if ( isset( $instance['bg_video'] ) ) {
+			$bg_video = $instance['bg_video'];
+		} else { $bg_video = false; }
+
 		if ( isset( $instance['bg_color'] ) ) {
 			$bg_color = $instance['bg_color'];
 		} else { $bg_color = false; }
 
+		if ( isset( $instance['bg_color'] ) ) {
+			$bg_color = $instance['bg_color'];
+		} else { $bg_color = false; }
 
-		if ( isset( $instance[ 'subpage_title' ] ) ) {
-			$subpage_title = $instance[ 'subpage_title' ];
-		} else { $subpage_title = ''; }
+		if ( isset( $instance[ 'section_title' ] ) ) {
+			$section_title = $instance[ 'section_title' ];
+		} else { $section_title = ''; }
 
 		if ( isset( $instance[ 'subpage_summary' ] ) ) {
 			$subpage_summary = $instance[ 'subpage_summary' ];
 		} else { $subpage_summary = ''; }
+
+
 
 		?>
 
@@ -188,8 +197,8 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 
 		<h3><?php _e('Or Add Custom Content:', ORGANIC_WIDGETS_18N) ?></h3>
 
+		<h4>Section Background</h4>
 		<p>
-			<h4>Section Background</h4>
 			<label for="<?php echo $this->get_field_id( 'bg_image' ); ?>"><?php _e( 'Background Image:', ORGANIC_WIDGETS_18N ) ?></label>
 			<div class="uploader">
 				<input type="submit" class="button" name="<?php echo $this->get_field_name('uploader_button'); ?>" id="<?php echo $this->get_field_id('uploader_button'); ?>" value="<?php _e( 'Select an Image', ORGANIC_WIDGETS_18N ); ?>" onclick="subpageWidgetImage.uploader( '<?php echo $this->id; ?>', '<?php echo $id_prefix; ?>' ); return false;" />
@@ -202,13 +211,20 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 			</div>
 		</p>
 		<p>
+			<label for="<?php echo $this->get_field_id( 'bg_video' ); ?>"><?php _e('Background Video:', ORGANIC_WIDGETS_18N) ?></label>
+			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'bg_video' ); ?>" name="<?php echo $this->get_field_name( 'bg_video' ); ?>" value="<?php echo esc_url($bg_video); ?>" />
+		</p>
+		<p>
 			<label for="<?php echo $this->get_field_name('bg_color'); ?>"><?php _e( 'Background Color:', ORGANIC_WIDGETS_18N ) ?></label><br>
 			<input type="text" name="<?php echo $this->get_field_name('bg_color'); ?>" value="<?php echo esc_attr($bg_color); ?>" class="organic-widgets-color-picker" />
 		</p>
+
+
 		<hr />
+
 		<p>
-			<label for="<?php echo $this->get_field_id( 'subpage_title' ); ?>"><?php _e('Section Title:', ORGANIC_WIDGETS_18N) ?></label>
-			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'subpage_title' ); ?>" name="<?php echo $this->get_field_name( 'subpage_title' ); ?>" value="<?php echo $subpage_title; ?>" />
+			<label for="<?php echo $this->get_field_id( 'section_title' ); ?>"><?php _e('Section Title:', ORGANIC_WIDGETS_18N) ?></label>
+			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'section_title' ); ?>" name="<?php echo $this->get_field_name( 'section_title' ); ?>" value="<?php echo $section_title; ?>" />
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'subpage_summary' ); ?>"><?php _e('Section Content:', ORGANIC_WIDGETS_18N) ?></label>
@@ -232,21 +248,42 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 
 		$instance = $old_instance;
 
-		if ( isset( $new_instance['page_id'] ) )
+		if ( isset( $new_instance['page_id'] ) && $new_instance['page_id'] > 0 );
 			$instance['page_id'] = strip_tags( $new_instance['page_id'] );
 		if ( isset( $new_instance['bg_image_id'] ) )
 			$instance['bg_image_id'] = strip_tags( $new_instance['bg_image_id'] );
 		if ( isset( $new_instance['bg_image'] ) )
 			$instance['bg_image'] = strip_tags( $new_instance['bg_image'] );
+		if ( isset( $new_instance['bg_video'] ) && $this->check_video_url( $new_instance['bg_video'] ) ) {
+			$instance['bg_video'] = strip_tags( $new_instance['bg_video'] );
+		} else {
+			$instance['bg_video'] = false;
+		}
 		if ( isset( $new_instance['bg_color'] ) && $this->check_hex_color( $new_instance['bg_color'] ) ) {
 			$instance['bg_color'] = strip_tags( $new_instance['bg_color'] );
 		} else {
 			$instance['bg_color'] = false;
 		}
-		if ( isset( $new_instance['subpage_title'] ) )
-			$instance['subpage_title'] = strip_tags( $new_instance['subpage_title'] );
+		if ( isset( $new_instance['section_title'] ) )
+			$instance['section_title'] = strip_tags( $new_instance['section_title'] );
 		if ( isset( $new_instance['subpage_summary'] ) )
 			$instance['subpage_summary'] = strip_tags( $new_instance['subpage_summary'] );
+
+			error_log($new_instance['section_title']);
+
+		//Widget Title
+		if ( isset( $new_instance['page_id'] ) && $new_instance['page_id'] > 0 ) {
+			error_log('1');
+			$instance['title'] = strip_tags( get_the_title( $instance['page_id'] ) );
+		}
+		elseif ( isset( $new_instance['section_title'] )  && '' != $new_instance['section_title'] ) {
+			error_log('2');
+			$instance['title'] = strip_tags( $new_instance['section_title'] );
+		} else {
+			error_log('3');
+			$instance['title'] = '';
+		}
+
 
 		return $instance;
 	}
