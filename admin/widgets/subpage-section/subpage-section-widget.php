@@ -91,18 +91,29 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 
 			$bg_image_id = isset( $instance['bg_image_id'] ) ? $instance['bg_image_id'] : false;
 			$bg_image = ( isset( $instance['bg_image'] ) && '' != $instance['bg_image'] ) ? $instance['bg_image'] : false;
+			$bg_video  = ( isset( $instance['bg_video'] ) && $instance['bg_video'] ) ? $instance['bg_video'] : false;
 			$section_title = $instance['section_title'];
 			$subpage_summary = $instance['subpage_summary'];
 
 			echo $args['before_widget'];
 
+			// Video Background Section.
+			if ( $bg_video ) {
+
+				$video_type = $this->get_video_type( $bg_video );
+				if ( 'youtube' == $video_type ) {
+					$video_id = $this->youtube_id_from_url( $bg_video );
+				 }
+			}
 			?>
+
+
 
 			<div class="organic_widgets-subpage-section<?php if ( 0 < $bg_image_id ) { ?> has-thumb text-white<?php } ?>" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } ?>>
 
 				<div class="row"><!-- BEGIN .row -->
 
-					<div class="content no-bg"><!-- BEGIN .content -->
+					<div class="content"><!-- BEGIN .content -->
 
 						<div class="sixteen columns"><!-- BEGIN .columns -->
 
@@ -283,7 +294,6 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 			error_log('3');
 			$instance['title'] = '';
 		}
-
 
 		return $instance;
 	}
