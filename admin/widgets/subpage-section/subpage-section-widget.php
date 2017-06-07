@@ -98,12 +98,16 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 
 			echo $args['before_widget'];
 
+
 			?>
 
 			<div class="organic_widgets-subpage-section<?php if ( 0 < $bg_image_id ) { ?> has-thumb text-white<?php } ?>" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
 
-				<?php // Video Background Section.
+				<?php
+				// Video Background Section.
 				if ( $bg_video ) {
+
+					$this->video_bg_script( $bg_video, $this->id );
 
 					$video_type = $this->get_video_type( $bg_video );
 					if ( 'youtube' == $video_type ) {
