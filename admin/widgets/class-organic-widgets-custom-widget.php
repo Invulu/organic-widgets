@@ -104,7 +104,7 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
    */
   protected function sanitize_js_variable($input) {
 
-    $pattern = '/[^a-zA-Z0-9_]/';
+    $pattern = '/[^a-zA-Z0-9]/';
 
     return preg_replace($pattern, '', (string) $input);
 
@@ -120,7 +120,8 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
 
     $video_type = $this->get_video_type( $video );
     $video_id = $this->youtube_id_from_url( $video );
-    $widget_id = $this->sanitize_js_variable( $widget_id );
+    $widget_id = $widget_id;
+    $clean_widget_id = $this->sanitize_js_variable( $widget_id );
 
   	// Start outputting javascript to page.
   	echo "
@@ -166,14 +167,14 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
   		if ( $video_type == 'youtube' && $video_id ) {
 
   			echo '
-  				var player'.$widget_id.';
-  				player'.$widget_id." = new YT.Player('gp-player".$widget_id."', {
+  				var player'.$clean_widget_id.';
+  				player'.$clean_widget_id." = new YT.Player('".$clean_widget_id."', {
   					height: '1014',
   					width: '1920',
   					videoId: '".esc_html__( $video_id )."',
   					events: {
-  						'onReady': onPlayerReady".$widget_id.",
-  						'onStateChange': onPlayerStateChange".$widget_id."
+  						'onReady': onPlayerReady".$clean_widget_id.",
+  						'onStateChange': onPlayerStateChange".$clean_widget_id."
   					},
   					playerVars: {
   						'loop':  '1',
@@ -197,26 +198,28 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
 
   		if ( $video_type == 'youtube' && $video_id ) {
 
-  			echo '
+  			echo "
   			// Mute and start playing video when ready
-  				function onPlayerReady'.$widget_id."(event) {
-  				event.target.mute();
+        function onPlayerReady".$clean_widget_id."(event) {
+          console.log('onPlayerReady');
+          console.log(event);
+          event.target.mute();
   				event.target.playVideo();
-  				var width = jQuery('li.slide').width();
-  				var height = jQuery('li.slide').width() * (3/4);
+  				var width = jQuery('#".$widget_id."').parent().width();
+  				var height = jQuery('#".$widget_id."').parent().width() * (3/4);
   				event.target.a.style.width = width + 'px';
   				event.target.a.style.height = height + 'px';
   			}
   			// Fade out overlay image
-  			function onPlayerStateChange".$widget_id."(event) {
+  			function onPlayerStateChange".$clean_widget_id."(event) {
   				if (event.data == YT.PlayerState.PLAYING) {
   						setTimeout( function(){
-  							var width = jQuery('li.slide').width();
-  							var height = jQuery('li.slide').width() * (3/4);
+  							var width = jQuery('#".$widget_id."').parent().width();
+  							var height = jQuery('#".$widget_id."').parent().width() * (3/4);
   							event.target.a.style.width = width + 'px';
   							event.target.a.style.height = height + 'px';
-  							jQuery('.gp-video-bg-wrapper').find('iframe').fadeTo('slow', 1);
-  							jQuery('.gp-video-bg-wrapper').find('video').fadeTo('slow', 1);
+  							jQuery('.organic-widgets-video-bg-wrapper').find('iframe').fadeTo('slow', 1);
+  							jQuery('.organic-widgets-video-bg-wrapper').find('video').fadeTo('slow', 1);
   						}
   					, 100);
   				}
