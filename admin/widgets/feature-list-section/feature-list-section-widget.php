@@ -323,8 +323,8 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 		wp_enqueue_script( 'organic_widgets-feature-list-section-widget-js', plugin_dir_url( __FILE__ ) . 'js/feature-list-section-widget.js', array( 'jquery', 'media-upload', 'media-views' ) );
 
 		// Add for Color Picker CSS and JS
-    // wp_enqueue_style( 'wp-color-picker' );
-		// wp_enqueue_script( 'organic-widgets-module-color-picker', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-color-picker.js', array( 'jquery', 'wp-color-picker' ) );
+    wp_enqueue_style( 'wp-color-picker' );
+		wp_enqueue_script( 'organic-widgets-module-color-picker', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-color-picker.js', array( 'jquery', 'wp-color-picker' ) );
 
 		wp_localize_script( 'organic_widgets-feature-list-section-widget-js', 'FeatureListSectionWidget', array(
 			'frame_title' => __( 'Select an Image', ORGANIC_WIDGETS_18N ),
