@@ -205,7 +205,7 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'bg_video' ); ?>" name="<?php echo $this->get_field_name( 'bg_video' ); ?>" value="<?php echo esc_url($bg_video); ?>" />
 		</p>
 
-		<?php $this->echo_color_picker_js( "'#" . $this->get_field_id( 'bg_color' ) . "'" ); ?>
+		<?php //$this->echo_color_picker_js( "'#" . $this->get_field_id( 'bg_color' ) . "'" ); ?>
 
 		<p>
 			<label for="<?php echo $this->get_field_name('bg_color'); ?>"><?php _e( 'Background Color:', ORGANIC_WIDGETS_18N ) ?></label><br>
@@ -330,7 +330,7 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 		// Add for Color Picker CSS and JS
     wp_enqueue_style( 'wp-color-picker' );
 		wp_enqueue_script( 'wp-color-picker' );
-		// wp_enqueue_script( 'organic-widgets-module-color-picker', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-color-picker.js', array( 'jquery', 'media-upload', 'media-views', 'wp-color-picker' ) );
+		wp_enqueue_script( 'organic-widgets-module-color-picker', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-color-picker.js', array( 'jquery', 'media-upload', 'media-views', 'wp-color-picker' ) );
 
 		wp_localize_script( 'organic_widgets-subpage-widget-js', 'SubpageWidget', array(
 			'frame_title' => __( 'Select an Image', ORGANIC_WIDGETS_18N ),

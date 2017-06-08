@@ -242,22 +242,47 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
 		/**
 		 * JS for Initializing Color Pickers
 		 */
-		jQuery(document).ready(function($){
 
-			// Initialize Color Pickers
-			$(<?php echo $color_picker_id; ?>).wpColorPicker({
-				change: _.debounce( function() {
-					$(<?php echo $color_picker_id; ?>).change();
-				}, 200 )
-			});
+     ( function( $ ){
+				function initColorPicker( widget ) {
+					widget.find( '.organic-widgets-color-picker' ).wpColorPicker( {
+						change: _.throttle( function() { // For Customizer
+							$(this).trigger( 'change' );
+						}, 200 )
+					});
+				}
 
-		});
+				function onFormUpdate( event, widget ) {
+					initColorPicker( widget );
+				}
 
-		// On AJAX Completion
-		jQuery(document).ajaxComplete(function() {
-			// Initialize Color Pickers
-			jQuery(<?php echo $color_picker_id; ?>).wpColorPicker();
-		});
+				$( document ).on( 'widget-added widget-updated', onFormUpdate );
+
+				$( document ).ready( function() {
+					$( '#widgets-right .widget:has(.organic-widgets-color-picker)' ).each( function () {
+						initColorPicker( $( this ) );
+					} );
+				} );
+			}( jQuery ) );
+
+
+    // jQuery(document).ready(function($){
+    //
+		// 	// Initialize Color Pickers
+		// 	$(<?php echo $color_picker_id; ?>).wpColorPicker({
+		// 		change: _.debounce( function() {
+		// 			$(<?php echo $color_picker_id; ?>).change();
+		// 		}, 200 )
+		// 	});
+    //
+		// });
+    //
+		// // On AJAX Completion
+    // jQuery( document ).on( 'widget-added widget-updated', function() {
+    //   jQuery('#widgets-right .organic-widgets-color-picker, .inactive-sidebar .organic-widgets-color-picker').wpColorPicker();
+    //   // jQuery('.organic-widgets-color-picker').wpColorPicker();
+    // } );
+
 
 		</script><?php
 

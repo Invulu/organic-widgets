@@ -1,28 +1,24 @@
 /**
  * JS for Initializing Color Pickers
  */
-jQuery(document).ready(function($){
+ ( function( $ ){
+    function initColorPicker( widget ) {
+      widget.find( '.organic-widgets-color-picker' ).wpColorPicker( {
+        change: _.debounce( function() { // For Customizer
+          $(this).trigger( 'change' );
+        }, 200 )
+      });
+    }
 
-	// Initialize Color Pickers
-  // $('.organic-widgets-color-picker').wpColorPicker();
+    function onFormUpdate( event, widget ) {
+      initColorPicker( widget );
+    }
 
-  console.log('.ready() ran');
-  console.log($('.organic-widgets-color-picker'));
-  $('.organic-widgets-color-picker').wpColorPicker({
-		change: _.debounce( function() {
-      console.log('.change() ran');
-      $('.organic-widgets-color-picker').change();
-		}, 200 )
-	});
-  $('.organic-widgets-color-picker').change();
+    $( document ).on( 'widget-added widget-updated', onFormUpdate );
 
-});
-
-// On AJAX Completion
-jQuery(document).ajaxComplete(function() {
-
-	// Initialize Color Pickers
-	jQuery('.organic-widgets-color-picker').wpColorPicker();
-
-
-});
+    $( document ).ready( function() {
+      $( '#widgets-right .widget:has(.organic-widgets-color-picker)' ).each( function () {
+        initColorPicker( $( this ) );
+      } );
+    } );
+  }( jQuery ) );
