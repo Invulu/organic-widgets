@@ -26,6 +26,7 @@ jQuery(document).ready(function($){
 			removerButton.show();
 
 			frame.open();
+			wp.customize.previewer.refresh();
 			return false;
 		},
 
@@ -57,6 +58,7 @@ jQuery(document).ready(function($){
 			} else {
 				var img_html = '';
 			}
+			wp.customize.previewer.refresh();
 			return img_html;
 		},
 
@@ -67,7 +69,7 @@ jQuery(document).ready(function($){
 
 			var field = $("#" + widget_id_string + field_name);
 			field.hide();
-
+			wp.customize.previewer.refresh();
 			return false;
 		},
 
