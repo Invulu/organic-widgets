@@ -13,23 +13,17 @@
 	<!-- BEGIN .page-holder -->
 	<div class="page-holder">
 
-		<!-- BEGIN .article -->
-		<article class="article">
-      
-        <?php if ( is_active_sidebar( ORGANIC_WIDGET_PREFIX . 'page-'. get_the_ID() . '-widget-area' ) ) { ?>
+    <?php if ( is_active_sidebar( ORGANIC_WIDGET_PREFIX . 'page-'. get_the_ID() . '-widget-area' ) ) { ?>
 
-          <?php dynamic_sidebar( ORGANIC_WIDGET_PREFIX . 'page-'. get_the_ID() . '-widget-area'); ?>
+      <?php dynamic_sidebar( ORGANIC_WIDGET_PREFIX . 'page-'. get_the_ID() . '-widget-area'); ?>
 
-        <?php } else { ?>
+    <?php } else { ?>
 
-          <?php the_content(); ?>
+      <?php the_content(); ?>
 
-        <?php } ?>
-
-		<!-- END .article -->
-		</div>
+    <?php } ?>
 
 	<!-- END .page-holder -->
-</article>
+	</div>
 
 <?php endwhile; endif; ?>

@@ -61,23 +61,7 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 
 			<div class="organic_widgets-subpage-section<?php if ( has_post_thumbnail( $page_id ) ) { ?> has-thumb text-white<?php } ?>" <?php if ( has_post_thumbnail( $page_id ) ) { ?>style="background-image:url(<?php echo $the_featured_image; ?>);"<?php } ?>>
 
-				<div class="row"><!-- BEGIN .row -->
-
-					<div class="content no-bg"><!-- BEGIN .content -->
-
-						<div class="sixteen columns"><!-- BEGIN .columns -->
-
-							<div class="post-area wide clearfix">
-
-								<?php the_content( esc_html__( 'Read More', ORGANIC_WIDGETS_18N ) ); ?>
-
-							</div>
-
-						</div><!-- END .columns -->
-
-					</div><!-- END .content -->
-
-				</div><!-- END .row -->
+				<?php the_content( esc_html__( 'Read More', ORGANIC_WIDGETS_18N ) ); ?>
 
 			</div>
 
@@ -121,28 +105,12 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 					<?php }
 				} ?>
 
-				<div class="row"><!-- BEGIN .row -->
-
-					<div class="content no-bg"><!-- BEGIN .content -->
-
-						<div class="sixteen columns"><!-- BEGIN .columns -->
-
-							<div class="post-area wide clearfix">
-
-								<?php if ( ! empty( $section_title ) ) { ?>
-									<h3 class="headline text-center"><?php echo esc_html( $section_title ); ?></h3>
-								<?php } ?>
-								<?php if ( ! empty( $subpage_summary ) ) { ?>
-									<p class="summary"><?php echo $subpage_summary ?></p>
-								<?php } ?>
-
-							</div>
-
-						</div><!-- END .columns -->
-
-					</div><!-- END .content -->
-
-				</div><!-- END .row -->
+				<?php if ( ! empty( $section_title ) ) { ?>
+					<h3 class="headline text-center"><?php echo esc_html( $section_title ); ?></h3>
+				<?php } ?>
+				<?php if ( ! empty( $subpage_summary ) ) { ?>
+					<p class="summary"><?php echo $subpage_summary ?></p>
+				<?php } ?>
 
 			</div>
 
