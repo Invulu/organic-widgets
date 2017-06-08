@@ -232,4 +232,35 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
 
   }
 
+  protected function echo_color_picker_js( $color_picker_id = false ) {
+
+    $color_picker_id = $color_picker_id ? $color_picker_id : "'.organic-widgets-color-picker'";
+
+    ?>
+    <!-- Update customizer with color changes.  -->
+		<script type='text/javascript'>
+		/**
+		 * JS for Initializing Color Pickers
+		 */
+		jQuery(document).ready(function($){
+
+			// Initialize Color Pickers
+			$(<?php echo $color_picker_id; ?>).wpColorPicker({
+				change: _.debounce( function() {
+					$(<?php echo $color_picker_id; ?>).change();
+				}, 200 )
+			});
+
+		});
+
+		// On AJAX Completion
+		jQuery(document).ajaxComplete(function() {
+			// Initialize Color Pickers
+			jQuery(<?php echo $color_picker_id; ?>).wpColorPicker();
+		});
+
+		</script><?php
+
+  }
+
 } // class Organic_Widgets_Subpage_Section_Widget
