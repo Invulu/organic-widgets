@@ -31,6 +31,13 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 
 		add_action( 'sidebar_admin_setup', array( $this, 'admin_setup' ) );
 
+		// Scripts for Customizer Preview
+		if ( is_customize_preview() ) {
+			add_action ('wp_enqueue_scripts', array( $this, 'preview_scripts' ) );
+		}
+		// Scripts for Customizer
+		add_action ('customize_controls_enqueue_scripts', array( $this, 'customizer_scripts' ) );
+
 	}
 	/**
 	 * Front-end display of widget.
@@ -342,6 +349,15 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 		wp_enqueue_style( 'organic_widgets-subpage-widget-css', plugin_dir_url( __FILE__ ) . 'css/subpage-widget.css' );
 
 	}
+
+	public function customizer_scripts() {
+		wp_enqueue_script( 'organic_widgets-subpage-widget-preview-js', plugin_dir_url( __FILE__ ) . 'js/subpage-widget-preview.js', array( 'jquery', 'customize-controls' ) );
+	}
+
+	public function preview_scripts() {
+		wp_enqueue_script( 'organic_widgets-subpage-widget-customizer-js', plugin_dir_url( __FILE__ ) . 'js/subpage-widget-customizer.js', array( 'jquery', 'customize-preview' ) );
+	}
+
 
 
 } // class Organic_Widgets_Subpage_Section_Widget

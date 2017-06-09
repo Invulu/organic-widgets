@@ -25,6 +25,7 @@ class Organic_Widgets_Content_Widget extends WP_Widget {
 			__( 'Featured Content', ORGANIC_WIDGETS_18N ), // Name
 			array(
 				'description' => __( 'A featured content widget for displaying a page summary or custom content.', ORGANIC_WIDGETS_18N ),
+				'customize_selective_refresh' => true,
 			) // Args
 		);
 

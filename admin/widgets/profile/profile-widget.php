@@ -25,6 +25,7 @@ class Organic_Widgets_Profile_Widget extends WP_Widget {
 			__( 'Profile', ORGANIC_WIDGETS_18N ), // Name
 			array(
 				'description' => __( 'Display a personal profile.', ORGANIC_WIDGETS_18N ),
+				'customize_selective_refresh' => true,
 			) // Args
 		);
 

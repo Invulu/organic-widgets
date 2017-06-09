@@ -25,6 +25,7 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 			__( 'Feature List Section', ORGANIC_WIDGETS_18N ), // Name
 			array(
 				'description' => __( 'A list of features with icons.', ORGANIC_WIDGETS_18N ),
+				'customize_selective_refresh' => true,
 			) // Args
 		);
 

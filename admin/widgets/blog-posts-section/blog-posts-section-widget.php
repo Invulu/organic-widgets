@@ -25,6 +25,7 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends WP_Widget {
 			__( 'Blog Posts Section', ORGANIC_WIDGETS_18N ), // Name
 			array(
 				'description' => __( 'A section displaying recent blog posts.', ORGANIC_WIDGETS_18N ),
+				'customize_selective_refresh' => true,
 			) // Args
 		);
 

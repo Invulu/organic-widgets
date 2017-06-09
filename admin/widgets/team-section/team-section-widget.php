@@ -25,6 +25,7 @@ class Organic_Widgets_Team_Section_Widget extends WP_Widget {
 			__( 'Team Section', ORGANIC_WIDGETS_18N ), // Name
 			array(
 				'description' => __( 'A section displaying team members.', ORGANIC_WIDGETS_18N ),
+				'customize_selective_refresh' => true,
 			) // Args
 		);
 
