@@ -12,7 +12,7 @@ add_action( 'widgets_init', function(){
 /**
  * Adds Organic_Widgets_Profile_Widget widget.
  */
-class Organic_Widgets_Profile_Widget extends WP_Widget {
+class Organic_Widgets_Profile_Widget extends Organic_Widgets_Custom_Widget {
 
 	const CUSTOM_IMAGE_SIZE_SLUG = 'organic_widgets_widget_image_upload';
 
@@ -29,6 +29,8 @@ class Organic_Widgets_Profile_Widget extends WP_Widget {
 			) // Args
 		);
 
+		$this->id_prefix = $this->get_field_id('');
+
 		add_action( 'sidebar_admin_setup', array( $this, 'admin_setup' ) );
 	}
 	/**
@@ -41,16 +43,16 @@ class Organic_Widgets_Profile_Widget extends WP_Widget {
 	 */
 	public function widget( $args, $instance ) {
 
-		$instance['organic_widgets_profile_bg_image_id'] = isset( $instance['organic_widgets_profile_bg_image_id'] ) ? $instance['organic_widgets_profile_bg_image_id'] : false;
-		$instance['organic_widgets_profile_bg_image'] = ( isset( $instance['organic_widgets_profile_bg_image'] ) && '' != $instance['organic_widgets_profile_bg_image'] ) ? $instance['organic_widgets_profile_bg_image'] : false;
-		$instance['organic_widgets_profile_title'] = isset( $instance['organic_widgets_profile_title'] ) ? $instance['organic_widgets_profile_title'] : false;
-		$instance['organic_widgets_profile_subtitle'] = isset( $instance['organic_widgets_profile_subtitle'] ) ? $instance['organic_widgets_profile_subtitle'] : false;
-		$instance['organic_widgets_profile_summary'] = isset( $instance['organic_widgets_profile_summary'] ) ? $instance['organic_widgets_profile_summary'] : false;
-		$instance['organic_widgets_profile_personal_url'] = isset( $instance['organic_widgets_profile_personal_url'] ) ? $instance['organic_widgets_profile_personal_url'] : false;
-		$instance['organic_widgets_profile_twitter_url'] = isset( $instance['organic_widgets_profile_twitter_url'] ) ? $instance['organic_widgets_profile_twitter_url'] : false;
-		$instance['organic_widgets_profile_linkedin_url'] = isset( $instance['organic_widgets_profile_linkedin_url'] ) ? $instance['organic_widgets_profile_linkedin_url'] : false;
-		$instance['organic_widgets_profile_facebook_url'] = isset( $instance['organic_widgets_profile_facebook_url'] ) ? $instance['organic_widgets_profile_facebook_url'] : false;
-		$instance['organic_widgets_profile_email'] = isset( $instance['organic_widgets_profile_email'] ) ? $instance['organic_widgets_profile_email'] : false;
+		$instance['bg_image_id'] = isset( $instance['bg_image_id'] ) ? $instance['bg_image_id'] : false;
+		$instance['bg_image'] = ( isset( $instance['bg_image'] ) && '' != $instance['bg_image'] ) ? $instance['bg_image'] : false;
+		$instance['title'] = isset( $instance['title'] ) ? $instance['title'] : false;
+		$instance['subtitle'] = isset( $instance['subtitle'] ) ? $instance['subtitle'] : false;
+		$instance['summary'] = isset( $instance['summary'] ) ? $instance['summary'] : false;
+		$instance['personal_url'] = isset( $instance['personal_url'] ) ? $instance['personal_url'] : false;
+		$instance['twitter_url'] = isset( $instance['twitter_url'] ) ? $instance['twitter_url'] : false;
+		$instance['linkedin_url'] = isset( $instance['linkedin_url'] ) ? $instance['linkedin_url'] : false;
+		$instance['facebook_url'] = isset( $instance['facebook_url'] ) ? $instance['facebook_url'] : false;
+		$instance['email'] = isset( $instance['email'] ) ? $instance['email'] : false;
 
 		echo $args['before_widget'];
 		?>
@@ -61,47 +63,47 @@ class Organic_Widgets_Profile_Widget extends WP_Widget {
 			<!-- BEGIN .holder -->
 			<div class="holder radius-full">
 
-				<?php if ( $instance['organic_widgets_profile_bg_image_id'] > 0 ) { ?>
-					<div class="feature-img"><img src="<?php echo $instance['organic_widgets_profile_bg_image']; ?>" alt="<?php __( 'Profile Image', ORGANIC_WIDGETS_18N ) ?>" /></div>
+				<?php if ( $instance['bg_image_id'] > 0 ) { ?>
+					<div class="feature-img"><img src="<?php echo $instance['bg_image']; ?>" alt="<?php __( 'Profile Image', ORGANIC_WIDGETS_18N ) ?>" /></div>
 				<?php } ?>
 
 				<!-- BEGIN .information -->
 				<div class="information">
 
-				<?php if ( ! empty( $instance['organic_widgets_profile_title'] ) ) { ?>
-					<h2 class="title"><?php echo apply_filters( 'widget_title', $instance['organic_widgets_profile_title'] ); ?></h2>
+				<?php if ( ! empty( $instance['title'] ) ) { ?>
+					<h2 class="title"><?php echo apply_filters( 'widget_title', $instance['title'] ); ?></h2>
 				<?php } ?>
 
-				<?php if ( ! empty( $instance['organic_widgets_profile_subtitle'] ) ) { ?>
-					<h3 class="sub-title"><?php echo $instance['organic_widgets_profile_subtitle']; ?></h3>
+				<?php if ( ! empty( $instance['subtitle'] ) ) { ?>
+					<h3 class="sub-title"><?php echo $instance['subtitle']; ?></h3>
 				<?php } ?>
 
-				<?php if ( ! empty( $instance['organic_widgets_profile_summary'] ) ) { ?>
-					<div class="excerpt"><?php echo $instance['organic_widgets_profile_summary']; ?></div>
+				<?php if ( ! empty( $instance['summary'] ) ) { ?>
+					<div class="excerpt"><?php echo $instance['summary']; ?></div>
 				<?php } ?>
 
-				<?php if ( ! empty( $instance['organic_widgets_profile_personal_url'] ) || ! empty( $instance['organic_widgets_profile_twitter_url'] ) || ! empty( $instance['organic_widgets_profile_linkedin_url'] ) || ! empty( $instance['organic_widgets_profile_facebook_url'] ) || ! empty( $instance['organic_widgets_profile_email'] ) ) { ?>
+				<?php if ( ! empty( $instance['personal_url'] ) || ! empty( $instance['twitter_url'] ) || ! empty( $instance['linkedin_url'] ) || ! empty( $instance['facebook_url'] ) || ! empty( $instance['email'] ) ) { ?>
 
 				<ul class="social-icons">
 
-					<?php if ( ! empty( $instance['organic_widgets_profile_personal_url'] ) ) { ?>
-						<li><a href="<?php echo $instance['organic_widgets_profile_personal_url']; ?>" target="_blank"><span><?php esc_html_e( 'Personal Link', ORGANIC_WIDGETS_18N ); ?></span></a></li>
+					<?php if ( ! empty( $instance['personal_url'] ) ) { ?>
+						<li><a href="<?php echo $instance['personal_url']; ?>" target="_blank"><span><?php esc_html_e( 'Personal Link', ORGANIC_WIDGETS_18N ); ?></span></a></li>
 					<?php } ?>
 
-					<?php if ( ! empty( $instance['organic_widgets_profile_twitter_url'] ) ) { ?>
-						<li><a href="<?php echo $instance['organic_widgets_profile_twitter_url']; ?>" target="_blank"><span><?php esc_html_e( 'Twitter', ORGANIC_WIDGETS_18N ); ?></span></a></li>
+					<?php if ( ! empty( $instance['twitter_url'] ) ) { ?>
+						<li><a href="<?php echo $instance['twitter_url']; ?>" target="_blank"><span><?php esc_html_e( 'Twitter', ORGANIC_WIDGETS_18N ); ?></span></a></li>
 					<?php } ?>
 
-					<?php if ( ! empty( $instance['organic_widgets_profile_linkedin_url'] ) ) { ?>
-						<li><a href="<?php echo $instance['organic_widgets_profile_linkedin_url']; ?>" target="_blank"><span><?php esc_html_e( 'LinkedIn', ORGANIC_WIDGETS_18N ); ?></span></a></li>
+					<?php if ( ! empty( $instance['linkedin_url'] ) ) { ?>
+						<li><a href="<?php echo $instance['linkedin_url']; ?>" target="_blank"><span><?php esc_html_e( 'LinkedIn', ORGANIC_WIDGETS_18N ); ?></span></a></li>
 					<?php } ?>
 
-					<?php if ( ! empty( $instance['organic_widgets_profile_facebook_url'] ) ) { ?>
-						<li><a href="<?php echo $instance['organic_widgets_profile_facebook_url']; ?>" target="_blank"><span><?php esc_html_e( 'Facebook', ORGANIC_WIDGETS_18N ); ?></span></a></li>
+					<?php if ( ! empty( $instance['facebook_url'] ) ) { ?>
+						<li><a href="<?php echo $instance['facebook_url']; ?>" target="_blank"><span><?php esc_html_e( 'Facebook', ORGANIC_WIDGETS_18N ); ?></span></a></li>
 					<?php } ?>
 
-					<?php if ( ! empty( $instance['organic_widgets_profile_email'] ) ) { ?>
-						<li><a href="mailto:<?php echo $instance['organic_widgets_profile_email']; ?>" target="_blank"><span><?php esc_html_e( 'Email', ORGANIC_WIDGETS_18N ); ?></span></a></li>
+					<?php if ( ! empty( $instance['email'] ) ) { ?>
+						<li><a href="mailto:<?php echo $instance['email']; ?>" target="_blank"><span><?php esc_html_e( 'Email', ORGANIC_WIDGETS_18N ); ?></span></a></li>
 					<?php } ?>
 
 				</ul>
@@ -130,95 +132,80 @@ class Organic_Widgets_Profile_Widget extends WP_Widget {
 	 */
 	public function form( $instance ) {
 
-		$id_prefix = $this->get_field_id('');
-
-
-		if (!isset( $instance['organic_widgets_profile_bg_image_id'] ) ) {
-			$instance['organic_widgets_profile_bg_image_id'] = 0;
-		}
-		if (!isset( $instance['organic_widgets_profile_bg_image_id'] ) || $instance['organic_widgets_profile_bg_image_id'] < 1 ) {
-			$instance['organic_widgets_profile_bg_image'] = false;
-		}
-		if (!isset( $instance['organic_widgets_profile_title'] ) ) {
-			$instance['organic_widgets_profile_title'] = false;
-		}
-		if (!isset( $instance['organic_widgets_profile_subtitle'] ) ) {
-			$instance['organic_widgets_profile_subtitle'] = false;
-		}
-		if (!isset( $instance['organic_widgets_profile_summary'] ) ) {
-			$instance['organic_widgets_profile_summary'] = false;
-		}
-		if (!isset( $instance['organic_widgets_profile_personal_url'] ) ) {
-			$instance['organic_widgets_profile_personal_url'] = false;
-		}
-		if (!isset( $instance['organic_widgets_profile_twitter_url'] ) ) {
-			$instance['organic_widgets_profile_twitter_url'] = false;
-		}
-		if (!isset( $instance['organic_widgets_profile_linkedin_url'] ) ) {
-			$instance['organic_widgets_profile_linkedin_url'] = false;
-		}
-		if (!isset( $instance['organic_widgets_profile_facebook_url'] ) ) {
-			$instance['organic_widgets_profile_facebook_url'] = false;
-		}
-		if (!isset( $instance['organic_widgets_profile_email'] ) ) {
-			$instance['organic_widgets_profile_email'] = false;
-		}
 
 
 
-		?>
+		if (!isset( $instance['bg_image_id'] ) ) {
+			$instance['bg_image_id'] = 0;
+		}
+		if (!isset( $instance['bg_image_id'] ) || $instance['bg_image_id'] < 1 ) {
+			$instance['bg_image'] = false;
+		}
+		if (!isset( $instance['title'] ) ) {
+			$instance['title'] = false;
+		}
+		if (!isset( $instance['subtitle'] ) ) {
+			$instance['subtitle'] = false;
+		}
+		if (!isset( $instance['summary'] ) ) {
+			$instance['summary'] = false;
+		}
+		if (!isset( $instance['personal_url'] ) ) {
+			$instance['personal_url'] = false;
+		}
+		if (!isset( $instance['twitter_url'] ) ) {
+			$instance['twitter_url'] = false;
+		}
+		if (!isset( $instance['linkedin_url'] ) ) {
+			$instance['linkedin_url'] = false;
+		}
+		if (!isset( $instance['facebook_url'] ) ) {
+			$instance['facebook_url'] = false;
+		}
+		if (!isset( $instance['email'] ) ) {
+			$instance['email'] = false;
+		}
+
+		$this->section_background_input_markup( $instance ); ?>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'organic_widgets_profile_bg_image' ); ?>"><?php _e( 'Profile Image:', ORGANIC_WIDGETS_18N ) ?></label>
-			<div class="uploader">
-				<input type="submit" class="button" name="<?php echo $this->get_field_name('uploader_button'); ?>" id="<?php echo $this->get_field_id('uploader_button'); ?>" value="<?php _e( 'Select an Image', ORGANIC_WIDGETS_18N ); ?>" onclick="profileWidgetImage.uploader( '<?php echo $this->id; ?>', '<?php echo $id_prefix; ?>' ); return false;" />
-				<input type="submit" class="organic_widgets-remove-image-button button" name="<?php echo $this->get_field_name('remover_button'); ?>" id="<?php echo $this->get_field_id('remover_button'); ?>" value="<?php _e('Remove Image', ORGANIC_WIDGETS_18N); ?>" onclick="profileWidgetImage.remover( '<?php echo $this->id; ?>', '<?php echo $id_prefix; ?>', 'remover_button' ); return false;" <?php if ( $instance['organic_widgets_profile_bg_image_id'] < 1 ) { echo( 'style="display:none;"' ); } ?>/>
-				<div class="organic_widgets-widget-image-preview" id="<?php echo $this->get_field_id('preview'); ?>">
-					<?php echo $this->get_image_html($instance); ?>
-				</div>
-				<input type="hidden" id="<?php echo $this->get_field_id('organic_widgets_profile_bg_image_id'); ?>" name="<?php echo $this->get_field_name('organic_widgets_profile_bg_image_id'); ?>" value="<?php echo abs($instance['organic_widgets_profile_bg_image_id']); ?>" />
-				<input type="hidden" id="<?php echo $this->get_field_id('organic_widgets_profile_bg_image'); ?>" name="<?php echo $this->get_field_name('organic_widgets_profile_bg_image'); ?>" value="<?php echo $instance['organic_widgets_profile_bg_image']; ?>" />
-			</div>
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e('Title:', ORGANIC_WIDGETS_18N) ?></label>
+			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php if ( $instance['title'] ) echo $instance['title']; ?>" />
 		</p>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'organic_widgets_profile_title' ); ?>"><?php _e('Title:', ORGANIC_WIDGETS_18N) ?></label>
-			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'organic_widgets_profile_title' ); ?>" name="<?php echo $this->get_field_name( 'organic_widgets_profile_title' ); ?>" value="<?php if ( $instance['organic_widgets_profile_title'] ) echo $instance['organic_widgets_profile_title']; ?>" />
+			<label for="<?php echo $this->get_field_id( 'subtitle' ); ?>"><?php _e('Subtitle:', ORGANIC_WIDGETS_18N) ?></label>
+			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'subtitle' ); ?>" name="<?php echo $this->get_field_name( 'subtitle' ); ?>" value="<?php if ( $instance['subtitle'] ) echo $instance['subtitle']; ?>" />
 		</p>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'organic_widgets_profile_subtitle' ); ?>"><?php _e('Subtitle:', ORGANIC_WIDGETS_18N) ?></label>
-			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'organic_widgets_profile_subtitle' ); ?>" name="<?php echo $this->get_field_name( 'organic_widgets_profile_subtitle' ); ?>" value="<?php if ( $instance['organic_widgets_profile_subtitle'] ) echo $instance['organic_widgets_profile_subtitle']; ?>" />
+			<label for="<?php echo $this->get_field_id( 'summary' ); ?>"><?php _e('Summary:', ORGANIC_WIDGETS_18N) ?></label>
+			<textarea class="widefat" rows="6" cols="20" id="<?php echo $this->get_field_id( 'summary' ); ?>" name="<?php echo $this->get_field_name( 'summary' ); ?>"><?php echo $instance['summary']; ?></textarea>
 		</p>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'organic_widgets_profile_summary' ); ?>"><?php _e('Summary:', ORGANIC_WIDGETS_18N) ?></label>
-			<textarea class="widefat" rows="6" cols="20" id="<?php echo $this->get_field_id( 'organic_widgets_profile_summary' ); ?>" name="<?php echo $this->get_field_name( 'organic_widgets_profile_summary' ); ?>"><?php echo $instance['organic_widgets_profile_summary']; ?></textarea>
+			<label for="<?php echo $this->get_field_id( 'personal_url' ); ?>"><?php _e('Personal Link or Social Media URL:', ORGANIC_WIDGETS_18N) ?></label>
+			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'personal_url' ); ?>" name="<?php echo $this->get_field_name( 'personal_url' ); ?>" value="<?php echo $instance['personal_url']; ?>" />
 		</p>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'organic_widgets_profile_personal_url' ); ?>"><?php _e('Personal Link or Social Media URL:', ORGANIC_WIDGETS_18N) ?></label>
-			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'organic_widgets_profile_personal_url' ); ?>" name="<?php echo $this->get_field_name( 'organic_widgets_profile_personal_url' ); ?>" value="<?php echo $instance['organic_widgets_profile_personal_url']; ?>" />
+			<label for="<?php echo $this->get_field_id( 'twitter_url' ); ?>"><?php _e('Twitter Profile URL:', ORGANIC_WIDGETS_18N) ?></label>
+			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'twitter_url' ); ?>" name="<?php echo $this->get_field_name( 'twitter_url' ); ?>" value="<?php echo $instance['twitter_url']; ?>" />
 		</p>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'organic_widgets_profile_twitter_url' ); ?>"><?php _e('Twitter Profile URL:', ORGANIC_WIDGETS_18N) ?></label>
-			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'organic_widgets_profile_twitter_url' ); ?>" name="<?php echo $this->get_field_name( 'organic_widgets_profile_twitter_url' ); ?>" value="<?php echo $instance['organic_widgets_profile_twitter_url']; ?>" />
+			<label for="<?php echo $this->get_field_id( 'linkedin_url' ); ?>"><?php _e('LinkedIn Profile URL:', ORGANIC_WIDGETS_18N) ?></label>
+			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'linkedin_url' ); ?>" name="<?php echo $this->get_field_name( 'linkedin_url' ); ?>" value="<?php echo $instance['linkedin_url']; ?>" />
 		</p>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'organic_widgets_profile_linkedin_url' ); ?>"><?php _e('LinkedIn Profile URL:', ORGANIC_WIDGETS_18N) ?></label>
-			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'organic_widgets_profile_linkedin_url' ); ?>" name="<?php echo $this->get_field_name( 'organic_widgets_profile_linkedin_url' ); ?>" value="<?php echo $instance['organic_widgets_profile_linkedin_url']; ?>" />
+			<label for="<?php echo $this->get_field_id( 'facebook_url' ); ?>"><?php _e('Facebook Profile URL:', ORGANIC_WIDGETS_18N) ?></label>
+			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'facebook_url' ); ?>" name="<?php echo $this->get_field_name( 'facebook_url' ); ?>" value="<?php echo $instance['facebook_url']; ?>" />
 		</p>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'organic_widgets_profile_facebook_url' ); ?>"><?php _e('Facebook Profile URL:', ORGANIC_WIDGETS_18N) ?></label>
-			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'organic_widgets_profile_facebook_url' ); ?>" name="<?php echo $this->get_field_name( 'organic_widgets_profile_facebook_url' ); ?>" value="<?php echo $instance['organic_widgets_profile_facebook_url']; ?>" />
-		</p>
-
-		<p>
-			<label for="<?php echo $this->get_field_id( 'organic_widgets_profile_email' ); ?>"><?php _e('Email Address:', ORGANIC_WIDGETS_18N) ?></label>
-			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'organic_widgets_profile_email' ); ?>" name="<?php echo $this->get_field_name( 'organic_widgets_profile_email' ); ?>" value="<?php echo $instance['organic_widgets_profile_email']; ?>" />
+			<label for="<?php echo $this->get_field_id( 'email' ); ?>"><?php _e('Email Address:', ORGANIC_WIDGETS_18N) ?></label>
+			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'email' ); ?>" name="<?php echo $this->get_field_name( 'email' ); ?>" value="<?php echo $instance['email']; ?>" />
 		</p>
 
   <?php
@@ -238,26 +225,26 @@ class Organic_Widgets_Profile_Widget extends WP_Widget {
 
 		$instance = $old_instance;
 
-		if (isset( $new_instance['organic_widgets_profile_bg_image_id'] ) )
-			$instance['organic_widgets_profile_bg_image_id'] = strip_tags( $new_instance['organic_widgets_profile_bg_image_id'] );
-		if (isset( $new_instance['organic_widgets_profile_bg_image'] ) )
-			$instance['organic_widgets_profile_bg_image'] = strip_tags( $new_instance['organic_widgets_profile_bg_image'] );
-		if (isset( $new_instance['organic_widgets_profile_title'] ) )
-			$instance['organic_widgets_profile_title'] = strip_tags( $new_instance['organic_widgets_profile_title'] );
-		if (isset( $new_instance['organic_widgets_profile_subtitle'] ) )
-			$instance['organic_widgets_profile_subtitle'] = strip_tags( $new_instance['organic_widgets_profile_subtitle'] );
-		if (isset( $new_instance['organic_widgets_profile_summary'] ) )
-			$instance['organic_widgets_profile_summary'] = strip_tags( $new_instance['organic_widgets_profile_summary'] );
-		if (isset( $new_instance['organic_widgets_profile_personal_url'] ) )
-			$instance['organic_widgets_profile_personal_url'] = strip_tags( $new_instance['organic_widgets_profile_personal_url'] );
-		if (isset( $new_instance['organic_widgets_profile_twitter_url'] ) )
-			$instance['organic_widgets_profile_twitter_url'] = strip_tags( $new_instance['organic_widgets_profile_twitter_url'] );
-		if (isset( $new_instance['organic_widgets_profile_linkedin_url'] ) )
-			$instance['organic_widgets_profile_linkedin_url'] = strip_tags( $new_instance['organic_widgets_profile_linkedin_url'] );
-		if (isset( $new_instance['organic_widgets_profile_facebook_url'] ) )
-			$instance['organic_widgets_profile_facebook_url'] = strip_tags( $new_instance['organic_widgets_profile_facebook_url'] );
-		if (isset( $new_instance['organic_widgets_profile_email'] ) )
-			$instance['organic_widgets_profile_email'] = strip_tags( $new_instance['organic_widgets_profile_email'] );
+		if (isset( $new_instance['bg_image_id'] ) )
+			$instance['bg_image_id'] = strip_tags( $new_instance['bg_image_id'] );
+		if (isset( $new_instance['bg_image'] ) )
+			$instance['bg_image'] = strip_tags( $new_instance['bg_image'] );
+		if (isset( $new_instance['title'] ) )
+			$instance['title'] = strip_tags( $new_instance['title'] );
+		if (isset( $new_instance['subtitle'] ) )
+			$instance['subtitle'] = strip_tags( $new_instance['subtitle'] );
+		if (isset( $new_instance['summary'] ) )
+			$instance['summary'] = strip_tags( $new_instance['summary'] );
+		if (isset( $new_instance['personal_url'] ) )
+			$instance['personal_url'] = strip_tags( $new_instance['personal_url'] );
+		if (isset( $new_instance['twitter_url'] ) )
+			$instance['twitter_url'] = strip_tags( $new_instance['twitter_url'] );
+		if (isset( $new_instance['linkedin_url'] ) )
+			$instance['linkedin_url'] = strip_tags( $new_instance['linkedin_url'] );
+		if (isset( $new_instance['facebook_url'] ) )
+			$instance['facebook_url'] = strip_tags( $new_instance['facebook_url'] );
+		if (isset( $new_instance['email'] ) )
+			$instance['email'] = strip_tags( $new_instance['email'] );
 
 		return $instance;
 	}
@@ -269,11 +256,11 @@ class Organic_Widgets_Profile_Widget extends WP_Widget {
 	 * @param bool $include_link will only render the link if this is set to true. Otherwise link is ignored.
 	 * @return string image html
 	 */
-	private function get_image_html( $instance ) {
+	protected function get_image_HTML( $instance ) {
 
-		if ( isset( $instance['organic_widgets_profile_bg_image_id'] ) ) {
-			$instance['organic_widgets_profile_bg_image_id'] = $instance['organic_widgets_profile_bg_image_id'];
-		} else { $instance['organic_widgets_profile_bg_image_id'] = 0; }
+		if ( isset( $instance['bg_image_id'] ) ) {
+			$instance['bg_image_id'] = $instance['bg_image_id'];
+		} else { $instance['bg_image_id'] = 0; }
 
 		$output = '';
 
@@ -282,19 +269,19 @@ class Organic_Widgets_Profile_Widget extends WP_Widget {
 		$attr = array();
 		$attr = apply_filters( 'image_widget_image_attributes', $attr, $instance );
 
-		$img_array = wp_get_attachment_image( $instance['organic_widgets_profile_bg_image_id'], $size, false, $attr );
+		$img_array = wp_get_attachment_image( $instance['bg_image_id'], $size, false, $attr );
 
-		// If there is an organic_widgets_profile_bg_image, use it to render the image. Eventually we should kill this and simply rely on organic_widgets_profile_bg_image_ids.
-		if ( ! empty( $instance['organic_widgets_profile_bg_image'] ) ) {
+		// If there is an bg_image, use it to render the image. Eventually we should kill this and simply rely on bg_image_ids.
+		if ( ! empty( $instance['bg_image'] ) ) {
 			// If all we have is an image src url we can still render an image.
-			$attr['src'] = $instance['organic_widgets_profile_bg_image'];
+			$attr['src'] = $instance['bg_image'];
 			$attr = array_map( 'esc_attr', $attr );
 			$output .= "<img ";
 			foreach ( $attr as $name => $value ) {
 				$output .= sprintf( ' %s="%s"', $name, $value );
 			}
 			$output .= ' />';
-		} elseif( abs( $instance['organic_widgets_profile_bg_image_id'] ) > 0 ) {
+		} elseif( abs( $instance['bg_image_id'] ) > 0 ) {
 			$output .= $img_array[0];
 		}
 

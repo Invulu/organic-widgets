@@ -29,6 +29,8 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 			) // Args
 		);
 
+		$this->id_prefix = $this->get_field_id('');
+
 		add_action( 'sidebar_admin_setup', array( $this, 'admin_setup' ) );
 
 	}
@@ -132,8 +134,6 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 	 */
 	public function form( $instance ) {
 
-		$id_prefix = $this->get_field_id('');
-
 		if ( isset( $instance[ 'page_id' ] ) ) {
 			$page_id = $instance[ 'page_id' ];
 		} else { $page_id = 0; }
@@ -187,28 +187,7 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 
 		<h3><?php _e('Or Add Custom Content:', ORGANIC_WIDGETS_18N) ?></h3>
 
-		<h4>Section Background</h4>
-		<p>
-			<label for="<?php echo $this->get_field_id( 'bg_image' ); ?>"><?php _e( 'Background Image:', ORGANIC_WIDGETS_18N ) ?></label>
-			<div class="uploader">
-				<input type="submit" class="button" name="<?php echo $this->get_field_name('uploader_button'); ?>" id="<?php echo $this->get_field_id('uploader_button'); ?>" value="<?php _e( 'Select an Image', ORGANIC_WIDGETS_18N ); ?>" onclick="featureListWidgetImage.uploader( '<?php echo $this->id; ?>', '<?php echo $id_prefix; ?>' ); return false;" />
-				<input type="submit" class="organic_widgets-remove-image-button button" name="<?php echo $this->get_field_name('remover_button'); ?>" id="<?php echo $this->get_field_id('remover_button'); ?>" value="<?php _e('Remove Image', ORGANIC_WIDGETS_18N); ?>" onclick="featureListWidgetImage.remover( '<?php echo $this->id; ?>', '<?php echo $id_prefix; ?>', 'remover_button' ); return false;" <?php if ( $bg_image_id < 1 ) { echo( 'style="display:none;"' ); } ?>/>
-				<div class="organic_widgets-widget-image-preview" id="<?php echo $this->get_field_id('preview'); ?>">
-					<?php echo $this->get_image_html($instance); ?>
-				</div>
-				<input type="hidden" id="<?php echo $this->get_field_id('bg_image_id'); ?>" name="<?php echo $this->get_field_name('bg_image_id'); ?>" value="<?php echo abs($bg_image_id); ?>" />
-				<input type="hidden" id="<?php echo $this->get_field_id('bg_image'); ?>" name="<?php echo $this->get_field_name('bg_image'); ?>" value="<?php echo $bg_image; ?>" />
-			</div>
-		</p>
-		<p>
-			<label for="<?php echo $this->get_field_id( 'bg_video' ); ?>"><?php _e('Background Video:', ORGANIC_WIDGETS_18N) ?></label>
-			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'bg_video' ); ?>" name="<?php echo $this->get_field_name( 'bg_video' ); ?>" value="<?php echo esc_url($bg_video); ?>" />
-		</p>
-		<p>
-			<label for="<?php echo $this->get_field_name('bg_color'); ?>"><?php _e( 'Background Color:', ORGANIC_WIDGETS_18N ) ?></label><br>
-			<input type="text" name="<?php echo $this->get_field_name('bg_color'); ?>" value="<?php echo esc_attr($bg_color); ?>" class="organic-widgets-color-picker" />
-		</p>
-
+		<?php $this->section_background_input_markup( $instance ); ?>
 
 		<hr />
 
@@ -259,18 +238,15 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 		if ( isset( $new_instance['feature_list_summary'] ) )
 			$instance['feature_list_summary'] = strip_tags( $new_instance['feature_list_summary'] );
 
-			error_log($new_instance['section_title']);
+
 
 		//Widget Title
 		if ( isset( $new_instance['page_id'] ) && $new_instance['page_id'] > 0 ) {
-			error_log('1');
 			$instance['title'] = strip_tags( get_the_title( $instance['page_id'] ) );
 		}
 		elseif ( isset( $new_instance['section_title'] )  && '' != $new_instance['section_title'] ) {
-			error_log('2');
 			$instance['title'] = strip_tags( $new_instance['section_title'] );
 		} else {
-			error_log('3');
 			$instance['title'] = '';
 		}
 
@@ -284,7 +260,7 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 	 * @param bool $include_link will only render the link if this is set to true. Otherwise link is ignored.
 	 * @return string image html
 	 */
-	private function get_image_html( $instance ) {
+	protected function get_image_HTML( $instance ) {
 
 		if ( isset( $instance['bg_image_id'] ) ) {
 			$bg_image_id = $instance['bg_image_id'];

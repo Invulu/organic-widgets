@@ -11,6 +11,16 @@ if ( !defined('ABSPATH') )
 class Organic_Widgets_Custom_Widget extends WP_Widget {
 
   /**
+	 * The loader that's responsible for maintaining and registering all hooks that power
+	 * the plugin.
+	 *
+	 * @since    1.0.0
+	 * @access   protected
+	 * @var      Organic_Widgets_Custom_Widget    $id_prefix    id_prefix for a class
+	 */
+  protected $id_prefix;
+
+  /**
 	 * Check if a given hex value is valid
 	 *
 	 * @since    	1.0.0
@@ -265,27 +275,89 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
 				} );
 			}( jQuery ) );
 
-
-    // jQuery(document).ready(function($){
-    //
-		// 	// Initialize Color Pickers
-		// 	$(<?php echo $color_picker_id; ?>).wpColorPicker({
-		// 		change: _.debounce( function() {
-		// 			$(<?php echo $color_picker_id; ?>).change();
-		// 		}, 200 )
-		// 	});
-    //
-		// });
-    //
-		// // On AJAX Completion
-    // jQuery( document ).on( 'widget-added widget-updated', function() {
-    //   jQuery('#widgets-right .organic-widgets-color-picker, .inactive-sidebar .organic-widgets-color-picker').wpColorPicker();
-    //   // jQuery('.organic-widgets-color-picker').wpColorPicker();
-    // } );
-
-
 		</script><?php
 
   }
+
+  protected function section_background_input_markup( $instance ) {
+
+    $bg_color = array_key_exists( 'bg_color', $instance ) && $instance['bg_color'] ? $instance['bg_color'] : false;
+    $bg_image_id = array_key_exists( 'bg_image_id', $instance ) && $instance['bg_image_id'] ? $instance['bg_image_id'] : false;
+    $bg_image = array_key_exists( 'bg_image', $instance ) && $instance['bg_image'] ? $instance['bg_image'] : false;
+    $bg_video = array_key_exists( 'bg_video', $instance ) && $instance['bg_video'] ? $instance['bg_video'] : false;
+
+    ?>
+
+    <h4>Section Background</h4>
+
+    <?php if ( $bg_color ) { ?>
+      <p>
+  			<label for="<?php echo $this->get_field_name('bg_color'); ?>"><?php _e( 'Background Color:', ORGANIC_WIDGETS_18N ) ?></label><br>
+  			<input type="text" name="<?php echo $this->get_field_name('bg_color'); ?>" id="<?php echo $this->get_field_id( 'bg_color' ); ?>" value="<?php echo esc_attr($bg_color); ?>" class="organic-widgets-color-picker" />
+  		</p>
+    <?php } ?>
+
+    <?php if ( $bg_image ) { ?>
+      <p>
+  			<label for="<?php echo $this->get_field_id( 'bg_image' ); ?>"><?php _e( 'Background Image:', ORGANIC_WIDGETS_18N ) ?></label>
+  			<div class="uploader">
+  				<input type="submit" class="button" name="<?php echo $this->get_field_name('uploader_button'); ?>" id="<?php echo $this->get_field_id('uploader_button'); ?>" value="<?php if ( $bg_image_id ) { _e( 'Change Image', ORGANIC_WIDGETS_18N ); }else { _e( 'Select Image', ORGANIC_WIDGETS_18N ); }?>" onclick="subpageWidgetImage.uploader( '<?php echo $this->id; ?>', '<?php echo $this->id_prefix; ?>' ); return false;" />
+  				<input type="submit" class="organic_widgets-remove-image-button button" name="<?php echo $this->get_field_name('remover_button'); ?>" id="<?php echo $this->get_field_id('remover_button'); ?>" value="<?php _e('Remove Image', ORGANIC_WIDGETS_18N); ?>" onclick="subpageWidgetImage.remover( '<?php echo $this->id; ?>', '<?php echo $this->id_prefix; ?>', 'remover_button' ); return false;" <?php if ( $bg_image_id < 1 ) { echo( 'style="display:none;"' ); } ?>/>
+  				<div class="organic_widgets-widget-image-preview" id="<?php echo $this->get_field_id('preview'); ?>">
+  					<?php echo $this->get_image_html($instance); ?>
+  				</div>
+  				<input type="hidden" id="<?php echo $this->get_field_id('bg_image_id'); ?>" name="<?php echo $this->get_field_name('bg_image_id'); ?>" value="<?php echo abs($bg_image_id); ?>" />
+  				<input type="hidden" id="<?php echo $this->get_field_id('bg_image'); ?>" name="<?php echo $this->get_field_name('bg_image'); ?>" value="<?php echo $bg_image; ?>" />
+  			</div>
+  		</p>
+    <?php } ?>
+
+    <?php if ( $bg_video ) { ?>
+      <p>
+  			<label for="<?php echo $this->get_field_id( 'bg_video' ); ?>"><?php _e('Background Video:', ORGANIC_WIDGETS_18N) ?></label>
+  			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'bg_video' ); ?>" name="<?php echo $this->get_field_name( 'bg_video' ); ?>" value="<?php echo esc_url($bg_video); ?>" />
+  		</p>
+    <?php }
+
+  }
+
+  /**
+	 * Render the image html output.
+	 *
+	 * @param array $instance
+	 * @param bool $include_link will only render the link if this is set to true. Otherwise link is ignored.
+	 * @return string image html
+	 */
+	protected function get_image_HTML( $instance ) {
+
+		if ( isset( $instance['bg_image_id'] ) ) {
+			$bg_image_id = $instance['bg_image_id'];
+		} else { $bg_image_id = 0; }
+
+		$output = '';
+
+		$size = 'organic_widgets-featured-large';
+
+		$attr = array();
+		$attr = apply_filters( 'image_widget_image_attributes', $attr, $instance );
+
+		$img_array = wp_get_attachment_image( $bg_image_id, $size, false, $attr );
+
+		// If there is an bg_image, use it to render the image. Eventually we should kill this and simply rely on bg_image_ids.
+		if ( ! empty( $instance['bg_image'] ) ) {
+			// If all we have is an image src url we can still render an image.
+			$attr['src'] = $instance['bg_image'];
+			$attr = array_map( 'esc_attr', $attr );
+			$output .= "<img ";
+			foreach ( $attr as $name => $value ) {
+				$output .= sprintf( ' %s="%s"', $name, $value );
+			}
+			$output .= ' />';
+		} elseif( abs( $bg_image_id ) > 0 ) {
+			$output .= $img_array[0];
+		}
+
+		return $output;
+	}
 
 } // class Organic_Widgets_Subpage_Section_Widget

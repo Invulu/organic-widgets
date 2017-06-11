@@ -12,7 +12,7 @@ add_action( 'widgets_init', function(){
 /**
  * Adds Organic_Widgets_Blog_Posts_Section_Widget widget.
  */
-class Organic_Widgets_Blog_Posts_Section_Widget extends WP_Widget {
+class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_Widget {
 
 	const CUSTOM_IMAGE_SIZE_SLUG = 'organic_widgets_widget_image_upload';
 
@@ -28,6 +28,8 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends WP_Widget {
 				'customize_selective_refresh' => true,
 			) // Args
 		);
+
+		$this->id_prefix = $this->get_field_id('');
 
 		add_action( 'sidebar_admin_setup', array( $this, 'admin_setup' ) );
 	}
@@ -101,36 +103,24 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends WP_Widget {
 	public function form( $instance ) {
 
 		// Setup Variables.
-		$id_prefix = $this->get_field_id('');
-		if ( isset( $instance['organic_widgets_blog_posts_section_title'] ) ) {
-			$organic_widgets_blog_posts_section_title = $instance['organic_widgets_blog_posts_section_title'];
-		} else { $organic_widgets_blog_posts_section_title = false; }
-		if ( isset( $instance['organic_widgets_blog_posts_section_bg_image_id'] ) ) {
-			$organic_widgets_blog_posts_section_bg_image_id = $instance['organic_widgets_blog_posts_section_bg_image_id'];
-		} else { $organic_widgets_blog_posts_section_bg_image_id = 0; }
-		if ( isset( $instance['organic_widgets_blog_posts_section_bg_image_id'] ) && isset( $instance['organic_widgets_blog_posts_section_bg_image'] ) ) {
-			$organic_widgets_blog_posts_section_bg_image = $instance['organic_widgets_blog_posts_section_bg_image'];
-		} else { $organic_widgets_blog_posts_section_bg_image = false; }
+		if ( isset( $instance['section_title'] ) ) {
+			$section_title = $instance['section_title'];
+		} else { $section_title = false; }
+		if ( isset( $instance['bg_image_id'] ) ) {
+			$bg_image_id = $instance['bg_image_id'];
+		} else { $bg_image_id = 0; }
+		if ( isset( $instance['bg_image_id'] ) && isset( $instance['bg_image'] ) ) {
+			$bg_image = $instance['bg_image'];
+		} else { $bg_image = false; }
 
 		?>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'organic_widgets_blog_posts_section_title' ); ?>"><?php _e('Title:', ORGANIC_WIDGETS_18N) ?></label>
-			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'organic_widgets_blog_posts_section_title' ); ?>" name="<?php echo $this->get_field_name( 'organic_widgets_blog_posts_section_title' ); ?>" value="<?php if ( $organic_widgets_blog_posts_section_title ) echo $organic_widgets_blog_posts_section_title; ?>" />
+			<label for="<?php echo $this->get_field_id( 'section_title' ); ?>"><?php _e('Title:', ORGANIC_WIDGETS_18N) ?></label>
+			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'section_title' ); ?>" name="<?php echo $this->get_field_name( 'section_title' ); ?>" value="<?php if ( $section_title ) echo $section_title; ?>" />
 		</p>
 
-		<p>
-			<label for="<?php echo $this->get_field_id( 'organic_widgets_blog_posts_section_bg_image' ); ?>"><?php _e('Background Image:', ORGANIC_WIDGETS_18N) ?></label>
-			<div class="uploader">
-				<input type="submit" class="button" name="<?php echo $this->get_field_name('uploader_button'); ?>" id="<?php echo $this->get_field_id('uploader_button'); ?>" value="<?php _e('Select an Image', ORGANIC_WIDGETS_18N); ?>" onclick="blogPostsSectionWidgetImage.uploader( '<?php echo $this->id; ?>', '<?php echo $id_prefix; ?>' ); return false;" />
-				<input type="submit" class="organic_widgets-remove-image-button button" name="<?php echo $this->get_field_name('remover_button'); ?>" id="<?php echo $this->get_field_id('remover_button'); ?>" value="<?php _e('Remove Image', ORGANIC_WIDGETS_18N); ?>" onclick="blogPostsSectionWidgetImage.remover( '<?php echo $this->id; ?>', '<?php echo $id_prefix; ?>', 'remover_button' ); return false;" <?php if ( $organic_widgets_blog_posts_section_bg_image_id < 1 ) { echo( 'style="display:none;"' ); } ?>/>
-				<div class="organic_widgets-widget-image-preview" id="<?php echo $this->get_field_id('preview'); ?>">
-					<?php echo $this->get_image_html($instance); ?>
-				</div>
-				<input type="hidden" id="<?php echo $this->get_field_id('organic_widgets_blog_posts_section_bg_image_id'); ?>" name="<?php echo $this->get_field_name('organic_widgets_blog_posts_section_bg_image_id'); ?>" value="<?php echo abs($organic_widgets_blog_posts_section_bg_image_id); ?>" />
-				<input type="hidden" id="<?php echo $this->get_field_id('organic_widgets_blog_posts_section_bg_image'); ?>" name="<?php echo $this->get_field_name('organic_widgets_blog_posts_section_bg_image'); ?>" value="<?php echo $organic_widgets_blog_posts_section_bg_image; ?>" />
-			</div>
-		</p>
+		<?php $this->section_background_input_markup( $instance ); ?>
 
   <?php
 	}
@@ -165,7 +155,7 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends WP_Widget {
 	 * @param bool $include_link will only render the link if this is set to true. Otherwise link is ignored.
 	 * @return string image html
 	 */
-	private function get_image_html( $instance ) {
+	protected function get_image_HTML( $instance ) {
 
 		if ( isset( $instance['organic_widgets_blog_posts_section_bg_image_id'] ) && '' != $instance['organic_widgets_blog_posts_section_bg_image_id'] ) {
 			$organic_widgets_blog_posts_section_bg_image_id = $instance['organic_widgets_blog_posts_section_bg_image_id'];

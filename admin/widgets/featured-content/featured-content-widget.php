@@ -12,7 +12,7 @@ add_action( 'widgets_init', function() {
 /**
  * Adds Organic_Widgets_Content_Widget widget.
  */
-class Organic_Widgets_Content_Widget extends WP_Widget {
+class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 
 	const CUSTOM_IMAGE_SIZE_SLUG = 'organic_widgets_widget_image_upload';
 
@@ -28,6 +28,8 @@ class Organic_Widgets_Content_Widget extends WP_Widget {
 				'customize_selective_refresh' => true,
 			) // Args
 		);
+
+		$this->id_prefix = $this->get_field_id('');
 
 		add_action( 'sidebar_admin_setup', array( $this, 'admin_setup' ) );
 	}
@@ -67,41 +69,41 @@ class Organic_Widgets_Content_Widget extends WP_Widget {
 
 			echo $args['after_widget'];
 
-		} elseif ( ! empty( $instance['organic_widgets_featured_content_title'] ) || ! empty( $instance['organic_widgets_featured_content_summary'] ) ) {
+		} elseif ( ! empty( $instance['title'] ) || ! empty( $instance['summary'] ) ) {
 
 			echo $args['before_widget'];
 
 			$attr = array();
 			$attr = apply_filters( 'image_widget_image_attributes', $attr, $instance );
-			if ( isset( $instance['organic_widgets_featured_content_bg_image_id'] ) && '' != $instance['organic_widgets_featured_content_bg_image_id'] ) {
-				$organic_widgets_featured_content_bg_image_id = $instance['organic_widgets_featured_content_bg_image_id'];
-				$img_array = wp_get_attachment_image_src($organic_widgets_featured_content_bg_image_id, 'organic_widgets-featured-medium', false, $attr);
-				$organic_widgets_featured_content_bg_image = $img_array[0];
-			} else { $organic_widgets_featured_content_bg_image_id = 0; }
-			$organic_widgets_featured_content_title = $instance['organic_widgets_featured_content_title'];
-			$organic_widgets_featured_content_summary = $instance['organic_widgets_featured_content_summary'];
-			$organic_widgets_featured_content_link_url = $instance['organic_widgets_featured_content_link_url'];
-			$organic_widgets_featured_content_link_title = $instance['organic_widgets_featured_content_link_title'];
+			if ( isset( $instance['bg_image_id'] ) && '' != $instance['bg_image_id'] ) {
+				$bg_image_id = $instance['bg_image_id'];
+				$img_array = wp_get_attachment_image_src($bg_image_id, 'organic_widgets-featured-medium', false, $attr);
+				$bg_image = $img_array[0];
+			} else { $bg_image_id = 0; }
+			$title = $instance['title'];
+			$summary = $instance['summary'];
+			$link_url = $instance['link_url'];
+			$link_title = $instance['link_title'];
 
 			?>
 
 			<div class="holder">
-				<?php if ( 0 < $organic_widgets_featured_content_bg_image_id ) { ?>
-					<div class="feature-img"><img src="<?php echo $organic_widgets_featured_content_bg_image; ?>" /></div>
+				<?php if ( 0 < $bg_image_id ) { ?>
+					<div class="feature-img"><img src="<?php echo $bg_image; ?>" /></div>
 				<?php } elseif ( '1' == get_option( 'fresh_site' ) ) { ?>
 					<div class="feature-img"><img src="<?php echo get_template_directory_uri(); ?>/images/image-about.jpg" /></div>
 				<?php } ?>
 				<div class="information">
-					<?php if ( ! empty( $organic_widgets_featured_content_title ) ) { ?>
-						<h3 class="headline"><?php echo esc_html( $organic_widgets_featured_content_title ); ?></h3>
+					<?php if ( ! empty( $title ) ) { ?>
+						<h3 class="headline"><?php echo esc_html( $title ); ?></h3>
 					<?php } ?>
-					<?php if ( ! empty( $organic_widgets_featured_content_summary ) ) { ?>
-						<div class="excerpt"><?php echo $organic_widgets_featured_content_summary ?></div>
+					<?php if ( ! empty( $summary ) ) { ?>
+						<div class="excerpt"><?php echo $summary ?></div>
 					<?php } ?>
-					<?php if ( ! empty( $organic_widgets_featured_content_link_url ) ) { ?>
-						<a class="button" href="<?php echo esc_url( $organic_widgets_featured_content_link_url ); ?>">
-							<?php if ( ! empty( $organic_widgets_featured_content_link_title ) ) { ?>
-								<?php echo $organic_widgets_featured_content_link_title ?>
+					<?php if ( ! empty( $link_url ) ) { ?>
+						<a class="button" href="<?php echo esc_url( $link_url ); ?>">
+							<?php if ( ! empty( $link_title ) ) { ?>
+								<?php echo $link_title ?>
 							<?php } else { ?>
 								<?php esc_html_e( 'Read More', ORGANIC_WIDGETS_18N ); ?>
 							<?php } ?>
@@ -127,28 +129,28 @@ class Organic_Widgets_Content_Widget extends WP_Widget {
 	public function form( $instance ) {
 
 		// Set up variables
-		$id_prefix = $this->get_field_id('');
-		if ( isset( $instance['organic_widgets_featured_content_bg_image_id'] ) && '' != $instance['organic_widgets_featured_content_bg_image_id'] ) {
-			$organic_widgets_featured_content_bg_image_id = $instance['organic_widgets_featured_content_bg_image_id'];
-		} else { $organic_widgets_featured_content_bg_image_id = 0; }
-		if ( isset( $instance['organic_widgets_featured_content_bg_image'] ) && '' != $instance['organic_widgets_featured_content_bg_image'] ) {
-			$organic_widgets_featured_content_bg_image = $instance['organic_widgets_featured_content_bg_image'];
-		} else { $organic_widgets_featured_content_bg_image = 0; }
+
+		if ( isset( $instance['bg_image_id'] ) && '' != $instance['bg_image_id'] ) {
+			$bg_image_id = $instance['bg_image_id'];
+		} else { $bg_image_id = 0; }
+		if ( isset( $instance['bg_image'] ) && '' != $instance['bg_image'] ) {
+			$bg_image = $instance['bg_image'];
+		} else { $bg_image = 0; }
 		if ( isset( $instance[ 'page_id' ] ) ) {
-			$organic_widgets_featured_content_page_id = $instance[ 'page_id' ];
-		} else { $organic_widgets_featured_content_page_id = 0; }
-		if ( isset( $instance[ 'organic_widgets_featured_content_title' ] ) ) {
-			$organic_widgets_featured_content_title = $instance[ 'organic_widgets_featured_content_title' ];
-		} else { $organic_widgets_featured_content_title = ''; }
-		if ( isset( $instance[ 'organic_widgets_featured_content_summary' ] ) ) {
-			$organic_widgets_featured_content_summary = $instance[ 'organic_widgets_featured_content_summary' ];
-		} else { $organic_widgets_featured_content_summary = ''; }
-		if ( isset( $instance[ 'organic_widgets_featured_content_link_url' ] ) ) {
-			$organic_widgets_featured_content_link_url = $instance[ 'organic_widgets_featured_content_link_url' ];
-		} else { $organic_widgets_featured_content_link_url = ''; }
-		if ( isset( $instance[ 'organic_widgets_featured_content_link_title' ] ) ) {
-			$organic_widgets_featured_content_link_title = $instance[ 'organic_widgets_featured_content_link_title' ];
-		} else { $organic_widgets_featured_content_link_title = ''; }
+			$page_id = $instance[ 'page_id' ];
+		} else { $page_id = 0; }
+		if ( isset( $instance[ 'title' ] ) ) {
+			$title = $instance[ 'title' ];
+		} else { $title = ''; }
+		if ( isset( $instance[ 'summary' ] ) ) {
+			$summary = $instance[ 'summary' ];
+		} else { $summary = ''; }
+		if ( isset( $instance[ 'link_url' ] ) ) {
+			$link_url = $instance[ 'link_url' ];
+		} else { $link_url = ''; }
+		if ( isset( $instance[ 'link_title' ] ) ) {
+			$link_title = $instance[ 'link_title' ];
+		} else { $link_title = ''; }
 		?>
 
 		<p><b><?php _e('Choose Existing Page:', ORGANIC_WIDGETS_18N) ?></b></p>
@@ -156,7 +158,7 @@ class Organic_Widgets_Content_Widget extends WP_Widget {
 		<p>
 			<?php wp_dropdown_pages( array(
 				'class' => 'widefat',
-				'selected' => $organic_widgets_featured_content_page_id,
+				'selected' => $page_id,
 				'id' => $this->get_field_id( 'page_id' ),
 				'name' => $this->get_field_name( 'page_id' ),
 				'show_option_none' => __( '— Select Existing Page —', ORGANIC_WIDGETS_18N ),
@@ -168,33 +170,23 @@ class Organic_Widgets_Content_Widget extends WP_Widget {
 
 		<p><b><?php _e('Or Add Custom Content:', ORGANIC_WIDGETS_18N) ?></b></p>
 
+		<?php $this->section_background_input_markup( $instance ); ?>
+
 		<p>
-			<label for="<?php echo $this->get_field_id( 'organic_widgets_featured_content_bg_image' ); ?>"><?php _e('Background Image:', ORGANIC_WIDGETS_18N) ?></label>
-			<div class="uploader">
-				<input type="submit" class="button" name="<?php echo $this->get_field_name('uploader_button'); ?>" id="<?php echo $this->get_field_id('uploader_button'); ?>" value="<?php _e('Select an Image', ORGANIC_WIDGETS_18N); ?>" onclick="featuredContentWidgetImage.uploader( '<?php echo $this->id; ?>', '<?php echo $id_prefix; ?>' ); return false;" />
-				<input type="submit" class="organic_widgets-remove-image-button button" name="<?php echo $this->get_field_name('remover_button'); ?>" id="<?php echo $this->get_field_id('remover_button'); ?>" value="<?php _e('Remove Image', ORGANIC_WIDGETS_18N); ?>" onclick="featuredContentWidgetImage.remover( '<?php echo $this->id; ?>', '<?php echo $id_prefix; ?>', 'remover_button' ); return false;" <?php if ( $organic_widgets_featured_content_bg_image_id < 1 ) { echo( 'style="display:none;"' ); } ?>/>
-				<div class="organic_widgets-widget-image-preview" id="<?php echo $this->get_field_id('preview'); ?>">
-					<?php echo $this->get_image_html($instance); ?>
-				</div>
-				<input type="hidden" id="<?php echo $this->get_field_id('organic_widgets_featured_content_bg_image_id'); ?>" name="<?php echo $this->get_field_name('organic_widgets_featured_content_bg_image_id'); ?>" value="<?php echo abs($organic_widgets_featured_content_bg_image_id); ?>" />
-				<input type="hidden" id="<?php echo $this->get_field_id('organic_widgets_featured_content_bg_image'); ?>" name="<?php echo $this->get_field_name('organic_widgets_featured_content_bg_image'); ?>" value="<?php echo $organic_widgets_featured_content_bg_image; ?>" />
-			</div>
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e('Title:', ORGANIC_WIDGETS_18N) ?></label>
+			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $title; ?>" />
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'organic_widgets_featured_content_title' ); ?>"><?php _e('Title:', ORGANIC_WIDGETS_18N) ?></label>
-			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'organic_widgets_featured_content_title' ); ?>" name="<?php echo $this->get_field_name( 'organic_widgets_featured_content_title' ); ?>" value="<?php echo $organic_widgets_featured_content_title; ?>" />
+			<label for="<?php echo $this->get_field_id( 'summary' ); ?>"><?php _e('Summary:', ORGANIC_WIDGETS_18N) ?></label>
+			<textarea class="widefat" rows="6" cols="20" id="<?php echo $this->get_field_id( 'summary' ); ?>" name="<?php echo $this->get_field_name( 'summary' ); ?>"><?php echo $summary; ?></textarea>
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'organic_widgets_featured_content_summary' ); ?>"><?php _e('Summary:', ORGANIC_WIDGETS_18N) ?></label>
-			<textarea class="widefat" rows="6" cols="20" id="<?php echo $this->get_field_id( 'organic_widgets_featured_content_summary' ); ?>" name="<?php echo $this->get_field_name( 'organic_widgets_featured_content_summary' ); ?>"><?php echo $organic_widgets_featured_content_summary; ?></textarea>
+			<label for="<?php echo $this->get_field_id( 'link_url' ); ?>"><?php _e('Link URL:', ORGANIC_WIDGETS_18N) ?></label>
+			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'link_url' ); ?>" name="<?php echo $this->get_field_name( 'link_url' ); ?>" value="<?php echo $link_url; ?>" />
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'organic_widgets_featured_content_link_url' ); ?>"><?php _e('Link URL:', ORGANIC_WIDGETS_18N) ?></label>
-			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'organic_widgets_featured_content_link_url' ); ?>" name="<?php echo $this->get_field_name( 'organic_widgets_featured_content_link_url' ); ?>" value="<?php echo $organic_widgets_featured_content_link_url; ?>" />
-		</p>
-		<p>
-			<label for="<?php echo $this->get_field_id( 'organic_widgets_featured_content_link_title' ); ?>"><?php _e('Link Text:', ORGANIC_WIDGETS_18N) ?></label>
-			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'organic_widgets_featured_content_link_title' ); ?>" name="<?php echo $this->get_field_name( 'organic_widgets_featured_content_link_title' ); ?>" value="<?php echo $organic_widgets_featured_content_link_title; ?>" />
+			<label for="<?php echo $this->get_field_id( 'link_title' ); ?>"><?php _e('Link Text:', ORGANIC_WIDGETS_18N) ?></label>
+			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'link_title' ); ?>" name="<?php echo $this->get_field_name( 'link_title' ); ?>" value="<?php echo $link_title; ?>" />
 		</p>
 
 		<?php
@@ -212,11 +204,11 @@ class Organic_Widgets_Content_Widget extends WP_Widget {
 	public function update( $new_instance, $old_instance ) {
 		$instance = array();
 		$instance['page_id'] = ( ! empty( $new_instance['page_id'] ) ) ? strip_tags( $new_instance['page_id'] ) : '';
-		$instance['organic_widgets_featured_content_bg_image_id'] = strip_tags( $new_instance['organic_widgets_featured_content_bg_image_id'] );
-		$instance['organic_widgets_featured_content_title'] = strip_tags( $new_instance['organic_widgets_featured_content_title'] );
-		$instance['organic_widgets_featured_content_summary'] = strip_tags( $new_instance['organic_widgets_featured_content_summary'] );
-		$instance['organic_widgets_featured_content_link_url'] = strip_tags( $new_instance['organic_widgets_featured_content_link_url'] );
-		$instance['organic_widgets_featured_content_link_title'] = strip_tags( $new_instance['organic_widgets_featured_content_link_title'] );
+		$instance['bg_image_id'] = strip_tags( $new_instance['bg_image_id'] );
+		$instance['title'] = strip_tags( $new_instance['title'] );
+		$instance['summary'] = strip_tags( $new_instance['summary'] );
+		$instance['link_url'] = strip_tags( $new_instance['link_url'] );
+		$instance['link_title'] = strip_tags( $new_instance['link_title'] );
 
 		return $instance;
 	}
@@ -228,11 +220,11 @@ class Organic_Widgets_Content_Widget extends WP_Widget {
 	 * @param bool $include_link will only render the link if this is set to true. Otherwise link is ignored.
 	 * @return string image html
 	 */
-	private function get_image_html( $instance ) {
+	protected function get_image_HTML( $instance ) {
 
-		if ( isset( $instance['organic_widgets_featured_content_bg_image_id'] ) && '' != $instance['organic_widgets_featured_content_bg_image_id'] ) {
-			$organic_widgets_featured_content_bg_image_id = $instance['organic_widgets_featured_content_bg_image_id'];
-		} else { $organic_widgets_featured_content_bg_image_id = 0; }
+		if ( isset( $instance['bg_image_id'] ) && '' != $instance['bg_image_id'] ) {
+			$bg_image_id = $instance['bg_image_id'];
+		} else { $bg_image_id = 0; }
 
 		$output = '';
 
@@ -241,10 +233,10 @@ class Organic_Widgets_Content_Widget extends WP_Widget {
 		$attr = array();
 		$attr = apply_filters( 'image_widget_image_attributes', $attr, $instance );
 
-		$img_array = wp_get_attachment_image_src($organic_widgets_featured_content_bg_image_id, $size, false, $attr);
+		$img_array = wp_get_attachment_image_src($bg_image_id, $size, false, $attr);
 
-		// If there is an organic_widgets_featured_content_bg_image, use it to render the image. Eventually we should kill this and simply rely on organic_widgets_featured_content_bg_image_ids.
-		if ( 0 < $organic_widgets_featured_content_bg_image_id ) {
+		// If there is an bg_image, use it to render the image. Eventually we should kill this and simply rely on bg_image_ids.
+		if ( 0 < $bg_image_id ) {
 			// If all we have is an image src url we can still render an image.
 			$attr['src'] = $img_array[0];
 			$attr = array_map( 'esc_attr', $attr );
@@ -253,7 +245,7 @@ class Organic_Widgets_Content_Widget extends WP_Widget {
 				$output .= sprintf( ' %s="%s"', $name, $value );
 			}
 			$output .= ' />';
-		} elseif( abs( $organic_widgets_featured_content_bg_image_id ) > 0 ) {
+		} elseif( abs( $bg_image_id ) > 0 ) {
 			$output .= $img_array[0];
 		}
 

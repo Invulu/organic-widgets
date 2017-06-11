@@ -29,6 +29,8 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 			) // Args
 		);
 
+		$this->id_prefix = $this->get_field_id('');
+
 		add_action( 'sidebar_admin_setup', array( $this, 'admin_setup' ) );
 
 	}
@@ -131,7 +133,7 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 	 */
 	public function form( $instance ) {
 
-		$id_prefix = $this->get_field_id('');
+
 
 		if ( isset( $instance[ 'page_id' ] ) ) {
 			$page_id = $instance[ 'page_id' ];
@@ -186,34 +188,6 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 
 		<h3><?php _e('Or Add Custom Content:', ORGANIC_WIDGETS_18N) ?></h3>
 
-		<h4>Section Background</h4>
-		<p>
-			<label for="<?php echo $this->get_field_id( 'bg_image' ); ?>"><?php _e( 'Background Image:', ORGANIC_WIDGETS_18N ) ?></label>
-			<div class="uploader">
-				<input type="submit" class="button" name="<?php echo $this->get_field_name('uploader_button'); ?>" id="<?php echo $this->get_field_id('uploader_button'); ?>" value="<?php _e( 'Select an Image', ORGANIC_WIDGETS_18N ); ?>" onclick="subpageWidgetImage.uploader( '<?php echo $this->id; ?>', '<?php echo $id_prefix; ?>' ); return false;" />
-				<input type="submit" class="organic_widgets-remove-image-button button" name="<?php echo $this->get_field_name('remover_button'); ?>" id="<?php echo $this->get_field_id('remover_button'); ?>" value="<?php _e('Remove Image', ORGANIC_WIDGETS_18N); ?>" onclick="subpageWidgetImage.remover( '<?php echo $this->id; ?>', '<?php echo $id_prefix; ?>', 'remover_button' ); return false;" <?php if ( $bg_image_id < 1 ) { echo( 'style="display:none;"' ); } ?>/>
-				<div class="organic_widgets-widget-image-preview" id="<?php echo $this->get_field_id('preview'); ?>">
-					<?php echo $this->get_image_html($instance); ?>
-				</div>
-				<input type="hidden" id="<?php echo $this->get_field_id('bg_image_id'); ?>" name="<?php echo $this->get_field_name('bg_image_id'); ?>" value="<?php echo abs($bg_image_id); ?>" />
-				<input type="hidden" id="<?php echo $this->get_field_id('bg_image'); ?>" name="<?php echo $this->get_field_name('bg_image'); ?>" value="<?php echo $bg_image; ?>" />
-			</div>
-		</p>
-		<p>
-			<label for="<?php echo $this->get_field_id( 'bg_video' ); ?>"><?php _e('Background Video:', ORGANIC_WIDGETS_18N) ?></label>
-			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'bg_video' ); ?>" name="<?php echo $this->get_field_name( 'bg_video' ); ?>" value="<?php echo esc_url($bg_video); ?>" />
-		</p>
-
-		<?php //$this->echo_color_picker_js( "'#" . $this->get_field_id( 'bg_color' ) . "'" ); ?>
-
-		<p>
-			<label for="<?php echo $this->get_field_name('bg_color'); ?>"><?php _e( 'Background Color:', ORGANIC_WIDGETS_18N ) ?></label><br>
-			<input type="text" name="<?php echo $this->get_field_name('bg_color'); ?>" id="<?php echo $this->get_field_id( 'bg_color' ); ?>" value="<?php echo esc_attr($bg_color); ?>" class="organic-widgets-color-picker" />
-		</p>
-
-
-		<hr />
-
 		<p>
 			<label for="<?php echo $this->get_field_id( 'section_title' ); ?>"><?php _e('Section Title:', ORGANIC_WIDGETS_18N) ?></label>
 			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'section_title' ); ?>" name="<?php echo $this->get_field_name( 'section_title' ); ?>" value="<?php echo $section_title; ?>" />
@@ -222,6 +196,10 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 			<label for="<?php echo $this->get_field_id( 'subpage_summary' ); ?>"><?php _e('Section Content:', ORGANIC_WIDGETS_18N) ?></label>
 			<textarea class="widefat" rows="6" cols="20" id="<?php echo $this->get_field_id( 'subpage_summary' ); ?>" name="<?php echo $this->get_field_name( 'subpage_summary' ); ?>"><?php echo $subpage_summary; ?></textarea>
 		</p>
+
+		<?php $this->section_background_input_markup( $instance ); ?>
+
+		<hr />
 
 		<?php
 	}
@@ -237,17 +215,6 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 	 * @return array Updated safe values to be saved.
 	 */
 	public function update( $new_instance, $old_instance ) {
-
-		error_log('');
-		error_log('UPDATING');
-		error_log('');
-		error_log('NEW INSTANCE');
-		error_log(print_r($new_instance,true));
-		error_log('');
-		error_log('');
-		error_log('OLD INSTANCE');
-		error_log(print_r($old_instance,true));
-		error_log('');
 
 		$instance = $old_instance;
 
@@ -283,51 +250,7 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 			$instance['title'] = '';
 		}
 
-		error_log('');
-		error_log('INSTANCE');
-		error_log(print_r($old_instance,true));
-		error_log('');
-
 		return $instance;
-	}
-
-	/**
-	 * Render the image html output.
-	 *
-	 * @param array $instance
-	 * @param bool $include_link will only render the link if this is set to true. Otherwise link is ignored.
-	 * @return string image html
-	 */
-	private function get_image_html( $instance ) {
-
-		if ( isset( $instance['bg_image_id'] ) ) {
-			$bg_image_id = $instance['bg_image_id'];
-		} else { $bg_image_id = 0; }
-
-		$output = '';
-
-		$size = 'organic_widgets-featured-large';
-
-		$attr = array();
-		$attr = apply_filters( 'image_widget_image_attributes', $attr, $instance );
-
-		$img_array = wp_get_attachment_image( $bg_image_id, $size, false, $attr );
-
-		// If there is an bg_image, use it to render the image. Eventually we should kill this and simply rely on bg_image_ids.
-		if ( ! empty( $instance['bg_image'] ) ) {
-			// If all we have is an image src url we can still render an image.
-			$attr['src'] = $instance['bg_image'];
-			$attr = array_map( 'esc_attr', $attr );
-			$output .= "<img ";
-			foreach ( $attr as $name => $value ) {
-				$output .= sprintf( ' %s="%s"', $name, $value );
-			}
-			$output .= ' />';
-		} elseif( abs( $bg_image_id ) > 0 ) {
-			$output .= $img_array[0];
-		}
-
-		return $output;
 	}
 
 	/**
@@ -338,12 +261,14 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 		wp_enqueue_media();
 		wp_enqueue_script( 'organic_widgets-subpage-widget-js', plugin_dir_url( __FILE__ ) . 'js/subpage-widget.js', array( 'jquery', 'media-upload', 'media-views' ) );
 
-		// Add for Color Picker CSS and JS
+		// Scripts for Color Picker
     wp_enqueue_style( 'wp-color-picker' );
 		wp_enqueue_script( 'wp-color-picker' );
 		wp_enqueue_script( 'organic-widgets-module-color-picker', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-color-picker.js', array( 'jquery', 'media-upload', 'media-views', 'wp-color-picker' ) );
 
-		wp_localize_script( 'organic_widgets-subpage-widget-js', 'SubpageWidget', array(
+		// Scripts for Image Background Module
+		wp_enqueue_script( 'organic-widgets-module-image-background', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-image-background.js', array( 'jquery', 'media-upload', 'media-views', 'wp-color-picker' ) );
+		wp_localize_script( 'organic-widgets-module-image-background', 'SubpageWidget', array(
 			'frame_title' => __( 'Select an Image', ORGANIC_WIDGETS_18N ),
 			'button_title' => __( 'Insert Into Widget', ORGANIC_WIDGETS_18N ),
 		) );
