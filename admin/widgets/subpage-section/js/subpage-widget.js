@@ -40,12 +40,11 @@ jQuery(document).ready(function($){
 			$("#" + widget_id_string + 'bg_image').val(attachment.url);
 			$("#" + widget_id_string + 'size').val('organic_widgets-featured-large');
 
-			console.log(widget_id);
-			console.log(widget_id_string);
-			console.log(attachment);
+			// Trigger change in preview window
+			$("#" + widget_id_string + 'bg_image').trigger('change');
 
 			var section = $('#' + widget_id).find('.organic_widgets-section');
-			console.log(section.length);
+
 			section.css('background-image', attachment);
 
 		},
@@ -67,7 +66,6 @@ jQuery(document).ready(function($){
 				var img_html = '';
 			}
 
-			wp.customize.previewer.refresh();
 			return img_html;
 		},
 
@@ -78,11 +76,6 @@ jQuery(document).ready(function($){
 
 			var field = $("#" + widget_id_string + field_name);
 			field.hide();
-
-			console.log(widget_id);
-			console.log(widget_id_string);
-			console.log(field_name);
-
 
 			return false;
 		},

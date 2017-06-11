@@ -7,7 +7,6 @@
 /*-- Check for Overriding Template in theme --*/
 if ( locate_template( 'organic-custom-template.php' ) != '' ) {
 	// Load the overriding page template from the theme
-  error_log('found template');
 	get_template_part( 'organic', 'custom-template' );
 } else {
 	// Load the default Custom Template from the plugin

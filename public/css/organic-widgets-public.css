@@ -10,4 +10,6 @@
  .organic_widgets-section {
    background-size: cover;
    background-position: center center;
+   padding: 20px;
+   margin: 0;
  }
