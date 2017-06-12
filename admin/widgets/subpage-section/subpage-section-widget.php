@@ -31,6 +31,13 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 
 		$this->id_prefix = $this->get_field_id('');
 
+		// Bg options
+		$this->bg_options = array(
+			'color' => true,
+			'image' => true,
+			'video' => true
+		);
+
 		add_action( 'sidebar_admin_setup', array( $this, 'admin_setup' ) );
 
 	}
@@ -74,14 +81,14 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 
 			<?php echo $args['after_widget'];
 
-		} elseif ( ! empty( $instance['section_title'] ) || ! empty( $instance['subpage_summary'] ) ) {
+		} elseif ( ! empty( $instance['title'] ) || ! empty( $instance['summary'] ) ) {
 
 			$bg_image_id = isset( $instance['bg_image_id'] ) ? $instance['bg_image_id'] : false;
 			$bg_image = ( isset( $instance['bg_image'] ) && '' != $instance['bg_image'] ) ? $instance['bg_image'] : false;
 			$bg_color = ( isset( $instance['bg_color'] ) && '' != $instance['bg_color'] ) ? $instance['bg_color'] : false;
 			$bg_video  = ( isset( $instance['bg_video'] ) && $instance['bg_video'] ) ? $instance['bg_video'] : false;
-			$section_title = $instance['section_title'];
-			$subpage_summary = $instance['subpage_summary'];
+			$title = ( isset( $instance['title'] ) ) ? $instance['title'] : false;
+			$summary = ( isset( $instance['summary'] ) ) ? $instance['summary'] : false;
 
 			echo $args['before_widget'];
 
@@ -107,11 +114,11 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 					<?php }
 				} ?>
 
-				<?php if ( ! empty( $section_title ) ) { ?>
-					<h3 class="headline text-center"><?php echo esc_html( $section_title ); ?></h3>
+				<?php if ( ! empty( $title ) ) { ?>
+					<h3 class="headline text-center"><?php echo esc_html( $title ); ?></h3>
 				<?php } ?>
-				<?php if ( ! empty( $subpage_summary ) ) { ?>
-					<p class="summary"><?php echo $subpage_summary ?></p>
+				<?php if ( ! empty( $summary ) ) { ?>
+					<p class="summary"><?php echo $summary ?></p>
 				<?php } ?>
 
 			</div>
@@ -133,7 +140,7 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 	 */
 	public function form( $instance ) {
 
-
+		$this->id_prefix = $this->get_field_id('');
 
 		if ( isset( $instance[ 'page_id' ] ) ) {
 			$page_id = $instance[ 'page_id' ];
@@ -159,13 +166,13 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 			$bg_color = $instance['bg_color'];
 		} else { $bg_color = false; }
 
-		if ( isset( $instance[ 'section_title' ] ) ) {
-			$section_title = $instance[ 'section_title' ];
-		} else { $section_title = ''; }
+		if ( isset( $instance[ 'title' ] ) ) {
+			$title = $instance[ 'title' ];
+		} else { $title = ''; }
 
-		if ( isset( $instance[ 'subpage_summary' ] ) ) {
-			$subpage_summary = $instance[ 'subpage_summary' ];
-		} else { $subpage_summary = ''; }
+		if ( isset( $instance[ 'summary' ] ) ) {
+			$summary = $instance[ 'summary' ];
+		} else { $summary = ''; }
 
 
 
@@ -189,15 +196,15 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 		<h3><?php _e('Or Add Custom Content:', ORGANIC_WIDGETS_18N) ?></h3>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'section_title' ); ?>"><?php _e('Section Title:', ORGANIC_WIDGETS_18N) ?></label>
-			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'section_title' ); ?>" name="<?php echo $this->get_field_name( 'section_title' ); ?>" value="<?php echo $section_title; ?>" />
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e('Section Title:', ORGANIC_WIDGETS_18N) ?></label>
+			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $title; ?>" />
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'subpage_summary' ); ?>"><?php _e('Section Content:', ORGANIC_WIDGETS_18N) ?></label>
-			<textarea class="widefat" rows="6" cols="20" id="<?php echo $this->get_field_id( 'subpage_summary' ); ?>" name="<?php echo $this->get_field_name( 'subpage_summary' ); ?>"><?php echo $subpage_summary; ?></textarea>
+			<label for="<?php echo $this->get_field_id( 'summary' ); ?>"><?php _e('Section Content:', ORGANIC_WIDGETS_18N) ?></label>
+			<textarea class="widefat" rows="6" cols="20" id="<?php echo $this->get_field_id( 'summary' ); ?>" name="<?php echo $this->get_field_name( 'summary' ); ?>"><?php echo $summary; ?></textarea>
 		</p>
 
-		<?php $this->section_background_input_markup( $instance ); ?>
+		<?php $this->section_background_input_markup( $instance, $this->bg_options ); ?>
 
 		<hr />
 
@@ -234,18 +241,18 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 		} else {
 			$instance['bg_color'] = false;
 		}
-		if ( isset( $new_instance['section_title'] ) )
-			$instance['section_title'] = strip_tags( $new_instance['section_title'] );
-		if ( isset( $new_instance['subpage_summary'] ) )
-			$instance['subpage_summary'] = strip_tags( $new_instance['subpage_summary'] );
+		if ( isset( $new_instance['title'] ) )
+			$instance['title'] = strip_tags( $new_instance['title'] );
+		if ( isset( $new_instance['summary'] ) )
+			$instance['summary'] = strip_tags( $new_instance['summary'] );
 
 
 		//Widget Title
 		if ( isset( $new_instance['page_id'] ) && $new_instance['page_id'] > 0 ) {
 			$instance['title'] = strip_tags( get_the_title( $instance['page_id'] ) );
 		}
-		elseif ( isset( $new_instance['section_title'] )  && '' != $new_instance['section_title'] ) {
-			$instance['title'] = strip_tags( $new_instance['section_title'] );
+		elseif ( isset( $new_instance['title'] )  && '' != $new_instance['title'] ) {
+			$instance['title'] = strip_tags( $new_instance['title'] );
 		} else {
 			$instance['title'] = '';
 		}
@@ -260,20 +267,17 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 
 		wp_enqueue_media();
 		wp_enqueue_script( 'organic_widgets-subpage-widget-js', plugin_dir_url( __FILE__ ) . 'js/subpage-widget.js', array( 'jquery', 'media-upload', 'media-views' ) );
+		wp_enqueue_style( 'organic_widgets-subpage-widget-css', plugin_dir_url( __FILE__ ) . 'css/subpage-widget.css' );
 
-		// Scripts for Color Picker
-    wp_enqueue_style( 'wp-color-picker' );
+		wp_enqueue_style( 'wp-color-picker' );
 		wp_enqueue_script( 'wp-color-picker' );
-		wp_enqueue_script( 'organic-widgets-module-color-picker', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-color-picker.js', array( 'jquery', 'media-upload', 'media-views', 'wp-color-picker' ) );
+    wp_enqueue_script( 'organic-widgets-module-color-picker', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-color-picker.js', array( 'jquery', 'media-upload', 'media-views', 'wp-color-picker' ) );
 
-		// Scripts for Image Background Module
 		wp_enqueue_script( 'organic-widgets-module-image-background', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-image-background.js', array( 'jquery', 'media-upload', 'media-views', 'wp-color-picker' ) );
 		wp_localize_script( 'organic-widgets-module-image-background', 'SubpageWidget', array(
 			'frame_title' => __( 'Select an Image', ORGANIC_WIDGETS_18N ),
 			'button_title' => __( 'Insert Into Widget', ORGANIC_WIDGETS_18N ),
 		) );
-
-		wp_enqueue_style( 'organic_widgets-subpage-widget-css', plugin_dir_url( __FILE__ ) . 'css/subpage-widget.css' );
 
 	}
 

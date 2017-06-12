@@ -31,6 +31,12 @@ class Organic_Widgets_Profile_Widget extends Organic_Widgets_Custom_Widget {
 
 		$this->id_prefix = $this->get_field_id('');
 
+		// Bg options
+		$this->bg_options = array(
+			'color' => true,
+			'image' => true
+		);
+
 		add_action( 'sidebar_admin_setup', array( $this, 'admin_setup' ) );
 	}
 	/**
@@ -57,66 +63,72 @@ class Organic_Widgets_Profile_Widget extends Organic_Widgets_Custom_Widget {
 		echo $args['before_widget'];
 		?>
 
-		<!-- BEGIN .profile -->
-		<div class="profile">
+		<!-- BEGIN .organic_widgets-section -->
+		<div class="organic_widgets-section organic_widgets-profile-section<?php if ( 0 < $bg_image_id ) { ?> has-thumb text-white<?php } ?>" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
 
-			<!-- BEGIN .holder -->
-			<div class="holder radius-full">
+			<!-- BEGIN .profile -->
+			<div class="profile">
 
-				<?php if ( $instance['bg_image_id'] > 0 ) { ?>
-					<div class="feature-img"><img src="<?php echo $instance['bg_image']; ?>" alt="<?php __( 'Profile Image', ORGANIC_WIDGETS_18N ) ?>" /></div>
-				<?php } ?>
+				<!-- BEGIN .holder -->
+				<div class="holder radius-full">
 
-				<!-- BEGIN .information -->
-				<div class="information">
-
-				<?php if ( ! empty( $instance['title'] ) ) { ?>
-					<h2 class="title"><?php echo apply_filters( 'widget_title', $instance['title'] ); ?></h2>
-				<?php } ?>
-
-				<?php if ( ! empty( $instance['subtitle'] ) ) { ?>
-					<h3 class="sub-title"><?php echo $instance['subtitle']; ?></h3>
-				<?php } ?>
-
-				<?php if ( ! empty( $instance['summary'] ) ) { ?>
-					<div class="excerpt"><?php echo $instance['summary']; ?></div>
-				<?php } ?>
-
-				<?php if ( ! empty( $instance['personal_url'] ) || ! empty( $instance['twitter_url'] ) || ! empty( $instance['linkedin_url'] ) || ! empty( $instance['facebook_url'] ) || ! empty( $instance['email'] ) ) { ?>
-
-				<ul class="social-icons">
-
-					<?php if ( ! empty( $instance['personal_url'] ) ) { ?>
-						<li><a href="<?php echo $instance['personal_url']; ?>" target="_blank"><span><?php esc_html_e( 'Personal Link', ORGANIC_WIDGETS_18N ); ?></span></a></li>
+					<?php if ( $instance['bg_image_id'] > 0 ) { ?>
+						<div class="feature-img"><img src="<?php echo $instance['bg_image']; ?>" alt="<?php __( 'Profile Image', ORGANIC_WIDGETS_18N ) ?>" /></div>
 					<?php } ?>
 
-					<?php if ( ! empty( $instance['twitter_url'] ) ) { ?>
-						<li><a href="<?php echo $instance['twitter_url']; ?>" target="_blank"><span><?php esc_html_e( 'Twitter', ORGANIC_WIDGETS_18N ); ?></span></a></li>
+					<!-- BEGIN .information -->
+					<div class="information">
+
+					<?php if ( ! empty( $instance['title'] ) ) { ?>
+						<h2 class="title"><?php echo apply_filters( 'widget_title', $instance['title'] ); ?></h2>
 					<?php } ?>
 
-					<?php if ( ! empty( $instance['linkedin_url'] ) ) { ?>
-						<li><a href="<?php echo $instance['linkedin_url']; ?>" target="_blank"><span><?php esc_html_e( 'LinkedIn', ORGANIC_WIDGETS_18N ); ?></span></a></li>
+					<?php if ( ! empty( $instance['subtitle'] ) ) { ?>
+						<h3 class="sub-title"><?php echo $instance['subtitle']; ?></h3>
 					<?php } ?>
 
-					<?php if ( ! empty( $instance['facebook_url'] ) ) { ?>
-						<li><a href="<?php echo $instance['facebook_url']; ?>" target="_blank"><span><?php esc_html_e( 'Facebook', ORGANIC_WIDGETS_18N ); ?></span></a></li>
+					<?php if ( ! empty( $instance['summary'] ) ) { ?>
+						<div class="excerpt"><?php echo $instance['summary']; ?></div>
 					<?php } ?>
 
-					<?php if ( ! empty( $instance['email'] ) ) { ?>
-						<li><a href="mailto:<?php echo $instance['email']; ?>" target="_blank"><span><?php esc_html_e( 'Email', ORGANIC_WIDGETS_18N ); ?></span></a></li>
+					<?php if ( ! empty( $instance['personal_url'] ) || ! empty( $instance['twitter_url'] ) || ! empty( $instance['linkedin_url'] ) || ! empty( $instance['facebook_url'] ) || ! empty( $instance['email'] ) ) { ?>
+
+					<ul class="social-icons">
+
+						<?php if ( ! empty( $instance['personal_url'] ) ) { ?>
+							<li><a href="<?php echo $instance['personal_url']; ?>" target="_blank"><span><?php esc_html_e( 'Personal Link', ORGANIC_WIDGETS_18N ); ?></span></a></li>
+						<?php } ?>
+
+						<?php if ( ! empty( $instance['twitter_url'] ) ) { ?>
+							<li><a href="<?php echo $instance['twitter_url']; ?>" target="_blank"><span><?php esc_html_e( 'Twitter', ORGANIC_WIDGETS_18N ); ?></span></a></li>
+						<?php } ?>
+
+						<?php if ( ! empty( $instance['linkedin_url'] ) ) { ?>
+							<li><a href="<?php echo $instance['linkedin_url']; ?>" target="_blank"><span><?php esc_html_e( 'LinkedIn', ORGANIC_WIDGETS_18N ); ?></span></a></li>
+						<?php } ?>
+
+						<?php if ( ! empty( $instance['facebook_url'] ) ) { ?>
+							<li><a href="<?php echo $instance['facebook_url']; ?>" target="_blank"><span><?php esc_html_e( 'Facebook', ORGANIC_WIDGETS_18N ); ?></span></a></li>
+						<?php } ?>
+
+						<?php if ( ! empty( $instance['email'] ) ) { ?>
+							<li><a href="mailto:<?php echo $instance['email']; ?>" target="_blank"><span><?php esc_html_e( 'Email', ORGANIC_WIDGETS_18N ); ?></span></a></li>
+						<?php } ?>
+
+					</ul>
+
 					<?php } ?>
 
-				</ul>
+					<!-- END .information -->
+					</div>
 
-				<?php } ?>
-
-				<!-- END .information -->
+				<!-- END .holder -->
 				</div>
 
-			<!-- END .holder -->
+			<!-- END .profile -->
 			</div>
 
-		<!-- END .profile -->
+		<!-- END .organic_widgets-section -->
 		</div>
 
 		<?php echo $args['after_widget'];
@@ -132,8 +144,7 @@ class Organic_Widgets_Profile_Widget extends Organic_Widgets_Custom_Widget {
 	 */
 	public function form( $instance ) {
 
-
-
+		$this->id_prefix = $this->get_field_id('');
 
 		if (!isset( $instance['bg_image_id'] ) ) {
 			$instance['bg_image_id'] = 0;
@@ -166,7 +177,7 @@ class Organic_Widgets_Profile_Widget extends Organic_Widgets_Custom_Widget {
 			$instance['email'] = false;
 		}
 
-		$this->section_background_input_markup( $instance ); ?>
+		$this->section_background_input_markup( $instance, $this->bg_options ); ?>
 
 		<p>
 			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e('Title:', ORGANIC_WIDGETS_18N) ?></label>
@@ -250,57 +261,24 @@ class Organic_Widgets_Profile_Widget extends Organic_Widgets_Custom_Widget {
 	}
 
 	/**
-	 * Render the image html output.
-	 *
-	 * @param array $instance
-	 * @param bool $include_link will only render the link if this is set to true. Otherwise link is ignored.
-	 * @return string image html
-	 */
-	protected function get_image_HTML( $instance ) {
-
-		if ( isset( $instance['bg_image_id'] ) ) {
-			$instance['bg_image_id'] = $instance['bg_image_id'];
-		} else { $instance['bg_image_id'] = 0; }
-
-		$output = '';
-
-		$size = 'organic_widgets-featured-square';
-
-		$attr = array();
-		$attr = apply_filters( 'image_widget_image_attributes', $attr, $instance );
-
-		$img_array = wp_get_attachment_image( $instance['bg_image_id'], $size, false, $attr );
-
-		// If there is an bg_image, use it to render the image. Eventually we should kill this and simply rely on bg_image_ids.
-		if ( ! empty( $instance['bg_image'] ) ) {
-			// If all we have is an image src url we can still render an image.
-			$attr['src'] = $instance['bg_image'];
-			$attr = array_map( 'esc_attr', $attr );
-			$output .= "<img ";
-			foreach ( $attr as $name => $value ) {
-				$output .= sprintf( ' %s="%s"', $name, $value );
-			}
-			$output .= ' />';
-		} elseif( abs( $instance['bg_image_id'] ) > 0 ) {
-			$output .= $img_array[0];
-		}
-
-		return $output;
-	}
-
-	/**
 	 * Enqueue all the javascript.
 	 */
 	public function admin_setup() {
+
 		wp_enqueue_media();
 		wp_enqueue_script( 'organic_widgets-profile-widget-js', plugin_dir_url( __FILE__ ) . 'js/profile-widget.js', array( 'jquery', 'media-upload', 'media-views' ) );
+		wp_enqueue_style( 'organic_widgets-profile-widget-css', plugin_dir_url( __FILE__ ) . 'css/profile-widget.css' );
 
-		wp_localize_script( 'organic_widgets-profile-widget-js', 'ProfileWidget', array(
+		wp_enqueue_style( 'wp-color-picker' );
+		wp_enqueue_script( 'wp-color-picker' );
+    wp_enqueue_script( 'organic-widgets-module-color-picker', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-color-picker.js', array( 'jquery', 'media-upload', 'media-views', 'wp-color-picker' ) );
+
+		wp_enqueue_script( 'organic-widgets-module-image-background', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-image-background.js', array( 'jquery', 'media-upload', 'media-views', 'wp-color-picker' ) );
+		wp_localize_script( 'organic-widgets-module-image-background', 'SubpageWidget', array(
 			'frame_title' => __( 'Select an Image', ORGANIC_WIDGETS_18N ),
 			'button_title' => __( 'Insert Into Widget', ORGANIC_WIDGETS_18N ),
 		) );
 
-		wp_enqueue_style( 'organic_widgets-profile-widget-css', plugin_dir_url( __FILE__ ) . 'css/profile-widget.css' );
 	}
 
 } // class Organic_Widgets_Profile_Widget

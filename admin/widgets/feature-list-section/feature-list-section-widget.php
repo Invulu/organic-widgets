@@ -31,6 +31,12 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 
 		$this->id_prefix = $this->get_field_id('');
 
+		// Bg options
+		$this->bg_options = array(
+			'color' => true,
+			'image' => true
+		);
+
 		add_action( 'sidebar_admin_setup', array( $this, 'admin_setup' ) );
 
 	}
@@ -60,27 +66,21 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 
 			?>
 
-			<?php if ( $page_query->have_posts() ) : while ( $page_query->have_posts() ) : $page_query->the_post(); ?>
+			<!-- BEGIN .organic_widgets-section -->
+			<div class="organic_widgets-section organic_widgets-feature-list-section<?php if ( 0 < $bg_image_id ) { ?> has-thumb text-white<?php } ?>" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
 
-			<div class="organic_widgets-feature-list-section<?php if ( has_post_thumbnail( $page_id ) ) { ?> has-thumb text-white<?php } ?>" <?php if ( has_post_thumbnail( $page_id ) ) { ?>style="background-image:url(<?php echo $the_featured_image; ?>);"<?php } ?>>
-
-				<?php the_content( esc_html__( 'Read More', ORGANIC_WIDGETS_18N ) ); ?>
-
+			<!-- END .organic_widgets-section -->
 			</div>
-
-			<?php endwhile; ?>
-			<?php endif; ?>
-			<?php wp_reset_postdata(); ?>
 
 			<?php echo $args['after_widget'];
 
-		} elseif ( ! empty( $instance['section_title'] ) || ! empty( $instance['feature_list_summary'] ) ) {
+		} elseif ( ! empty( $instance['title'] ) || ! empty( $instance['feature_list_summary'] ) ) {
 
 			$bg_image_id = isset( $instance['bg_image_id'] ) ? $instance['bg_image_id'] : false;
 			$bg_image = ( isset( $instance['bg_image'] ) && '' != $instance['bg_image'] ) ? $instance['bg_image'] : false;
 			$bg_color = ( isset( $instance['bg_color'] ) && '' != $instance['bg_color'] ) ? $instance['bg_color'] : false;
 			$bg_video  = ( isset( $instance['bg_video'] ) && $instance['bg_video'] ) ? $instance['bg_video'] : false;
-			$section_title = $instance['section_title'];
+			$title = $instance['title'];
 			$feature_list_summary = $instance['feature_list_summary'];
 
 			echo $args['before_widget'];
@@ -108,8 +108,8 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 					<?php }
 				} ?>
 
-				<?php if ( ! empty( $section_title ) ) { ?>
-					<h3 class="headline text-center"><?php echo esc_html( $section_title ); ?></h3>
+				<?php if ( ! empty( $title ) ) { ?>
+					<h3 class="headline text-center"><?php echo esc_html( $title ); ?></h3>
 				<?php } ?>
 				<?php if ( ! empty( $feature_list_summary ) ) { ?>
 					<p class="summary"><?php echo $feature_list_summary ?></p>
@@ -133,6 +133,8 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 	 * @param array $instance Previously saved values from database.
 	 */
 	public function form( $instance ) {
+
+		$this->id_prefix = $this->get_field_id('');
 
 		if ( isset( $instance[ 'page_id' ] ) ) {
 			$page_id = $instance[ 'page_id' ];
@@ -158,9 +160,9 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 			$bg_color = $instance['bg_color'];
 		} else { $bg_color = false; }
 
-		if ( isset( $instance[ 'section_title' ] ) ) {
-			$section_title = $instance[ 'section_title' ];
-		} else { $section_title = ''; }
+		if ( isset( $instance[ 'title' ] ) ) {
+			$title = $instance[ 'title' ];
+		} else { $title = ''; }
 
 		if ( isset( $instance[ 'feature_list_summary' ] ) ) {
 			$feature_list_summary = $instance[ 'feature_list_summary' ];
@@ -187,13 +189,13 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 
 		<h3><?php _e('Or Add Custom Content:', ORGANIC_WIDGETS_18N) ?></h3>
 
-		<?php $this->section_background_input_markup( $instance ); ?>
+		<?php $this->section_background_input_markup( $instance, $this->bg_options ); ?>
 
 		<hr />
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'section_title' ); ?>"><?php _e('Section Title:', ORGANIC_WIDGETS_18N) ?></label>
-			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'section_title' ); ?>" name="<?php echo $this->get_field_name( 'section_title' ); ?>" value="<?php echo $section_title; ?>" />
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e('Section Title:', ORGANIC_WIDGETS_18N) ?></label>
+			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $title; ?>" />
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'feature_list_summary' ); ?>"><?php _e('Section Content:', ORGANIC_WIDGETS_18N) ?></label>
@@ -233,8 +235,8 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 		} else {
 			$instance['bg_color'] = false;
 		}
-		if ( isset( $new_instance['section_title'] ) )
-			$instance['section_title'] = strip_tags( $new_instance['section_title'] );
+		if ( isset( $new_instance['title'] ) )
+			$instance['title'] = strip_tags( $new_instance['title'] );
 		if ( isset( $new_instance['feature_list_summary'] ) )
 			$instance['feature_list_summary'] = strip_tags( $new_instance['feature_list_summary'] );
 
@@ -244,8 +246,8 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 		if ( isset( $new_instance['page_id'] ) && $new_instance['page_id'] > 0 ) {
 			$instance['title'] = strip_tags( get_the_title( $instance['page_id'] ) );
 		}
-		elseif ( isset( $new_instance['section_title'] )  && '' != $new_instance['section_title'] ) {
-			$instance['title'] = strip_tags( $new_instance['section_title'] );
+		elseif ( isset( $new_instance['title'] )  && '' != $new_instance['title'] ) {
+			$instance['title'] = strip_tags( $new_instance['title'] );
 		} else {
 			$instance['title'] = '';
 		}
@@ -254,61 +256,24 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 	}
 
 	/**
-	 * Render the image html output.
-	 *
-	 * @param array $instance
-	 * @param bool $include_link will only render the link if this is set to true. Otherwise link is ignored.
-	 * @return string image html
-	 */
-	protected function get_image_HTML( $instance ) {
-
-		if ( isset( $instance['bg_image_id'] ) ) {
-			$bg_image_id = $instance['bg_image_id'];
-		} else { $bg_image_id = 0; }
-
-		$output = '';
-
-		$size = 'organic_widgets-featured-large';
-
-		$attr = array();
-		$attr = apply_filters( 'image_widget_image_attributes', $attr, $instance );
-
-		$img_array = wp_get_attachment_image( $bg_image_id, $size, false, $attr );
-
-		// If there is an bg_image, use it to render the image. Eventually we should kill this and simply rely on bg_image_ids.
-		if ( ! empty( $instance['bg_image'] ) ) {
-			// If all we have is an image src url we can still render an image.
-			$attr['src'] = $instance['bg_image'];
-			$attr = array_map( 'esc_attr', $attr );
-			$output .= "<img ";
-			foreach ( $attr as $name => $value ) {
-				$output .= sprintf( ' %s="%s"', $name, $value );
-			}
-			$output .= ' />';
-		} elseif( abs( $bg_image_id ) > 0 ) {
-			$output .= $img_array[0];
-		}
-
-		return $output;
-	}
-
-	/**
 	 * Enqueue all the javascript.
 	 */
 	public function admin_setup() {
+
 		wp_enqueue_media();
 		wp_enqueue_script( 'organic_widgets-feature-list-section-widget-js', plugin_dir_url( __FILE__ ) . 'js/feature-list-section-widget.js', array( 'jquery', 'media-upload', 'media-views' ) );
+		wp_enqueue_style( 'organic_widgets-feature-list-section-widget-css', plugin_dir_url( __FILE__ ) . 'css/feature-list-section-widget.css' );
 
-		// Add for Color Picker CSS and JS
-    wp_enqueue_style( 'wp-color-picker' );
-		wp_enqueue_script( 'organic-widgets-module-color-picker', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-color-picker.js', array( 'jquery', 'wp-color-picker' ) );
+		wp_enqueue_style( 'wp-color-picker' );
+		wp_enqueue_script( 'wp-color-picker' );
+    wp_enqueue_script( 'organic-widgets-module-color-picker', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-color-picker.js', array( 'jquery', 'media-upload', 'media-views', 'wp-color-picker' ) );
 
-		wp_localize_script( 'organic_widgets-feature-list-section-widget-js', 'FeatureListSectionWidget', array(
+		wp_enqueue_script( 'organic-widgets-module-image-background', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-image-background.js', array( 'jquery', 'media-upload', 'media-views', 'wp-color-picker' ) );
+		wp_localize_script( 'organic-widgets-module-image-background', 'SubpageWidget', array(
 			'frame_title' => __( 'Select an Image', ORGANIC_WIDGETS_18N ),
 			'button_title' => __( 'Insert Into Widget', ORGANIC_WIDGETS_18N ),
 		) );
 
-		wp_enqueue_style( 'organic_widgets-feature-list-section-widget-css', plugin_dir_url( __FILE__ ) . 'css/feature-list-section-widget.css' );
 	}
 
 } // class Organic_Widgets_Feature_List_Section_Widget

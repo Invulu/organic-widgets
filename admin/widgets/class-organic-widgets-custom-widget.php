@@ -21,6 +21,15 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
   protected $id_prefix;
 
   /**
+	 * Array containing the background options to allow for the section
+	 *
+	 * @since    1.0.0
+	 * @access   protected
+	 * @var      Organic_Widgets_Custom_Widget    $bg_options    array of options for backgrounds
+	 */
+  protected $bg_options;
+
+  /**
 	 * Check if a given hex value is valid
 	 *
 	 * @since    	1.0.0
@@ -117,6 +126,41 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
     $pattern = '/[^a-zA-Z0-9]/';
 
     return preg_replace($pattern, '', (string) $input);
+
+  }
+
+  public function bg_color_scripts() {
+
+    // Scripts for Color Picker
+    if ( ! wp_style_is( 'wp-color-picker', 'enqueued' ) ) {
+      wp_enqueue_style( 'wp-color-picker' );
+    }
+		if ( ! wp_script_is( 'wp-color-picker', 'enqueued' ) ) {
+      wp_enqueue_script( 'wp-color-picker' );
+    }
+    if ( ! wp_script_is( 'organic-widgets-module-color-picker', 'enqueued' ) ) {
+      wp_enqueue_script( 'organic-widgets-module-color-picker', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-color-picker.js', array( 'jquery', 'media-upload', 'media-views', 'wp-color-picker' ) );
+    }
+
+  }
+
+  public function bg_image_scripts() {
+
+    // Scripts for Image Background Module
+		if ( ! wp_script_is( 'organic-widgets-module-image-background', 'enqueued' ) ) {
+      error_log('bg_image_scripts');
+      wp_enqueue_script( 'organic-widgets-module-image-background', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-image-background.js', array( 'jquery', 'media-upload', 'media-views', 'wp-color-picker' ) );
+    }
+		if ( ! wp_script_is( 'organic-widgets-module-image-background', 'enqueued' ) ) {
+      wp_localize_script( 'organic-widgets-module-image-background', 'SubpageWidget', array(
+  			'frame_title' => __( 'Select an Image', ORGANIC_WIDGETS_18N ),
+  			'button_title' => __( 'Insert Into Widget', ORGANIC_WIDGETS_18N ),
+  		) );
+    }
+
+  }
+
+  public function bg_video_scripts() {
 
   }
 
@@ -279,7 +323,9 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
 
   }
 
-  protected function section_background_input_markup( $instance ) {
+  protected function section_background_input_markup( $instance, $bg_options ) {
+
+
 
     $bg_color = array_key_exists( 'bg_color', $instance ) && $instance['bg_color'] ? $instance['bg_color'] : false;
     $bg_image_id = array_key_exists( 'bg_image_id', $instance ) && $instance['bg_image_id'] ? $instance['bg_image_id'] : false;
@@ -290,14 +336,14 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
 
     <h4>Section Background</h4>
 
-    <?php if ( $bg_color ) { ?>
+    <?php if ( array_key_exists( 'color', $bg_options ) && $bg_options['color'] ) { ?>
       <p>
   			<label for="<?php echo $this->get_field_name('bg_color'); ?>"><?php _e( 'Background Color:', ORGANIC_WIDGETS_18N ) ?></label><br>
   			<input type="text" name="<?php echo $this->get_field_name('bg_color'); ?>" id="<?php echo $this->get_field_id( 'bg_color' ); ?>" value="<?php echo esc_attr($bg_color); ?>" class="organic-widgets-color-picker" />
   		</p>
     <?php } ?>
 
-    <?php if ( $bg_image ) { ?>
+    <?php if ( array_key_exists( 'image', $bg_options ) && $bg_options['image'] ) { ?>
       <p>
   			<label for="<?php echo $this->get_field_id( 'bg_image' ); ?>"><?php _e( 'Background Image:', ORGANIC_WIDGETS_18N ) ?></label>
   			<div class="uploader">
@@ -312,7 +358,7 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
   		</p>
     <?php } ?>
 
-    <?php if ( $bg_video ) { ?>
+    <?php if ( array_key_exists( 'video', $bg_options ) && $bg_options['video'] ) { ?>
       <p>
   			<label for="<?php echo $this->get_field_id( 'bg_video' ); ?>"><?php _e('Background Video:', ORGANIC_WIDGETS_18N) ?></label>
   			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'bg_video' ); ?>" name="<?php echo $this->get_field_name( 'bg_video' ); ?>" value="<?php echo esc_url($bg_video); ?>" />

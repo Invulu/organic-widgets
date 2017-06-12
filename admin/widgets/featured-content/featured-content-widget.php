@@ -31,6 +31,12 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 
 		$this->id_prefix = $this->get_field_id('');
 
+		// Bg options
+		$this->bg_options = array(
+			'color' => true,
+			'image' => true
+		);
+
 		add_action( 'sidebar_admin_setup', array( $this, 'admin_setup' ) );
 	}
 	/**
@@ -52,17 +58,23 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 
 			?>
 
-			<div class="holder">
-				<div class="feature-img"><?php echo get_the_post_thumbnail( $page_id, 'organic_widgets-featured-medium' )?></div>
-				<div class="information">
-					<?php if ( ! empty( $page_title ) ) { ?>
-						<h3 class="headline"><?php echo apply_filters( 'widget_title', $page_title ); ?></h3>
-					<?php } ?>
-					<?php if ( ! empty( $page_excerpt ) ) { ?>
-						<div class="excerpt"><?php echo $page_excerpt; ?></div>
-					<?php } ?>
-					<a class="button" href="<?php echo get_the_permalink( $page_id );?>"><?php esc_html_e( 'Read More', ORGANIC_WIDGETS_18N ); ?></a>
+			<!-- BEGIN .organic_widgets-section -->
+			<div class="organic_widgets-section organic_widgets-featured-content-section<?php if ( 0 < $bg_image_id ) { ?> has-thumb text-white<?php } ?>" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
+
+				<div class="holder">
+					<div class="feature-img"><?php echo get_the_post_thumbnail( $page_id, 'organic_widgets-featured-medium' )?></div>
+					<div class="information">
+						<?php if ( ! empty( $page_title ) ) { ?>
+							<h3 class="headline"><?php echo apply_filters( 'widget_title', $page_title ); ?></h3>
+						<?php } ?>
+						<?php if ( ! empty( $page_excerpt ) ) { ?>
+							<div class="excerpt"><?php echo $page_excerpt; ?></div>
+						<?php } ?>
+						<a class="button" href="<?php echo get_the_permalink( $page_id );?>"><?php esc_html_e( 'Read More', ORGANIC_WIDGETS_18N ); ?></a>
+					</div>
 				</div>
+
+			<!-- END .organic_widgets-section -->
 			</div>
 
 			<?php
@@ -129,7 +141,7 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 	public function form( $instance ) {
 
 		// Set up variables
-
+		$this->id_prefix = $this->get_field_id('');
 		if ( isset( $instance['bg_image_id'] ) && '' != $instance['bg_image_id'] ) {
 			$bg_image_id = $instance['bg_image_id'];
 		} else { $bg_image_id = 0; }
@@ -170,7 +182,7 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 
 		<p><b><?php _e('Or Add Custom Content:', ORGANIC_WIDGETS_18N) ?></b></p>
 
-		<?php $this->section_background_input_markup( $instance ); ?>
+		<?php $this->section_background_input_markup( $instance, $this->bg_options ); ?>
 
 		<p>
 			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e('Title:', ORGANIC_WIDGETS_18N) ?></label>
@@ -214,45 +226,6 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 	}
 
 	/**
-	 * Render the image html output.
-	 *
-	 * @param array $instance
-	 * @param bool $include_link will only render the link if this is set to true. Otherwise link is ignored.
-	 * @return string image html
-	 */
-	protected function get_image_HTML( $instance ) {
-
-		if ( isset( $instance['bg_image_id'] ) && '' != $instance['bg_image_id'] ) {
-			$bg_image_id = $instance['bg_image_id'];
-		} else { $bg_image_id = 0; }
-
-		$output = '';
-
-		$size = 'organic_widgets-featured-medium';
-
-		$attr = array();
-		$attr = apply_filters( 'image_widget_image_attributes', $attr, $instance );
-
-		$img_array = wp_get_attachment_image_src($bg_image_id, $size, false, $attr);
-
-		// If there is an bg_image, use it to render the image. Eventually we should kill this and simply rely on bg_image_ids.
-		if ( 0 < $bg_image_id ) {
-			// If all we have is an image src url we can still render an image.
-			$attr['src'] = $img_array[0];
-			$attr = array_map( 'esc_attr', $attr );
-			$output .= "<img ";
-			foreach ( $attr as $name => $value ) {
-				$output .= sprintf( ' %s="%s"', $name, $value );
-			}
-			$output .= ' />';
-		} elseif( abs( $bg_image_id ) > 0 ) {
-			$output .= $img_array[0];
-		}
-
-		return $output;
-	}
-
-	/**
 	 * Get The Excerpt By Id
 	 */
 	private function organic_widgets_get_the_excerpt( $post_id ) {
@@ -268,16 +241,21 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 	 * Enqueue all the javascript.
 	 */
 	public function admin_setup() {
+
 		wp_enqueue_media();
-
 		wp_enqueue_script( 'organic_widgets-featured-content-widget-js', plugin_dir_url( __FILE__ ) . 'js/featured-content-widget.js', array( 'jquery', 'media-upload', 'media-views' ) );
+		wp_enqueue_style( 'organic_widgets-featured-content-widget-css', plugin_dir_url( __FILE__ ) . 'css/featured-content-widget.css' );
 
-		wp_localize_script( 'organic_widgets-featured-content-widget-js', 'FeaturedContentWidget', array(
+		wp_enqueue_style( 'wp-color-picker' );
+		wp_enqueue_script( 'wp-color-picker' );
+    wp_enqueue_script( 'organic-widgets-module-color-picker', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-color-picker.js', array( 'jquery', 'media-upload', 'media-views', 'wp-color-picker' ) );
+
+		wp_enqueue_script( 'organic-widgets-module-image-background', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-image-background.js', array( 'jquery', 'media-upload', 'media-views', 'wp-color-picker' ) );
+		wp_localize_script( 'organic-widgets-module-image-background', 'SubpageWidget', array(
 			'frame_title' => __( 'Select an Image', ORGANIC_WIDGETS_18N ),
 			'button_title' => __( 'Insert Into Widget', ORGANIC_WIDGETS_18N ),
 		) );
 
-		wp_enqueue_style( 'organic_widgets-featured-content-widget-css', plugin_dir_url( __FILE__ ) . 'css/featured-content-widget.css' );
 	}
 
 } // class Organic_Widgets_Content_Widget

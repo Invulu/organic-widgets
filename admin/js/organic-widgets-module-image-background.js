@@ -44,7 +44,8 @@ jQuery(document).ready(function($){
 			$("#" + widget_id_string + 'uploader_button').val('Change Image');
 
 			// Trigger change in preview window
-			$("#" + widget_id_string + 'bg_image').trigger('change');
+      $("#" + widget_id_string + 'bg_image').trigger('change');
+
 
 			var section = $('#' + widget_id).find('.organic_widgets-section');
 
@@ -81,6 +82,9 @@ jQuery(document).ready(function($){
 
 			var field = $("#" + widget_id_string + field_name);
 			field.hide();
+
+      // Trigger change in preview window
+      $("#" + widget_id_string + 'bg_image').trigger('change');
 
 			return false;
 		},
