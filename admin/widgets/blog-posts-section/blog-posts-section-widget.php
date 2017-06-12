@@ -59,6 +59,7 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 		$bg_video  = ( isset( $instance['bg_video'] ) && $instance['bg_video'] ) ? $instance['bg_video'] : false;
 		$title = ( isset( $instance['title'] ) ) ? $instance['title'] : false;
 		$summary = ( isset( $instance['summary'] ) ) ? $instance['summary'] : false;
+		$category = ( isset( $instance['category'] ) ) ? $instance['category'] : false;
 
 		echo $args['before_widget'];
 		?>
@@ -73,6 +74,10 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 
 					<?php if ( ! empty( $instance['title'] ) ) { ?>
 						<h2 class="headline <?php if ( $bg_image_id > 0 ) { ?> text-white<?php } ?>"><?php echo apply_filters( 'widget_title', $instance['title'] ); ?></h2>
+					<?php } ?>
+
+					<?php if ( ! empty( $instance['summary'] ) ) { ?>
+						<p class="summary"><?php echo $instance['summary'] ?></p>
 					<?php } ?>
 
 					<!-- BEGIN .post-area -->
@@ -111,6 +116,12 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 		if ( isset( $instance['title'] ) ) {
 			$title = $instance['title'];
 		} else { $title = false; }
+		if ( isset( $instance[ 'summary' ] ) ) {
+			$summary = $instance[ 'summary' ];
+		} else { $summary = ''; }
+		if ( isset( $instance['category'] ) ) {
+			$category = $instance['category'];
+		} else { $category = false; }
 		if ( isset( $instance['bg_color'] ) ) {
 			$bg_color = $instance['bg_color'];
 		} else { $bg_color = false; }
@@ -126,6 +137,20 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 		<p>
 			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e('Title:', ORGANIC_WIDGETS_18N) ?></label>
 			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php if ( $title ) echo $title; ?>" />
+		</p>
+
+		<p>
+			<label for="<?php echo $this->get_field_id( 'summary' ); ?>"><?php _e('Section Content:', ORGANIC_WIDGETS_18N) ?></label>
+			<textarea class="widefat" rows="6" cols="20" id="<?php echo $this->get_field_id( 'summary' ); ?>" name="<?php echo $this->get_field_name( 'summary' ); ?>"><?php echo $summary; ?></textarea>
+		</p>
+
+		<p>
+			<label for="<?php echo $this->get_field_id( 'category' ); ?>"><?php _e('Post Category:', ORGANIC_WIDGETS_18N) ?></label>
+			<?php wp_dropdown_categories( array(
+				'selected' => $category,
+				'id' => $this->get_field_id( 'category' ),
+				'name' => $this->get_field_name( 'category' )
+			)); ?>
 		</p>
 
 		<?php $this->section_background_input_markup( $instance, $this->bg_options ); ?>
@@ -152,6 +177,15 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 			$instance['bg_image_id'] = strip_tags( $new_instance['bg_image_id'] );
 		if (isset( $new_instance['bg_image'] ) )
 			$instance['bg_image'] = strip_tags( $new_instance['bg_image'] );
+		if ( isset( $new_instance['bg_color'] ) && $this->check_hex_color( $new_instance['bg_color'] ) ) {
+			$instance['bg_color'] = strip_tags( $new_instance['bg_color'] );
+		} else {
+			$instance['bg_color'] = false;
+		}
+		if ( isset( $new_instance['summary'] ) )
+			$instance['summary'] = strip_tags( $new_instance['summary'] );
+		if ( isset( $new_instance['category'] ) )
+			$instance['category'] = $new_instance['category'];
 
 		return $instance;
 	}
