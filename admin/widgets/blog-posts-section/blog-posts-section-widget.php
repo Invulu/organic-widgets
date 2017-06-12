@@ -59,18 +59,14 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 		$bg_video  = ( isset( $instance['bg_video'] ) && $instance['bg_video'] ) ? $instance['bg_video'] : false;
 		$title = ( isset( $instance['title'] ) ) ? $instance['title'] : false;
 		$summary = ( isset( $instance['summary'] ) ) ? $instance['summary'] : false;
-		$category = ( isset( $instance['category'] ) ) ? $instance['category'] : false;
+		$category = ( isset( $instance['category'] ) ) ? $instance['category'] : 0;
+		$num_columns = ( isset( $instance['num_columns'] ) ) ? $instance['num_columns'] : 0;
+		$max_posts = ( isset( $instance['max_posts'] ) ) ? $instance['max_posts'] : 3;
 
 		echo $args['before_widget'];
 		?>
 		<!-- BEGIN .organic_widgets-section -->
 		<div class="organic_widgets-section organic_widgets-blog-posts-section<?php if ( 0 < $bg_image_id ) { ?> has-thumb text-white<?php } ?>" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
-
-			<!-- BEGIN .row -->
-			<div class="row">
-
-				<!-- BEGIN .content -->
-				<div class="content">
 
 					<?php if ( ! empty( $instance['title'] ) ) { ?>
 						<h2 class="headline <?php if ( $bg_image_id > 0 ) { ?> text-white<?php } ?>"><?php echo apply_filters( 'widget_title', $instance['title'] ); ?></h2>
@@ -80,19 +76,32 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 						<p class="summary"><?php echo $instance['summary'] ?></p>
 					<?php } ?>
 
-					<!-- BEGIN .post-area -->
-					<div class="post-area wide">
+						<?php $wp_query = new WP_Query( array(
+							'posts_per_page' => $max_posts,
+							'post_type' => 'post',
+							'paged' => $paged,
+							'suppress_filters' => 0,
+							'tax_query' => array(
+						    array(
+						      'taxonomy' => 'category',
+						      'field'    => 'id',
+						      'terms'    => $category
+						    ),
+						  ),
+						) ); ?>
+						<?php if ( $wp_query->have_posts() ) : while ( $wp_query->have_posts() ) : $wp_query->the_post(); ?>
 
-						<?php get_template_part( 'content/loop', 'blog' ); ?>
+							<article class="organic-widgets-columns organic-widgets-columns-<?php echo $num_columns; ?>">
 
-					<!-- END .post-area -->
-					</div>
+								<?php the_post_thumbnail(); ?>
 
-				<!-- END .content -->
-				</div>
+								<?php the_title(); ?>
 
-			<!-- END .row -->
-			</div>
+								<?php the_excerpt(); ?>
+
+							</article>
+
+						<?php endwhile; endif; ?>
 
 		<!-- END .organic_widgets-section -->
 		</div>
@@ -122,6 +131,12 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 		if ( isset( $instance['category'] ) ) {
 			$category = $instance['category'];
 		} else { $category = false; }
+		if ( isset( $instance['num_columns'] ) ) {
+			$num_columns = $instance['num_columns'];
+		} else { $num_columns = 3; }
+		if ( isset( $instance['max_posts'] ) ) {
+			$max_posts = $instance['max_posts'];
+		} else { $max_posts = 3; }
 		if ( isset( $instance['bg_color'] ) ) {
 			$bg_color = $instance['bg_color'];
 		} else { $bg_color = false; }
@@ -151,6 +166,18 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 				'id' => $this->get_field_id( 'category' ),
 				'name' => $this->get_field_name( 'category' )
 			)); ?>
+		</p>
+		<p>
+			<label for="<?php echo $this->get_field_id( 'max_posts' ); ?>"><?php _e('Max Number of Posts:', ORGANIC_WIDGETS_18N) ?></label>
+			<input type="number" min="1" max="16" value="<?php echo $max_posts; ?>" id="<?php echo $this->get_field_id('max_posts'); ?>" name="<?php echo $this->get_field_name('max_posts'); ?>" class="widefat" style="width:100%;"/>
+		</p>
+		<p>
+			<label for="<?php echo $this->get_field_id( 'num_columns' ); ?>"><?php _e('Number of Columns:', ORGANIC_WIDGETS_18N) ?></label>
+			<select id="<?php echo $this->get_field_id('num_columns'); ?>" name="<?php echo $this->get_field_name('num_columns'); ?>" class="widefat" style="width:100%;">
+		    <option <?php selected( $instance['num_columns'], '2'); ?> value="2">2</option>
+		    <option <?php selected( $instance['num_columns'], '3'); ?> value="3">3</option>
+		    <option <?php selected( $instance['num_columns'], '4'); ?> value="4">4</option>
+			</select>
 		</p>
 
 		<?php $this->section_background_input_markup( $instance, $this->bg_options ); ?>
@@ -185,7 +212,11 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 		if ( isset( $new_instance['summary'] ) )
 			$instance['summary'] = strip_tags( $new_instance['summary'] );
 		if ( isset( $new_instance['category'] ) )
-			$instance['category'] = $new_instance['category'];
+			$instance['category'] = strip_tags( $new_instance['category'] );
+		if ( isset( $new_instance['num_columns'] ) )
+			$instance['num_columns'] = strip_tags( $new_instance['num_columns'] );
+		if ( isset( $new_instance['max_posts'] ) )
+			$instance['max_posts'] = strip_tags( $new_instance['max_posts'] );
 
 		return $instance;
 	}

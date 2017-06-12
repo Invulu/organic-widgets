@@ -13,3 +13,37 @@
    padding: 20px;
    margin: 0;
  }
+
+.organic_widgets-blog-posts-section article {
+  background: #fff;
+  padding: 20px;
+  margin: 20px 0;
+}
+
+.organic-widgets-columns {
+  display: inline-block;
+}
+
+.organic-widgets-columns-2 {
+  width: 50%;
+}
+
+.organic-widgets-columns-3 {
+  width: 33.33%;
+}
+
+.organic-widgets-columns-4 {
+  width: 25%
+}
+
+@media screen and (max-width: 767px) {
+
+  .organic-widgets-columns {
+    display: block;
+  }
+
+  .organic-widgets-columns-2, .organic-widgets-columns-3, .organic-widgets-columns-4 {
+    width: 100%;
+  }
+
+}
