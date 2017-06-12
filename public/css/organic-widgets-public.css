@@ -47,3 +47,65 @@
   }
 
 }
+
+/************************************************
+*	Desktop Grid																	*
+************************************************/
+
+.organic-widgets-flex-row {
+	display: flex;
+	align-items: stretch;
+	justify-content: space-between;
+}
+.organic-widgets-row {
+	width: 100%;
+	margin: 0 auto;
+	position: relative;
+}
+.organic-widgets-row .organic-widgets-row {
+	min-width: 0;
+}
+.organic-widgets-column, .organic-widgets-columns {
+	float: left;
+	min-height: 1px;
+	position: relative;
+	box-sizing: border-box;
+}
+[class*="organic-widgets-column"] + [class*="organic-widgets-column"]:last-child {
+	float: right;
+}
+
+.organic-widgets-single 	{ width: 100%; }
+.organic-widgets-half 		{ width: 49.9%; }
+.organic-widgets-third 		{ width: 33.3%; }
+.organic-widgets-fourth 	{ width: 25%; }
+.organic-widgets-fifth 		{ width: 20%; }
+
+.organic-widgets-half,
+.organic-widgets-third,
+.organic-widgets-fourth,
+.organic-widgets-fifth 	{ float: left; }
+
+.organic-widgets-row .organic-widgets-one 		{ width: 6.25%; }
+.organic-widgets-row .organic-widgets-two 		{ width: 12.5%; }
+.organic-widgets-row .organic-widgets-three 	{ width: 18.75%; }
+.organic-widgets-row .organic-widgets-four 		{ width: 25%; }
+.organic-widgets-row .organic-widgets-five 		{ width: 31.25%; }
+.organic-widgets-row .organic-widgets-six 		{ width: 37.5%; }
+.organic-widgets-row .organic-widgets-seven 	{ width: 43.75%; }
+.organic-widgets-row .organic-widgets-eight 	{ width: 50%; }
+.organic-widgets-row .organic-widgets-nine 		{ width: 56.25%; }
+.organic-widgets-row .organic-widgets-ten 		{ width: 62.5%; }
+.organic-widgets-row .organic-widgets-eleven 	{ width: 68.75%; }
+.organic-widgets-row .organic-widgets-twelve 	{ width: 75%; }
+.organic-widgets-row .organic-widgets-thirteen 	{ width: 81.25%; }
+.organic-widgets-row .organic-widgets-fourteen 	{ width: 87.5%; }
+.organic-widgets-row .organic-widgets-fifteen 	{ width: 93.75%; }
+.organic-widgets-row .organic-widgets-sixteen 	{ width: 100%; }
+
+.organic-widgets-row .organic-widgets-centered { float: none; margin: 0 auto; width: 100%; }
+
+/* Nicolas Gallagher's micro clearfix */
+.organic-widgets-row:before, .organic-widgets-row:after, .organic-widgets-clearfix:before, .organic-widgets-clearfix:after { content:""; display:table; }
+.organic-widgets-row:after, .organic-widgets-clearfix:after { clear: both; }
+.organic-widgets-row, .organic-widgets-clearfix { zoom: 1; }
