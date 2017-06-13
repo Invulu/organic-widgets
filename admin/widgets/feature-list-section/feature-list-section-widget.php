@@ -50,79 +50,34 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 	 */
 	public function widget( $args, $instance ) {
 
-		if ( ! empty( $instance['page_id'] ) ) {
+		$bg_image_id = isset( $instance['bg_image_id'] ) ? $instance['bg_image_id'] : false;
+		$bg_image = ( isset( $instance['bg_image'] ) && '' != $instance['bg_image'] ) ? $instance['bg_image'] : false;
+		$bg_color = ( isset( $instance['bg_color'] ) && '' != $instance['bg_color'] ) ? $instance['bg_color'] : false;
+		$title = $instance['title'];
+		$feature_list_summary = $instance['feature_list_summary'];
+		$num_columns = ( isset( $instance['num_columns'] ) ) ? $instance['num_columns'] : 0;
 
-			// Get Page Info
-			$page_id = $instance['page_id'];
-			$the_featured_image = get_the_post_thumbnail_url( $page_id, 'organic_widgets-featured-large' );
-
-			$page_query = new WP_Query(array(
-				'post_type'	 				=> 'page',
-				'page_id' 					=> $page_id,
-				'posts_per_page' 		=> 1,
-			) );
-
-			echo $args['before_widget'];
-
-			?>
-
-			<!-- BEGIN .organic_widgets-section -->
-			<div class="organic_widgets-section organic_widgets-feature-list-section<?php if ( 0 < $bg_image_id ) { ?> has-thumb text-white<?php } ?>" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
-
-			<!-- END .organic_widgets-section -->
-			</div>
-
-			<?php echo $args['after_widget'];
-
-		} elseif ( ! empty( $instance['title'] ) || ! empty( $instance['feature_list_summary'] ) ) {
-
-			$bg_image_id = isset( $instance['bg_image_id'] ) ? $instance['bg_image_id'] : false;
-			$bg_image = ( isset( $instance['bg_image'] ) && '' != $instance['bg_image'] ) ? $instance['bg_image'] : false;
-			$bg_color = ( isset( $instance['bg_color'] ) && '' != $instance['bg_color'] ) ? $instance['bg_color'] : false;
-			$bg_video  = ( isset( $instance['bg_video'] ) && $instance['bg_video'] ) ? $instance['bg_video'] : false;
-			$title = $instance['title'];
-			$feature_list_summary = $instance['feature_list_summary'];
-			$num_columns = ( isset( $instance['num_columns'] ) ) ? $instance['num_columns'] : 0;
-
-			echo $args['before_widget'];
+		echo $args['before_widget'];
 
 
-			?>
+		?>
 
-			<div class="organic_widgets-feature-list-section<?php if ( 0 < $bg_image_id ) { ?> has-thumb text-white<?php } ?>" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
+		<div class="organic_widgets-feature-list-section<?php if ( 0 < $bg_image_id ) { ?> has-thumb text-white<?php } ?>" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
 
-				<?php
-				// Video Background Section.
-				if ( $bg_video ) {
+			<?php if ( ! empty( $title ) ) { ?>
+				<h3 class="headline text-center"><?php echo esc_html( $title ); ?></h3>
+			<?php } ?>
+			<?php if ( ! empty( $feature_list_summary ) ) { ?>
+				<p class="summary"><?php echo $feature_list_summary ?></p>
+			<?php } ?>
 
-					$this->video_bg_script( $bg_video, $this->id );
+		</div>
 
-					$video_type = $this->get_video_type( $bg_video );
-					if ( 'youtube' == $video_type ) {
+		<?php
 
-						$video_id = $this->youtube_id_from_url( $bg_video );
-					?>
-						<div class="organic-widgets-video-bg-wrapper">
-							<?php if ( 'youtube' == $video_type ) { ?><div id="organic-widgets-player<?php the_id(); ?>"></div><?php } ?>
-						</div>
+		echo $args['after_widget'];
 
-					<?php }
-				} ?>
 
-				<?php if ( ! empty( $title ) ) { ?>
-					<h3 class="headline text-center"><?php echo esc_html( $title ); ?></h3>
-				<?php } ?>
-				<?php if ( ! empty( $feature_list_summary ) ) { ?>
-					<p class="summary"><?php echo $feature_list_summary ?></p>
-				<?php } ?>
-
-			</div>
-
-			<?php
-
-			echo $args['after_widget'];
-
-		}
 
 	}
 
@@ -137,10 +92,6 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 
 		$this->id_prefix = $this->get_field_id('');
 
-		if ( isset( $instance[ 'page_id' ] ) ) {
-			$page_id = $instance[ 'page_id' ];
-		} else { $page_id = 0; }
-
 		if ( isset( $instance['bg_image_id'] ) ) {
 			$bg_image_id = $instance['bg_image_id'];
 		} else { $bg_image_id = 0; }
@@ -148,10 +99,6 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 		if ( isset( $instance['bg_image_id'] ) && isset( $instance['bg_image'] ) ) {
 			$bg_image = $instance['bg_image'];
 		} else { $bg_image = false; }
-
-		if ( isset( $instance['bg_video'] ) ) {
-			$bg_video = $instance['bg_video'];
-		} else { $bg_video = false; }
 
 		if ( isset( $instance['bg_color'] ) ) {
 			$bg_color = $instance['bg_color'];
@@ -173,30 +120,11 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 			$num_columns = $instance['num_columns'];
 		} else { $num_columns = 3; }
 
-
-
-		?>
-
-		<h3><?php _e('Choose Existing Page:', ORGANIC_WIDGETS_18N) ?></h3>
-
-		<p>
-			<?php wp_dropdown_pages( array(
-				'class' => 'widefat',
-				'selected' => $page_id,
-				'id' => $this->get_field_id( 'page_id' ),
-				'name' => $this->get_field_name( 'page_id' ),
-				'show_option_none' => __( '— Select Existing Page —', ORGANIC_WIDGETS_18N ),
-				'option_none_value' => '0',
-			) ); ?>
-		</p>
+		$this->section_background_input_markup( $instance, $this->bg_options ); ?>
 
 		<hr />
 
-		<h3><?php _e('Or Add Custom Content:', ORGANIC_WIDGETS_18N) ?></h3>
-
-		<?php $this->section_background_input_markup( $instance, $this->bg_options ); ?>
-
-		<hr />
+		<h4>Content</h4>
 
 		<p>
 			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e('Section Title:', ORGANIC_WIDGETS_18N) ?></label>
@@ -232,17 +160,10 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 
 		$instance = $old_instance;
 
-		if ( isset( $new_instance['page_id'] ) && $new_instance['page_id'] > 0 );
-			$instance['page_id'] = strip_tags( $new_instance['page_id'] );
 		if ( isset( $new_instance['bg_image_id'] ) )
 			$instance['bg_image_id'] = strip_tags( $new_instance['bg_image_id'] );
 		if ( isset( $new_instance['bg_image'] ) )
 			$instance['bg_image'] = strip_tags( $new_instance['bg_image'] );
-		if ( isset( $new_instance['bg_video'] ) && $this->check_video_url( $new_instance['bg_video'] ) ) {
-			$instance['bg_video'] = strip_tags( $new_instance['bg_video'] );
-		} else {
-			$instance['bg_video'] = false;
-		}
 		if ( isset( $new_instance['bg_color'] ) && $this->check_hex_color( $new_instance['bg_color'] ) ) {
 			$instance['bg_color'] = strip_tags( $new_instance['bg_color'] );
 		} else {
@@ -255,13 +176,8 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 		if ( isset( $new_instance['num_columns'] ) )
 			$instance['num_columns'] = strip_tags( $new_instance['num_columns'] );
 
-
-
 		//Widget Title
-		if ( isset( $new_instance['page_id'] ) && $new_instance['page_id'] > 0 ) {
-			$instance['title'] = strip_tags( get_the_title( $instance['page_id'] ) );
-		}
-		elseif ( isset( $new_instance['title'] )  && '' != $new_instance['title'] ) {
+		if ( isset( $new_instance['title'] )  && '' != $new_instance['title'] ) {
 			$instance['title'] = strip_tags( $new_instance['title'] );
 		} else {
 			$instance['title'] = '';
