@@ -17,16 +17,12 @@
 .organic_widgets-blog-posts-section article {
   background: #ffffff;
   margin: 10px;
+}
+
+.organic-widgets-blog-posts-holder .organic-widgets-content {
   padding: 20px;
 }
 
-.organic-widget-masonry-wrapper {
-  
-}
-
-.organic_widgets-blog-posts-section .organic-widgets-column {
-  /*margin: 20px;*/
-}
 
 /************************************************
 *	Desktop Grid																	*
