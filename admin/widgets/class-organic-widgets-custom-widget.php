@@ -129,6 +129,42 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
 
   }
 
+	/**
+   * Get a spelling of a number
+   *
+   * @since    	1.0.0
+   * @param     int    $input      Input number
+   * @return    string   					 Spelled out number
+   */
+  protected function spell_number($input) {
+
+    if ( $input == 2 ) return 'two';
+		if ( $input == 3 ) return 'two';
+		if ( $input == 4 ) return 'two';
+
+		return '';
+
+  }
+
+	/**
+   * Get column string from int
+   *
+   * @since    	1.0.0
+   * @param     int    $input      Input number
+   * @return    string   					 Column string
+   */
+  protected function column_string($input) {
+
+    if ( $input == 2 ) return 'half';
+		if ( $input == 3 ) return 'third';
+		if ( $input == 4 ) return 'fourth';
+		if ( $input == 5 ) return 'fifth';
+		if ( $input == 6 ) return 'sixth';
+
+		return '';
+
+  }
+
   public function bg_color_scripts() {
 
     // Scripts for Color Picker

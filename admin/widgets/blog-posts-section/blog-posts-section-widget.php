@@ -89,19 +89,25 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 						    ),
 						  ),
 						) ); ?>
-						<?php if ( $wp_query->have_posts() ) : while ( $wp_query->have_posts() ) : $wp_query->the_post(); ?>
+						<?php if ( $wp_query->have_posts() ) : ?>
 
-							<article class="organic-widgets-columns organic-widgets-columns-<?php echo $num_columns; ?>">
+							<div class="organic-widgets-row">
 
-								<?php the_post_thumbnail(); ?>
+								<?php while ( $wp_query->have_posts() ) : $wp_query->the_post(); ?>
 
-								<?php the_title(); ?>
+								<article class="organic-widgets-columns organic-widgets-<?php echo $this->column_string($num_columns); ?>">
 
-								<?php the_excerpt(); ?>
+									<?php the_post_thumbnail(); ?>
 
-							</article>
+									<?php the_title(); ?>
 
-						<?php endwhile; endif; ?>
+									<?php the_excerpt(); ?>
+
+								</article>
+
+							<?php endwhile; endif; ?>
+
+						</div>
 
 		<!-- END .organic_widgets-section -->
 		</div>
