@@ -40,6 +40,9 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 
 		// Admin Scripts
 		add_action( 'sidebar_admin_setup', array( $this, 'admin_setup' ) );
+
+		// Public scripts
+		add_action( 'wp_enqueue_scripts', array( $this, 'public_scripts') );
 	}
 	/**
 	 * Front-end display of widget.
@@ -79,7 +82,6 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 						<?php $wp_query = new WP_Query( array(
 							'posts_per_page' => $max_posts,
 							'post_type' => 'post',
-							'paged' => $paged,
 							'suppress_filters' => 0,
 							'tax_query' => array(
 						    array(
@@ -91,7 +93,7 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 						) ); ?>
 						<?php if ( $wp_query->have_posts() ) : ?>
 
-							<div class="organic-widgets-row">
+							<div class="organic-widgets-row organic-widgets-blog-posts-holder">
 
 								<?php while ( $wp_query->have_posts() ) : $wp_query->the_post(); ?>
 
@@ -228,7 +230,7 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 	}
 
 	/**
-	 * Enqueue all the javascript.
+	 * Enqueue admin javascript.
 	 */
 	public function admin_setup() {
 
@@ -247,5 +249,17 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 		) );
 
 	}
+
+	/**
+	 * Enqueue public javascript.
+	 */
+	public function public_scripts() {
+
+		error_log(plugin_dir_url());
+		wp_enqueue_script( 'blog-posts-section-widget-public-js', ORGANIC_WIDGETS_BASE_DIR . 'public/js/blog-posts-section.js', array( 'jquery', 'media-upload', 'media-views', 'masonry' ) );
+
+	}
+
+
 
 } // class Organic_Widgets_Blog_Posts_Section_Widget

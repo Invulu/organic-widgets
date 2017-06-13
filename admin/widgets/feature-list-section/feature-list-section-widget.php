@@ -82,6 +82,7 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 			$bg_video  = ( isset( $instance['bg_video'] ) && $instance['bg_video'] ) ? $instance['bg_video'] : false;
 			$title = $instance['title'];
 			$feature_list_summary = $instance['feature_list_summary'];
+			$num_columns = ( isset( $instance['num_columns'] ) ) ? $instance['num_columns'] : 0;
 
 			echo $args['before_widget'];
 
@@ -168,6 +169,10 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 			$feature_list_summary = $instance[ 'feature_list_summary' ];
 		} else { $feature_list_summary = ''; }
 
+		if ( isset( $instance['num_columns'] ) ) {
+			$num_columns = $instance['num_columns'];
+		} else { $num_columns = 3; }
+
 
 
 		?>
@@ -200,6 +205,14 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 		<p>
 			<label for="<?php echo $this->get_field_id( 'feature_list_summary' ); ?>"><?php _e('Section Content:', ORGANIC_WIDGETS_18N) ?></label>
 			<textarea class="widefat" rows="6" cols="20" id="<?php echo $this->get_field_id( 'feature_list_summary' ); ?>" name="<?php echo $this->get_field_name( 'feature_list_summary' ); ?>"><?php echo $feature_list_summary; ?></textarea>
+		</p>
+		<p>
+			<label for="<?php echo $this->get_field_id( 'num_columns' ); ?>"><?php _e('Number of Columns:', ORGANIC_WIDGETS_18N) ?></label>
+			<select id="<?php echo $this->get_field_id('num_columns'); ?>" name="<?php echo $this->get_field_name('num_columns'); ?>" class="widefat" style="width:100%;">
+		    <option <?php selected( $instance['num_columns'], '2'); ?> value="2">2</option>
+		    <option <?php selected( $instance['num_columns'], '3'); ?> value="3">3</option>
+		    <option <?php selected( $instance['num_columns'], '4'); ?> value="4">4</option>
+			</select>
 		</p>
 
 		<?php
@@ -239,6 +252,8 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 			$instance['title'] = strip_tags( $new_instance['title'] );
 		if ( isset( $new_instance['feature_list_summary'] ) )
 			$instance['feature_list_summary'] = strip_tags( $new_instance['feature_list_summary'] );
+		if ( isset( $new_instance['num_columns'] ) )
+			$instance['num_columns'] = strip_tags( $new_instance['num_columns'] );
 
 
 
