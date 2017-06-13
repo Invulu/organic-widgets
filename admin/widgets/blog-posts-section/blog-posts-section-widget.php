@@ -71,45 +71,54 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 		<!-- BEGIN .organic_widgets-section -->
 		<div class="organic_widgets-section organic_widgets-blog-posts-section<?php if ( 0 < $bg_image_id ) { ?> has-thumb text-white<?php } ?>" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
 
-					<?php if ( ! empty( $instance['title'] ) ) { ?>
-						<h2 class="headline <?php if ( $bg_image_id > 0 ) { ?> text-white<?php } ?>"><?php echo apply_filters( 'widget_title', $instance['title'] ); ?></h2>
-					<?php } ?>
+			<?php if ( ! empty( $instance['title'] ) ) { ?>
+				<h2 class="headline <?php if ( $bg_image_id > 0 ) { ?> text-white<?php } ?>"><?php echo apply_filters( 'widget_title', $instance['title'] ); ?></h2>
+			<?php } ?>
 
-					<?php if ( ! empty( $instance['summary'] ) ) { ?>
-						<p class="summary"><?php echo $instance['summary'] ?></p>
-					<?php } ?>
+			<?php if ( ! empty( $instance['summary'] ) ) { ?>
+				<p class="summary"><?php echo $instance['summary'] ?></p>
+			<?php } ?>
 
-						<?php $wp_query = new WP_Query( array(
-							'posts_per_page' => $max_posts,
-							'post_type' => 'post',
-							'suppress_filters' => 0,
-							'tax_query' => array(
-						    array(
-						      'taxonomy' => 'category',
-						      'field'    => 'id',
-						      'terms'    => $category
-						    ),
-						  ),
-						) ); ?>
-						<?php if ( $wp_query->have_posts() ) : ?>
+			<?php $wp_query = new WP_Query( array(
+				'posts_per_page' => $max_posts,
+				'post_type' => 'post',
+				'suppress_filters' => 0,
+				'tax_query' => array(
+			    array(
+			      'taxonomy' => 'category',
+			      'field'    => 'id',
+			      'terms'    => $category
+			    ),
+			  ),
+			) ); ?>
+			<?php if ( $wp_query->have_posts() ) : ?>
 
-							<div class="organic-widgets-row organic-widgets-blog-posts-holder">
+				<!-- BEGIN .organic-widgets-row -->
+				<div class="organic-widgets-blog-posts-holder">
 
-								<?php while ( $wp_query->have_posts() ) : $wp_query->the_post(); ?>
+					<?php while ( $wp_query->have_posts() ) : $wp_query->the_post(); ?>
 
-								<article class="organic-widgets-columns organic-widgets-<?php echo $this->column_string($num_columns); ?>">
+					<div class="organic-widget-masonry-wrapper organic-widgets-<?php echo $this->column_string( $num_columns ); ?>">
 
-									<?php the_post_thumbnail(); ?>
+						<article>
 
-									<?php the_title(); ?>
+							<?php the_post_thumbnail(); ?>
 
-									<?php the_excerpt(); ?>
+							<?php the_title(); ?>
 
-								</article>
+							<?php the_excerpt(); ?>
 
-							<?php endwhile; endif; ?>
+						</article>
 
-						</div>
+					</div>
+
+
+
+					<?php endwhile; ?>
+				<!-- END .organic-widgets-row -->
+				</div>
+
+			<?php endif; ?>
 
 		<!-- END .organic_widgets-section -->
 		</div>
@@ -255,7 +264,6 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 	 */
 	public function public_scripts() {
 
-		error_log(plugin_dir_url());
 		wp_enqueue_script( 'blog-posts-section-widget-public-js', ORGANIC_WIDGETS_BASE_DIR . 'public/js/blog-posts-section.js', array( 'jquery', 'media-upload', 'media-views', 'masonry' ) );
 
 	}

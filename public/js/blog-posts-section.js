@@ -6,7 +6,7 @@
 		var $container = $('.organic_widgets-blog-posts-section .organic-widgets-blog-posts-holder');
     console.log($container);
     $container.masonry({
-			itemSelector : '.single, .half, .third, .fourth'
+			itemSelector : '.organic-widget-masonry-wrapper'
 		});
 	}
 
