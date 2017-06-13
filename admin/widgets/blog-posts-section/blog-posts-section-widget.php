@@ -110,6 +110,16 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 
 								<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
 
+								<!-- BEGIN .organic-widgets-post-meta -->
+								<div class="organic-widgets-post-meta">
+									<div class="organic-widgets-post-date">
+										<p class="organic-widgets-align-left">
+											<?php echo get_the_modified_date(); ?>
+										</p>
+									</div>
+								<!-- END .organic-widgets-post-meta -->
+								</div>
+
 								<?php the_excerpt(); ?>
 
 							<!-- END .organic-widgets-content -->
