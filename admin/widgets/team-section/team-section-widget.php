@@ -92,7 +92,7 @@ class Organic_Widgets_Team_Section_Widget extends Organic_Widgets_Custom_Widget 
 			<?php if ( $wp_query->have_posts() ) : ?>
 
 				<!-- BEGIN .organic-widgets-row -->
-				<div class="organic-widgets-team-holder">
+				<div class="organic-widgets-team-holder organic-widgets-post-holder">
 
 					<?php while ( $wp_query->have_posts() ) : $wp_query->the_post(); ?>
 
@@ -282,6 +282,7 @@ class Organic_Widgets_Team_Section_Widget extends Organic_Widgets_Custom_Widget 
 	 */
 	public function public_scripts() {
 
+		wp_enqueue_script( 'organic-widgets-masonry', ORGANIC_WIDGETS_BASE_DIR . 'public/js/masonry.js', array( 'jquery', 'media-upload', 'media-views', 'masonry' ) );
 		wp_enqueue_script( 'team-section-widget-public-js', ORGANIC_WIDGETS_BASE_DIR . 'public/js/team-section.js', array( 'jquery', 'media-upload', 'media-views', 'masonry' ) );
 
 	}

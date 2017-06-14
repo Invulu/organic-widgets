@@ -107,7 +107,7 @@ class Organic_Widgets_Portfolio_Section_Widget extends Organic_Widgets_Custom_Wi
 			if ( $wp_query->have_posts() ) : ?>
 
 				<!-- BEGIN .organic-widgets-row -->
-				<div class="organic-widgets-portfolio-holder">
+				<div class="organic-widgets-portfolio-holder organic-widgets-post-holder">
 
 					<?php while ( $wp_query->have_posts() ) : $wp_query->the_post(); ?>
 
@@ -296,6 +296,7 @@ class Organic_Widgets_Portfolio_Section_Widget extends Organic_Widgets_Custom_Wi
 	 */
 	public function public_scripts() {
 
+		wp_enqueue_script( 'organic-widgets-masonry', ORGANIC_WIDGETS_BASE_DIR . 'public/js/masonry.js', array( 'jquery', 'media-upload', 'media-views', 'masonry' ) );
 		wp_enqueue_script( 'portfolio-section-widget-public-js', ORGANIC_WIDGETS_BASE_DIR . 'public/js/portfolio-section.js', array( 'jquery', 'media-upload', 'media-views', 'masonry' ) );
 
 	}
