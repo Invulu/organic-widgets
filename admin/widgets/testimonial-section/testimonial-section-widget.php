@@ -22,7 +22,7 @@ class Organic_Widgets_Testimonial_Section_Widget extends Organic_Widgets_Custom_
 	function __construct() {
 		parent::__construct(
 			'organic_widgets_testimonial_section', // Base ID
-			__( 'Portfolio Section', ORGANIC_WIDGETS_18N ), // Name
+			__( 'Testimonial Section', ORGANIC_WIDGETS_18N ), // Name
 			array(
 				'description' => __( 'A section displaying testimonial posts.', ORGANIC_WIDGETS_18N ),
 				'customize_selective_refresh' => true,
@@ -61,8 +61,7 @@ class Organic_Widgets_Testimonial_Section_Widget extends Organic_Widgets_Custom_
 		$title = ( isset( $instance['title'] ) ) ? $instance['title'] : false;
 		$summary = ( isset( $instance['summary'] ) ) ? $instance['summary'] : false;
 		$category = ( isset( $instance['category'] ) ) ? $instance['category'] : 0;
-		$num_columns = ( isset( $instance['num_columns'] ) ) ? $instance['num_columns'] : 4;
-		$max_posts = ( isset( $instance['max_posts'] ) ) ? $instance['max_posts'] : 4;
+		$max_posts = ( isset( $instance['max_posts'] ) ) ? $instance['max_posts'] : 10;
 
 		echo $args['before_widget'];
 		?>
@@ -184,7 +183,7 @@ class Organic_Widgets_Testimonial_Section_Widget extends Organic_Widgets_Custom_
 		} else { $num_columns = 3; }
 		if ( isset( $instance['max_posts'] ) ) {
 			$max_posts = $instance['max_posts'];
-		} else { $max_posts = 3; }
+		} else { $max_posts = 10; }
 		if ( isset( $instance['bg_color'] ) ) {
 			$bg_color = $instance['bg_color'];
 		} else { $bg_color = false; }
@@ -208,7 +207,7 @@ class Organic_Widgets_Testimonial_Section_Widget extends Organic_Widgets_Custom_
 		</p>
 		<?php if ( ! post_type_exists( 'jetpack-testimonial' ) ) { ?>
 			<p>
-				<label for="<?php echo $this->get_field_id( 'category' ); ?>"><?php _e('Team Category:', ORGANIC_WIDGETS_18N) ?></label>
+				<label for="<?php echo $this->get_field_id( 'category' ); ?>"><?php _e('Testimonial Category:', ORGANIC_WIDGETS_18N) ?></label>
 				<?php wp_dropdown_categories( array(
 					'selected' => $category,
 					'id' => $this->get_field_id( 'category' ),
@@ -218,15 +217,7 @@ class Organic_Widgets_Testimonial_Section_Widget extends Organic_Widgets_Custom_
 		<?php } ?>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'max_posts' ); ?>"><?php _e('Max Number of Posts:', ORGANIC_WIDGETS_18N) ?></label>
-			<input type="number" min="1" max="16" value="<?php echo $max_posts; ?>" id="<?php echo $this->get_field_id('max_posts'); ?>" name="<?php echo $this->get_field_name('max_posts'); ?>" class="widefat" style="width:100%;"/>
-		</p>
-		<p>
-			<label for="<?php echo $this->get_field_id( 'num_columns' ); ?>"><?php _e('Number of Columns:', ORGANIC_WIDGETS_18N) ?></label>
-			<select id="<?php echo $this->get_field_id('num_columns'); ?>" name="<?php echo $this->get_field_name('num_columns'); ?>" class="widefat" style="width:100%;">
-				<option <?php selected( $num_columns, '2'); ?> value="2">2</option>
-		    <option <?php selected( $num_columns, '3'); ?> value="3">3</option>
-		    <option <?php selected( $num_columns, '4'); ?> value="4">4</option>
-			</select>
+			<input type="number" min="1" max="10" value="<?php echo $max_posts; ?>" id="<?php echo $this->get_field_id('max_posts'); ?>" name="<?php echo $this->get_field_name('max_posts'); ?>" class="widefat" style="width:100%;"/>
 		</p>
 
 		<?php $this->section_background_input_markup( $instance, $this->bg_options ); ?>
@@ -262,8 +253,6 @@ class Organic_Widgets_Testimonial_Section_Widget extends Organic_Widgets_Custom_
 			$instance['summary'] = strip_tags( $new_instance['summary'] );
 		if ( isset( $new_instance['category'] ) )
 			$instance['category'] = strip_tags( $new_instance['category'] );
-		if ( isset( $new_instance['num_columns'] ) )
-			$instance['num_columns'] = strip_tags( $new_instance['num_columns'] );
 		if ( isset( $new_instance['max_posts'] ) )
 			$instance['max_posts'] = strip_tags( $new_instance['max_posts'] );
 
