@@ -34,8 +34,7 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 		// Bg options
 		$this->bg_options = array(
 			'color' => true,
-			'image' => true,
-			'video' => true
+			'image' => true
 		);
 
 		// Admin Scripts
@@ -59,7 +58,6 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 		$bg_image_id = isset( $instance['bg_image_id'] ) ? $instance['bg_image_id'] : false;
 		$bg_image = ( isset( $instance['bg_image'] ) && '' != $instance['bg_image'] ) ? $instance['bg_image'] : false;
 		$bg_color = ( isset( $instance['bg_color'] ) && '' != $instance['bg_color'] ) ? $instance['bg_color'] : false;
-		$bg_video  = ( isset( $instance['bg_video'] ) && $instance['bg_video'] ) ? $instance['bg_video'] : false;
 		$title = ( isset( $instance['title'] ) ) ? $instance['title'] : false;
 		$summary = ( isset( $instance['summary'] ) ) ? $instance['summary'] : false;
 		$category = ( isset( $instance['category'] ) ) ? $instance['category'] : 0;
@@ -214,6 +212,8 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 		    <option <?php selected( $num_columns, '4'); ?> value="4">4</option>
 			</select>
 		</p>
+
+		<hr />
 
 		<?php $this->section_background_input_markup( $instance, $this->bg_options ); ?>
 

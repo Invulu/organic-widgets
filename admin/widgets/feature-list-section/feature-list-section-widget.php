@@ -64,7 +64,7 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 
 		?>
 
-		<div class="organic_widgets-feature-list-section<?php if ( 0 < $bg_image_id ) { ?> has-thumb text-white<?php } ?>" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
+		<div class="organic_widgets-section organic_widgets-feature-list-section<?php if ( 0 < $bg_image_id ) { ?> has-thumb text-white<?php } ?>" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
 
 			<?php if ( ! empty( $title ) ) { ?>
 				<h3 class="headline text-center"><?php echo esc_html( $title ); ?></h3>
@@ -134,9 +134,7 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 			$num_columns = $instance['num_columns'];
 		} else { $num_columns = 3; }
 
-		$this->section_background_input_markup( $instance, $this->bg_options ); ?>
-
-		<hr />
+		?>
 
 		<h4>Content</h4>
 
@@ -165,7 +163,10 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 			</select>
 		</p>
 
-		<?php
+		<hr />
+
+		<?php $this->section_background_input_markup( $instance, $this->bg_options );
+		
 	}
 
 	/**

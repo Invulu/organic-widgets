@@ -175,9 +175,7 @@ class Organic_Widgets_Profile_Widget extends Organic_Widgets_Custom_Widget {
 		}
 		if (!isset( $instance['email'] ) ) {
 			$instance['email'] = false;
-		}
-
-		$this->section_background_input_markup( $instance, $this->bg_options ); ?>
+		} ?>
 
 		<p>
 			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e('Title:', ORGANIC_WIDGETS_18N) ?></label>
@@ -218,6 +216,10 @@ class Organic_Widgets_Profile_Widget extends Organic_Widgets_Custom_Widget {
 			<label for="<?php echo $this->get_field_id( 'email' ); ?>"><?php _e('Email Address:', ORGANIC_WIDGETS_18N) ?></label>
 			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'email' ); ?>" name="<?php echo $this->get_field_name( 'email' ); ?>" value="<?php echo $instance['email']; ?>" />
 		</p>
+
+		<hr/>
+
+		<?php $this->section_background_input_markup( $instance, $this->bg_options ); ?>
 
   <?php
 	}

@@ -155,7 +155,8 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
    */
   protected function column_string($input) {
 
-    if ( $input == 2 ) return 'half';
+		if ( $input == 1 ) return 'single';
+		if ( $input == 2 ) return 'half';
 		if ( $input == 3 ) return 'third';
 		if ( $input == 4 ) return 'fourth';
 		if ( $input == 5 ) return 'fifth';

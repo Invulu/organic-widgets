@@ -182,8 +182,6 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 
 		<p><b><?php _e('Or Add Custom Content:', ORGANIC_WIDGETS_18N) ?></b></p>
 
-		<?php $this->section_background_input_markup( $instance, $this->bg_options ); ?>
-
 		<p>
 			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e('Title:', ORGANIC_WIDGETS_18N) ?></label>
 			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $title; ?>" />
@@ -201,7 +199,10 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'link_title' ); ?>" name="<?php echo $this->get_field_name( 'link_title' ); ?>" value="<?php echo $link_title; ?>" />
 		</p>
 
-		<?php
+		<hr/>
+
+		<?php $this->section_background_input_markup( $instance, $this->bg_options );
+		
 	}
 	/**
 	 * Sanitize widget form values as they are saved.

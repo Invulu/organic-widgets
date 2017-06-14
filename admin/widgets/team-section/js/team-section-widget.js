@@ -1,6 +1,3 @@
 /**
- * Team Section Widget JS
+ * Blog Posts Section Widget JS
  */
-jQuery(document).ready(function($){
-
-});
