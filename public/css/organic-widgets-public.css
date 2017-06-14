@@ -3,19 +3,19 @@
  * included in this file.
  */
 
- .organic_widgets-section {
-   background-size: cover;
-   background-position: center center;
-   padding: 20px;
-   margin: 0;
+.organic_widgets-section {
+  background-size: cover;
+  background-position: center center;
+  padding: 20px;
+  margin: 0;
  }
 
-.organic_widgets-blog-posts-section article {
+.organic-widgets-post-holder article {
   background: #ffffff;
   margin: 10px;
 }
 
-.organic-widgets-blog-posts-holder .organic-widgets-content {
+.organic-widgets-post-holder .organic-widgets-content {
   padding: 20px;
 }
 

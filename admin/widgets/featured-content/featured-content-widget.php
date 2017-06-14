@@ -87,11 +87,9 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 
 			$attr = array();
 			$attr = apply_filters( 'image_widget_image_attributes', $attr, $instance );
-			if ( isset( $instance['bg_image_id'] ) && '' != $instance['bg_image_id'] ) {
-				$bg_image_id = $instance['bg_image_id'];
-				$img_array = wp_get_attachment_image_src($bg_image_id, 'organic_widgets-featured-medium', false, $attr);
-				$bg_image = $img_array[0];
-			} else { $bg_image_id = 0; }
+			$bg_color = isset( $instance['bg_color'] ) ? $instance['bg_color'] : false;
+			$bg_image_id = isset( $instance['bg_image_id'] ) ? $instance['bg_image_id'] : false;
+			$bg_image = ( isset( $instance['bg_image'] ) && '' != $instance['bg_image'] ) ? $instance['bg_image'] : false;
 			$title = $instance['title'];
 			$summary = $instance['summary'];
 			$link_url = $instance['link_url'];
@@ -99,29 +97,35 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 
 			?>
 
-			<div class="holder">
-				<?php if ( 0 < $bg_image_id ) { ?>
-					<div class="feature-img"><img src="<?php echo $bg_image; ?>" /></div>
-				<?php } elseif ( '1' == get_option( 'fresh_site' ) ) { ?>
-					<div class="feature-img"><img src="<?php echo get_template_directory_uri(); ?>/images/image-about.jpg" /></div>
-				<?php } ?>
-				<div class="information">
-					<?php if ( ! empty( $title ) ) { ?>
-						<h3 class="headline"><?php echo esc_html( $title ); ?></h3>
+			<!-- BEGIN .organic_widgets-section -->
+			<div class="organic_widgets-section organic_widgets-featured-content-section<?php if ( 0 < $bg_image_id ) { ?> has-thumb text-white<?php } ?>" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
+
+				<div class="holder">
+					<?php if ( 0 < $bg_image_id ) { ?>
+						<div class="feature-img"><img src="<?php echo $bg_image; ?>" /></div>
+					<?php } elseif ( '1' == get_option( 'fresh_site' ) ) { ?>
+						<div class="feature-img"><img src="<?php echo get_template_directory_uri(); ?>/images/image-about.jpg" /></div>
 					<?php } ?>
-					<?php if ( ! empty( $summary ) ) { ?>
-						<div class="excerpt"><?php echo $summary ?></div>
-					<?php } ?>
-					<?php if ( ! empty( $link_url ) ) { ?>
-						<a class="button" href="<?php echo esc_url( $link_url ); ?>">
-							<?php if ( ! empty( $link_title ) ) { ?>
-								<?php echo $link_title ?>
-							<?php } else { ?>
-								<?php esc_html_e( 'Read More', ORGANIC_WIDGETS_18N ); ?>
-							<?php } ?>
-						</a>
-					<?php } ?>
+					<div class="information">
+						<?php if ( ! empty( $title ) ) { ?>
+							<h3 class="headline"><?php echo esc_html( $title ); ?></h3>
+						<?php } ?>
+						<?php if ( ! empty( $summary ) ) { ?>
+							<div class="excerpt"><?php echo $summary ?></div>
+						<?php } ?>
+						<?php if ( ! empty( $link_url ) ) { ?>
+							<a class="button" href="<?php echo esc_url( $link_url ); ?>">
+								<?php if ( ! empty( $link_title ) ) { ?>
+									<?php echo $link_title ?>
+								<?php } else { ?>
+									<?php esc_html_e( 'Read More', ORGANIC_WIDGETS_18N ); ?>
+								<?php } ?>
+							</a>
+						<?php } ?>
+					</div>
 				</div>
+
+			<!-- END .organic_widgets-section -->
 			</div>
 
 			<?php
@@ -142,12 +146,13 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 
 		// Set up variables
 		$this->id_prefix = $this->get_field_id('');
+		$bg_color = ( isset( $instance['bg_color'] ) && '' != $instance['bg_color'] ) ? $instance['bg_color'] : false;
 		if ( isset( $instance['bg_image_id'] ) && '' != $instance['bg_image_id'] ) {
 			$bg_image_id = $instance['bg_image_id'];
 		} else { $bg_image_id = 0; }
 		if ( isset( $instance['bg_image'] ) && '' != $instance['bg_image'] ) {
 			$bg_image = $instance['bg_image'];
-		} else { $bg_image = 0; }
+		} else { $bg_image = false; }
 		if ( isset( $instance[ 'page_id' ] ) ) {
 			$page_id = $instance[ 'page_id' ];
 		} else { $page_id = 0; }
@@ -202,7 +207,7 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 		<hr/>
 
 		<?php $this->section_background_input_markup( $instance, $this->bg_options );
-		
+
 	}
 	/**
 	 * Sanitize widget form values as they are saved.
@@ -215,15 +220,24 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 	 * @return array Updated safe values to be saved.
 	 */
 	public function update( $new_instance, $old_instance ) {
+
 		$instance = array();
 		$instance['page_id'] = ( ! empty( $new_instance['page_id'] ) ) ? strip_tags( $new_instance['page_id'] ) : '';
+		if ( isset( $new_instance['bg_color'] ) && $this->check_hex_color( $new_instance['bg_color'] ) ) {
+			$instance['bg_color'] = strip_tags( $new_instance['bg_color'] );
+		} else {
+			$instance['bg_color'] = false;
+		}
 		$instance['bg_image_id'] = strip_tags( $new_instance['bg_image_id'] );
+		$instance['bg_image'] = strip_tags( $new_instance['bg_image'] );
 		$instance['title'] = strip_tags( $new_instance['title'] );
 		$instance['summary'] = strip_tags( $new_instance['summary'] );
 		$instance['link_url'] = strip_tags( $new_instance['link_url'] );
 		$instance['link_title'] = strip_tags( $new_instance['link_title'] );
 
+
 		return $instance;
+
 	}
 
 	/**

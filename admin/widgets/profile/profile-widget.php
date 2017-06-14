@@ -49,6 +49,7 @@ class Organic_Widgets_Profile_Widget extends Organic_Widgets_Custom_Widget {
 	 */
 	public function widget( $args, $instance ) {
 
+		$instance['bg_color'] = isset( $instance['bg_color'] ) ? $instance['bg_color'] : false;
 		$instance['bg_image_id'] = isset( $instance['bg_image_id'] ) ? $instance['bg_image_id'] : false;
 		$instance['bg_image'] = ( isset( $instance['bg_image'] ) && '' != $instance['bg_image'] ) ? $instance['bg_image'] : false;
 		$instance['title'] = isset( $instance['title'] ) ? $instance['title'] : false;
@@ -63,73 +64,77 @@ class Organic_Widgets_Profile_Widget extends Organic_Widgets_Custom_Widget {
 		echo $args['before_widget'];
 		?>
 
-		<!-- BEGIN .organic_widgets-section -->
-		<div class="organic_widgets-section organic_widgets-profile-section<?php if ( 0 < $bg_image_id ) { ?> has-thumb text-white<?php } ?>" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
+		<?php if ( $instance['title'] || '' != $instance['title'] || $instance['subtitle'] || '' != $instance['subtitle'] || $instance['summary'] || '' != $instance['summary'] ) { ?>
 
-			<!-- BEGIN .profile -->
-			<div class="profile">
+			<!-- BEGIN .organic_widgets-section -->
+			<div class="organic_widgets-section organic_widgets-profile-section<?php if ( 0 < $instance['bg_image_id'] ) { ?> has-thumb text-white<?php } ?>" <?php if ( 0 < $instance['bg_image_id'] ) { ?>style="background-image:url(<?php echo $instance['bg_image']; ?>);"<?php } elseif ($instance['bg_color']) { ?>style="background-color:<?php echo $instance['bg_color']; ?>;"<?php } ?>>
 
-				<!-- BEGIN .holder -->
-				<div class="holder radius-full">
+				<!-- BEGIN .profile -->
+				<div class="profile">
 
-					<?php if ( $instance['bg_image_id'] > 0 ) { ?>
-						<div class="feature-img"><img src="<?php echo $instance['bg_image']; ?>" alt="<?php __( 'Profile Image', ORGANIC_WIDGETS_18N ) ?>" /></div>
-					<?php } ?>
+					<!-- BEGIN .holder -->
+					<div class="holder radius-full">
 
-					<!-- BEGIN .information -->
-					<div class="information">
-
-					<?php if ( ! empty( $instance['title'] ) ) { ?>
-						<h2 class="title"><?php echo apply_filters( 'widget_title', $instance['title'] ); ?></h2>
-					<?php } ?>
-
-					<?php if ( ! empty( $instance['subtitle'] ) ) { ?>
-						<h3 class="sub-title"><?php echo $instance['subtitle']; ?></h3>
-					<?php } ?>
-
-					<?php if ( ! empty( $instance['summary'] ) ) { ?>
-						<div class="excerpt"><?php echo $instance['summary']; ?></div>
-					<?php } ?>
-
-					<?php if ( ! empty( $instance['personal_url'] ) || ! empty( $instance['twitter_url'] ) || ! empty( $instance['linkedin_url'] ) || ! empty( $instance['facebook_url'] ) || ! empty( $instance['email'] ) ) { ?>
-
-					<ul class="social-icons">
-
-						<?php if ( ! empty( $instance['personal_url'] ) ) { ?>
-							<li><a href="<?php echo $instance['personal_url']; ?>" target="_blank"><span><?php esc_html_e( 'Personal Link', ORGANIC_WIDGETS_18N ); ?></span></a></li>
+						<?php if ( $instance['bg_image_id'] > 0 ) { ?>
+							<div class="feature-img"><img src="<?php echo $instance['bg_image']; ?>" alt="<?php __( 'Profile Image', ORGANIC_WIDGETS_18N ) ?>" /></div>
 						<?php } ?>
 
-						<?php if ( ! empty( $instance['twitter_url'] ) ) { ?>
-							<li><a href="<?php echo $instance['twitter_url']; ?>" target="_blank"><span><?php esc_html_e( 'Twitter', ORGANIC_WIDGETS_18N ); ?></span></a></li>
+						<!-- BEGIN .information -->
+						<div class="information">
+
+						<?php if ( ! empty( $instance['title'] ) ) { ?>
+							<h2 class="title"><?php echo apply_filters( 'widget_title', $instance['title'] ); ?></h2>
 						<?php } ?>
 
-						<?php if ( ! empty( $instance['linkedin_url'] ) ) { ?>
-							<li><a href="<?php echo $instance['linkedin_url']; ?>" target="_blank"><span><?php esc_html_e( 'LinkedIn', ORGANIC_WIDGETS_18N ); ?></span></a></li>
+						<?php if ( ! empty( $instance['subtitle'] ) ) { ?>
+							<h3 class="sub-title"><?php echo $instance['subtitle']; ?></h3>
 						<?php } ?>
 
-						<?php if ( ! empty( $instance['facebook_url'] ) ) { ?>
-							<li><a href="<?php echo $instance['facebook_url']; ?>" target="_blank"><span><?php esc_html_e( 'Facebook', ORGANIC_WIDGETS_18N ); ?></span></a></li>
+						<?php if ( ! empty( $instance['summary'] ) ) { ?>
+							<div class="excerpt"><?php echo $instance['summary']; ?></div>
 						<?php } ?>
 
-						<?php if ( ! empty( $instance['email'] ) ) { ?>
-							<li><a href="mailto:<?php echo $instance['email']; ?>" target="_blank"><span><?php esc_html_e( 'Email', ORGANIC_WIDGETS_18N ); ?></span></a></li>
+						<?php if ( ! empty( $instance['personal_url'] ) || ! empty( $instance['twitter_url'] ) || ! empty( $instance['linkedin_url'] ) || ! empty( $instance['facebook_url'] ) || ! empty( $instance['email'] ) ) { ?>
+
+						<ul class="social-icons">
+
+							<?php if ( ! empty( $instance['personal_url'] ) ) { ?>
+								<li><a href="<?php echo $instance['personal_url']; ?>" target="_blank"><span><?php esc_html_e( 'Personal Link', ORGANIC_WIDGETS_18N ); ?></span></a></li>
+							<?php } ?>
+
+							<?php if ( ! empty( $instance['twitter_url'] ) ) { ?>
+								<li><a href="<?php echo $instance['twitter_url']; ?>" target="_blank"><span><?php esc_html_e( 'Twitter', ORGANIC_WIDGETS_18N ); ?></span></a></li>
+							<?php } ?>
+
+							<?php if ( ! empty( $instance['linkedin_url'] ) ) { ?>
+								<li><a href="<?php echo $instance['linkedin_url']; ?>" target="_blank"><span><?php esc_html_e( 'LinkedIn', ORGANIC_WIDGETS_18N ); ?></span></a></li>
+							<?php } ?>
+
+							<?php if ( ! empty( $instance['facebook_url'] ) ) { ?>
+								<li><a href="<?php echo $instance['facebook_url']; ?>" target="_blank"><span><?php esc_html_e( 'Facebook', ORGANIC_WIDGETS_18N ); ?></span></a></li>
+							<?php } ?>
+
+							<?php if ( ! empty( $instance['email'] ) ) { ?>
+								<li><a href="mailto:<?php echo $instance['email']; ?>" target="_blank"><span><?php esc_html_e( 'Email', ORGANIC_WIDGETS_18N ); ?></span></a></li>
+							<?php } ?>
+
+						</ul>
+
 						<?php } ?>
 
-					</ul>
+						<!-- END .information -->
+						</div>
 
-					<?php } ?>
-
-					<!-- END .information -->
+					<!-- END .holder -->
 					</div>
 
-				<!-- END .holder -->
+				<!-- END .profile -->
 				</div>
 
-			<!-- END .profile -->
+			<!-- END .organic_widgets-section -->
 			</div>
 
-		<!-- END .organic_widgets-section -->
-		</div>
+		<?php } ?>
 
 		<?php echo $args['after_widget'];
 
@@ -258,8 +263,14 @@ class Organic_Widgets_Profile_Widget extends Organic_Widgets_Custom_Widget {
 			$instance['facebook_url'] = strip_tags( $new_instance['facebook_url'] );
 		if (isset( $new_instance['email'] ) )
 			$instance['email'] = strip_tags( $new_instance['email'] );
+		if ( isset( $new_instance['bg_color'] ) && $this->check_hex_color( $new_instance['bg_color'] ) ) {
+			$instance['bg_color'] = strip_tags( $new_instance['bg_color'] );
+		} else {
+			$instance['bg_color'] = false;
+		}
 
 		return $instance;
+
 	}
 
 	/**
