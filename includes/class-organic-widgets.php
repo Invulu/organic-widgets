@@ -146,6 +146,7 @@ class Organic_Widgets {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widgets/blog-posts-section/blog-posts-section-widget.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widgets/feature-list-section/feature-list-section-widget.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widgets/featured-content/featured-content-widget.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widgets/portfolio-section/portfolio-section-widget.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widgets/profile/profile-widget.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widgets/subpage-section/subpage-section-widget.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widgets/team-section/team-section-widget.php';

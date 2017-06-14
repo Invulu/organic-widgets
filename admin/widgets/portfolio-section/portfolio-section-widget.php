@@ -7,12 +7,12 @@ if ( !defined('ABSPATH') )
 
 
 add_action( 'widgets_init', function(){
-	register_widget( 'Organic_Widgets_Team_Section_Widget' );
+	register_widget( 'Organic_Widgets_Portfolio_Section_Widget' );
 });
 /**
- * Adds Organic_Widgets_Team_Section_Widget widget.
+ * Adds Organic_Widgets_Portfolio_Section_Widget widget.
  */
-class Organic_Widgets_Team_Section_Widget extends Organic_Widgets_Custom_Widget {
+class Organic_Widgets_Portfolio_Section_Widget extends Organic_Widgets_Custom_Widget {
 
 	const CUSTOM_IMAGE_SIZE_SLUG = 'organic_widgets_widget_image_upload';
 
@@ -21,10 +21,10 @@ class Organic_Widgets_Team_Section_Widget extends Organic_Widgets_Custom_Widget 
 	 */
 	function __construct() {
 		parent::__construct(
-			'organic_widgets_team_section', // Base ID
-			__( 'Team Members', ORGANIC_WIDGETS_18N ), // Name
+			'organic_widgets_portfolio_section', // Base ID
+			__( 'Portfolio Section', ORGANIC_WIDGETS_18N ), // Name
 			array(
-				'description' => __( 'A section displaying team members.', ORGANIC_WIDGETS_18N ),
+				'description' => __( 'A section displaying portfolio posts.', ORGANIC_WIDGETS_18N ),
 				'customize_selective_refresh' => true,
 			) // Args
 		);
@@ -67,7 +67,7 @@ class Organic_Widgets_Team_Section_Widget extends Organic_Widgets_Custom_Widget 
 		echo $args['before_widget'];
 		?>
 		<!-- BEGIN .organic_widgets-section -->
-		<div class="organic_widgets-section organic_widgets-team-section<?php if ( 0 < $bg_image_id ) { ?> has-thumb text-white<?php } ?>" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
+		<div class="organic_widgets-section organic_widgets-portfolio-section<?php if ( 0 < $bg_image_id ) { ?> has-thumb text-white<?php } ?>" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
 
 			<?php if ( ! empty( $instance['title'] ) ) { ?>
 				<h2 class="headline <?php if ( $bg_image_id > 0 ) { ?> text-white<?php } ?>"><?php echo apply_filters( 'widget_title', $instance['title'] ); ?></h2>
@@ -77,22 +77,37 @@ class Organic_Widgets_Team_Section_Widget extends Organic_Widgets_Custom_Widget 
 				<p class="summary"><?php echo $instance['summary'] ?></p>
 			<?php } ?>
 
-			<?php $wp_query = new WP_Query( array(
+
+			<?php
+			if ( post_type_exists( 'jetpack-portfolio' ) ) {
+
+				$post_type = 'jetpack-portfolio';
+				$tax_query = array();
+
+			} else {
+
+				$post_type = 'post';
+				$tax_query = array(
+					array(
+						'taxonomy' => 'category',
+						'field'    => 'id',
+						'terms'    => $category
+					),
+				);
+
+			}
+
+			$wp_query = new WP_Query( array(
 				'posts_per_page' => $max_posts,
-				'post_type' => 'post',
+				'post_type' => $post_type,
 				'suppress_filters' => 0,
-				'tax_query' => array(
-			    array(
-			      'taxonomy' => 'category',
-			      'field'    => 'id',
-			      'terms'    => $category
-			    ),
-			  ),
-			) ); ?>
-			<?php if ( $wp_query->have_posts() ) : ?>
+				'tax_query' => $tax_query
+			) );
+
+			if ( $wp_query->have_posts() ) : ?>
 
 				<!-- BEGIN .organic-widgets-row -->
-				<div class="organic-widgets-team-holder">
+				<div class="organic-widgets-portfolio-holder">
 
 					<?php while ( $wp_query->have_posts() ) : $wp_query->the_post(); ?>
 
@@ -191,15 +206,16 @@ class Organic_Widgets_Team_Section_Widget extends Organic_Widgets_Custom_Widget 
 			<label for="<?php echo $this->get_field_id( 'summary' ); ?>"><?php _e('Summary:', ORGANIC_WIDGETS_18N) ?></label>
 			<textarea class="widefat" rows="6" cols="20" id="<?php echo $this->get_field_id( 'summary' ); ?>" name="<?php echo $this->get_field_name( 'summary' ); ?>"><?php echo $summary; ?></textarea>
 		</p>
-
-		<p>
-			<label for="<?php echo $this->get_field_id( 'category' ); ?>"><?php _e('Team Category:', ORGANIC_WIDGETS_18N) ?></label>
-			<?php wp_dropdown_categories( array(
-				'selected' => $category,
-				'id' => $this->get_field_id( 'category' ),
-				'name' => $this->get_field_name( 'category' )
-			)); ?>
-		</p>
+		<?php if ( ! post_type_exists( 'jetpack-portfolio' ) ) { ?>
+			<p>
+				<label for="<?php echo $this->get_field_id( 'category' ); ?>"><?php _e('Team Category:', ORGANIC_WIDGETS_18N) ?></label>
+				<?php wp_dropdown_categories( array(
+					'selected' => $category,
+					'id' => $this->get_field_id( 'category' ),
+					'name' => $this->get_field_name( 'category' )
+				)); ?>
+			</p>
+		<?php } ?>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'max_posts' ); ?>"><?php _e('Max Number of Posts:', ORGANIC_WIDGETS_18N) ?></label>
 			<input type="number" min="1" max="16" value="<?php echo $max_posts; ?>" id="<?php echo $this->get_field_id('max_posts'); ?>" name="<?php echo $this->get_field_name('max_posts'); ?>" class="widefat" style="width:100%;"/>
@@ -207,11 +223,9 @@ class Organic_Widgets_Team_Section_Widget extends Organic_Widgets_Custom_Widget 
 		<p>
 			<label for="<?php echo $this->get_field_id( 'num_columns' ); ?>"><?php _e('Number of Columns:', ORGANIC_WIDGETS_18N) ?></label>
 			<select id="<?php echo $this->get_field_id('num_columns'); ?>" name="<?php echo $this->get_field_name('num_columns'); ?>" class="widefat" style="width:100%;">
-				<option <?php selected( $num_columns, '1'); ?> value="1">1</option>
 				<option <?php selected( $num_columns, '2'); ?> value="2">2</option>
 		    <option <?php selected( $num_columns, '3'); ?> value="3">3</option>
 		    <option <?php selected( $num_columns, '4'); ?> value="4">4</option>
-				<option <?php selected( $num_columns, '5'); ?> value="5">5</option>
 			</select>
 		</p>
 
@@ -262,8 +276,8 @@ class Organic_Widgets_Team_Section_Widget extends Organic_Widgets_Custom_Widget 
 	public function admin_setup() {
 
 		wp_enqueue_media();
-		wp_enqueue_script( 'team-section-widget-js', plugin_dir_url( __FILE__ ) . 'js/team-section-widget.js', array( 'jquery', 'media-upload', 'media-views' ) );
-		wp_enqueue_style( 'organic_widgets-team-section-widget-css', plugin_dir_url( __FILE__ ) . 'css/team-section-widget.css' );
+		wp_enqueue_script( 'portfolio-section-widget-js', plugin_dir_url( __FILE__ ) . 'js/portfolio-section-widget.js', array( 'jquery', 'media-upload', 'media-views' ) );
+		wp_enqueue_style( 'organic_widgets-portfolio-section-widget-css', plugin_dir_url( __FILE__ ) . 'css/portfolio-section-widget.css' );
 
 		wp_enqueue_style( 'wp-color-picker' );
 		wp_enqueue_script( 'wp-color-picker' );
@@ -282,10 +296,10 @@ class Organic_Widgets_Team_Section_Widget extends Organic_Widgets_Custom_Widget 
 	 */
 	public function public_scripts() {
 
-		wp_enqueue_script( 'team-section-widget-public-js', ORGANIC_WIDGETS_BASE_DIR . 'public/js/team-section.js', array( 'jquery', 'media-upload', 'media-views', 'masonry' ) );
+		wp_enqueue_script( 'portfolio-section-widget-public-js', ORGANIC_WIDGETS_BASE_DIR . 'public/js/portfolio-section.js', array( 'jquery', 'media-upload', 'media-views', 'masonry' ) );
 
 	}
 
 
 
-} // class Organic_Widgets_Team_Section_Widget
+} // class Organic_Widgets_Portfolio_Section_Widget
