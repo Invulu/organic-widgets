@@ -117,10 +117,13 @@ class Organic_Widgets_Testimonial_Section_Widget extends Organic_Widgets_Custom_
 
 											<h3><?php echo $title; ?></h3>
 
-											<div class="organic-widgets-testimonial-avatar" style="background-image:url(<?php echo $thumb[0]; ?>);">
-												<?php //the_post_thumbnail(); ?>
-												<div class="organic-widgets-aspect-ratio-spacer"></div>
-											</div>
+											<?php if ( has_post_thumbnail() ) { ?>
+
+												<div class="organic-widgets-testimonial-avatar" style="background-image:url(<?php echo $thumb[0]; ?>);">
+													<div class="organic-widgets-aspect-ratio-spacer"></div>
+												</div>
+
+											<?php } ?>
 
 											<!-- BEGIN .excerpt -->
 											<div class="excerpt">
