@@ -19,6 +19,125 @@
   padding: 20px;
 }
 
+img.hide-img,
+.hide-img img {
+	line-height: 0;
+	margin-left: -999em;
+	padding: 0px;
+}
+
+/*
+* FlexSlider
+*/
+
+.organic-widgets-flexslider {
+	background-color: rgba(0, 0, 0, 0.2);
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+.organic-widgets-flexslider .slides {
+	position: relative;
+	overflow: hidden;
+	zoom: 1;
+}
+.organic-widgets-flexslider .slides > li {
+	display: none;
+	-webkit-backface-visibility: hidden;
+  background-position: center center;
+  background-size: cover;
+}
+.organic-widgets-flexslider .slides img {
+	width: 100%;
+	display: block;
+}
+.flex-pauseplay span {
+	text-transform: capitalize;
+}
+
+/* Clearfix for the .slides element */
+.slides:after {
+	content: "\0020";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+}
+html[xmlns] .slides {
+	display: block;
+}
+* html .slides {
+	height: 1%;
+}
+
+/* No JavaScript Fallback */
+.no-js .slides > li:first-child {
+	display: none;
+}
+
+/* Caption style */
+.flex-caption {
+	background: none;
+	-ms-filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#4C000000,endColorstr=#4C000000);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#4C000000,endColorstr=#4C000000);
+	zoom: 1;
+}
+.flex-caption {
+	background: rgba(0,0,0,.3);
+	color: #FFFFFF;
+	width: 96%;
+	padding: 2%;
+	margin: 0;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	text-shadow: 0 -1px 0 rgba(0,0,0,.3);
+}
+
+/* Direction Nav */
+.flex-direction-nav {
+	height: 0;
+}
+.flex-direction-nav li a {
+	display: block;
+	background-color: #ffffff;
+	font-size: 18px;
+	line-height: 30px;
+	height: 32px;
+	width: 32px;
+	text-decoration: none;
+	margin-top: -16px;
+	opacity: 1;
+	position: absolute;
+	top: 50%;
+	cursor: pointer;
+	overflow: visible;
+	z-index: 9;
+	border-radius: 2px;
+}
+.flex-direction-nav .flex-next {
+	right: 24px;
+	text-align: center;
+}
+.flex-direction-nav .flex-prev {
+	left: 24px;
+	text-align: center;
+}
+.flex-direction-nav a.flex-prev,
+.flex-direction-nav a.flex-next {
+	color: #999999;
+	color: rgba(0, 0, 0, .4) !important;
+}
+.flex-direction-nav a.flex-prev:hover,
+.flex-direction-nav a.flex-next:hover {
+	color: #000000 !important;
+	text-decoration: none;
+}
+.flex-direction-nav a.flex-disabled {
+	opacity: 0;
+}
 
 /************************************************
 *	Desktop Grid																	*

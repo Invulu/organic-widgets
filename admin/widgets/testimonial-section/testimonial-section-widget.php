@@ -76,79 +76,91 @@ class Organic_Widgets_Testimonial_Section_Widget extends Organic_Widgets_Custom_
 				<p class="summary"><?php echo $instance['summary'] ?></p>
 			<?php } ?>
 
+					<?php
+					if ( post_type_exists( 'jetpack-testimonial' ) ) {
 
-			<?php
-			if ( post_type_exists( 'jetpack-testimonial' ) ) {
+						$post_type = 'jetpack-testimonial';
+						$tax_query = array();
 
-				$post_type = 'jetpack-testimonial';
-				$tax_query = array();
+					} else {
 
-			} else {
+						$post_type = 'post';
+						$tax_query = array(
+							array(
+								'taxonomy' => 'category',
+								'field'    => 'id',
+								'terms'    => $category
+							),
+						);
 
-				$post_type = 'post';
-				$tax_query = array(
-					array(
-						'taxonomy' => 'category',
-						'field'    => 'id',
-						'terms'    => $category
-					),
-				);
+					}
 
-			}
+					$slideshow_query = new WP_Query( array(
+						'posts_per_page' => $max_posts,
+						'post_type' => $post_type,
+						'suppress_filters' => 0,
+						'tax_query' => $tax_query
+					) );
 
-			$wp_query = new WP_Query( array(
-				'posts_per_page' => $max_posts,
-				'post_type' => $post_type,
-				'suppress_filters' => 0,
-				'tax_query' => $tax_query
-			) );
+						//initialize video array
+						$video_array = array();
+					?>
 
-			if ( $wp_query->have_posts() ) : ?>
+					<?php if ( $slideshow_query->have_posts() ) { ?>
 
-				<!-- BEGIN .organic-widgets-row -->
-				<div class="organic-widgets-testimonial-holder organic-widgets-post-holder">
+						<!-- BEGIN .flexslider -->
+						<div class="organic-widgets-flexslider loading" data-speed="<?php echo get_theme_mod( 'gpp_transition_interval', '12000' ); ?>" data-transition="<?php echo get_theme_mod( 'gpp_transition_style', 'fade' ); ?>">
 
-					<?php while ( $wp_query->have_posts() ) : $wp_query->the_post(); ?>
+							<div class="preloader"></div>
 
-					<!-- BEGIN .organic-widget-masonry-wrapper -->
-					<div class="organic-widget-masonry-wrapper organic-widgets-<?php echo $this->column_string( $num_columns ); ?>">
+							<!-- BEGIN .slides -->
+							<ul class="slides">
 
-						<article>
+								<?php	while ( $slideshow_query->have_posts() ) {
 
-							<a href="<?php the_permalink(); ?>"><?php the_post_thumbnail(); ?></a>
+									$slideshow_query->the_post();
+									$thumb = ( get_the_post_thumbnail() ) ? wp_get_attachment_image_src( get_post_thumbnail_id(), 'organic_widgets-featured-large' ) : false; ?>
 
-							<!-- BEGIN .organic-widgets-content -->
-							<div class="organic-widgets-content">
+									<li <?php post_class(); ?> id="post-<?php the_ID(); ?>" <?php if ( has_post_thumbnail() ) { ?> style="background-image: url(<?php echo esc_url( $thumb[0] ); ?>);"<?php } ?>>
 
-								<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+										<!-- BEGIN .information -->
+										<div class="information">
 
-								<!-- BEGIN .organic-widgets-post-meta -->
-								<div class="organic-widgets-post-meta">
-									<div class="organic-widgets-post-date">
-										<p class="organic-widgets-align-left">
-											<?php echo get_the_modified_date(); ?>
-										</p>
-									</div>
-								<!-- END .organic-widgets-post-meta -->
-								</div>
+											<h2>
+												<a href="<?php echo get_the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a>
+											</h2>
 
-								<?php the_excerpt(); ?>
+											<!-- BEGIN .excerpt -->
+											<div class="excerpt">
 
-							<!-- END .organic-widgets-content -->
-							</div>
+												<?php the_excerpt(); ?>
 
-						</article>
+											<!-- END .excerpt -->
+											</div>
 
-					<!-- END .organic-widget-masonry-wrapper -->
-					</div>
+										<!-- END .information -->
+										</div>
 
+										<?php if ( has_post_thumbnail() ) { ?>
+											<div class="hide-img"><?php the_post_thumbnail( 'gpp-featured-large' ); ?></div>
+										<?php } else { ?>
+											<div class="hide-img"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/default-image.jpg" alt="<?php the_title_attribute(); ?>" /></div>
+										<?php } ?>
 
+									</li>
 
-					<?php endwhile; ?>
-				<!-- END .organic-widgets-row -->
-				</div>
+								<?php } ?>
 
-			<?php endif; ?>
+							<!-- END .slides -->
+							</ul>
+
+						<!-- END .flexslider -->
+						</div>
+
+					<?php if ( count( $video_array ) > 0 ) { gpp_slide_video_bg_script( $video_array ); } ?>
+
+					<?php } ?>
+					<?php wp_reset_postdata(); ?>
 
 		<!-- END .organic_widgets-section -->
 		</div>
@@ -286,7 +298,9 @@ class Organic_Widgets_Testimonial_Section_Widget extends Organic_Widgets_Custom_
 	public function public_scripts() {
 
 		wp_enqueue_script( 'organic-widgets-masonry', ORGANIC_WIDGETS_BASE_DIR . 'public/js/masonry.js', array( 'jquery', 'media-upload', 'media-views', 'masonry' ) );
-		wp_enqueue_script( 'testimonial-section-widget-public-js', ORGANIC_WIDGETS_BASE_DIR . 'public/js/testimonial-section.js', array( 'jquery', 'media-upload', 'media-views', 'masonry' ) );
+		// wp_enqueue_script( 'testimonial-section-widget-public-js', ORGANIC_WIDGETS_BASE_DIR . 'public/js/testimonial-section.js', array( 'jquery', 'media-upload', 'media-views', 'masonry' ) );
+		wp_enqueue_script( 'organic-widgets-flexslider', ORGANIC_WIDGETS_BASE_DIR . 'public/js/jquery.flexslider.js', array( 'jquery', 'media-upload', 'media-views', 'masonry' ) );
+		wp_enqueue_script( 'organic-widgets-flexslider-initialize', ORGANIC_WIDGETS_BASE_DIR . 'public/js/flexslider.js', array( 'jquery', 'media-upload', 'media-views', 'masonry', 'organic-widgets-flexslider' ) );
 
 	}
 
