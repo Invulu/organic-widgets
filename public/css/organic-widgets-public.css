@@ -26,6 +26,32 @@ img.hide-img,
 	padding: 0px;
 }
 
+.organic-widgets-testimonial-slide-content {
+  padding: 20px;
+  text-align: center;
+}
+.organic-widgets-testimonial-avatar {
+  position: relative;
+  margin: auto;
+  text-align: center;
+  height: auto;
+  width: 20%;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center center;
+}
+.organic-widgets-aspect-ratio-spacer {
+  width: 100%;
+  padding-bottom: 100%;
+  position: relative;
+}
+.organic-widgets-testimonial-slide-content .excerpt {
+  margin-top: 20px;
+}
+.organic-widgets-testimonial-slide-content h4 {
+  padding-top: 0;
+}
+
 /*
 * FlexSlider
 */
