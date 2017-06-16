@@ -136,12 +136,9 @@ class Organic_Widget_Areas {
 
 					}
 
-
 				}
 
 			}
-
-
 
 		}
 

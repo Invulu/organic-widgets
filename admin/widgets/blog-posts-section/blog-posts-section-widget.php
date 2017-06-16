@@ -69,8 +69,11 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 		<!-- BEGIN .organic_widgets-section -->
 		<div class="organic_widgets-section organic_widgets-blog-posts-section<?php if ( 0 < $bg_image_id ) { ?> has-thumb text-white<?php } ?>" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
 
+			<!-- BEGIN .content -->
+			<div class="content">
+
 			<?php if ( ! empty( $instance['title'] ) ) { ?>
-				<h2 class="headline <?php if ( $bg_image_id > 0 ) { ?> text-white<?php } ?>"><?php echo apply_filters( 'widget_title', $instance['title'] ); ?></h2>
+				<h2 <?php if ( $bg_image_id > 0 ) { ?>class="text-white"<?php } ?>><?php echo apply_filters( 'widget_title', $instance['title'] ); ?></h2>
 			<?php } ?>
 
 			<?php if ( ! empty( $instance['summary'] ) ) { ?>
@@ -82,12 +85,12 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 				'post_type' => 'post',
 				'suppress_filters' => 0,
 				'tax_query' => array(
-			    array(
-			      'taxonomy' => 'category',
-			      'field'    => 'id',
-			      'terms'    => $category
-			    ),
-			  ),
+					array(
+						'taxonomy' => 'category',
+						'field'    => 'id',
+						'terms'    => $category
+					),
+				),
 			) ); ?>
 			<?php if ( $wp_query->have_posts() ) : ?>
 
@@ -106,7 +109,7 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 							<!-- BEGIN .organic-widgets-content -->
 							<div class="organic-widgets-content">
 
-								<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+								<h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
 
 								<!-- BEGIN .organic-widgets-post-meta -->
 								<div class="organic-widgets-post-meta">
@@ -135,6 +138,9 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 				</div>
 
 			<?php endif; ?>
+
+			<!-- END .content -->
+			</div>
 
 		<!-- END .organic_widgets-section -->
 		</div>
