@@ -3,6 +3,9 @@
  * included in this file.
  */
 
+ /************************************************
+ *	Widget Styles																*
+ ************************************************/
 .organic_widgets-section {
   background-size: cover;
   background-position: center center;
@@ -54,13 +57,20 @@ img.hide-img,
   padding-top: 0;
 }
 
-/*
-* FlexSlider
-*/
+/************************************************
+*	Customizer																	*
+************************************************/
+#content .organic-widget .customize-partial-edit-shortcut button.customize-partial-edit-shortcut-button {
+  left: 15px !important;
+  top: 15px !important;
+}
+
+/************************************************
+*	Flexslider																	*
+************************************************/
 
 .organic-widgets-flexslider {
   position: relative;
-  background-color: rgba(0, 0, 0, 0.2);
 	width: 100%;
 	margin: 0;
 	padding: 0;
@@ -114,7 +124,6 @@ img.hide-img,
 	zoom: 1;
 }
 .organic-widgets-flexslider .organic-widgets-flexslider .flex-caption {
-	background: rgba(0,0,0,.3);
 	color: #FFFFFF;
 	width: 96%;
 	padding: 2%;

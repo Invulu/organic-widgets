@@ -4,7 +4,7 @@
  * Contributing Author: Tyler Smith
  */
 (function ($) {
-  console.log('hi');
+  
   var focused = true;
 
   //FlexSlider: Object Instance

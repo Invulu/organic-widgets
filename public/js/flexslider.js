@@ -3,6 +3,7 @@
 
 	/* Flexslider ---------------------*/
 	function flexSliderSetup() {
+		console.log('flexSliderSetup()');
 		if( ($).flexslider) {
 			var slider = $('.organic-widgets-flexslider');
 			slider.flexslider({
@@ -29,5 +30,6 @@
 	}
 
   $( window ).load( flexSliderSetup );
+	$( document ).ajaxComplete( flexSliderSetup );
 
 })( jQuery );
