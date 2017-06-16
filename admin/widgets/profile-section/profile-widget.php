@@ -34,10 +34,13 @@ class Organic_Widgets_Profile_Widget extends Organic_Widgets_Custom_Widget {
 		// Bg options
 		$this->bg_options = array(
 			'color' => true,
-			// 'image' => true
 		);
 
+		// Admin Scripts
 		add_action( 'sidebar_admin_setup', array( $this, 'admin_setup' ) );
+
+		// Public scripts
+		add_action( 'wp_enqueue_scripts', array( $this, 'public_scripts') );
 	}
 	/**
 	 * Front-end display of widget.
@@ -152,10 +155,10 @@ class Organic_Widgets_Profile_Widget extends Organic_Widgets_Custom_Widget {
 		$this->id_prefix = $this->get_field_id('');
 
 		if (!isset( $instance['bg_image'] ) ) {
-			$instance['bg_image'] = 0;
+			$instance['bg_image'] = false;
 		}
 		if (!isset( $instance['bg_image_id'] ) || $instance['bg_image_id'] < 1 ) {
-			$instance['bg_image'] = false;
+			$instance['bg_image_id'] = 0;
 		}
 		if (!isset( $instance['title'] ) ) {
 			$instance['title'] = false;
@@ -306,6 +309,15 @@ class Organic_Widgets_Profile_Widget extends Organic_Widgets_Custom_Widget {
 			'frame_title' => __( 'Select an Image', ORGANIC_WIDGETS_18N ),
 			'button_title' => __( 'Insert Into Widget', ORGANIC_WIDGETS_18N ),
 		) );
+
+	}
+
+	/**
+	 * Enqueue public javascript.
+	 */
+	public function public_scripts() {
+
+		wp_enqueue_style( 'organic-widgets-fontawesome', ORGANIC_WIDGETS_BASE_DIR . 'public/css/font-awesome.css' );
 
 	}
 

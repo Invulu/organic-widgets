@@ -58,6 +58,70 @@ img.hide-img,
 }
 
 /************************************************
+*	Social Icons																	*
+************************************************/
+
+.organic-widget .social-icons {
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+}
+
+.organic-widget .social-icons li {
+	display: inline-block;
+	background: none;
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+}
+.organic-widget .social-icons li a {
+	display: block;
+	text-align: center;
+	text-decoration: none;
+	line-height: 36px;
+	min-width: 36px;
+	margin: 4px;
+	padding: 0px;
+	border-radius: 50%;
+	transition: color 0s;
+	-moz-transition: color 0s;
+	-webkit-transition: color 0s;
+	-o-transition: color 0s;
+}
+.organic-widget .social-icons li a:hover {
+	transition: all .25s;
+	-moz-transition: all .25s;
+	-webkit-transition: all .25s;
+	-o-transition: all .25s;
+}
+.organic-widget .social-icons li a::before {
+	font-family: 'FontAwesome';
+	font-size: 16px;
+	font-weight: normal;
+	content: '\f0c1';
+}
+.organic-widget .social-icons li a span {
+	display: none;
+}
+.organic-widget .social-icons li a[href*="facebook.com"]::before		{ content: '\f09a'; }
+.organic-widget .social-icons li a[href*="twitter.com"]::before 		{ content: '\f099'; }
+.organic-widget .social-icons li a[href*="plus.google.com"]::before 	{ content: '\f0d5'; }
+.organic-widget .social-icons li a[href*="google.com/maps"]::before 	{ content: '\f041'; }
+.organic-widget .social-icons li a[href*="linkedin.com"]::before	 	{ content: '\f0e1'; }
+.organic-widget .social-icons li a[href*="github.com"]::before		 	{ content: '\f113'; }
+.organic-widget .social-icons li a[href*="dribbble.com"]::before		{ content: '\f17d'; }
+.organic-widget .social-icons li a[href*="foursquare.com"]::before		{ content: '\f180'; }
+.organic-widget .social-icons li a[href*="pinterest.com"]::before		{ content: '\f231'; }
+.organic-widget .social-icons li a[href*="wordpress.com"]::before		{ content: '\f19a'; }
+.organic-widget .social-icons li a[href*="youtube.com"]::before			{ content: '\f16a'; }
+.organic-widget .social-icons li a[href*="vine.co"]::before				{ content: '\f1ca'; }
+.organic-widget .social-icons li a[href*="instagram.com"]::before		{ content: '\f16d'; }
+.organic-widget .social-icons li a[href*="stackexchange.com"]::before	{ content: '\f18d'; }
+.organic-widget .social-icons li a[href*="mailto:"]::before				{ content: '\f0e0'; }
+.organic-widget .social-icons li a[href$="/feed/"]::before				{ content: '\f09e'; }
+.organic-widget .social-icons li a[href$="/cart/"]::before				{ content: '\f07a'; }
+
+/************************************************
 *	Customizer																	*
 ************************************************/
 #content .organic-widget .customize-partial-edit-shortcut button.customize-partial-edit-shortcut-button {
