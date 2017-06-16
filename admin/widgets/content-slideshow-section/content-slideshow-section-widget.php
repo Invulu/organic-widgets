@@ -58,8 +58,6 @@ class Organic_Widgets_Content_Slideshow_Section_Widget extends Organic_Widgets_C
 		$bg_image_id = isset( $instance['bg_image_id'] ) ? $instance['bg_image_id'] : false;
 		$bg_image = ( isset( $instance['bg_image'] ) && '' != $instance['bg_image'] ) ? $instance['bg_image'] : false;
 		$bg_color = ( isset( $instance['bg_color'] ) && '' != $instance['bg_color'] ) ? $instance['bg_color'] : false;
-		$title = ( isset( $instance['title'] ) ) ? $instance['title'] : false;
-		$summary = ( isset( $instance['summary'] ) ) ? $instance['summary'] : false;
 		$category = ( isset( $instance['category'] ) ) ? $instance['category'] : 0;
 		$max_posts = ( isset( $instance['max_posts'] ) ) ? $instance['max_posts'] : 5;
 
@@ -105,20 +103,14 @@ class Organic_Widgets_Content_Slideshow_Section_Widget extends Organic_Widgets_C
 									$slideshow_query->the_post();
 									$thumb = ( get_the_post_thumbnail() ) ? wp_get_attachment_image_src( get_post_thumbnail_id(), 'organic_widgets-featured-large' ) : false; ?>
 
-									<li <?php post_class(); ?> id="post-<?php the_ID(); ?>">
+									<li <?php post_class(); ?> id="post-<?php the_ID(); ?>" <?php if ( has_post_thumbnail() ) { echo 'style="background-image:url(' . $thumb[0] . ')"'; } ?>>
 
 										<!-- BEGIN .organic-widgets-content-slideshow-slide-content -->
 										<div class="organic-widgets-content-slideshow-slide-content">
 
-											<h3><?php echo $title; ?></h3>
-
-											<?php if ( has_post_thumbnail() ) { ?>
-
-												<div class="organic-widgets-content-slideshow-avatar" style="background-image:url(<?php echo $thumb[0]; ?>);">
-													<div class="organic-widgets-aspect-ratio-spacer"></div>
-												</div>
-
-											<?php } ?>
+											<h3>
+												<a href="<?php echo get_the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a>
+											</h3>
 
 											<!-- BEGIN .excerpt -->
 											<div class="excerpt">
@@ -127,10 +119,6 @@ class Organic_Widgets_Content_Slideshow_Section_Widget extends Organic_Widgets_C
 
 											<!-- END .excerpt -->
 											</div>
-
-											<h4>
-												<a href="<?php echo get_the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a>
-											</h4>
 
 										<!-- END .organic-widgets-content-slideshow-slide-content -->
 										</div>
@@ -167,12 +155,6 @@ class Organic_Widgets_Content_Slideshow_Section_Widget extends Organic_Widgets_C
 
 		// Setup Variables.
 		$this->id_prefix = $this->get_field_id('');
-		if ( isset( $instance['title'] ) ) {
-			$title = $instance['title'];
-		} else { $title = false; }
-		if ( isset( $instance[ 'summary' ] ) ) {
-			$summary = $instance[ 'summary' ];
-		} else { $summary = ''; }
 		if ( isset( $instance['category'] ) ) {
 			$category = $instance['category'];
 		} else { $category = false; }
@@ -194,15 +176,6 @@ class Organic_Widgets_Content_Slideshow_Section_Widget extends Organic_Widgets_C
 
 		?>
 
-		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e('Title:', ORGANIC_WIDGETS_18N) ?></label>
-			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php if ( $title ) echo $title; ?>" />
-		</p>
-
-		<p>
-			<label for="<?php echo $this->get_field_id( 'summary' ); ?>"><?php _e('Summary:', ORGANIC_WIDGETS_18N) ?></label>
-			<textarea class="widefat" rows="6" cols="20" id="<?php echo $this->get_field_id( 'summary' ); ?>" name="<?php echo $this->get_field_name( 'summary' ); ?>"><?php echo $summary; ?></textarea>
-		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'category' ); ?>"><?php _e('Testimonial Category:', ORGANIC_WIDGETS_18N) ?></label>
 			<?php wp_dropdown_categories( array(
@@ -234,8 +207,6 @@ class Organic_Widgets_Content_Slideshow_Section_Widget extends Organic_Widgets_C
 
 		$instance = $old_instance;
 
-		if (isset( $new_instance['title'] ) )
-			$instance['title'] = strip_tags( $new_instance['title'] );
 		if (isset( $new_instance['bg_image_id'] ) )
 			$instance['bg_image_id'] = strip_tags( $new_instance['bg_image_id'] );
 		if (isset( $new_instance['bg_image'] ) )
@@ -245,8 +216,6 @@ class Organic_Widgets_Content_Slideshow_Section_Widget extends Organic_Widgets_C
 		} else {
 			$instance['bg_color'] = false;
 		}
-		if ( isset( $new_instance['summary'] ) )
-			$instance['summary'] = strip_tags( $new_instance['summary'] );
 		if ( isset( $new_instance['category'] ) )
 			$instance['category'] = strip_tags( $new_instance['category'] );
 		if ( isset( $new_instance['max_posts'] ) )
