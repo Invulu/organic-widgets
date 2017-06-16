@@ -34,7 +34,7 @@ class Organic_Widgets_Profile_Widget extends Organic_Widgets_Custom_Widget {
 		// Bg options
 		$this->bg_options = array(
 			'color' => true,
-			'image' => true
+			// 'image' => true
 		);
 
 		add_action( 'sidebar_admin_setup', array( $this, 'admin_setup' ) );
@@ -67,7 +67,7 @@ class Organic_Widgets_Profile_Widget extends Organic_Widgets_Custom_Widget {
 		<?php if ( $instance['title'] || '' != $instance['title'] || $instance['subtitle'] || '' != $instance['subtitle'] || $instance['summary'] || '' != $instance['summary'] ) { ?>
 
 			<!-- BEGIN .organic_widgets-section -->
-			<div class="organic_widgets-section organic_widgets-profile-section<?php if ( 0 < $instance['bg_image_id'] ) { ?> has-thumb text-white<?php } ?>" <?php if ( 0 < $instance['bg_image_id'] ) { ?>style="background-image:url(<?php echo $instance['bg_image']; ?>);"<?php } elseif ($instance['bg_color']) { ?>style="background-color:<?php echo $instance['bg_color']; ?>;"<?php } ?>>
+			<div class="organic_widgets-section organic_widgets-profile-section" <?php if ($instance['bg_color']) { ?>style="background-color:<?php echo $instance['bg_color']; ?>;"<?php } ?>>
 
 				<!-- BEGIN .profile -->
 				<div class="profile">
@@ -151,8 +151,8 @@ class Organic_Widgets_Profile_Widget extends Organic_Widgets_Custom_Widget {
 
 		$this->id_prefix = $this->get_field_id('');
 
-		if (!isset( $instance['bg_image_id'] ) ) {
-			$instance['bg_image_id'] = 0;
+		if (!isset( $instance['bg_image'] ) ) {
+			$instance['bg_image'] = 0;
 		}
 		if (!isset( $instance['bg_image_id'] ) || $instance['bg_image_id'] < 1 ) {
 			$instance['bg_image'] = false;
@@ -181,6 +181,21 @@ class Organic_Widgets_Profile_Widget extends Organic_Widgets_Custom_Widget {
 		if (!isset( $instance['email'] ) ) {
 			$instance['email'] = false;
 		} ?>
+
+		<?php $this->bg_image_scripts(); ?>
+
+		<p>
+			<label for="<?php echo $this->get_field_id( 'bg_image' ); ?>"><?php _e( 'Profile Image:', ORGANIC_WIDGETS_18N ) ?></label>
+			<div class="uploader">
+				<input type="submit" class="button" name="<?php echo $this->get_field_name('uploader_button'); ?>" id="<?php echo $this->get_field_id('uploader_button'); ?>" value="<?php if ( $instance['bg_image_id'] ) { _e( 'Change Image', ORGANIC_WIDGETS_18N ); }else { _e( 'Select Image', ORGANIC_WIDGETS_18N ); }?>" onclick="subpageWidgetImage.uploader( '<?php echo $this->id; ?>', '<?php echo $this->id_prefix; ?>' ); return false;" />
+				<input type="submit" class="organic_widgets-remove-image-button button" name="<?php echo $this->get_field_name('remover_button'); ?>" id="<?php echo $this->get_field_id('remover_button'); ?>" value="<?php _e('Remove Image', ORGANIC_WIDGETS_18N); ?>" onclick="subpageWidgetImage.remover( '<?php echo $this->id; ?>', '<?php echo $this->id_prefix; ?>', 'remover_button' ); return false;" <?php if ( $instance['bg_image_id'] < 1 ) { echo( 'style="display:none;"' ); } ?>/>
+				<div class="organic_widgets-widget-image-preview" id="<?php echo $this->get_field_id('preview'); ?>">
+					<?php echo $this->get_image_html($instance); ?>
+				</div>
+				<input type="hidden" id="<?php echo $this->get_field_id('bg_image_id'); ?>" name="<?php echo $this->get_field_name('bg_image_id'); ?>" value="<?php echo abs($instance['bg_image_id']); ?>" />
+				<input type="hidden" id="<?php echo $this->get_field_id('bg_image'); ?>" name="<?php echo $this->get_field_name('bg_image'); ?>" value="<?php echo $instance['bg_image']; ?>" />
+			</div>
+		</p>
 
 		<p>
 			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e('Title:', ORGANIC_WIDGETS_18N) ?></label>
