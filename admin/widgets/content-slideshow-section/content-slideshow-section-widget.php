@@ -63,8 +63,8 @@ class Organic_Widgets_Content_Slideshow_Section_Widget extends Organic_Widgets_C
 
 		echo $args['before_widget'];
 		?>
-		<!-- BEGIN .organic_widgets-section -->
-		<div class="organic_widgets-section organic_widgets-content-slideshow-section<?php if ( 0 < $bg_image_id ) { ?> has-thumb text-white<?php } ?>" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
+		<!-- BEGIN .organic-widgets-section -->
+		<div class="organic-widgets-section organic-widgets-content-slideshow-section<?php if ( 0 < $bg_image_id ) { ?> has-thumb text-white<?php } ?>" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
 
 					<?php
 
@@ -101,7 +101,7 @@ class Organic_Widgets_Content_Slideshow_Section_Widget extends Organic_Widgets_C
 								<?php	while ( $slideshow_query->have_posts() ) {
 
 									$slideshow_query->the_post();
-									$thumb = ( get_the_post_thumbnail() ) ? wp_get_attachment_image_src( get_post_thumbnail_id(), 'organic_widgets-featured-large' ) : false; ?>
+									$thumb = ( get_the_post_thumbnail() ) ? wp_get_attachment_image_src( get_post_thumbnail_id(), 'organic-widgets-featured-large' ) : false; ?>
 
 									<li <?php post_class(); ?> id="post-<?php the_ID(); ?>" <?php if ( has_post_thumbnail() ) { echo 'style="background-image:url(' . $thumb[0] . ')"'; } ?>>
 
@@ -136,7 +136,7 @@ class Organic_Widgets_Content_Slideshow_Section_Widget extends Organic_Widgets_C
 					<?php } ?>
 					<?php wp_reset_postdata(); ?>
 
-		<!-- END .organic_widgets-section -->
+		<!-- END .organic-widgets-section -->
 		</div>
 
 		<?php echo $args['after_widget'];
@@ -231,7 +231,7 @@ class Organic_Widgets_Content_Slideshow_Section_Widget extends Organic_Widgets_C
 
 		wp_enqueue_media();
 		wp_enqueue_script( 'content-slideshow-section-widget-js', plugin_dir_url( __FILE__ ) . 'js/content-slideshow-section-widget.js', array( 'jquery', 'media-upload', 'media-views' ) );
-		wp_enqueue_style( 'organic_widgets-content-slideshow-section-widget-css', plugin_dir_url( __FILE__ ) . 'css/content-slideshow-section-widget.css' );
+		wp_enqueue_style( 'organic-widgets-content-slideshow-section-widget-css', plugin_dir_url( __FILE__ ) . 'css/content-slideshow-section-widget.css' );
 
 		wp_enqueue_style( 'wp-color-picker' );
 		wp_enqueue_script( 'wp-color-picker' );

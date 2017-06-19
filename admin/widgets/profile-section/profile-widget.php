@@ -99,7 +99,7 @@ class Organic_Widgets_Profile_Widget extends Organic_Widgets_Custom_Widget {
 
 						<?php if ( ! empty( $instance['personal_url'] ) || ! empty( $instance['twitter_url'] ) || ! empty( $instance['linkedin_url'] ) || ! empty( $instance['facebook_url'] ) || ! empty( $instance['email'] ) ) { ?>
 
-						<ul class="social-icons">
+						<ul class="organic-widgets-social-icons">
 
 							<?php if ( ! empty( $instance['personal_url'] ) ) { ?>
 								<li><a href="<?php echo $instance['personal_url']; ?>" target="_blank"><span><?php esc_html_e( 'Personal Link', ORGANIC_WIDGETS_18N ); ?></span></a></li>

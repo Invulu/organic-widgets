@@ -64,7 +64,7 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 
 		?>
 
-		<div class="organic_widgets-section organic_widgets-feature-list-section<?php if ( 0 < $bg_image_id ) { ?> has-thumb text-white<?php } ?>" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
+		<div class="organic-widgets-section organic-widgets-feature-list-section<?php if ( 0 < $bg_image_id ) { ?> has-thumb text-white<?php } ?>" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
 
 			<?php if ( ! empty( $title ) ) { ?>
 				<h3 class="headline text-center"><?php echo esc_html( $title ); ?></h3>
@@ -219,8 +219,8 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 	public function admin_setup() {
 
 		wp_enqueue_media();
-		wp_enqueue_script( 'organic_widgets-feature-list-section-widget-js', plugin_dir_url( __FILE__ ) . 'js/feature-list-section-widget.js', array( 'jquery', 'media-upload', 'media-views' ) );
-		wp_enqueue_style( 'organic_widgets-feature-list-section-widget-css', plugin_dir_url( __FILE__ ) . 'css/feature-list-section-widget.css' );
+		wp_enqueue_script( 'organic-widgets-feature-list-section-widget-js', plugin_dir_url( __FILE__ ) . 'js/feature-list-section-widget.js', array( 'jquery', 'media-upload', 'media-views' ) );
+		wp_enqueue_style( 'organic-widgets-feature-list-section-widget-css', plugin_dir_url( __FILE__ ) . 'css/feature-list-section-widget.css' );
 
 		wp_enqueue_style( 'wp-color-picker' );
 		wp_enqueue_script( 'wp-color-picker' );

@@ -66,8 +66,8 @@ class Organic_Widgets_Team_Section_Widget extends Organic_Widgets_Custom_Widget 
 
 		echo $args['before_widget'];
 		?>
-		<!-- BEGIN .organic_widgets-section -->
-		<div class="organic_widgets-section organic_widgets-team-section<?php if ( 0 < $bg_image_id ) { ?> has-thumb text-white<?php } ?>" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
+		<!-- BEGIN .organic-widgets-section -->
+		<div class="organic-widgets-section organic-widgets-team-section<?php if ( 0 < $bg_image_id ) { ?> has-thumb text-white<?php } ?>" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
 
 			<?php if ( ! empty( $instance['title'] ) ) { ?>
 				<h2 class="headline <?php if ( $bg_image_id > 0 ) { ?> text-white<?php } ?>"><?php echo apply_filters( 'widget_title', $instance['title'] ); ?></h2>
@@ -136,7 +136,7 @@ class Organic_Widgets_Team_Section_Widget extends Organic_Widgets_Custom_Widget 
 
 			<?php endif; ?>
 
-		<!-- END .organic_widgets-section -->
+		<!-- END .organic-widgets-section -->
 		</div>
 
 		<?php echo $args['after_widget'];
@@ -263,7 +263,7 @@ class Organic_Widgets_Team_Section_Widget extends Organic_Widgets_Custom_Widget 
 
 		wp_enqueue_media();
 		wp_enqueue_script( 'team-section-widget-js', plugin_dir_url( __FILE__ ) . 'js/team-section-widget.js', array( 'jquery', 'media-upload', 'media-views' ) );
-		wp_enqueue_style( 'organic_widgets-team-section-widget-css', plugin_dir_url( __FILE__ ) . 'css/team-section-widget.css' );
+		wp_enqueue_style( 'organic-widgets-team-section-widget-css', plugin_dir_url( __FILE__ ) . 'css/team-section-widget.css' );
 
 		wp_enqueue_style( 'wp-color-picker' );
 		wp_enqueue_script( 'wp-color-picker' );

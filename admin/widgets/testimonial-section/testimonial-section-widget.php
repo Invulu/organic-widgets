@@ -65,8 +65,8 @@ class Organic_Widgets_Testimonial_Section_Widget extends Organic_Widgets_Custom_
 
 		echo $args['before_widget'];
 		?>
-		<!-- BEGIN .organic_widgets-section -->
-		<div class="organic_widgets-section organic_widgets-testimonial-section<?php if ( 0 < $bg_image_id ) { ?> has-thumb text-white<?php } ?>" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
+		<!-- BEGIN .organic-widgets-section -->
+		<div class="organic-widgets-section organic-widgets-testimonial-section<?php if ( 0 < $bg_image_id ) { ?> has-thumb text-white<?php } ?>" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
 
 					<?php
 					if ( post_type_exists( 'jetpack-testimonial' ) ) {
@@ -108,7 +108,7 @@ class Organic_Widgets_Testimonial_Section_Widget extends Organic_Widgets_Custom_
 								<?php	while ( $slideshow_query->have_posts() ) {
 
 									$slideshow_query->the_post();
-									$thumb = ( get_the_post_thumbnail() ) ? wp_get_attachment_image_src( get_post_thumbnail_id(), 'organic_widgets-featured-large' ) : false; ?>
+									$thumb = ( get_the_post_thumbnail() ) ? wp_get_attachment_image_src( get_post_thumbnail_id(), 'organic-widgets-featured-large' ) : false; ?>
 
 									<li <?php post_class(); ?> id="post-<?php the_ID(); ?>">
 
@@ -153,7 +153,7 @@ class Organic_Widgets_Testimonial_Section_Widget extends Organic_Widgets_Custom_
 					<?php } ?>
 					<?php wp_reset_postdata(); ?>
 
-		<!-- END .organic_widgets-section -->
+		<!-- END .organic-widgets-section -->
 		</div>
 
 		<?php echo $args['after_widget'];
@@ -269,7 +269,7 @@ class Organic_Widgets_Testimonial_Section_Widget extends Organic_Widgets_Custom_
 
 		wp_enqueue_media();
 		wp_enqueue_script( 'testimonial-section-widget-js', plugin_dir_url( __FILE__ ) . 'js/testimonial-section-widget.js', array( 'jquery', 'media-upload', 'media-views' ) );
-		wp_enqueue_style( 'organic_widgets-testimonial-section-widget-css', plugin_dir_url( __FILE__ ) . 'css/testimonial-section-widget.css' );
+		wp_enqueue_style( 'organic-widgets-testimonial-section-widget-css', plugin_dir_url( __FILE__ ) . 'css/testimonial-section-widget.css' );
 
 		wp_enqueue_style( 'wp-color-picker' );
 		wp_enqueue_script( 'wp-color-picker' );

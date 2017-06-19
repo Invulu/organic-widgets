@@ -6,7 +6,7 @@
  /************************************************
  *	Widget Styles																*
  ************************************************/
-.organic_widgets-section {
+.organic-widgets-section {
   background-size: cover;
   background-position: center center;
   padding: 20px;
@@ -28,7 +28,7 @@ img.hide-img,
 	margin-left: -999em;
 	padding: 0px;
 }
-.organic_widgets-testimonial-section, .organic_widgets-content-slideshow-section {
+.organic-widgets-testimonial-section, .organic-widgets-content-slideshow-section {
   padding: 0;
 }
 .organic-widgets-testimonial-slide-content, .organic-widgets-content-slideshow-slide-content {

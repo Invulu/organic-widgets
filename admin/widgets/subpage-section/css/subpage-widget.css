@@ -1,11 +1,11 @@
-.organic_widgets-remove-image-button {
+.organic-widgets-remove-image-button {
 	background: #f24343 !important;
 	color: #ffffff !important;
 }
-.organic_widgets-widget-image-preview {
+.organic-widgets-widget-image-preview {
 	margin-top: 20px;
 }
-.organic_widgets-widget-image-preview img {
+.organic-widgets-widget-image-preview img {
 	width:100%;
 	max-width:600px;
 	height:auto;

@@ -58,11 +58,11 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 
 			?>
 
-			<!-- BEGIN .organic_widgets-section -->
-			<div class="organic_widgets-section organic_widgets-featured-content-section<?php if ( 0 < $bg_image_id ) { ?> has-thumb text-white<?php } ?>" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
+			<!-- BEGIN .organic-widgets-section -->
+			<div class="organic-widgets-section organic-widgets-featured-content-section<?php if ( 0 < $bg_image_id ) { ?> has-thumb text-white<?php } ?>" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
 
 				<div class="holder">
-					<div class="feature-img"><?php echo get_the_post_thumbnail( $page_id, 'organic_widgets-featured-medium' )?></div>
+					<div class="feature-img"><?php echo get_the_post_thumbnail( $page_id, 'organic-widgets-featured-medium' )?></div>
 					<div class="information">
 						<?php if ( ! empty( $page_title ) ) { ?>
 							<h3 class="headline"><?php echo apply_filters( 'widget_title', $page_title ); ?></h3>
@@ -74,7 +74,7 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 					</div>
 				</div>
 
-			<!-- END .organic_widgets-section -->
+			<!-- END .organic-widgets-section -->
 			</div>
 
 			<?php
@@ -97,8 +97,8 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 
 			?>
 
-			<!-- BEGIN .organic_widgets-section -->
-			<div class="organic_widgets-section organic_widgets-featured-content-section<?php if ( 0 < $bg_image_id ) { ?> has-thumb text-white<?php } ?>" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
+			<!-- BEGIN .organic-widgets-section -->
+			<div class="organic-widgets-section organic-widgets-featured-content-section<?php if ( 0 < $bg_image_id ) { ?> has-thumb text-white<?php } ?>" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
 
 				<div class="holder">
 					<?php if ( 0 < $bg_image_id ) { ?>
@@ -125,7 +125,7 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 					</div>
 				</div>
 
-			<!-- END .organic_widgets-section -->
+			<!-- END .organic-widgets-section -->
 			</div>
 
 			<?php
@@ -258,8 +258,8 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 	public function admin_setup() {
 
 		wp_enqueue_media();
-		wp_enqueue_script( 'organic_widgets-featured-content-widget-js', plugin_dir_url( __FILE__ ) . 'js/featured-content-widget.js', array( 'jquery', 'media-upload', 'media-views' ) );
-		wp_enqueue_style( 'organic_widgets-featured-content-widget-css', plugin_dir_url( __FILE__ ) . 'css/featured-content-widget.css' );
+		wp_enqueue_script( 'organic-widgets-featured-content-widget-js', plugin_dir_url( __FILE__ ) . 'js/featured-content-widget.js', array( 'jquery', 'media-upload', 'media-views' ) );
+		wp_enqueue_style( 'organic-widgets-featured-content-widget-css', plugin_dir_url( __FILE__ ) . 'css/featured-content-widget.css' );
 
 		wp_enqueue_style( 'wp-color-picker' );
 		wp_enqueue_script( 'wp-color-picker' );
