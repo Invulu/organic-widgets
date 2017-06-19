@@ -71,7 +71,13 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 
 			<div class="organic-widgets-section organic-widgets-subpage-section<?php if ( has_post_thumbnail( $page_id ) ) { ?> has-thumb text-white<?php } ?>" <?php if ( has_post_thumbnail( $page_id ) ) { ?>style="background-image:url(<?php echo $the_featured_image; ?>);"<?php } ?>>
 
-				<?php the_content( esc_html__( 'Read More', ORGANIC_WIDGETS_18N ) ); ?>
+				<!-- BEGIN .content -->
+				<div class="content">
+
+					<?php the_content( esc_html__( 'Read More', ORGANIC_WIDGETS_18N ) ); ?>
+
+				<!-- END .content -->
+				</div>
 
 			</div>
 
@@ -114,12 +120,18 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 					<?php }
 				} ?>
 
-				<?php if ( ! empty( $title ) ) { ?>
-					<h3 class="headline text-center"><?php echo esc_html( $title ); ?></h3>
-				<?php } ?>
-				<?php if ( ! empty( $summary ) ) { ?>
-					<p class="summary"><?php echo $summary ?></p>
-				<?php } ?>
+				<!-- BEGIN .content -->
+				<div class="content">
+
+					<?php if ( ! empty( $title ) ) { ?>
+						<h2><?php echo esc_html( $title ); ?></h2>
+					<?php } ?>
+					<?php if ( ! empty( $summary ) ) { ?>
+						<p class="summary"><?php echo $summary ?></p>
+					<?php } ?>
+
+				<!-- END .content -->
+				</div>
 
 			</div>
 
@@ -207,7 +219,7 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 		<hr />
 
 		<?php $this->section_background_input_markup( $instance, $this->bg_options );
-		
+
 	}
 
 	/**

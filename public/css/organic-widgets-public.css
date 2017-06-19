@@ -3,58 +3,83 @@
  * included in this file.
  */
 
- /************************************************
- *	Widget Styles																*
- ************************************************/
+/************************************************
+*	Global Styles															  	*
+************************************************/
+
+img.hide-img,
+.hide-img img {
+  line-height: 0;
+  margin-left: -999em;
+  padding: 0px;
+}
+
+/************************************************
+*	Widget Styles															  	*
+************************************************/
+
+.organic-widget {
+  position: relative;
+}
 .organic-widgets-section {
   background-size: cover;
   background-position: center center;
   padding: 20px;
   margin: 0;
- }
-
+}
+.organic-widgets-post-holder {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  width: calc(100% + 32px);
+  margin-left: -18px;
+}
+.organic-widgets-post-holder .organic-widget-masonry-wrapper {
+  min-width: 25%;
+}
 .organic-widgets-post-holder article {
-  background: #ffffff;
-  margin: 10px;
+	background: #ffffff;
+	margin: 18px;
 }
-
+.organic-widgets-post-holder .organic-widgets-fourth article {
+  font-size: 85%;
+}
 .organic-widgets-post-holder .organic-widgets-content {
-  padding: 20px;
-}
-
-img.hide-img,
-.hide-img img {
-	line-height: 0;
-	margin-left: -999em;
-	padding: 0px;
+	padding: 12px 24px;
 }
 .organic-widgets-testimonial-section, .organic-widgets-content-slideshow-section {
   padding: 0;
 }
 .organic-widgets-testimonial-slide-content, .organic-widgets-content-slideshow-slide-content {
-  padding: 20px 40px;
-  text-align: center;
+	padding: 24px 48px;
+	text-align: center;
 }
 .organic-widgets-testimonial-avatar {
-  position: relative;
-  margin: auto;
-  text-align: center;
-  height: auto;
-  width: 20%;
-  border-radius: 50%;
-  background-size: cover;
-  background-position: center center;
+	position: relative;
+	margin: auto;
+	text-align: center;
+	height: auto;
+	width: 20%;
+	border-radius: 50%;
+	background-size: cover;
+	background-position: center center;
 }
 .organic-widgets-aspect-ratio-spacer {
-  width: 100%;
-  padding-bottom: 100%;
-  position: relative;
+	width: 100%;
+	padding-bottom: 100%;
+	position: relative;
 }
 .organic-widgets-testimonial-slide-content .excerpt {
-  margin-top: 20px;
+	margin-top: 24px;
 }
 .organic-widgets-testimonial-slide-content h4 {
-  padding-top: 0;
+	padding-top: 0;
+}
+.organic-widget .link-more {
+  padding: 0px;
+}
+.organic-widget .link-more br {
+  display: none;
 }
 
 /************************************************
@@ -66,7 +91,6 @@ img.hide-img,
 	margin: 0px;
 	padding: 0px;
 }
-
 .organic-widget .social-icons li {
 	display: inline-block;
 	background: none;
@@ -124,9 +148,10 @@ img.hide-img,
 /************************************************
 *	Customizer																	*
 ************************************************/
-#content .organic-widget .customize-partial-edit-shortcut button.customize-partial-edit-shortcut-button {
-  left: 15px !important;
-  top: 15px !important;
+
+.organic-widget .customize-partial-edit-shortcut {
+	left: 48px !important;
+	top: 12px !important;
 }
 
 /************************************************
@@ -134,7 +159,7 @@ img.hide-img,
 ************************************************/
 
 .organic-widgets-flexslider {
-  position: relative;
+	position: relative;
 	width: 100%;
 	margin: 0;
 	padding: 0;
@@ -145,11 +170,17 @@ img.hide-img,
 	overflow: hidden;
 	zoom: 1;
 }
+.organic-widgets-flexslider ul,
+.organic-widgets-flexslider li {
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+}
 .organic-widgets-flexslider .slides > li {
 	display: none;
 	-webkit-backface-visibility: hidden;
-  background-position: center center;
-  background-size: cover;
+	background-position: center center;
+	background-size: cover;
 }
 .organic-widgets-flexslider .slides img {
 	width: 100%;
@@ -200,15 +231,15 @@ img.hide-img,
 
 /* Direction Nav */
 .organic-widgets-flexslider .flex-direction-nav {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  top: 40%;
-  height: 20%;
+	position: absolute;
+	left: 0;
+	width: 100%;
+	top: 40%;
+	height: 20%;
 }
 .organic-widgets-flexslider .flex-direction-nav li a {
 	display: block;
-  background: none;
+	background: none;
 	font-size: 27px;
 	line-height: 45px;
 	height: 48px;
@@ -232,33 +263,29 @@ img.hide-img,
 	text-align: center;
 }
 .organic-widgets-flexslider .flex-direction-nav .flex-next i, .organic-widgets-flexslider .flex-direction-nav .flex-prev i {
-  display: none;
+	display: none;
 }
 .organic-widgets-flexslider .flex-direction-nav a.flex-disabled {
 	opacity: 0;
 }
 .organic-widgets-flexslider a.flex-prev:hover polyline,
 .organic-widgets-flexslider a.flex-prev:focus polyline {
-  stroke-width: 3;
+	stroke-width: 3;
 }
-
 .organic-widgets-flexslider a.flex-prev:active polyline {
-  stroke-width: 6;
-  transition: all 100ms ease-in-out;
+	stroke-width: 6;
+	transition: all 100ms ease-in-out;
 }
-
 .organic-widgets-flexslider a.flex-next:hover polyline,
 .organic-widgets-flexslider a.flex-next:focus polyline {
-  stroke-width: 3;
+	stroke-width: 3;
 }
-
 .organic-widgets-flexslider a.flex-next:active polyline {
-  stroke-width: 6;
-  transition: all 100ms ease-in-out;
+	stroke-width: 6;
+	transition: all 100ms ease-in-out;
 }
-
 .organic-widgets-flexslider a polyline {
-  transition: all 250ms ease-in-out;
+	transition: all 250ms ease-in-out;
 }
 
 /************************************************
