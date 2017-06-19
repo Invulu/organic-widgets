@@ -113,11 +113,9 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 
 								<!-- BEGIN .organic-widgets-post-meta -->
 								<div class="organic-widgets-post-meta">
-									<div class="organic-widgets-post-date">
-										<p class="organic-widgets-align-left">
-											<?php echo get_the_modified_date(); ?>
-										</p>
-									</div>
+									<p class="organic-widgets-post-date">
+										<?php echo get_the_modified_date(); ?>
+									</p>
 								<!-- END .organic-widgets-post-meta -->
 								</div>
 
@@ -131,9 +129,8 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 					<!-- END .organic-widget-masonry-wrapper -->
 					</div>
 
-
-
 					<?php endwhile; ?>
+
 				<!-- END .organic-widgets-row -->
 				</div>
 
@@ -146,8 +143,6 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 		</div>
 
 		<?php echo $args['after_widget'];
-
-
 
 	}
 	/**
