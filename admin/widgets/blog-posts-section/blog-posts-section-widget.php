@@ -139,7 +139,7 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 			<!-- END .content -->
 			</div>
 
-		<!-- END .organic_widgets-section -->
+		<!-- END .organic-widgets-section -->
 		</div>
 
 		<?php echo $args['after_widget'];

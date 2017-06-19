@@ -4,7 +4,6 @@
 	/* Masonry ---------------------*/
 	function masonrySetup() {
 		var $container = $('.organic-widgets-post-holder');
-    console.log($container);
     $container.masonry({
 			itemSelector : '.organic-widget-masonry-wrapper'
 		});

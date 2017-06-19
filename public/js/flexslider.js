@@ -3,7 +3,7 @@
 
 	/* Flexslider ---------------------*/
 	function flexSliderSetup() {
-		console.log('flexSliderSetup()');
+		
 		if( ($).flexslider) {
 			var slider = $('.organic-widgets-flexslider');
 			slider.flexslider({

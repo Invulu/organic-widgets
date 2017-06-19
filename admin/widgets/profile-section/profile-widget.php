@@ -69,8 +69,8 @@ class Organic_Widgets_Profile_Widget extends Organic_Widgets_Custom_Widget {
 
 		<?php if ( $instance['title'] || '' != $instance['title'] || $instance['subtitle'] || '' != $instance['subtitle'] || $instance['summary'] || '' != $instance['summary'] ) { ?>
 
-			<!-- BEGIN .organic_widgets-section -->
-			<div class="organic_widgets-section organic_widgets-profile-section" <?php if ($instance['bg_color']) { ?>style="background-color:<?php echo $instance['bg_color']; ?>;"<?php } ?>>
+			<!-- BEGIN .organic-widgets-section -->
+			<div class="organic-widgets-section organic_widgets-profile-section" <?php if ($instance['bg_color']) { ?>style="background-color:<?php echo $instance['bg_color']; ?>;"<?php } ?>>
 
 				<!-- BEGIN .profile -->
 				<div class="profile">
@@ -134,7 +134,7 @@ class Organic_Widgets_Profile_Widget extends Organic_Widgets_Custom_Widget {
 				<!-- END .profile -->
 				</div>
 
-			<!-- END .organic_widgets-section -->
+			<!-- END .organic-widgets-section -->
 			</div>
 
 		<?php } ?>
