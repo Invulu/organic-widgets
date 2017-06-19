@@ -124,7 +124,7 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 				<div class="content">
 
 					<?php if ( ! empty( $title ) ) { ?>
-						<h3><?php echo esc_html( $title ); ?></h3>
+						<h2><?php echo esc_html( $title ); ?></h2>
 					<?php } ?>
 					<?php if ( ! empty( $summary ) ) { ?>
 						<p class="summary"><?php echo $summary ?></p>

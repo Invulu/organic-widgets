@@ -3,15 +3,23 @@
  * included in this file.
  */
 
- /************************************************
- *	Widget Styles																*
- ************************************************/
+/************************************************
+*	Global Styles															  	*
+************************************************/
 
 img.hide-img,
 .hide-img img {
   line-height: 0;
   margin-left: -999em;
   padding: 0px;
+}
+
+/************************************************
+*	Widget Styles															  	*
+************************************************/
+
+.organic-widget {
+  position: relative;
 }
 .organic_widgets-section {
 	background-size: cover;
@@ -141,9 +149,9 @@ img.hide-img,
 *	Customizer																	*
 ************************************************/
 
-#content .organic-widget .customize-partial-edit-shortcut button.customize-partial-edit-shortcut-button {
-	left: 15px !important;
-	top: 15px !important;
+.organic-widget .customize-partial-edit-shortcut {
+	left: 48px !important;
+	top: 12px !important;
 }
 
 /************************************************
