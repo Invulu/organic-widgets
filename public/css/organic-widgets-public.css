@@ -97,10 +97,13 @@ img.hide-img,
   margin: auto;
 }
 .organic-profile-content {
+  margin: auto;
   text-align: center;
+  max-width: 600px;
 }
 .organic-widgets-profile-title {
   margin-bottom: 6px;
+  text-transform: uppercase;
 }
 .organic-widgets-profile-sub-title {
   font-size: .8em;
@@ -110,7 +113,7 @@ img.hide-img,
 }
 .organic-widgets-profile-divider {
   max-width: 600px;
-  width: 100%;
+  width: 90%;
   height: 2px;
   margin: auto;
   background-color: #cccccc;

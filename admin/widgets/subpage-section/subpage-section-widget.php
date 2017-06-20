@@ -51,6 +51,13 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 	 */
 	public function widget( $args, $instance ) {
 
+		$bg_image_id = isset( $instance['bg_image_id'] ) ? $instance['bg_image_id'] : false;
+		$bg_image = ( isset( $instance['bg_image'] ) && '' != $instance['bg_image'] ) ? $instance['bg_image'] : false;
+		$bg_color = ( isset( $instance['bg_color'] ) && '' != $instance['bg_color'] ) ? $instance['bg_color'] : false;
+		$bg_video  = ( isset( $instance['bg_video'] ) && $instance['bg_video'] ) ? $instance['bg_video'] : false;
+		$title = ( isset( $instance['title'] ) ) ? $instance['title'] : false;
+		$summary = ( isset( $instance['summary'] ) ) ? $instance['summary'] : false;
+
 		if ( ! empty( $instance['page_id'] ) ) {
 
 			// Get Page Info
@@ -69,7 +76,7 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 
 			<?php if ( $page_query->have_posts() ) : while ( $page_query->have_posts() ) : $page_query->the_post(); ?>
 
-			<div class="organic-widgets-section organic-widgets-subpage-section<?php if ( has_post_thumbnail( $page_id ) ) { ?> has-thumb text-white<?php } ?>" <?php if ( has_post_thumbnail( $page_id ) ) { ?>style="background-image:url(<?php echo $the_featured_image; ?>);"<?php } ?>>
+			<div class="organic-widgets-section organic-widgets-subpage-section<?php if ( 0 < $bg_image_id ) { ?> has-thumb text-white<?php } ?>" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
 
 				<!-- BEGIN .content -->
 				<div class="content">
@@ -88,13 +95,6 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 			<?php echo $args['after_widget'];
 
 		} elseif ( ! empty( $instance['title'] ) || ! empty( $instance['summary'] ) ) {
-
-			$bg_image_id = isset( $instance['bg_image_id'] ) ? $instance['bg_image_id'] : false;
-			$bg_image = ( isset( $instance['bg_image'] ) && '' != $instance['bg_image'] ) ? $instance['bg_image'] : false;
-			$bg_color = ( isset( $instance['bg_color'] ) && '' != $instance['bg_color'] ) ? $instance['bg_color'] : false;
-			$bg_video  = ( isset( $instance['bg_video'] ) && $instance['bg_video'] ) ? $instance['bg_video'] : false;
-			$title = ( isset( $instance['title'] ) ) ? $instance['title'] : false;
-			$summary = ( isset( $instance['summary'] ) ) ? $instance['summary'] : false;
 
 			echo $args['before_widget'];
 
