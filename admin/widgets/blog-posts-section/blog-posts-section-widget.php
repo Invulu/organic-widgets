@@ -95,12 +95,12 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 			<?php if ( $wp_query->have_posts() ) : ?>
 
 				<!-- BEGIN .organic-widgets-row -->
-				<div class="organic-widgets-blog-posts-holder organic-widgets-post-holder">
+				<div class="organic-widgets-blog-posts-holder organic-widgets-post-holder organic-widgets-row">
 
 					<?php while ( $wp_query->have_posts() ) : $wp_query->the_post(); ?>
 
 					<!-- BEGIN .organic-widget-masonry-wrapper -->
-					<div class="organic-widget-masonry-wrapper organic-widgets-<?php echo $this->column_string( $num_columns ); ?>">
+					<div class="organic-widget-masonry-wrapper organic-widgets-column organic-widgets-<?php echo $this->column_string( $num_columns ); ?>">
 
 						<article>
 

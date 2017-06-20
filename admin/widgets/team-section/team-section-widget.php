@@ -92,12 +92,12 @@ class Organic_Widgets_Team_Section_Widget extends Organic_Widgets_Custom_Widget 
 			<?php if ( $wp_query->have_posts() ) : ?>
 
 				<!-- BEGIN .organic-widgets-row -->
-				<div class="organic-widgets-team-holder organic-widgets-post-holder">
+				<div class="organic-widgets-row organic-widgets-team-holder organic-widgets-post-holder">
 
 					<?php while ( $wp_query->have_posts() ) : $wp_query->the_post(); ?>
 
 					<!-- BEGIN .organic-widget-masonry-wrapper -->
-					<div class="organic-widget-masonry-wrapper organic-widgets-<?php echo $this->column_string( $num_columns ); ?>">
+					<div class="organic-widget-masonry-wrapper organic-widgets-column organic-widgets-<?php echo $this->column_string( $num_columns ); ?>">
 
 						<article>
 
