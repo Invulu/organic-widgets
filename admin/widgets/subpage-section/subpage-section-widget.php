@@ -40,6 +40,9 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 
 		add_action( 'sidebar_admin_setup', array( $this, 'admin_setup' ) );
 
+		// Public scripts
+		add_action( 'wp_enqueue_scripts', array( $this, 'public_scripts') );
+
 	}
 	/**
 	 * Front-end display of widget.
@@ -289,6 +292,15 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 			'frame_title' => __( 'Select an Image', ORGANIC_WIDGETS_18N ),
 			'button_title' => __( 'Insert Into Widget', ORGANIC_WIDGETS_18N ),
 		) );
+
+	}
+
+	/**
+	 * Enqueue public javascript.
+	 */
+	public function public_scripts() {
+
+		if ( ! wp_script_is('organic-widgets-backgroundimagebrightness-js') ) { wp_enqueue_script( 'organic-widgets-backgroundimagebrightness-js', ORGANIC_WIDGETS_BASE_DIR . 'public/js/jquery.backgroundimagebrightness.js', array( 'jquery' ) ); }
 
 	}
 

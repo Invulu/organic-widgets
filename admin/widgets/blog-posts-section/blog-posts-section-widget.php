@@ -285,6 +285,8 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 
 		wp_enqueue_script( 'organic-widgets-masonry', ORGANIC_WIDGETS_BASE_DIR . 'public/js/masonry.js', array( 'jquery', 'media-upload', 'media-views', 'masonry' ) );
 		wp_enqueue_script( 'blog-posts-section-widget-public-js', ORGANIC_WIDGETS_BASE_DIR . 'public/js/blog-posts-section.js', array( 'jquery', 'media-upload', 'media-views', 'masonry' ) );
+		if ( ! wp_script_is('organic-widgets-backgroundimagebrightness-js') ) { wp_enqueue_script( 'organic-widgets-backgroundimagebrightness-js', ORGANIC_WIDGETS_BASE_DIR . 'public/js/jquery.backgroundimagebrightness.js', array( 'jquery' ) ); }
+
 
 	}
 

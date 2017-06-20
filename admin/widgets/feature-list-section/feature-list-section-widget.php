@@ -39,6 +39,9 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 
 		add_action( 'sidebar_admin_setup', array( $this, 'admin_setup' ) );
 
+		// Public scripts
+		add_action( 'wp_enqueue_scripts', array( $this, 'public_scripts') );
+
 	}
 	/**
 	 * Front-end display of widget.
@@ -166,7 +169,7 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 		<hr />
 
 		<?php $this->section_background_input_markup( $instance, $this->bg_options );
-		
+
 	}
 
 	/**
@@ -233,5 +236,15 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 		) );
 
 	}
+
+	/**
+	 * Enqueue public javascript.
+	 */
+	public function public_scripts() {
+
+		if ( ! wp_script_is('organic-widgets-backgroundimagebrightness-js') ) { wp_enqueue_script( 'organic-widgets-backgroundimagebrightness-js', ORGANIC_WIDGETS_BASE_DIR . 'public/js/jquery.backgroundimagebrightness.js', array( 'jquery' ) ); }
+
+	}
+
 
 } // class Organic_Widgets_Feature_List_Section_Widget

@@ -1,10 +1,13 @@
 (function( $ ) {
 	'use strict';
 
+	/* Check The Background Image Brightness ---------------------*/
+	function checkBackgroundImageBrightness(){
+		console.log('checkBackgroundImageBrightness()');
+		$('.organic-widgets-section').backgroundImageBrightness();
+	}
 
-
-
-
+	/* Add Section Highlighting When Hovering Over Edit Shortcuts ---------------------*/
 	function editShortcutHoverBorder() {
 		setTimeout(function(){
 			$('.organic-widget .customize-partial-edit-shortcut').hover(function(){
@@ -16,11 +19,11 @@
 
 	}
 
-	// $( window ).load( editShortcutHoverBorder );
-	// $( document ).ajaxComplete( editShortcutHoverBorder );
-	wp.customize.bind( 'preview-ready', _.defer( function() { editShortcutHoverBorder(); }));
-	// wp.customize.bind( 'ready', function () { editShortcutHoverBorder(); } );
+	$( document ).ready( checkBackgroundImageBrightness );
 
-
+	// WP Customizer
+	if ( typeof wp != "undefined" ) {
+		wp.customize.bind( 'preview-ready', _.defer( function() { editShortcutHoverBorder(); }));
+	}
 
 })( jQuery );
