@@ -19,8 +19,9 @@
 
 	}
 
-	$( document ).ready( checkBackgroundImageBrightness );
-
+	$( document )
+	.ready( checkBackgroundImageBrightness )
+	.ajaxComplete( checkBackgroundImageBrightness );
 	// WP Customizer
 	if ( typeof wp != "undefined" ) {
 		wp.customize.bind( 'preview-ready', _.defer( function() { editShortcutHoverBorder(); }));
