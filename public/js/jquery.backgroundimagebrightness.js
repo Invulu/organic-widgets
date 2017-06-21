@@ -1,7 +1,7 @@
 /*
  *  backgroundimagebrightness.js
  *
- *  Copyright 2016, Jesse Lee & Organic Themes
+ *  Copyright 2016, Jesse Lee & Organic Themes w/ snippets from ColourBrightness.js
  *  Released under the WTFPL license
  *  https://organicthemes.com
  *
@@ -23,7 +23,65 @@
 			contentSelectors = [contentSelectors];
 		}
 
-		function getBackgroundColor($el, contentSelectors, threshold ) {
+    //Loop Through all Items
+		$el.each( function(key, value){
+
+      //Initialize
+      var r,g,b,brightness;
+
+      //Get Background Styles for element
+      var bgStyles = getBackgroundStyles( $(value) );
+      console.log(bgStyles);
+
+      var colour = bgStyles.bgColor;
+      var image = bgStyles.bgImage;
+      var targetedElement = bgStyles.targetedElement;
+
+      // If bg image found, calculate luminosity of image
+      if ( image ) {
+        console.log('background image found');
+        console.log(image);
+        console.log(targetedElement);
+        console.log('');
+        getBackgroundImageLuminosity( targetedElement, contentSelectors, threshold);
+      }
+      // If no bg image, calculate bg color brightness
+      else if ( colour ) {
+        console.log('background color found');
+        console.log(colour);
+        console.log(targetedElement);
+        console.log('');
+        if (colour.match(/^rgb/)) {
+          colour = colour.match(/rgba?\(([^)]+)\)/)[1];
+          colour = colour.split(/ *, */).map(Number);
+          r = colour[0];
+          g = colour[1];
+          b = colour[2];
+        } else if ('#' == colour[0] && 7 == colour.length) {
+          r = parseInt(colour.slice(1, 3), 16);
+          g = parseInt(colour.slice(3, 5), 16);
+          b = parseInt(colour.slice(5, 7), 16);
+        } else if ('#' == colour[0] && 4 == colour.length) {
+          r = parseInt(colour[1] + colour[1], 16);
+          g = parseInt(colour[2] + colour[2], 16);
+          b = parseInt(colour[3] + colour[3], 16);
+        }
+
+        brightness = (r * 299 + g * 587 + b * 114) / 1000;
+
+        if (brightness < threshold) {
+          // white text
+          targetedElement.removeClass("ocw-bg-light").addClass("ocw-bg-dark");
+        } else {
+          // black text
+          targetedElement.removeClass("ocw-bg-dark").addClass("ocw-bg-light");
+        }
+
+      }
+
+		});
+
+		function getBackgroundImageLuminosity($el, contentSelectors, threshold ) {
 
 			var bg = $el.css('background-image');
 			bg = bg.replace(/^url\(['"]?/,'').replace(/['"]?\)$/,'');
@@ -33,33 +91,33 @@
 					if (brightness < threshold) {
 						// If applying to self
 						if (!contentSelectors ){
-							$el.removeClass('bg-img-light');
-							$el.addClass('bg-img-dark');
+							$el.removeClass('ocw-bg-light');
+							$el.addClass('ocw-bg-dark');
 						}
 						// If applying to custom selectors
 						else {
 							contentSelectors.forEach(function(contentSelector){
-								$(contentSelector).removeClass('bg-img-light');
-								$(contentSelector).addClass('bg-img-dark');
+								$(contentSelector).removeClass('ocw-bg-light');
+								$(contentSelector).addClass('ocw-bg-dark');
 							});
 						}
 					} else {
 						//If applying to self
 						if (! contentSelectors ){
-							$el.removeClass('bg-img-dark');
-							$el.addClass('bg-img-light');
+							$el.removeClass('ocw-bg-dark');
+							$el.addClass('ocw-bg-light');
 						}
 						// If applying to custom selectors
 						else {
 							contentSelectors.forEach(function(contentSelector){
-								$(contentSelector).removeClass('bg-img-dark');
-								$(contentSelector).addClass('bg-img-light');
+								$(contentSelector).removeClass('ocw-bg-dark');
+								$(contentSelector).addClass('ocw-bg-light');
 							});
 						}
 					}
 				}); // End getImageLightness(){}
 
-		} // End getBackgroundColor(){}
+		} // End getBackgroundImageLuminosity(){}
 
 		function getImageLightness(imageSrc, imgObject, callback) {
 			var img = document.createElement("img");
@@ -96,9 +154,27 @@
 			}
 		} // End getImageLightness(){}
 
-		$el.each( function(key, value){
-			getBackgroundColor( $(value), contentSelectors, threshold);
-		});
+
+
+    /* ======== ColourBrightness Addons =========*/
+
+    function getBackgroundStyles($el) {
+      var bgColor = false;
+      var bgImage = false;
+      while($el[0].tagName.toLowerCase() != "html") {
+        bgColor =  ( ! $el.css("background-color") || $el.css("background-color") == "rgba(0, 0, 0, 0)" || $el.css("background-color") == "transparent" ) ? false : $el.css("background-color");
+        bgImage = ( ! $el.css("background-image") || $el.css("background-image") == "" || $el.css("background-image") == "none" ) ? false : $el.css("background-image");
+        if( bgColor || bgImage ) {
+          break;
+        }
+        $el = $el.parent();
+      }
+      return { bgColor: bgColor, bgImage: bgImage, targetedElement: $el };
+    }
+
+
+
+
 
 	} // End backgroundImageBrightness(){}
 
