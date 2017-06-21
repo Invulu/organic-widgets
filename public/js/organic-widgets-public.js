@@ -1,10 +1,10 @@
 (function( $ ) {
 	'use strict';
 
-	/* Check The Background Image Brightness ---------------------*/
-	function checkBackgroundImageBrightness(){
-		console.log('checkBackgroundImageBrightness()');
-		$('.organic-widgets-section').backgroundImageBrightness();
+	/* Check The Background Brightness ---------------------*/
+	function checkBackgroundBrightness(){
+		$('.organic-widgets-section').backgroundBrightness();
+		$('.organic-widgets-flexslider li').backgroundBrightness();
 	}
 
 	/* Add Section Highlighting When Hovering Over Edit Shortcuts ---------------------*/
@@ -20,8 +20,8 @@
 	}
 
 	$( document )
-	.ready( checkBackgroundImageBrightness )
-	.ajaxComplete( checkBackgroundImageBrightness );
+	.ready( checkBackgroundBrightness )
+	.ajaxComplete( checkBackgroundBrightness );
 	// WP Customizer
 	if ( typeof wp != "undefined" ) {
 		wp.customize.bind( 'preview-ready', _.defer( function() { editShortcutHoverBorder(); }));

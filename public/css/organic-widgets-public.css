@@ -124,6 +124,63 @@ img.hide-img,
 .organic-widgets-profile .organic-widgets-social-icons {
 
 }
+
+/************************************************
+*	Text Color Conditionals											  *
+************************************************/
+.organic-widget .ocw-bg-dark h1,
+.organic-widget .ocw-bg-dark h2,
+.organic-widget .ocw-bg-dark h3,
+.organic-widget .ocw-bg-dark h4,
+.organic-widget .ocw-bg-dark h5,
+.organic-widget .ocw-bg-dark h6,
+.organic-widget .ocw-bg-dark p,
+.organic-widget .ocw-bg-dark a,
+.organic-widget .ocw-bg-dark span,
+.organic-widget .ocw-bg-dark div,
+.organic-widget .ocw-bg-dark blockquote {
+  color: #fff;
+}
+.organic-widget .ocw-bg-dark-img h1,
+.organic-widget .ocw-bg-dark-img h2,
+.organic-widget .ocw-bg-dark-img h3,
+.organic-widget .ocw-bg-dark-img h4,
+.organic-widget .ocw-bg-dark-img h5,
+.organic-widget .ocw-bg-dark-img h6,
+.organic-widget .ocw-bg-dark-img p,
+.organic-widget .ocw-bg-dark-img a,
+.organic-widget .ocw-bg-dark-img span,
+.organic-widget .ocw-bg-dark-img div,
+.organic-widget .ocw-bg-dark-img blockquote {
+  text-shadow: 1px 1px 2px rgba(200, 200, 200, 1);
+}
+.organic-widget .ocw-bg-light-img h1,
+.organic-widget .ocw-bg-light-img h2,
+.organic-widget .ocw-bg-light-img h3,
+.organic-widget .ocw-bg-light-img h4,
+.organic-widget .ocw-bg-light-img h5,
+.organic-widget .ocw-bg-light-img h6,
+.organic-widget .ocw-bg-light-img p,
+.organic-widget .ocw-bg-light-img a,
+.organic-widget .ocw-bg-light-img span,
+.organic-widget .ocw-bg-light-img div,
+.organic-widget .ocw-bg-light-img blockquote {
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, .8);
+  color: #000000;
+}
+.organic-widget article .organic-widgets-content h1,
+.organic-widget article .organic-widgets-content h2,
+.organic-widget article .organic-widgets-content h3,
+.organic-widget article .organic-widgets-content h4,
+.organic-widget article .organic-widgets-content h5,
+.organic-widget article .organic-widgets-content h6,
+.organic-widget article .organic-widgets-content p,
+.organic-widget article .organic-widgets-content a,
+.organic-widget article .organic-widgets-content span,
+.organic-widget article .organic-widgets-content div,
+.organic-widget article .organic-widgets-content blockquote {
+  color: #333;
+}
 /************************************************
 *	Social Icons																	*
 ************************************************/

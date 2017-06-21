@@ -56,6 +56,9 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 		if ( ! empty( $instance['page_id'] ) ) {
 
 			echo $args['before_widget'];
+			$bg_color = isset( $instance['bg_color'] ) ? $instance['bg_color'] : false;
+			$bg_image_id = isset( $instance['bg_image_id'] ) ? $instance['bg_image_id'] : false;
+			$bg_image = ( isset( $instance['bg_image'] ) && '' != $instance['bg_image'] ) ? $instance['bg_image'] : false;
 			$page_id = $instance['page_id'];
 			$page_excerpt = $this->organic_widgets_get_the_excerpt($page_id);
 			$page_title = get_the_title( $page_id );
@@ -282,7 +285,7 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 	 */
 	public function public_scripts() {
 
-		if ( ! wp_script_is('organic-widgets-backgroundimagebrightness-js') ) { wp_enqueue_script( 'organic-widgets-backgroundimagebrightness-js', ORGANIC_WIDGETS_BASE_DIR . 'public/js/jquery.backgroundimagebrightness.js', array( 'jquery' ) ); }
+		if ( ! wp_script_is('organic-widgets-backgroundimagebrightness-js') ) { wp_enqueue_script( 'organic-widgets-backgroundimagebrightness-js', ORGANIC_WIDGETS_BASE_DIR . 'public/js/jquery.backgroundbrightness.js', array( 'jquery' ) ); }
 
 	}
 

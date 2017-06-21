@@ -1,5 +1,5 @@
 /*
- *  backgroundimagebrightness.js
+ *  backgroundBrightness.js
  *
  *  Copyright 2016, Jesse Lee & Organic Themes w/ snippets from ColourBrightness.js
  *  Released under the WTFPL license
@@ -11,7 +11,7 @@
 
 "use strict";
 
-	$.fn.backgroundImageBrightness = function(contentSelectors, threshold = 160){
+	$.fn.backgroundBrightness = function(contentSelectors, threshold = 160){
 
 		// Background Object
 		var $el = this;
@@ -92,26 +92,34 @@
 						// If applying to self
 						if (!contentSelectors ){
 							$el.removeClass('ocw-bg-light');
+              $el.removeClass('ocw-bg-light-image');
 							$el.addClass('ocw-bg-dark');
+              $el.addClass('ocw-bg-dark-img');
 						}
 						// If applying to custom selectors
 						else {
 							contentSelectors.forEach(function(contentSelector){
 								$(contentSelector).removeClass('ocw-bg-light');
+                $(contentSelector).removeClass('ocw-bg-light-img');
 								$(contentSelector).addClass('ocw-bg-dark');
+                $(contentSelector).addClass('ocw-bg-dark-img');
 							});
 						}
 					} else {
 						//If applying to self
 						if (! contentSelectors ){
 							$el.removeClass('ocw-bg-dark');
+              $el.removeClass('ocw-bg-dark-img');
 							$el.addClass('ocw-bg-light');
+              $el.addClass('ocw-bg-light-img');
 						}
 						// If applying to custom selectors
 						else {
 							contentSelectors.forEach(function(contentSelector){
 								$(contentSelector).removeClass('ocw-bg-dark');
+                $(contentSelector).removeClass('ocw-bg-dark-img');
 								$(contentSelector).addClass('ocw-bg-light');
+                $(contentSelector).addClass('ocw-bg-light-img');
 							});
 						}
 					}
@@ -176,6 +184,6 @@
 
 
 
-	} // End backgroundImageBrightness(){}
+	} // End backgroundBrightness(){}
 
 })( jQuery );
