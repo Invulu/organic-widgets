@@ -82,7 +82,7 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 			<div class="organic-widgets-section organic-widgets-subpage-section<?php if ( 0 < $bg_image_id ) { ?> has-thumb text-white<?php } ?>" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
 
 				<!-- BEGIN .content -->
-				<div class="content">
+				<div class="organic-widgets-content">
 
 					<?php the_content( esc_html__( 'Read More', ORGANIC_WIDGETS_18N ) ); ?>
 
@@ -124,7 +124,7 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 				} ?>
 
 				<!-- BEGIN .content -->
-				<div class="content">
+				<div class="organic-widgets-content">
 
 					<?php if ( ! empty( $title ) ) { ?>
 						<h2><?php echo esc_html( $title ); ?></h2>
