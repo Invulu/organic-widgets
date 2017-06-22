@@ -88,41 +88,31 @@
 
 			getImageLightness( bg, $el ,function(brightness,$el){
 
-					if (brightness < threshold) {
-						// If applying to self
-						if (!contentSelectors ){
-							$el.removeClass('ocw-bg-light');
-              $el.removeClass('ocw-bg-light-image');
-							$el.addClass('ocw-bg-dark');
-              $el.addClass('ocw-bg-dark-img');
-						}
-						// If applying to custom selectors
-						else {
-							contentSelectors.forEach(function(contentSelector){
-								$(contentSelector).removeClass('ocw-bg-light');
-                $(contentSelector).removeClass('ocw-bg-light-img');
-								$(contentSelector).addClass('ocw-bg-dark');
-                $(contentSelector).addClass('ocw-bg-dark-img');
-							});
-						}
-					} else {
-						//If applying to self
-						if (! contentSelectors ){
-							$el.removeClass('ocw-bg-dark');
-              $el.removeClass('ocw-bg-dark-img');
-							$el.addClass('ocw-bg-light');
-              $el.addClass('ocw-bg-light-img');
-						}
-						// If applying to custom selectors
-						else {
-							contentSelectors.forEach(function(contentSelector){
-								$(contentSelector).removeClass('ocw-bg-dark');
-                $(contentSelector).removeClass('ocw-bg-dark-img');
-								$(contentSelector).addClass('ocw-bg-light');
-                $(contentSelector).addClass('ocw-bg-light-img');
-							});
-						}
-					}
+        // Set classes to add and to remove
+        if (brightness < threshold) {
+          var addClass = 'ocw-bg-dark';
+          var removeClass = 'ocw-bg-light';
+        } else {
+          var addClass = 'ocw-bg-light';
+          var removeClass = 'ocw-bg-dark';
+        }
+
+        // Add and remove classes
+        // If applying to self
+        if (!contentSelectors ){
+          if ( !$el.hasClass('ocw-bg-img') ) $el.addClass('ocw-bg-img');
+          $el.removeClass(removeClass);
+          $el.addClass(addClass);
+        }
+        // If applying to custom selectors
+        else {
+          contentSelectors.forEach(function(contentSelector){
+            if ( !$(contentSelector).hasClass('ocw-bg-img') ) $(contentSelector).addClass('ocw-bg-img');
+            $(contentSelector).removeClass(removeClass);
+            $(contentSelector).addClass(addClass);
+          });
+        }
+
 				}); // End getImageLightness(){}
 
 		} // End getBackgroundImageLuminosity(){}
