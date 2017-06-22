@@ -31,26 +31,16 @@
 
       //Get Background Styles for element
       var bgStyles = getBackgroundStyles( $(value) );
-      console.log(bgStyles);
-
       var colour = bgStyles.bgColor;
       var image = bgStyles.bgImage;
       var targetedElement = bgStyles.targetedElement;
 
       // If bg image found, calculate luminosity of image
       if ( image ) {
-        console.log('background image found');
-        console.log(image);
-        console.log(targetedElement);
-        console.log('');
         getBackgroundImageLuminosity( targetedElement, contentSelectors, threshold);
       }
       // If no bg image, calculate bg color brightness
       else if ( colour ) {
-        console.log('background color found');
-        console.log(colour);
-        console.log(targetedElement);
-        console.log('');
         if (colour.match(/^rgb/)) {
           colour = colour.match(/rgba?\(([^)]+)\)/)[1];
           colour = colour.split(/ *, */).map(Number);
