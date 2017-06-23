@@ -72,7 +72,7 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 					<div class="feature-img"><?php echo get_the_post_thumbnail( $page_id, 'organic-widgets-featured-medium' )?></div>
 					<div class="information">
 						<?php if ( ! empty( $page_title ) ) { ?>
-							<h3 class="headline"><?php echo apply_filters( 'widget_title', $page_title ); ?></h3>
+							<h3><?php echo apply_filters( 'widget_title', $page_title ); ?></h3>
 						<?php } ?>
 						<?php if ( ! empty( $page_excerpt ) ) { ?>
 							<div class="excerpt"><?php echo $page_excerpt; ?></div>
@@ -115,7 +115,7 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 					<?php } ?>
 					<div class="information">
 						<?php if ( ! empty( $title ) ) { ?>
-							<h3 class="headline"><?php echo esc_html( $title ); ?></h3>
+							<h3><?php echo esc_html( $title ); ?></h3>
 						<?php } ?>
 						<?php if ( ! empty( $summary ) ) { ?>
 							<div class="excerpt"><?php echo $summary ?></div>

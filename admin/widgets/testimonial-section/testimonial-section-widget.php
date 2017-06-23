@@ -43,6 +43,7 @@ class Organic_Widgets_Testimonial_Section_Widget extends Organic_Widgets_Custom_
 		// Public scripts
 		add_action( 'wp_enqueue_scripts', array( $this, 'public_scripts') );
 	}
+
 	/**
 	 * Front-end display of widget.
 	 *
@@ -65,102 +66,106 @@ class Organic_Widgets_Testimonial_Section_Widget extends Organic_Widgets_Custom_
 
 		echo $args['before_widget'];
 		?>
+
 		<!-- BEGIN .organic-widgets-section -->
 		<div class="organic-widgets-section organic-widgets-testimonial-section<?php if ( 0 < $bg_image_id ) { ?> has-thumb text-white<?php } ?>" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
 
-					<?php
-					if ( post_type_exists( 'jetpack-testimonial' ) ) {
+			<?php
+			if ( post_type_exists( 'jetpack-testimonial' ) ) {
 
-						$post_type = 'jetpack-testimonial';
-						$tax_query = array();
+				$post_type = 'jetpack-testimonial';
+				$tax_query = array();
 
-					} else {
+			} else {
 
-						$post_type = 'post';
-						$tax_query = array(
-							array(
-								'taxonomy' => 'category',
-								'field'    => 'id',
-								'terms'    => $category
-							),
-						);
+				$post_type = 'post';
+				$tax_query = array(
+					array(
+						'taxonomy' => 'category',
+						'field'    => 'id',
+						'terms'    => $category
+					),
+				);
 
-					}
+			}
 
-					$slideshow_query = new WP_Query( array(
-						'posts_per_page' => $max_posts,
-						'post_type' => $post_type,
-						'suppress_filters' => 0,
-						'tax_query' => $tax_query
-					) );
-					?>
+			$slideshow_query = new WP_Query( array(
+				'posts_per_page' => $max_posts,
+				'post_type' => $post_type,
+				'suppress_filters' => 0,
+				'tax_query' => $tax_query
+			) );
+			?>
 
-					<?php if ( $slideshow_query->have_posts() ) { ?>
+			<?php if ( $slideshow_query->have_posts() ) { ?>
 
-						<!-- BEGIN .flexslider -->
-						<div class="organic-widgets-flexslider loading" data-speed="<?php echo get_theme_mod( 'gpp_transition_interval', '12000' ); ?>" data-transition="<?php echo get_theme_mod( 'gpp_transition_style', 'fade' ); ?>">
+				<!-- BEGIN .flexslider -->
+				<div class="organic-widgets-flexslider loading" data-speed="<?php echo get_theme_mod( 'gpp_transition_interval', '12000' ); ?>" data-transition="<?php echo get_theme_mod( 'gpp_transition_style', 'fade' ); ?>">
 
-							<div class="preloader"></div>
+					<div class="preloader"></div>
 
-							<!-- BEGIN .slides -->
-							<ul class="slides">
+					<!-- BEGIN .organic-widgets-content -->
+					<div class="organic-widgets-content">
 
-								<?php	while ( $slideshow_query->have_posts() ) {
+						<!-- BEGIN .slides -->
+						<ul class="slides">
 
-									$slideshow_query->the_post();
-									$thumb = ( get_the_post_thumbnail() ) ? wp_get_attachment_image_src( get_post_thumbnail_id(), 'organic-widgets-featured-large' ) : false; ?>
+							<?php	while ( $slideshow_query->have_posts() ) {
 
-									<li <?php post_class(); ?> id="post-<?php the_ID(); ?>">
+							$slideshow_query->the_post();
+							$thumb = ( get_the_post_thumbnail() ) ? wp_get_attachment_image_src( get_post_thumbnail_id(), 'organic-widgets-featured-large' ) : false; ?>
 
-										<!-- BEGIN .organic-widgets-testimonial-slide-content -->
-										<div class="organic-widgets-testimonial-slide-content">
+							<li <?php post_class(); ?> id="post-<?php the_ID(); ?>">
 
-											<h3><?php echo $title; ?></h3>
+								<!-- BEGIN .organic-widgets-testimonial-slide-content -->
+								<div class="organic-widgets-testimonial-slide-content">
 
-											<?php if ( has_post_thumbnail() ) { ?>
+									<h3><?php echo $title; ?></h3>
 
-												<div class="organic-widgets-testimonial-avatar" style="background-image:url(<?php echo $thumb[0]; ?>);">
-													<div class="organic-widgets-aspect-ratio-spacer"></div>
-												</div>
+									<?php if ( has_post_thumbnail() ) { ?>
 
-											<?php } ?>
-
-											<!-- BEGIN .excerpt -->
-											<div class="excerpt">
-
-												<?php the_excerpt(); ?>
-
-											<!-- END .excerpt -->
-											</div>
-
-											<h4>
-												<a href="<?php echo get_the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a>
-											</h4>
-
-										<!-- END .organic-widgets-testimonial-slide-content -->
+										<div class="organic-widgets-testimonial-avatar" style="background-image:url(<?php echo $thumb[0]; ?>);">
+											<div class="organic-widgets-aspect-ratio-spacer"></div>
 										</div>
 
-									</li>
+									<?php } ?>
 
-								<?php } ?>
+									<!-- BEGIN .excerpt -->
+									<div class="excerpt">
 
-							<!-- END .slides -->
-							</ul>
+										<?php the_excerpt(); ?>
 
-						<!-- END .flexslider -->
-						</div>
+									<!-- END .excerpt -->
+									</div>
 
-					<?php } ?>
-					<?php wp_reset_postdata(); ?>
+									<p class="organic-widgets-testimonial-author"><a href="<?php echo get_the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></p>
+
+								<!-- END .organic-widgets-testimonial-slide-content -->
+								</div>
+
+							</li>
+
+							<?php } ?>
+
+						<!-- END .slides -->
+						</ul>
+
+					<!-- END .organic-widgets-content -->
+					</div>
+
+				<!-- END .flexslider -->
+				</div>
+
+			<?php } ?>
+			<?php wp_reset_postdata(); ?>
 
 		<!-- END .organic-widgets-section -->
 		</div>
 
 		<?php echo $args['after_widget'];
 
-
-
 	}
+
 	/**
 	 * Back-end widget form.
 	 *
@@ -227,6 +232,7 @@ class Organic_Widgets_Testimonial_Section_Widget extends Organic_Widgets_Custom_
 
   <?php
 	}
+
 	/**
 	 * Sanitize widget form values as they are saved.
 	 *
@@ -287,15 +293,10 @@ class Organic_Widgets_Testimonial_Section_Widget extends Organic_Widgets_Custom_
 	 * Enqueue public javascript.
 	 */
 	public function public_scripts() {
-
 		wp_enqueue_script( 'organic-widgets-masonry', ORGANIC_WIDGETS_BASE_DIR . 'public/js/masonry.js', array( 'jquery', 'media-upload', 'media-views', 'masonry' ) );
-		// wp_enqueue_script( 'testimonial-section-widget-public-js', ORGANIC_WIDGETS_BASE_DIR . 'public/js/testimonial-section.js', array( 'jquery', 'media-upload', 'media-views', 'masonry' ) );
 		wp_enqueue_script( 'organic-widgets-flexslider', ORGANIC_WIDGETS_BASE_DIR . 'public/js/jquery.flexslider.js', array( 'jquery', 'media-upload', 'media-views', 'masonry' ) );
 		wp_enqueue_script( 'organic-widgets-flexslider-initialize', ORGANIC_WIDGETS_BASE_DIR . 'public/js/flexslider.js', array( 'jquery', 'media-upload', 'media-views', 'masonry', 'organic-widgets-flexslider' ) );
 		if ( ! wp_script_is('organic-widgets-backgroundimagebrightness-js') ) { wp_enqueue_script( 'organic-widgets-backgroundimagebrightness-js', ORGANIC_WIDGETS_BASE_DIR . 'public/js/jquery.backgroundbrightness.js', array( 'jquery' ) ); }
-
 	}
-
-
 
 } // class Organic_Widgets_Testimonial_Section_Widget

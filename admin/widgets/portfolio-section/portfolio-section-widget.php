@@ -70,7 +70,7 @@ class Organic_Widgets_Portfolio_Section_Widget extends Organic_Widgets_Custom_Wi
 		<div class="organic-widgets-section organic-widgets-portfolio-section<?php if ( 0 < $bg_image_id ) { ?> has-thumb text-white<?php } ?>" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
 
 			<?php if ( ! empty( $instance['title'] ) ) { ?>
-				<h2 class="headline <?php if ( $bg_image_id > 0 ) { ?> text-white<?php } ?>"><?php echo apply_filters( 'widget_title', $instance['title'] ); ?></h2>
+				<h2 <?php if ( $bg_image_id > 0 ) { ?>class="text-white"<?php } ?>><?php echo apply_filters( 'widget_title', $instance['title'] ); ?></h2>
 			<?php } ?>
 
 			<?php if ( ! empty( $instance['summary'] ) ) { ?>
@@ -126,9 +126,7 @@ class Organic_Widgets_Portfolio_Section_Widget extends Organic_Widgets_Custom_Wi
 								<!-- BEGIN .organic-widgets-post-meta -->
 								<div class="organic-widgets-post-meta">
 									<div class="organic-widgets-post-date">
-										<p class="organic-widgets-align-left">
-											<?php echo get_the_modified_date(); ?>
-										</p>
+										<p><?php echo get_the_modified_date(); ?></p>
 									</div>
 								<!-- END .organic-widgets-post-meta -->
 								</div>

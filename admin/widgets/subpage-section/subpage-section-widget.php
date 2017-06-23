@@ -79,16 +79,18 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 
 			<?php if ( $page_query->have_posts() ) : while ( $page_query->have_posts() ) : $page_query->the_post(); ?>
 
+			<!-- BEGIN .organic-widgets-section -->
 			<div class="organic-widgets-section organic-widgets-subpage-section<?php if ( 0 < $bg_image_id ) { ?> has-thumb text-white<?php } ?>" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
 
-				<!-- BEGIN .content -->
+				<!-- BEGIN .organic-widgets-content -->
 				<div class="organic-widgets-content">
 
 					<?php the_content( esc_html__( 'Read More', ORGANIC_WIDGETS_18N ) ); ?>
 
-				<!-- END .content -->
+				<!-- END .organic-widgets-content -->
 				</div>
 
+			<!-- END .organic-widgets-section -->
 			</div>
 
 			<?php endwhile; ?>
@@ -103,6 +105,7 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 
 			?>
 
+			<!-- BEGIN .organic-widgets-section -->
 			<div class="organic-widgets-section organic-widgets-subpage-section<?php if ( 0 < $bg_image_id ) { ?> has-thumb text-white<?php } ?>" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
 
 				<?php
@@ -123,7 +126,7 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 					<?php }
 				} ?>
 
-				<!-- BEGIN .content -->
+				<!-- BEGIN .organic-widgets-content -->
 				<div class="organic-widgets-content">
 
 					<?php if ( ! empty( $title ) ) { ?>
@@ -133,9 +136,10 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 						<p class="summary"><?php echo $summary ?></p>
 					<?php } ?>
 
-				<!-- END .content -->
+				<!-- END .organic-widgets-content -->
 				</div>
 
+			<!-- END .organic-widgets-section -->
 			</div>
 
 			<?php
@@ -188,8 +192,6 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 		if ( isset( $instance[ 'summary' ] ) ) {
 			$summary = $instance[ 'summary' ];
 		} else { $summary = ''; }
-
-
 
 		?>
 
@@ -260,8 +262,7 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 		if ( isset( $new_instance['summary'] ) )
 			$instance['summary'] = strip_tags( $new_instance['summary'] );
 
-
-		//Widget Title
+		// Widget Title
 		if ( isset( $new_instance['page_id'] ) && $new_instance['page_id'] > 0 ) {
 			$instance['title'] = strip_tags( get_the_title( $instance['page_id'] ) );
 		}
@@ -299,9 +300,7 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 	 * Enqueue public javascript.
 	 */
 	public function public_scripts() {
-
 		if ( ! wp_script_is('organic-widgets-backgroundimagebrightness-js') ) { wp_enqueue_script( 'organic-widgets-backgroundimagebrightness-js', ORGANIC_WIDGETS_BASE_DIR . 'public/js/jquery.backgroundbrightness.js', array( 'jquery' ) ); }
-
 	}
 
 } // class Organic_Widgets_Subpage_Section_Widget

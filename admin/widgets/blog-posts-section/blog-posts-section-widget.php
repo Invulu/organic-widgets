@@ -66,10 +66,11 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 
 		echo $args['before_widget'];
 		?>
+
 		<!-- BEGIN .organic-widgets-section -->
 		<div class="organic-widgets-section organic-widgets-blog-posts-section<?php if ( 0 < $bg_image_id ) { ?> has-thumb text-white<?php } ?>" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
 
-			<!-- BEGIN .content -->
+			<!-- BEGIN .organic-widgets-content -->
 			<div class="organic-widgets-content">
 
 			<?php if ( ! empty( $instance['title'] ) ) { ?>
@@ -136,7 +137,7 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 
 			<?php endif; ?>
 
-			<!-- END .content -->
+			<!-- END .organic-widgets-content -->
 			</div>
 
 		<!-- END .organic-widgets-section -->
@@ -145,6 +146,7 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 		<?php echo $args['after_widget'];
 
 	}
+
 	/**
 	 * Back-end widget form.
 	 *
@@ -220,6 +222,7 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 
   <?php
 	}
+
 	/**
 	 * Sanitize widget form values as they are saved.
 	 *
@@ -282,14 +285,9 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 	 * Enqueue public javascript.
 	 */
 	public function public_scripts() {
-
 		wp_enqueue_script( 'organic-widgets-masonry', ORGANIC_WIDGETS_BASE_DIR . 'public/js/masonry.js', array( 'jquery', 'media-upload', 'media-views', 'masonry' ) );
 		wp_enqueue_script( 'blog-posts-section-widget-public-js', ORGANIC_WIDGETS_BASE_DIR . 'public/js/blog-posts-section.js', array( 'jquery', 'media-upload', 'media-views', 'masonry' ) );
 		if ( ! wp_script_is('organic-widgets-backgroundimagebrightness-js') ) { wp_enqueue_script( 'organic-widgets-backgroundimagebrightness-js', ORGANIC_WIDGETS_BASE_DIR . 'public/js/jquery.backgroundbrightness.js', array( 'jquery' ) ); }
-
-
 	}
-
-
 
 } // class Organic_Widgets_Blog_Posts_Section_Widget

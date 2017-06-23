@@ -63,78 +63,79 @@ class Organic_Widgets_Content_Slideshow_Section_Widget extends Organic_Widgets_C
 
 		echo $args['before_widget'];
 		?>
+
 		<!-- BEGIN .organic-widgets-section -->
-		<div class="organic-widgets-section organic-widgets-content-slideshow-section<?php if ( 0 < $bg_image_id ) { ?> has-thumb text-white<?php } ?>" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
+		<div class="organic-widgets-section organic-widgets-content-slideshow-section<?php if ( 0 < $bg_image_id ) { ?> has-thumb<?php } ?>" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
 
-					<?php
+			<?php
+				$post_type = 'post';
+				$tax_query = array(
+					array(
+						'taxonomy' => 'category',
+						'field'    => 'id',
+						'terms'    => $category
+					),
+				);
 
+			$slideshow_query = new WP_Query( array(
+				'posts_per_page' => $max_posts,
+				'post_type' => $post_type,
+				'suppress_filters' => 0,
+				'tax_query' => $tax_query
+			) );
+			?>
 
-						$post_type = 'post';
-						$tax_query = array(
-							array(
-								'taxonomy' => 'category',
-								'field'    => 'id',
-								'terms'    => $category
-							),
-						);
+			<?php if ( $slideshow_query->have_posts() ) { ?>
 
+				<!-- BEGIN .flexslider -->
+				<div class="organic-widgets-flexslider loading" data-speed="<?php echo get_theme_mod( 'gpp_transition_interval', '12000' ); ?>" data-transition="<?php echo get_theme_mod( 'gpp_transition_style', 'fade' ); ?>">
 
+					<div class="preloader"></div>
 
-					$slideshow_query = new WP_Query( array(
-						'posts_per_page' => $max_posts,
-						'post_type' => $post_type,
-						'suppress_filters' => 0,
-						'tax_query' => $tax_query
-					) );
-					?>
+					<!-- BEGIN .slides -->
+					<ul class="slides">
 
-					<?php if ( $slideshow_query->have_posts() ) { ?>
+						<?php	while ( $slideshow_query->have_posts() ) {
 
-						<!-- BEGIN .flexslider -->
-						<div class="organic-widgets-flexslider loading" data-speed="<?php echo get_theme_mod( 'gpp_transition_interval', '12000' ); ?>" data-transition="<?php echo get_theme_mod( 'gpp_transition_style', 'fade' ); ?>">
+							$slideshow_query->the_post();
+							$thumb = ( get_the_post_thumbnail() ) ? wp_get_attachment_image_src( get_post_thumbnail_id(), 'organic-widgets-featured-large' ) : false; ?>
 
-							<div class="preloader"></div>
+							<li <?php post_class(); ?> id="post-<?php the_ID(); ?>" <?php if ( has_post_thumbnail() ) { echo 'style="background-image:url(' . $thumb[0] . ')"'; } ?>>
 
-							<!-- BEGIN .slides -->
-							<ul class="slides">
+								<!-- BEGIN .organic-widgets-content -->
+								<div class="organic-widgets-content">
 
-								<?php	while ( $slideshow_query->have_posts() ) {
+									<!-- BEGIN .organic-widgets-content-slideshow-slide-content -->
+									<div class="organic-widgets-content-slideshow-slide-content">
 
-									$slideshow_query->the_post();
-									$thumb = ( get_the_post_thumbnail() ) ? wp_get_attachment_image_src( get_post_thumbnail_id(), 'organic-widgets-featured-large' ) : false; ?>
+										<h3><a href="<?php echo get_the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h3>
 
-									<li <?php post_class(); ?> id="post-<?php the_ID(); ?>" <?php if ( has_post_thumbnail() ) { echo 'style="background-image:url(' . $thumb[0] . ')"'; } ?>>
+										<!-- BEGIN .excerpt -->
+										<div class="excerpt">
 
-										<!-- BEGIN .organic-widgets-content-slideshow-slide-content -->
-										<div class="organic-widgets-content-slideshow-slide-content">
+											<?php the_excerpt(); ?>
 
-											<h3>
-												<a href="<?php echo get_the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a>
-											</h3>
-
-											<!-- BEGIN .excerpt -->
-											<div class="excerpt">
-
-												<?php the_excerpt(); ?>
-
-											<!-- END .excerpt -->
-											</div>
-
-										<!-- END .organic-widgets-content-slideshow-slide-content -->
+										<!-- END .excerpt -->
 										</div>
 
-									</li>
+									<!-- END .organic-widgets-content-slideshow-slide-content -->
+									</div>
 
-								<?php } ?>
+								<!-- END .organic-widgets-content -->
+								</div>
 
-							<!-- END .slides -->
-							</ul>
+							</li>
 
-						<!-- END .flexslider -->
-						</div>
+						<?php } ?>
 
-					<?php } ?>
-					<?php wp_reset_postdata(); ?>
+					<!-- END .slides -->
+					</ul>
+
+				<!-- END .flexslider -->
+				</div>
+
+			<?php } ?>
+			<?php wp_reset_postdata(); ?>
 
 		<!-- END .organic-widgets-section -->
 		</div>

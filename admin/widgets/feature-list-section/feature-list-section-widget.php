@@ -70,7 +70,7 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 		<div class="organic-widgets-section organic-widgets-feature-list-section<?php if ( 0 < $bg_image_id ) { ?> has-thumb text-white<?php } ?>" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
 
 			<?php if ( ! empty( $title ) ) { ?>
-				<h3 class="headline text-center"><?php echo esc_html( $title ); ?></h3>
+				<h3><?php echo esc_html( $title ); ?></h3>
 			<?php } ?>
 			<?php if ( ! empty( $feature_list_summary ) ) { ?>
 				<p class="summary"><?php echo $feature_list_summary ?></p>

@@ -83,7 +83,7 @@ class Organic_Widgets_Profile_Widget extends Organic_Widgets_Custom_Widget {
 					<div class="organic-profile-content">
 
 					<?php if ( ! empty( $instance['title'] ) ) { ?>
-						<h2 class="organic-widgets-profile-title"><?php echo apply_filters( 'widget_title', $instance['title'] ); ?></h2>
+						<h6 class="organic-widgets-profile-title"><?php echo apply_filters( 'widget_title', $instance['title'] ); ?></h6>
 					<?php } ?>
 
 					<?php if ( ! empty( $instance['subtitle'] ) ) { ?>
