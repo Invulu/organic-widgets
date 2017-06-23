@@ -1,26 +1,15 @@
 <?php
-
 /**
- * The admin-specific functionality of the plugin.
- *
- * @link       https://organicthemes.com
- * @since      1.0.0
- *
- * @package    Organic_Widgets
- * @subpackage Organic_Widgets/admin
- */
-
-/**
- * The admin-specific functionality of the plugin.
+ * The blocks functionality of the plugin.
  *
  * Defines the plugin name, version, and two examples hooks for how to
  * enqueue the admin-specific stylesheet and JavaScript.
  *
  * @package    Organic_Widgets
- * @subpackage Organic_Widgets/admin
+ * @subpackage Organic_Widgets/blocks
  * @author     Organic Themes <info@organicthemes.com>
  */
-class Organic_Widgets_Admin {
+class Organic_Widgets_Blocks {
 
 	/**
 	 * The ID of this plugin.
@@ -76,24 +65,15 @@ class Organic_Widgets_Admin {
 
 	}
 
-	/**
-   * Check if Gutenberg is active and include block classes if it is
+  /**
+   * Check if Gutennberg is active and include block classes if it is
    *
    * @since      1.0.0
    */
 	public function include_block_classes() {
 
-    if( is_plugin_active( 'gutenberg/gutenberg.php' ) ) {
-
-			require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/blocks/class-organic-widgets-blocks.php';
-
-			// Instantiate Organic Blocks
-			$organic_blocks = new Organic_Widgets_Blocks( $this->plugin_name, $this->version );
-			$organic_blocks->include_block_classes();
-
-		}
+    //Include Block Class files here
 
 	}
-
 
 }

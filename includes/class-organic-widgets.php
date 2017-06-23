@@ -187,6 +187,7 @@ class Organic_Widgets {
 		$plugin_admin = new Organic_Widgets_Admin( $this->get_plugin_name(), $this->get_version() );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
+		$this->loader->add_action( 'admin_init', $plugin_admin, 'include_block_classes' );
 
 		// Page Template Hooks
 		$plugin_page_template = new Organic_Page_Template( $this->get_plugin_name(), $this->get_version() );
@@ -196,6 +197,7 @@ class Organic_Widgets {
 		$plugin_widget_areas = new Organic_Widget_Areas( $this->get_plugin_name(), $this->get_version(), $this->get_widget_prefix() );
 		$this->loader->add_action( 'widgets_init', $plugin_widget_areas, 'register_widget_areas' );
 		$this->loader->add_action( 'switch_theme', $plugin_widget_areas, 'sync_widget_areas' );
+
 
 	}
 
