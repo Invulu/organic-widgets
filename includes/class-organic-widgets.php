@@ -153,6 +153,11 @@ class Organic_Widgets {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widgets/team-section/team-section-widget.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widgets/testimonial-section/testimonial-section-widget.php';
 
+		/**
+		 * the classes responsible for registering blocks
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/blocks/class-organic-widgets-blocks.php';
+
 		$this->loader = new Organic_Widgets_Loader();
 
 	}
@@ -187,7 +192,11 @@ class Organic_Widgets {
 		$plugin_admin = new Organic_Widgets_Admin( $this->get_plugin_name(), $this->get_version() );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
-		$this->loader->add_action( 'admin_init', $plugin_admin, 'include_block_classes' );
+
+		$organic_blocks = new Organic_Widgets_Blocks( $this->get_plugin_name(), $this->get_version() );
+		$this->loader->add_action( 'admin_enqueue_scripts', $organic_blocks, 'enqueue_scripts' );
+
+
 
 		// Page Template Hooks
 		$plugin_page_template = new Organic_Page_Template( $this->get_plugin_name(), $this->get_version() );

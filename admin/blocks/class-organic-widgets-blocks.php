@@ -50,7 +50,7 @@ class Organic_Widgets_Blocks {
 	 */
 	public function enqueue_styles() {
 
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/organic-widgets-admin.css', array(), $this->version, 'all' );
+		// wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/organic-widgets-admin.css', array(), $this->version, 'all' );
 
 	}
 
@@ -61,7 +61,14 @@ class Organic_Widgets_Blocks {
 	 */
 	public function enqueue_scripts() {
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/organic-widgets-admin.js', array( 'jquery' ), $this->version, false );
+    if( is_plugin_active( 'gutenberg/gutenberg.php' ) && ORGANIC_WIDGETS_BLOCKS_ACTIVE ) {
+      $blocks = array(
+        'separator2'
+      );
+      foreach ( $blocks as $block_name );
+      wp_enqueue_script( 'organic-widgets-block-' . $block_name, plugin_dir_url( __FILE__ ) . 'library/'.$block_name.'/index.js', array( 'jquery' ), $this->version, false );
+    }
+
 
 	}
 
@@ -73,6 +80,8 @@ class Organic_Widgets_Blocks {
 	public function include_block_classes() {
 
     //Include Block Class files here
+    // require_once ORGANIC_WIDGETS_BLOCKS_DIR . 'separator/index.js';
+    add_action( 'admin_enqueue_scripts', 'enqueue_scripts' );
 
 	}
 

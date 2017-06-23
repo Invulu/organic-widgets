@@ -76,24 +76,4 @@ class Organic_Widgets_Admin {
 
 	}
 
-	/**
-   * Check if Gutenberg is active and include block classes if it is
-   *
-   * @since      1.0.0
-   */
-	public function include_block_classes() {
-
-    if( is_plugin_active( 'gutenberg/gutenberg.php' ) ) {
-
-			require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/blocks/class-organic-widgets-blocks.php';
-
-			// Instantiate Organic Blocks
-			$organic_blocks = new Organic_Widgets_Blocks( $this->plugin_name, $this->version );
-			$organic_blocks->include_block_classes();
-
-		}
-
-	}
-
-
 }
