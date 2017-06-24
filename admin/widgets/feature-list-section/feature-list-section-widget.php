@@ -208,9 +208,7 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 					<label for="<?php echo $this->get_field_id( 'features_array' ).'_summary_'.$feature['id']; ?>"><?php _e( 'Feature Summary:', ORGANIC_WIDGETS_18N ) ?></label>
 					<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'features_array' ).'_summary_'.$feature['id']; ?>" name="<?php echo $this->get_field_id( 'features_array' ).'_summary_'.$feature['id']; ?>" value="<?php echo $feature['summary']; ?>" />
 					<label for="<?php echo $this->get_field_id( 'features_array' ).'_icon_'.$feature['id']; ?>"><?php _e( 'Feature Icon:', ORGANIC_WIDGETS_18N ) ?></label>
-					<select id="<?php echo $this->get_field_id( 'features_array' ).'_icon_'.$feature['id']; ?>" name="<?php echo $this->get_field_id( 'features_array' ).'_icon_'.$feature['id']; ?>">
-						<?php $this->getIconOptions(); ?>
-					</select>
+					<!-- select dropdown -->
 				</div>
 
 			<?php } ?>
@@ -225,11 +223,9 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 					  <div class="organic-widget-dropdown-button">Select Icon...</div>
 					  <div class="organic-widgets-feature-list-select-dropdown">
 					    <?php $this->getIconOptionsDivs(); ?>
-					  </div>
+							<div class="organic-widgets-clear"></div>
+						</div>
 					</div>
-					<select class="organic-widgets-feature-list-select" id="<?php echo $this->get_field_id( 'features_array' ).'_icon_'.count($features_array)+1; ?>" name="<?php echo $this->get_field_id( 'features_array' ).'_icon_'.count($features_array)+1; ?>">
-						<?php $this->getIconOptions(); ?>
-					</select>
 				</div>
 				<input type="hidden" id="<?php echo $this->get_field_id('features_array'); ?>" name="<?php echo $this->get_field_name('features_array'); ?>" value="<?php json_encode($features_array); ?>" />
 		</p>
