@@ -60,7 +60,8 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 		$button_text = ( isset( $instance['button_text'] ) && '' != $instance['button_text'] ) ? $instance['button_text'] : false;
 		$button_url = ( isset( $instance['button_url'] ) && '' != $instance['button_url'] ) ? $instance['button_url'] : false;
 		$title = $instance['title'];
-		$num_columns = ( isset( $instance['num_columns'] ) ) ? $instance['num_columns'] : 0;
+		$num_columns = ( isset( $instance['num_columns'] ) ) ? $instance['num_columns'] : 3;
+		$features_array = ( isset( $instance['features_array'] ) ) ? $instance['features_array'] : array();
 
 		echo $args['before_widget'];
 
@@ -74,6 +75,31 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 			<?php } ?>
 			<?php if ( ! empty( $feature_list_summary ) ) { ?>
 				<p class="summary"><?php echo $feature_list_summary ?></p>
+			<?php } ?>
+
+			<?php if ( $features_array && count( $features_array ) ) { ?>
+
+				<div class="organic-widgets-feature-list-items-wrapper">
+
+					<?php foreach ( $features_array as $feature ) { ?>
+
+						<div class="organic-widgets-feature-list-item">
+
+							<div class="organic-widgets-feature-list-item-image">
+								<p><?php echo $feature['image']; ?></p>
+							</div>
+
+							<div class="organic-widgets-feature-list-item-text">
+								<h4><?php echo $feature['title']; ?></h4>
+								<p><?php echo $feature['summary']; ?></p>
+							</div>
+
+						</div>
+
+					<?php } ?>
+
+				</div>
+
 			<?php } ?>
 
 			<?php if ( ! empty( $button_url ) ) { ?>
@@ -137,6 +163,8 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 			$num_columns = $instance['num_columns'];
 		} else { $num_columns = 3; }
 
+		$features_array = ( isset( $instance['features_array'] ) ) ? $instance['features_array'] : array();
+
 		?>
 
 		<h4>Content</h4>
@@ -164,6 +192,40 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 		    <option <?php selected( $num_columns, '3'); ?> value="3">3</option>
 		    <option <?php selected( $num_columns, '4'); ?> value="4">4</option>
 			</select>
+		</p>
+
+
+		<hr/>
+
+		<p>
+			<label for="<?php echo $this->get_field_id( 'features_array' ); ?>"><h4><?php _e( 'Features:', ORGANIC_WIDGETS_18N ) ?></h4></label>
+
+			<?php foreach ( $features_array as $feature ) { ?>
+
+				<div class="organic-widgets-feature-list-item-form-item" id="<?php echo $this->get_field_id( 'features_array' ).'_'.$feature['id']; ?>">
+					<label for="<?php echo $this->get_field_id( 'features_array' ).'_title_'.$feature['id']; ?>"><?php _e( 'Feature Title:', ORGANIC_WIDGETS_18N ) ?></label>
+					<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'features_array' ).'_title_'.$feature['id']; ?>" name="<?php echo $this->get_field_id( 'features_array' ).'_title_'.$feature['id']; ?>" value="<?php echo $feature['title']; ?>" />
+					<label for="<?php echo $this->get_field_id( 'features_array' ).'_summary_'.$feature['id']; ?>"><?php _e( 'Feature Summary:', ORGANIC_WIDGETS_18N ) ?></label>
+					<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'features_array' ).'_summary_'.$feature['id']; ?>" name="<?php echo $this->get_field_id( 'features_array' ).'_summary_'.$feature['id']; ?>" value="<?php echo $feature['summary']; ?>" />
+					<label for="<?php echo $this->get_field_id( 'features_array' ).'_icon_'.$feature['id']; ?>"><?php _e( 'Feature Icon:', ORGANIC_WIDGETS_18N ) ?></label>
+					<select id="<?php echo $this->get_field_id( 'features_array' ).'_icon_'.$feature['id']; ?>" name="<?php echo $this->get_field_id( 'features_array' ).'_icon_'.$feature['id']; ?>">
+						<?php $this->getIconOptions(); ?>
+					</select>
+				</div>
+
+			<?php } ?>
+
+				<div class="organic-widgets-feature-list-item-form-item" id="<?php echo $this->get_field_id( 'features_array' ).'_'.count($features_array)+1; ?>">
+					<label for="<?php echo $this->get_field_id( 'features_array' ).'_title_'.count($features_array)+1; ?>"><?php _e( 'Feature Title:', ORGANIC_WIDGETS_18N ) ?></label>
+					<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'features_array' ).'_title_'.count($features_array)+1; ?>" name="<?php echo $this->get_field_id( 'features_array' ).'_title_'.count($features_array)+1; ?>" value="" />
+					<label for="<?php echo $this->get_field_id( 'features_array' ).'_summary_'.count($features_array)+1; ?>"><?php _e( 'Feature Summary:', ORGANIC_WIDGETS_18N ) ?></label>
+					<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'features_array' ).'_summary_'.count($features_array)+1; ?>" name="<?php echo $this->get_field_id( 'features_array' ).'_summary_'.count($features_array)+1; ?>" value="" />
+					<label for="<?php echo $this->get_field_id( 'features_array' ).'_icon_'.count($features_array)+1; ?>"><?php _e( 'Feature Icon:', ORGANIC_WIDGETS_18N ) ?></label>
+					<select id="<?php echo $this->get_field_id( 'features_array' ).'_icon_'.count($features_array)+1; ?>" name="<?php echo $this->get_field_id( 'features_array' ).'_icon_'.count($features_array)+1; ?>">
+						<?php $this->getIconOptions(); ?>
+					</select>
+				</div>
+				<input type="hidden" id="<?php echo $this->get_field_id('features_array'); ?>" name="<?php echo $this->get_field_name('features_array'); ?>" value="<?php json_encode($features_array); ?>" />
 		</p>
 
 		<hr />
@@ -225,6 +287,8 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 		wp_enqueue_script( 'organic-widgets-feature-list-section-widget-js', plugin_dir_url( __FILE__ ) . 'js/feature-list-section-widget.js', array( 'jquery', 'media-upload', 'media-views' ) );
 		wp_enqueue_style( 'organic-widgets-feature-list-section-widget-css', plugin_dir_url( __FILE__ ) . 'css/feature-list-section-widget.css' );
 
+		wp_enqueue_style( 'organic-widgets-fontawesome', ORGANIC_WIDGETS_BASE_DIR . 'public/css/font-awesome.css' );
+
 		wp_enqueue_style( 'wp-color-picker' );
 		wp_enqueue_script( 'wp-color-picker' );
     wp_enqueue_script( 'organic-widgets-module-color-picker', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-color-picker.js', array( 'jquery', 'media-upload', 'media-views', 'wp-color-picker' ) );
@@ -243,6 +307,8 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 	public function public_scripts() {
 
 		if ( ! wp_script_is('organic-widgets-backgroundimagebrightness-js') ) { wp_enqueue_script( 'organic-widgets-backgroundimagebrightness-js', ORGANIC_WIDGETS_BASE_DIR . 'public/js/jquery.backgroundbrightness.js', array( 'jquery' ) ); }
+
+		// wp_enqueue_style( 'organic-widgets-fontawesome', ORGANIC_WIDGETS_BASE_DIR . 'public/css/font-awesome.css' );
 
 	}
 

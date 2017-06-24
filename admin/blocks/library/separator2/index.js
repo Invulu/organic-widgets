@@ -3,7 +3,8 @@ function registerBlock() {
 	var el = wp.element.createElement;
 
 	wp.blocks.registerBlockType( 'organic-widgets/separator2', {
-		title: 'Separator2222',
+
+		title: 'Separator2',
 
 		icon: 'minus',
 
@@ -15,6 +16,7 @@ function registerBlock() {
 		save: function() {
         return el( 'div', { style: { backgroundColor: '#900', color: '#fff', padding: '20px' } }, 'I am a red block.' );
 		},
+
 	} );
 }
 
