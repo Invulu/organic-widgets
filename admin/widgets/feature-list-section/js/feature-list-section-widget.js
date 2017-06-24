@@ -15,8 +15,17 @@
 
 		// Listen for click to choose feature
 		$('.organic-widgets-feature-select-item').click(function(){
-			console.log('hey');
 			organicWidgetsChooseFeature(this);
+		});
+
+		// Listen for changes on inputs
+		$('.organic-widgets-feature-list-summary-input').change(function(){
+			var formItem = $(this).parent().parent('.organic-widgets-feature-list-item-form-item');
+			organicWidgetsFeatureUpdateMainArray(this);
+		});
+		$('.organic-widgets-feature-list-title-input').change(function(){
+			var formItem = $(this).parent().parent('.organic-widgets-feature-list-item-form-item');
+			organicWidgetsFeatureUpdateMainArray(this);
 		});
   }
 
@@ -26,7 +35,7 @@
 	  var thisDropdown = $(dropdown).parent('.organic-widgets-feature-list-select');
 		var thisIcon = thisDropdown.data('val');
     var thisID = thisDropdown.data('feature-id');
-    console.log(thisIcon);
+
 		$(dropdown).addClass('organic-widgets-open');
 		thisDropdown.find('.organic-widgets-feature-list-select-dropdown').addClass('organic-widgets-show');
 
@@ -59,19 +68,31 @@
 
 	}
 
-	function organicWidgetsFeatureUpdateMainArray(thisFormItem) {
+	function organicWidgetsFeatureUpdateMainArray(item) {
 
-		var thisItemData = {
-			id: thisFormItem.data('feature-id'),
-			icon: thisFormItem.find('.organic-widgets-feature-list-select').attr('data-val'),
-			title: thisFormItem.find('.organic-widgets-feature-list-title-input').val(),
-			summary: thisFormItem.find('.organic-widgets-feature-list-summary-input').val()
-		}
-		console.log(thisItemData);
+		console.log('update for ');
+		console.log(item);
+		console.log($(item).val());
+		var thisFormItem = $(item).parents('.organic-widgets-feature-list-item-form-item');
+
+		var allFormItems = thisFormItem.siblings('.organic-widgets-feature-list-item-form-item').addBack();
+
+		var thisItemData = {};
+		allFormItems.each(function(key,el){
+			var theID = $(el).data('feature-id');
+			thisItemData[theID] = {
+				'icon': $(el).find('.organic-widgets-feature-list-select').attr('data-val'),
+				'title': $(el).find('.organic-widgets-feature-list-title-input').val(),
+				'summary': $(el).find('.organic-widgets-feature-list-summary-input').val()
+			}
+		});
+
+
 
 		var mainInput = thisFormItem.siblings('.organic-widgets-feature-list-hidden-input');
-		mainInput.val(thisItemData);
-		console.log(mainInput.val());
+		mainInput.val(JSON.stringify(thisItemData));
+
+
 
 	}
 
