@@ -18,3 +18,6 @@
  	max-width:600px;
  	height:auto;
  }
+.organic-widgets-feature-list-select, .organic-widgets-feature-list-select option{
+  font-family: 'FontAwesome', sans-serif;
+}

@@ -446,148 +446,294 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
 	function getIconOptions() { ?>
 
 		<optgroup label="Feature Icons">
-		<option value="fa-area-chart">Area Chart</option>
+		<option value="fa-area-chart">Area Chart &#xf080;</option>
 		<option value="fa-bar-chart">Bar Chart</option>
 		<option value="fa-pie-chart">Pie Chart</option>
-		<option value="icon-beaker">icon-beaker</option>
-		<option value="icon-beer">icon-beer</option>
-		<option value="icon-bell">icon-bell</option>
-		<option value="icon-bell-alt">icon-bell-alt</option>
-		<option value="icon-bolt">icon-bolt</option>
-		<option value="icon-book">icon-book</option>
-		<option value="icon-briefcase">icon-briefcase</option>
-		<option value="icon-bullhorn">icon-bullhorn</option>
-		<option value="icon-calendar">icon-calendar</option>
-		<option value="icon-camera">icon-camera</option>
-		<option value="icon-camera-retro">icon-camera-retro</option>
-		<option value="icon-check">icon-check</option>
-		<option value="icon-cloud">icon-cloud</option>
-		<option value="icon-coffee">icon-coffee</option>
-		<option value="icon-cog">icon-cog</option>
-		<option value="icon-cogs">icon-cogs</option>
-		<option value="icon-comment">icon-comment</option>
-		<option value="icon-comment-alt">icon-comment-alt</option>
-		<option value="icon-comments">icon-comments</option>
-		<option value="icon-comments-alt">icon-comments-alt</option>
-		<option value="icon-credit-card">icon-credit-card</option>
-		<option value="icon-dashboard">icon-dashboard</option>
-		<option value="icon-desktop">icon-desktop</option>
-		<option value="icon-download">icon-download</option>
-		<option value="icon-download-alt">icon-download-alt</option>
-		<option value="icon-edit">icon-edit</option>
-		<option value="icon-envelope">icon-envelope</option>
-		<option value="icon-envelope-alt">icon-envelope-alt</option>
-		<option value="icon-exchange">icon-exchange</option>
-		<option value="icon-exclamation-sign">icon-exclamation-sign</option>
-		<option value="icon-eye-open">icon-eye-open</option>
-		<option value="icon-film">icon-film</option>
-		<option value="icon-filter">icon-filter</option>
-		<option value="icon-fire">icon-fire</option>
-		<option value="icon-flag">icon-flag</option>
-		<option value="icon-folder-open">icon-folder-open</option>
-		<option value="icon-folder-open-alt">icon-folder-open-alt</option>
-		<option value="icon-food">icon-food</option>
-		<option value="icon-gift">icon-gift</option>
-		<option value="icon-glass">icon-glass</option>
-		<option value="icon-globe">icon-globe</option>
-		<option value="icon-group">icon-group</option>
-		<option value="icon-hdd">icon-hdd</option>
-		<option value="icon-headphones">icon-headphones</option>
-		<option value="icon-heart">icon-heart</option>
-		<option value="icon-heart-empty">icon-heart-empty</option>
-		<option value="icon-home">icon-home</option>
-		<option value="icon-inbox">icon-inbox</option>
-		<option value="icon-info-sign">icon-info-sign</option>
-		<option value="icon-key">icon-key</option>
-		<option value="icon-leaf">icon-leaf</option>
-		<option value="icon-laptop">icon-laptop</option>
-		<option value="icon-legal">icon-legal</option>
-		<option value="icon-lemon">icon-lemon</option>
-		<option value="icon-lightbulb">icon-lightbulb</option>
-		<option value="icon-lock">icon-lock</option>
-		<option value="icon-unlock">icon-unlock</option>
-		<option value="icon-magic">icon-magic</option>
-		<option value="icon-magnet">icon-magnet</option>
-		<option value="icon-map-marker">icon-map-marker</option>
-		<option value="icon-minus">icon-minus</option>
-		<option value="icon-minus-sign">icon-minus-sign</option>
-		<option value="icon-mobile-phone">icon-mobile-phone</option>
-		<option value="icon-money">icon-money</option>
-		<option value="icon-move">icon-move</option>
-		<option value="icon-music">icon-music</option>
-		<option value="icon-off">icon-off</option>
-		<option value="icon-ok">icon-ok</option>
-		<option value="icon-ok-circle">icon-ok-circle</option>
-		<option value="icon-ok-sign">icon-ok-sign</option>
-		<option value="icon-pencil">icon-pencil</option>
-		<option value="icon-picture">icon-picture</option>
-		<option value="icon-plane">icon-plane</option>
-		<option value="icon-plus">icon-plus</option>
-		<option value="icon-plus-sign">icon-plus-sign</option>
-		<option value="icon-print">icon-print</option>
-		<option value="icon-pushpin">icon-pushpin</option>
-		<option value="icon-qrcode">icon-qrcode</option>
-		<option value="icon-question-sign">icon-question-sign</option>
-		<option value="icon-quote-left">icon-quote-left</option>
-		<option value="icon-quote-right">icon-quote-right</option>
-		<option value="icon-random">icon-random</option>
-		<option value="icon-refresh">icon-refresh</option>
-		<option value="icon-road">icon-road</option>
-		<option value="icon-rss">icon-rss</option>
-		<option value="icon-screenshot">icon-screenshot</option>
-		<option value="icon-search">icon-search</option>
-		<option value="icon-share-alt">icon-share-alt</option>
-		<option value="icon-shopping-cart">icon-shopping-cart</option>
-		<option value="icon-signal">icon-signal</option>
-		<option value="icon-sitemap">icon-sitemap</option>
-		<option value="icon-star">icon-star</option>
-		<option value="icon-star-empty">icon-star-empty</option>
-		<option value="icon-star-half">icon-star-half</option>
-		<option value="icon-tablet">icon-tablet</option>
-		<option value="icon-tags">icon-tags</option>
-		<option value="icon-tasks">icon-tasks</option>
-		<option value="icon-thumbs-down">icon-thumbs-down</option>
-		<option value="icon-thumbs-up">icon-thumbs-up</option>
-		<option value="icon-time">icon-time</option>
-		<option value="icon-tint">icon-tint</option>
-		<option value="icon-trash">icon-trash</option>
-		<option value="icon-trophy">icon-trophy</option>
-		<option value="icon-truck">icon-truck</option>
-		<option value="icon-umbrella">icon-umbrella</option>
-		<option value="icon-upload">icon-upload</option>
-		<option value="icon-user">icon-user</option>
-		<option value="icon-user-md">icon-user-md</option>
-		<option value="icon-volume-up">icon-volume-up</option>
-		<option value="icon-warning-sign">icon-warning-sign</option>
-		<option value="icon-wrench">icon-wrench</option>
-		<option value="icon-zoom-in">icon-zoom-in</option>
-		<option value="icon-zoom-out">icon-zoom-out</option>
+		<option value="fa-beaker">fa-beaker</option>
+		<option value="fa-beer">fa-beer</option>
+		<option value="fa-bell">fa-bell</option>
+		<option value="fa-bell-alt">fa-bell-alt</option>
+		<option value="fa-bolt">fa-bolt</option>
+		<option value="fa-book">fa-book</option>
+		<option value="fa-briefcase">fa-briefcase</option>
+		<option value="fa-bullhorn">fa-bullhorn</option>
+		<option value="fa-calendar">fa-calendar</option>
+		<option value="fa-camera">fa-camera</option>
+		<option value="fa-camera-retro">fa-camera-retro</option>
+		<option value="fa-check">fa-check</option>
+		<option value="fa-cloud">fa-cloud</option>
+		<option value="fa-coffee">fa-coffee</option>
+		<option value="fa-cog">fa-cog</option>
+		<option value="fa-cogs">fa-cogs</option>
+		<option value="fa-comment">fa-comment</option>
+		<option value="fa-comment-alt">fa-comment-alt</option>
+		<option value="fa-comments">fa-comments</option>
+		<option value="fa-comments-alt">fa-comments-alt</option>
+		<option value="fa-credit-card">fa-credit-card</option>
+		<option value="fa-dashboard">fa-dashboard</option>
+		<option value="fa-desktop">fa-desktop</option>
+		<option value="fa-download">fa-download</option>
+		<option value="fa-download-alt">fa-download-alt</option>
+		<option value="fa-edit">fa-edit</option>
+		<option value="fa-envelope">fa-envelope</option>
+		<option value="fa-envelope-alt">fa-envelope-alt</option>
+		<option value="fa-exchange">fa-exchange</option>
+		<option value="fa-exclamation-sign">fa-exclamation-sign</option>
+		<option value="fa-eye-open">fa-eye-open</option>
+		<option value="fa-film">fa-film</option>
+		<option value="fa-filter">fa-filter</option>
+		<option value="fa-fire">fa-fire</option>
+		<option value="fa-flag">fa-flag</option>
+		<option value="fa-folder-open">fa-folder-open</option>
+		<option value="fa-folder-open-alt">fa-folder-open-alt</option>
+		<option value="fa-food">fa-food</option>
+		<option value="fa-gift">fa-gift</option>
+		<option value="fa-glass">fa-glass</option>
+		<option value="fa-globe">fa-globe</option>
+		<option value="fa-group">fa-group</option>
+		<option value="fa-hdd">fa-hdd</option>
+		<option value="fa-headphones">fa-headphones</option>
+		<option value="fa-heart">fa-heart</option>
+		<option value="fa-heart-empty">fa-heart-empty</option>
+		<option value="fa-home">fa-home</option>
+		<option value="fa-inbox">fa-inbox</option>
+		<option value="fa-info-sign">fa-info-sign</option>
+		<option value="fa-key">fa-key</option>
+		<option value="fa-leaf">fa-leaf</option>
+		<option value="fa-laptop">fa-laptop</option>
+		<option value="fa-legal">fa-legal</option>
+		<option value="fa-lemon">fa-lemon</option>
+		<option value="fa-lightbulb">fa-lightbulb</option>
+		<option value="fa-lock">fa-lock</option>
+		<option value="fa-unlock">fa-unlock</option>
+		<option value="fa-magic">fa-magic</option>
+		<option value="fa-magnet">fa-magnet</option>
+		<option value="fa-map-marker">fa-map-marker</option>
+		<option value="fa-minus">fa-minus</option>
+		<option value="fa-minus-sign">fa-minus-sign</option>
+		<option value="fa-mobile-phone">fa-mobile-phone</option>
+		<option value="fa-money">fa-money</option>
+		<option value="fa-move">fa-move</option>
+		<option value="fa-music">fa-music</option>
+		<option value="fa-off">fa-off</option>
+		<option value="fa-ok">fa-ok</option>
+		<option value="fa-ok-circle">fa-ok-circle</option>
+		<option value="fa-ok-sign">fa-ok-sign</option>
+		<option value="fa-pencil">fa-pencil</option>
+		<option value="fa-picture">fa-picture</option>
+		<option value="fa-plane">fa-plane</option>
+		<option value="fa-plus">fa-plus</option>
+		<option value="fa-plus-sign">fa-plus-sign</option>
+		<option value="fa-print">fa-print</option>
+		<option value="fa-pushpin">fa-pushpin</option>
+		<option value="fa-qrcode">fa-qrcode</option>
+		<option value="fa-question-sign">fa-question-sign</option>
+		<option value="fa-quote-left">fa-quote-left</option>
+		<option value="fa-quote-right">fa-quote-right</option>
+		<option value="fa-random">fa-random</option>
+		<option value="fa-refresh">fa-refresh</option>
+		<option value="fa-road">fa-road</option>
+		<option value="fa-rss">fa-rss</option>
+		<option value="fa-screenshot">fa-screenshot</option>
+		<option value="fa-search">fa-search</option>
+		<option value="fa-share-alt">fa-share-alt</option>
+		<option value="fa-shopping-cart">fa-shopping-cart</option>
+		<option value="fa-signal">fa-signal</option>
+		<option value="fa-sitemap">fa-sitemap</option>
+		<option value="fa-star">fa-star</option>
+		<option value="fa-star-empty">fa-star-empty</option>
+		<option value="fa-star-half">fa-star-half</option>
+		<option value="fa-tablet">fa-tablet</option>
+		<option value="fa-tags">fa-tags</option>
+		<option value="fa-tasks">fa-tasks</option>
+		<option value="fa-thumbs-down">fa-thumbs-down</option>
+		<option value="fa-thumbs-up">fa-thumbs-up</option>
+		<option value="fa-time">fa-time</option>
+		<option value="fa-tint">fa-tint</option>
+		<option value="fa-trash">fa-trash</option>
+		<option value="fa-trophy">fa-trophy</option>
+		<option value="fa-truck">fa-truck</option>
+		<option value="fa-umbrella">fa-umbrella</option>
+		<option value="fa-upload">fa-upload</option>
+		<option value="fa-user">fa-user</option>
+		<option value="fa-user-md">fa-user-md</option>
+		<option value="fa-volume-up">fa-volume-up</option>
+		<option value="fa-warning-sign">fa-warning-sign</option>
+		<option value="fa-wrench">fa-wrench</option>
+		<option value="fa-zoom-in">fa-zoom-in</option>
+		<option value="fa-zoom-out">fa-zoom-out</option>
 	<optgroup label="Social Icons">
-		<option value="icon-phone">icon-phone</option>
-		<option value="icon-phone-sign">icon-phone-sign</option>
-		<option value="icon-facebook">icon-facebook</option>
-		<option value="icon-facebook-sign">icon-facebook-sign</option>
-		<option value="icon-twitter">icon-twitter</option>
-		<option value="icon-twitter-sign">icon-twitter-sign</option>
-		<option value="icon-github">icon-github</option>
-		<option value="icon-github-alt">icon-github-alt</option>
-		<option value="icon-github-sign">icon-github-sign</option>
-		<option value="icon-linkedin">icon-linkedin</option>
-		<option value="icon-linkedin-sign">icon-linkedin-sign</option>
-		<option value="icon-pinterest">icon-pinterest</option>
-		<option value="icon-pinterest-sign">icon-pinterest-sign</option>
-		<option value="icon-google-plus">icon-google-plus</option>
-		<option value="icon-google-plus-sign">icon-google-plus-sign</option>
-		<option value="icon-sign-blank">icon-sign-blank</option>
+		<option value="fa-phone">fa-phone</option>
+		<option value="fa-phone-sign">fa-phone-sign</option>
+		<option value="fa-facebook">fa-facebook</option>
+		<option value="fa-facebook-sign">fa-facebook-sign</option>
+		<option value="fa-twitter">fa-twitter</option>
+		<option value="fa-twitter-sign">fa-twitter-sign</option>
+		<option value="fa-github">fa-github</option>
+		<option value="fa-github-alt">fa-github-alt</option>
+		<option value="fa-github-sign">fa-github-sign</option>
+		<option value="fa-linkedin">fa-linkedin</option>
+		<option value="fa-linkedin-sign">fa-linkedin-sign</option>
+		<option value="fa-pinterest">fa-pinterest</option>
+		<option value="fa-pinterest-sign">fa-pinterest-sign</option>
+		<option value="fa-google-plus">fa-google-plus</option>
+		<option value="fa-google-plus-sign">fa-google-plus-sign</option>
+		<option value="fa-sign-blank">fa-sign-blank</option>
 	<optgroup label="Medical Icons">
-		<option value="icon-ambulance">icon-ambulance</option>
-		<option value="icon-beaker">icon-beaker</option>
-		<option value="icon-h-sign">icon-h-sign</option>
-		<option value="icon-hospital">icon-hospital</option>
-		<option value="icon-medkit">icon-medkit</option>
-		<option value="icon-plus-sign-alt">icon-plus-sign-alt</option>
-		<option value="icon-stethoscope">icon-stethoscope</option>
-		<option value="icon-user-md">icon-user-md</option>
+		<option value="fa-ambulance">fa-ambulance</option>
+		<option value="fa-beaker">fa-beaker</option>
+		<option value="fa-h-sign">fa-h-sign</option>
+		<option value="fa-hospital">fa-hospital</option>
+		<option value="fa-medkit">fa-medkit</option>
+		<option value="fa-plus-sign-alt">fa-plus-sign-alt</option>
+		<option value="fa-stethoscope">fa-stethoscope</option>
+		<option value="fa-user-md">fa-user-md</option>
+
+		<?php
+	}
+
+	function getIconOptionsDivs() { ?>
+
+		<div class="organic-widgets-feature-select-item" value="fa-area-chart"><i class="fa fa-area-chart"></i> Area Chart</div>
+		<div class="organic-widgets-feature-select-item" value="fa-bar-chart"><i class ="fa fa-bar-chart"></i> Bar Chart</div>
+		<div class="organic-widgets-feature-select-item" value="fa-pie-chart">Pie Chart</div>
+		<div class="organic-widgets-feature-select-item" value="fa-beaker"><i class="fa fa-beaker"></i> name</div>
+		<div class="organic-widgets-feature-select-item" value="fa-beer"><i class="fa fa-beer"></i> name</div>
+		<div class="organic-widgets-feature-select-item" value="fa-bell"><i class="fa fa-bell"></i> name</div>
+		<div class="organic-widgets-feature-select-item" value="fa-bell-alt">fa-bell-alt</div>
+		<div class="organic-widgets-feature-select-item" value="fa-bolt"><i class="fa fa-bolt"></i> name</div>
+		<div class="organic-widgets-feature-select-item" value="fa-book"><i class="fa fa-book"></i> name</div>
+		<div class="organic-widgets-feature-select-item" value="fa-briefcase"><i class="fa fa-briefcase"></i> name</div>
+		<div class="organic-widgets-feature-select-item" value="fa-bullhorn"><i class="fa fa-bullhorn"></i> name</div>
+		<div class="organic-widgets-feature-select-item" value="fa-calendar"><i class="fa fa-calendar"></i> name</div>
+		<div class="organic-widgets-feature-select-item" value="fa-camera"><i class="fa fa-camera"></i> name</div>
+		<div class="organic-widgets-feature-select-item" value="fa-camera-retro">fa-camera-retro</div>
+		<div class="organic-widgets-feature-select-item" value="fa-check"><i class="fa fa-check"></i> name</div>
+		<div class="organic-widgets-feature-select-item" value="fa-cloud"><i class="fa fa-cloud"></i> name</div>
+		<div class="organic-widgets-feature-select-item" value="fa-coffee"><i class="fa fa-coffee"></i> name</div>
+		<div class="organic-widgets-feature-select-item" value="fa-cog"><i class="fa fa-cog"></i> name</div>
+		<div class="organic-widgets-feature-select-item" value="fa-cogs"><i class="fa fa-cogs"></i> name</div>
+		<div class="organic-widgets-feature-select-item" value="fa-comment"><i class="fa fa-comment"></i> name</div>
+		<div class="organic-widgets-feature-select-item" value="fa-comment-alt">fa-comment-alt</div>
+		<div class="organic-widgets-feature-select-item" value="fa-comments"><i class="fa fa-comments"></i> name</div>
+		<div class="organic-widgets-feature-select-item" value="fa-comments-alt">fa-comments-alt</div>
+		<div class="organic-widgets-feature-select-item" value="fa-credit-card">fa-credit-card</div>
+		<div class="organic-widgets-feature-select-item" value="fa-dashboard"><i class="fa fa-dashboard"></i> name</div>
+		<div class="organic-widgets-feature-select-item" value="fa-desktop"><i class="fa fa-desktop"></i> name</div>
+		<div class="organic-widgets-feature-select-item" value="fa-download"><i class="fa fa-download"></i> name</div>
+		<div class="organic-widgets-feature-select-item" value="fa-download-alt">fa-download-alt</div>
+		<div class="organic-widgets-feature-select-item" value="fa-edit"><i class="fa fa-edit"></i> name</div>
+		<div class="organic-widgets-feature-select-item" value="fa-envelope">fa-envelope</div>
+		<div class="organic-widgets-feature-select-item" value="fa-envelope-alt">fa-envelope-alt</div>
+		<div class="organic-widgets-feature-select-item" value="fa-exchange">fa-exchange</div>
+		<div class="organic-widgets-feature-select-item" value="fa-exclamation-sign">fa-exclamation-sign</div>
+		<div class="organic-widgets-feature-select-item" value="fa-eye-open">fa-eye-open</div>
+		<div class="organic-widgets-feature-select-item" value="fa-film">fa-film</div>
+		<div class="organic-widgets-feature-select-item" value="fa-filter">fa-filter</div>
+		<div class="organic-widgets-feature-select-item" value="fa-fire">fa-fire</div>
+		<div class="organic-widgets-feature-select-item" value="fa-flag">fa-flag</div>
+		<div class="organic-widgets-feature-select-item" value="fa-folder-open">fa-folder-open</div>
+		<div class="organic-widgets-feature-select-item" value="fa-folder-open-alt">fa-folder-open-alt</div>
+		<div class="organic-widgets-feature-select-item" value="fa-food">fa-food</div>
+		<div class="organic-widgets-feature-select-item" value="fa-gift">fa-gift</div>
+		<div class="organic-widgets-feature-select-item" value="fa-glass">fa-glass</div>
+		<div class="organic-widgets-feature-select-item" value="fa-globe">fa-globe</div>
+		<div class="organic-widgets-feature-select-item" value="fa-group">fa-group</div>
+		<div class="organic-widgets-feature-select-item" value="fa-hdd">fa-hdd</div>
+		<div class="organic-widgets-feature-select-item" value="fa-headphones">fa-headphones</div>
+		<div class="organic-widgets-feature-select-item" value="fa-heart">fa-heart</div>
+		<div class="organic-widgets-feature-select-item" value="fa-heart-empty">fa-heart-empty</div>
+		<div class="organic-widgets-feature-select-item" value="fa-home">fa-home</div>
+		<div class="organic-widgets-feature-select-item" value="fa-inbox">fa-inbox</div>
+		<div class="organic-widgets-feature-select-item" value="fa-info-sign">fa-info-sign</div>
+		<div class="organic-widgets-feature-select-item" value="fa-key">fa-key</div>
+		<div class="organic-widgets-feature-select-item" value="fa-leaf">fa-leaf</div>
+		<div class="organic-widgets-feature-select-item" value="fa-laptop">fa-laptop</div>
+		<div class="organic-widgets-feature-select-item" value="fa-legal">fa-legal</div>
+		<div class="organic-widgets-feature-select-item" value="fa-lemon">fa-lemon</div>
+		<div class="organic-widgets-feature-select-item" value="fa-lightbulb">fa-lightbulb</div>
+		<div class="organic-widgets-feature-select-item" value="fa-lock">fa-lock</div>
+		<div class="organic-widgets-feature-select-item" value="fa-unlock">fa-unlock</div>
+		<div class="organic-widgets-feature-select-item" value="fa-magic">fa-magic</div>
+		<div class="organic-widgets-feature-select-item" value="fa-magnet">fa-magnet</div>
+		<div class="organic-widgets-feature-select-item" value="fa-map-marker">fa-map-marker</div>
+		<div class="organic-widgets-feature-select-item" value="fa-minus">fa-minus</div>
+		<div class="organic-widgets-feature-select-item" value="fa-minus-sign">fa-minus-sign</div>
+		<div class="organic-widgets-feature-select-item" value="fa-mobile-phone">fa-mobile-phone</div>
+		<div class="organic-widgets-feature-select-item" value="fa-money">fa-money</div>
+		<div class="organic-widgets-feature-select-item" value="fa-move">fa-move</div>
+		<div class="organic-widgets-feature-select-item" value="fa-music">fa-music</div>
+		<div class="organic-widgets-feature-select-item" value="fa-off">fa-off</div>
+		<div class="organic-widgets-feature-select-item" value="fa-ok">fa-ok</div>
+		<div class="organic-widgets-feature-select-item" value="fa-ok-circle">fa-ok-circle</div>
+		<div class="organic-widgets-feature-select-item" value="fa-ok-sign">fa-ok-sign</div>
+		<div class="organic-widgets-feature-select-item" value="fa-pencil">fa-pencil</div>
+		<div class="organic-widgets-feature-select-item" value="fa-picture">fa-picture</div>
+		<div class="organic-widgets-feature-select-item" value="fa-plane">fa-plane</div>
+		<div class="organic-widgets-feature-select-item" value="fa-plus">fa-plus</div>
+		<div class="organic-widgets-feature-select-item" value="fa-plus-sign">fa-plus-sign</div>
+		<div class="organic-widgets-feature-select-item" value="fa-print">fa-print</div>
+		<div class="organic-widgets-feature-select-item" value="fa-pushpin">fa-pushpin</div>
+		<div class="organic-widgets-feature-select-item" value="fa-qrcode">fa-qrcode</div>
+		<div class="organic-widgets-feature-select-item" value="fa-question-sign">fa-question-sign</div>
+		<div class="organic-widgets-feature-select-item" value="fa-quote-left">fa-quote-left</div>
+		<div class="organic-widgets-feature-select-item" value="fa-quote-right">fa-quote-right</div>
+		<div class="organic-widgets-feature-select-item" value="fa-random">fa-random</div>
+		<div class="organic-widgets-feature-select-item" value="fa-refresh">fa-refresh</div>
+		<div class="organic-widgets-feature-select-item" value="fa-road">fa-road</div>
+		<div class="organic-widgets-feature-select-item" value="fa-rss">fa-rss</div>
+		<div class="organic-widgets-feature-select-item" value="fa-screenshot">fa-screenshot</div>
+		<div class="organic-widgets-feature-select-item" value="fa-search">fa-search</div>
+		<div class="organic-widgets-feature-select-item" value="fa-share-alt">fa-share-alt</div>
+		<div class="organic-widgets-feature-select-item" value="fa-shopping-cart">fa-shopping-cart</div>
+		<div class="organic-widgets-feature-select-item" value="fa-signal">fa-signal</div>
+		<div class="organic-widgets-feature-select-item" value="fa-sitemap">fa-sitemap</div>
+		<div class="organic-widgets-feature-select-item" value="fa-star">fa-star</div>
+		<div class="organic-widgets-feature-select-item" value="fa-star-empty">fa-star-empty</div>
+		<div class="organic-widgets-feature-select-item" value="fa-star-half">fa-star-half</div>
+		<div class="organic-widgets-feature-select-item" value="fa-tablet">fa-tablet</div>
+		<div class="organic-widgets-feature-select-item" value="fa-tags">fa-tags</div>
+		<div class="organic-widgets-feature-select-item" value="fa-tasks">fa-tasks</div>
+		<div class="organic-widgets-feature-select-item" value="fa-thumbs-down">fa-thumbs-down</div>
+		<div class="organic-widgets-feature-select-item" value="fa-thumbs-up">fa-thumbs-up</div>
+		<div class="organic-widgets-feature-select-item" value="fa-time">fa-time</div>
+		<div class="organic-widgets-feature-select-item" value="fa-tint">fa-tint</div>
+		<div class="organic-widgets-feature-select-item" value="fa-trash">fa-trash</div>
+		<div class="organic-widgets-feature-select-item" value="fa-trophy">fa-trophy</div>
+		<div class="organic-widgets-feature-select-item" value="fa-truck">fa-truck</div>
+		<div class="organic-widgets-feature-select-item" value="fa-umbrella">fa-umbrella</div>
+		<div class="organic-widgets-feature-select-item" value="fa-upload">fa-upload</div>
+		<div class="organic-widgets-feature-select-item" value="fa-user">fa-user</div>
+		<div class="organic-widgets-feature-select-item" value="fa-user-md">fa-user-md</div>
+		<div class="organic-widgets-feature-select-item" value="fa-volume-up">fa-volume-up</div>
+		<div class="organic-widgets-feature-select-item" value="fa-warning-sign">fa-warning-sign</div>
+		<div class="organic-widgets-feature-select-item" value="fa-wrench">fa-wrench</div>
+		<div class="organic-widgets-feature-select-item" value="fa-zoom-in">fa-zoom-in</div>
+		<div class="organic-widgets-feature-select-item" value="fa-zoom-out">fa-zoom-out</div>
+		<div class="organic-widgets-feature-select-item" value="fa-phone">fa-phone</div>
+		<div class="organic-widgets-feature-select-item" value="fa-phone-sign">fa-phone-sign</div>
+		<div class="organic-widgets-feature-select-item" value="fa-facebook">fa-facebook</div>
+		<div class="organic-widgets-feature-select-item" value="fa-facebook-sign">fa-facebook-sign</div>
+		<div class="organic-widgets-feature-select-item" value="fa-twitter">fa-twitter</div>
+		<div class="organic-widgets-feature-select-item" value="fa-twitter-sign">fa-twitter-sign</div>
+		<div class="organic-widgets-feature-select-item" value="fa-github">fa-github</div>
+		<div class="organic-widgets-feature-select-item" value="fa-github-alt">fa-github-alt</div>
+		<div class="organic-widgets-feature-select-item" value="fa-github-sign">fa-github-sign</div>
+		<div class="organic-widgets-feature-select-item" value="fa-linkedin">fa-linkedin</div>
+		<div class="organic-widgets-feature-select-item" value="fa-linkedin-sign">fa-linkedin-sign</div>
+		<div class="organic-widgets-feature-select-item" value="fa-pinterest">fa-pinterest</div>
+		<div class="organic-widgets-feature-select-item" value="fa-pinterest-sign">fa-pinterest-sign</div>
+		<div class="organic-widgets-feature-select-item" value="fa-google-plus">fa-google-plus</div>
+		<div class="organic-widgets-feature-select-item" value="fa-google-plus-sign">fa-google-plus-sign</div>
+		<div class="organic-widgets-feature-select-item" value="fa-sign-blank">fa-sign-blank</div>
+		<div class="organic-widgets-feature-select-item" value="fa-ambulance">fa-ambulance</div>
+		<div class="organic-widgets-feature-select-item" value="fa-beaker">fa-beaker</div>
+		<div class="organic-widgets-feature-select-item" value="fa-h-sign">fa-h-sign</div>
+		<div class="organic-widgets-feature-select-item" value="fa-hospital">fa-hospital</div>
+		<div class="organic-widgets-feature-select-item" value="fa-medkit">fa-medkit</div>
+		<div class="organic-widgets-feature-select-item" value="fa-plus-sign-alt">fa-plus-sign-alt</div>
+		<div class="organic-widgets-feature-select-item" value="fa-stethoscope">fa-stethoscope</div>
+		<div class="organic-widgets-feature-select-item" value="fa-user-md">fa-user-md</div>
 
 		<?php
 	}
