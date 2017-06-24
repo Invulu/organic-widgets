@@ -213,7 +213,7 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 
 			<?php } ?>
 
-				<div class="organic-widgets-feature-list-item-form-item" id="<?php echo $this->get_field_id( 'features_array' ).'_'.count($features_array)+1; ?>">
+				<div class="organic-widgets-feature-list-item-form-item" id="<?php echo $this->get_field_id( 'features_array' ).'_'.count($features_array)+1; ?>" data-feature-id="<?php echo count($features_array)+1; ?>">
 
 					<div class="organic-widgets-feature-list-select" id="<?php echo $this->get_field_id( 'features_array' ).'_icon_'.count($features_array)+1; ?>" name="<?php echo $this->get_field_id( 'features_array' ).'_icon_'.count($features_array)+1; ?>" data-val="" data-feature-id="<?php echo count($features_array) + 1; ?>">
 					  <div class="organic-widget-dropdown-button">
@@ -228,14 +228,15 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 					</div>
 					<p>
 						<label for="<?php echo $this->get_field_id( 'features_array' ).'_title_'.count($features_array)+1; ?>"><?php _e( 'Feature Title:', ORGANIC_WIDGETS_18N ) ?></label>
-						<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'features_array' ).'_title_'.count($features_array)+1; ?>" name="<?php echo $this->get_field_id( 'features_array' ).'_title_'.count($features_array)+1; ?>" value="" />
+						<input class="widefat organic-widgets-feature-list-title-input" type="text" id="<?php echo $this->get_field_id( 'features_array' ).'_title_'.count($features_array)+1; ?>" name="<?php echo $this->get_field_id( 'features_array' ).'_title_'.count($features_array)+1; ?>" value="" />
 					</p>
 					<p>
 						<label for="<?php echo $this->get_field_id( 'features_array' ).'_summary_'.count($features_array)+1; ?>"><?php _e( 'Feature Summary:', ORGANIC_WIDGETS_18N ) ?></label>
-						<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'features_array' ).'_summary_'.count($features_array)+1; ?>" name="<?php echo $this->get_field_id( 'features_array' ).'_summary_'.count($features_array)+1; ?>" value="" />
+						<input class="widefat organic-widgets-feature-list-summary-input" type="text" id="<?php echo $this->get_field_id( 'features_array' ).'_summary_'.count($features_array)+1; ?>" name="<?php echo $this->get_field_id( 'features_array' ).'_summary_'.count($features_array)+1; ?>" value="" />
 					</p>
 				</div>
-				<input type="hidden" id="<?php echo $this->get_field_id('features_array'); ?>" name="<?php echo $this->get_field_name('features_array'); ?>" value="<?php json_encode($features_array); ?>" />
+
+				<input type="hidden" class="organic-widgets-feature-list-hidden-input" id="<?php echo $this->get_field_id('features_array'); ?>" name="<?php echo $this->get_field_name('features_array'); ?>" value="<?php json_encode($features_array); ?>" />
 		</p>
 
 		<hr />

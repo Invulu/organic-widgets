@@ -38,20 +38,40 @@
 		var thisItem = $(feature);
 		var thisVal = thisItem.data('val');
 		var thisFeature = thisItem.parent().parent('.organic-widgets-feature-list-select');
+		var thisFormItem = thisFeature.parent('.organic-widgets-feature-list-item-form-item');
 		var thisButton = thisItem.parent().siblings('.organic-widget-dropdown-button');
 		var thisPreview = thisButton.find('.organic-widget-feature-icon-preview');
+
+		// Update HTML Values
 		thisPreview.html('<i class="fa ' + thisVal + '"></i>');
-		console.log(thisFeature);
-		console.log(thisVal);
 		thisFeature.attr( 'data-val', thisVal );
-		console.log(thisFeature.attr( 'data-val'));
-		// thisFeature.innerhtml('<i class="fa ' + thisVal + '"></i>');
+
+		// Update Main Data Array
+		organicWidgetsFeatureUpdateMainArray(thisFormItem);
+
+		// Set active classes
 		thisItem.siblings().removeClass('organic-widgets-feature-active');
 		thisItem.addClass('organic-widgets-feature-active');
 
-		//Close Selector
+		// Close Selector
 		thisButton.removeClass('organic-widgets-open');
 		thisItem.parent('.organic-widgets-feature-list-select-dropdown').removeClass('organic-widgets-show');
+
+	}
+
+	function organicWidgetsFeatureUpdateMainArray(thisFormItem) {
+
+		var thisItemData = {
+			id: thisFormItem.data('feature-id'),
+			icon: thisFormItem.find('.organic-widgets-feature-list-select').attr('data-val'),
+			title: thisFormItem.find('.organic-widgets-feature-list-title-input').val(),
+			summary: thisFormItem.find('.organic-widgets-feature-list-summary-input').val()
+		}
+		console.log(thisItemData);
+
+		var mainInput = thisFormItem.siblings('.organic-widgets-feature-list-hidden-input');
+		mainInput.val(thisItemData);
+		console.log(mainInput.val());
 
 	}
 
