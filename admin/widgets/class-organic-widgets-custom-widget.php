@@ -446,630 +446,630 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
 
 	function getIconOptionsDivs() { ?>
 
-		<div class="organic-widgets-feature-select-item" value="fa-bar-chart">
+		<div class="organic-widgets-feature-select-item" data-val="fa-bar-chart">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class ="fa fa-bar-chart"></i>
 				<p>Bar Chart</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-pie-chart">
+		<div class="organic-widgets-feature-select-item" data-val="fa-pie-chart">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class ="fa fa-pie-chart"></i>
 				<p>Pie Chart</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-beer">
+		<div class="organic-widgets-feature-select-item" data-val="fa-beer">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-beer"></i>
 				<p>Beer</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-bell">
+		<div class="organic-widgets-feature-select-item" data-val="fa-bell">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-bell"></i>
 				<p>Bell</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-bolt">
+		<div class="organic-widgets-feature-select-item" data-val="fa-bolt">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-bolt"></i>
 				<p>Bolt</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-book">
+		<div class="organic-widgets-feature-select-item" data-val="fa-book">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-book"></i>
 				<p>Book</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-briefcase">
+		<div class="organic-widgets-feature-select-item" data-val="fa-briefcase">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-briefcase"></i>
 				<p>Briefcase</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-bullhorn">
+		<div class="organic-widgets-feature-select-item" data-val="fa-bullhorn">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-bullhorn"></i>
 				<p>Bullhorn</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-calendar">
+		<div class="organic-widgets-feature-select-item" data-val="fa-calendar">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-calendar"></i>
 				<p>Calendar</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-camera">
+		<div class="organic-widgets-feature-select-item" data-val="fa-camera">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-camera"></i>
 				<p>Camera</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-camera-retro">
+		<div class="organic-widgets-feature-select-item" data-val="fa-camera-retro">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-camera-retro"></i>
 				<p>Camera Retro</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-check">
+		<div class="organic-widgets-feature-select-item" data-val="fa-check">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-check"></i>
 				<p>Check</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-cloud">
+		<div class="organic-widgets-feature-select-item" data-val="fa-cloud">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-cloud"></i>
 				<p>Cloud</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-coffee">
+		<div class="organic-widgets-feature-select-item" data-val="fa-coffee">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-coffee"></i>
 				<p>Coffee</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-cog">
+		<div class="organic-widgets-feature-select-item" data-val="fa-cog">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-cog"></i>
 				<p>Cog</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-cogs">
+		<div class="organic-widgets-feature-select-item" data-val="fa-cogs">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-cogs"></i>
 				<p>Cogs</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-comment">
+		<div class="organic-widgets-feature-select-item" data-val="fa-comment">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-comment"></i>
 				<p>Comment</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-comments">
+		<div class="organic-widgets-feature-select-item" data-val="fa-comments">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-comments"></i>
 				<p>Comments</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-credit-card">
+		<div class="organic-widgets-feature-select-item" data-val="fa-credit-card">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-credit-card"></i>
 				<p>Credit Card</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-dashboard">
+		<div class="organic-widgets-feature-select-item" data-val="fa-dashboard">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-dashboard"></i>
 				<p>Dashboard</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-desktop">
+		<div class="organic-widgets-feature-select-item" data-val="fa-desktop">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-desktop"></i>
 				<p>Desktop</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-download">
+		<div class="organic-widgets-feature-select-item" data-val="fa-download">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-download"></i>
 				<p>Download</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-edit">
+		<div class="organic-widgets-feature-select-item" data-val="fa-edit">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-edit"></i>
 				<p>Edit</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-envelope">
+		<div class="organic-widgets-feature-select-item" data-val="fa-envelope">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-envelope"></i>
 				<p>Envelope</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-exchange">
+		<div class="organic-widgets-feature-select-item" data-val="fa-exchange">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-exchange"></i>
 				<p>Exchange</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-film">
+		<div class="organic-widgets-feature-select-item" data-val="fa-film">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-film"></i>
 				<p>Film</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-filter">
+		<div class="organic-widgets-feature-select-item" data-val="fa-filter">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-filter"></i>
 				<p>Filter</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-fire">
+		<div class="organic-widgets-feature-select-item" data-val="fa-fire">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-fire"></i>
 				<p>Fire</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-flag">
+		<div class="organic-widgets-feature-select-item" data-val="fa-flag">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-flag"></i>
 				<p>Flag</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-folder-open">
+		<div class="organic-widgets-feature-select-item" data-val="fa-folder-open">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-folder-open"></i>
 				<p>Folder</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-gift">
+		<div class="organic-widgets-feature-select-item" data-val="fa-gift">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-gift"></i>
 				<p>Gift</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-glass">
+		<div class="organic-widgets-feature-select-item" data-val="fa-glass">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-glass"></i>
 				<p>Glass</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-globe">
+		<div class="organic-widgets-feature-select-item" data-val="fa-globe">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-globe"></i>
 				<p>Globe</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-group">
+		<div class="organic-widgets-feature-select-item" data-val="fa-group">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-group"></i>
 				<p>Group</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-headphones">
+		<div class="organic-widgets-feature-select-item" data-val="fa-headphones">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-headphones"></i>
 				<p>Headphones</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-heart">
+		<div class="organic-widgets-feature-select-item" data-val="fa-heart">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-heart"></i>
 				<p>Heart</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-home">
+		<div class="organic-widgets-feature-select-item" data-val="fa-home">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-home"></i>
 				<p>Home</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-inbox">
+		<div class="organic-widgets-feature-select-item" data-val="fa-inbox">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-inbox"></i>
 				<p>Inbox</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-key">
+		<div class="organic-widgets-feature-select-item" data-val="fa-key">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-key"></i>
 				<p>Key</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-leaf">
+		<div class="organic-widgets-feature-select-item" data-val="fa-leaf">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-leaf"></i>
 				<p>Leaf</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-laptop">
+		<div class="organic-widgets-feature-select-item" data-val="fa-laptop">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-laptop"></i>
 				<p>Laptop</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-legal">
+		<div class="organic-widgets-feature-select-item" data-val="fa-legal">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-legal"></i>
 				<p>Legal</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-lock">
+		<div class="organic-widgets-feature-select-item" data-val="fa-lock">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-lock"></i>
 				<p>Lock</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-unlock">
+		<div class="organic-widgets-feature-select-item" data-val="fa-unlock">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-unlock"></i>
 				<p>Unlock</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-magic">
+		<div class="organic-widgets-feature-select-item" data-val="fa-magic">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-magic"></i>
 				<p>Magic</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-magnet">
+		<div class="organic-widgets-feature-select-item" data-val="fa-magnet">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-magnet"></i>
 				<p>Magnet</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-map-marker">
+		<div class="organic-widgets-feature-select-item" data-val="fa-map-marker">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-map-marker"></i>
 				<p>Map Marker</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-mobile-phone">
+		<div class="organic-widgets-feature-select-item" data-val="fa-mobile-phone">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-mobile-phone"></i>
 				<p>Mobile Phone</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-money">
+		<div class="organic-widgets-feature-select-item" data-val="fa-money">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-money"></i>
 				<p>Money</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-music">
+		<div class="organic-widgets-feature-select-item" data-val="fa-music">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-music"></i>
 				<p>Music</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-pencil">
+		<div class="organic-widgets-feature-select-item" data-val="fa-pencil">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-pencil"></i>
 				<p>Pencil</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-plane">
+		<div class="organic-widgets-feature-select-item" data-val="fa-plane">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-plane"></i>
 				<p>Plane</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-plus">
+		<div class="organic-widgets-feature-select-item" data-val="fa-plus">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-plus"></i>
 				<p>Plus</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-podcast">
+		<div class="organic-widgets-feature-select-item" data-val="fa-podcast">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-podcast"></i>
 				<p>Podcast</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-print">
+		<div class="organic-widgets-feature-select-item" data-val="fa-print">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-print"></i>
 				<p>Print</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-qrcode">
+		<div class="organic-widgets-feature-select-item" data-val="fa-qrcode">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-qrcode"></i>
 				<p>QR Code</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-random">
+		<div class="organic-widgets-feature-select-item" data-val="fa-random">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-random"></i>
 				<p>Random</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-refresh">
+		<div class="organic-widgets-feature-select-item" data-val="fa-refresh">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-refresh"></i>
 				<p>Refresh</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-road">
+		<div class="organic-widgets-feature-select-item" data-val="fa-road">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-road"></i>
 				<p>Road</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-rss">
+		<div class="organic-widgets-feature-select-item" data-val="fa-rss">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-rss"></i>
 				<p>RSS</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-search">
+		<div class="organic-widgets-feature-select-item" data-val="fa-search">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-search"></i>
 				<p>Search</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-share-alt">
+		<div class="organic-widgets-feature-select-item" data-val="fa-share-alt">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-share-alt"></i>
 				<p>Share</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-shopping-cart">
+		<div class="organic-widgets-feature-select-item" data-val="fa-shopping-cart">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-shopping-cart"></i>
 				<p>Shopping</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-signal">
+		<div class="organic-widgets-feature-select-item" data-val="fa-signal">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-signal"></i>
 				<p>Signal</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-sitemap">
+		<div class="organic-widgets-feature-select-item" data-val="fa-sitemap">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-sitemap"></i>
 				<p>Sitemap</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-star">
+		<div class="organic-widgets-feature-select-item" data-val="fa-star">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-star"></i>
 				<p>Star</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-tablet">
+		<div class="organic-widgets-feature-select-item" data-val="fa-tablet">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-tablet"></i>
 				<p>Tablet</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-tags">
+		<div class="organic-widgets-feature-select-item" data-val="fa-tags">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-tags"></i>
 				<p>Tags</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-tasks">
+		<div class="organic-widgets-feature-select-item" data-val="fa-tasks">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-tasks"></i>
 				<p>Tasks</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-telegram">
+		<div class="organic-widgets-feature-select-item" data-val="fa-telegram">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-telegram"></i>
 				<p>Telegram</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-thumbs-down">
+		<div class="organic-widgets-feature-select-item" data-val="fa-thumbs-down">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-thumbs-down"></i>
 				<p>Thumbs Down</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-thumbs-up">
+		<div class="organic-widgets-feature-select-item" data-val="fa-thumbs-up">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-thumbs-up"></i>
 				<p>Thumbs Up</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-tint">
+		<div class="organic-widgets-feature-select-item" data-val="fa-tint">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-tint"></i>
 				<p>Tint</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-trash">
+		<div class="organic-widgets-feature-select-item" data-val="fa-trash">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-trash"></i>
 				<p>Trash</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-trophy">
+		<div class="organic-widgets-feature-select-item" data-val="fa-trophy">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-trophy"></i>
 				<p>Trophy</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-truck">
+		<div class="organic-widgets-feature-select-item" data-val="fa-truck">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-truck"></i>
 				<p>Truck</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-umbrella">
+		<div class="organic-widgets-feature-select-item" data-val="fa-umbrella">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-umbrella"></i>
 				<p>Umbrella</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-upload">
+		<div class="organic-widgets-feature-select-item" data-val="fa-upload">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-upload"></i>
 				<p>Upload</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-user">
+		<div class="organic-widgets-feature-select-item" data-val="fa-user">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-user"></i>
 				<p>User</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-volume-up">
+		<div class="organic-widgets-feature-select-item" data-val="fa-volume-up">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-volume-up"></i>
 				<p>Volume</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-wrench">
+		<div class="organic-widgets-feature-select-item" data-val="fa-wrench">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-wrench"></i>
 				<p>Wrench</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-phone">
+		<div class="organic-widgets-feature-select-item" data-val="fa-phone">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-phone"></i>
 				<p>Phone</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-facebook">
+		<div class="organic-widgets-feature-select-item" data-val="fa-facebook">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-facebook"></i>
 				<p>Facebook</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-twitter">
+		<div class="organic-widgets-feature-select-item" data-val="fa-twitter">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-twitter"></i>
 				<p>Twitter</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-github">
+		<div class="organic-widgets-feature-select-item" data-val="fa-github">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-github"></i>
 				<p>GitHub</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-linkedin">
+		<div class="organic-widgets-feature-select-item" data-val="fa-linkedin">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-linkedin"></i>
 				<p>LinkedIn</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-pinterest">
+		<div class="organic-widgets-feature-select-item" data-val="fa-pinterest">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-pinterest"></i>
 				<p>Pinterest</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-google-plus">
+		<div class="organic-widgets-feature-select-item" data-val="fa-google-plus">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-google-plus"></i>
 				<p>Google Plus</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-ambulance">
+		<div class="organic-widgets-feature-select-item" data-val="fa-ambulance">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-ambulance"></i>
 				<p>Ambulance</p>
 			</div>
 		</div>
-		<div class="organic-widgets-feature-select-item" value="fa-user-md">
+		<div class="organic-widgets-feature-select-item" data-val="fa-user-md">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-user-md"></i>

@@ -1,24 +1,46 @@
+.organic-widgets-feature-list-item-form-item {
+  border: 1px solid #eee;
+  border-radius: 5px;
+  padding: 10px;
+}
+
 /* Dropdown Button */
 .organic-widget-dropdown-button {
-    background-color: #0085ba;
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
+  background-color: #0085ba;
+  color: white;
+  padding: 12px;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  box-sizing: border-box;
+  border-radius: 4px;
+  border: 1px solid rgb(0, 103, 153);
 }
-
+.organic-widget-dropdown-button.organic-widgets-open {
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
 /* Dropdown button on hover & focus */
-.organic-widget-dropdown-button:hover, .dropbtn:focus {
-    background-color: #3e8e41;
+.organic-widget-dropdown-button:hover, .organic-widget-dropdown-button:focus {
+    background-color: #005b7f;
 }
-
+.organic-widget-feature-icon-preview {
+  width: 20%;
+  float: right;
+  box-sizing: border-box;
+  color: #fff;
+}
+.organic-widget-feature-icon-preview i {
+  font-size: 24px;
+  position: absolute;
+  top: 7px;
+  right: 9px;
+}
 /* The container <div> - needed to position the dropdown content */
 .organic-widgets-feature-list-select {
     position: relative;
     display: block;
     max-width:100%;
-    margin-top: 1em;
 }
 
 /* Dropdown Content (Hidden by Default) */
@@ -44,6 +66,15 @@
   width: 20%;
   height:auto;
   text-align:center;
+}
+.organic-widgets-feature-select-item.organic-widgets-feature-active {
+  background-color: #0085ba;
+  color: #fff;
+  font-weight: bold;
+}
+.organic-widgets-feature-select-item.organic-widgets-feature-active i, .organic-widgets-feature-select-item.organic-widgets-feature-active p {
+  color: #fff;
+  font-weight: bold;
 }
 .organic-widgets-feature-select-item-sizer {
     width: 100%;
@@ -84,7 +115,12 @@
 
 
 /* Change color of dropdown links on hover */
-.organic-widgets-feature-list-select-dropdown .organic-widgets-feature-select-item:hover {background-color: #f1f1f1}
+.organic-widgets-feature-list-select-dropdown .organic-widgets-feature-select-item:hover {
+  background-color: #005b7f;
+}
+.organic-widgets-feature-list-select-dropdown .organic-widgets-feature-select-item:hover i, .organic-widgets-feature-list-select-dropdown .organic-widgets-feature-select-item:hover p {
+  color: #fff;
+}
 
 /* Show the dropdown menu (use JS to add this class to the .organic-widgets-feature-list-select-dropdown container when the user clicks on the dropdown button) */
 .organic-widgets-show {display:block;}
