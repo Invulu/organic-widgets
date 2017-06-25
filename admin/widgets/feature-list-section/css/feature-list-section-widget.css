@@ -19,13 +19,16 @@
 .organic-widgets-feature-list-text-fields-wrapper {
   display: inline-block;
   width: auto;
+  max-width: -webkit-calc(100% - 80px);
+  max-width:    -moz-calc(100% - 80px);
+  max-width:         calc(100% - 80px);
   float: left;
 }
 .organic-widgets-feature-list-item-form-item {
   border: 1px solid #ddd;
   box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.1);
   background: #fafafa;
-  border-radius: 5px;
+  border-radius: 4px;
   padding: 10px 10px 0;
   margin-bottom: 10px;
 }
