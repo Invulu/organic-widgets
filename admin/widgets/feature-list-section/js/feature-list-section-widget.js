@@ -27,6 +27,12 @@
 			var formItem = $(this).parent().parent('.organic-widgets-feature-list-item-form-item');
 			organicWidgetsFeatureUpdateMainArray(this);
 		});
+
+		// Prep hidden input value
+		$('.organic-widgets-feature-list-widget-admin').each(function(){
+			var formItem = $(this).find('.organic-widgets-feature-list-item-form-item').first();
+			// organicWidgetsFeatureUpdateMainArray( formItem );
+		});
   }
 
 	/*--------- Open Feature Selector ----------*/
@@ -70,34 +76,35 @@
 
 	function organicWidgetsFeatureUpdateMainArray(item) {
 
-		console.log('update for ');
-		console.log(item);
-		console.log($(item).val());
-		var thisFormItem = $(item).parents('.organic-widgets-feature-list-item-form-item');
+		var thisFormItem = $(item).closest('.organic-widgets-feature-list-item-form-item');
 
 		var allFormItems = thisFormItem.siblings('.organic-widgets-feature-list-item-form-item').addBack();
 
 		var thisItemData = {};
 		allFormItems.each(function(key,el){
-			var theID = $(el).data('feature-id');
-			thisItemData[theID] = {
-				'icon': $(el).find('.organic-widgets-feature-list-select').attr('data-val'),
-				'title': $(el).find('.organic-widgets-feature-list-title-input').val(),
-				'summary': $(el).find('.organic-widgets-feature-list-summary-input').val()
+
+			var icon = $(el).find('.organic-widgets-feature-list-select').attr('data-val');
+			var title = $(el).find('.organic-widgets-feature-list-title-input').val();
+			var summary = $(el).find('.organic-widgets-feature-list-summary-input').val();
+
+			if ( icon != '' || title != '' || summary != '' ) {
+				var theID = $(el).data('feature-id');
+				thisItemData[theID] = {
+					'icon': icon,
+					'title': title,
+					'summary': summary
+				}
 			}
 		});
 
-
-
 		var mainInput = thisFormItem.siblings('.organic-widgets-feature-list-hidden-input');
 		mainInput.val(JSON.stringify(thisItemData));
-
-
 
 	}
 
 
 $( document )
-.ready( organicWidgetsCustomDropdown );
+.ready( organicWidgetsCustomDropdown )
+.ajaxComplete( organicWidgetsCustomDropdown );
 
 })( jQuery );
