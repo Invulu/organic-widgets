@@ -227,10 +227,15 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 									<p>Select Icon...</p>
 								</div>
 								<div class="organic-widget-feature-move-button">
-									<p>Move</p>
+									<div class="organic-widget-move-up">
+										<i class="fa fa-chevron-up"></i>
+									</div>
+									<div class="organic-widget-move-down">
+										<i class="fa fa-chevron-down"></i>
+									</div>
 								</div>
 								<div class="organic-widget-feature-delete-button">
-									<p>Delete</p>
+									<i class="fa fa-trash"></i>
 								</div>
 								<div class="organic-widgets-clear"></div>
 							  <div class="organic-widgets-feature-list-select-dropdown">

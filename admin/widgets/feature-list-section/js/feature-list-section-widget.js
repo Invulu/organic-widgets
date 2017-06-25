@@ -13,6 +13,11 @@
       organicWidgetsOpenDropdown(this);
     });
 
+		//Listen for delete
+    $('.organic-widget-feature-delete-button').click(function(){
+      organicWidgetsDeleteFeature(this);
+    });
+
 		// Listen for click to choose feature
 		$('.organic-widgets-feature-select-item').click(function(){
 			organicWidgetsChooseFeature(this);
@@ -34,6 +39,18 @@
 			// organicWidgetsFeatureUpdateMainArray( formItem );
 		});
   }
+
+	function organicWidgetsDeleteFeature(feature) {
+		var formItem = $(feature).closest('.organic-widgets-feature-list-item-form-item');
+		var theForm = $(formItem).closest('.organic-widgets-feature-list-widget-admin');
+		if ( confirm("Are you sure you want to delete this?") ){
+			console.log(formItem);
+			formItem.remove();
+
+			organicWidgetsFeatureUpdateMainArray(theForm);
+    }
+		return false;
+	}
 
 	/*--------- Open Feature Selector ----------*/
 	function organicWidgetsOpenDropdown(dropdown) {
@@ -76,9 +93,14 @@
 
 	function organicWidgetsFeatureUpdateMainArray(item) {
 
-		var thisFormItem = $(item).closest('.organic-widgets-feature-list-item-form-item');
+		if ( $(item).hasClass('organic-widgets-feature-list-widget-admin') ) {
+			var thisFormItem = $(item);
+		} else {
+			var thisFormItem = $(item).closest('.organic-widgets-feature-list-widget-admin');
+		}
 
-		var allFormItems = thisFormItem.siblings('.organic-widgets-feature-list-item-form-item').addBack();
+
+		var allFormItems = thisFormItem.find('.organic-widgets-feature-list-item-form-item');
 
 		var thisItemData = {};
 		allFormItems.each(function(key,el){
