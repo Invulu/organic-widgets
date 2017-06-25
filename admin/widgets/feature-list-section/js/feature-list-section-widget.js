@@ -26,14 +26,12 @@
 
 		//Listen for move up
     $('.organic-widget-move-up').unbind('click').click(function(){
-      // organicWidgetsDeleteFeature(this);
-			console.log('move up');
+      organicWidgetsReorderFeatures(this, 'up');
     });
 
 		//Listen for move up
     $('.organic-widget-move-down').unbind('click').click(function(){
-      // organicWidgetsDeleteFeature(this);
-			console.log('move down');
+      organicWidgetsReorderFeatures(this, 'down');
     });
 
 		// Listen for click to choose feature
@@ -58,6 +56,7 @@
 		});
   }
 
+	/*--------- Delete Feature ----------*/
 	function organicWidgetsDeleteFeature(feature) {
 		var formItem = $(feature).closest('.organic-widgets-feature-list-item-form-item');
 		var theForm = $(formItem).closest('.organic-widgets-feature-list-widget-admin');
@@ -67,6 +66,48 @@
 
 			organicWidgetsFeatureUpdateMainArray(theForm);
     }
+	}
+
+	/*--------- Move Feature Up ----------*/
+	function organicWidgetsReorderFeatures( feature, direction ) {
+
+		if ( $(feature).hasClass('organic-widgets-feature-list-item-form-item') ) {
+			var formItem = $(feature);
+		} else {
+			var formItem = $(feature).closest('.organic-widgets-feature-list-item-form-item');
+		}
+		var form = $(formItem).parents('.organic-widgets-feature-list-widget-admin');
+		var allFormItems = form.find('.organic-widgets-feature-list-item-form-item');
+
+		// Move Up
+		if ( direction == 'up' && allFormItems.first().data('feature-id') != formItem.data('feature-id') ) {
+
+			// Get previous item
+			var prevItem = formItem.prev('.organic-widgets-feature-list-item-form-item');
+
+			// Insert before previous
+			formItem.insertBefore(prevItem);
+
+			// Update main input
+			var theForm = $(formItem).closest('.organic-widgets-feature-list-widget-admin');
+			organicWidgetsFeatureUpdateMainArray(theForm);
+
+		}
+		// Move Down
+		else if ( direction == 'down' && allFormItems.last().data('feature-id') != formItem.data('feature-id') ) {
+
+			// Get next item
+			var nextItem = formItem.next('.organic-widgets-feature-list-item-form-item');
+
+			// Insert after next
+			formItem.insertAfter(nextItem);
+
+			// Update main input
+			var theForm = $(formItem).closest('.organic-widgets-feature-list-widget-admin');
+			organicWidgetsFeatureUpdateMainArray(theForm);
+
+		}
+
 	}
 
 	/*--------- Open Feature Selector ----------*/
@@ -122,6 +163,7 @@
 	}
 
 	function organicWidgetsFeatureUpdateMainArray(item) {
+		console.log('organicWidgetsFeatureUpdateMainArray');
 
 		// Get thisFormAdmin
 		if ( $(item).hasClass('organic-widgets-feature-list-widget-admin') ) {
@@ -133,13 +175,13 @@
 		var thisItemData = {};
 
 		allFormItems.each(function(key,el){
-
 			var icon = $(el).find('.organic-widgets-feature-list-select').attr('data-val');
 			var title = $(el).find('.organic-widgets-feature-list-title-input').val();
 			var summary = $(el).find('.organic-widgets-feature-list-summary-input').val();
 
 			if ( icon != '' || title != '' || summary != '' ) {
 				var theID = $(el).data('feature-id');
+				console.log(theID);
 				thisItemData[theID] = {
 					'icon': icon,
 					'title': title,
@@ -147,7 +189,7 @@
 				}
 			}
 		});
-
+		console.log(JSON.stringify(thisItemData));
 		var mainInput = thisFormAdmin.find('.organic-widgets-feature-list-hidden-input');
 		mainInput.val(JSON.stringify(thisItemData));
 

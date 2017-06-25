@@ -258,6 +258,8 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 					<div class="organic-widget-move-up">
 						<i class="fa fa-angle-up"></i>
 					</div>
+				</div>
+				<div class="organic-widget-feature-move-button">
 					<div class="organic-widget-move-down">
 						<i class="fa fa-angle-down"></i>
 					</div>
