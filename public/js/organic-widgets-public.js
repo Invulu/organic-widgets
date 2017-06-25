@@ -3,8 +3,9 @@
 
 	/* Check The Background Brightness ---------------------*/
 	function checkBackgroundBrightness(){
-		$('.organic-widgets-section').backgroundBrightness();
-		$('.organic-widgets-flexslider li').backgroundBrightness();
+		if ( ! $('.organic-widgets-section').hasClass('organic-widgets-content-slideshow-section') ) {
+			$('.organic-widgets-section').backgroundBrightness();
+		}
 	}
 
 	/* Add Section Highlighting When Hovering Over Edit Shortcuts ---------------------*/
