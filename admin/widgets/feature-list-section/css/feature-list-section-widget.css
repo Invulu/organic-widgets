@@ -1,5 +1,29 @@
+.organic-widgets-feature-list-icon-preview-wrapper {
+  display: inline-block;
+  width: auto;
+  height: auto;
+  float: left;
+}
+.organic-widgets-feature-list-icon-preview-wrapper p {
+  margin-bottom: 0;
+}
+.organic-widgets-feature-list-icon-preview {
+  width: 80px;
+  height: 120px;
+  display:block;
+}
+.organic-widgets-feature-list-icon-preview i {
+  font-size: 50px;
+  margin: 30px 10px 10px;
+}
+.organic-widgets-feature-list-text-fields-wrapper {
+  display: inline-block;
+  width: auto;
+  float: left;
+}
 .organic-widgets-feature-list-item-form-item {
-  border: 1px solid #eee;
+  border: 1px solid #ddd;
+  box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.1);
   background: #fafafa;
   border-radius: 5px;
   padding: 10px;
@@ -24,26 +48,34 @@
   margin-bottom: 0;
 }
 .organic-widget-dropdown-button {
-  background-color: #0085ba;
+  background-color: #9ECE42;
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
-  width: 50%;
+  width: 60%;
 }
-.organic-widget-dropdown-button p{
-  margin-left: 30px;
+.organic-widget-dropdown-button p {
+  margin-left: 18px;
 }
-.organic-widget-dropdown-button.organic-widgets-open {
+.organic-widgets-show .organic-widget-dropdown-button, .organic-widgets-show .organic-widget-feature-delete-button {
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 0px;
 }
 .organic-widget-feature-move-button {
   background-color: #ccc;
-  width: 25%;
+  width: 20%;
   padding: 0;
 }
+.organic-widget-feature-move-button i {
+  font-size: 20px;
+}
 .organic-widget-move-up, .organic-widget-move-down {
-  padding: 3px 0 2px;
   color: #666;
+}
+.organic-widget-move-up {
+  padding: 0 0 1px;
+}
+.organic-widget-move-down {
+  padding: 1px 0 0;
 }
 .organic-widget-move-up:active, .organic-widget-move-up:hover, .organic-widget-move-down:active, .organic-widget-move-down:hover {
   background-color: #999;
@@ -53,7 +85,7 @@
   border-bottom: 1px solid #aaa;
 }
 .organic-widget-feature-delete-button {
-  width: 25%;
+  width: 20%;
   background-color: #f24646;
   border-top-right-radius: 4px;
   border-bottom-right-radius: 4px;
@@ -65,16 +97,16 @@
 }
 /* Dropdown button on hover & focus */
 .organic-widget-dropdown-button:hover, .organic-widget-dropdown-button:focus {
-    background-color: #005b7f;
+    background-color: #8db73a;
 }
-.organic-widget-feature-icon-preview {
+.organic-widget-feature-list-select-icon {
   width: 30px;
   float: left;
   box-sizing: border-box;
   color: #fff;
 }
-.organic-widget-feature-icon-preview i {
-  font-size: 24px;
+.organic-widget-feature-list-select-icon i {
+  font-size: 28px;
   position: absolute;
   top: 7px;
   left: 9px;
@@ -92,7 +124,9 @@
   position: relative;
   background-color: #f9f9f9;
   z-index: 1;
-  border: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
   box-sizing: border-box;
   width: 100%;
 }
@@ -166,4 +200,6 @@
 }
 
 /* Show the dropdown menu (use JS to add this class to the .organic-widgets-feature-list-select-dropdown container when the user clicks on the dropdown button) */
-.organic-widgets-show {display:block;}
+.organic-widgets-show .organic-widgets-feature-list-select-dropdown {
+  display:block;
+}

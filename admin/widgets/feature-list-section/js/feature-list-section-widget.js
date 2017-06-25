@@ -8,18 +8,36 @@
 
   function organicWidgetsCustomDropdown() {
 
-		//Listen for click to open dropdown
-    $('.organic-widget-dropdown-button').click(function(){
-      organicWidgetsOpenDropdown(this);
-    });
+		//Listen for click to open/close dropdown
+    $('.organic-widget-dropdown-button').unbind('click').click(function(){
+
+			if ( $(this).closest('.organic-widgets-feature-list-item-form-item').hasClass('organic-widgets-show') ) {
+				organicWidgetsCloseDropdown(this);
+			} else {
+				organicWidgetsOpenDropdown(this);
+			}
+
+		});
 
 		//Listen for delete
-    $('.organic-widget-feature-delete-button').click(function(){
+    $('.organic-widget-feature-delete-button').unbind('click').click(function(){
       organicWidgetsDeleteFeature(this);
     });
 
+		//Listen for move up
+    $('.organic-widget-move-up').unbind('click').click(function(){
+      // organicWidgetsDeleteFeature(this);
+			console.log('move up');
+    });
+
+		//Listen for move up
+    $('.organic-widget-move-down').unbind('click').click(function(){
+      // organicWidgetsDeleteFeature(this);
+			console.log('move down');
+    });
+
 		// Listen for click to choose feature
-		$('.organic-widgets-feature-select-item').click(function(){
+		$('.organic-widgets-feature-select-item').unbind('click').click(function(){
 			organicWidgetsChooseFeature(this);
 		});
 
@@ -44,12 +62,11 @@
 		var formItem = $(feature).closest('.organic-widgets-feature-list-item-form-item');
 		var theForm = $(formItem).closest('.organic-widgets-feature-list-widget-admin');
 		if ( confirm("Are you sure you want to delete this?") ){
-			console.log(formItem);
+
 			formItem.remove();
 
 			organicWidgetsFeatureUpdateMainArray(theForm);
     }
-		return false;
 	}
 
 	/*--------- Open Feature Selector ----------*/
@@ -58,10 +75,21 @@
 	  var thisDropdown = $(dropdown).parent('.organic-widgets-feature-list-select');
 		var thisIcon = thisDropdown.data('val');
     var thisID = thisDropdown.data('feature-id');
+		var thisFormItem = $(dropdown).parents('.organic-widgets-feature-list-item-form-item');
 
-		$(dropdown).addClass('organic-widgets-open');
-		thisDropdown.find('.organic-widgets-feature-list-select-dropdown').addClass('organic-widgets-show');
+		thisFormItem.find('.organic-widget-feature-list-select-icon').html('<i class="fa fa-angle-up"></i>');
 
+		thisFormItem.addClass('organic-widgets-show');
+  }
+
+	/*--------- Open Feature Selector ----------*/
+	function organicWidgetsCloseDropdown(dropdown) {
+
+		var thisFormItem = $(dropdown).parents('.organic-widgets-feature-list-item-form-item');
+
+		thisFormItem.find('.organic-widget-feature-list-select-icon').html('<i class="fa fa-angle-down"></i>');
+
+		thisFormItem.removeClass('organic-widgets-show');
   }
 
 	/*---------- Choose Feature -------------*/
@@ -69,10 +97,10 @@
 
 		var thisItem = $(feature);
 		var thisVal = thisItem.data('val');
-		var thisFeature = thisItem.parent().parent('.organic-widgets-feature-list-select');
+		var thisFeature = thisItem.parents('.organic-widgets-feature-list-select');
 		var thisFormItem = thisFeature.parent('.organic-widgets-feature-list-item-form-item');
 		var thisButton = thisItem.parent().siblings('.organic-widget-dropdown-button');
-		var thisPreview = thisButton.find('.organic-widget-feature-icon-preview');
+		var thisPreview = thisFormItem.find('.organic-widgets-feature-list-icon-preview');
 
 		// Update HTML Values
 		thisPreview.html('<i class="fa ' + thisVal + '"></i>');
@@ -85,24 +113,25 @@
 		thisItem.siblings().removeClass('organic-widgets-feature-active');
 		thisItem.addClass('organic-widgets-feature-active');
 
+		// HTML Changes
+		thisFormItem.find('.organic-widget-feature-list-select-icon').html('<i class="fa fa-angle-down"></i>');
+
 		// Close Selector
-		thisButton.removeClass('organic-widgets-open');
-		thisItem.parent('.organic-widgets-feature-list-select-dropdown').removeClass('organic-widgets-show');
+		organicWidgetsCloseDropdown(thisItem);
 
 	}
 
 	function organicWidgetsFeatureUpdateMainArray(item) {
 
+		// Get thisFormAdmin
 		if ( $(item).hasClass('organic-widgets-feature-list-widget-admin') ) {
-			var thisFormItem = $(item);
+			var thisFormAdmin = $(item);
 		} else {
-			var thisFormItem = $(item).closest('.organic-widgets-feature-list-widget-admin');
+			var thisFormAdmin = $(item).closest('.organic-widgets-feature-list-widget-admin');
 		}
-
-
-		var allFormItems = thisFormItem.find('.organic-widgets-feature-list-item-form-item');
-
+		var allFormItems = thisFormAdmin.find('.organic-widgets-feature-list-item-form-item');
 		var thisItemData = {};
+
 		allFormItems.each(function(key,el){
 
 			var icon = $(el).find('.organic-widgets-feature-list-select').attr('data-val');
@@ -119,7 +148,7 @@
 			}
 		});
 
-		var mainInput = thisFormItem.siblings('.organic-widgets-feature-list-hidden-input');
+		var mainInput = thisFormAdmin.find('.organic-widgets-feature-list-hidden-input');
 		mainInput.val(JSON.stringify(thisItemData));
 
 	}
