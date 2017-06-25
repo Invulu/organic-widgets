@@ -178,6 +178,7 @@
 			var icon = $(el).find('.organic-widgets-feature-list-select').attr('data-val');
 			var title = $(el).find('.organic-widgets-feature-list-title-input').val();
 			var summary = $(el).find('.organic-widgets-feature-list-summary-input').val();
+			var order = $(el).find('.organic-widgets-feature-list-summary-input').data('order');
 
 			if ( icon != '' || title != '' || summary != '' ) {
 				var theID = $(el).data('feature-id');
@@ -185,7 +186,8 @@
 				thisItemData[theID] = {
 					'icon': icon,
 					'title': title,
-					'summary': summary
+					'summary': summary,
+					'order': order
 				}
 			}
 		});

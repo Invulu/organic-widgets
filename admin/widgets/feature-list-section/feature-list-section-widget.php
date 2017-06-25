@@ -211,15 +211,26 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 
 				//Loop through each item and echo form section
 				$form_keys = array();
-				if ( is_array( $features_array ) ) {	foreach ( $features_array as $key => $feature ) {
+				$form_orders = array();
+				if ( is_array( $features_array ) ) {
+					usort( $features_array, array( $this, 'sort_by_order' ) );
+					foreach ( $features_array as $key => $feature ) {
+
+						if ( isset( $feature['order'] ) ) {
+							$order = $feature['order'];
+						} else {
+							$order = $key;
+						}
 
 						// Echo Form Item
-						$this->echo_feature_list_form_item( $key, $feature );
+						$this->echo_feature_list_form_item( $key, $order, $feature );
 
 						// Add Key to Array
 						array_push( $form_keys, $key );
+						array_push( $form_orders, $order );
 
-				}	}
+					}
+				}
 
 				// Get Next ID
 				if ( count($form_keys) > 0 ) {
@@ -228,8 +239,15 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 					$key = 1;
 				}
 
+				// Get Next ID
+				if ( count($form_orders) > 0 ) {
+					$order = max( $form_orders ) + 1;
+				} else {
+					$order = 1;
+				}
+
 				// Echo Form Item
-				$this->echo_feature_list_form_item( $key ); ?>
+				$this->echo_feature_list_form_item( $key, $order ); ?>
 
 				<input type="hidden" class="organic-widgets-feature-list-hidden-input" id="<?php echo $this->get_field_id('features_array'); ?>" name="<?php echo $this->get_field_name('features_array'); ?>" value='<?php if ( count($features_array) > 0 ){ echo json_encode($features_array); }?>' />
 
@@ -243,11 +261,11 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 		<?php
 	}
 
-	protected function echo_feature_list_form_item( $key, $feature = false ) {
+	protected function echo_feature_list_form_item( $key, $order, $feature = false ) {
 		$key = (int) $key;
 		?>
 
-		<div class="organic-widgets-feature-list-item-form-item" id="<?php echo $this->get_field_id( 'features_array' ).'_'.$key; ?>" data-feature-id="<?php echo $key; ?>">
+		<div class="organic-widgets-feature-list-item-form-item" id="<?php echo $this->get_field_id( 'features_array' ).'_'.$key; ?>" data-feature-id="<?php echo $key; ?>" data-order="<?php echo $order; ?>">
 
 			<div class="organic-widgets-feature-list-select" id="<?php echo $this->get_field_id( 'features_array' ).'_icon_'.$key; ?>" name="<?php echo $this->get_field_id( 'features_array' ).'_icon_'.$key; ?>" data-val="<?php if ( $feature && $feature['icon'] ) { echo esc_attr($feature['icon']); } ?>" data-feature-id="<?php echo $key; ?>">
 				<div class="organic-widget-dropdown-button">
@@ -306,6 +324,24 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 		</div>
 
 		<?php
+	}
+
+	/**
+	 * Function for sorting arrays with usort
+	 *
+	 * @param array $item to be compared with b
+	 * @param array $item to be compared with a
+	 *
+	 * @return int comparator
+	 */
+	protected function sort_by_order($a, $b) {
+
+		if ( isset( $a['order'] ) && isset( $b['order'] ) ) {
+			return $a['order'] - $b['order'];
+		} else {
+			return -1;
+		}
+
 	}
 
 	/**
