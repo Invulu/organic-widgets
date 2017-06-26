@@ -101,7 +101,7 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 
 						</div>
 
-						<?php if ( ! $incrementer % $num_columns ) { ?>
+						<?php if ( ( $incrementer % $num_columns ) < 1 ) { ?>
 							<div class="organic-widgets-clear"></div>
 						<?php } ?>
 

@@ -324,15 +324,20 @@ img.hide-img,
 ************************************************/
 .organic-widgets-feature-list-item {
   text-align: center;
+  padding: 10px;
+  box-sizing: border-box;
 }
 .organic-widgets-feature-list-item-icon {
   text-align: center;
 }
 .organic-widgets-feature-list-item-icon i {
-  font-size: 64px;
+  font-size: 48px;
   margin: auto;
 }
-
+.organic-widgets-feature-list-item h4 {
+  font-weight: normal;
+  margin-top: 1em;
+}
 /************************************************
 *	Flexslider																	*
 ************************************************/
