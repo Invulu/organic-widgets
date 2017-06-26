@@ -206,10 +206,7 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 			<p>
 				<label for="<?php echo $this->get_field_id( 'features_array' ); ?>"><h4><?php _e( 'Features:', ORGANIC_WIDGETS_18N ) ?></h4></label>
 
-				<?php
-
-
-				//Loop through each item and echo form section
+				<?php //Loop through each item and echo form section
 				$form_keys = array();
 				$form_orders = array();
 				if ( is_array( $features_array ) ) {
@@ -239,7 +236,7 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 					$key = 1;
 				}
 
-				// Get Next ID
+				// Get Next Order
 				if ( count($form_orders) > 0 ) {
 					$order = max( $form_orders ) + 1;
 				} else {
@@ -248,6 +245,10 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 
 				// Echo Form Item
 				$this->echo_feature_list_form_item( $key, $order ); ?>
+
+				<div class="organic-widgets-feature-list-add-item">
+					<i class="fa fa-plus"></i>
+				</div>
 
 				<input type="hidden" class="organic-widgets-feature-list-hidden-input" id="<?php echo $this->get_field_id('features_array'); ?>" name="<?php echo $this->get_field_name('features_array'); ?>" value='<?php if ( count($features_array) > 0 ){ echo json_encode($features_array); }?>' />
 
@@ -261,13 +262,13 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 		<?php
 	}
 
-	protected function echo_feature_list_form_item( $key, $order, $feature = false ) {
-		$key = (int) $key;
+	protected function echo_feature_list_form_item( $id, $order, $feature = false ) {
+		$id = (int) $id;
 		?>
 
-		<div class="organic-widgets-feature-list-item-form-item" id="<?php echo $this->get_field_id( 'features_array' ).'_'.$key; ?>" data-feature-id="<?php echo $key; ?>" data-order="<?php echo $order; ?>">
+		<div class="organic-widgets-feature-list-item-form-item" data-feature-id="<?php echo $id; ?>" data-order="<?php echo $order; ?>">
 
-			<div class="organic-widgets-feature-list-select" id="<?php echo $this->get_field_id( 'features_array' ).'_icon_'.$key; ?>" name="<?php echo $this->get_field_id( 'features_array' ).'_icon_'.$key; ?>" data-val="<?php if ( $feature && $feature['icon'] ) { echo esc_attr($feature['icon']); } ?>" data-feature-id="<?php echo $key; ?>">
+			<div class="organic-widgets-feature-list-select" data-val="<?php if ( $feature && $feature['icon'] ) { echo esc_attr($feature['icon']); } ?>" data-feature-id="<?php echo $id; ?>">
 				<div class="organic-widget-dropdown-button">
 					<div class="organic-widget-feature-list-select-icon"><i class="fa fa-angle-down"></i></div>
 					<p><?php _e('Select Icon', ORGANIC_WIDGETS_18N); ?></p>
@@ -313,7 +314,6 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 					<p>
 						<label><?php _e( 'Feature Summary:', ORGANIC_WIDGETS_18N ) ?></label>
 						<textarea class="widefat organic-widgets-feature-list-summary-input" rows="3" cols="20" ><?php if ( $feature && $feature['summary'] ) echo esc_html($feature['summary']); ?></textarea>
-						<!-- <input class="widefat organic-widgets-feature-list-summary-input" type="text" value="<?php if ( $feature && $feature['summary'] ) echo esc_html($feature['summary']); ?>" /> -->
 					</p>
 				</div>
 
@@ -377,8 +377,15 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 			$instance['feature_list_summary'] = strip_tags( $new_instance['feature_list_summary'] );
 		if ( isset( $new_instance['num_columns'] ) )
 			$instance['num_columns'] = strip_tags( $new_instance['num_columns'] );
-		if ( isset( $new_instance['features_array'] ) )
+		if ( isset( $new_instance['features_array'] ) ) {
+			$features_array = json_decode($new_instance['features_array'],true);
+			error_log(print_r($features_array,true));
+			foreach( $features_array as $key => $feature ) {
+
+			}
 			$instance['features_array'] = $new_instance['features_array'];
+		}
+
 
 
 		//Widget Title

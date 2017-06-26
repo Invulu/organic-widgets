@@ -5,7 +5,7 @@
 	'use strict';
 
 
-
+	// Bind all click events and prep dropdown
   function organicWidgetsCustomDropdown() {
 
 		//Listen for click to open/close dropdown
@@ -22,6 +22,11 @@
 		//Listen for delete
     $('.organic-widget-feature-delete-button').unbind('click').click(function(){
       organicWidgetsDeleteFeature(this);
+    });
+
+		//Listen to add
+    $('.organic-widgets-feature-list-add-item').unbind('click').click(function(){
+      organicWidgetsAddFeature(this);
     });
 
 		//Listen for move up
@@ -52,7 +57,6 @@
 		// Prep hidden input value
 		$('.organic-widgets-feature-list-widget-admin').each(function(){
 			var formItem = $(this).find('.organic-widgets-feature-list-item-form-item').first();
-			// organicWidgetsFeatureUpdateMainArray( formItem );
 		});
   }
 
@@ -66,6 +70,59 @@
 
 			organicWidgetsFeatureUpdateMainArray(theForm);
     }
+	}
+
+	/*--------- Delete Feature ----------*/
+	function organicWidgetsAddFeature(addButton) {
+
+		// The Form
+		var theForm = $(addButton).parents('.organic-widgets-feature-list-widget-admin');
+
+		// Get Last Item
+		var allItems = theForm.find('.organic-widgets-feature-list-item-form-item');
+		var lastItem = allItems.last();
+
+		var maxID = 0;
+		var maxOrder = 0;
+		allItems.each(function(){
+
+			if ( $(this).data('feature-id') > maxID ) {
+				maxID = $(this).data('feature-id');
+			}
+
+			if ( $(this).data('order') > maxOrder ) {
+				maxOrder = $(this).data('order');
+			}
+
+		});
+
+		// Get New ID
+		var newID = maxID + 1;
+		// Get New Order
+		var newOrder = maxOrder + 1;
+
+		// Create New Item
+		var newItem = lastItem.clone();
+		newItem.attr('data-feature-id', newID);
+		newItem.attr('data-order', newOrder);
+		if ( newItem.hasClass('organic-widgets-show') ) {
+			newItem.removeClass('organic-widgets-show');
+			newItem.find('.organic-widgets-feature-list-icon-preview').html('');
+			newItem.find('.organic-widget-feature-list-select-icon').html('<i class="fa fa-angle-down"></i>');
+		}
+		newItem.find('.organic-widgets-feature-list-select').attr('data-val', '');
+		newItem.find('.organic-widgets-feature-list-select').attr('data-feature-id', newID);
+		newItem.find('.organic-widgets-feature-list-icon-preview').html('');
+		newItem.find('.organic-widgets-feature-list-title-input').val('');
+		newItem.find('.organic-widgets-feature-list-summary-input').html('');
+		newItem.find('.organic-widgets-feature-list-summary-input').val('');
+
+		// Append New Item
+		$(newItem).insertAfter(lastItem);
+
+		// Rebind click events
+		organicWidgetsCustomDropdown();
+
 	}
 
 	/*--------- Move Feature Up ----------*/
@@ -174,22 +231,26 @@
 		var allFormItems = thisFormAdmin.find('.organic-widgets-feature-list-item-form-item');
 		var thisItemData = {};
 
+		var orderNumber = 0;
 		allFormItems.each(function(key,el){
 			var icon = $(el).find('.organic-widgets-feature-list-select').attr('data-val');
 			var title = $(el).find('.organic-widgets-feature-list-title-input').val();
 			var summary = $(el).find('.organic-widgets-feature-list-summary-input').val();
-			var order = $(el).find('.organic-widgets-feature-list-summary-input').data('order');
+			var order = orderNumber;
+			var theID = $(el).data('feature-id');
 
 			if ( icon != '' || title != '' || summary != '' ) {
-				var theID = $(el).data('feature-id');
-				console.log(theID);
-				thisItemData[theID] = {
+				thisItemData[order] = {
 					'icon': icon,
+					'id': theID,
 					'title': title,
 					'summary': summary,
 					'order': order
 				}
 			}
+
+			orderNumber++;
+
 		});
 		console.log(JSON.stringify(thisItemData));
 		var mainInput = thisFormAdmin.find('.organic-widgets-feature-list-hidden-input');

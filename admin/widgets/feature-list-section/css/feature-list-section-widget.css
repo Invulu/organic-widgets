@@ -18,10 +18,13 @@
 }
 .organic-widgets-feature-list-text-fields-wrapper {
   display: inline-block;
-  width: auto;
   max-width: -webkit-calc(100% - 80px);
-  max-width:    -moz-calc(100% - 80px);
-  max-width:         calc(100% - 80px);
+  max-width: -moz-calc(100% - 80px);
+  max-width: calc(100% - 80px);
+  width: auto;
+  width: -webkit-calc(100% - 80px);
+  width: -moz-calc(100% - 80px);
+  width: calc(100% - 80px);
   float: left;
 }
 .organic-widgets-feature-list-item-form-item {
@@ -195,8 +198,6 @@
   border-right: none;
 
 }
-
-
 /* Change color of dropdown links on hover */
 .organic-widgets-feature-list-select-dropdown .organic-widgets-feature-select-item:hover {
   background-color: #005b7f;
@@ -204,8 +205,29 @@
 .organic-widgets-feature-list-select-dropdown .organic-widgets-feature-select-item:hover i, .organic-widgets-feature-list-select-dropdown .organic-widgets-feature-select-item:hover p {
   color: #fff;
 }
-
 /* Show the dropdown menu (use JS to add this class to the .organic-widgets-feature-list-select-dropdown container when the user clicks on the dropdown button) */
 .organic-widgets-show .organic-widgets-feature-list-select-dropdown {
   display:block;
+}
+.organic-widgets-feature-list-add-item {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid #ddd;
+  box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.1);
+  background: #fafafa;
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+.organic-widgets-feature-list-add-item:hover, .organic-widgets-feature-list-add-item:focus {
+  background: #999;
+  color: #fff;
+}
+.organic-widgets-feature-list-add-item i {
+  font-size: 30px;
+  margin: auto;
 }
