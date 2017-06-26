@@ -318,6 +318,18 @@ img.hide-img,
   z-index: 4;
 }
 
+
+/************************************************
+*	Feature List																	*
+************************************************/
+
+.organic-widgets-feature-list-item-icon {
+
+}
+.organic-widgets-feature-list-item-icon i {
+  font-size: 64px;
+}
+
 /************************************************
 *	Flexslider																	*
 ************************************************/

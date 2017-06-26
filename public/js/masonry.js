@@ -3,7 +3,7 @@
 
 	/* Masonry ---------------------*/
 	function masonrySetup() {
-		var $container = $('.organic-widgets-post-holder');
+		var $container = $('.organic-widgets-masonry-container');
     $container.masonry({
 			itemSelector : '.organic-widget-masonry-wrapper'
 		});

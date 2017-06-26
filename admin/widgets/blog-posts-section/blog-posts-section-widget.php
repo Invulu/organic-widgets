@@ -96,7 +96,7 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 			<?php if ( $wp_query->have_posts() ) : ?>
 
 				<!-- BEGIN .organic-widgets-row -->
-				<div class="organic-widgets-blog-posts-holder organic-widgets-post-holder organic-widgets-row">
+				<div class="organic-widgets-blog-posts-holder organic-widgets-post-holder organic-widgets-row organic-widgets-masonry-container">
 
 					<?php while ( $wp_query->have_posts() ) : $wp_query->the_post(); ?>
 

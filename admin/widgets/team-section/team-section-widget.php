@@ -96,7 +96,7 @@ class Organic_Widgets_Team_Section_Widget extends Organic_Widgets_Custom_Widget 
 			<?php if ( $wp_query->have_posts() ) : ?>
 
 				<!-- BEGIN .organic-widgets-row -->
-				<div class="organic-widgets-row organic-widgets-team-holder organic-widgets-post-holder">
+				<div class="organic-widgets-row organic-widgets-team-holder organic-widgets-post-holder organic-widgets-masonry-container">
 
 					<?php while ( $wp_query->have_posts() ) : $wp_query->the_post(); ?>
 

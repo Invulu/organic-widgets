@@ -107,7 +107,7 @@ class Organic_Widgets_Portfolio_Section_Widget extends Organic_Widgets_Custom_Wi
 			if ( $wp_query->have_posts() ) : ?>
 
 				<!-- BEGIN .organic-widgets-row -->
-				<div class="organic-widgets-row organic-widgets-portfolio-holder organic-widgets-post-holder">
+				<div class="organic-widgets-row organic-widgets-portfolio-holder organic-widgets-post-holder organic-widgets-masonry-container">
 
 					<?php while ( $wp_query->have_posts() ) : $wp_query->the_post(); ?>
 

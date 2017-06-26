@@ -220,7 +220,6 @@
 	}
 
 	function organicWidgetsFeatureUpdateMainArray(item) {
-		console.log('organicWidgetsFeatureUpdateMainArray');
 
 		// Get thisFormAdmin
 		if ( $(item).hasClass('organic-widgets-feature-list-widget-admin') ) {
@@ -252,15 +251,14 @@
 			orderNumber++;
 
 		});
-		console.log(JSON.stringify(thisItemData));
+
 		var mainInput = thisFormAdmin.find('.organic-widgets-feature-list-hidden-input');
 		mainInput.val(JSON.stringify(thisItemData));
 
 	}
 
-
-$( document )
-.ready( organicWidgetsCustomDropdown )
-.ajaxComplete( organicWidgetsCustomDropdown );
+	$( document )
+	.ready( organicWidgetsCustomDropdown )
+	.ajaxComplete( organicWidgetsCustomDropdown );
 
 })( jQuery );

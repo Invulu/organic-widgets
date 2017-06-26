@@ -37,7 +37,11 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 			'image' => true
 		);
 
+		// Admin Scripts
 		add_action( 'sidebar_admin_setup', array( $this, 'admin_setup' ) );
+
+		// Customizer Scripts
+		add_action( 'customize_controls_enqueue_scripts', array($this, 'customizer_setup' ) );
 
 		// Public scripts
 		add_action( 'wp_enqueue_scripts', array( $this, 'public_scripts') );
@@ -61,12 +65,10 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 		$button_url = ( isset( $instance['button_url'] ) && '' != $instance['button_url'] ) ? $instance['button_url'] : false;
 		$title = $instance['title'];
 		$num_columns = ( isset( $instance['num_columns'] ) ) ? $instance['num_columns'] : 3;
+
 		$features_array = ( isset( $instance['features_array'] ) ) ? json_decode( $instance['features_array'], true) :  array();
 
-		echo $args['before_widget'];
-
-
-		?>
+		echo $args['before_widget']; ?>
 
 		<div class="organic-widgets-section organic-widgets-feature-list-section<?php if ( 0 < $bg_image_id ) { ?> has-thumb text-white<?php } ?>" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
 
@@ -77,16 +79,16 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 				<p class="summary"><?php echo $feature_list_summary ?></p>
 			<?php } ?>
 
-			<?php if ( $features_array && count( $features_array ) ) { ?>
+				<div class="organic-widgets-feature-list-items-wrapper organic-widget-masonry-wrapper">
 
-				<div class="organic-widgets-feature-list-items-wrapper">
+				<?php if ( is_array( $features_array ) && count($features_array) ) {
+					usort( $features_array, array( $this, 'sort_by_order' ) );
+					foreach ( $features_array as $key => $feature ) { ?>
 
-					<?php foreach ( $features_array as $feature ) { ?>
+						<div class="organic-widgets-feature-list-item organic-widget-masonry-wrapper organic-widgets-<?php echo $this->column_string( $num_columns ); ?>">
 
-						<div class="organic-widgets-feature-list-item">
-
-							<div class="organic-widgets-feature-list-item-image">
-								<p><?php echo $feature['image']; ?></p>
+							<div class="organic-widgets-feature-list-item-icon">
+								<i class="fa <?php echo esc_attr( $feature['icon'] ); ?>"></i>
 							</div>
 
 							<div class="organic-widgets-feature-list-item-text">
@@ -96,11 +98,12 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 
 						</div>
 
-					<?php } ?>
+					<?php }
+				} ?>
 
 				</div>
 
-			<?php } ?>
+
 
 			<?php if ( ! empty( $button_url ) ) { ?>
 				<a href="<?php echo esc_url($button_url);?>"><button class="organic-widgets-button"><?php if ( ! empty($buttom_text) ) { echo esc_html($button_text); } else { _e( 'See More', ORGANIC_WIDGETS_18N); } ?></button></a>
@@ -108,11 +111,7 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 
 		</div>
 
-		<?php
-
-		echo $args['after_widget'];
-
-
+		<?php echo $args['after_widget'];
 
 	}
 
@@ -378,11 +377,6 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 		if ( isset( $new_instance['num_columns'] ) )
 			$instance['num_columns'] = strip_tags( $new_instance['num_columns'] );
 		if ( isset( $new_instance['features_array'] ) ) {
-			$features_array = json_decode($new_instance['features_array'],true);
-			error_log(print_r($features_array,true));
-			foreach( $features_array as $key => $feature ) {
-
-			}
 			$instance['features_array'] = $new_instance['features_array'];
 		}
 
@@ -426,9 +420,19 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 	 */
 	public function public_scripts() {
 
+		if ( ! wp_script_is('organic-widgets-masonry') ) { wp_enqueue_script( 'organic-widgets-masonry', ORGANIC_WIDGETS_BASE_DIR . 'public/js/masonry.js', array( 'jquery', 'media-upload', 'media-views', 'masonry' ) ); }
 		if ( ! wp_script_is('organic-widgets-backgroundimagebrightness-js') ) { wp_enqueue_script( 'organic-widgets-backgroundimagebrightness-js', ORGANIC_WIDGETS_BASE_DIR . 'public/js/jquery.backgroundbrightness.js', array( 'jquery' ) ); }
 
-		// wp_enqueue_style( 'organic-widgets-fontawesome', ORGANIC_WIDGETS_BASE_DIR . 'public/css/font-awesome.css' );
+		wp_enqueue_style( 'organic-widgets-fontawesome', ORGANIC_WIDGETS_BASE_DIR . 'public/css/font-awesome.css' );
+
+	}
+
+	/**
+	 * Enqueue customizer javascript.
+	 */
+	public function customizer_setup() {
+
+		wp_enqueue_script( 'organic-widgets-feature-list-section-widget-js', plugin_dir_url( __FILE__ ) . 'js/feature-list-section-widget.js', array( 'jquery', 'media-upload', 'media-views' ) );
 
 	}
 
