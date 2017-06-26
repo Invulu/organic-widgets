@@ -8,6 +8,8 @@
 	// Bind all click events and prep dropdown
   function organicWidgetsCustomDropdown() {
 
+		console.log('organicWidgetsCustomDropdown');
+
 		//Listen for click to open/close dropdown
     $('.organic-widget-dropdown-button').unbind('click').click(function(){
 

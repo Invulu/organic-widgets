@@ -322,12 +322,15 @@ img.hide-img,
 /************************************************
 *	Feature List																	*
 ************************************************/
-
+.organic-widgets-feature-list-item {
+  text-align: center;
+}
 .organic-widgets-feature-list-item-icon {
-
+  text-align: center;
 }
 .organic-widgets-feature-list-item-icon i {
   font-size: 64px;
+  margin: auto;
 }
 
 /************************************************

@@ -446,6 +446,27 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
 
 	function getIconOptionsDivs() { ?>
 
+		<div class="organic-widgets-feature-select-item" data-val="fa-archive">
+			<div class="organic-widgets-feature-select-item-sizer"></div>
+			<div class="organic-widgets-feature-select-item-content">
+				<i class ="fa fa-archive"></i>
+				<p>Archive</p>
+			</div>
+		</div>
+		<div class="organic-widgets-feature-select-item" data-val="fa-balance-scale">
+			<div class="organic-widgets-feature-select-item-sizer"></div>
+			<div class="organic-widgets-feature-select-item-content">
+				<i class ="fa fa-balance-scale"></i>
+				<p>Scale</p>
+			</div>
+		</div>
+		<div class="organic-widgets-feature-select-item" data-val="fa-university">
+			<div class="organic-widgets-feature-select-item-sizer"></div>
+			<div class="organic-widgets-feature-select-item-content">
+				<i class ="fa fa-university"></i>
+				<p>Bank</p>
+			</div>
+		</div>
 		<div class="organic-widgets-feature-select-item" data-val="fa-bar-chart">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
@@ -586,11 +607,25 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
 				<p>Dashboard</p>
 			</div>
 		</div>
+		<div class="organic-widgets-feature-select-item" data-val="fa-database">
+			<div class="organic-widgets-feature-select-item-sizer"></div>
+			<div class="organic-widgets-feature-select-item-content">
+				<i class="fa fa-database"></i>
+				<p>Database</p>
+			</div>
+		</div>
 		<div class="organic-widgets-feature-select-item" data-val="fa-desktop">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-desktop"></i>
 				<p>Desktop</p>
+			</div>
+		</div>
+		<div class="organic-widgets-feature-select-item" data-val="fa-diamond">
+			<div class="organic-widgets-feature-select-item-sizer"></div>
+			<div class="organic-widgets-feature-select-item-content">
+				<i class="fa fa-diamond"></i>
+				<p>Diamond</p>
 			</div>
 		</div>
 		<div class="organic-widgets-feature-select-item" data-val="fa-download">
@@ -810,6 +845,13 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
 				<p>Plane</p>
 			</div>
 		</div>
+		<div class="organic-widgets-feature-select-item" data-val="fa-plug">
+			<div class="organic-widgets-feature-select-item-sizer"></div>
+			<div class="organic-widgets-feature-select-item-content">
+				<i class="fa fa-plug"></i>
+				<p>Plug</p>
+			</div>
+		</div>
 		<div class="organic-widgets-feature-select-item" data-val="fa-plus">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
@@ -829,6 +871,13 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-print"></i>
 				<p>Print</p>
+			</div>
+		</div>
+		<div class="organic-widgets-feature-select-item" data-val="fa-puzzle-piece">
+			<div class="organic-widgets-feature-select-item-sizer"></div>
+			<div class="organic-widgets-feature-select-item-content">
+				<i class="fa fa-puzzle-piece"></i>
+				<p>Puzzle</p>
 			</div>
 		</div>
 		<div class="organic-widgets-feature-select-item" data-val="fa-qrcode">
@@ -859,6 +908,13 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
 				<p>Road</p>
 			</div>
 		</div>
+		<div class="organic-widgets-feature-select-item" data-val="fa-rocket">
+			<div class="organic-widgets-feature-select-item-sizer"></div>
+			<div class="organic-widgets-feature-select-item-content">
+				<i class="fa fa-rocket"></i>
+				<p>Rocket</p>
+			</div>
+		</div>
 		<div class="organic-widgets-feature-select-item" data-val="fa-rss">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
@@ -873,11 +929,25 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
 				<p>Search</p>
 			</div>
 		</div>
+		<div class="organic-widgets-feature-select-item" data-val="fa-server">
+			<div class="organic-widgets-feature-select-item-sizer"></div>
+			<div class="organic-widgets-feature-select-item-content">
+				<i class="fa fa-server"></i>
+				<p>Server</p>
+			</div>
+		</div>
 		<div class="organic-widgets-feature-select-item" data-val="fa-share-alt">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-share-alt"></i>
 				<p>Share</p>
+			</div>
+		</div>
+		<div class="organic-widgets-feature-select-item" data-val="fa-shield">
+			<div class="organic-widgets-feature-select-item-sizer"></div>
+			<div class="organic-widgets-feature-select-item-content">
+				<i class="fa fa-shield"></i>
+				<p>Shield</p>
 			</div>
 		</div>
 		<div class="organic-widgets-feature-select-item" data-val="fa-shopping-cart">
@@ -901,11 +971,32 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
 				<p>Sitemap</p>
 			</div>
 		</div>
+		<div class="organic-widgets-feature-select-item" data-val="fa-sort-alpha-desc">
+			<div class="organic-widgets-feature-select-item-sizer"></div>
+			<div class="organic-widgets-feature-select-item-content">
+				<i class="fa fa-sort-alpha-desc"></i>
+				<p>Sort A-Z</p>
+			</div>
+		</div>
+		<div class="organic-widgets-feature-select-item" data-val="fa-sort-amount-asc">
+			<div class="organic-widgets-feature-select-item-sizer"></div>
+			<div class="organic-widgets-feature-select-item-content">
+				<i class="fa fa-sort-amount-asc"></i>
+				<p>Sort Size</p>
+			</div>
+		</div>
 		<div class="organic-widgets-feature-select-item" data-val="fa-star">
 			<div class="organic-widgets-feature-select-item-sizer"></div>
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-star"></i>
 				<p>Star</p>
+			</div>
+		</div>
+		<div class="organic-widgets-feature-select-item" data-val="fa-life-ring">
+			<div class="organic-widgets-feature-select-item-sizer"></div>
+			<div class="organic-widgets-feature-select-item-content">
+				<i class="fa fa-life-ring"></i>
+				<p>Support</p>
 			</div>
 		</div>
 		<div class="organic-widgets-feature-select-item" data-val="fa-tablet">
@@ -1004,6 +1095,20 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
 			<div class="organic-widgets-feature-select-item-content">
 				<i class="fa fa-volume-up"></i>
 				<p>Volume</p>
+			</div>
+		</div>
+		<div class="organic-widgets-feature-select-item" data-val="fa-exclamation-triangle">
+			<div class="organic-widgets-feature-select-item-sizer"></div>
+			<div class="organic-widgets-feature-select-item-content">
+				<i class="fa fa-exclamation-triangle"></i>
+				<p>Warning</p>
+			</div>
+		</div>
+		<div class="organic-widgets-feature-select-item" data-val="fa-wifi">
+			<div class="organic-widgets-feature-select-item-sizer"></div>
+			<div class="organic-widgets-feature-select-item-content">
+				<i class="fa fa-wifi"></i>
+				<p>Wifi</p>
 			</div>
 		</div>
 		<div class="organic-widgets-feature-select-item" data-val="fa-wrench">
