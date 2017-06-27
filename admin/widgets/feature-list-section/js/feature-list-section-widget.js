@@ -4,14 +4,11 @@
 (function( $ ) {
 	'use strict';
 
-
 	// Bind all click events and prep dropdown
   function organicWidgetsCustomDropdown() {
 
-		console.log('organicWidgetsCustomDropdown');
-
 		//Listen for click to open/close dropdown
-    $('.organic-widget-dropdown-button').unbind('click').click(function(){
+    $('.organic-widget-dropdown-button').unbind('click').on('click', function(){
 
 			if ( $(this).closest('.organic-widgets-feature-list-item-form-item').hasClass('organic-widgets-show') ) {
 				organicWidgetsCloseDropdown(this);
@@ -22,36 +19,36 @@
 		});
 
 		//Listen for delete
-    $('.organic-widget-feature-delete-button').unbind('click').click(function(){
+    $('.organic-widget-feature-delete-button').unbind('click').on('click', function(){
       organicWidgetsDeleteFeature(this);
     });
 
 		//Listen to add
-    $('.organic-widgets-feature-list-add-item').unbind('click').click(function(){
+    $('.organic-widgets-feature-list-add-item').unbind('click').on('click', function(){
       organicWidgetsAddFeature(this);
     });
 
 		//Listen for move up
-    $('.organic-widget-move-up').unbind('click').click(function(){
+    $('.organic-widget-move-up').unbind('click').on('click', function(){
       organicWidgetsReorderFeatures(this, 'up');
     });
 
 		//Listen for move up
-    $('.organic-widget-move-down').unbind('click').click(function(){
+    $('.organic-widget-move-down').unbind('click').on('click', function(){
       organicWidgetsReorderFeatures(this, 'down');
     });
 
 		// Listen for click to choose feature
-		$('.organic-widgets-feature-select-item').unbind('click').click(function(){
+		$('.organic-widgets-feature-select-item').unbind('click').on('click', function(){
 			organicWidgetsChooseFeature(this);
 		});
 
 		// Listen for changes on inputs
-		$('.organic-widgets-feature-list-summary-input').change(function(){
+		$('.organic-widgets-feature-list-summary-input').on('change', function(){
 			var formItem = $(this).parent().parent('.organic-widgets-feature-list-item-form-item');
 			organicWidgetsFeatureUpdateMainArray(this);
 		});
-		$('.organic-widgets-feature-list-title-input').change(function(){
+		$('.organic-widgets-feature-list-title-input').on('change', function(){
 			var formItem = $(this).parent().parent('.organic-widgets-feature-list-item-form-item');
 			organicWidgetsFeatureUpdateMainArray(this);
 		});
@@ -67,9 +64,7 @@
 		var formItem = $(feature).closest('.organic-widgets-feature-list-item-form-item');
 		var theForm = $(formItem).closest('.organic-widgets-feature-list-widget-admin');
 		if ( confirm("Are you sure you want to delete this?") ){
-
 			formItem.remove();
-
 			organicWidgetsFeatureUpdateMainArray(theForm);
     }
 	}
@@ -221,6 +216,7 @@
 
 	}
 
+	/*---------- Update Hidden Input Array -------------*/
 	function organicWidgetsFeatureUpdateMainArray(item) {
 
 		// Get thisFormAdmin
@@ -255,12 +251,25 @@
 		});
 
 		var mainInput = thisFormAdmin.find('.organic-widgets-feature-list-hidden-input');
+		mainInput.trigger('change');
 		mainInput.val(JSON.stringify(thisItemData));
 
 	}
 
+	// Binding main function
 	$( document )
-	.ready( organicWidgetsCustomDropdown )
 	.ajaxComplete( organicWidgetsCustomDropdown );
+
+	$(window).on("load", function() {
+		organicWidgetsCustomDropdown()
+		if ( typeof wp != "undefined" ) {
+			wp.customize.state.bind('change', function() {
+				organicWidgetsCustomDropdown();
+			});
+			$('.customize-control-widget_form').on('click',function(){
+				organicWidgetsCustomDropdown();
+			});
+		}
+	});
 
 })( jQuery );

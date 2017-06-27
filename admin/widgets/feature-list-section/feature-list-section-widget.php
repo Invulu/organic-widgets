@@ -41,7 +41,7 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 		add_action( 'sidebar_admin_setup', array( $this, 'admin_setup' ) );
 
 		// Customizer Scripts
-		add_action( 'organic_widgets_feature_list_js', array($this, 'customizer_setup' ) );
+		add_action( 'customize_controls_enqueue_scripts', array($this, 'customizer_setup' ) );
 
 		// Public scripts
 		add_action( 'wp_enqueue_scripts', array( $this, 'public_scripts') );
@@ -63,7 +63,7 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 		$feature_list_summary = ( isset( $instance['feature_list_summary'] ) && '' != $instance['feature_list_summary'] ) ? $instance['feature_list_summary'] : false;
 		$button_text = ( isset( $instance['button_text'] ) && '' != $instance['button_text'] ) ? $instance['button_text'] : false;
 		$button_url = ( isset( $instance['button_url'] ) && '' != $instance['button_url'] ) ? $instance['button_url'] : false;
-		$title = $instance['title'];
+		$title = ( isset( $instance['title'] ) && '' != $instance['title'] ) ? $instance['title'] : '';
 		$num_columns = ( isset( $instance['num_columns'] ) ) ? $instance['num_columns'] : 3;
 
 		$features_array = ( isset( $instance['features_array'] ) ) ? json_decode( $instance['features_array'], true) :  array();
@@ -265,7 +265,7 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 			<?php $this->section_background_input_markup( $instance, $this->bg_options ); ?>
 
 		</div>
-		<?php do_action('organic_widgets_feature_list_js');
+		<?php
 	}
 
 	protected function echo_feature_list_form_item( $id, $order, $feature = false ) {
@@ -438,7 +438,7 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 	 * Enqueue customizer javascript.
 	 */
 	public function customizer_setup() {
-		error_log('customizer_setup()');
+
 		wp_enqueue_script( 'organic-widgets-feature-list-section-widget-js', plugin_dir_url( __FILE__ ) . 'js/feature-list-section-widget.js', array( 'jquery', 'media-upload', 'media-views' ) );
 
 	}
