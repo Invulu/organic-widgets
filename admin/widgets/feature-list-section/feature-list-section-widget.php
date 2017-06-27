@@ -107,7 +107,7 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 
 					<?php }
 				} ?>
-
+							<div class="organic-widgets-clear"></div>
 				</div>
 
 
