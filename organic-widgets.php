@@ -7,7 +7,7 @@
  * @package           Organic_Widgets
  *
  * @wordpress-plugin
- * Plugin Name:       Organic Customizer Widgets
+ * Plugin Name:       Organic Customizer Widgets And Blocks
  * Plugin URI:        https://organicthemes.com
  * Description:       Adds a page template with a new widget areas and widgets to a site for more display flexibility
  * Version:           1.0.0

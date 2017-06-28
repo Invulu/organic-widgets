@@ -63,17 +63,18 @@ class Organic_Widgets_Blocks {
 
     if( is_plugin_active( 'gutenberg/gutenberg.php' ) && ORGANIC_WIDGETS_BLOCKS_ACTIVE ) {
       $blocks = array(
-        'separator2'
+        'content-slideshow'
       );
       foreach ( $blocks as $block_name );
       wp_enqueue_script( 'organic-widgets-block-' . $block_name, plugin_dir_url( __FILE__ ) . 'library/'.$block_name.'/index.js', array( 'jquery' ), $this->version, false );
-    }
+			include( plugin_dir_url( __FILE__ ) . 'library/'.$block_name.'/'.$block_name.'.php' );
+		}
 
 
 	}
 
   /**
-   * Check if Gutennberg is active and include block classes if it is
+   * Check if Gutenberg is active and include block classes if it is
    *
    * @since      1.0.0
    */
