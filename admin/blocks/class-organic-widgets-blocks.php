@@ -71,10 +71,10 @@ class Organic_Widgets_Blocks {
 			$blocks = array(
         'content-slideshow'
       );
-      foreach ( $blocks as $block_name );
-      wp_enqueue_script( 'organic-widgets-block-' . $block_name, plugin_dir_url( __FILE__ ) . 'library/'.$block_name.'/index.js', array( 'jquery' ), $this->version, false );
-			require_once plugin_dir_path( dirname( __FILE__ ) ) . 'blocks/library/'.$block_name.'/'.$block_name.'.php';
-			// include( plugin_dir_url( __FILE__ ) . 'library/'.$block_name.'/'.$block_name.'.php' );
+      foreach ( $blocks as $block_name ) {
+				require_once plugin_dir_path( dirname( __FILE__ ) ) . 'blocks/library/'.$block_name.'/'.$block_name.'.php';
+			}
+
 		}
 
 
