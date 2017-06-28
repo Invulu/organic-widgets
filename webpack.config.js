@@ -36,7 +36,7 @@ var webpackConfig = {
 	},
 	resolve: {
 		extensions: [ '', '.js', '.jsx' ],
-		modulesDirectories: [ 'node_modules', 'src' ]
+		modulesDirectories: [ 'node_modules', 'admin/blocks' ]
 	},
 	node: {
 		fs: "empty",
