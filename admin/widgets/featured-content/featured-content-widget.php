@@ -107,29 +107,35 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 			<!-- BEGIN .organic-widgets-section -->
 			<div class="organic-widgets-section organic-widgets-featured-content-section<?php if ( 0 < $bg_image_id ) { ?> has-thumb text-white<?php } ?>" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
 
-				<div class="holder">
-					<?php if ( 0 < $bg_image_id ) { ?>
-						<div class="feature-img"><img src="<?php echo $bg_image; ?>" /></div>
-					<?php } elseif ( '1' == get_option( 'fresh_site' ) ) { ?>
-						<div class="feature-img"><img src="<?php echo get_template_directory_uri(); ?>/images/image-about.jpg" /></div>
-					<?php } ?>
-					<div class="information">
-						<?php if ( ! empty( $title ) ) { ?>
-							<h3><?php echo esc_html( $title ); ?></h3>
+				<!-- BEGIN .organic-widgets-content -->
+				<div class="organic-widgets-content">
+
+					<div class="holder">
+						<?php if ( 0 < $bg_image_id ) { ?>
+							<div class="feature-img"><img src="<?php echo $bg_image; ?>" /></div>
+						<?php } elseif ( '1' == get_option( 'fresh_site' ) ) { ?>
+							<div class="feature-img"><img src="<?php echo get_template_directory_uri(); ?>/images/image-about.jpg" /></div>
 						<?php } ?>
-						<?php if ( ! empty( $summary ) ) { ?>
-							<div class="excerpt"><?php echo $summary ?></div>
-						<?php } ?>
-						<?php if ( ! empty( $link_url ) ) { ?>
-							<a class="button" href="<?php echo esc_url( $link_url ); ?>">
-								<?php if ( ! empty( $link_title ) ) { ?>
-									<?php echo $link_title ?>
-								<?php } else { ?>
-									<?php esc_html_e( 'Read More', ORGANIC_WIDGETS_18N ); ?>
-								<?php } ?>
-							</a>
-						<?php } ?>
+						<div class="information">
+							<?php if ( ! empty( $title ) ) { ?>
+								<h3><?php echo esc_html( $title ); ?></h3>
+							<?php } ?>
+							<?php if ( ! empty( $summary ) ) { ?>
+								<div class="excerpt"><?php echo $summary ?></div>
+							<?php } ?>
+							<?php if ( ! empty( $link_url ) ) { ?>
+								<a class="button" href="<?php echo esc_url( $link_url ); ?>">
+									<?php if ( ! empty( $link_title ) ) { ?>
+										<?php echo $link_title ?>
+									<?php } else { ?>
+										<?php esc_html_e( 'Read More', ORGANIC_WIDGETS_18N ); ?>
+									<?php } ?>
+								</a>
+							<?php } ?>
+						</div>
 					</div>
+
+				<!-- END .organic-widgets-content -->
 				</div>
 
 			<!-- END .organic-widgets-section -->

@@ -105,10 +105,12 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 
 						<article>
 
-							<a href="<?php the_permalink(); ?>"><?php the_post_thumbnail(); ?></a>
+							<?php if ( ! has_post_thumbnail() ) { ?>
+								<a class="organic-widgets-featured-img" href="<?php the_permalink(); ?>"><?php the_post_thumbnail(); ?></a>
+							<?php } ?>
 
-							<!-- BEGIN .organic-widgets-content -->
-							<div class="organic-widgets-content">
+							<!-- BEGIN .organic-widgets-card -->
+							<div class="organic-widgets-card">
 
 								<h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
 
@@ -122,7 +124,7 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 
 								<?php the_excerpt(); ?>
 
-							<!-- END .organic-widgets-content -->
+							<!-- END .organic-widgets-card -->
 							</div>
 
 						</article>

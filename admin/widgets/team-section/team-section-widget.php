@@ -105,24 +105,18 @@ class Organic_Widgets_Team_Section_Widget extends Organic_Widgets_Custom_Widget 
 
 						<article>
 
-							<a href="<?php the_permalink(); ?>"><?php the_post_thumbnail(); ?></a>
+							<?php if ( ! has_post_thumbnail() ) { ?>
+								<a class="organic-widgets-featured-img" href="<?php the_permalink(); ?>"><?php the_post_thumbnail(); ?></a>
+							<?php } ?>
 
-							<!-- BEGIN .organic-widgets-content -->
-							<div class="organic-widgets-content">
+							<!-- BEGIN .organic-widgets-card -->
+							<div class="organic-widgets-card">
 
 								<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
 
-								<!-- BEGIN .organic-widgets-post-meta -->
-								<div class="organic-widgets-post-meta">
-									<div class="organic-widgets-post-date">
-										<p><?php echo get_the_modified_date(); ?></p>
-									</div>
-								<!-- END .organic-widgets-post-meta -->
-								</div>
-
 								<?php the_excerpt(); ?>
 
-							<!-- END .organic-widgets-content -->
+							<!-- END .organic-widgets-card -->
 							</div>
 
 						</article>

@@ -99,13 +99,15 @@ class Organic_Widgets_Testimonial_Section_Widget extends Organic_Widgets_Custom_
 
 			<?php if ( $slideshow_query->have_posts() ) { ?>
 
-				<!-- BEGIN .flexslider -->
-				<div class="organic-widgets-flexslider loading" data-speed="<?php echo get_theme_mod( 'gpp_transition_interval', '12000' ); ?>" data-transition="<?php echo get_theme_mod( 'gpp_transition_style', 'fade' ); ?>">
+				<!-- BEGIN .organic-widgets-content -->
+				<div class="organic-widgets-content">
+
+					<h2><?php echo $title; ?></h2>
+
+					<!-- BEGIN .flexslider -->
+					<div class="organic-widgets-flexslider loading" data-speed="<?php echo get_theme_mod( 'gpp_transition_interval', '12000' ); ?>">
 
 					<div class="preloader"></div>
-
-					<!-- BEGIN .organic-widgets-content -->
-					<div class="organic-widgets-content">
 
 						<!-- BEGIN .slides -->
 						<ul class="slides">
@@ -117,31 +119,39 @@ class Organic_Widgets_Testimonial_Section_Widget extends Organic_Widgets_Custom_
 
 							<li <?php post_class(); ?> id="post-<?php the_ID(); ?>">
 
+								<article>
+
 								<!-- BEGIN .organic-widgets-testimonial-slide-content -->
 								<div class="organic-widgets-testimonial-slide-content">
 
-									<h3><?php echo $title; ?></h3>
+									<!-- BEGIN .organic-widgets-card -->
+									<div class="organic-widgets-card">
 
-									<?php if ( has_post_thumbnail() ) { ?>
+										<?php if ( has_post_thumbnail() ) { ?>
 
-										<div class="organic-widgets-testimonial-avatar" style="background-image:url(<?php echo $thumb[0]; ?>);">
-											<div class="organic-widgets-aspect-ratio-spacer"></div>
+											<div class="organic-widgets-testimonial-avatar" style="background-image:url(<?php echo $thumb[0]; ?>);">
+												<div class="organic-widgets-aspect-ratio-spacer"></div>
+											</div>
+
+										<?php } ?>
+
+										<!-- BEGIN .excerpt -->
+										<div class="excerpt">
+
+											<?php the_excerpt(); ?>
+
+										<!-- END .excerpt -->
 										</div>
 
-									<?php } ?>
+										<p class="organic-widgets-testimonial-author"><a href="<?php echo get_the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></p>
 
-									<!-- BEGIN .excerpt -->
-									<div class="excerpt">
-
-										<?php the_excerpt(); ?>
-
-									<!-- END .excerpt -->
+									<!-- END .organic-widgets-card -->
 									</div>
-
-									<p class="organic-widgets-testimonial-author"><a href="<?php echo get_the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></p>
 
 								<!-- END .organic-widgets-testimonial-slide-content -->
 								</div>
+
+								</article>
 
 							</li>
 
@@ -150,10 +160,10 @@ class Organic_Widgets_Testimonial_Section_Widget extends Organic_Widgets_Custom_
 						<!-- END .slides -->
 						</ul>
 
-					<!-- END .organic-widgets-content -->
+					<!-- END .flexslider -->
 					</div>
 
-				<!-- END .flexslider -->
+				<!-- END .organic-widgets-content -->
 				</div>
 
 			<?php } ?>

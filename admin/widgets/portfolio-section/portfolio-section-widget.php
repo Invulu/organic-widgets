@@ -116,7 +116,9 @@ class Organic_Widgets_Portfolio_Section_Widget extends Organic_Widgets_Custom_Wi
 
 						<article>
 
-							<a href="<?php the_permalink(); ?>"><?php the_post_thumbnail(); ?></a>
+							<?php if ( ! has_post_thumbnail() ) { ?>
+								<a class="organic-widgets-featured-img" href="<?php the_permalink(); ?>"><?php the_post_thumbnail(); ?></a>
+							<?php } ?>
 
 							<!-- BEGIN .organic-widgets-content -->
 							<div class="organic-widgets-content">
@@ -141,9 +143,8 @@ class Organic_Widgets_Portfolio_Section_Widget extends Organic_Widgets_Custom_Wi
 					<!-- END .organic-widget-masonry-wrapper -->
 					</div>
 
-
-
 					<?php endwhile; ?>
+
 				<!-- END .organic-widgets-row -->
 				</div>
 

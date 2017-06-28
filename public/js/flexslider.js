@@ -4,29 +4,54 @@
 	/* Flexslider ---------------------*/
 	function flexSliderSetup() {
 
-		if( ($).flexslider) {
-			var slider = $('.organic-widgets-flexslider');
-			slider.flexslider({
-				slideshowSpeed		: slider.attr('data-speed'),
+		if ( ($).flexslider) {
+			var content_slider = $('.organic-widgets-content-slideshow-section .organic-widgets-flexslider');
+			var testimonial_slider = $('.organic-widgets-testimonial-section .organic-widgets-flexslider');
+			content_slider.flexslider({
+				slideshowSpeed		: content_slider.attr('data-speed'),
 				animationDuration	: 800,
-				animation			: slider.attr('data-transition'),
-				video				: false,
-				useCSS				: false,
-				prevText			: '<i class="fa fa-angle-left"></i>',
-				nextText			: '<i class="fa fa-angle-right"></i>',
-				touch				: false,
-				controlNav			: false,
-				animationLoop		: true,
-				smoothHeight		: true,
-				pauseOnAction		: true,
-				pauseOnHover		: true,
+				animation					: content_slider.attr('data-transition'),
+				video							: false,
+				useCSS						: false,
+				prevText					: '<i class="fa fa-angle-left"></i>',
+				nextText					: '<i class="fa fa-angle-right"></i>',
+				touch							: false,
+				controlNav				: false,
+				animationLoop			: true,
+				smoothHeight			: true,
+				pauseOnAction			: true,
+				pauseOnHover			: true,
 
-				start: function(slider) {
-					slider.removeClass('loading');
+				start: function(content_slider) {
+					content_slider.removeClass('loading');
+					$( ".preloader" ).hide();
+				}
+			});
+			testimonial_slider.flexslider({
+				slideshowSpeed		: testimonial_slider.attr('data-speed'),
+				animationDuration	: 800,
+				animation					: 'slide',
+				video							: false,
+				useCSS						: false,
+				prevText					: '<i class="fa fa-angle-left"></i>',
+				nextText					: '<i class="fa fa-angle-right"></i>',
+				touch							: true,
+				controlNav				: false,
+				animationLoop			: true,
+				smoothHeight			: false,
+				pauseOnAction			: true,
+				pauseOnHover			: true,
+				itemWidth 				: 300,
+				itemMargin				: 24,
+				maxItems					: 3,
+
+				start: function(testimonial_slider) {
+					testimonial_slider.removeClass('loading');
 					$( ".preloader" ).hide();
 				}
 			});
 		}
+
 	}
 
   $( window ).load( flexSliderSetup );

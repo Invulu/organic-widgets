@@ -72,6 +72,9 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 
 		<div class="organic-widgets-section organic-widgets-feature-list-section<?php if ( 0 < $bg_image_id ) { ?> has-thumb text-white<?php } ?>" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
 
+			<!-- BEGIN .organic-widgets-content -->
+			<div class="organic-widgets-content">
+
 			<?php if ( ! empty( $title ) ) { ?>
 				<h3><?php echo esc_html( $title ); ?></h3>
 			<?php } ?>
@@ -110,11 +113,12 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 							<div class="organic-widgets-clear"></div>
 				</div>
 
-
-
 			<?php if ( ! empty( $button_url ) ) { ?>
 				<a href="<?php echo esc_url($button_url);?>"><button class="organic-widgets-button"><?php if ( ! empty($buttom_text) ) { echo esc_html($button_text); } else { _e( 'See More', ORGANIC_WIDGETS_18N); } ?></button></a>
 			<?php } ?>
+
+			<!-- END .organic-widgets-content -->
+			</div>
 
 		</div>
 

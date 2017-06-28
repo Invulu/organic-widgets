@@ -59,20 +59,19 @@ img.hide-img,
   min-width: 25%;
 }
 .organic-widgets-post-holder article {
-	background: #ffffff;
+	background-color: #ffffff;
 	margin: 18px;
 }
 .organic-widgets-post-holder .organic-widgets-fourth article {
   font-size: 85%;
 }
-.organic-widgets-post-holder .organic-widgets-content {
+.organic-widgets-card {
+  background-color: #ffffff;
 	padding: 12px 24px;
 }
-.organic-widgets-testimonial-section,
 .organic-widgets-content-slideshow-section {
   padding: 0;
 }
-.organic-widgets-testimonial-slide-content,
 .organic-widgets-content-slideshow-slide-content {
 	padding: 24px 48px;
 }
@@ -197,17 +196,17 @@ img.hide-img,
   text-shadow: 1px 1px 2px rgba(255, 255, 255, .7);
   color: #000000;
 }
-.organic-widget article .organic-widgets-content h1,
-.organic-widget article .organic-widgets-content h2,
-.organic-widget article .organic-widgets-content h3,
-.organic-widget article .organic-widgets-content h4,
-.organic-widget article .organic-widgets-content h5,
-.organic-widget article .organic-widgets-content h6,
-.organic-widget article .organic-widgets-content p,
-.organic-widget article .organic-widgets-content a,
-.organic-widget article .organic-widgets-content span,
-.organic-widget article .organic-widgets-content div,
-.organic-widget article .organic-widgets-content blockquote {
+.organic-widget article .organic-widgets-card h1,
+.organic-widget article .organic-widgets-card h2,
+.organic-widget article .organic-widgets-card h3,
+.organic-widget article .organic-widgets-card h4,
+.organic-widget article .organic-widgets-card h5,
+.organic-widget article .organic-widgets-card h6,
+.organic-widget article .organic-widgets-card p,
+.organic-widget article .organic-widgets-card a,
+.organic-widget article .organic-widgets-card span,
+.organic-widget article .organic-widgets-card div,
+.organic-widget article .organic-widgets-card blockquote {
   color: #333;
 }
 
