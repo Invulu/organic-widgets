@@ -62,12 +62,19 @@ class Organic_Widgets_Blocks {
 	public function enqueue_scripts() {
 
     if( is_plugin_active( 'gutenberg/gutenberg.php' ) && ORGANIC_WIDGETS_BLOCKS_ACTIVE ) {
-      $blocks = array(
+
+			//Get React Scripts
+			wp_enqueue_script( 'wp-react-boilerplate-admin',  ORGANIC_WIDGETS_BASE_DIR . '/build/admin.js', array(), $this->version, true );
+			wp_enqueue_style( 'wp-react-boilerplate-admin', ORGANIC_WIDGETS_BASE_DIR . '/build/admin.css', array(), $this->version);
+
+			// Find Blocks
+			$blocks = array(
         'content-slideshow'
       );
       foreach ( $blocks as $block_name );
       wp_enqueue_script( 'organic-widgets-block-' . $block_name, plugin_dir_url( __FILE__ ) . 'library/'.$block_name.'/index.js', array( 'jquery' ), $this->version, false );
-			include( plugin_dir_url( __FILE__ ) . 'library/'.$block_name.'/'.$block_name.'.php' );
+			require_once plugin_dir_path( dirname( __FILE__ ) ) . 'blocks/library/'.$block_name.'/'.$block_name.'.php';
+			// include( plugin_dir_url( __FILE__ ) . 'library/'.$block_name.'/'.$block_name.'.php' );
 		}
 
 
@@ -80,9 +87,8 @@ class Organic_Widgets_Blocks {
    */
 	public function include_block_classes() {
 
-    //Include Block Class files here
-    // require_once ORGANIC_WIDGETS_BLOCKS_DIR . 'separator/index.js';
-    add_action( 'admin_enqueue_scripts', 'enqueue_scripts' );
+
+
 
 	}
 

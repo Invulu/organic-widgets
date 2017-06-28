@@ -19,7 +19,7 @@ wp.blocks.registerBlockType( 'organic-widgets/content-slideshow', {
 	category: 'widgets',
 
 	defaultAttributes: {
-		poststoshow: 5,
+		poststoshow: 2,
 	},
 
 	edit: class extends wp.element.Component {
