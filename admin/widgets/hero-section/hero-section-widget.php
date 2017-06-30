@@ -60,6 +60,8 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 		$bg_video  = ( isset( $instance['bg_video'] ) && $instance['bg_video'] ) ? $instance['bg_video'] : false;
 		$title = ( isset( $instance['title'] ) ) ? $instance['title'] : false;
 		$summary = ( isset( $instance['summary'] ) ) ? $instance['summary'] : false;
+		$button_text = ( isset( $instance['button_text'] ) && '' != $instance['button_text'] ) ? $instance['button_text'] : false;
+		$button_url = ( isset( $instance['button_url'] ) && '' != $instance['button_url'] ) ? $instance['button_url'] : false;
 
 		echo $args['before_widget'];
 
@@ -89,11 +91,27 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 			<!-- BEGIN .organic-widgets-content -->
 			<div class="organic-widgets-content">
 
+				<?php if ( ! empty( $title ) || ! empty( $summary ) || ! empty( $button_url ) ) { ?>
+
+				<!-- BEGIN .organic-widget-hero-information -->
+				<div class="organic-widget-hero-information">
+
 				<?php if ( ! empty( $title ) ) { ?>
 					<h2 class="organic-widget-title"><?php echo esc_html( $title ); ?></h2>
 				<?php } ?>
 				<?php if ( ! empty( $summary ) ) { ?>
 					<p class="organic-widget-summary"><?php echo $summary ?></p>
+				<?php } ?>
+
+				<?php if ( ! empty( $button_url ) ) { ?>
+					<div class="organic-widgets-button-holder">
+						<a class="organic-widgets-button button" href="<?php echo esc_url( $button_url );?>"><?php if ( ! empty( $button_text ) ) { echo esc_html( $button_text ); } else { _e( 'See More', ORGANIC_WIDGETS_18N); } ?></a>
+					</div>
+				<?php } ?>
+
+				<!-- END .organic-widget-hero-information -->
+				</div>
+
 				<?php } ?>
 
 			<!-- END .organic-widgets-content -->
@@ -147,6 +165,14 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 			$summary = $instance[ 'summary' ];
 		} else { $summary = ''; }
 
+		if ( isset( $instance[ 'button_text' ] ) ) {
+			$button_text = $instance[ 'button_text' ];
+		} else { $button_text = false; }
+
+		if ( isset( $instance[ 'button_url' ] ) ) {
+			$button_url = $instance[ 'button_url' ];
+		} else { $button_url = false; }
+
 		?>
 
 		<p>
@@ -156,6 +182,14 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 		<p>
 			<label for="<?php echo $this->get_field_id( 'summary' ); ?>"><?php _e('Section Content:', ORGANIC_WIDGETS_18N) ?></label>
 			<textarea class="widefat" rows="6" cols="20" id="<?php echo $this->get_field_id( 'summary' ); ?>" name="<?php echo $this->get_field_name( 'summary' ); ?>"><?php echo $summary; ?></textarea>
+		</p>
+		<p>
+			<label for="<?php echo $this->get_field_id( 'button_text' ); ?>"><?php _e('Button Text:', ORGANIC_WIDGETS_18N); ?></label>
+			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'button_text' ); ?>" name="<?php echo $this->get_field_name( 'button_text' ); ?>" value="<?php echo $button_text; ?>" />
+		</p>
+		<p>
+			<label for="<?php echo $this->get_field_id( 'button_url' ); ?>"><?php _e('Button URL', ORGANIC_WIDGETS_18N); ?></label>
+			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'button_url' ); ?>" name="<?php echo $this->get_field_name( 'button_url' ); ?>" value="<?php echo $button_url; ?>" />
 		</p>
 
 		<hr />
@@ -196,6 +230,10 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 			$instance['title'] = strip_tags( $new_instance['title'] );
 		if ( isset( $new_instance['summary'] ) )
 			$instance['summary'] = strip_tags( $new_instance['summary'] );
+		if ( isset( $new_instance['button_text'] ) )
+			$instance['button_text'] = strip_tags( $new_instance['button_text'] );
+		if ( isset( $new_instance['button_url'] ) )
+			$instance['button_url'] = strip_tags( $new_instance['button_url'] );
 
 		// Widget Title
 		if ( isset( $new_instance['title'] )  && '' != $new_instance['title'] ) {
