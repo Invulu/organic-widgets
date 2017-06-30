@@ -83,7 +83,7 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 				<p class="organic-widget-summary"><?php echo $feature_list_summary ?></p>
 			<?php } ?>
 
-				<div class="organic-widgets-feature-list-items-wrapper">
+				<div class="organic-widgets-feature-list-items-wrapper organic-widgets-flex-row">
 
 				<?php if ( is_array( $features_array ) && count($features_array) ) {
 					$incrementer = 0;

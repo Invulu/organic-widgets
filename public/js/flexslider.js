@@ -33,18 +33,17 @@
 				animation					: 'slide',
 				video							: false,
 				useCSS						: false,
-				prevText					: '<i class="fa fa-angle-left"></i>',
-				nextText					: '<i class="fa fa-angle-right"></i>',
 				touch							: true,
 				directionNav			: false,
 				controlNav				: true,
-				animationLoop			: true,
+				animationLoop			: false,
 				smoothHeight			: false,
 				pauseOnAction			: true,
 				pauseOnHover			: true,
-				itemWidth 				: 300,
-				itemMargin				: 24,
+				itemWidth 				: 320,
+				itemMargin				: 12,
 				maxItems					: 3,
+				minItems					: 1,
 
 				start: function(testimonial_slider) {
 					testimonial_slider.removeClass('loading');
@@ -56,6 +55,7 @@
 	}
 
   $( window ).load( flexSliderSetup );
+	$( window ).resize( flexSliderSetup );
 	$( document ).ajaxComplete( flexSliderSetup );
 
 })( jQuery );
