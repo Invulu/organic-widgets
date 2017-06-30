@@ -4,7 +4,7 @@
  */
 
 /************************************************
-*	Global Styles															  	*
+*	Global Styles
 ************************************************/
 
 img.hide-img,
@@ -22,7 +22,7 @@ img.hide-img,
   width: 100%;
   height: 0px;
 }
-.organic-widgets-featured-img {
+.organic-widget-featured-img {
   display: block;
   line-height: 0;
   overflow: hidden;
@@ -33,7 +33,7 @@ img.hide-img,
 }
 
 /************************************************
-*	Core Widget Styles											  	*
+*	Core Widget Styles
 ************************************************/
 
 .organic-widget_widget_media_image {
@@ -60,7 +60,7 @@ img.hide-img,
 }
 
 /************************************************
-*	Organic Widget Styles											  	*
+*	Organic Widget Styles
 ************************************************/
 
 .organic-widget {
@@ -72,6 +72,9 @@ img.hide-img,
   background-position: center center;
   padding: 36px;
   margin: 0;
+}
+.organic-widget-summary {
+  padding-top: 0px;
 }
 .organic-widgets-content .organic-widgets-post-holder {
   width: calc(100% + 32px);
@@ -93,7 +96,7 @@ img.hide-img,
   display: block;
   text-align: center;
 }
-.organic-widgets-card {
+.organic-widget-card {
   position: relative;
   background-color: #ffffff;
 	padding: 12px 24px;
@@ -109,13 +112,48 @@ img.hide-img,
 .organic-widget .link-more br {
   display: none;
 }
-.organic-widgets-post-date p {
+
+/************************************************
+*	Blog Posts Section Widget
+************************************************/
+
+.organic-widgets-blog-posts-section .organic-widget-title,
+.organic-widgets-blog-posts-section .organic-widget-summary {
+  text-align: center;
+}
+.organic-widgets-blog-posts-section .organic-widgets-post-meta {
   font-size: 75%;
-  padding: 6px 0px;
+  margin: 6px 0px;
+  padding-left: 12px;
+  border-left: 2px solid rgba(0, 0, 0, 0.12);
+}
+.organic-widgets-blog-posts-section .organic-widgets-post-meta p.organic-widgets-post-date,
+.organic-widgets-blog-posts-section .organic-widgets-post-meta p.organic-widgets-post-author {
+  color: rgba(0, 0, 0, 0.4);
+  padding: 0px;
 }
 
 /************************************************
-*	Content Slideshow Widget						  				*
+*	Team Section Widget
+************************************************/
+
+.organic-widgets-team-section .organic-widget-title,
+.organic-widgets-team-section .organic-widget-summary,
+.organic-widgets-team-section .organic-widget-member-title {
+  text-align: center;
+}
+
+/************************************************
+*	Portfolio Section Widget
+************************************************/
+
+.organic-widgets-portfolio-section .organic-widget-title,
+.organic-widgets-portfolio-section .organic-widget-summary {
+  text-align: center;
+}
+
+/************************************************
+*	Content Slideshow Widget
 ************************************************/
 
 .organic-widgets-content-slideshow-section {
@@ -123,6 +161,9 @@ img.hide-img,
 }
 .organic-widgets-content-slideshow-slide-content {
 	padding: 24px 48px;
+}
+.organic-widgets-content-slideshow-section .slides li {
+  min-height: 480px;
 }
 .organic-widgets-content-slideshow-slide-content {
   display: inline-block;
@@ -132,23 +173,40 @@ img.hide-img,
 }
 
 /************************************************
-*	Testimonials Slideshow Widget						   		*
+*	Testimonials Slideshow Widget
 ************************************************/
 
+.organic-widgets-testimonial-section .organic-widget-title,
+.organic-widgets-testimonial-section .organic-widget-summary {
+  text-align: center;
+}
+.organic-widgets-testimonial-section .flex-viewport {
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
 .organic-widgets-testimonial-avatar {
 	position: relative;
-	margin: 12px auto;
+	margin: -60px auto 0px;
 	text-align: center;
 	height: auto;
 	width: 40%;
 	border-radius: 50%;
 	background-size: cover;
 	background-position: center center;
+  border: 12px solid #ffffff;
+}
+.organic-widgets-testimonial-slide-content {
+  margin-top: 60px;
 }
 .organic-widgets-testimonial-slide-content h4 {
 	padding-top: 0;
 }
-.organic-widgets-testimonial-slide-content .organic-widgets-card::after {
+.organic-widgets-testimonial-slide-content a.more-link {
+  float: none;
+  display: block;
+  text-align: center;
+}
+.organic-widgets-testimonial-slide-content .organic-widget-card::after {
   content: '';
   position: absolute;
   bottom: -12px;
@@ -163,12 +221,16 @@ img.hide-img,
 }
 
 /************************************************
-*	Feature List Widget									  				*
+*	Feature List Widget
 ************************************************/
 
+.organic-widgets-feature-list-section .organic-widget-title,
+.organic-widgets-feature-list-section .organic-widget-summary {
+  text-align: center;
+}
 .organic-widgets-feature-list-item {
   text-align: center;
-  padding: 10px;
+  padding: 12px;
   box-sizing: border-box;
 }
 .organic-widgets-feature-list-item-icon {
@@ -184,7 +246,7 @@ img.hide-img,
 }
 
 /************************************************
-*	Profile Widget					         						 *
+*	Profile Widget
 ************************************************/
 
 .organic-widgets-profile {
@@ -228,7 +290,7 @@ img.hide-img,
 }
 
 /************************************************
-*	Text Color Conditionals											  *
+*	Text Color Conditionals
 ************************************************/
 
 .organic-widget .ocw-bg-dark h1,
@@ -271,26 +333,37 @@ img.hide-img,
   text-shadow: 0px 0px 12px rgba(255, 255, 255, 0.6);
   color: #000000;
 }
-.organic-widget article .organic-widgets-card h1,
-.organic-widget article .organic-widgets-card h2,
-.organic-widget article .organic-widgets-card h3,
-.organic-widget article .organic-widgets-card h4,
-.organic-widget article .organic-widgets-card h5,
-.organic-widget article .organic-widgets-card h6 {
+.organic-widget article .organic-widget-card h1,
+.organic-widget article .organic-widget-card h2,
+.organic-widget article .organic-widget-card h3,
+.organic-widget article .organic-widget-card h4,
+.organic-widget article .organic-widget-card h5,
+.organic-widget article .organic-widget-card h6 {
   color: rgba(0, 0, 0, 0.9);
   text-shadow: none !important;
 }
-.organic-widget article .organic-widgets-card p,
-.organic-widget article .organic-widgets-card a,
-.organic-widget article .organic-widgets-card span,
-.organic-widget article .organic-widgets-card div,
-.organic-widget article .organic-widgets-card blockquote {
+.organic-widget article .organic-widget-card p,
+.organic-widget article .organic-widget-card a,
+.organic-widget article .organic-widget-card span,
+.organic-widget article .organic-widget-card div,
+.organic-widget article .organic-widget-card blockquote {
   color: rgba(0, 0, 0, 0.6);
   text-shadow: none !important;
 }
+.organic-widget .ocw-bg-img .organic-widgets-flexslider .flex-control-nav li a,
+.organic-widget .ocw-bg-dark .organic-widgets-flexslider .flex-control-nav li a {
+  border-color: rgba(255, 255, 255, 0.6);
+}
+.ocw-bg-img .organic-widgets-flexslider .flex-control-nav li a:hover,
+.ocw-bg-img .organic-widgets-flexslider .flex-control-nav li a.flex-active,
+.ocw-bg-dark .organic-widgets-flexslider .flex-control-nav li a:hover,
+.ocw-bg-dark .organic-widgets-flexslider .flex-control-nav li a.flex-active {
+  background-color: rgba(255, 255, 255, 1);
+  border-color: rgba(255, 255, 255, 0);
+}
 
 /************************************************
-*	Social Icons																	*
+*	Social Icons
 ************************************************/
 
 .organic-widget .organic-widgets-social-icons {
@@ -376,27 +449,7 @@ img.hide-img,
 .organic-widget .organic-widgets-social-icons li a[href$="/cart/"]::before				{ content: '\f07a'; }
 
 /************************************************
-*	Customizer																	*
-************************************************/
-
-.organic-widget .customize-partial-edit-shortcut {
-	left: 48px !important;
-	top: 12px !important;
-}
-.organic-widgets-preview-highlighter {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  border: 3px solid #0085BA;
-  box-sizing: border-box;
-  background-color: rgba(255, 255, 255, 0.5);
-  z-index: 4;
-}
-
-/************************************************
-*	Flexslider																	*
+*	Flexslider
 ************************************************/
 
 .organic-widgets-flexslider {
@@ -518,8 +571,67 @@ img.hide-img,
 	opacity: 0;
 }
 
+/* Control Nav */
+.organic-widgets-flexslider .flex-control-nav {
+	position: absolute;
+	right: 18px;
+	bottom: 0px;
+	text-align: center;
+	margin: 0px;
+	padding: 0px;
+	z-index: 9;
+}
+.organic-widgets-flexslider .flex-control-nav li {
+	display: inline-block;
+	margin: 0px;
+	padding: 4px !important;
+	zoom: 1;
+	*display: inline;
+}
+.organic-widgets-flexslider .flex-control-nav li:first-child {
+	margin: 0;
+}
+.organic-widgets-flexslider .flex-control-nav li a {
+	width: 8px;
+	height: 8px;
+	display: block;
+	cursor: pointer;
+	text-indent: -999em;
+	border-radius: 8px;
+	border: 2px solid rgba(0, 0, 0, 0.4);
+}
+.organic-widgets-flexslider .flex-control-nav li a:hover {
+	background-color: rgba(0, 0, 0, 0.6);
+  border-color: rgba(0, 0, 0, 0);
+}
+.organic-widgets-flexslider .flex-control-nav li a.flex-active {
+  cursor: default;
+	background-color: rgba(0, 0, 0, 0.6);
+	border-color: rgba(0, 0, 0, 0);
+}
+
 /************************************************
-*	Desktop Grid																	*
+*	Customizer
+************************************************/
+
+.organic-widget .customize-partial-edit-shortcut {
+	left: 48px !important;
+	top: 12px !important;
+}
+.organic-widgets-preview-highlighter {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border: 3px solid #0085BA;
+  box-sizing: border-box;
+  background-color: rgba(255, 255, 255, 0.5);
+  z-index: 4;
+}
+
+/************************************************
+*	Desktop Grid
 ************************************************/
 
 .organic-widgets-flex-row {
@@ -581,7 +693,7 @@ img.hide-img,
 .organic-widgets-row, .organic-widgets-clearfix { zoom: 1; }
 
 /************************************************
-*	Phone Grid																		*
+*	Phone Grid
 ************************************************/
 
 @media handheld, only screen and (max-width: 767px) {

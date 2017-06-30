@@ -74,11 +74,11 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 			<div class="organic-widgets-content">
 
 			<?php if ( ! empty( $instance['title'] ) ) { ?>
-				<h2 <?php if ( $bg_image_id > 0 ) { ?>class="text-white"<?php } ?>><?php echo apply_filters( 'widget_title', $instance['title'] ); ?></h2>
+				<h2 class="organic-widget-title"><?php echo apply_filters( 'widget_title', $instance['title'] ); ?></h2>
 			<?php } ?>
 
 			<?php if ( ! empty( $instance['summary'] ) ) { ?>
-				<p class="summary"><?php echo $instance['summary'] ?></p>
+				<p class="organic-widget-summary"><?php echo $instance['summary'] ?></p>
 			<?php } ?>
 
 			<?php $wp_query = new WP_Query( array(
@@ -106,11 +106,11 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 						<article>
 
 							<?php if ( has_post_thumbnail() ) { ?>
-								<a class="organic-widgets-featured-img" href="<?php the_permalink(); ?>"><?php the_post_thumbnail(); ?></a>
+								<a class="organic-widget-featured-img" href="<?php the_permalink(); ?>"><?php the_post_thumbnail(); ?></a>
 							<?php } ?>
 
-							<!-- BEGIN .organic-widgets-card -->
-							<div class="organic-widgets-card">
+							<!-- BEGIN .organic-widget-card -->
+							<div class="organic-widget-card">
 
 								<h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
 
@@ -119,12 +119,15 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 									<p class="organic-widgets-post-date">
 										<?php echo get_the_modified_date(); ?>
 									</p>
+									<p class="organic-widgets-post-author">
+										<?php esc_html_e( 'By ', 'organic-startup' ); ?><?php esc_url( the_author_posts_link() ); ?>
+									</p>
 								<!-- END .organic-widgets-post-meta -->
 								</div>
 
 								<?php the_excerpt(); ?>
 
-							<!-- END .organic-widgets-card -->
+							<!-- END .organic-widget-card -->
 							</div>
 
 						</article>
