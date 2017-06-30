@@ -114,7 +114,7 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 				</div>
 
 			<?php if ( ! empty( $button_url ) ) { ?>
-				<a href="<?php echo esc_url($button_url);?>"><button class="organic-widgets-button"><?php if ( ! empty($buttom_text) ) { echo esc_html($button_text); } else { _e( 'See More', ORGANIC_WIDGETS_18N); } ?></button></a>
+				<a href="<?php echo esc_url($button_url);?>"><button class="organic-widgets-button button"><?php if ( ! empty($buttom_text) ) { echo esc_html($button_text); } else { _e( 'See More', ORGANIC_WIDGETS_18N); } ?></button></a>
 			<?php } ?>
 
 			<!-- END .organic-widgets-content -->

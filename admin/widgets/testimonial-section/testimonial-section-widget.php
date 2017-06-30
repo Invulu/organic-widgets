@@ -135,18 +135,12 @@ class Organic_Widgets_Testimonial_Section_Widget extends Organic_Widgets_Custom_
 
 										<?php } ?>
 
-										<!-- BEGIN .excerpt -->
-										<div class="excerpt">
-
-											<?php the_excerpt(); ?>
-
-										<!-- END .excerpt -->
-										</div>
-
-										<p class="organic-widgets-testimonial-author"><a href="<?php echo get_the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></p>
+										<div class="organic-widgets-excerpt"><?php the_excerpt(); ?></div>
 
 									<!-- END .organic-widgets-card -->
 									</div>
+
+									<p class="organic-widgets-testimonial-author"><a href="<?php echo get_the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></p>
 
 								<!-- END .organic-widgets-testimonial-slide-content -->
 								</div>

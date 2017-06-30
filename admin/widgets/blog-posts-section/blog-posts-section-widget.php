@@ -105,7 +105,7 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 
 						<article>
 
-							<?php if ( ! has_post_thumbnail() ) { ?>
+							<?php if ( has_post_thumbnail() ) { ?>
 								<a class="organic-widgets-featured-img" href="<?php the_permalink(); ?>"><?php the_post_thumbnail(); ?></a>
 							<?php } ?>
 

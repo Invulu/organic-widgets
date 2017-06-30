@@ -105,14 +105,14 @@ class Organic_Widgets_Team_Section_Widget extends Organic_Widgets_Custom_Widget 
 
 						<article>
 
-							<?php if ( ! has_post_thumbnail() ) { ?>
+							<?php if ( has_post_thumbnail() ) { ?>
 								<a class="organic-widgets-featured-img" href="<?php the_permalink(); ?>"><?php the_post_thumbnail(); ?></a>
 							<?php } ?>
 
 							<!-- BEGIN .organic-widgets-card -->
 							<div class="organic-widgets-card">
 
-								<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+								<h6><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h6>
 
 								<?php the_excerpt(); ?>
 

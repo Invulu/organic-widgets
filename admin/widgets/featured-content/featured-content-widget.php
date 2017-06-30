@@ -68,17 +68,23 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 			<!-- BEGIN .organic-widgets-section -->
 			<div class="organic-widgets-section organic-widgets-featured-content-section<?php if ( 0 < $bg_image_id ) { ?> has-thumb text-white<?php } ?>" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
 
-				<div class="holder">
-					<div class="feature-img"><?php echo get_the_post_thumbnail( $page_id, 'organic-widgets-featured-medium' )?></div>
-					<div class="information">
-						<?php if ( ! empty( $page_title ) ) { ?>
-							<h3><?php echo apply_filters( 'widget_title', $page_title ); ?></h3>
-						<?php } ?>
-						<?php if ( ! empty( $page_excerpt ) ) { ?>
-							<div class="excerpt"><?php echo $page_excerpt; ?></div>
-						<?php } ?>
-						<a class="button" href="<?php echo get_the_permalink( $page_id );?>"><?php esc_html_e( 'Read More', ORGANIC_WIDGETS_18N ); ?></a>
+				<!-- BEGIN .organic-widgets-content -->
+				<div class="organic-widgets-content">
+
+					<div class="holder">
+						<div class="feature-img"><?php echo get_the_post_thumbnail( $page_id, 'organic-widgets-featured-medium' )?></div>
+						<div class="information">
+							<?php if ( ! empty( $page_title ) ) { ?>
+								<h3><?php echo apply_filters( 'widget_title', $page_title ); ?></h3>
+							<?php } ?>
+							<?php if ( ! empty( $page_excerpt ) ) { ?>
+								<div class="excerpt"><?php echo $page_excerpt; ?></div>
+							<?php } ?>
+							<a class="button" href="<?php echo get_the_permalink( $page_id );?>"><?php esc_html_e( 'Read More', ORGANIC_WIDGETS_18N ); ?></a>
+						</div>
 					</div>
+
+				<!-- END .organic-widgets-content -->
 				</div>
 
 			<!-- END .organic-widgets-section -->
