@@ -41,7 +41,7 @@
 				pauseOnAction			: true,
 				pauseOnHover			: true,
 				itemWidth 				: 320,
-				itemMargin				: 12,
+				itemMargin				: 24,
 				maxItems					: 3,
 				minItems					: 1,
 

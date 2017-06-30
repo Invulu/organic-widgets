@@ -372,6 +372,9 @@ img.hide-img,
   color: rgba(0, 0, 0, 0.6);
   text-shadow: none !important;
 }
+.organic-widget article .organic-widget-card a {
+  text-shadow: none !important;
+}
 .organic-widget .ocw-bg-img .organic-widgets-flexslider .flex-control-nav li a,
 .organic-widget .ocw-bg-dark .organic-widgets-flexslider .flex-control-nav li a {
   border-color: rgba(255, 255, 255, 0.6);
