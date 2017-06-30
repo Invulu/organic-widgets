@@ -1,25 +1,21 @@
 /**
  * WordPress dependencies
  */
-// import { Component } from 'gutenberg/element';
-// import { Placeholder } from 'components';
-// import { __ } from 'i18n';
 
 /**
  * Internal dependencies
  */
-// import { registerBlockType } from '../../api';
 import { getContentSlideshow } from './data.js';
 
 wp.blocks.registerBlockType( 'organic-widgets/content-slideshow', {
-	title: wp.i18n.__( 'Content Slideshow' ),
+	title: wp.i18n.__( 'Content Slideshowss' ),
 
 	icon: 'list-view',
 
 	category: 'widgets',
 
 	defaultAttributes: {
-		poststoshow: 5,
+		poststoshow: 2,
 	},
 
 	edit: class extends wp.element.Component {

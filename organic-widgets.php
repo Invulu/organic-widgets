@@ -65,12 +65,13 @@ function run_organic_widgets() {
 	$plugin = new Organic_Widgets();
 	define( 'ORGANIC_WIDGETS_18N', $plugin->get_plugin_name() );
 	define( 'ORGANIC_WIDGETS_BASE_DIR', plugin_dir_url( __FILE__ ) );
-	define( 'ORGANIC_WIDGETS_BLOCKS_DIR', plugin_dir_url( __FILE__ ) . 'admin/blocks/library/' );
+	define( 'ORGANIC_WIDGETS_BLOCKS_DIR', plugin_dir_url( __FILE__ ) . 'admin/blocks/' );
+	// define( 'ORGANIC_WIDGETS_BLOCKS_DIR', plugin_dir_url( __FILE__ ) . 'admin/blocks/library/' );
 	define( 'ORGANIC_WIDGETS_ADMIN_JS_DIR', plugin_dir_url( __FILE__ ) . 'admin/js/' );
 	define( 'ORGANIC_WIDGETS_ADMIN_CSS_DIR', plugin_dir_url( __FILE__ ) . 'admin/css/' );
 
 	// Change to false before blocks are ready
-	define( 'ORGANIC_WIDGETS_BLOCKS_ACTIVE', false );
+	define( 'ORGANIC_WIDGETS_BLOCKS_ACTIVE', true );
 	$plugin->run();
 
 }

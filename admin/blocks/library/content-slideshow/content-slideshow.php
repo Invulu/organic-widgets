@@ -13,8 +13,8 @@
  * @return string Returns the post content with latest posts added.
  */
 function gutenberg_render_block_organic_widgets_content_slideshow( $attributes ) {
-	$posts_to_show = 5;
-
+	$posts_to_show = 6;
+	error_log('gutenberg_render_block_organic_widgets_content_slideshow');
 	if ( array_key_exists( 'poststoshow', $attributes ) ) {
 		$posts_to_show_attr = $attributes['poststoshow'];
 
@@ -55,6 +55,6 @@ CONTENT;
 	return $block_content;
 }
 
-register_block_type( 'organic-widgets/contentslideshow', array(
+register_block_type( 'organic-widgets/content-slideshow', array(
 	'render' => 'gutenberg_render_block_organic_widgets_content_slideshow',
 ) );

@@ -112,3 +112,28 @@ Markdown uses email style notation for blockquotes and I've been told:
 > Asterisks for *emphasis*. Double it up  for **strong**.
 
 `<?php code(); // goes in backticks ?>`
+
+React Notes
+====================
+
+Development
+
+
+## Getting Started
+
+1. Make sure that you have [Node.js](https://nodejs.org/en/) installed.
+2. Navigate to the plugin directory, install `npm` dependencies, and run the dev build command:
+
+```
+cd /path/to/wordpress/wp-content/plugins/wp-react-boilerplate
+npm install
+npm run dev
+```
+
+## Commands
+
+`npm install` - Install dependencies
+
+`npm run build` – Generate production versions of static assets.
+
+`npm run dev` - Start webpack in "watch" mode so that the assets are automatically compiled when a file changes.
