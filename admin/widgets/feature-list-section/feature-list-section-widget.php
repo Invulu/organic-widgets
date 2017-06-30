@@ -64,13 +64,13 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 		$button_text = ( isset( $instance['button_text'] ) && '' != $instance['button_text'] ) ? $instance['button_text'] : false;
 		$button_url = ( isset( $instance['button_url'] ) && '' != $instance['button_url'] ) ? $instance['button_url'] : false;
 		$title = ( isset( $instance['title'] ) && '' != $instance['title'] ) ? $instance['title'] : '';
-		$num_columns = ( isset( $instance['num_columns'] ) ) ? $instance['num_columns'] : 3;
+		$num_columns = ( isset( $instance['num_columns'] ) ) ? $instance['num_columns'] : 4;
 
 		$features_array = ( isset( $instance['features_array'] ) ) ? json_decode( $instance['features_array'], true) :  array();
 
 		echo $args['before_widget']; ?>
 
-		<div class="organic-widgets-section organic-widgets-feature-list-section<?php if ( 0 < $bg_image_id ) { ?> has-thumb text-white<?php } ?>" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
+		<div class="organic-widgets-section organic-widgets-feature-list-section" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
 
 			<!-- BEGIN .organic-widgets-content -->
 			<div class="organic-widgets-content">
@@ -83,7 +83,7 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 				<p class="organic-widget-summary"><?php echo $feature_list_summary ?></p>
 			<?php } ?>
 
-				<div class="organic-widgets-feature-list-items-wrapper organic-widget-masonry-wrapper">
+				<div class="organic-widgets-feature-list-items-wrapper">
 
 				<?php if ( is_array( $features_array ) && count($features_array) ) {
 					$incrementer = 0;
@@ -92,30 +92,32 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 						$incrementer++;
 						?>
 
-						<div class="organic-widgets-feature-list-item organic-widget-masonry-wrapper organic-widgets-<?php echo $this->column_string( $num_columns ); ?>">
+						<div class="organic-widgets-feature-list-item organic-widgets-<?php echo $this->column_string( $num_columns ); ?>">
 
-							<div class="organic-widgets-feature-list-item-icon">
-								<i class="fa <?php echo esc_attr( $feature['icon'] ); ?>"></i>
-							</div>
+							<div class="organic-widgets-information">
 
-							<div class="organic-widgets-feature-list-item-text">
-								<h4><?php echo $feature['title']; ?></h4>
-								<p><?php echo $feature['summary']; ?></p>
+								<div class="organic-widgets-feature-list-item-icon">
+									<i class="fa <?php echo esc_attr( $feature['icon'] ); ?>"></i>
+								</div>
+
+								<div class="organic-widgets-feature-list-item-text">
+									<h6><?php echo $feature['title']; ?></h6>
+									<p><?php echo $feature['summary']; ?></p>
+								</div>
+
 							</div>
 
 						</div>
 
-						<?php if ( ( $incrementer % $num_columns ) < 1 ) { ?>
-							<div class="organic-widgets-clear"></div>
-						<?php } ?>
-
 					<?php }
 				} ?>
-							<div class="organic-widgets-clear"></div>
+
 				</div>
 
 			<?php if ( ! empty( $button_url ) ) { ?>
-				<a href="<?php echo esc_url($button_url);?>"><button class="organic-widgets-button button"><?php if ( ! empty($buttom_text) ) { echo esc_html($button_text); } else { _e( 'See More', ORGANIC_WIDGETS_18N); } ?></button></a>
+				<div class="organic-widgets-button-holder">
+					<a class="organic-widgets-button button" href="<?php echo esc_url( $button_url );?>"><?php if ( ! empty( $button_text ) ) { echo esc_html( $button_text ); } else { _e( 'See More', ORGANIC_WIDGETS_18N); } ?></a>
+				</div>
 			<?php } ?>
 
 			<!-- END .organic-widgets-content -->
@@ -172,7 +174,7 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 
 		if ( isset( $instance['num_columns'] ) ) {
 			$num_columns = $instance['num_columns'];
-		} else { $num_columns = 3; }
+		} else { $num_columns = 4; }
 
 		if ( isset( $instance['features_array'] ) ) {
 			$features_array = json_decode( $instance['features_array'], true );
@@ -208,6 +210,8 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 			    <option <?php selected( $num_columns, '2'); ?> value="2">2</option>
 			    <option <?php selected( $num_columns, '3'); ?> value="3">3</option>
 			    <option <?php selected( $num_columns, '4'); ?> value="4">4</option>
+					<option <?php selected( $num_columns, '5'); ?> value="5">5</option>
+					<option <?php selected( $num_columns, '6'); ?> value="6">6</option>
 				</select>
 			</p>
 
@@ -392,8 +396,6 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 			$instance['features_array'] = $new_instance['features_array'];
 		}
 
-
-
 		//Widget Title
 		if ( isset( $new_instance['title'] )  && '' != $new_instance['title'] ) {
 			$instance['title'] = strip_tags( $new_instance['title'] );
@@ -432,7 +434,6 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 	 */
 	public function public_scripts() {
 
-		if ( ! wp_script_is('organic-widgets-masonry') ) { wp_enqueue_script( 'organic-widgets-masonry', ORGANIC_WIDGETS_BASE_DIR . 'public/js/masonry.js', array( 'jquery', 'media-upload', 'media-views', 'masonry' ) ); }
 		if ( ! wp_script_is('organic-widgets-backgroundimagebrightness-js') ) { wp_enqueue_script( 'organic-widgets-backgroundimagebrightness-js', ORGANIC_WIDGETS_BASE_DIR . 'public/js/jquery.backgroundbrightness.js', array( 'jquery' ) ); }
 
 		wp_enqueue_style( 'organic-widgets-fontawesome', ORGANIC_WIDGETS_BASE_DIR . 'public/css/font-awesome.css' );

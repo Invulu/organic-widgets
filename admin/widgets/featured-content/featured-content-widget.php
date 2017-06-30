@@ -66,7 +66,7 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 			?>
 
 			<!-- BEGIN .organic-widgets-section -->
-			<div class="organic-widgets-section organic-widgets-featured-content-section<?php if ( 0 < $bg_image_id ) { ?> has-thumb text-white<?php } ?>" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
+			<div class="organic-widgets-section organic-widgets-featured-content-section" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
 
 				<!-- BEGIN .organic-widgets-content -->
 				<div class="organic-widgets-content">
@@ -111,7 +111,7 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 			?>
 
 			<!-- BEGIN .organic-widgets-section -->
-			<div class="organic-widgets-section organic-widgets-featured-content-section<?php if ( 0 < $bg_image_id ) { ?> has-thumb text-white<?php } ?>" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
+			<div class="organic-widgets-section organic-widgets-featured-content-section" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
 
 				<!-- BEGIN .organic-widgets-content -->
 				<div class="organic-widgets-content">

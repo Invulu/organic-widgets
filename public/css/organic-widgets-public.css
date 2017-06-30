@@ -55,8 +55,8 @@ img.hide-img,
   background-color: #ffffff;
   max-width: 720px;
 	margin: 24px auto;
-  padding: 12px;
-  border: 2px solid rgba(0, 0, 0, 0.12);
+  padding: 24px;
+  box-shadow: 0px 0px 18px rgba(0, 0, 0, 0.12);
 }
 
 /************************************************
@@ -101,10 +101,18 @@ img.hide-img,
   background-color: #ffffff;
 	padding: 12px 24px;
 }
+.organic-widget-card p {
+  padding: 6px 0px;
+}
 .organic-widgets-aspect-ratio-spacer {
 	width: 100%;
 	padding-bottom: 100%;
 	position: relative;
+}
+.organic-widgets-button-holder {
+  display: block;
+  text-align: center;
+  margin-top: 12px;
 }
 .organic-widget .link-more {
   padding: 0px;
@@ -123,7 +131,7 @@ img.hide-img,
 }
 .organic-widgets-blog-posts-section .organic-widgets-post-meta {
   font-size: 75%;
-  margin: 6px 0px;
+  margin: 12px 0px;
   padding-left: 12px;
   border-left: 2px solid rgba(0, 0, 0, 0.12);
 }
@@ -217,6 +225,8 @@ img.hide-img,
   border-top: 12px solid #ffffff;
 }
 .organic-widgets-testimonial-slide-content .organic-widgets-testimonial-author {
+  font-size: 90%;
+  font-style: italic;
   text-align: center;
 }
 
@@ -228,9 +238,19 @@ img.hide-img,
 .organic-widgets-feature-list-section .organic-widget-summary {
   text-align: center;
 }
+.organic-widgets-feature-list-items-wrapper {
+  display: flex;
+  align-items: stretch;
+  flex-wrap: wrap;
+}
 .organic-widgets-feature-list-item {
   text-align: center;
-  padding: 12px;
+  box-sizing: border-box;
+  min-width: 16.66%;
+}
+.organic-widgets-feature-list-item .organic-widgets-information {
+  margin: 6px;
+  padding: 24px 12px;
   box-sizing: border-box;
 }
 .organic-widgets-feature-list-item-icon {
@@ -240,9 +260,17 @@ img.hide-img,
   font-size: 48px;
   margin: auto;
 }
-.organic-widgets-feature-list-item h4 {
+.organic-widgets-feature-list-item-text h4 {
   font-weight: normal;
-  margin-top: 1em;
+  margin-top: 18px;
+}
+.organic-widgets-feature-list-item-text p {
+  font-size: 90%;
+  padding: 0px;
+}
+.organic-widgets-feature-list-items-wrapper {
+  margin-top: 12px;
+  margin-bottom: 12px;
 }
 
 /************************************************
