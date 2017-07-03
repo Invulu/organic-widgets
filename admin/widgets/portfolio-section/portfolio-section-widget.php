@@ -116,23 +116,25 @@ class Organic_Widgets_Portfolio_Section_Widget extends Organic_Widgets_Custom_Wi
 					<!-- BEGIN .organic-widget-masonry-wrapper -->
 					<div class="organic-widget-masonry-wrapper organic-widgets-column organic-widgets-<?php echo $this->column_string( $num_columns ); ?>">
 
+						<?php if ( has_post_thumbnail() ) { ?>
+
 						<article>
 
-							<?php if ( has_post_thumbnail() ) { ?>
-								<a class="organic-widget-featured-img" href="<?php the_permalink(); ?>"><?php the_post_thumbnail(); ?></a>
-							<?php } ?>
+							<div class="organic-widget-portfolio-img">
 
-							<!-- BEGIN .organic-widget-card -->
-							<div class="organic-widget-card">
+								<div class="organic-widget-img-text">
+									<h6><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h6>
+								</div>
 
-								<h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
+								<a class="organic-widget-featured-img" href="<?php the_permalink(); ?>">
+									<?php the_post_thumbnail(); ?>
+								</a>
 
-								<?php the_excerpt(); ?>
-
-							<!-- END .organic-widget-card -->
 							</div>
 
 						</article>
+
+						<?php } ?>
 
 					<!-- END .organic-widget-masonry-wrapper -->
 					</div>
