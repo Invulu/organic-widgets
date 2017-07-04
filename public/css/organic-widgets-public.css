@@ -87,7 +87,10 @@ img.hide-img,
 	margin: 12px;
 }
 .organic-widgets-post-holder .organic-widgets-third article,
-.organic-widgets-post-holder .organic-widgets-fourth article {
+.organic-widgets-post-holder .organic-widgets-third article,
+.organic-widgets-post-holder .organic-widgets-fourth article,
+.organic-widgets-post-holder .organic-widgets-fifth article,
+.organic-widgets-post-holder .organic-widgets-sixth article {
   font-size: 90%;
 }
 .organic-widgets-post-holder article a.more-link {
@@ -130,6 +133,7 @@ img.hide-img,
   min-height: 480px;
 }
 .organic-widgets-section.organic-widgets-hero-section {
+  background-attachment: fixed;
   padding-top: 0px;
   padding-bottom: 0px;
 }
@@ -290,6 +294,9 @@ img.hide-img,
 .organic-widgets-testimonial-slide-content {
   margin-top: 60px;
 }
+.organic-widgets-testimonial-slide-content .organic-widgets-excerpt {
+  font-size: 90%;
+}
 .organic-widgets-testimonial-slide-content h4 {
 	padding-top: 0;
 }
@@ -379,7 +386,7 @@ img.hide-img,
   margin-bottom: 6px;
 }
 .organic-widgets-profile-sub-title {
-  font-size: .8em;
+  font-size: 0.8em;
   padding: 0;
   margin-bottom: 10px;
   text-transform: uppercase;
@@ -406,13 +413,15 @@ img.hide-img,
 .organic-widget .ocw-bg-dark h3,
 .organic-widget .ocw-bg-dark h4,
 .organic-widget .ocw-bg-dark h5,
-.organic-widget .ocw-bg-dark h6,
+.organic-widget .ocw-bg-dark h6 {
+  color: #ffffff;
+}
 .organic-widget .ocw-bg-dark p,
 .organic-widget .ocw-bg-dark a,
 .organic-widget .ocw-bg-dark span,
 .organic-widget .ocw-bg-dark div,
 .organic-widget .ocw-bg-dark blockquote {
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.7);
 }
 .organic-widget .ocw-bg-light.ocw-bg-img h1,
 .organic-widget .ocw-bg-light.ocw-bg-img h2,
