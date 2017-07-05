@@ -24,7 +24,7 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 			'organic_widgets_featured_content', // Base ID
 			__( 'Featured Content', ORGANIC_WIDGETS_18N ), // Name
 			array(
-				'description' => __( 'A featured content widget for displaying a page summary or custom content.', ORGANIC_WIDGETS_18N ),
+				'description' => __( 'A featured content widget for displaying a page text or custom content.', ORGANIC_WIDGETS_18N ),
 				'customize_selective_refresh' => true,
 			) // Args
 		);
@@ -37,10 +37,15 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 			'image' => true
 		);
 
-		add_action( 'sidebar_admin_setup', array( $this, 'admin_setup' ) );
+		// Admin Scripts
+		add_action( 'admin_print_scripts-widgets.php', array( $this, 'admin_setup' ) );
+		add_action( 'admin_footer-widgets.php', array( $this, 'render_control_template_scripts' ) );
+
 
 		// Public scripts
 		add_action( 'wp_enqueue_scripts', array( $this, 'public_scripts') );
+
+
 
 	}
 	/**
@@ -94,7 +99,7 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 
 			echo $args['after_widget'];
 
-		} elseif ( ! empty( $instance['title'] ) || ! empty( $instance['summary'] ) ) {
+		} elseif ( ! empty( $instance['title'] ) || ! empty( $instance['text'] ) ) {
 
 			echo $args['before_widget'];
 
@@ -103,8 +108,8 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 			$bg_color = isset( $instance['bg_color'] ) ? $instance['bg_color'] : false;
 			$bg_image_id = isset( $instance['bg_image_id'] ) ? $instance['bg_image_id'] : false;
 			$bg_image = ( isset( $instance['bg_image'] ) && '' != $instance['bg_image'] ) ? $instance['bg_image'] : false;
-			$title = $instance['title'];
-			$summary = $instance['summary'];
+			$title = isset( $instance['title'] ) ? $instance['title'] : '';
+			$text = isset( $instance['text'] ) ? $instance['text'] : '';
 			$link_url = $instance['link_url'];
 			$link_title = $instance['link_title'];
 
@@ -126,8 +131,8 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 							<?php if ( ! empty( $title ) ) { ?>
 								<h3><?php echo esc_html( $title ); ?></h3>
 							<?php } ?>
-							<?php if ( ! empty( $summary ) ) { ?>
-								<div class="excerpt"><?php echo $summary ?></div>
+							<?php if ( ! empty( $text ) ) { ?>
+								<div class="excerpt"><?php echo $text ?></div>
 							<?php } ?>
 							<?php if ( ! empty( $link_url ) ) { ?>
 								<a class="button" href="<?php echo esc_url( $link_url ); ?>">
@@ -178,9 +183,9 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 		if ( isset( $instance[ 'title' ] ) ) {
 			$title = $instance[ 'title' ];
 		} else { $title = ''; }
-		if ( isset( $instance[ 'summary' ] ) ) {
-			$summary = $instance[ 'summary' ];
-		} else { $summary = ''; }
+		if ( isset( $instance[ 'text' ] ) ) {
+			$text = $instance[ 'text' ];
+		} else { $text = ''; }
 		if ( isset( $instance[ 'link_url' ] ) ) {
 			$link_url = $instance[ 'link_url' ];
 		} else { $link_url = ''; }
@@ -210,10 +215,7 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e('Title:', ORGANIC_WIDGETS_18N) ?></label>
 			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $title; ?>" />
 		</p>
-		<p>
-			<label for="<?php echo $this->get_field_id( 'summary' ); ?>"><?php _e('Summary:', ORGANIC_WIDGETS_18N) ?></label>
-			<textarea class="widefat" rows="6" cols="20" id="<?php echo $this->get_field_id( 'summary' ); ?>" name="<?php echo $this->get_field_name( 'summary' ); ?>"><?php echo $summary; ?></textarea>
-		</p>
+		<input id="<?php echo $this->get_field_id( 'text' ); ?>" name="<?php echo $this->get_field_name( 'text' ); ?>" class="text" type="hidden" value="<?php echo $text; ?>">
 		<p>
 			<label for="<?php echo $this->get_field_id( 'link_url' ); ?>"><?php _e('Link URL:', ORGANIC_WIDGETS_18N) ?></label>
 			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'link_url' ); ?>" name="<?php echo $this->get_field_name( 'link_url' ); ?>" value="<?php echo $link_url; ?>" />
@@ -228,6 +230,29 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 		<?php $this->section_background_input_markup( $instance, $this->bg_options );
 
 	}
+
+	/**
+	 * Render form template scripts.
+	 *
+	 *
+	 * @access public
+	 */
+	public function render_control_template_scripts() {
+
+		error_log('hey yo');
+		?>
+		<script type="text/html" id="tmpl-widget-organic_widgets_feature_list_section-control-fields">
+			<# console.log('hi dawg custom'); #>
+			<# var elementIdPrefix = 'el' + String( Math.random() ).replace( /\D/g, '' ) + '_' #>
+
+			<p>
+				<label for="{{ elementIdPrefix }}text" class="screen-reader-text"><?php esc_html_e( 'Content:' ); ?></label>
+				<textarea id="{{ elementIdPrefix }}text" class="widefat text wp-editor-area" style="height: 200px" rows="16" cols="20"></textarea>
+			</p>
+		</script>
+		<?php
+	}
+
 	/**
 	 * Sanitize widget form values as they are saved.
 	 *
@@ -250,7 +275,11 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 		$instance['bg_image_id'] = strip_tags( $new_instance['bg_image_id'] );
 		$instance['bg_image'] = strip_tags( $new_instance['bg_image'] );
 		$instance['title'] = strip_tags( $new_instance['title'] );
-		$instance['summary'] = strip_tags( $new_instance['summary'] );
+		if ( current_user_can( 'unfiltered_html' ) ) {
+			$instance['text'] = $new_instance['text'];
+		} else {
+			$instance['text'] = wp_kses_post( $new_instance['text'] );
+		}
 		$instance['link_url'] = strip_tags( $new_instance['link_url'] );
 		$instance['link_title'] = strip_tags( $new_instance['link_title'] );
 
@@ -276,6 +305,12 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 	 */
 	public function admin_setup() {
 
+		// Text Editor
+		wp_enqueue_editor();
+		wp_enqueue_script( 'featured-content-widgets', plugin_dir_url( __FILE__ ) . 'js/featured-content-widgets.js', array( 'jquery' ) );
+		wp_add_inline_script( 'featured-content-widgets', 'wp.featuredContentWidgets.init();', 'after' );
+
+
 		wp_enqueue_media();
 		wp_enqueue_script( 'organic-widgets-featured-content-widget-js', plugin_dir_url( __FILE__ ) . 'js/featured-content-widget.js', array( 'jquery', 'media-upload', 'media-views' ) );
 		wp_enqueue_style( 'organic-widgets-featured-content-widget-css', plugin_dir_url( __FILE__ ) . 'css/featured-content-widget.css' );
@@ -285,7 +320,7 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
     wp_enqueue_script( 'organic-widgets-module-color-picker', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-color-picker.js', array( 'jquery', 'media-upload', 'media-views', 'wp-color-picker' ) );
 
 		wp_enqueue_script( 'organic-widgets-module-image-background', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-image-background.js', array( 'jquery', 'media-upload', 'media-views', 'wp-color-picker' ) );
-		wp_localize_script( 'organic-widgets-module-image-background', 'SubpageWidget', array(
+		wp_localize_script( 'organic-widgets-module-image-background', 'FeaturedContentWidget', array(
 			'frame_title' => __( 'Select an Image', ORGANIC_WIDGETS_18N ),
 			'button_title' => __( 'Insert Into Widget', ORGANIC_WIDGETS_18N ),
 		) );
