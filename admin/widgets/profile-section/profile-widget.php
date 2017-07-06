@@ -22,7 +22,7 @@ class Organic_Widgets_Profile_Widget extends Organic_Widgets_Custom_Widget {
 	function __construct() {
 		parent::__construct(
 			'organic_widgets_profile', // Base ID
-			__( 'Profile', ORGANIC_WIDGETS_18N ), // Name
+			__( 'Organic Profile', ORGANIC_WIDGETS_18N ), // Name
 			array(
 				'description' => __( 'Display a personal profile.', ORGANIC_WIDGETS_18N ),
 				'customize_selective_refresh' => true,

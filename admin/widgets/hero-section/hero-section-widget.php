@@ -22,7 +22,7 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 	function __construct() {
 		parent::__construct(
 			'organic_widgets_hero_section', // Base ID
-			__( 'Hero Section', ORGANIC_WIDGETS_18N ), // Name
+			__( 'Organic Hero', ORGANIC_WIDGETS_18N ), // Name
 			array(
 				'description' => __( 'A hero section with a background image and call to action.', ORGANIC_WIDGETS_18N ),
 				'customize_selective_refresh' => true,

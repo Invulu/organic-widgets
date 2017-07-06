@@ -22,7 +22,7 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 	function __construct() {
 		parent::__construct(
 			'organic_widgets_subpage_section', // Base ID
-			__( 'Subpage Section', ORGANIC_WIDGETS_18N ), // Name
+			__( 'Organic Subpage', ORGANIC_WIDGETS_18N ), // Name
 			array(
 				'description' => __( 'A subpage\'s content displayed as a section of another page.', ORGANIC_WIDGETS_18N ),
 				'customize_selective_refresh' => true,
@@ -227,6 +227,7 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 
 		<?php $this->section_background_input_markup( $instance, $this->bg_options );
 
+<<<<<<< Updated upstream
 	}
 
 	/**
@@ -236,6 +237,9 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 	 * @access public
 	 */
 	public function render_control_template_scripts() {
+=======
+		<?php $this->section_background_input_markup( $instance, $this->bg_options );
+>>>>>>> Stashed changes
 
 		?>
 		<script type="text/html" id="tmpl-widget-organic_widgets_subpage_section-control-fields">

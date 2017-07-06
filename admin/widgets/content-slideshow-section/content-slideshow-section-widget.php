@@ -22,7 +22,7 @@ class Organic_Widgets_Content_Slideshow_Section_Widget extends Organic_Widgets_C
 	function __construct() {
 		parent::__construct(
 			'organic_widgets_content_slideshow_section', // Base ID
-			__( 'Content Slideshow Section', ORGANIC_WIDGETS_18N ), // Name
+			__( 'Organic Content Slideshow', ORGANIC_WIDGETS_18N ), // Name
 			array(
 				'description' => __( 'A content slideshow.', ORGANIC_WIDGETS_18N ),
 				'customize_selective_refresh' => true,

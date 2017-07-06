@@ -22,7 +22,7 @@ class Organic_Widgets_Testimonial_Section_Widget extends Organic_Widgets_Custom_
 	function __construct() {
 		parent::__construct(
 			'organic_widgets_testimonial_section', // Base ID
-			__( 'Testimonial Section', ORGANIC_WIDGETS_18N ), // Name
+			__( 'Organic Testimonials', ORGANIC_WIDGETS_18N ), // Name
 			array(
 				'description' => __( 'A section displaying testimonial posts.', ORGANIC_WIDGETS_18N ),
 				'customize_selective_refresh' => true,

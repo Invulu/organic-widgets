@@ -46,10 +46,10 @@
   display: block;
   overflow: hidden;
 }
-.welcome-screen .ocw-logo {
+.welcome-screen .organic-themes-logo {
   float: left;
 }
-.welcome-screen .ocw-logo svg {
+.welcome-screen .organic-themes-logo svg {
 	display: block;
 	max-width: 220px;
 }

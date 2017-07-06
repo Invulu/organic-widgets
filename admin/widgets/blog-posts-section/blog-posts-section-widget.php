@@ -22,7 +22,7 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 	function __construct() {
 		parent::__construct(
 			'organic_widgets_blog_posts_section', // Base ID
-			__( 'Blog Posts Section', ORGANIC_WIDGETS_18N ), // Name
+			__( 'Organic Blog Posts', ORGANIC_WIDGETS_18N ), // Name
 			array(
 				'description' => __( 'A section displaying recent blog posts.', ORGANIC_WIDGETS_18N ),
 				'customize_selective_refresh' => true,
@@ -222,8 +222,6 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 		    <option <?php selected( $num_columns, '4'); ?> value="4">4</option>
 			</select>
 		</p>
-
-		<hr />
 
 		<?php $this->section_background_input_markup( $instance, $this->bg_options ); ?>
 

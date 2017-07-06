@@ -231,3 +231,7 @@
   font-size: 30px;
   margin: auto;
 }
+#available-widgets [class*='organic_widgets_feature_list'] .widget-title::before {
+	font-family: 'dashicons';
+	content: '\f164';
+}

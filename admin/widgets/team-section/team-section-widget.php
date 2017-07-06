@@ -22,7 +22,7 @@ class Organic_Widgets_Team_Section_Widget extends Organic_Widgets_Custom_Widget 
 	function __construct() {
 		parent::__construct(
 			'organic_widgets_team_section', // Base ID
-			__( 'Team Members', ORGANIC_WIDGETS_18N ), // Name
+			__( 'Organic Team Members', ORGANIC_WIDGETS_18N ), // Name
 			array(
 				'description' => __( 'A section displaying team members.', ORGANIC_WIDGETS_18N ),
 				'customize_selective_refresh' => true,

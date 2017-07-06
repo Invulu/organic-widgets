@@ -6,7 +6,11 @@
 	margin-top: 20px;
 }
 .organic-widgets-widget-image-preview img {
-	width:100%;
-	max-width:600px;
-	height:auto;
+	width: 100%;
+	max-width: 600px;
+	height: auto;
+}
+#available-widgets [class*='organic_widgets_hero'] .widget-title::before {
+	font-family: 'FontAwesome';
+	content: '\f091';
 }

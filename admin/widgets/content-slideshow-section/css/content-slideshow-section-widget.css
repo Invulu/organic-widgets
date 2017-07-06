@@ -1,1 +1,4 @@
-
+#available-widgets [class*='organic_widgets_content_slideshow_section'] .widget-title::before {
+	font-family: 'dashicons';
+	content: '\f128';
+}

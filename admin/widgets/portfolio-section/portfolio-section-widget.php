@@ -1,5 +1,5 @@
 <?php
-/* Registers a widget to show a Team subsection on a page */
+/* Registers a widget to show a Portfolio subsection on a page */
 
 // Block direct requests.
 if ( !defined('ABSPATH') )
@@ -22,7 +22,7 @@ class Organic_Widgets_Portfolio_Section_Widget extends Organic_Widgets_Custom_Wi
 	function __construct() {
 		parent::__construct(
 			'organic_widgets_portfolio_section', // Base ID
-			__( 'Portfolio Section', ORGANIC_WIDGETS_18N ), // Name
+			__( 'Organic Portfolio', ORGANIC_WIDGETS_18N ), // Name
 			array(
 				'description' => __( 'A section displaying portfolio posts.', ORGANIC_WIDGETS_18N ),
 				'customize_selective_refresh' => true,
@@ -206,7 +206,7 @@ class Organic_Widgets_Portfolio_Section_Widget extends Organic_Widgets_Custom_Wi
 		</p>
 		<?php if ( ! post_type_exists( 'jetpack-portfolio' ) ) { ?>
 			<p>
-				<label for="<?php echo $this->get_field_id( 'category' ); ?>"><?php _e('Team Category:', ORGANIC_WIDGETS_18N) ?></label>
+				<label for="<?php echo $this->get_field_id( 'category' ); ?>"><?php _e('Portfolio Category:', ORGANIC_WIDGETS_18N) ?></label>
 				<?php wp_dropdown_categories( array(
 					'selected' => $category,
 					'id' => $this->get_field_id( 'category' ),

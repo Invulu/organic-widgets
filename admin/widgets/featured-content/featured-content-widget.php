@@ -22,9 +22,9 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 	function __construct() {
 		parent::__construct(
 			'organic_widgets_featured_content', // Base ID
-			__( 'Featured Content', ORGANIC_WIDGETS_18N ), // Name
+			__( 'Organic Featured Content', ORGANIC_WIDGETS_18N ), // Name
 			array(
-				'description' => __( 'A featured content widget for displaying a page text or custom content.', ORGANIC_WIDGETS_18N ),
+				'description' => __( 'A widget for displaying an existing page or custom content.', ORGANIC_WIDGETS_18N ),
 				'customize_selective_refresh' => true,
 			) // Args
 		);
@@ -210,9 +210,10 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 			<input class="widefat link_title" type="text" id="<?php echo $this->get_field_id( 'link_title' ); ?>" name="<?php echo $this->get_field_name( 'link_title' ); ?>" value="<?php echo $link_title; ?>" />
 		</p>
 
-		<hr/>
-		<br>
-		<p><b><?php _e('OR Use Content From Page:', ORGANIC_WIDGETS_18N) ?></b></p>
+		<br/>
+
+		<h3><?php _e('Or Choose Existing Page:', ORGANIC_WIDGETS_18N) ?></h3>
+
 		<p>
 			<?php wp_dropdown_pages( array(
 				'class' => 'widefat organic-widgets-page-selector',
@@ -223,8 +224,6 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 				'option_none_value' => '0',
 			) ); ?>
 		</p>
-		<br>
-		<hr/>
 
 		<?php $this->section_background_input_markup( $instance, $this->bg_options );
 
@@ -243,7 +242,7 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 
 			<# var elementIdPrefix = 'el' + String( Math.random() ).replace( /\D/g, '' ) + '_' #>
 
-			<p><b><?php _e('Add Custom Content:', ORGANIC_WIDGETS_18N) ?></b></p>
+			<h3><?php _e('Add Custom Content:', ORGANIC_WIDGETS_18N) ?></h3>
 
 			<p>
 				<label for="{{ elementIdPrefix }}title"><?php esc_html_e( 'Title:' ); ?></label>
