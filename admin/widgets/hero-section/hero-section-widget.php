@@ -241,14 +241,6 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 
 		$instance = $old_instance;
 
-		$instance = wp_parse_args(
-			(array) $instance,
-			array(
-				'title' => '',
-				'text' => '',
-			)
-		);
-
 		if ( isset( $new_instance['bg_image_id'] ) )
 			$instance['bg_image_id'] = strip_tags( $new_instance['bg_image_id'] );
 		if ( isset( $new_instance['bg_image'] ) )
@@ -292,8 +284,8 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 
 		// Text Editor
 		wp_enqueue_editor();
-		wp_enqueue_script( 'hero-widgets', plugin_dir_url( __FILE__ ) . 'js/hero-widgets.js', array( 'jquery' ) );
-		wp_add_inline_script( 'hero-widgets', 'wp.heroWidgets.init();', 'after' );
+		wp_enqueue_script( 'organic-widgets-hero-widgets', plugin_dir_url( __FILE__ ) . 'js/hero-widgets.js', array( 'jquery' ) );
+		wp_add_inline_script( 'organic-widgets-hero-widgets', 'wp.organicHeroWidgets.init();', 'after' );
 
 		wp_enqueue_media();
 		wp_enqueue_script( 'organic-widgets-hero-widget-js', plugin_dir_url( __FILE__ ) . 'js/hero-widget.js', array( 'jquery', 'media-upload', 'media-views' ) );
