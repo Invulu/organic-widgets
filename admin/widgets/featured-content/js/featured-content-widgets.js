@@ -30,7 +30,7 @@ wp.featuredContentWidgets = ( function( $ ) {
 		 * @returns {void}
 		 */
 		initialize: function initialize( options ) {
-			console.log(this);
+
 			var control = this;
 
 			if ( ! options.el ) {
@@ -51,12 +51,13 @@ wp.featuredContentWidgets = ( function( $ ) {
 			 * container.
 			 */
 			control.fieldContainer = $( '<div class="text-widget-fields"></div>' );
-			control.fieldContainer.html( wp.template( 'widget-text-control-fields' ) );
+			// control.fieldContainer.html( wp.template( 'widget-text-control-fields' ) );
+      control.fieldContainer.html( wp.template( 'widget-organic_widgets_feature_list_section-control-fields' ) );
 			control.widgetContentContainer = control.$el.find( '.widget-content:first' );
 			control.widgetContentContainer.before( control.fieldContainer );
 
 			control.fields = {
-				title: control.fieldContainer.find( '.title' ),
+				// title: control.fieldContainer.find( '.title' ),
 				text: control.fieldContainer.find( '.text' )
 			};
 
@@ -87,10 +88,10 @@ wp.featuredContentWidgets = ( function( $ ) {
 		updateFields: function updateFields() {
 			var control = this, syncInput;
 
-			if ( ! control.fields.title.is( document.activeElement ) ) {
-				syncInput = control.widgetContentContainer.find( 'input[type=hidden].title' );
-				control.fields.title.val( syncInput.val() );
-			}
+			// if ( ! control.fields.title.is( document.activeElement ) ) {
+			// 	syncInput = control.widgetContentContainer.find( 'input[type=hidden].title' );
+			// 	control.fields.title.val( syncInput.val() );
+			// }
 
 			syncInput = control.widgetContentContainer.find( 'input[type=hidden].text' );
 			if ( control.fields.text.is( ':visible' ) ) {
@@ -111,6 +112,9 @@ wp.featuredContentWidgets = ( function( $ ) {
 			var control = this, changeDebounceDelay = 1000, id, textarea, restoreTextMode = false;
 			textarea = control.fields.text;
 			id = textarea.attr( 'id' );
+      console.log('id');
+      console.log(id);
+
 
 			/**
 			 * Build (or re-build) the visual editor.
@@ -224,13 +228,14 @@ wp.featuredContentWidgets = ( function( $ ) {
 		widgetForm = widgetContainer.find( '> .widget-inside > .form, > .widget-inside > form' ); // Note: '.form' appears in the customizer, whereas 'form' on the widgets admin screen.
 
 		idBase = widgetForm.find( '> .id_base' ).val();
-		if ( 'text' !== idBase && 'organic_widgets_featured_content' !== idBase ) {
+		if ( 'organic_widgets_featured_content' !== idBase ) {
 			return;
 		}
 
 		// Prevent initializing already-added widgets.
 		widgetId = widgetForm.find( '> .widget-id' ).val();
-		if ( component.widgetControls[ widgetId ] ) {
+
+    if ( component.widgetControls[ widgetId ] ) {
 			return;
 		}
 
@@ -319,13 +324,9 @@ wp.featuredContentWidgets = ( function( $ ) {
 			widgetContainers = $( '.widgets-holder-wrap:not(#available-widgets)' ).find( 'div.widget' );
 			widgetContainers.one( 'click.toggle-widget-expanded', function toggleWidgetExpanded() {
 				var widgetContainer = $( this );
-        console.log('this');
-        console.log(this);
 				component.handleWidgetAdded( new jQuery.Event( 'widget-added' ), widgetContainer );
 			});
 		});
-    console.log('component');
-    console.log(component);
 	};
 
 	return component;
