@@ -1,6 +1,6 @@
 /* global tinymce, switchEditors */
 /* eslint consistent-this: [ "error", "control" ] */
-wp.featuredContentWidgets = ( function( $ ) {
+wp.heroWidgets = ( function( $ ) {
 	'use strict';
 
 	var component = {};
@@ -8,11 +8,11 @@ wp.featuredContentWidgets = ( function( $ ) {
 	/**
 	 * Text widget control.
 	 *
-	 * @class OrganicFeaturedContentWidgetControl
+	 * @class OrganicHeroWidgetControl
 	 * @constructor
 	 * @abstract
 	 */
-	component.OrganicFeaturedContentWidgetControl = Backbone.View.extend({
+	component.OrganicHeroWidgetControl = Backbone.View.extend({
 
 		/**
 		 * View events.
@@ -52,7 +52,7 @@ wp.featuredContentWidgets = ( function( $ ) {
 			 */
 			control.fieldContainer = $( '<div class="text-widget-fields"></div>' );
 			// control.fieldContainer.html( wp.template( 'widget-text-control-fields' ) );
-      control.fieldContainer.html( wp.template( 'widget-organic_widgets_featured_content_section-control-fields' ) );
+      control.fieldContainer.html( wp.template( 'widget-organic_widgets_hero_section-control-fields' ) );
 			control.widgetContentContainer = control.$el.find( '.widget-content:first' );
       // control.widgetContentContainer = control.$el.find( '.organic-widgets-wysiwyg-anchor:first' );
 			control.widgetContentContainer.before( control.fieldContainer );
@@ -210,9 +210,9 @@ wp.featuredContentWidgets = ( function( $ ) {
 	});
 
 	/**
-	 * Mapping of widget ID to instances of OrganicFeaturedContentWidgetControl subclasses.
+	 * Mapping of widget ID to instances of OrganicHeroWidgetControl subclasses.
 	 *
-	 * @type {Object.<string, wp.featuredContentWidgets.OrganicFeaturedContentWidgetControl>}
+	 * @type {Object.<string, wp.featuredContentWidgets.OrganicHeroWidgetControl>}
 	 */
 	component.widgetControls = {};
 
@@ -228,7 +228,7 @@ wp.featuredContentWidgets = ( function( $ ) {
 		widgetForm = widgetContainer.find( '> .widget-inside > .form, > .widget-inside > form' ); // Note: '.form' appears in the customizer, whereas 'form' on the widgets admin screen.
 
 		idBase = widgetForm.find( '> .id_base' ).val();
-		if ( 'organic_widgets_featured_content' !== idBase ) {
+		if ( 'organic_widgets_hero_section' !== idBase ) {
 			return;
 		}
 
@@ -239,7 +239,7 @@ wp.featuredContentWidgets = ( function( $ ) {
 			return;
 		}
 
-		widgetControl = new component.OrganicFeaturedContentWidgetControl({
+		widgetControl = new component.OrganicHeroWidgetControl({
 			el: widgetContainer
 		});
 

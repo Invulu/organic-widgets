@@ -169,6 +169,7 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 		$instance = wp_parse_args(
 			(array) $instance,
 			array(
+				'title' => '',
 				'text' => '',
 			)
 		);
@@ -203,11 +204,11 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 		<input id="<?php echo $this->get_field_id( 'text' ); ?>" name="<?php echo $this->get_field_name( 'text' ); ?>" class="text organic-widgets-wysiwyg-anchor" type="hidden" value="<?php echo $text; ?>">
 		<p>
 			<label for="<?php echo $this->get_field_id( 'link_url' ); ?>"><?php _e('Link URL:', ORGANIC_WIDGETS_18N) ?></label>
-			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'link_url' ); ?>" name="<?php echo $this->get_field_name( 'link_url' ); ?>" value="<?php echo $link_url; ?>" />
+			<input class="widefat link_url" type="text" id="<?php echo $this->get_field_id( 'link_url' ); ?>" name="<?php echo $this->get_field_name( 'link_url' ); ?>" value="<?php echo $link_url; ?>" />
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'link_title' ); ?>"><?php _e('Link Text:', ORGANIC_WIDGETS_18N) ?></label>
-			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'link_title' ); ?>" name="<?php echo $this->get_field_name( 'link_title' ); ?>" value="<?php echo $link_title; ?>" />
+			<input class="widefat link_title" type="text" id="<?php echo $this->get_field_id( 'link_title' ); ?>" name="<?php echo $this->get_field_name( 'link_title' ); ?>" value="<?php echo $link_title; ?>" />
 		</p>
 
 		<hr/>
@@ -215,7 +216,7 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 		<p><b><?php _e('OR Use Content From Page:', ORGANIC_WIDGETS_18N) ?></b></p>
 		<p>
 			<?php wp_dropdown_pages( array(
-				'class' => 'widefat',
+				'class' => 'widefat organic-widgets-page-selector',
 				'selected' => $page_id,
 				'id' => $this->get_field_id( 'page_id' ),
 				'name' => $this->get_field_name( 'page_id' ),
@@ -239,7 +240,7 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 	public function render_control_template_scripts() {
 
 		?>
-		<script type="text/html" id="tmpl-widget-organic_widgets_feature_list_section-control-fields">
+		<script type="text/html" id="tmpl-widget-organic_widgets_featured_content_section-control-fields">
 
 			<# var elementIdPrefix = 'el' + String( Math.random() ).replace( /\D/g, '' ) + '_' #>
 
@@ -313,7 +314,6 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 		wp_enqueue_editor();
 		wp_enqueue_script( 'featured-content-widgets', plugin_dir_url( __FILE__ ) . 'js/featured-content-widgets.js', array( 'jquery' ) );
 		wp_add_inline_script( 'featured-content-widgets', 'wp.featuredContentWidgets.init();', 'after' );
-
 
 		wp_enqueue_media();
 		wp_enqueue_script( 'organic-widgets-featured-content-widget-js', plugin_dir_url( __FILE__ ) . 'js/featured-content-widget.js', array( 'jquery', 'media-upload', 'media-views' ) );

@@ -1,6 +1,4 @@
-/**
- * Featured Section Widget JS
- */
-jQuery(document).ready(function($){
+(function( $ ) {
+	'use strict';
 
-});
+})( jQuery );
