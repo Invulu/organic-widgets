@@ -8,11 +8,11 @@ wp.featuredContentWidgets = ( function( $ ) {
 	/**
 	 * Text widget control.
 	 *
-	 * @class TextWidgetControl
+	 * @class OrganicFeaturedContentWidgetControl
 	 * @constructor
 	 * @abstract
 	 */
-	component.TextWidgetControl = Backbone.View.extend({
+	component.OrganicFeaturedContentWidgetControl = Backbone.View.extend({
 
 		/**
 		 * View events.
@@ -54,10 +54,11 @@ wp.featuredContentWidgets = ( function( $ ) {
 			// control.fieldContainer.html( wp.template( 'widget-text-control-fields' ) );
       control.fieldContainer.html( wp.template( 'widget-organic_widgets_feature_list_section-control-fields' ) );
 			control.widgetContentContainer = control.$el.find( '.widget-content:first' );
+      // control.widgetContentContainer = control.$el.find( '.organic-widgets-wysiwyg-anchor:first' );
 			control.widgetContentContainer.before( control.fieldContainer );
 
 			control.fields = {
-				// title: control.fieldContainer.find( '.title' ),
+				title: control.fieldContainer.find( '.title' ),
 				text: control.fieldContainer.find( '.text' )
 			};
 
@@ -88,10 +89,10 @@ wp.featuredContentWidgets = ( function( $ ) {
 		updateFields: function updateFields() {
 			var control = this, syncInput;
 
-			// if ( ! control.fields.title.is( document.activeElement ) ) {
-			// 	syncInput = control.widgetContentContainer.find( 'input[type=hidden].title' );
-			// 	control.fields.title.val( syncInput.val() );
-			// }
+			if ( ! control.fields.title.is( document.activeElement ) ) {
+				syncInput = control.widgetContentContainer.find( 'input[type=hidden].title' );
+				control.fields.title.val( syncInput.val() );
+			}
 
 			syncInput = control.widgetContentContainer.find( 'input[type=hidden].text' );
 			if ( control.fields.text.is( ':visible' ) ) {
@@ -101,6 +102,7 @@ wp.featuredContentWidgets = ( function( $ ) {
 			} else if ( control.editor && ! control.editorFocused && syncInput.val() !== control.fields.text.val() ) {
 				control.editor.setContent( wp.editor.autop( syncInput.val() ) );
 			}
+
 		},
 
 		/**
@@ -112,8 +114,6 @@ wp.featuredContentWidgets = ( function( $ ) {
 			var control = this, changeDebounceDelay = 1000, id, textarea, restoreTextMode = false;
 			textarea = control.fields.text;
 			id = textarea.attr( 'id' );
-      console.log('id');
-      console.log(id);
 
 
 			/**
@@ -210,9 +210,9 @@ wp.featuredContentWidgets = ( function( $ ) {
 	});
 
 	/**
-	 * Mapping of widget ID to instances of TextWidgetControl subclasses.
+	 * Mapping of widget ID to instances of OrganicFeaturedContentWidgetControl subclasses.
 	 *
-	 * @type {Object.<string, wp.featuredContentWidgets.TextWidgetControl>}
+	 * @type {Object.<string, wp.featuredContentWidgets.OrganicFeaturedContentWidgetControl>}
 	 */
 	component.widgetControls = {};
 
@@ -239,7 +239,7 @@ wp.featuredContentWidgets = ( function( $ ) {
 			return;
 		}
 
-		widgetControl = new component.TextWidgetControl({
+		widgetControl = new component.OrganicFeaturedContentWidgetControl({
 			el: widgetContainer
 		});
 

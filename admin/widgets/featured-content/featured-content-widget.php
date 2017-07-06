@@ -64,6 +64,7 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 			$bg_color = isset( $instance['bg_color'] ) ? $instance['bg_color'] : false;
 			$bg_image_id = isset( $instance['bg_image_id'] ) ? $instance['bg_image_id'] : false;
 			$bg_image = ( isset( $instance['bg_image'] ) && '' != $instance['bg_image'] ) ? $instance['bg_image'] : false;
+			$feature_img_id = false;
 			$page_id = $instance['page_id'];
 			$page_excerpt = $this->organic_widgets_get_the_excerpt($page_id);
 			$page_title = get_the_title( $page_id );
@@ -77,7 +78,9 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 				<div class="organic-widgets-content">
 
 					<div class="holder">
-						<div class="feature-img"><?php echo get_the_post_thumbnail( $page_id, 'organic-widgets-featured-medium' )?></div>
+						<?php if ( $feature_img_id && 0 < $feature_img_id ) { ?>
+							<div class="feature-img"><?php echo get_the_post_thumbnail( $page_id, 'organic-widgets-featured-medium' )?></div>
+						<?php } ?>
 						<div class="information">
 							<?php if ( ! empty( $page_title ) ) { ?>
 								<h3><?php echo apply_filters( 'widget_title', $page_title ); ?></h3>
@@ -122,11 +125,6 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 				<div class="organic-widgets-content">
 
 					<div class="holder">
-						<?php if ( 0 < $bg_image_id ) { ?>
-							<div class="feature-img"><img src="<?php echo $bg_image; ?>" /></div>
-						<?php } elseif ( '1' == get_option( 'fresh_site' ) ) { ?>
-							<div class="feature-img"><img src="<?php echo get_template_directory_uri(); ?>/images/image-about.jpg" /></div>
-						<?php } ?>
 						<div class="information">
 							<?php if ( ! empty( $title ) ) { ?>
 								<h3><?php echo esc_html( $title ); ?></h3>
@@ -168,6 +166,13 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 	 */
 	public function form( $instance ) {
 
+		$instance = wp_parse_args(
+			(array) $instance,
+			array(
+				'text' => '',
+			)
+		);
+
 		// Set up variables
 		$this->id_prefix = $this->get_field_id('');
 		$bg_color = ( isset( $instance['bg_color'] ) && '' != $instance['bg_color'] ) ? $instance['bg_color'] : false;
@@ -194,8 +199,20 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 		} else { $link_title = ''; }
 		?>
 
-		<p><b><?php _e('Choose Existing Page:', ORGANIC_WIDGETS_18N) ?></b></p>
+		<input id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" class="title" type="hidden" value="<?php echo $title; ?>">
+		<input id="<?php echo $this->get_field_id( 'text' ); ?>" name="<?php echo $this->get_field_name( 'text' ); ?>" class="text organic-widgets-wysiwyg-anchor" type="hidden" value="<?php echo $text; ?>">
+		<p>
+			<label for="<?php echo $this->get_field_id( 'link_url' ); ?>"><?php _e('Link URL:', ORGANIC_WIDGETS_18N) ?></label>
+			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'link_url' ); ?>" name="<?php echo $this->get_field_name( 'link_url' ); ?>" value="<?php echo $link_url; ?>" />
+		</p>
+		<p>
+			<label for="<?php echo $this->get_field_id( 'link_title' ); ?>"><?php _e('Link Text:', ORGANIC_WIDGETS_18N) ?></label>
+			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'link_title' ); ?>" name="<?php echo $this->get_field_name( 'link_title' ); ?>" value="<?php echo $link_title; ?>" />
+		</p>
 
+		<hr/>
+		<br>
+		<p><b><?php _e('OR Use Content From Page:', ORGANIC_WIDGETS_18N) ?></b></p>
 		<p>
 			<?php wp_dropdown_pages( array(
 				'class' => 'widefat',
@@ -206,25 +223,7 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 				'option_none_value' => '0',
 			) ); ?>
 		</p>
-
-		<hr />
-
-		<p><b><?php _e('Or Add Custom Content:', ORGANIC_WIDGETS_18N) ?></b></p>
-
-		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e('Title:', ORGANIC_WIDGETS_18N) ?></label>
-			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $title; ?>" />
-		</p>
-		<input id="<?php echo $this->get_field_id( 'text' ); ?>" name="<?php echo $this->get_field_name( 'text' ); ?>" class="text" type="hidden" value="<?php echo $text; ?>">
-		<p>
-			<label for="<?php echo $this->get_field_id( 'link_url' ); ?>"><?php _e('Link URL:', ORGANIC_WIDGETS_18N) ?></label>
-			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'link_url' ); ?>" name="<?php echo $this->get_field_name( 'link_url' ); ?>" value="<?php echo $link_url; ?>" />
-		</p>
-		<p>
-			<label for="<?php echo $this->get_field_id( 'link_title' ); ?>"><?php _e('Link Text:', ORGANIC_WIDGETS_18N) ?></label>
-			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'link_title' ); ?>" name="<?php echo $this->get_field_name( 'link_title' ); ?>" value="<?php echo $link_title; ?>" />
-		</p>
-
+		<br>
 		<hr/>
 
 		<?php $this->section_background_input_markup( $instance, $this->bg_options );
@@ -239,12 +238,17 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 	 */
 	public function render_control_template_scripts() {
 
-		error_log('hey yo');
 		?>
 		<script type="text/html" id="tmpl-widget-organic_widgets_feature_list_section-control-fields">
-			<# console.log('hi dawg custom'); #>
+
 			<# var elementIdPrefix = 'el' + String( Math.random() ).replace( /\D/g, '' ) + '_' #>
 
+			<p><b><?php _e('Add Custom Content:', ORGANIC_WIDGETS_18N) ?></b></p>
+
+			<p>
+				<label for="{{ elementIdPrefix }}title"><?php esc_html_e( 'Title:' ); ?></label>
+				<input id="{{ elementIdPrefix }}title" type="text" class="widefat title">
+			</p>
 			<p>
 				<label for="{{ elementIdPrefix }}text" class="screen-reader-text"><?php esc_html_e( 'Content:' ); ?></label>
 				<textarea id="{{ elementIdPrefix }}text" class="widefat text wp-editor-area" style="height: 200px" rows="16" cols="20"></textarea>
