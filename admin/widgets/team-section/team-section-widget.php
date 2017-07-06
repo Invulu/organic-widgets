@@ -79,7 +79,7 @@ class Organic_Widgets_Team_Section_Widget extends Organic_Widgets_Custom_Widget 
 			<?php } ?>
 
 			<?php if ( ! empty( $instance['text'] ) ) { ?>
-				<p class="organic-widget-text"><?php echo $instance['text'] ?></p>
+				<div class="organic-widget-text"><?php echo $instance['text'] ?></div>
 			<?php } ?>
 
 			<?php $wp_query = new WP_Query( array(

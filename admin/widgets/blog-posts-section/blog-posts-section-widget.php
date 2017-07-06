@@ -79,7 +79,7 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 			<?php } ?>
 
 			<?php if ( ! empty( $instance['text'] ) ) { ?>
-				<p class="organic-widget-text"><?php echo $instance['text'] ?></p>
+				<div class="organic-widget-text"><?php echo $instance['text'] ?></div>
 			<?php } ?>
 
 			<?php $wp_query = new WP_Query( array(
@@ -242,7 +242,7 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 		<script type="text/html" id="tmpl-widget-organic_widgets_blog_posts_section-control-fields">
 
 			<# var elementIdPrefix = 'el' + String( Math.random() ).replace( /\D/g, '' ) + '_' #>
-			
+
 			<p>
 				<label for="{{ elementIdPrefix }}title"><?php esc_html_e( 'Title:' ); ?></label>
 				<input id="{{ elementIdPrefix }}title" type="text" class="widefat title">

@@ -278,7 +278,7 @@ wp.organicBlogPostsSectionWidgets = ( function( $ ) {
 		widgetForm = widgetContainer.find( '> .widget-inside > .form, > .widget-inside > form' );
 
 		idBase = widgetForm.find( '> .id_base' ).val();
-		if ( 'text' !== idBase ) {
+		if ( 'organic_widgets_blog_posts_section' !== idBase ) {
 			return;
 		}
 

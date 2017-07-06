@@ -102,7 +102,7 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 					<h2 class="organic-widget-title"><?php echo esc_html( $title ); ?></h2>
 				<?php } ?>
 				<?php if ( ! empty( $text ) ) { ?>
-					<p class="organic-widget-text"><?php echo $text ?></p>
+					<div class="organic-widget-text"><?php echo $text ?></div>
 				<?php } ?>
 
 				<?php if ( ! empty( $button_url ) ) { ?>

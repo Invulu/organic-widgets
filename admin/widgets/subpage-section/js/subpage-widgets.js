@@ -278,7 +278,7 @@ wp.organicSubpageWidgets = ( function( $ ) {
 		widgetForm = widgetContainer.find( '> .widget-inside > .form, > .widget-inside > form' );
 
 		idBase = widgetForm.find( '> .id_base' ).val();
-		if ( 'organic_widgets_featured_content' !== idBase ) {
+		if ( 'organic_widgets_subpage_section' !== idBase ) {
 			return;
 		}
 

@@ -39,6 +39,7 @@ class Organic_Widgets_Testimonial_Section_Widget extends Organic_Widgets_Custom_
 
 		// Admin Scripts
 		add_action( 'sidebar_admin_setup', array( $this, 'admin_setup' ) );
+		add_action( 'admin_footer-widgets.php', array( $this, 'render_control_template_scripts' ) );
 
 		// Public scripts
 		add_action( 'wp_enqueue_scripts', array( $this, 'public_scripts') );
@@ -107,7 +108,7 @@ class Organic_Widgets_Testimonial_Section_Widget extends Organic_Widgets_Custom_
 					<?php } ?>
 
 					<?php if ( ! empty( $instance['text'] ) ) { ?>
-						<p class="organic-widget-text"><?php echo $instance['text'] ?></p>
+						<div class="organic-widget-text"><?php echo $instance['text'] ?></div>
 					<?php } ?>
 
 					<!-- BEGIN .flexslider -->
@@ -185,6 +186,14 @@ class Organic_Widgets_Testimonial_Section_Widget extends Organic_Widgets_Custom_
 	*/
 	public function form( $instance ) {
 
+		$instance = wp_parse_args(
+			(array) $instance,
+			array(
+				'title' => '',
+				'text' => '',
+			)
+		);
+
 		// Setup Variables.
 		$this->id_prefix = $this->get_field_id('');
 		if ( isset( $instance['title'] ) ) {
@@ -214,15 +223,9 @@ class Organic_Widgets_Testimonial_Section_Widget extends Organic_Widgets_Custom_
 
 		?>
 
-		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e('Title:', ORGANIC_WIDGETS_18N) ?></label>
-			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php if ( $title ) echo $title; ?>" />
-		</p>
+		<input id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" class="title" type="hidden" value="<?php echo $title; ?>">
+		<input id="<?php echo $this->get_field_id( 'text' ); ?>" name="<?php echo $this->get_field_name( 'text' ); ?>" class="text organic-widgets-wysiwyg-anchor" type="hidden" value="<?php echo $text; ?>">
 
-		<p>
-			<label for="<?php echo $this->get_field_id( 'text' ); ?>"><?php _e('text:', ORGANIC_WIDGETS_18N) ?></label>
-			<textarea class="widefat" rows="6" cols="20" id="<?php echo $this->get_field_id( 'text' ); ?>" name="<?php echo $this->get_field_name( 'text' ); ?>"><?php echo $text; ?></textarea>
-		</p>
 		<?php if ( ! post_type_exists( 'jetpack-testimonial' ) ) { ?>
 			<p>
 				<label for="<?php echo $this->get_field_id( 'category' ); ?>"><?php _e('Testimonial Category:', ORGANIC_WIDGETS_18N) ?></label>
@@ -241,6 +244,33 @@ class Organic_Widgets_Testimonial_Section_Widget extends Organic_Widgets_Custom_
 		<?php $this->section_background_input_markup( $instance, $this->bg_options ); ?>
 
   <?php
+	}
+
+	/**
+	 * Render form template scripts.
+	 *
+	 *
+	 * @access public
+	 */
+	public function render_control_template_scripts() {
+
+		?>
+		<script type="text/html" id="tmpl-widget-organic_widgets_testimonial_section-control-fields">
+
+			<# var elementIdPrefix = 'el' + String( Math.random() ).replace( /\D/g, '' ) + '_' #>
+
+			<p><b><?php _e('Add Custom Content:', ORGANIC_WIDGETS_18N) ?></b></p>
+
+			<p>
+				<label for="{{ elementIdPrefix }}title"><?php esc_html_e( 'Title:' ); ?></label>
+				<input id="{{ elementIdPrefix }}title" type="text" class="widefat title">
+			</p>
+			<p>
+				<label for="{{ elementIdPrefix }}text" class="screen-reader-text"><?php esc_html_e( 'Content:' ); ?></label>
+				<textarea id="{{ elementIdPrefix }}text" class="widefat text wp-editor-area" style="height: 200px" rows="16" cols="20"></textarea>
+			</p>
+		</script>
+		<?php
 	}
 
 	/**
@@ -268,8 +298,11 @@ class Organic_Widgets_Testimonial_Section_Widget extends Organic_Widgets_Custom_
 		} else {
 			$instance['bg_color'] = false;
 		}
-		if ( isset( $new_instance['text'] ) )
-			$instance['text'] = strip_tags( $new_instance['text'] );
+		if ( current_user_can( 'unfiltered_html' ) ) {
+			$instance['text'] = $new_instance['text'];
+		} else {
+			$instance['text'] = wp_kses_post( $new_instance['text'] );
+		}
 		if ( isset( $new_instance['category'] ) )
 			$instance['category'] = strip_tags( $new_instance['category'] );
 		if ( isset( $new_instance['max_posts'] ) )
@@ -282,6 +315,11 @@ class Organic_Widgets_Testimonial_Section_Widget extends Organic_Widgets_Custom_
 	 * Enqueue admin javascript.
 	 */
 	public function admin_setup() {
+
+		// Text Editor
+		wp_enqueue_editor();
+		wp_enqueue_script( 'organic-testimonial-section-widgets', plugin_dir_url( __FILE__ ) . 'js/testimonial-section-widgets.js', array( 'jquery' ) );
+		wp_add_inline_script( 'organic-testimonial-section-widgets', 'wp.organicTestimonialSectionWidgets.init();', 'after' );
 
 		wp_enqueue_media();
 		wp_enqueue_script( 'testimonial-section-widget-js', plugin_dir_url( __FILE__ ) . 'js/testimonial-section-widget.js', array( 'jquery', 'media-upload', 'media-views' ) );

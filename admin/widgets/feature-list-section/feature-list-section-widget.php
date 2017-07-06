@@ -1,5 +1,5 @@
 <?php
-/* Registers a widget to show a subsection on a page */
+/* Registers a widget to show a features on a page */
 
 // Block direct requests.
 if ( !defined('ABSPATH') )
@@ -81,7 +81,7 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 			<?php } ?>
 
 			<?php if ( ! empty( $text ) ) { ?>
-				<p class="organic-widget-text"><?php echo $text ?></p>
+				<div class="organic-widget-text"><?php echo $text ?></div>
 			<?php } ?>
 
 				<div class="organic-widgets-feature-list-items-wrapper organic-widgets-flex-row">

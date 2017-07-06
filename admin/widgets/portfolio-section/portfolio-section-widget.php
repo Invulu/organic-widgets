@@ -77,7 +77,7 @@ class Organic_Widgets_Portfolio_Section_Widget extends Organic_Widgets_Custom_Wi
 			<?php } ?>
 
 			<?php if ( ! empty( $instance['text'] ) ) { ?>
-				<p class="organic-widget-text"><?php echo $instance['text'] ?></p>
+				<div class="organic-widget-text"><?php echo $instance['text'] ?></div>
 			<?php } ?>
 
 			<?php
