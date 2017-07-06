@@ -61,7 +61,7 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 		$bg_image_id = isset( $instance['bg_image_id'] ) ? $instance['bg_image_id'] : false;
 		$bg_image = ( isset( $instance['bg_image'] ) && '' != $instance['bg_image'] ) ? $instance['bg_image'] : false;
 		$bg_color = ( isset( $instance['bg_color'] ) && '' != $instance['bg_color'] ) ? $instance['bg_color'] : false;
-		$text = ( isset( $instance['text'] ) && '' != $instance['text'] ) ? $instance['text'] : false;
+		$feature_list_text = ( isset( $instance['feature_list_text'] ) && '' != $instance['feature_list_text'] ) ? $instance['feature_list_text'] : false;
 		$button_text = ( isset( $instance['button_text'] ) && '' != $instance['button_text'] ) ? $instance['button_text'] : false;
 		$button_url = ( isset( $instance['button_url'] ) && '' != $instance['button_url'] ) ? $instance['button_url'] : false;
 		$title = ( isset( $instance['title'] ) && '' != $instance['title'] ) ? $instance['title'] : '';
@@ -80,8 +80,8 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 				<h2 class="organic-widget-title"><?php echo esc_html( $title ); ?></h2>
 			<?php } ?>
 
-			<?php if ( ! empty( $text ) ) { ?>
-				<p class="organic-widget-text"><?php echo $text ?></p>
+			<?php if ( ! empty( $feature_list_text ) ) { ?>
+				<p class="organic-widget-text"><?php echo $feature_list_text ?></p>
 			<?php } ?>
 
 				<div class="organic-widgets-feature-list-items-wrapper organic-widgets-flex-row">
@@ -102,8 +102,8 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 								</div>
 
 								<div class="organic-widgets-feature-list-item-text">
-									<h6><?php if ( array_key_exists( 'title', $feature ) ) { echo $feature['title']; } ?></h6>
-									<p><?php if ( array_key_exists( 'text', $feature ) ) { echo $feature['text']; }?></p>
+									<h6><?php echo $feature['title']; ?></h6>
+									<p><?php echo $feature['text']; ?></p>
 								</div>
 
 							</div>
@@ -354,11 +354,11 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 				<div class="organic-widgets-feature-list-text-fields-wrapper">
 					<p>
 						<label><?php _e( 'Feature Title:', ORGANIC_WIDGETS_18N ) ?></label>
-						<input class="widefat organic-widgets-feature-list-title-input" type="text" value="<?php if ( $feature && array_key_exists( 'title', $feature ) ) echo esc_html($feature['title']); ?>" />
+						<input class="widefat organic-widgets-feature-list-title-input" type="text" value="<?php if ( $feature && $feature['title'] ) echo esc_html($feature['title']); ?>" />
 					</p>
 					<p>
 						<label><?php _e( 'Feature text:', ORGANIC_WIDGETS_18N ) ?></label>
-						<textarea class="widefat organic-widgets-feature-list-text-input" rows="3" cols="20" ><?php if ( $feature && array_key_exists( 'text', $feature ) ) echo esc_html($feature['text']); ?></textarea>
+						<textarea class="widefat organic-widgets-feature-list-text-input" rows="3" cols="20" ><?php if ( $feature && $feature['text'] ) echo esc_html($feature['text']); ?></textarea>
 					</p>
 				</div>
 
@@ -417,12 +417,9 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 		if ( isset( $new_instance['button_text'] ) )
 			$instance['button_text'] = strip_tags( $new_instance['button_text'] );
 		if ( isset( $new_instance['button_url'] ) )
-		$instance['button_url'] = strip_tags( $new_instance['button_url'] );
-		if ( current_user_can( 'unfiltered_html' ) ) {
-			$instance['text'] = $new_instance['text'];
-		} else {
-			$instance['text'] = wp_kses_post( $new_instance['text'] );
-		}
+			$instance['button_url'] = strip_tags( $new_instance['button_url'] );
+		if ( isset( $new_instance['feature_list_text'] ) )
+			$instance['feature_list_text'] = strip_tags( $new_instance['feature_list_text'] );
 		if ( isset( $new_instance['num_columns'] ) )
 			$instance['num_columns'] = strip_tags( $new_instance['num_columns'] );
 		if ( isset( $new_instance['features_array'] ) ) {
@@ -443,11 +440,6 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 	 * Enqueue all the javascript.
 	 */
 	public function admin_setup() {
-
-		// Text Editor
-		wp_enqueue_editor();
-		wp_enqueue_script( 'organic-widgets-feature-list-widgets', plugin_dir_url( __FILE__ ) . 'js/feature-list-widgets.js', array( 'jquery' ) );
-		wp_add_inline_script( 'organic-widgets-feature-list-widgets', 'wp.organicFeatureListWidgets.init();', 'after' );
 
 		wp_enqueue_media();
 		if ( ! is_customize_preview() ) { wp_enqueue_script( 'organic-widgets-feature-list-section-widget-js', plugin_dir_url( __FILE__ ) . 'js/feature-list-section-widget.js', array( 'jquery', 'media-upload', 'media-views' ) ); }
