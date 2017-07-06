@@ -41,7 +41,6 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 		add_action( 'admin_print_scripts-widgets.php', array( $this, 'admin_setup' ) );
 		add_action( 'admin_footer-widgets.php', array( $this, 'render_control_template_scripts' ) );
 
-
 		// Public scripts
 		add_action( 'wp_enqueue_scripts', array( $this, 'public_scripts') );
 
@@ -312,8 +311,8 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 
 		// Text Editor
 		wp_enqueue_editor();
-		wp_enqueue_script( 'featured-content-widgets', plugin_dir_url( __FILE__ ) . 'js/featured-content-widgets.js', array( 'jquery' ) );
-		wp_add_inline_script( 'featured-content-widgets', 'wp.featuredContentWidgets.init();', 'after' );
+		wp_enqueue_script( 'organic-featured-content-widgets', plugin_dir_url( __FILE__ ) . 'js/featured-content-widgets.js', array( 'jquery' ) );
+		wp_add_inline_script( 'organic-featured-content-widgets', 'wp.organicFeaturedContentWidgets.init();', 'after' );
 
 		wp_enqueue_media();
 		wp_enqueue_script( 'organic-widgets-featured-content-widget-js', plugin_dir_url( __FILE__ ) . 'js/featured-content-widget.js', array( 'jquery', 'media-upload', 'media-views' ) );
