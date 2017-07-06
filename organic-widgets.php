@@ -76,3 +76,41 @@ function run_organic_widgets() {
 
 }
 run_organic_widgets();
+
+/**
+ * Register hidden welcome screen page.
+ *
+ * @since    1.0.0
+ */
+function organic_widgets_welcome_screen() {
+	add_submenu_page(
+		null,
+		esc_html__( 'Welcome', ORGANIC_WIDGETS_18N ),
+		esc_html__( 'Welcome', ORGANIC_WIDGETS_18N ),
+		'manage_options',
+		'organic-widgets-welcome',
+		'organic_widgets_welcome_screen_content'
+	);
+}
+add_action( 'admin_menu', 'organic_widgets_welcome_screen' );
+
+/**
+ * Include welcome screen content.
+ *
+ * @since    1.0.0
+ */
+function organic_widgets_welcome_screen_content() {
+	include_once plugin_dir_path( __FILE__ ) . '/admin/organic-widgets-welcome.php';
+}
+
+/**
+ * Redirect to welcome screen upon plugin activation.
+ *
+ * @since    1.0.0
+ */
+function organic_widgets_activation_redirect( $plugin ) {
+	if ( $plugin == plugin_basename( __FILE__ ) ) {
+		exit( wp_redirect( add_query_arg( array( 'page' => 'organic-widgets-welcome' ), admin_url( 'admin.php' ) ) ) );
+	}
+}
+add_action( 'activated_plugin', 'organic_widgets_activation_redirect' );
