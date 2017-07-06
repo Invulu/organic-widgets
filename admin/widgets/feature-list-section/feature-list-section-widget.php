@@ -60,7 +60,7 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 		$bg_image_id = isset( $instance['bg_image_id'] ) ? $instance['bg_image_id'] : false;
 		$bg_image = ( isset( $instance['bg_image'] ) && '' != $instance['bg_image'] ) ? $instance['bg_image'] : false;
 		$bg_color = ( isset( $instance['bg_color'] ) && '' != $instance['bg_color'] ) ? $instance['bg_color'] : false;
-		$feature_list_summary = ( isset( $instance['feature_list_summary'] ) && '' != $instance['feature_list_summary'] ) ? $instance['feature_list_summary'] : false;
+		$feature_list_text = ( isset( $instance['feature_list_text'] ) && '' != $instance['feature_list_text'] ) ? $instance['feature_list_text'] : false;
 		$button_text = ( isset( $instance['button_text'] ) && '' != $instance['button_text'] ) ? $instance['button_text'] : false;
 		$button_url = ( isset( $instance['button_url'] ) && '' != $instance['button_url'] ) ? $instance['button_url'] : false;
 		$title = ( isset( $instance['title'] ) && '' != $instance['title'] ) ? $instance['title'] : '';
@@ -79,8 +79,8 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 				<h2 class="organic-widget-title"><?php echo esc_html( $title ); ?></h2>
 			<?php } ?>
 
-			<?php if ( ! empty( $feature_list_summary ) ) { ?>
-				<p class="organic-widget-summary"><?php echo $feature_list_summary ?></p>
+			<?php if ( ! empty( $feature_list_text ) ) { ?>
+				<p class="organic-widget-text"><?php echo $feature_list_text ?></p>
 			<?php } ?>
 
 				<div class="organic-widgets-feature-list-items-wrapper organic-widgets-flex-row">
@@ -102,7 +102,7 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 
 								<div class="organic-widgets-feature-list-item-text">
 									<h6><?php echo $feature['title']; ?></h6>
-									<p><?php echo $feature['summary']; ?></p>
+									<p><?php echo $feature['text']; ?></p>
 								</div>
 
 							</div>
@@ -168,9 +168,9 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 			$button_url = $instance[ 'button_url' ];
 		} else { $button_url = false; }
 
-		if ( isset( $instance[ 'feature_list_summary' ] ) ) {
-			$feature_list_summary = $instance[ 'feature_list_summary' ];
-		} else { $feature_list_summary = ''; }
+		if ( isset( $instance[ 'feature_list_text' ] ) ) {
+			$feature_list_text = $instance[ 'feature_list_text' ];
+		} else { $feature_list_text = ''; }
 
 		if ( isset( $instance['num_columns'] ) ) {
 			$num_columns = $instance['num_columns'];
@@ -193,8 +193,8 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 				<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $title; ?>" />
 			</p>
 			<p>
-				<label for="<?php echo $this->get_field_id( 'feature_list_summary' ); ?>"><?php _e('Section Content:', ORGANIC_WIDGETS_18N); ?></label>
-				<textarea class="widefat" rows="6" cols="20" id="<?php echo $this->get_field_id( 'feature_list_summary' ); ?>" name="<?php echo $this->get_field_name( 'feature_list_summary' ); ?>"><?php echo $feature_list_summary; ?></textarea>
+				<label for="<?php echo $this->get_field_id( 'feature_list_text' ); ?>"><?php _e('Section Content:', ORGANIC_WIDGETS_18N); ?></label>
+				<textarea class="widefat" rows="6" cols="20" id="<?php echo $this->get_field_id( 'feature_list_text' ); ?>" name="<?php echo $this->get_field_name( 'feature_list_text' ); ?>"><?php echo $feature_list_text; ?></textarea>
 			</p>
 			<p>
 				<label for="<?php echo $this->get_field_id( 'button_text' ); ?>"><?php _e('Button Text:', ORGANIC_WIDGETS_18N); ?></label>
@@ -327,8 +327,8 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 						<input class="widefat organic-widgets-feature-list-title-input" type="text" value="<?php if ( $feature && $feature['title'] ) echo esc_html($feature['title']); ?>" />
 					</p>
 					<p>
-						<label><?php _e( 'Feature Summary:', ORGANIC_WIDGETS_18N ) ?></label>
-						<textarea class="widefat organic-widgets-feature-list-summary-input" rows="3" cols="20" ><?php if ( $feature && $feature['summary'] ) echo esc_html($feature['summary']); ?></textarea>
+						<label><?php _e( 'Feature text:', ORGANIC_WIDGETS_18N ) ?></label>
+						<textarea class="widefat organic-widgets-feature-list-text-input" rows="3" cols="20" ><?php if ( $feature && $feature['text'] ) echo esc_html($feature['text']); ?></textarea>
 					</p>
 				</div>
 
@@ -388,8 +388,8 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 			$instance['button_text'] = strip_tags( $new_instance['button_text'] );
 		if ( isset( $new_instance['button_url'] ) )
 			$instance['button_url'] = strip_tags( $new_instance['button_url'] );
-		if ( isset( $new_instance['feature_list_summary'] ) )
-			$instance['feature_list_summary'] = strip_tags( $new_instance['feature_list_summary'] );
+		if ( isset( $new_instance['feature_list_text'] ) )
+			$instance['feature_list_text'] = strip_tags( $new_instance['feature_list_text'] );
 		if ( isset( $new_instance['num_columns'] ) )
 			$instance['num_columns'] = strip_tags( $new_instance['num_columns'] );
 		if ( isset( $new_instance['features_array'] ) ) {

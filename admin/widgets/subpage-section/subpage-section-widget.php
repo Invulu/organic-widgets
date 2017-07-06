@@ -59,7 +59,7 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 		$bg_color = ( isset( $instance['bg_color'] ) && '' != $instance['bg_color'] ) ? $instance['bg_color'] : false;
 		$bg_video  = ( isset( $instance['bg_video'] ) && $instance['bg_video'] ) ? $instance['bg_video'] : false;
 		$title = ( isset( $instance['title'] ) ) ? $instance['title'] : false;
-		$summary = ( isset( $instance['summary'] ) ) ? $instance['summary'] : false;
+		$text = ( isset( $instance['text'] ) ) ? $instance['text'] : false;
 
 		if ( ! empty( $instance['page_id'] ) ) {
 
@@ -99,7 +99,7 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 
 			<?php echo $args['after_widget'];
 
-		} elseif ( ! empty( $instance['title'] ) || ! empty( $instance['summary'] ) ) {
+		} elseif ( ! empty( $instance['title'] ) || ! empty( $instance['text'] ) ) {
 
 			echo $args['before_widget'];
 
@@ -132,8 +132,8 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 					<?php if ( ! empty( $title ) ) { ?>
 						<h2 class="organic-widget-title"><?php echo esc_html( $title ); ?></h2>
 					<?php } ?>
-					<?php if ( ! empty( $summary ) ) { ?>
-						<p class="organic-widget-summary"><?php echo $summary ?></p>
+					<?php if ( ! empty( $text ) ) { ?>
+						<p class="organic-widget-text"><?php echo $text ?></p>
 					<?php } ?>
 
 				<!-- END .organic-widgets-content -->
@@ -189,9 +189,9 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 			$title = $instance[ 'title' ];
 		} else { $title = ''; }
 
-		if ( isset( $instance[ 'summary' ] ) ) {
-			$summary = $instance[ 'summary' ];
-		} else { $summary = ''; }
+		if ( isset( $instance[ 'text' ] ) ) {
+			$text = $instance[ 'text' ];
+		} else { $text = ''; }
 
 		?>
 
@@ -217,8 +217,8 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $title; ?>" />
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'summary' ); ?>"><?php _e('Section Content:', ORGANIC_WIDGETS_18N) ?></label>
-			<textarea class="widefat" rows="6" cols="20" id="<?php echo $this->get_field_id( 'summary' ); ?>" name="<?php echo $this->get_field_name( 'summary' ); ?>"><?php echo $summary; ?></textarea>
+			<label for="<?php echo $this->get_field_id( 'text' ); ?>"><?php _e('Section Content:', ORGANIC_WIDGETS_18N) ?></label>
+			<textarea class="widefat" rows="6" cols="20" id="<?php echo $this->get_field_id( 'text' ); ?>" name="<?php echo $this->get_field_name( 'text' ); ?>"><?php echo $text; ?></textarea>
 		</p>
 
 		<hr />
@@ -259,8 +259,8 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 		}
 		if ( isset( $new_instance['title'] ) )
 			$instance['title'] = strip_tags( $new_instance['title'] );
-		if ( isset( $new_instance['summary'] ) )
-			$instance['summary'] = strip_tags( $new_instance['summary'] );
+		if ( isset( $new_instance['text'] ) )
+			$instance['text'] = strip_tags( $new_instance['text'] );
 
 		// Widget Title
 		if ( isset( $new_instance['page_id'] ) && $new_instance['page_id'] > 0 ) {

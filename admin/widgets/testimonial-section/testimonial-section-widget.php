@@ -60,7 +60,7 @@ class Organic_Widgets_Testimonial_Section_Widget extends Organic_Widgets_Custom_
 		$bg_image = ( isset( $instance['bg_image'] ) && '' != $instance['bg_image'] ) ? $instance['bg_image'] : false;
 		$bg_color = ( isset( $instance['bg_color'] ) && '' != $instance['bg_color'] ) ? $instance['bg_color'] : false;
 		$title = ( isset( $instance['title'] ) ) ? $instance['title'] : false;
-		$summary = ( isset( $instance['summary'] ) ) ? $instance['summary'] : false;
+		$text = ( isset( $instance['text'] ) ) ? $instance['text'] : false;
 		$category = ( isset( $instance['category'] ) ) ? $instance['category'] : 0;
 		$max_posts = ( isset( $instance['max_posts'] ) ) ? $instance['max_posts'] : 10;
 
@@ -106,8 +106,8 @@ class Organic_Widgets_Testimonial_Section_Widget extends Organic_Widgets_Custom_
 						<h2 class="organic-widget-title"><?php echo $title; ?></h2>
 					<?php } ?>
 
-					<?php if ( ! empty( $instance['summary'] ) ) { ?>
-						<p class="organic-widget-summary"><?php echo $instance['summary'] ?></p>
+					<?php if ( ! empty( $instance['text'] ) ) { ?>
+						<p class="organic-widget-text"><?php echo $instance['text'] ?></p>
 					<?php } ?>
 
 					<!-- BEGIN .flexslider -->
@@ -190,9 +190,9 @@ class Organic_Widgets_Testimonial_Section_Widget extends Organic_Widgets_Custom_
 		if ( isset( $instance['title'] ) ) {
 			$title = $instance['title'];
 		} else { $title = false; }
-		if ( isset( $instance[ 'summary' ] ) ) {
-			$summary = $instance[ 'summary' ];
-		} else { $summary = ''; }
+		if ( isset( $instance[ 'text' ] ) ) {
+			$text = $instance[ 'text' ];
+		} else { $text = ''; }
 		if ( isset( $instance['category'] ) ) {
 			$category = $instance['category'];
 		} else { $category = false; }
@@ -220,8 +220,8 @@ class Organic_Widgets_Testimonial_Section_Widget extends Organic_Widgets_Custom_
 		</p>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'summary' ); ?>"><?php _e('Summary:', ORGANIC_WIDGETS_18N) ?></label>
-			<textarea class="widefat" rows="6" cols="20" id="<?php echo $this->get_field_id( 'summary' ); ?>" name="<?php echo $this->get_field_name( 'summary' ); ?>"><?php echo $summary; ?></textarea>
+			<label for="<?php echo $this->get_field_id( 'text' ); ?>"><?php _e('text:', ORGANIC_WIDGETS_18N) ?></label>
+			<textarea class="widefat" rows="6" cols="20" id="<?php echo $this->get_field_id( 'text' ); ?>" name="<?php echo $this->get_field_name( 'text' ); ?>"><?php echo $text; ?></textarea>
 		</p>
 		<?php if ( ! post_type_exists( 'jetpack-testimonial' ) ) { ?>
 			<p>
@@ -268,8 +268,8 @@ class Organic_Widgets_Testimonial_Section_Widget extends Organic_Widgets_Custom_
 		} else {
 			$instance['bg_color'] = false;
 		}
-		if ( isset( $new_instance['summary'] ) )
-			$instance['summary'] = strip_tags( $new_instance['summary'] );
+		if ( isset( $new_instance['text'] ) )
+			$instance['text'] = strip_tags( $new_instance['text'] );
 		if ( isset( $new_instance['category'] ) )
 			$instance['category'] = strip_tags( $new_instance['category'] );
 		if ( isset( $new_instance['max_posts'] ) )

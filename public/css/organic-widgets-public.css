@@ -72,7 +72,7 @@ img.hide-img,
   padding: 36px;
   margin: 0;
 }
-.organic-widget-summary {
+.organic-widget-text {
   padding-top: 0px;
 }
 .organic-widgets-content .organic-widgets-post-holder {
@@ -148,7 +148,7 @@ img.hide-img,
 .organic-widget-hero-information .organic-widget-title {
   font-size: 4em;
 }
-.organic-widget-hero-information .organic-widget-summary {
+.organic-widget-hero-information .organic-widget-text {
   font-size: 120%;
 }
 
@@ -157,7 +157,7 @@ img.hide-img,
 ************************************************/
 
 .organic-widgets-blog-posts-section .organic-widget-title,
-.organic-widgets-blog-posts-section .organic-widget-summary {
+.organic-widgets-blog-posts-section .organic-widget-text {
   text-align: center;
 }
 .organic-widgets-blog-posts-section .organic-widgets-post-meta {
@@ -177,7 +177,7 @@ img.hide-img,
 ************************************************/
 
 .organic-widgets-team-section .organic-widget-title,
-.organic-widgets-team-section .organic-widget-summary,
+.organic-widgets-team-section .organic-widget-text,
 .organic-widgets-team-section .organic-widget-member-title {
   text-align: center;
 }
@@ -187,7 +187,7 @@ img.hide-img,
 ************************************************/
 
 .organic-widgets-portfolio-section .organic-widget-title,
-.organic-widgets-portfolio-section .organic-widget-summary {
+.organic-widgets-portfolio-section .organic-widget-text {
   text-align: center;
 }
 .organic-widgets-portfolio-section .organic-widget-portfolio-img {
@@ -273,7 +273,7 @@ img.hide-img,
 ************************************************/
 
 .organic-widgets-testimonial-section .organic-widget-title,
-.organic-widgets-testimonial-section .organic-widget-summary {
+.organic-widgets-testimonial-section .organic-widget-text {
   text-align: center;
 }
 .organic-widgets-testimonial-section .flex-viewport {
@@ -326,7 +326,7 @@ img.hide-img,
 ************************************************/
 
 .organic-widgets-feature-list-section .organic-widget-title,
-.organic-widgets-feature-list-section .organic-widget-summary {
+.organic-widgets-feature-list-section .organic-widget-text {
   text-align: center;
 }
 .organic-widgets-feature-list-item {

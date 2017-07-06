@@ -44,7 +44,7 @@
 		});
 
 		// Listen for changes on inputs
-		$('.organic-widgets-feature-list-summary-input').on('change', function(){
+		$('.organic-widgets-feature-list-text-input').on('change', function(){
 			var formItem = $(this).parent().parent('.organic-widgets-feature-list-item-form-item');
 			organicWidgetsFeatureUpdateMainArray(this);
 		});
@@ -111,8 +111,8 @@
 		newItem.find('.organic-widgets-feature-list-select').attr('data-feature-id', newID);
 		newItem.find('.organic-widgets-feature-list-icon-preview').html('');
 		newItem.find('.organic-widgets-feature-list-title-input').val('');
-		newItem.find('.organic-widgets-feature-list-summary-input').html('');
-		newItem.find('.organic-widgets-feature-list-summary-input').val('');
+		newItem.find('.organic-widgets-feature-list-text-input').html('');
+		newItem.find('.organic-widgets-feature-list-text-input').val('');
 
 		// Append New Item
 		$(newItem).insertAfter(lastItem);
@@ -232,16 +232,16 @@
 		allFormItems.each(function(key,el){
 			var icon = $(el).find('.organic-widgets-feature-list-select').attr('data-val');
 			var title = $(el).find('.organic-widgets-feature-list-title-input').val();
-			var summary = $(el).find('.organic-widgets-feature-list-summary-input').val();
+			var text = $(el).find('.organic-widgets-feature-list-text-input').val();
 			var order = orderNumber;
 			var theID = $(el).data('feature-id');
 
-			if ( icon != '' || title != '' || summary != '' ) {
+			if ( icon != '' || title != '' || text != '' ) {
 				thisItemData[order] = {
 					'icon': icon,
 					'id': theID,
 					'title': title,
-					'summary': summary,
+					'text': text,
 					'order': order
 				}
 			}

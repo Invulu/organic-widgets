@@ -57,7 +57,7 @@ class Organic_Widgets_Profile_Widget extends Organic_Widgets_Custom_Widget {
 		$instance['bg_image'] = ( isset( $instance['bg_image'] ) && '' != $instance['bg_image'] ) ? $instance['bg_image'] : false;
 		$instance['title'] = isset( $instance['title'] ) ? $instance['title'] : false;
 		$instance['subtitle'] = isset( $instance['subtitle'] ) ? $instance['subtitle'] : false;
-		$instance['summary'] = isset( $instance['summary'] ) ? $instance['summary'] : false;
+		$instance['text'] = isset( $instance['text'] ) ? $instance['text'] : false;
 		$instance['personal_url'] = isset( $instance['personal_url'] ) ? $instance['personal_url'] : false;
 		$instance['twitter_url'] = isset( $instance['twitter_url'] ) ? $instance['twitter_url'] : false;
 		$instance['linkedin_url'] = isset( $instance['linkedin_url'] ) ? $instance['linkedin_url'] : false;
@@ -67,7 +67,7 @@ class Organic_Widgets_Profile_Widget extends Organic_Widgets_Custom_Widget {
 		echo $args['before_widget'];
 		?>
 
-		<?php if ( $instance['title'] || '' != $instance['title'] || $instance['subtitle'] || '' != $instance['subtitle'] || $instance['summary'] || '' != $instance['summary'] ) { ?>
+		<?php if ( $instance['title'] || '' != $instance['title'] || $instance['subtitle'] || '' != $instance['subtitle'] || $instance['text'] || '' != $instance['text'] ) { ?>
 
 			<!-- BEGIN .organic-widgets-section -->
 			<div class="organic-widgets-section organic_widgets-profile-section" <?php if ($instance['bg_color']) { ?>style="background-color:<?php echo $instance['bg_color']; ?>;"<?php } ?>>
@@ -92,8 +92,8 @@ class Organic_Widgets_Profile_Widget extends Organic_Widgets_Custom_Widget {
 
 						<div class="organic-widgets-profile-divider"></div>
 
-					<?php if ( ! empty( $instance['summary'] ) ) { ?>
-						<div class="organic-widgets-profile-excerpt"><?php echo $instance['summary']; ?></div>
+					<?php if ( ! empty( $instance['text'] ) ) { ?>
+						<div class="organic-widgets-profile-excerpt"><?php echo $instance['text']; ?></div>
 					<?php } ?>
 
 					<?php if ( ! empty( $instance['personal_url'] ) || ! empty( $instance['twitter_url'] ) || ! empty( $instance['linkedin_url'] ) || ! empty( $instance['facebook_url'] ) || ! empty( $instance['email'] ) ) { ?>
@@ -162,8 +162,8 @@ class Organic_Widgets_Profile_Widget extends Organic_Widgets_Custom_Widget {
 		if (!isset( $instance['subtitle'] ) ) {
 			$instance['subtitle'] = false;
 		}
-		if (!isset( $instance['summary'] ) ) {
-			$instance['summary'] = false;
+		if (!isset( $instance['text'] ) ) {
+			$instance['text'] = false;
 		}
 		if (!isset( $instance['personal_url'] ) ) {
 			$instance['personal_url'] = false;
@@ -207,8 +207,8 @@ class Organic_Widgets_Profile_Widget extends Organic_Widgets_Custom_Widget {
 		</p>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'summary' ); ?>"><?php _e('Summary:', ORGANIC_WIDGETS_18N) ?></label>
-			<textarea class="widefat" rows="6" cols="20" id="<?php echo $this->get_field_id( 'summary' ); ?>" name="<?php echo $this->get_field_name( 'summary' ); ?>"><?php echo $instance['summary']; ?></textarea>
+			<label for="<?php echo $this->get_field_id( 'text' ); ?>"><?php _e('text:', ORGANIC_WIDGETS_18N) ?></label>
+			<textarea class="widefat" rows="6" cols="20" id="<?php echo $this->get_field_id( 'text' ); ?>" name="<?php echo $this->get_field_name( 'text' ); ?>"><?php echo $instance['text']; ?></textarea>
 		</p>
 
 		<p>
@@ -265,8 +265,8 @@ class Organic_Widgets_Profile_Widget extends Organic_Widgets_Custom_Widget {
 			$instance['title'] = strip_tags( $new_instance['title'] );
 		if (isset( $new_instance['subtitle'] ) )
 			$instance['subtitle'] = strip_tags( $new_instance['subtitle'] );
-		if (isset( $new_instance['summary'] ) )
-			$instance['summary'] = strip_tags( $new_instance['summary'] );
+		if (isset( $new_instance['text'] ) )
+			$instance['text'] = strip_tags( $new_instance['text'] );
 		if (isset( $new_instance['personal_url'] ) )
 			$instance['personal_url'] = strip_tags( $new_instance['personal_url'] );
 		if (isset( $new_instance['twitter_url'] ) )
