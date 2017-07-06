@@ -38,7 +38,9 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 			'video' => true
 		);
 
+		// Admin Scripts
 		add_action( 'sidebar_admin_setup', array( $this, 'admin_setup' ) );
+		add_action( 'admin_footer-widgets.php', array( $this, 'render_control_template_scripts' ) );
 
 		// Public scripts
 		add_action( 'wp_enqueue_scripts', array( $this, 'public_scripts') );
@@ -159,6 +161,14 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 	 */
 	public function form( $instance ) {
 
+		$instance = wp_parse_args(
+			(array) $instance,
+			array(
+				'title' => '',
+				'text' => '',
+			)
+		);
+
 		$this->id_prefix = $this->get_field_id('');
 
 		if ( isset( $instance[ 'page_id' ] ) ) {
@@ -195,7 +205,12 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 
 		?>
 
-		<h3><?php _e('Choose Existing Page:', ORGANIC_WIDGETS_18N) ?></h3>
+		<input id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" class="title" type="hidden" value="<?php echo $title; ?>">
+		<input id="<?php echo $this->get_field_id( 'text' ); ?>" name="<?php echo $this->get_field_name( 'text' ); ?>" class="text organic-widgets-wysiwyg-anchor" type="hidden" value="<?php echo $text; ?>">
+
+		<hr/>
+		<br>
+		<p><b><?php _e('OR Use Content From Page:', ORGANIC_WIDGETS_18N) ?></b></p>
 
 		<p>
 			<?php wp_dropdown_pages( array(
@@ -210,21 +225,35 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 
 		<hr />
 
-		<h3><?php _e('Or Add Custom Content:', ORGANIC_WIDGETS_18N) ?></h3>
-
-		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e('Section Title:', ORGANIC_WIDGETS_18N) ?></label>
-			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $title; ?>" />
-		</p>
-		<p>
-			<label for="<?php echo $this->get_field_id( 'text' ); ?>"><?php _e('Section Content:', ORGANIC_WIDGETS_18N) ?></label>
-			<textarea class="widefat" rows="6" cols="20" id="<?php echo $this->get_field_id( 'text' ); ?>" name="<?php echo $this->get_field_name( 'text' ); ?>"><?php echo $text; ?></textarea>
-		</p>
-
-		<hr />
-
 		<?php $this->section_background_input_markup( $instance, $this->bg_options );
 
+	}
+
+	/**
+	 * Render form template scripts.
+	 *
+	 *
+	 * @access public
+	 */
+	public function render_control_template_scripts() {
+
+		?>
+		<script type="text/html" id="tmpl-widget-organic_widgets_subpage_section-control-fields">
+
+			<# var elementIdPrefix = 'el' + String( Math.random() ).replace( /\D/g, '' ) + '_' #>
+
+			<p><b><?php _e('Add Custom Content:', ORGANIC_WIDGETS_18N) ?></b></p>
+
+			<p>
+				<label for="{{ elementIdPrefix }}title"><?php esc_html_e( 'Title:' ); ?></label>
+				<input id="{{ elementIdPrefix }}title" type="text" class="widefat title">
+			</p>
+			<p>
+				<label for="{{ elementIdPrefix }}text" class="screen-reader-text"><?php esc_html_e( 'Content:' ); ?></label>
+				<textarea id="{{ elementIdPrefix }}text" class="widefat text wp-editor-area" style="height: 200px" rows="16" cols="20"></textarea>
+			</p>
+		</script>
+		<?php
 	}
 
 	/**
@@ -259,8 +288,11 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 		}
 		if ( isset( $new_instance['title'] ) )
 			$instance['title'] = strip_tags( $new_instance['title'] );
-		if ( isset( $new_instance['text'] ) )
-			$instance['text'] = strip_tags( $new_instance['text'] );
+		if ( current_user_can( 'unfiltered_html' ) ) {
+			$instance['text'] = $new_instance['text'];
+		} else {
+			$instance['text'] = wp_kses_post( $new_instance['text'] );
+		}
 
 		// Widget Title
 		if ( isset( $new_instance['page_id'] ) && $new_instance['page_id'] > 0 ) {
@@ -279,6 +311,11 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 	 * Enqueue all the javascript.
 	 */
 	public function admin_setup() {
+
+		// Text Editor
+		wp_enqueue_editor();
+		wp_enqueue_script( 'organic-subpage-widgets', plugin_dir_url( __FILE__ ) . 'js/subpage-widgets.js', array( 'jquery' ) );
+		wp_add_inline_script( 'organic-subpage-widgets', 'wp.organicSubpageWidgets.init();', 'after' );
 
 		wp_enqueue_media();
 		wp_enqueue_script( 'organic-widgets-subpage-widget-js', plugin_dir_url( __FILE__ ) . 'js/subpage-widget.js', array( 'jquery', 'media-upload', 'media-views' ) );
