@@ -72,6 +72,9 @@
   padding: 72px 36px;
   margin: 0;
 }
+.organic-widgets-section .organic-widgets-section {
+  padding: 12px;  
+}
 .organic-widgets-section::after {
   display: table;
   content: '';
@@ -393,7 +396,7 @@
 *	Profile Widget
 ************************************************/
 
-.organic-widgets-profile-section-masonry-buffer {
+.organic-widgets-section-masonry-buffer {
   margin: 0 auto -18px;
   height: auto;
   width: 100%;

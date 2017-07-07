@@ -37,7 +37,7 @@
 				var itemClass = 'organic-widgets-third';
 			}
 
-			parentContainer.before( '<div class="organic-widgets-section"><div class="organic-widgets-profile-section-masonry-buffer organic-widgets-masonry-container" data-group-id="' + groupID + '"></div></div>');
+			parentContainer.before( '<div class="organic-widgets-section"><div class="organic-widgets-section-masonry-buffer organic-widgets-masonry-container" data-group-id="' + groupID + '"></div></div>');
 
 			//Get masonry container
 			var container = $('.organic-widgets-masonry-container[data-group-id="' + groupID + '"]');
@@ -50,7 +50,11 @@
 
 				if ( $(this).hasClass('organic-widgets-groupable-first') ) {
 					var bgColor = $(this).css('background-color');
+					var bgImage = $(this).css('background-image');
+					$(this).css('background-color','');
+					$(this).css('background-image','');
 					containerWrapperSection.css('background-color', bgColor);
+					containerWrapperSection.css('background-image', bgImage);
 				} else {
 					$(this).css('background-color','');
 				}

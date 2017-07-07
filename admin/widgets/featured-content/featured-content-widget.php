@@ -25,7 +25,7 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 			__( 'Organic Featured Content', ORGANIC_WIDGETS_18N ), // Name
 			array(
 				'description' => __( 'A widget for displaying an existing page or custom content.', ORGANIC_WIDGETS_18N ),
-				'customize_selective_refresh' => true,
+				'customize_selective_refresh' => false,
 			) // Args
 		);
 
@@ -57,6 +57,16 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 	 */
 	public function widget( $args, $instance ) {
 
+		$group = $this->organic_widgets_groupable_widget( $args );
+		$group_id = $group['group_id'];
+		if ( $group['first'] && ! $group['last'] ) {
+			$first_last = ' organic-widgets-groupable-first';
+		} elseif ( $group['last'] && ! $group['first'] ) {
+			$first_last = ' organic-widgets-groupable-last';
+		} else {
+			$first_last = false;
+		}
+
 		if ( ! empty( $instance['page_id'] ) ) {
 
 			echo $args['before_widget'];
@@ -71,7 +81,7 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 			?>
 
 			<!-- BEGIN .organic-widgets-section -->
-			<div class="organic-widgets-section organic-widgets-featured-content-section" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
+			<div class="organic-widgets-section organic-widgets-featured-content-section<?php if ( $first_last ) { echo esc_attr( $first_last ); } ?>" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?> <?php if ($group_id) { echo 'data-group-id="' . $group_id . '"'; } ?>>
 
 				<!-- BEGIN .organic-widgets-content -->
 				<div class="organic-widgets-content">
@@ -118,7 +128,7 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 			?>
 
 			<!-- BEGIN .organic-widgets-section -->
-			<div class="organic-widgets-section organic-widgets-featured-content-section" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
+			<div class="organic-widgets-section organic-widgets-featured-content-section<?php if ( $first_last ) { echo esc_attr( $first_last ); } ?>" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?> <?php if ($group_id) { echo 'data-group-id="' . $group_id . '"'; } ?>>
 
 				<!-- BEGIN .organic-widgets-content -->
 				<div class="organic-widgets-content">
