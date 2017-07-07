@@ -1186,4 +1186,89 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
 		<?php
 	}
 
+	/**
+	 * Returns true if widget is first in group, false if not
+	 *
+	 * @since    1.0.0
+	 */
+	protected function organic_widgets_is_first_groupable_widget( $args = false, $instance = false ) {
+
+		if ( $instance && $args ) {
+
+			$widget_area_id = $args['id'];
+			$widget_name = $args['widget_name'];
+			$widget_id = $args['widget_id'];
+			$widget_id_base = _get_widget_id_base( $widget_id );
+
+			// Get widget before and check to see if it is same type
+			$widget_areas = wp_get_sidebars_widgets();
+			$this_widget_area = $widget_areas[$widget_area_id];
+
+			// If widget is first in area, return true
+			if ( $this_widget_area[0] == $widget_id ) { return true; }
+
+			$this_widget_key = array_search( $widget_id, $this_widget_area );
+
+			// Get previous widget
+			$prev_widget_id = $this_widget_area[ $this_widget_key - 1 ];
+			$prev_widget_id_base = _get_widget_id_base( $prev_widget_id );
+
+			// If previous widget is of same type, return false
+			if ( $prev_widget_id_base == $widget_id_base ) {
+				return false;
+			}
+
+			return true;
+
+		} else {
+
+			return true;
+
+		}
+
+	}
+
+	/**
+	 * Returns true if widget is last in group, false if there are more
+	 *
+	 * @since    1.0.0
+	 */
+	protected function organic_widgets_is_last_groupable_widget( $args = false, $instance = false ) {
+
+		if ( $instance && $args ) {
+
+			$widget_area_id = $args['id'];
+			$widget_name = $args['widget_name'];
+			$widget_id = $args['widget_id'];
+			$widget_id_base = _get_widget_id_base( $widget_id );
+
+			// Get widget before and check to see if it is same type
+			$widget_areas = wp_get_sidebars_widgets();
+			$this_widget_area = $widget_areas[$widget_area_id];
+
+			// If widget is last in area, return true
+			$length = count($this_widget_area);
+			if ( $this_widget_area[ $length -1 ] == $widget_id ) { return true; }
+
+			$this_widget_key = array_search( $widget_id, $this_widget_area );
+
+			// Get next widget
+			$next_widget_id = $this_widget_area[ $this_widget_key + 1 ];
+			$next_widget_id_base = _get_widget_id_base( $next_widget_id );
+
+			// If previous widget is of same type, return false
+			if ( $next_widget_id_base == $widget_id_base ) {
+				return false;
+			}
+
+			return true;
+
+		} else {
+
+			return true;
+
+		}
+
+	}
+
 } // class Organic_Widgets_Subpage_Section_Widget

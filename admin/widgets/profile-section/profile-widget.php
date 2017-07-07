@@ -65,9 +65,9 @@ class Organic_Widgets_Profile_Widget extends Organic_Widgets_Custom_Widget {
 		$instance['facebook_url'] = isset( $instance['facebook_url'] ) ? $instance['facebook_url'] : false;
 		$instance['email'] = isset( $instance['email'] ) ? $instance['email'] : false;
 
-		if ( organic_widgets_is_first_groupable_widget( $args, $instance ) && ! organic_widgets_is_last_groupable_widget( $args, $instance ) ) {
+		if ( $this->organic_widgets_is_first_groupable_widget( $args, $instance ) && ! $this->organic_widgets_is_last_groupable_widget( $args, $instance ) ) {
 			$first_last = ' organic-widgets-groupable-first';
-		} elseif ( organic_widgets_is_last_groupable_widget( $args, $instance ) && ! organic_widgets_is_first_groupable_widget( $args, $instance ) ) {
+		} elseif ( $this->organic_widgets_is_last_groupable_widget( $args, $instance ) && ! $this->organic_widgets_is_first_groupable_widget( $args, $instance ) ) {
 			$first_last = ' organic-widgets-groupable-last';
 		} else {
 			$first_last = false;
