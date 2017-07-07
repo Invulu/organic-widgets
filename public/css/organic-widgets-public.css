@@ -72,6 +72,11 @@
   padding: 72px 36px;
   margin: 0;
 }
+.organic-widgets-section::after {
+  display: table;
+  content: '';
+  clear: both;
+}
 .organic-widgets-text {
   padding-top: 0px;
   padding-bottom: 24px;
@@ -182,6 +187,7 @@
 }
 .organic-widgets-blog-posts-section .organic-widgets-featured-img {
   background-size: cover;
+  background-position: center;
 }
 .organic-widgets-blog-posts-section .organic-widgets-single article {
   display: flex;
@@ -411,10 +417,11 @@
   box-sizing: border-box;
 }
 .organic-widgets-profile-img {
+  display: block;
+  line-height: 0;
   margin: auto;
   width: 100%;
   height: auto;
-  display: inline;
 }
 .organic-widgets-profile-img img {
   width: 100%;
