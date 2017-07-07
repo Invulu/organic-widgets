@@ -77,11 +77,11 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 			<div class="organic-widgets-content">
 
 			<?php if ( ! empty( $title ) ) { ?>
-				<h2 class="organic-widget-title"><?php echo esc_html( $title ); ?></h2>
+				<h2 class="organic-widgets-title"><?php echo esc_html( $title ); ?></h2>
 			<?php } ?>
 
 			<?php if ( ! empty( $text ) ) { ?>
-				<div class="organic-widget-text"><?php echo $text ?></div>
+				<div class="organic-widgets-text"><?php echo $text ?></div>
 			<?php } ?>
 
 				<div class="organic-widgets-feature-list-items-wrapper organic-widgets-flex-row">
@@ -314,21 +314,21 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 		<div class="organic-widgets-feature-list-item-form-item" data-feature-id="<?php echo $id; ?>" data-order="<?php echo $order; ?>">
 
 			<div class="organic-widgets-feature-list-select" data-val="<?php if ( $feature && $feature['icon'] ) { echo esc_attr($feature['icon']); } ?>" data-feature-id="<?php echo $id; ?>">
-				<div class="organic-widget-dropdown-button">
-					<div class="organic-widget-feature-list-select-icon"><i class="fa fa-angle-down"></i></div>
+				<div class="organic-widgets-dropdown-button">
+					<div class="organic-widgets-feature-list-select-icon"><i class="fa fa-angle-down"></i></div>
 					<p><?php _e('Select Icon', ORGANIC_WIDGETS_18N); ?></p>
 				</div>
-				<div class="organic-widget-feature-move-button">
-					<div class="organic-widget-move-up">
+				<div class="organic-widgets-feature-move-button">
+					<div class="organic-widgets-move-up">
 						<i class="fa fa-angle-up"></i>
 					</div>
 				</div>
-				<div class="organic-widget-feature-move-button">
-					<div class="organic-widget-move-down">
+				<div class="organic-widgets-feature-move-button">
+					<div class="organic-widgets-move-down">
 						<i class="fa fa-angle-down"></i>
 					</div>
 				</div>
-				<div class="organic-widget-feature-delete-button">
+				<div class="organic-widgets-feature-delete-button">
 					<i class="fa fa-trash"></i>
 				</div>
 				<div class="organic-widgets-clear"></div>

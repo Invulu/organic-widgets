@@ -110,6 +110,17 @@ class Organic_Widgets_Content_Slideshow_Section_Widget extends Organic_Widgets_C
 
 										<h3><a href="<?php echo get_the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h3>
 
+										<!-- BEGIN .organic-widgets-post-meta -->
+										<div class="organic-widgets-post-meta">
+											<p class="organic-widgets-post-date">
+												<?php echo get_the_modified_date(); ?>
+											</p>
+											<p class="organic-widgets-post-author">
+												<?php esc_html_e( 'By ', 'organic-startup' ); ?><?php esc_url( the_author_posts_link() ); ?>
+											</p>
+										<!-- END .organic-widgets-post-meta -->
+										</div>
+
 										<!-- BEGIN .excerpt -->
 										<div class="excerpt">
 

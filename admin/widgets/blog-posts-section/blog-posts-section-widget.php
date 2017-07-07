@@ -75,11 +75,11 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 			<div class="organic-widgets-content">
 
 			<?php if ( ! empty( $instance['title'] ) ) { ?>
-				<h2 class="organic-widget-title"><?php echo apply_filters( 'widget_title', $instance['title'] ); ?></h2>
+				<h2 class="organic-widgets-title"><?php echo apply_filters( 'widget_title', $instance['title'] ); ?></h2>
 			<?php } ?>
 
 			<?php if ( ! empty( $instance['text'] ) ) { ?>
-				<div class="organic-widget-text"><?php echo $instance['text'] ?></div>
+				<div class="organic-widgets-text"><?php echo $instance['text'] ?></div>
 			<?php } ?>
 
 			<?php $wp_query = new WP_Query( array(
@@ -104,19 +104,19 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 
 					<?php $thumb = ( '' != get_the_post_thumbnail() ) ? wp_get_attachment_image_src( get_post_thumbnail_id(), 'full' ) : false; ?>
 
-					<!-- BEGIN .organic-widget-masonry-wrapper -->
-					<div class="organic-widget-masonry-wrapper organic-widgets-column organic-widgets-<?php echo $this->column_string( $num_columns ); ?>">
+					<!-- BEGIN .organic-widgets-masonry-wrapper -->
+					<div class="organic-widgets-masonry-wrapper organic-widgets-column organic-widgets-<?php echo $this->column_string( $num_columns ); ?>">
 
 						<article>
 
 							<?php if ( has_post_thumbnail() ) { ?>
-								<a class="organic-widget-featured-img" href="<?php the_permalink(); ?>" style="background-image: url(<?php echo esc_url( $thumb[0] ); ?>);">
+								<a class="organic-widgets-featured-img" href="<?php the_permalink(); ?>" style="background-image: url(<?php echo esc_url( $thumb[0] ); ?>);">
 									<span class="organic-widgets-hide-img"><?php the_post_thumbnail(); ?></span>
 								</a>
 							<?php } ?>
 
-							<!-- BEGIN .organic-widget-card -->
-							<div class="organic-widget-card">
+							<!-- BEGIN .organic-widgets-card -->
+							<div class="organic-widgets-card">
 
 								<h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
 
@@ -133,12 +133,12 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 
 								<?php the_excerpt(); ?>
 
-							<!-- END .organic-widget-card -->
+							<!-- END .organic-widgets-card -->
 							</div>
 
 						</article>
 
-					<!-- END .organic-widget-masonry-wrapper -->
+					<!-- END .organic-widgets-masonry-wrapper -->
 					</div>
 
 					<?php endwhile; ?>

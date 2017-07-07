@@ -8,7 +8,7 @@
   function organicWidgetsCustomDropdown() {
 
 		//Listen for click to open/close dropdown
-    $('.organic-widget-dropdown-button').unbind('click').on('click', function(){
+    $('.organic-widgets-dropdown-button').unbind('click').on('click', function(){
 
 			if ( $(this).closest('.organic-widgets-feature-list-item-form-item').hasClass('organic-widgets-show') ) {
 				organicWidgetsCloseDropdown(this);
@@ -19,7 +19,7 @@
 		});
 
 		//Listen for delete
-    $('.organic-widget-feature-delete-button').unbind('click').on('click', function(){
+    $('.organic-widgets-feature-delete-button').unbind('click').on('click', function(){
       organicWidgetsDeleteFeature(this);
     });
 
@@ -29,12 +29,12 @@
     });
 
 		//Listen for move up
-    $('.organic-widget-move-up').unbind('click').on('click', function(){
+    $('.organic-widgets-move-up').unbind('click').on('click', function(){
       organicWidgetsReorderFeatures(this, 'up');
     });
 
 		//Listen for move up
-    $('.organic-widget-move-down').unbind('click').on('click', function(){
+    $('.organic-widgets-move-down').unbind('click').on('click', function(){
       organicWidgetsReorderFeatures(this, 'down');
     });
 
@@ -105,7 +105,7 @@
 		if ( newItem.hasClass('organic-widgets-show') ) {
 			newItem.removeClass('organic-widgets-show');
 			newItem.find('.organic-widgets-feature-list-icon-preview').html('');
-			newItem.find('.organic-widget-feature-list-select-icon').html('<i class="fa fa-angle-down"></i>');
+			newItem.find('.organic-widgets-feature-list-select-icon').html('<i class="fa fa-angle-down"></i>');
 		}
 		newItem.find('.organic-widgets-feature-list-select').attr('data-val', '');
 		newItem.find('.organic-widgets-feature-list-select').attr('data-feature-id', newID);
@@ -172,7 +172,7 @@
     var thisID = thisDropdown.data('feature-id');
 		var thisFormItem = $(dropdown).parents('.organic-widgets-feature-list-item-form-item');
 
-		thisFormItem.find('.organic-widget-feature-list-select-icon').html('<i class="fa fa-angle-up"></i>');
+		thisFormItem.find('.organic-widgets-feature-list-select-icon').html('<i class="fa fa-angle-up"></i>');
 
 		thisFormItem.addClass('organic-widgets-show');
   }
@@ -182,7 +182,7 @@
 
 		var thisFormItem = $(dropdown).parents('.organic-widgets-feature-list-item-form-item');
 
-		thisFormItem.find('.organic-widget-feature-list-select-icon').html('<i class="fa fa-angle-down"></i>');
+		thisFormItem.find('.organic-widgets-feature-list-select-icon').html('<i class="fa fa-angle-down"></i>');
 
 		thisFormItem.removeClass('organic-widgets-show');
   }
@@ -194,7 +194,7 @@
 		var thisVal = thisItem.data('val');
 		var thisFeature = thisItem.parents('.organic-widgets-feature-list-select');
 		var thisFormItem = thisFeature.parent('.organic-widgets-feature-list-item-form-item');
-		var thisButton = thisItem.parent().siblings('.organic-widget-dropdown-button');
+		var thisButton = thisItem.parent().siblings('.organic-widgets-dropdown-button');
 		var thisPreview = thisFormItem.find('.organic-widgets-feature-list-icon-preview');
 
 		// Update HTML Values
@@ -209,7 +209,7 @@
 		thisItem.addClass('organic-widgets-feature-active');
 
 		// HTML Changes
-		thisFormItem.find('.organic-widget-feature-list-select-icon').html('<i class="fa fa-angle-down"></i>');
+		thisFormItem.find('.organic-widgets-feature-list-select-icon').html('<i class="fa fa-angle-down"></i>');
 
 		// Close Selector
 		organicWidgetsCloseDropdown(thisItem);

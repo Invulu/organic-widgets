@@ -95,14 +95,14 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 
 				<?php if ( ! empty( $title ) || ! empty( $text ) || ! empty( $button_url ) ) { ?>
 
-				<!-- BEGIN .organic-widget-hero-information -->
-				<div class="organic-widget-hero-information">
+				<!-- BEGIN .organic-widgets-hero-information -->
+				<div class="organic-widgets-hero-information">
 
 				<?php if ( ! empty( $title ) ) { ?>
-					<h2 class="organic-widget-title"><?php echo esc_html( $title ); ?></h2>
+					<h2 class="organic-widgets-title"><?php echo esc_html( $title ); ?></h2>
 				<?php } ?>
 				<?php if ( ! empty( $text ) ) { ?>
-					<div class="organic-widget-text"><?php echo $text ?></div>
+					<div class="organic-widgets-text"><?php echo $text ?></div>
 				<?php } ?>
 
 				<?php if ( ! empty( $button_url ) ) { ?>
@@ -111,7 +111,7 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 					</div>
 				<?php } ?>
 
-				<!-- END .organic-widget-hero-information -->
+				<!-- END .organic-widgets-hero-information -->
 				</div>
 
 				<?php } ?>

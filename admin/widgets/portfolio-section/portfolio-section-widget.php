@@ -73,11 +73,11 @@ class Organic_Widgets_Portfolio_Section_Widget extends Organic_Widgets_Custom_Wi
 			<div class="organic-widgets-content">
 
 			<?php if ( ! empty( $instance['title'] ) ) { ?>
-				<h2 class="organic-widget-title"><?php echo apply_filters( 'widget_title', $instance['title'] ); ?></h2>
+				<h2 class="organic-widgets-title"><?php echo apply_filters( 'widget_title', $instance['title'] ); ?></h2>
 			<?php } ?>
 
 			<?php if ( ! empty( $instance['text'] ) ) { ?>
-				<div class="organic-widget-text"><?php echo $instance['text'] ?></div>
+				<div class="organic-widgets-text"><?php echo $instance['text'] ?></div>
 			<?php } ?>
 
 			<?php
@@ -113,20 +113,20 @@ class Organic_Widgets_Portfolio_Section_Widget extends Organic_Widgets_Custom_Wi
 
 					<?php while ( $wp_query->have_posts() ) : $wp_query->the_post(); ?>
 
-					<!-- BEGIN .organic-widget-masonry-wrapper -->
-					<div class="organic-widget-masonry-wrapper organic-widgets-column organic-widgets-<?php echo $this->column_string( $num_columns ); ?>">
+					<!-- BEGIN .organic-widgets-masonry-wrapper -->
+					<div class="organic-widgets-masonry-wrapper organic-widgets-column organic-widgets-<?php echo $this->column_string( $num_columns ); ?>">
 
 						<?php if ( has_post_thumbnail() ) { ?>
 
 						<article>
 
-							<div class="organic-widget-portfolio-img">
+							<div class="organic-widgets-portfolio-img">
 
-								<div class="organic-widget-img-text">
+								<div class="organic-widgets-img-text">
 									<h6><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h6>
 								</div>
 
-								<a class="organic-widget-featured-img" href="<?php the_permalink(); ?>">
+								<a class="organic-widgets-featured-img" href="<?php the_permalink(); ?>">
 									<?php the_post_thumbnail(); ?>
 								</a>
 
@@ -136,7 +136,7 @@ class Organic_Widgets_Portfolio_Section_Widget extends Organic_Widgets_Custom_Wi
 
 						<?php } ?>
 
-					<!-- END .organic-widget-masonry-wrapper -->
+					<!-- END .organic-widgets-masonry-wrapper -->
 					</div>
 
 					<?php endwhile; ?>
@@ -153,8 +153,6 @@ class Organic_Widgets_Portfolio_Section_Widget extends Organic_Widgets_Custom_Wi
 		</div>
 
 		<?php echo $args['after_widget'];
-
-
 
 	}
 	/**
@@ -201,9 +199,10 @@ class Organic_Widgets_Portfolio_Section_Widget extends Organic_Widgets_Custom_Wi
 		</p>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'text' ); ?>"><?php _e('text:', ORGANIC_WIDGETS_18N) ?></label>
+			<label for="<?php echo $this->get_field_id( 'text' ); ?>"><?php _e('Text:', ORGANIC_WIDGETS_18N) ?></label>
 			<textarea class="widefat" rows="6" cols="20" id="<?php echo $this->get_field_id( 'text' ); ?>" name="<?php echo $this->get_field_name( 'text' ); ?>"><?php echo $text; ?></textarea>
 		</p>
+
 		<?php if ( ! post_type_exists( 'jetpack-portfolio' ) ) { ?>
 			<p>
 				<label for="<?php echo $this->get_field_id( 'category' ); ?>"><?php _e('Portfolio Category:', ORGANIC_WIDGETS_18N) ?></label>
@@ -214,10 +213,12 @@ class Organic_Widgets_Portfolio_Section_Widget extends Organic_Widgets_Custom_Wi
 				)); ?>
 			</p>
 		<?php } ?>
+
 		<p>
 			<label for="<?php echo $this->get_field_id( 'max_posts' ); ?>"><?php _e('Max Number of Posts:', ORGANIC_WIDGETS_18N) ?></label>
 			<input type="number" min="1" max="16" value="<?php echo $max_posts; ?>" id="<?php echo $this->get_field_id('max_posts'); ?>" name="<?php echo $this->get_field_name('max_posts'); ?>" class="widefat" style="width:100%;"/>
 		</p>
+
 		<p>
 			<label for="<?php echo $this->get_field_id( 'num_columns' ); ?>"><?php _e('Number of Columns:', ORGANIC_WIDGETS_18N) ?></label>
 			<select id="<?php echo $this->get_field_id('num_columns'); ?>" name="<?php echo $this->get_field_name('num_columns'); ?>" class="widefat" style="width:100%;">

@@ -75,11 +75,11 @@ class Organic_Widgets_Team_Section_Widget extends Organic_Widgets_Custom_Widget 
 			<div class="organic-widgets-content">
 
 			<?php if ( ! empty( $instance['title'] ) ) { ?>
-				<h2 class="organic-widget-title"><?php echo apply_filters( 'widget_title', $instance['title'] ); ?></h2>
+				<h2 class="organic-widgets-title"><?php echo apply_filters( 'widget_title', $instance['title'] ); ?></h2>
 			<?php } ?>
 
 			<?php if ( ! empty( $instance['text'] ) ) { ?>
-				<div class="organic-widget-text"><?php echo $instance['text'] ?></div>
+				<div class="organic-widgets-text"><?php echo $instance['text'] ?></div>
 			<?php } ?>
 
 			<?php $wp_query = new WP_Query( array(
@@ -101,28 +101,28 @@ class Organic_Widgets_Team_Section_Widget extends Organic_Widgets_Custom_Widget 
 
 					<?php while ( $wp_query->have_posts() ) : $wp_query->the_post(); ?>
 
-					<!-- BEGIN .organic-widget-masonry-wrapper -->
-					<div class="organic-widget-masonry-wrapper organic-widgets-column organic-widgets-<?php echo $this->column_string( $num_columns ); ?>">
+					<!-- BEGIN .organic-widgets-masonry-wrapper -->
+					<div class="organic-widgets-masonry-wrapper organic-widgets-column organic-widgets-<?php echo $this->column_string( $num_columns ); ?>">
 
 						<article>
 
 							<?php if ( has_post_thumbnail() ) { ?>
-								<a class="organic-widget-featured-img" href="<?php the_permalink(); ?>"><?php the_post_thumbnail(); ?></a>
+								<a class="organic-widgets-featured-img" href="<?php the_permalink(); ?>"><?php the_post_thumbnail(); ?></a>
 							<?php } ?>
 
-							<!-- BEGIN .organic-widget-card -->
-							<div class="organic-widget-card">
+							<!-- BEGIN .organic-widgets-card -->
+							<div class="organic-widgets-card">
 
-								<h5 class="organic-widget-member-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
+								<h5 class="organic-widgets-member-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
 
 								<?php the_excerpt(); ?>
 
-							<!-- END .organic-widget-card -->
+							<!-- END .organic-widgets-card -->
 							</div>
 
 						</article>
 
-					<!-- END .organic-widget-masonry-wrapper -->
+					<!-- END .organic-widgets-masonry-wrapper -->
 					</div>
 
 					<?php endwhile; ?>

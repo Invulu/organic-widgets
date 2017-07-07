@@ -5,7 +5,7 @@
 	function masonrySetup() {
 		var $container = $('.organic-widgets-masonry-container');
     $container.masonry({
-			itemSelector : '.organic-widget-masonry-wrapper'
+			itemSelector : '.organic-widgets-masonry-wrapper'
 		});
 	}
 

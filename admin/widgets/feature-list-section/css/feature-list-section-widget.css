@@ -37,7 +37,7 @@
 }
 
 /* Dropdown Button */
-.organic-widget-dropdown-button, .organic-widget-feature-move-button, .organic-widget-feature-delete-button {
+.organic-widgets-dropdown-button, .organic-widgets-feature-move-button, .organic-widgets-feature-delete-button {
   border: none;
   cursor: pointer;
   box-sizing: border-box;
@@ -49,50 +49,50 @@
   /*border: 1px solid rgba(0, 0, 0, .5);*/
   text-align: center;
 }
-.organic-widget-dropdown-button p, .organic-widget-feature-move-button p, .organic-widget-feature-delete-button p {
+.organic-widgets-dropdown-button p, .organic-widgets-feature-move-button p, .organic-widgets-feature-delete-button p {
   margin-top: 0;
   margin-bottom: 0;
 }
-.organic-widget-dropdown-button {
+.organic-widgets-dropdown-button {
   background-color: #9ECE42;
   border-right: 1px solid #8db73a;
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
   width: 60%;
 }
-.organic-widget-dropdown-button p {
+.organic-widgets-dropdown-button p {
   margin-left: 18px;
 }
-.organic-widgets-show .organic-widget-dropdown-button, .organic-widgets-show .organic-widget-feature-delete-button {
+.organic-widgets-show .organic-widgets-dropdown-button, .organic-widgets-show .organic-widgets-feature-delete-button {
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 0px;
 }
-.organic-widget-feature-move-button {
+.organic-widgets-feature-move-button {
   background-color: #ccc;
   width: 10%;
   padding: 0;
   display: inline;
 }
-.organic-widget-feature-move-button i {
+.organic-widgets-feature-move-button i {
   font-size: 20px;
 }
-.organic-widget-move-up, .organic-widget-move-down {
+.organic-widgets-move-up, .organic-widgets-move-down {
   color: #666;
 }
-.organic-widget-move-up {
+.organic-widgets-move-up {
   padding: 7px 0 8px;
 }
-.organic-widget-move-down {
+.organic-widgets-move-down {
   padding: 7px 0 8px;
 }
-.organic-widget-move-up:active, .organic-widget-move-up:hover, .organic-widget-move-down:active, .organic-widget-move-down:hover {
+.organic-widgets-move-up:active, .organic-widgets-move-up:hover, .organic-widgets-move-down:active, .organic-widgets-move-down:hover {
   background-color: #999;
   color: #fff;
 }
-.organic-widget-move-up {
+.organic-widgets-move-up {
   border-right: 1px solid #aaa;
 }
-.organic-widget-feature-delete-button {
+.organic-widgets-feature-delete-button {
   width: 20%;
   background-color: #f24646;
   border-left: 1px solid #d00;
@@ -101,20 +101,20 @@
   font-size: 22px;
   padding: 6px 0 7px;
 }
-.organic-widget-feature-delete-button:hover, .organic-widget-feature-delete-button:focus {
+.organic-widgets-feature-delete-button:hover, .organic-widgets-feature-delete-button:focus {
   background-color: #a00;
 }
 /* Dropdown button on hover & focus */
-.organic-widget-dropdown-button:hover, .organic-widget-dropdown-button:focus {
+.organic-widgets-dropdown-button:hover, .organic-widgets-dropdown-button:focus {
   background-color: #8db73a;
 }
-.organic-widget-feature-list-select-icon {
+.organic-widgets-feature-list-select-icon {
   width: 30px;
   float: left;
   box-sizing: border-box;
   color: #fff;
 }
-.organic-widget-feature-list-select-icon i {
+.organic-widgets-feature-list-select-icon i {
   font-size: 28px;
   position: absolute;
   top: 4px;

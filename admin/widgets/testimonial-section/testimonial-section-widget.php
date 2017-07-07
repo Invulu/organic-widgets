@@ -104,11 +104,11 @@ class Organic_Widgets_Testimonial_Section_Widget extends Organic_Widgets_Custom_
 				<div class="organic-widgets-content">
 
 					<?php if ( ! empty( $title ) ) { ?>
-						<h2 class="organic-widget-title"><?php echo $title; ?></h2>
+						<h2 class="organic-widgets-title"><?php echo $title; ?></h2>
 					<?php } ?>
 
 					<?php if ( ! empty( $instance['text'] ) ) { ?>
-						<div class="organic-widget-text"><?php echo $instance['text'] ?></div>
+						<div class="organic-widgets-text"><?php echo $instance['text'] ?></div>
 					<?php } ?>
 
 					<!-- BEGIN .flexslider -->
@@ -131,8 +131,8 @@ class Organic_Widgets_Testimonial_Section_Widget extends Organic_Widgets_Custom_
 								<!-- BEGIN .organic-widgets-testimonial-slide-content -->
 								<div class="organic-widgets-testimonial-slide-content">
 
-									<!-- BEGIN .organic-widget-card -->
-									<div class="organic-widget-card">
+									<!-- BEGIN .organic-widgets-card -->
+									<div class="organic-widgets-card">
 
 										<?php if ( has_post_thumbnail() ) { ?>
 
@@ -144,7 +144,7 @@ class Organic_Widgets_Testimonial_Section_Widget extends Organic_Widgets_Custom_
 
 										<div class="organic-widgets-excerpt"><?php the_excerpt(); ?></div>
 
-									<!-- END .organic-widget-card -->
+									<!-- END .organic-widgets-card -->
 									</div>
 
 									<p class="organic-widgets-testimonial-author"><?php the_title(); ?></p>
