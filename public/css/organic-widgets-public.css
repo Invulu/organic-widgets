@@ -7,8 +7,7 @@
 *	Global Styles
 ************************************************/
 
-img.hide-img,
-.hide-img img {
+.organic-widgets-hide-img img {
   line-height: 0;
   margin-left: -999em;
   padding: 0px;
@@ -98,11 +97,12 @@ img.hide-img,
   float: none;
   display: block;
   text-align: center;
+  margin-bottom: 0px;
 }
 .organic-widget-card {
   position: relative;
   background-color: #ffffff;
-	padding: 12px 24px;
+	padding: 24px;
 }
 .organic-widget-card p {
   padding: 6px 0px;
@@ -123,6 +123,7 @@ img.hide-img,
 }
 .organic-widget .link-more {
   padding: 0px;
+  margin-bottom: 0px;
 }
 .organic-widget .link-more br {
   display: none;
@@ -164,6 +165,19 @@ img.hide-img,
 .organic-widgets-blog-posts-section .organic-widget-title,
 .organic-widgets-blog-posts-section .organic-widget-text {
   text-align: center;
+}
+.organic-widgets-blog-posts-section .organic-widget-featured-img {
+  background-size: cover;
+}
+.organic-widgets-blog-posts-section .organic-widgets-single article {
+  display: flex;
+  align-items: stretch;
+}
+.organic-widgets-blog-posts-section .organic-widgets-single .organic-widget-featured-img {
+  min-width: 40%;
+}
+.organic-widgets-blog-posts-section .organic-widgets-single .organic-widget-card {
+  padding: 36px;
 }
 .organic-widgets-blog-posts-section .organic-widgets-post-meta {
   font-size: 75%;

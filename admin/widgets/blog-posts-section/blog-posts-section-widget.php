@@ -94,6 +94,7 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 					),
 				),
 			) ); ?>
+
 			<?php if ( $wp_query->have_posts() ) : ?>
 
 				<!-- BEGIN .organic-widgets-row -->
@@ -101,13 +102,17 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 
 					<?php while ( $wp_query->have_posts() ) : $wp_query->the_post(); ?>
 
+					<?php $thumb = ( '' != get_the_post_thumbnail() ) ? wp_get_attachment_image_src( get_post_thumbnail_id(), 'full' ) : false; ?>
+
 					<!-- BEGIN .organic-widget-masonry-wrapper -->
 					<div class="organic-widget-masonry-wrapper organic-widgets-column organic-widgets-<?php echo $this->column_string( $num_columns ); ?>">
 
 						<article>
 
 							<?php if ( has_post_thumbnail() ) { ?>
-								<a class="organic-widget-featured-img" href="<?php the_permalink(); ?>"><?php the_post_thumbnail(); ?></a>
+								<a class="organic-widget-featured-img" href="<?php the_permalink(); ?>" style="background-image: url(<?php echo esc_url( $thumb[0] ); ?>);">
+									<span class="organic-widgets-hide-img"><?php the_post_thumbnail(); ?></span>
+								</a>
 							<?php } ?>
 
 							<!-- BEGIN .organic-widget-card -->
