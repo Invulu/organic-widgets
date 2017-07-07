@@ -74,15 +74,15 @@
 
 		});
 
-		masonrySetup();
+		masonryGroupSetup();
 
 	}
 
 	/* Masonry ---------------------*/
-	function masonrySetup() {
-		var $container = $('.organic-widgets-masonry-container');
+	function masonryGroupSetup() {
+		var $container = $('.organic-widgets-masonry-container.organic-widgets-profile-section-masonry-buffer');
     $container.masonry({
-			itemSelector : '.organic-widget-masonry-wrapper'
+			itemSelector : '.organic-widget-masonry-wrapper.organic-widgets-groupable-widget'
 		});
 	}
 
