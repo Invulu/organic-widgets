@@ -25,7 +25,7 @@ class Organic_Widgets_Profile_Widget extends Organic_Widgets_Custom_Widget {
 			__( 'Organic Profile', ORGANIC_WIDGETS_18N ), // Name
 			array(
 				'description' => __( 'Display a personal profile.', ORGANIC_WIDGETS_18N ),
-				'customize_selective_refresh' => true,
+				// 'customize_selective_refresh' => true,
 			) // Args
 		);
 
@@ -83,67 +83,61 @@ class Organic_Widgets_Profile_Widget extends Organic_Widgets_Custom_Widget {
 		<?php if ( '' != $title || '' != $text || '' != $subtitle ) { ?>
 
 				<!-- BEGIN .organic-widgets-section -->
-				<div class="organic-widgets-section organic_widgets-profile-section" <?php if ($instance['bg_color']) { ?>style="background-color:<?php echo $instance['bg_color']; ?>;"<?php } ?>>
+				<div class="organic-widgets-section organic_widgets-profile-section<?php if ( $first_last ) { echo esc_attr( $first_last ); } ?>" <?php if ($instance['bg_color']) { ?>style="background-color:<?php echo $instance['bg_color']; ?>;"<?php } ?> <?php if ($group_id) { echo 'data-group-id="' . $group_id . '"'; } ?>>
 
 					<!-- BEGIN .organic-widgets-profile -->
-					<div class="organic-widgets-profile<?php if ( $first_last ) { echo esc_attr( $first_last ); } ?>" <?php if ($group_id) { echo 'data-group-id="' . $group_id . '"'; } ?>>
+					<div class="organic-widgets-profile">
 
-						<!-- BEGIN .organic-widgets-profile-inside -->
-						<div class="organic-widgets-profile-inside">
+						<?php if ( $instance['bg_image_id'] > 0 ) { ?>
+							<div class="organic-widgets-profile-img"><img src="<?php echo $instance['bg_image']; ?>" alt="<?php __( 'Profile Image', ORGANIC_WIDGETS_18N ) ?>" /></div>
+						<?php } ?>
 
-							<?php if ( $instance['bg_image_id'] > 0 ) { ?>
-								<div class="organic-widgets-profile-img"><img src="<?php echo $instance['bg_image']; ?>" alt="<?php __( 'Profile Image', ORGANIC_WIDGETS_18N ) ?>" /></div>
+						<!-- BEGIN .organic-profile-content -->
+						<div class="organic-profile-content">
+
+						<?php if ( ! empty( $title ) ) { ?>
+							<h6 class="organic-widgets-profile-title"><?php echo apply_filters( 'widget_title', $title ); ?></h6>
+						<?php } ?>
+
+						<?php if ( ! empty( $subtitle ) ) { ?>
+							<h3 class="organic-widgets-profile-sub-title"><?php echo $subtitle; ?></h3>
+						<?php } ?>
+
+							<div class="organic-widgets-profile-divider"></div>
+
+						<?php if ( ! empty( $text ) ) { ?>
+							<div class="organic-widgets-profile-excerpt"><?php echo $text; ?></div>
+						<?php } ?>
+
+						<?php if ( ! empty( $instance['personal_url'] ) || ! empty( $instance['twitter_url'] ) || ! empty( $instance['linkedin_url'] ) || ! empty( $instance['facebook_url'] ) || ! empty( $instance['email'] ) ) { ?>
+
+						<ul class="organic-widgets-social-icons">
+
+							<?php if ( ! empty( $instance['personal_url'] ) ) { ?>
+								<li><a href="<?php echo $instance['personal_url']; ?>" target="_blank"><span><?php esc_html_e( 'Personal Link', ORGANIC_WIDGETS_18N ); ?></span></a></li>
 							<?php } ?>
 
-							<!-- BEGIN .organic-profile-content -->
-							<div class="organic-profile-content">
-
-							<?php if ( ! empty( $title ) ) { ?>
-								<h6 class="organic-widgets-profile-title"><?php echo apply_filters( 'widget_title', $title ); ?></h6>
+							<?php if ( ! empty( $instance['twitter_url'] ) ) { ?>
+								<li><a href="<?php echo $instance['twitter_url']; ?>" target="_blank"><span><?php esc_html_e( 'Twitter', ORGANIC_WIDGETS_18N ); ?></span></a></li>
 							<?php } ?>
 
-							<?php if ( ! empty( $subtitle ) ) { ?>
-								<h3 class="organic-widgets-profile-sub-title"><?php echo $subtitle; ?></h3>
+							<?php if ( ! empty( $instance['linkedin_url'] ) ) { ?>
+								<li><a href="<?php echo $instance['linkedin_url']; ?>" target="_blank"><span><?php esc_html_e( 'LinkedIn', ORGANIC_WIDGETS_18N ); ?></span></a></li>
 							<?php } ?>
 
-								<div class="organic-widgets-profile-divider"></div>
-
-							<?php if ( ! empty( $text ) ) { ?>
-								<div class="organic-widgets-profile-excerpt"><?php echo $text; ?></div>
+							<?php if ( ! empty( $instance['facebook_url'] ) ) { ?>
+								<li><a href="<?php echo $instance['facebook_url']; ?>" target="_blank"><span><?php esc_html_e( 'Facebook', ORGANIC_WIDGETS_18N ); ?></span></a></li>
 							<?php } ?>
 
-							<?php if ( ! empty( $instance['personal_url'] ) || ! empty( $instance['twitter_url'] ) || ! empty( $instance['linkedin_url'] ) || ! empty( $instance['facebook_url'] ) || ! empty( $instance['email'] ) ) { ?>
-
-							<ul class="organic-widgets-social-icons">
-
-								<?php if ( ! empty( $instance['personal_url'] ) ) { ?>
-									<li><a href="<?php echo $instance['personal_url']; ?>" target="_blank"><span><?php esc_html_e( 'Personal Link', ORGANIC_WIDGETS_18N ); ?></span></a></li>
-								<?php } ?>
-
-								<?php if ( ! empty( $instance['twitter_url'] ) ) { ?>
-									<li><a href="<?php echo $instance['twitter_url']; ?>" target="_blank"><span><?php esc_html_e( 'Twitter', ORGANIC_WIDGETS_18N ); ?></span></a></li>
-								<?php } ?>
-
-								<?php if ( ! empty( $instance['linkedin_url'] ) ) { ?>
-									<li><a href="<?php echo $instance['linkedin_url']; ?>" target="_blank"><span><?php esc_html_e( 'LinkedIn', ORGANIC_WIDGETS_18N ); ?></span></a></li>
-								<?php } ?>
-
-								<?php if ( ! empty( $instance['facebook_url'] ) ) { ?>
-									<li><a href="<?php echo $instance['facebook_url']; ?>" target="_blank"><span><?php esc_html_e( 'Facebook', ORGANIC_WIDGETS_18N ); ?></span></a></li>
-								<?php } ?>
-
-								<?php if ( ! empty( $instance['email'] ) ) { ?>
-									<li><a href="mailto:<?php echo $instance['email']; ?>" target="_blank"><span><?php esc_html_e( 'Email', ORGANIC_WIDGETS_18N ); ?></span></a></li>
-								<?php } ?>
-
-							</ul>
-
+							<?php if ( ! empty( $instance['email'] ) ) { ?>
+								<li><a href="mailto:<?php echo $instance['email']; ?>" target="_blank"><span><?php esc_html_e( 'Email', ORGANIC_WIDGETS_18N ); ?></span></a></li>
 							<?php } ?>
 
-							<!-- END .organic-profile-content -->
-							</div>
+						</ul>
 
-						<!-- END .organic-widgets-profile-inside -->
+						<?php } ?>
+
+						<!-- END .organic-profile-content -->
 						</div>
 
 					<!-- END .organic-widgets-profile -->
