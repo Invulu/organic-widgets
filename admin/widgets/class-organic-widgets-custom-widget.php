@@ -1187,14 +1187,22 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
 	}
 
 	/**
-	 * Returns true if widget is first in group, false if not
+	 * Returns an array showing if a groupable array is first, last, and what the id of the first element is
 	 *
 	 * @since    1.0.0
 	 */
-	protected function organic_widgets_is_first_groupable_widget( $args = false, $instance = false ) {
+	protected function organic_widgets_groupable_widget( $args = false ) {
 
-		if ( $instance && $args ) {
+		$return_array = array(
+			'first' => true,
+			'last' => true,
+			'group_id' => false,
 
+		);
+
+		if ( $args ) {
+
+			// Get widget info and widget area info
 			$widget_area_id = $args['id'];
 			$widget_name = $args['widget_name'];
 			$widget_id = $args['widget_id'];
@@ -1204,68 +1212,63 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
 			$widget_areas = wp_get_sidebars_widgets();
 			$this_widget_area = $widget_areas[$widget_area_id];
 
+			//Evaluate FIRST
 			// If widget is first in area, return true
-			if ( $this_widget_area[0] == $widget_id ) { return true; }
+			if ( $this_widget_area[0] == $widget_id ) {
+				$return_array['first'] = true;
+			} else {
+				$this_widget_key = array_search( $widget_id, $this_widget_area );
 
-			$this_widget_key = array_search( $widget_id, $this_widget_area );
+				// Get previous widget
+				$prev_widget_id = $this_widget_area[ $this_widget_key - 1 ];
+				$prev_widget_id_base = _get_widget_id_base( $prev_widget_id );
 
-			// Get previous widget
-			$prev_widget_id = $this_widget_area[ $this_widget_key - 1 ];
-			$prev_widget_id_base = _get_widget_id_base( $prev_widget_id );
-
-			// If previous widget is of same type, return false
-			if ( $prev_widget_id_base == $widget_id_base ) {
-				return false;
+				// If previous widget is of same type, return false
+				if ( $prev_widget_id_base == $widget_id_base ) {
+					$return_array['first'] = false;
+				}
 			}
 
-			return true;
-
-		} else {
-
-			return true;
-
-		}
-
-	}
-
-	/**
-	 * Returns true if widget is last in group, false if there are more
-	 *
-	 * @since    1.0.0
-	 */
-	protected function organic_widgets_is_last_groupable_widget( $args = false, $instance = false ) {
-
-		if ( $instance && $args ) {
-
-			$widget_area_id = $args['id'];
-			$widget_name = $args['widget_name'];
-			$widget_id = $args['widget_id'];
-			$widget_id_base = _get_widget_id_base( $widget_id );
-
-			// Get widget before and check to see if it is same type
-			$widget_areas = wp_get_sidebars_widgets();
-			$this_widget_area = $widget_areas[$widget_area_id];
-
+			//Evaluation LAST
 			// If widget is last in area, return true
 			$length = count($this_widget_area);
-			if ( $this_widget_area[ $length -1 ] == $widget_id ) { return true; }
+			if ( $this_widget_area[ $length -1 ] == $widget_id ) {
+				$return_array['last'] = true;
+			} else {
+				$this_widget_key = array_search( $widget_id, $this_widget_area );
 
-			$this_widget_key = array_search( $widget_id, $this_widget_area );
+				// Get next widget
+				$next_widget_id = $this_widget_area[ $this_widget_key + 1 ];
+				$next_widget_id_base = _get_widget_id_base( $next_widget_id );
 
-			// Get next widget
-			$next_widget_id = $this_widget_area[ $this_widget_key + 1 ];
-			$next_widget_id_base = _get_widget_id_base( $next_widget_id );
-
-			// If previous widget is of same type, return false
-			if ( $next_widget_id_base == $widget_id_base ) {
-				return false;
+				// If previous widget is of same type, return false
+				if ( $next_widget_id_base == $widget_id_base ) {
+					$return_array['last'] = false;
+				}
 			}
 
-			return true;
+			//Group ID
+			if ( $return_array['first'] ) {
+				$return_array['group_id'] = $widget_id;
+			} else {
+				$test_widget_id_base = $widget_id_base;
+				$test_widget_key = $this_widget_key;
+				while ( $test_widget_id_base == $widget_id_base ) {
+					// Get previous widget
+					$test_widget_key = $test_widget_key - 1;
+					$test_widget_id = $this_widget_area[ $test_widget_key ];
+					$test_widget_id_base = _get_widget_id_base( $test_widget_id );
+					if ($test_widget_id_base == $widget_id_base) {
+						$return_array['group_id'] = $test_widget_id;
+					}
+				}
+			}
+
+			return $return_array;
 
 		} else {
 
-			return true;
+			return $return_array;
 
 		}
 

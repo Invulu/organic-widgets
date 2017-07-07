@@ -387,23 +387,43 @@
 *	Profile Widget
 ************************************************/
 
+.organic-widgets-profile-section-masonry-buffer {
+  margin: 0 auto -18px;
+  height: auto;
+  width: 100%;
+  max-width: 1240px;
+  position: relative;
+
+}
 .organic-widgets-profile {
   text-align: center;
+  position: relative;
+  max-width: 600px;
+}
+.organic-widgets-profile.organic-widget-masonry-wrapper {
+  max-width: 1200px;
+}
+.organic-widgets-profile-inside {
+  position: relative;
+  width: 100%;;
+  height: auto;
+  padding: 12px;
+  box-sizing: border-box;
 }
 .organic-widgets-profile-img {
   margin: auto;
-  width: auto;
+  width: 100%;
   height: auto;
   display: inline;
 }
 .organic-widgets-profile-img img {
-  max-width: 600px;
+  width: 100%;
   margin: auto;
 }
 .organic-profile-content {
   margin: auto;
   text-align: center;
-  max-width: 600px;
+  max-width: 100%;
 }
 .organic-widgets-profile-title {
   margin-bottom: 6px;
