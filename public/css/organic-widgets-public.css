@@ -73,7 +73,7 @@
   margin: 0;
 }
 .organic-widgets-section .organic-widgets-section {
-  padding: 12px;  
+  padding: 12px;
 }
 .organic-widgets-section::after {
   display: table;
@@ -400,7 +400,7 @@
   margin: 0 auto -18px;
   height: auto;
   width: 100%;
-  max-width: 1240px;
+  max-width: 1264px;
   position: relative;
 }
 .organic-widgets-profile {
