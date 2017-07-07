@@ -217,7 +217,8 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 		<p>
 			<label for="<?php echo $this->get_field_id( 'num_columns' ); ?>"><?php _e('Number of Columns:', ORGANIC_WIDGETS_18N) ?></label>
 			<select id="<?php echo $this->get_field_id('num_columns'); ?>" name="<?php echo $this->get_field_name('num_columns'); ?>" class="widefat" style="width:100%;">
-		    <option <?php selected( $num_columns, '2'); ?> value="2">2</option>
+				<option <?php selected( $num_columns, '1'); ?> value="1">1</option>
+				<option <?php selected( $num_columns, '2'); ?> value="2">2</option>
 		    <option <?php selected( $num_columns, '3'); ?> value="3">3</option>
 		    <option <?php selected( $num_columns, '4'); ?> value="4">4</option>
 			</select>
