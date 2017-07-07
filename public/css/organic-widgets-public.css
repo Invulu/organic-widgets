@@ -767,8 +767,15 @@
 ************************************************/
 
 .organic-widget .customize-partial-edit-shortcut {
-	left: 48px !important;
-	top: 12px !important;
+	left: 48px;
+	top: 12px;
+}
+/*.organic-widget .entry-content {
+  position: relative;
+}*/
+.organic-widget .entry-content .customize-partial-edit-shortcut {
+  left: auto;
+  top: auto;
 }
 .organic-widgets-preview-highlighter {
   position: absolute;
