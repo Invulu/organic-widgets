@@ -773,9 +773,10 @@
 	left: 48px;
 	top: 12px;
 }
-/*.organic-widget .entry-content {
-  position: relative;
-}*/
+.organic-widgets-section-masonry-buffer .customize-partial-edit-shortcut {
+  left: 30px;
+  top: 0px;
+}
 .organic-widget .entry-content .customize-partial-edit-shortcut {
   left: auto;
   top: auto;
