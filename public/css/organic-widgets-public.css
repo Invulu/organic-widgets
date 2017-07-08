@@ -769,6 +769,10 @@
 *	Customizer
 ************************************************/
 
+body.customize-posts-content {
+  padding: 36px;
+  box-sizing: border-box;
+}
 .organic-widget .customize-partial-edit-shortcut {
 	left: 48px;
 	top: 12px;
