@@ -76,19 +76,20 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 			// Video Background Section.
 			if ( $bg_video ) {
 
-				$this->video_bg_script( $bg_video, $this->id );
+				//Prep arguments
+				$video_info = array(
+					'video' => $bg_video,
+					'widget_id' => $this->id
+				);
+				$video_bg_sections = array();
+				array_push($video_bg_sections, $video_info);
 
-				$video_type = $this->get_video_type( $bg_video );
-				if ( 'youtube' == $video_type ) {
+				// Echo video script
+				$this->video_bg_script($video_bg_sections);
 
-					$video_id = $this->youtube_id_from_url( $bg_video );
-				?>
-					<div class="organic-widgets-video-bg-wrapper">
-						<?php if ( 'youtube' == $video_type ) { ?><div id="organic-widgets-player<?php the_id(); ?>"></div><?php } ?>
-					</div>
+				$this->video_bg_html($video_info);
 
-				<?php }
-			} ?>
+			}?>
 
 			<!-- BEGIN .organic-widgets-content -->
 			<div class="organic-widgets-content">

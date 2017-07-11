@@ -72,23 +72,18 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 			// Video Background Section.
 			if ( $bg_video ) {
 
-				$this->video_bg_script( $bg_video, $this->id );
+				//Prep arguments
+				$video_info = array(
+					'video' => $bg_video,
+					'widget_id' => $this->id
+				);
+				$video_bg_sections = array();
+				array_push($video_bg_sections, $video_info);
 
-				$video_type = $this->get_video_type( $bg_video );
-				if ( 'youtube' == $video_type ) {
+				// Echo video script
+				$this->video_bg_script($video_bg_sections);
 
-					$video_id = $this->youtube_id_from_url( $bg_video );
-					if ( $video_id ) { ?>
-					<div class="organic-widgets-video-bg-wrapper">
-						<div class="organic-widgets-video-bg-container">
-							<div class="organic-widgets-video-bg-center">
-								<div id="<?php echo $this->sanitize_js_variable($this->id); ?>" class="organic-widgets-video-bg"></div>
-							</div>
-						</div>
-						<div class="organic-widgets-video-bg-shade"></div>
-					</div>
-					<?php }
-				}
+				$this->video_bg_html($video_info);
 
 			}
 
@@ -104,9 +99,7 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 				'posts_per_page' 		=> 1,
 			) );
 
-			?>
-
-			<?php if ( $page_query->have_posts() ) : while ( $page_query->have_posts() ) : $page_query->the_post(); ?>
+			if ( $page_query->have_posts() ) : while ( $page_query->have_posts() ) : $page_query->the_post(); ?>
 
 				<!-- BEGIN .organic-widgets-content -->
 				<div class="organic-widgets-content">
@@ -125,11 +118,11 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 			<!-- END .organic-widgets-section -->
 			</div>
 
-			<?php endwhile; ?>
-			<?php endif; ?>
-			<?php wp_reset_postdata(); ?>
+			<?php endwhile;
+			endif;
+			wp_reset_postdata();
 
-			<?php echo $args['after_widget'];
+			echo $args['after_widget'];
 
 		} elseif ( ! empty( $instance['title'] ) || ! empty( $instance['text'] ) ) { ?>
 
