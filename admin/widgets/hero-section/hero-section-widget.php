@@ -196,8 +196,6 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'button_url' ); ?>" name="<?php echo $this->get_field_name( 'button_url' ); ?>" value="<?php echo $button_url; ?>" />
 		</p>
 
-		<hr />
-
 		<?php $this->section_background_input_markup( $instance, $this->bg_options );
 
 	}
