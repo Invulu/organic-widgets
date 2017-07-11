@@ -76,4 +76,20 @@ class Organic_Widgets_Admin {
 
 	}
 
+	/**
+	 * Register the JavaScript for the page editor admin area.
+	 *
+	 * @since    1.0.0
+	 */
+	public function enqueue_editor_scripts( $hook_suffix ) {
+		
+		global $post;
+
+		if( 'page' == $post->post_type && ( 'post.php' == $hook_suffix || 'post-new.php' == $hook_suffix ) ) {
+    	wp_enqueue_script( $this->plugin_name . '-editor-script', plugin_dir_url( __FILE__ ) . 'js/organic-widgets-editor-admin.js', array( 'jquery' ), $this->version, false );
+  	}
+
+
+	}
+
 }

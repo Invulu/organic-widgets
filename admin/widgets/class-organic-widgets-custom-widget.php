@@ -252,20 +252,22 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
 
   		// This function creates an <iframe> (and YouTube player)
   		// after the API code downloads.
-  		function onYouTubeIframeAPIReady() {
-  		";
+
+			function onYouTubeIframeAPIReady() {
+				console.log('onYouTubeIframeAPIReady');
+			";
 
   		if ( $video_type == 'youtube' && $video_id ) {
 
-  			echo '
-  				var player'.$clean_widget_id.';
-  				player'.$clean_widget_id." = new YT.Player('".$clean_widget_id."', {
+  			echo "
+					var player;
+					player = new YT.Player('".$clean_widget_id."', {
   					height: '1014',
   					width: '1920',
   					videoId: '".esc_html__( $video_id )."',
   					events: {
-  						'onReady': onPlayerReady".$clean_widget_id.",
-  						'onStateChange': onPlayerStateChange".$clean_widget_id."
+  						'onReady': onPlayerReady(event),
+  						'onStateChange': onPlayerStateChange()
   					},
   					playerVars: {
   						'loop':  '1',
@@ -274,11 +276,10 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
   						'showinfo':  '0',
   						'controls':  '0',
   						'start': '0',
-  						// 'end' : '30',
   						'playlist': '".esc_html__( $video_id )."',
-  						'disablekb': '0',
-  						'iv_load_policy': 3,
-  						'rel': 0
+  						'rel': 0,
+							'enablejsapi': 1 ,
+							'origin': '".get_site_url()."'
   					}
   				});";
   		} elseif ( $video_type == 'vimeo' ) {
@@ -291,7 +292,7 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
 
   			echo "
   			// Mute and start playing video when ready
-        function onPlayerReady".$clean_widget_id."(event) {
+        function onPlayerReady(event) {
           console.log('onPlayerReady');
           console.log(event);
           event.target.mute();
@@ -302,11 +303,12 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
   				event.target.a.style.height = height + 'px';
   			}
   			// Fade out overlay image
-  			function onPlayerStateChange".$clean_widget_id."(event) {
-  				if (event.data == YT.PlayerState.PLAYING) {
+  			function onPlayerStateChange(event) {
+					console.log('onPlayerStateChange');
+					if (event.data == YT.PlayerState.PLAYING) {
   						setTimeout( function(){
-  							var width = jQuery('#".$widget_id."').parent().width();
-  							var height = jQuery('#".$widget_id."').parent().width() * (3/4);
+  							var width = jQuery('#".$widget_id."').width();
+  							var height = jQuery('#".$widget_id."').width() * (3/4);
   							event.target.a.style.width = width + 'px';
   							event.target.a.style.height = height + 'px';
   							jQuery('.organic-widgets-video-bg-wrapper').find('iframe').fadeTo('slow', 1);

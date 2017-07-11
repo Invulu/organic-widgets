@@ -193,6 +193,7 @@ class Organic_Widgets {
 		$plugin_admin = new Organic_Widgets_Admin( $this->get_plugin_name(), $this->get_version() );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
+		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_editor_scripts' );
 
 		$organic_blocks = new Organic_Widgets_Blocks( $this->get_plugin_name(), $this->get_version() );
 		$this->loader->add_action( 'admin_enqueue_scripts', $organic_blocks, 'enqueue_scripts' );
