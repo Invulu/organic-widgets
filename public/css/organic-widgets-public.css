@@ -13,8 +13,10 @@
   padding: 0px;
 }
 .organic-widgets-content {
-	max-width: 1240px;
+  position: relative;
+  max-width: 1240px;
 	margin: 0px auto;
+  z-index: 10;
 }
 .organic-widgets-clear {
   clear: both;
@@ -810,7 +812,10 @@ body.customize-posts-content {
 /************************************************
 *	Video Background
 ************************************************/
+.organic-widgets-video-bg-section {
+  position: relative;
 
+}
 .organic-widgets-video-bg-wrapper {
   position: absolute;
   width: 100%;
@@ -818,23 +823,30 @@ body.customize-posts-content {
   top: 0;
   left: 0;
   overflow: hidden;
+  z-index: 5;
 }
 .organic-widgets-video-bg-container {
-  position: relative;
-  width: auto;
+  position: relative
+  align-items: center;
+  justify-content: center;
+  width: 100%;
   height: auto;
 }
-.organic-widgets-video-bg {
+.organic-widgets-video-bg-center {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   width: 100%;
+  height: auto;
+}
+.organic-widgets-video-bg {
+  position: relative;
+  width: 100%;
   height: 100%;
-  top: 0;
-  left: 0;
+
 }
 .organic-widgets-video-bg-shade {
-  background-color: rgba(0,0,0,.2);
+  background-color: rgba(0,0,0,.3);
   width: 100%;
   height: 100%;
   position: absolute;

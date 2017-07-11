@@ -66,7 +66,7 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 		echo $args['before_widget']; ?>
 
 		<!-- BEGIN .organic-widgets-section -->
-		<div class="organic-widgets-section organic-widgets-subpage-section" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
+		<div class="organic-widgets-section organic-widgets-subpage-section organic-widgets-video-bg-section" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
 
 			<?php
 			// Video Background Section.
@@ -81,8 +81,9 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 					if ( $video_id ) { ?>
 					<div class="organic-widgets-video-bg-wrapper">
 						<div class="organic-widgets-video-bg-container">
-							<div id="<?php echo $this->sanitize_js_variable($this->id); ?>" class="organic-widgets-video-bg"></div>
-
+							<div class="organic-widgets-video-bg-center">
+								<div id="<?php echo $this->sanitize_js_variable($this->id); ?>" class="organic-widgets-video-bg"></div>
+							</div>
 						</div>
 						<div class="organic-widgets-video-bg-shade"></div>
 					</div>
