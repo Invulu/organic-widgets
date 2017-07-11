@@ -87,12 +87,20 @@ class Organic_Widgets_Admin {
 
 		if( 'page' == $post->post_type && ( 'post.php' == $hook_suffix || 'post-new.php' == $hook_suffix ) ) {
 
+			// Register Script
 			wp_register_script( $this->plugin_name . '-editor-script', plugin_dir_url( __FILE__ ) . 'js/organic-widgets-editor-admin.js', array( 'jquery' ), $this->version, false );
-
-			$page_template_slug =  get_page_template_slug( $post->ID );
 
 			// Construct customizer link and localize to script
 			if ( current_user_can( 'customize' ) ) {
+
+				// Set variable if template is custom
+				$page_template_slug =  get_page_template_slug( $post->ID );
+				if ( strpos( $page_template_slug, 'organic-custom-template.php' ) !== false ) {
+					$is_custom_template = true;
+				} else {
+					$is_custom_template = false;
+				}
+
 
 				// Construct Link URL
 				$base_url_string = admin_url( 'customize.php?');
@@ -101,9 +109,12 @@ class Organic_Widgets_Admin {
 				$widget_section = 'sidebar-widgets-' . ORGANIC_WIDGET_PREFIX . 'page-'.$post->ID . '-widget-area';
 				$autofocus_string = '&autofocus[section]=' . $widget_section;
 				$customize_url = $base_url_string . $page_url_string . $autofocus_string;
+				$leaf_icon_url = ORGANIC_WIDGETS_ADMIN_IMG_DIR . 'leaf-icon.png';
 
 				$postEditorVariables = array(
-					'customizeURL' => $customize_url
+					'customizeURL' => $customize_url,
+					'isCustomTemplate' => $is_custom_template,
+					'leafIcon' => $leaf_icon_url
 				);
 
 				wp_localize_script( $this->plugin_name . '-editor-script', 'organicWidgets', $postEditorVariables );

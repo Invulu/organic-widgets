@@ -160,11 +160,23 @@ div.mce_inline_error {
 
 #organic-widgets-post-editor {
   width: 100%;
-  text-align: center;
-  margin: 2em 0;
-  background-color: #aaa;
+  margin: 2em 0 0;
 }
-
 .organic-widgets-post-editor-content {
-  padding: 20px;
+  padding: 36px;
+  text-align: center;
+}
+#organic-widgets-post-editor .organic-button-large {
+  font-size: 1.6em;
+  padding: .5em 1em;
+  height: auto;
+}
+#organic-widgets-post-editor img {
+  height: auto;
+  width: 20px;
+  display: inline-block;
+  position: absolute;
+}
+#organic-widgets-post-editor h2 span {
+  margin-left: 30px;
 }
