@@ -85,15 +85,20 @@
 
 	}
 
+	function editShortcutHoverBorderReady() {
+
+		// WP Customizer
+		if ( typeof wp.customize != "undefined" ) {
+			wp.customize.bind( 'preview-ready', _.defer( function() { editShortcutHoverBorder(); }));
+		}
+
+	}
+
 
 	$( document )
 	.ready( checkBackgroundBrightness )
 	.ready( groupGroupableWidgets )
+	.ready( editShortcutHoverBorderReady )
 	.ajaxComplete( checkBackgroundBrightness );
-
-	// WP Customizer
-	if ( typeof wp != "undefined" ) {
-		wp.customize.bind( 'preview-ready', _.defer( function() { editShortcutHoverBorder(); }));
-	}
 
 })( jQuery );

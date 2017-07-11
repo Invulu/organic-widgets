@@ -215,15 +215,12 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
     $clean_widget_id = $this->sanitize_js_variable( $widget_id );
 
   	// Start outputting javascript to page.
-  	echo "
-  	<script>
+  	echo "<script>
 
   	//determine if devices is small or is iOS, where autoplay isn't enabled
   	if (typeof iOSOrSmall != 'function') {
   		function iOSOrSmall() {
-
   			if ( window.innerWidth < 691 ) { return true; }
-
   			var iDevices = [
   				'iPad Simulator',
   				'iPhone Simulator',
@@ -232,11 +229,9 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
   				'iPhone',
   				'iPod'
   			];
-
   			while (iDevices.length) {
   				if (navigator.platform === iDevices.pop()){ return true; }
   			}
-
   			return false;
   		}
   	}
@@ -245,31 +240,22 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
   	if (!iOSOrSmall()) {
   		// This code loads the IFrame Player API code asynchronously
   		var tag = document.createElement('script');
-
   		tag.src = 'https://www.youtube.com/iframe_api';
   		var firstScriptTag = document.getElementsByTagName('script')[0];
   		firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-  		// This function creates an <iframe> (and YouTube player)
+			// This function creates an <iframe> (and YouTube player)
   		// after the API code downloads.
-
-			function onYouTubeIframeAPIReady() {
-				console.log('onYouTubeIframeAPIReady');
-			";
+			function onYouTubeIframeAPIReady() { ";
 
   		if ( $video_type == 'youtube' && $video_id ) {
 
-  			echo "
-					var player;
+  			echo "var player;
 					player = new YT.Player('".$clean_widget_id."', {
   					height: '1014',
   					width: '1920',
-  					videoId: '".esc_html__( $video_id )."',
-  					events: {
-  						'onReady': onPlayerReady(event),
-  						'onStateChange': onPlayerStateChange()
-  					},
-  					playerVars: {
+  					videoId: '".$video_id."',
+						playerVars: {
   						'loop':  '1',
   						'modestbranding': '1',
   						'autoplay':  '1',
@@ -277,51 +263,44 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
   						'controls':  '0',
   						'start': '0',
   						'playlist': '".esc_html__( $video_id )."',
-  						'rel': 0,
-							'enablejsapi': 1 ,
-							'origin': '".get_site_url()."'
+  						'rel': '0',
+							'enablejsapi': '1' ,
+							'origin': '".get_site_url()."',
+							'iv_load_policy': '3'
+  					},
+						events: {
+  						'onReady': onPlayerReady,
+  						'onStateChange': onPlayerStateChange
   					}
-  				});";
-  		} elseif ( $video_type == 'vimeo' ) {
-  			// Add vimeo video type.
-  		}
-
-  			echo ' } ';
-
-  		if ( $video_type == 'youtube' && $video_id ) {
-
-  			echo "
+  				});
+				}
   			// Mute and start playing video when ready
         function onPlayerReady(event) {
-          console.log('onPlayerReady');
-          console.log(event);
           event.target.mute();
   				event.target.playVideo();
-  				var width = jQuery('#".$widget_id."').parent().width();
-  				var height = jQuery('#".$widget_id."').parent().width() * (3/4);
+  				var width = jQuery('#".$widget_id."').width();
+  				var height = jQuery('#".$widget_id."').width() * (3/4);
   				event.target.a.style.width = width + 'px';
   				event.target.a.style.height = height + 'px';
   			}
   			// Fade out overlay image
   			function onPlayerStateChange(event) {
-					console.log('onPlayerStateChange');
 					if (event.data == YT.PlayerState.PLAYING) {
-  						setTimeout( function(){
-  							var width = jQuery('#".$widget_id."').width();
-  							var height = jQuery('#".$widget_id."').width() * (3/4);
-  							event.target.a.style.width = width + 'px';
-  							event.target.a.style.height = height + 'px';
-  							jQuery('.organic-widgets-video-bg-wrapper').find('iframe').fadeTo('slow', 1);
-  							jQuery('.organic-widgets-video-bg-wrapper').find('video').fadeTo('slow', 1);
-  						}
-  					, 100);
+						setTimeout( function(){
+							var width = jQuery('#".$widget_id."').width();
+							var height = jQuery('#".$widget_id."').width() * (3/4);
+							event.target.a.style.width = width + 'px';
+							event.target.a.style.height = height + 'px';
+							jQuery('.organic-widgets-video-bg-wrapper').find('iframe').fadeTo('slow', 1);
+							jQuery('.organic-widgets-video-bg-wrapper').find('video').fadeTo('slow', 1);
+						}, 100);
   				}
-  			}
-  			";
+  			}";
   		} // Endif.
 
+		echo '}
 
-  			echo '} </script>';
+		</script>';
 
   }
 

@@ -63,6 +63,34 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 		$title = ( isset( $instance['title'] ) ) ? $instance['title'] : false;
 		$text = ( isset( $instance['text'] ) ) ? $instance['text'] : false;
 
+		echo $args['before_widget']; ?>
+
+		<!-- BEGIN .organic-widgets-section -->
+		<div class="organic-widgets-section organic-widgets-subpage-section" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
+
+			<?php
+			// Video Background Section.
+			if ( $bg_video ) {
+
+				$this->video_bg_script( $bg_video, $this->id );
+
+				$video_type = $this->get_video_type( $bg_video );
+				if ( 'youtube' == $video_type ) {
+
+					$video_id = $this->youtube_id_from_url( $bg_video );
+					if ( $video_id ) { ?>
+					<div class="organic-widgets-video-bg-wrapper">
+						<div class="organic-widgets-video-bg-container">
+							<div id="<?php echo $this->sanitize_js_variable($this->id); ?>" class="organic-widgets-video-bg"></div>
+
+						</div>
+						<div class="organic-widgets-video-bg-shade"></div>
+					</div>
+					<?php }
+				}
+
+			}
+
 		if ( ! empty( $instance['page_id'] ) ) {
 
 			// Get Page Info
@@ -75,31 +103,9 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 				'posts_per_page' 		=> 1,
 			) );
 
-			echo $args['before_widget'];
-
 			?>
 
 			<?php if ( $page_query->have_posts() ) : while ( $page_query->have_posts() ) : $page_query->the_post(); ?>
-
-			<!-- BEGIN .organic-widgets-section -->
-			<div class="organic-widgets-section organic-widgets-subpage-section" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
-
-				<?php // Video Background Section.
-				if ( $bg_video ) {
-
-					$this->video_bg_script( $bg_video, $this->id );
-
-					$video_type = $this->get_video_type( $bg_video );
-					if ( 'youtube' == $video_type ) {
-
-						$video_id = $this->youtube_id_from_url( $bg_video );
-					?>
-						<div class="organic-widgets-video-bg-wrapper">
-							<?php if ( 'youtube' == $video_type ) { ?><div id="organic-widgets-player<?php the_id(); ?>" class="organic-widgets-video-bg"></div><?php } ?>
-						</div>
-
-					<?php }
-				} ?>
 
 				<!-- BEGIN .organic-widgets-content -->
 				<div class="organic-widgets-content">
@@ -124,32 +130,7 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 
 			<?php echo $args['after_widget'];
 
-		} elseif ( ! empty( $instance['title'] ) || ! empty( $instance['text'] ) ) {
-
-			echo $args['before_widget'];
-
-			?>
-
-			<!-- BEGIN .organic-widgets-section -->
-			<div class="organic-widgets-section organic-widgets-subpage-section" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
-
-				<?php
-				// Video Background Section.
-				if ( $bg_video ) {
-
-					$this->video_bg_script( $bg_video, $this->id );
-
-					$video_type = $this->get_video_type( $bg_video );
-					if ( 'youtube' == $video_type ) {
-
-						$video_id = $this->youtube_id_from_url( $bg_video );
-					?>
-						<div class="organic-widgets-video-bg-wrapper">
-							<?php if ( 'youtube' == $video_type ) { ?><div id="<?php echo $this->sanitize_js_variable( $this->id ); ?>" class="organic-widgets-video-bg"></div><?php } ?>
-						</div>
-
-					<?php }
-				} ?>
+		} elseif ( ! empty( $instance['title'] ) || ! empty( $instance['text'] ) ) { ?>
 
 				<!-- BEGIN .organic-widgets-content -->
 				<div class="organic-widgets-content">

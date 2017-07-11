@@ -85,7 +85,7 @@ class Organic_Widgets_Admin {
 
 		global $post;
 
-		if( 'page' == $post->post_type && ( 'post.php' == $hook_suffix || 'post-new.php' == $hook_suffix ) ) {
+		if( ( 'post.php' == $hook_suffix || 'post-new.php' == $hook_suffix ) && ( is_object( $post ) && 'page' == $post->post_type ) ) {
 
 			// Register Script
 			wp_register_script( $this->plugin_name . '-editor-script', plugin_dir_url( __FILE__ ) . 'js/organic-widgets-editor-admin.js', array( 'jquery' ), $this->version, false );
