@@ -47,7 +47,7 @@ if ( locate_template( 'organic-custom-template.php' ) != '' ) {
 
 				<?php endwhile; endif; ?>
 
-			<!-- END .sixteen columns -->
+			<!-- END .organic-ocw-container -->
 			</div>
 
 	<!-- END .post class -->
