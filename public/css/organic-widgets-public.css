@@ -280,9 +280,6 @@
 .organic-widgets-content-slideshow-section {
   padding: 0;
 }
-.organic-widgets-content-slideshow-slide-content {
-	padding: 24px 48px;
-}
 .organic-widgets-content-slideshow-section .slides li {
   min-height: 480px;
 }
@@ -290,7 +287,8 @@
   display: inline-block;
   background: #ffffff;
   max-width: 520px;
-  margin: 48px 0px;
+  margin: 72px 0px;
+  padding: 36px;
 }
 
 /************************************************
@@ -449,6 +447,7 @@
   color: #ffffff;
 }
 .organic-widget .ocw-bg-dark p, .organic-widgets-section.ocw-bg-dark p,
+.organic-widget .ocw-bg-dark p.wp-caption-text, .organic-widgets-section.ocw-bg-dark p.wp-caption-text,
 .organic-widget .ocw-bg-dark a, .organic-widgets-section.ocw-bg-dark a,
 .organic-widget .ocw-bg-dark span, .organic-widgets-section.ocw-bg-dark span,
 .organic-widget .ocw-bg-dark div, .organic-widgets-section.ocw-bg-dark div,

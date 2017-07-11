@@ -272,8 +272,6 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 
 			</p>
 
-			<hr />
-
 			<?php $this->section_background_input_markup( $instance, $this->bg_options ); ?>
 
 		</div>
