@@ -150,3 +150,18 @@
 div.mce_inline_error {
   display: none !important;
 }
+
+/************************************************
+*	Custom Post Editor
+************************************************/
+
+#organic-widgets-post-editor {
+  width: 100%;
+  text-align: center;
+  margin: 2em 0;
+  background-color: #aaa;
+}
+
+.organic-widgets-post-editor-content {
+  padding: 20px;
+}

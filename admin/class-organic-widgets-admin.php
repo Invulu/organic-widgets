@@ -82,12 +82,37 @@ class Organic_Widgets_Admin {
 	 * @since    1.0.0
 	 */
 	public function enqueue_editor_scripts( $hook_suffix ) {
-		
+
 		global $post;
 
 		if( 'page' == $post->post_type && ( 'post.php' == $hook_suffix || 'post-new.php' == $hook_suffix ) ) {
-    	wp_enqueue_script( $this->plugin_name . '-editor-script', plugin_dir_url( __FILE__ ) . 'js/organic-widgets-editor-admin.js', array( 'jquery' ), $this->version, false );
-  	}
+
+			wp_register_script( $this->plugin_name . '-editor-script', plugin_dir_url( __FILE__ ) . 'js/organic-widgets-editor-admin.js', array( 'jquery' ), $this->version, false );
+
+			$page_template_slug =  get_page_template_slug( $post->ID );
+
+			// Construct customizer link and localize to script
+			if ( current_user_can( 'customize' ) ) {
+
+				// Construct Link URL
+				$base_url_string = admin_url( 'customize.php?');
+				$page_url = get_permalink( $post->ID );
+				$page_url_string = 'url=' . urlencode($page_url);
+				$widget_section = 'sidebar-widgets-' . ORGANIC_WIDGET_PREFIX . 'page-'.$post->ID . '-widget-area';
+				$autofocus_string = '&autofocus[section]=' . $widget_section;
+				$customize_url = $base_url_string . $page_url_string . $autofocus_string;
+
+				$postEditorVariables = array(
+					'customizeURL' => $customize_url
+				);
+
+				wp_localize_script( $this->plugin_name . '-editor-script', 'organicWidgets', $postEditorVariables );
+
+			}
+
+			wp_enqueue_script( $this->plugin_name . '-editor-script' );
+
+		}
 
 
 	}
