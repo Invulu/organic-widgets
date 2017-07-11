@@ -231,8 +231,9 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 		<input id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" class="title" type="hidden" value="<?php echo $title; ?>">
 		<input id="<?php echo $this->get_field_id( 'text' ); ?>" name="<?php echo $this->get_field_name( 'text' ); ?>" class="text organic-widgets-wysiwyg-anchor" type="hidden" value="<?php echo $text; ?>">
 
-		<hr/>
-		<br>
+		<hr />
+		<br />
+
 		<p><b><?php _e('OR Use Content From Page:', ORGANIC_WIDGETS_18N) ?></b></p>
 
 		<p>
@@ -245,8 +246,6 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 				'option_none_value' => '0',
 			) ); ?>
 		</p>
-
-		<hr />
 
 		<?php $this->section_background_input_markup( $instance, $this->bg_options );
 
