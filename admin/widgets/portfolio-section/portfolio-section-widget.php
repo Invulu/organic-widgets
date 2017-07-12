@@ -61,8 +61,8 @@ class Organic_Widgets_Portfolio_Section_Widget extends Organic_Widgets_Custom_Wi
 		$title = ( isset( $instance['title'] ) ) ? $instance['title'] : false;
 		$text = ( isset( $instance['text'] ) ) ? $instance['text'] : false;
 		$category = ( isset( $instance['category'] ) ) ? $instance['category'] : 0;
-		$num_columns = ( isset( $instance['num_columns'] ) ) ? $instance['num_columns'] : 4;
-		$max_posts = ( isset( $instance['max_posts'] ) ) ? $instance['max_posts'] : 4;
+		$num_columns = ( isset( $instance['num_columns'] ) ) ? $instance['num_columns'] : 3;
+		$max_posts = ( isset( $instance['max_posts'] ) ) ? $instance['max_posts'] : 12;
 
 		echo $args['before_widget'];
 		?>
@@ -180,7 +180,7 @@ class Organic_Widgets_Portfolio_Section_Widget extends Organic_Widgets_Custom_Wi
 		} else { $num_columns = 3; }
 		if ( isset( $instance['max_posts'] ) ) {
 			$max_posts = $instance['max_posts'];
-		} else { $max_posts = 3; }
+		} else { $max_posts = 12; }
 		if ( isset( $instance['bg_color'] ) ) {
 			$bg_color = $instance['bg_color'];
 		} else { $bg_color = false; }
