@@ -316,7 +316,7 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
 
     <?php if ( array_key_exists( 'video', $bg_options ) && $bg_options['video'] ) { ?>
       <p>
-  			<label for="<?php echo $this->get_field_id( 'bg_video' ); ?>"><?php _e('Background Video:', ORGANIC_WIDGETS_18N) ?></label>
+  			<label for="<?php echo $this->get_field_id( 'bg_video' ); ?>"><?php _e('YouTube Background Video:', ORGANIC_WIDGETS_18N) ?></label>
   			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'bg_video' ); ?>" name="<?php echo $this->get_field_name( 'bg_video' ); ?>" value="<?php echo esc_url($bg_video); ?>" />
   		</p>
     <?php }
