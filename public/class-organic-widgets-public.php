@@ -199,4 +199,22 @@ class Organic_Widgets_Public {
 
   }
 
+	/**
+	 * Add body class for pages using custom template
+	 *
+	 * @since    	1.0.0
+	 *
+	 */
+	 function add_body_class( $classes ) {
+
+		 global $post;
+		 $page_template_slug = get_page_template_slug( $post->ID );
+		 if ( strpos( $page_template_slug, 'organic-custom-template.php' ) !== false ) {
+			 $classes[] = 'organic-widgets-custom-template';
+		 }
+     return $classes;
+
+	 }
+
+
 }
