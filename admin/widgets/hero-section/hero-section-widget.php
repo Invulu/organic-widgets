@@ -79,14 +79,16 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 				//Prep arguments
 				$video_info = array(
 					'video' => $bg_video,
-					'widget_id' => $this->id
+					'video_type' => $this->get_video_type( $bg_video ),
+					'video_id' => $this->youtube_id_from_url( $bg_video ),
+					'widget_id' => $this->id,
+					'clean_widget_id' => $this->sanitize_js_variable( $this->id )
 				);
-				$video_bg_sections = array();
-				array_push($video_bg_sections, $video_info);
 
-				// Echo video script
-				$this->video_bg_script($video_bg_sections);
+				// Add video bg to global var
+				$this->add_video_bg( $video_info );
 
+				// Output video HTML
 				$this->video_bg_html($video_info);
 
 			}?>
