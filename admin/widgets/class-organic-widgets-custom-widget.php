@@ -51,12 +51,15 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
    *
    * @since    	1.0.0
    * @param     string    $url      The video url to check
-   * @return    boolean   					True if $video_url is a valid hex code, else False
+   * @return    boolean   					True if $video_url is an accepted url, false if not
    */
   protected function check_video_url( $video_url ) {
 
-    error_log('check video url here');
-    return true;
+    if ( 'youtube' == $this->get_video_type( $video_url ) ) {
+			return true;
+		} else {
+			return false;
+		}
 
   }
 
@@ -69,11 +72,11 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
    */
   protected function get_video_type( $video_url ) {
 
-    if ( strpos( $video_url, 'youtube' ) > 0 ) {
-
+    if ( strpos( $video_url, 'youtube' ) !== -1 ) {
+			error_log('youtube');
   		return 'youtube';
 
-  	} elseif ( strpos( $video_url, 'vimeo' ) > 0 ) {
+  	} elseif ( strpos( $video_url, 'vimeo' ) !== -1  ) {
 
   		return 'vimeo';
 
