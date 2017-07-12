@@ -60,8 +60,6 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 		$bg_image = ( isset( $instance['bg_image'] ) && '' != $instance['bg_image'] ) ? $instance['bg_image'] : false;
 		$bg_color = ( isset( $instance['bg_color'] ) && '' != $instance['bg_color'] ) ? $instance['bg_color'] : false;
 		$bg_video  = ( isset( $instance['bg_video'] ) && $instance['bg_video'] ) ? $instance['bg_video'] : false;
-		$title = ( isset( $instance['title'] ) ) ? $instance['title'] : false;
-		$text = ( isset( $instance['text'] ) ) ? $instance['text'] : false;
 
 		echo $args['before_widget']; ?>
 
@@ -131,11 +129,11 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 				<!-- BEGIN .organic-widgets-content -->
 				<div class="organic-widgets-content">
 
-					<?php if ( ! empty( $title ) ) { ?>
-						<h2 class="organic-widgets-title"><?php echo esc_html( $title ); ?></h2>
+					<?php if ( ! empty( $instance['title'] ) ) { ?>
+						<h2 class="organic-widgets-title"><?php echo apply_filters( 'widget_title', $instance['title'] ); ?></h2>
 					<?php } ?>
-					<?php if ( ! empty( $text ) ) { ?>
-						<div class="organic-widgets-text"><?php echo $text ?></div>
+					<?php if ( ! empty( $instance['text']) ) { ?>
+						<div class="organic-widgets-text"><?php echo apply_filters( 'the_content', $instance['text'] ); ?></div>
 					<?php } ?>
 
 				<!-- END .organic-widgets-content -->

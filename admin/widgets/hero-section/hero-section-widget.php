@@ -60,8 +60,6 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 		$bg_image = ( isset( $instance['bg_image'] ) && '' != $instance['bg_image'] ) ? $instance['bg_image'] : false;
 		$bg_color = ( isset( $instance['bg_color'] ) && '' != $instance['bg_color'] ) ? $instance['bg_color'] : false;
 		$bg_video  = ( isset( $instance['bg_video'] ) && $instance['bg_video'] ) ? $instance['bg_video'] : false;
-		$title = ( isset( $instance['title'] ) ) ? $instance['title'] : false;
-		$text = ( isset( $instance['text'] ) ) ? $instance['text'] : false;
 		$button_text = ( isset( $instance['button_text'] ) && '' != $instance['button_text'] ) ? $instance['button_text'] : false;
 		$button_url = ( isset( $instance['button_url'] ) && '' != $instance['button_url'] ) ? $instance['button_url'] : false;
 
@@ -96,16 +94,17 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 			<!-- BEGIN .organic-widgets-content -->
 			<div class="organic-widgets-content">
 
-				<?php if ( ! empty( $title ) || ! empty( $text ) || ! empty( $button_url ) ) { ?>
+				<?php if ( ! empty( $instance['title'] ) || ! empty( $instance['text'] ) || ! empty( $button_url ) ) { ?>
 
 				<!-- BEGIN .organic-widgets-hero-information -->
 				<div class="organic-widgets-hero-information">
 
-				<?php if ( ! empty( $title ) ) { ?>
-					<h2 class="organic-widgets-title"><?php echo esc_html( $title ); ?></h2>
+				<?php if ( ! empty( $instance['title'] ) ) { ?>
+					<h2 class="organic-widgets-title"><?php echo apply_filters( 'widget_title', $instance['title'] ); ?></h2>
 				<?php } ?>
-				<?php if ( ! empty( $text ) ) { ?>
-					<div class="organic-widgets-text"><?php echo $text ?></div>
+
+				<?php if ( ! empty( $instance['text'] ) ) { ?>
+					<div class="organic-widgets-text"><?php echo apply_filters( 'the_content', $instance['text'] ); ?></div>
 				<?php } ?>
 
 				<?php if ( ! empty( $button_url ) ) { ?>

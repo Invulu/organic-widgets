@@ -60,8 +60,6 @@ class Organic_Widgets_Testimonial_Section_Widget extends Organic_Widgets_Custom_
 		$bg_image_id = isset( $instance['bg_image_id'] ) ? $instance['bg_image_id'] : false;
 		$bg_image = ( isset( $instance['bg_image'] ) && '' != $instance['bg_image'] ) ? $instance['bg_image'] : false;
 		$bg_color = ( isset( $instance['bg_color'] ) && '' != $instance['bg_color'] ) ? $instance['bg_color'] : false;
-		$title = ( isset( $instance['title'] ) ) ? $instance['title'] : false;
-		$text = ( isset( $instance['text'] ) ) ? $instance['text'] : false;
 		$category = ( isset( $instance['category'] ) ) ? $instance['category'] : 0;
 		$max_posts = ( isset( $instance['max_posts'] ) ) ? $instance['max_posts'] : 10;
 
@@ -103,12 +101,12 @@ class Organic_Widgets_Testimonial_Section_Widget extends Organic_Widgets_Custom_
 				<!-- BEGIN .organic-widgets-content -->
 				<div class="organic-widgets-content">
 
-					<?php if ( ! empty( $title ) ) { ?>
-						<h2 class="organic-widgets-title"><?php echo $title; ?></h2>
+					<?php if ( ! empty( $instance['title'] ) ) { ?>
+						<h2 class="organic-widgets-title"><?php echo apply_filters( 'widget_title', $instance['title'] ); ?></h2>
 					<?php } ?>
 
 					<?php if ( ! empty( $instance['text'] ) ) { ?>
-						<div class="organic-widgets-text"><?php echo $instance['text'] ?></div>
+						<div class="organic-widgets-text"><?php echo apply_filters( 'the_content', $instance['text'] ); ?></div>
 					<?php } ?>
 
 					<!-- BEGIN .flexslider -->

@@ -120,8 +120,6 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 			$bg_color = isset( $instance['bg_color'] ) ? $instance['bg_color'] : false;
 			$bg_image_id = isset( $instance['bg_image_id'] ) ? $instance['bg_image_id'] : false;
 			$bg_image = ( isset( $instance['bg_image'] ) && '' != $instance['bg_image'] ) ? $instance['bg_image'] : false;
-			$title = isset( $instance['title'] ) ? $instance['title'] : '';
-			$text = isset( $instance['text'] ) ? $instance['text'] : '';
 			$link_url = $instance['link_url'];
 			$link_title = $instance['link_title'];
 
@@ -135,11 +133,11 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 
 					<div class="holder">
 						<div class="information">
-							<?php if ( ! empty( $title ) ) { ?>
-								<h3><?php echo esc_html( $title ); ?></h3>
+							<?php if ( ! empty( $instance['title'] ) ) { ?>
+								<h3><?php echo apply_filters( 'widget_title', $instance['title'] ); ?></h3>
 							<?php } ?>
-							<?php if ( ! empty( $text ) ) { ?>
-								<div class="excerpt"><?php echo $text ?></div>
+							<?php if ( ! empty( $instance['text'] ) ) { ?>
+								<div class="excerpt"><?php echo apply_filters( 'the_content', $instance['text'] ); ?></div>
 							<?php } ?>
 							<?php if ( ! empty( $link_url ) ) { ?>
 								<a class="button" href="<?php echo esc_url( $link_url ); ?>">

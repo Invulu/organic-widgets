@@ -59,8 +59,6 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 		$bg_image_id = isset( $instance['bg_image_id'] ) ? $instance['bg_image_id'] : false;
 		$bg_image = ( isset( $instance['bg_image'] ) && '' != $instance['bg_image'] ) ? $instance['bg_image'] : false;
 		$bg_color = ( isset( $instance['bg_color'] ) && '' != $instance['bg_color'] ) ? $instance['bg_color'] : false;
-		$title = ( isset( $instance['title'] ) ) ? $instance['title'] : false;
-		$text = ( isset( $instance['text'] ) ) ? $instance['text'] : false;
 		$category = ( isset( $instance['category'] ) ) ? $instance['category'] : 0;
 		$num_columns = ( isset( $instance['num_columns'] ) ) ? $instance['num_columns'] : 0;
 		$max_posts = ( isset( $instance['max_posts'] ) ) ? $instance['max_posts'] : 3;
@@ -79,7 +77,7 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 			<?php } ?>
 
 			<?php if ( ! empty( $instance['text'] ) ) { ?>
-				<div class="organic-widgets-text"><?php echo $instance['text'] ?></div>
+				<div class="organic-widgets-text"><?php echo apply_filters( 'the_content', $instance['text'] ); ?></div>
 			<?php } ?>
 
 			<?php $wp_query = new WP_Query( array(
@@ -126,7 +124,7 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 										<?php echo get_the_modified_date(); ?>
 									</p>
 									<p class="organic-widgets-post-author">
-										<?php esc_html_e( 'By ', 'organic-startup' ); ?><?php esc_url( the_author_posts_link() ); ?>
+										<?php esc_html_e( 'By ', ORGANIC_WIDGETS_18N ); ?><?php esc_url( the_author_posts_link() ); ?>
 									</p>
 								<!-- END .organic-widgets-post-meta -->
 								</div>

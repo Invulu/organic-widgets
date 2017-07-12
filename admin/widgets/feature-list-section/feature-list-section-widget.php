@@ -64,7 +64,6 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 		$text = ( isset( $instance['text'] ) && '' != $instance['text'] ) ? $instance['text'] : false;
 		$button_text = ( isset( $instance['button_text'] ) && '' != $instance['button_text'] ) ? $instance['button_text'] : false;
 		$button_url = ( isset( $instance['button_url'] ) && '' != $instance['button_url'] ) ? $instance['button_url'] : false;
-		$title = ( isset( $instance['title'] ) && '' != $instance['title'] ) ? $instance['title'] : '';
 		$num_columns = ( isset( $instance['num_columns'] ) ) ? $instance['num_columns'] : 4;
 
 		$features_array = ( isset( $instance['features_array'] ) ) ? json_decode( $instance['features_array'], true) :  array();
@@ -76,12 +75,12 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 			<!-- BEGIN .organic-widgets-content -->
 			<div class="organic-widgets-content">
 
-			<?php if ( ! empty( $title ) ) { ?>
-				<h2 class="organic-widgets-title"><?php echo esc_html( $title ); ?></h2>
+			<?php if ( ! empty( $instance['title'] ) ) { ?>
+				<h2 class="organic-widgets-title"><?php echo apply_filters( 'widget_title', $instance['title'] ); ?></h2>
 			<?php } ?>
 
-			<?php if ( ! empty( $text ) ) { ?>
-				<div class="organic-widgets-text"><?php echo $text ?></div>
+			<?php if ( ! empty( $instance['text'] ) ) { ?>
+				<div class="organic-widgets-text"><?php echo apply_filters( 'the_content', $instance['text'] ); ?></div>
 			<?php } ?>
 
 				<div class="organic-widgets-feature-list-items-wrapper organic-widgets-flex-row">

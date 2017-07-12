@@ -58,8 +58,6 @@ class Organic_Widgets_Portfolio_Section_Widget extends Organic_Widgets_Custom_Wi
 		$bg_image_id = isset( $instance['bg_image_id'] ) ? $instance['bg_image_id'] : false;
 		$bg_image = ( isset( $instance['bg_image'] ) && '' != $instance['bg_image'] ) ? $instance['bg_image'] : false;
 		$bg_color = ( isset( $instance['bg_color'] ) && '' != $instance['bg_color'] ) ? $instance['bg_color'] : false;
-		$title = ( isset( $instance['title'] ) ) ? $instance['title'] : false;
-		$text = ( isset( $instance['text'] ) ) ? $instance['text'] : false;
 		$category = ( isset( $instance['category'] ) ) ? $instance['category'] : 0;
 		$num_columns = ( isset( $instance['num_columns'] ) ) ? $instance['num_columns'] : 3;
 		$max_posts = ( isset( $instance['max_posts'] ) ) ? $instance['max_posts'] : 12;
@@ -77,7 +75,7 @@ class Organic_Widgets_Portfolio_Section_Widget extends Organic_Widgets_Custom_Wi
 			<?php } ?>
 
 			<?php if ( ! empty( $instance['text'] ) ) { ?>
-				<div class="organic-widgets-text"><?php echo $instance['text'] ?></div>
+				<div class="organic-widgets-text"><?php echo apply_filters( 'the_content', $instance['text'] ); ?></div>
 			<?php } ?>
 
 			<?php
