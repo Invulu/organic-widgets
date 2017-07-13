@@ -89,34 +89,40 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 
 			}?>
 
-			<!-- BEGIN .organic-widgets-content -->
-			<div class="organic-widgets-content organic-widgets-aligner <?php if ( ! empty( $instance['alignment'] ) ) { echo 'organic-widgets-aligner-'.esc_attr( $instance['alignment'] ); } else { echo 'organic-widgets-aligner-middle-center'; } ?>">
+			<!-- BEGIN .organic-widgets-aligner -->
+			<div class="organic-widgets-aligner <?php if ( ! empty( $instance['alignment'] ) ) { echo 'organic-widgets-aligner-'.esc_attr( $instance['alignment'] ); } else { echo 'organic-widgets-aligner-middle-center'; } ?>">
 
-				<?php if ( ! empty( $instance['title'] ) || ! empty( $instance['text'] ) || ! empty( $instance['button_url'] ) ) { ?>
+				<!-- BEGIN .organic-widgets-content -->
+				<div class="organic-widgets-content">
 
-					<!-- BEGIN .organic-widgets-hero-information -->
-					<div class="organic-widgets-hero-information">
+					<?php if ( ! empty( $instance['title'] ) || ! empty( $instance['text'] ) || ! empty( $instance['button_url'] ) ) { ?>
 
-					<?php if ( ! empty( $instance['title'] ) ) { ?>
-						<h2 class="organic-widgets-title"><?php echo apply_filters( 'widget_title', $instance['title'] ); ?></h2>
+						<!-- BEGIN .organic-widgets-hero-information -->
+						<div class="organic-widgets-hero-information">
+
+						<?php if ( ! empty( $instance['title'] ) ) { ?>
+							<h2 class="organic-widgets-title"><?php echo apply_filters( 'widget_title', $instance['title'] ); ?></h2>
+						<?php } ?>
+
+						<?php if ( ! empty( $instance['text'] ) ) { ?>
+							<div class="organic-widgets-text"><?php echo apply_filters( 'the_content', $instance['text'] ); ?></div>
+						<?php } ?>
+
+						<?php if ( ! empty( $instance['button_url'] ) ) { ?>
+							<div class="organic-widgets-button-holder">
+								<a class="organic-widgets-button button" href="<?php echo esc_url( $instance['button_url'] );?>"><?php if ( ! empty( $instance['button_text'] ) ) { echo esc_html( $instance['button_text'] ); } else { _e( 'See More', ORGANIC_WIDGETS_18N); } ?></a>
+							</div>
+						<?php } ?>
+
+					<!-- END .organic-widgets-hero-information -->
+					</div>
+
 					<?php } ?>
 
-					<?php if ( ! empty( $instance['text'] ) ) { ?>
-						<div class="organic-widgets-text"><?php echo apply_filters( 'the_content', $instance['text'] ); ?></div>
-					<?php } ?>
-
-					<?php if ( ! empty( $instance['button_url'] ) ) { ?>
-						<div class="organic-widgets-button-holder">
-							<a class="organic-widgets-button button" href="<?php echo esc_url( $instance['button_url'] );?>"><?php if ( ! empty( $instance['button_text'] ) ) { echo esc_html( $instance['button_text'] ); } else { _e( 'See More', ORGANIC_WIDGETS_18N); } ?></a>
-						</div>
-					<?php } ?>
-
-				<!-- END .organic-widgets-hero-information -->
+				<!-- END .organic-widgets-content -->
 				</div>
 
-				<?php } ?>
-
-			<!-- END .organic-widgets-content -->
+			<!-- END .organic-widgets-aligner -->
 			</div>
 
 		<!-- END .organic-widgets-section -->
