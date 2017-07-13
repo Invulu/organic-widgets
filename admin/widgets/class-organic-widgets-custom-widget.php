@@ -342,22 +342,22 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
 		<div class="organic-widgets-content-alignment">
 			<table class="organic-widgets-content-alignment-table">
 				<tr>
-					<td class="organic-widgets-top-left" data-alignment="top-left" data-selected="<?php if ( 'top-left' == $instance['alignment'] ) { echo 'true'; } ?>"><i class="fa fa-angle-left organic-widget-fa-rotate-45" aria-hidden="true"></i></td>
-					<td class="organic-widgets-top-center" data-alignment="top-center" data-selected="<?php if ( 'top-center' == $instance['alignment'] ) { echo 'true'; } ?>"><i class="fa fa-angle-up" aria-hidden="true"></i></td>
-					<td class="organic-widgets-top-right" data-alignment="top-right" data-selected="<?php if ( 'top-right' == $instance['alignment'] ) { echo 'true'; } ?>"><i class="fa fa-angle-up organic-widget-fa-rotate-45" aria-hidden="true"></i></td>
+					<td class="organic-widgets-top-left" data-alignment="top-left" data-selected="<?php if ( ! empty( $instance['alignment'] ) && 'top-left' == $instance['alignment'] ) { echo 'true'; } ?>"><i class="fa fa-angle-left organic-widget-fa-rotate-45" aria-hidden="true"></i></td>
+					<td class="organic-widgets-top-center" data-alignment="top-center" data-selected="<?php if ( ! empty( $instance['alignment'] ) && 'top-center' == $instance['alignment'] ) { echo 'true'; } ?>"><i class="fa fa-angle-up" aria-hidden="true"></i></td>
+					<td class="organic-widgets-top-right" data-alignment="top-right" data-selected="<?php if ( ! empty( $instance['alignment'] ) && 'top-right' == $instance['alignment'] ) { echo 'true'; } ?>"><i class="fa fa-angle-up organic-widget-fa-rotate-45" aria-hidden="true"></i></td>
 				</tr>
 				<tr>
-					<td class="organic-widgets-middle-left" data-alignment="middle-left" data-selected="<?php if ( 'middle-left' == $instance['alignment'] ) { echo 'true'; } ?>"><i class="fa fa-angle-left" aria-hidden="true"></i></td>
+					<td class="organic-widgets-middle-left" data-alignment="middle-left" data-selected="<?php if ( ! empty( $instance['alignment'] ) && 'middle-left' == $instance['alignment'] ) { echo 'true'; } ?>"><i class="fa fa-angle-left" aria-hidden="true"></i></td>
 					<td class="organic-widgets-middle-center" data-alignment="middle-center" data-selected="<?php if ( empty( $instance['alignment'] ) || 'middle-center' == $instance['alignment'] ) { echo 'true'; } ?>"><i class="fa fa-circle-thin" aria-hidden="true"></i></td>
-					<td class="organic-widgets-middle-right" data-alignment="middle-right" data-selected="<?php if ( 'middle-right' == $instance['alignment'] ) { echo 'true'; } ?>"><i class="fa fa-angle-right" aria-hidden="true"></i></td>
+					<td class="organic-widgets-middle-right" data-alignment="middle-right" data-selected="<?php if ( ! empty( $instance['alignment'] ) && 'middle-right' == $instance['alignment'] ) { echo 'true'; } ?>"><i class="fa fa-angle-right" aria-hidden="true"></i></td>
 				</tr>
 				<tr>
-					<td class="organic-widgets-bottom-left" data-alignment="bottom-left" data-selected="<?php if ( 'bottom-left' == $instance['alignment'] ) { echo 'true'; } ?>"><i class="fa fa-angle-down organic-widget-fa-rotate-45" aria-hidden="true"></i></td>
-					<td class="organic-widgets-bottom-center" data-alignment="bottom-center" data-selected="<?php if ( 'bottom-center' == $instance['alignment'] ) { echo 'true'; } ?>"><i class="fa fa-angle-down" aria-hidden="true"></i></td>
-					<td class="organic-widgets-bottom-right" data-alignment="bottom-right" data-selected="<?php if ( 'bottom-right' == $instance['alignment'] ) { echo 'true'; } ?>"><i class="fa fa-angle-right organic-widget-fa-rotate-45" aria-hidden="true"></i></td>
+					<td class="organic-widgets-bottom-left" data-alignment="bottom-left" data-selected="<?php if ( ! empty( $instance['alignment'] ) && 'bottom-left' == $instance['alignment'] ) { echo 'true'; } ?>"><i class="fa fa-angle-down organic-widget-fa-rotate-45" aria-hidden="true"></i></td>
+					<td class="organic-widgets-bottom-center" data-alignment="bottom-center" data-selected="<?php if ( ! empty( $instance['alignment'] ) && 'bottom-center' == $instance['alignment'] ) { echo 'true'; } ?>"><i class="fa fa-angle-down" aria-hidden="true"></i></td>
+					<td class="organic-widgets-bottom-right" data-alignment="bottom-right" data-selected="<?php if ( ! empty( $instance['alignment'] ) && 'bottom-right' == $instance['alignment'] ) { echo 'true'; } ?>"><i class="fa fa-angle-right organic-widget-fa-rotate-45" aria-hidden="true"></i></td>
 				</tr>
 			</table>
-			<input class="widefat" type="hidden" id="<?php echo $this->get_field_id( 'alignment' ); ?>" name="<?php echo $this->get_field_name( 'alignment' ); ?>" value="<?php echo $instance['alignment']; ?>" />
+			<input class="widefat" type="hidden" id="<?php echo $this->get_field_id( 'alignment' ); ?>" name="<?php echo $this->get_field_name( 'alignment' ); ?>" value="<?php if ( ! empty( $instance['alignment'] ) ) echo $instance['alignment']; ?>" />
 		</div>
 
 		<?php
