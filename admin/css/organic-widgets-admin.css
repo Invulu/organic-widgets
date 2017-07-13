@@ -211,6 +211,7 @@ div.mce_inline_error {
   text-align: center;
   color: rgb(153,153,153);
   width: 33.33%;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 .organic-widgets-content-alignment-table td.organic-widgets-top-left {
   border-top-left-radius: 3px;

@@ -90,26 +90,26 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 			}?>
 
 			<!-- BEGIN .organic-widgets-content -->
-			<div class="organic-widgets-content">
+			<div class="organic-widgets-content organic-widgets-aligner <?php if ( ! empty( $instance['alignment'] ) ) { echo 'organic-widgets-aligner-'.esc_attr( $instance['alignment'] ); } else { echo 'organic-widgets-aligner-middle-center'; } ?>">
 
 				<?php if ( ! empty( $instance['title'] ) || ! empty( $instance['text'] ) || ! empty( $instance['button_url'] ) ) { ?>
 
-				<!-- BEGIN .organic-widgets-hero-information -->
-				<div class="organic-widgets-hero-information">
+					<!-- BEGIN .organic-widgets-hero-information -->
+					<div class="organic-widgets-hero-information">
 
-				<?php if ( ! empty( $instance['title'] ) ) { ?>
-					<h2 class="organic-widgets-title"><?php echo apply_filters( 'widget_title', $instance['title'] ); ?></h2>
-				<?php } ?>
+					<?php if ( ! empty( $instance['title'] ) ) { ?>
+						<h2 class="organic-widgets-title"><?php echo apply_filters( 'widget_title', $instance['title'] ); ?></h2>
+					<?php } ?>
 
-				<?php if ( ! empty( $instance['text'] ) ) { ?>
-					<div class="organic-widgets-text"><?php echo apply_filters( 'the_content', $instance['text'] ); ?></div>
-				<?php } ?>
+					<?php if ( ! empty( $instance['text'] ) ) { ?>
+						<div class="organic-widgets-text"><?php echo apply_filters( 'the_content', $instance['text'] ); ?></div>
+					<?php } ?>
 
-				<?php if ( ! empty( $instance['button_url'] ) ) { ?>
-					<div class="organic-widgets-button-holder">
-						<a class="organic-widgets-button button" href="<?php echo esc_url( $instance['button_url'] );?>"><?php if ( ! empty( $instance['button_text'] ) ) { echo esc_html( $instance['button_text'] ); } else { _e( 'See More', ORGANIC_WIDGETS_18N); } ?></a>
-					</div>
-				<?php } ?>
+					<?php if ( ! empty( $instance['button_url'] ) ) { ?>
+						<div class="organic-widgets-button-holder">
+							<a class="organic-widgets-button button" href="<?php echo esc_url( $instance['button_url'] );?>"><?php if ( ! empty( $instance['button_text'] ) ) { echo esc_html( $instance['button_text'] ); } else { _e( 'See More', ORGANIC_WIDGETS_18N); } ?></a>
+						</div>
+					<?php } ?>
 
 				<!-- END .organic-widgets-hero-information -->
 				</div>
@@ -225,6 +225,8 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 			$instance['bg_image_id'] = strip_tags( $new_instance['bg_image_id'] );
 		if ( isset( $new_instance['bg_image'] ) )
 			$instance['bg_image'] = strip_tags( $new_instance['bg_image'] );
+		if ( isset( $new_instance['alignment'] ) )
+			$instance['alignment'] = strip_tags( $new_instance['alignment'] );
 		if ( isset( $new_instance['bg_video'] ) && $this->check_video_url( $new_instance['bg_video'] ) ) {
 			$instance['bg_video'] = strip_tags( $new_instance['bg_video'] );
 		} else {
@@ -266,6 +268,9 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 		wp_enqueue_editor();
 		wp_enqueue_script( 'organic-widgets-hero-widgets', plugin_dir_url( __FILE__ ) . 'js/hero-widgets.js', array( 'jquery' ) );
 		wp_add_inline_script( 'organic-widgets-hero-widgets', 'wp.organicHeroWidgets.init();', 'after' );
+
+		// Content Aligner
+		wp_enqueue_script( 'organic-widgets-module-content-aligner', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-content-aligner.js', array( 'jquery' ) );
 
 		wp_enqueue_media();
 		wp_enqueue_script( 'organic-widgets-hero-widget-js', plugin_dir_url( __FILE__ ) . 'js/hero-widget.js', array( 'jquery', 'media-upload', 'media-views' ) );
