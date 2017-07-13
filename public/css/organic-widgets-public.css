@@ -175,6 +175,10 @@
 *	Blog Posts Section Widget
 ************************************************/
 
+.organic-widgets-blog-posts-section .organic-widgets-post-meta {
+  float: left;
+  margin: 8px 18px 8px 0px;
+}
 .organic-widgets-blog-posts-section .organic-widgets-title,
 .organic-widgets-blog-posts-section .organic-widgets-text {
   text-align: center;

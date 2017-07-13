@@ -106,7 +106,7 @@ class Organic_Widgets_Content_Slideshow_Section_Widget extends Organic_Widgets_C
 								<div class="organic-widgets-content">
 
 									<!-- BEGIN .organic-widgets-content-slideshow-slide-content -->
-									<div class="organic-widgets-content-slideshow-slide-content">
+									<div class="organic-widgets-content-slideshow-slide-content organic-widgets-card">
 
 										<h3><a href="<?php echo get_the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h3>
 
@@ -122,11 +122,11 @@ class Organic_Widgets_Content_Slideshow_Section_Widget extends Organic_Widgets_C
 										</div>
 
 										<!-- BEGIN .excerpt -->
-										<div class="excerpt">
+										<div class="organic-widgets-excerpt">
 
 											<?php the_excerpt(); ?>
 
-										<!-- END .excerpt -->
+										<!-- END .organic-widgets-excerpt -->
 										</div>
 
 									<!-- END .organic-widgets-content-slideshow-slide-content -->
