@@ -48,6 +48,11 @@
 			var formItem = $(this).parent().parent('.organic-widgets-feature-list-item-form-item');
 			organicWidgetsFeatureUpdateMainArray(this);
 		});
+		// Listen for changes on inputs
+		$('.organic-widgets-feature-list-link-url-input').on('change', function(){
+			var formItem = $(this).parent().parent('.organic-widgets-feature-list-item-form-item');
+			organicWidgetsFeatureUpdateMainArray(this);
+		});
 		$('.organic-widgets-feature-list-title-input').on('change', function(){
 			var formItem = $(this).parent().parent('.organic-widgets-feature-list-item-form-item');
 			organicWidgetsFeatureUpdateMainArray(this);
@@ -111,6 +116,7 @@
 		newItem.find('.organic-widgets-feature-list-select').attr('data-feature-id', newID);
 		newItem.find('.organic-widgets-feature-list-icon-preview').html('');
 		newItem.find('.organic-widgets-feature-list-title-input').val('');
+		newItem.find('.organic-widgets-feature-list-link-url-input').val('');
 		newItem.find('.organic-widgets-feature-list-text-input').html('');
 		newItem.find('.organic-widgets-feature-list-text-input').val('');
 
@@ -232,6 +238,7 @@
 		allFormItems.each(function(key,el){
 			var icon = $(el).find('.organic-widgets-feature-list-select').attr('data-val');
 			var title = $(el).find('.organic-widgets-feature-list-title-input').val();
+			var link_url = $(el).find('.organic-widgets-feature-list-link-url-input').val();
 			var text = $(el).find('.organic-widgets-feature-list-text-input').val();
 			var order = orderNumber;
 			var theID = $(el).data('feature-id');
@@ -242,6 +249,7 @@
 					'id': theID,
 					'title': title,
 					'text': text,
+					'link_url': link_url,
 					'order': order
 				}
 			}
@@ -254,6 +262,7 @@
 		mainInput.trigger('change');
 		mainInput.val(JSON.stringify(thisItemData));
 
+		console.log(JSON.stringify(thisItemData));
 	}
 
 	// Binding main function

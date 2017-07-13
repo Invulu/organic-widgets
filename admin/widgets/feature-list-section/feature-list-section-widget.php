@@ -101,8 +101,14 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 								</div>
 
 								<div class="organic-widgets-feature-list-item-text">
-									<h6><?php if ( array_key_exists( 'title', $feature ) ) { echo $feature['title']; } ?></h6>
-									<p><?php if ( array_key_exists( 'text', $feature ) ) { echo $feature['text']; }?></p>
+									<h6>
+										<?php if ( array_key_exists( 'link_url', $feature ) ) { echo '<a href="'.esc_url($feature['link_url']).'">'; } ?>
+											<?php if ( array_key_exists( 'title', $feature ) ) { echo esc_html( $feature['title'] ); } ?>
+										<?php if ( array_key_exists( 'link_url', $feature ) ) { echo '</a>'; } ?>
+									</h6>
+									<p>
+										<?php if ( array_key_exists( 'text', $feature ) ) { echo esc_html( $feature['text'] ); }?>
+									</p>
 								</div>
 
 							</div>
@@ -352,6 +358,10 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 					<p>
 						<label><?php _e( 'Feature Title:', ORGANIC_WIDGETS_18N ) ?></label>
 						<input class="widefat organic-widgets-feature-list-title-input" type="text" value="<?php if ( $feature && array_key_exists( 'title', $feature ) ) echo esc_html($feature['title']); ?>" />
+					</p>
+					<p>
+						<label><?php _e( 'Feature Link URL:', ORGANIC_WIDGETS_18N ) ?></label>
+						<input class="widefat organic-widgets-feature-list-link-url-input" type="text" value="<?php if ( $feature && array_key_exists( 'link_url', $feature ) ) echo esc_url($feature['link_url']); ?>" />
 					</p>
 					<p>
 						<label><?php _e( 'Feature text:', ORGANIC_WIDGETS_18N ) ?></label>

@@ -73,7 +73,7 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
   protected function get_video_type( $video_url ) {
 
     if ( strpos( $video_url, 'youtube' ) !== -1 ) {
-			error_log('youtube');
+			
   		return 'youtube';
 
   	} elseif ( strpos( $video_url, 'vimeo' ) !== -1  ) {
