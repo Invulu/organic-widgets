@@ -60,8 +60,6 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 		$bg_image = ( isset( $instance['bg_image'] ) && '' != $instance['bg_image'] ) ? $instance['bg_image'] : false;
 		$bg_color = ( isset( $instance['bg_color'] ) && '' != $instance['bg_color'] ) ? $instance['bg_color'] : false;
 		$bg_video  = ( isset( $instance['bg_video'] ) && $instance['bg_video'] ) ? $instance['bg_video'] : false;
-		$button_text = ( isset( $instance['button_text'] ) && '' != $instance['button_text'] ) ? $instance['button_text'] : false;
-		$button_url = ( isset( $instance['button_url'] ) && '' != $instance['button_url'] ) ? $instance['button_url'] : false;
 
 		echo $args['before_widget'];
 
@@ -94,7 +92,7 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 			<!-- BEGIN .organic-widgets-content -->
 			<div class="organic-widgets-content">
 
-				<?php if ( ! empty( $instance['title'] ) || ! empty( $instance['text'] ) || ! empty( $button_url ) ) { ?>
+				<?php if ( ! empty( $instance['title'] ) || ! empty( $instance['text'] ) || ! empty( $instance['button_url'] ) ) { ?>
 
 				<!-- BEGIN .organic-widgets-hero-information -->
 				<div class="organic-widgets-hero-information">
@@ -107,9 +105,9 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 					<div class="organic-widgets-text"><?php echo apply_filters( 'the_content', $instance['text'] ); ?></div>
 				<?php } ?>
 
-				<?php if ( ! empty( $button_url ) ) { ?>
+				<?php if ( ! empty( $instance['button_url'] ) ) { ?>
 					<div class="organic-widgets-button-holder">
-						<a class="organic-widgets-button button" href="<?php echo esc_url( $button_url );?>"><?php if ( ! empty( $button_text ) ) { echo esc_html( $button_text ); } else { _e( 'See More', ORGANIC_WIDGETS_18N); } ?></a>
+						<a class="organic-widgets-button button" href="<?php echo esc_url( $instance['button_url'] );?>"><?php if ( ! empty( $instance['button_text'] ) ) { echo esc_html( $instance['button_text'] ); } else { _e( 'See More', ORGANIC_WIDGETS_18N); } ?></a>
 					</div>
 				<?php } ?>
 
@@ -165,38 +163,20 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 			$bg_color = $instance['bg_color'];
 		} else { $bg_color = false; }
 
-		if ( isset( $instance['bg_color'] ) ) {
-			$bg_color = $instance['bg_color'];
-		} else { $bg_color = false; }
-
-		if ( isset( $instance[ 'title' ] ) ) {
-			$title = $instance[ 'title' ];
-		} else { $title = ''; }
-
-		if ( isset( $instance[ 'text' ] ) ) {
-			$text = $instance[ 'text' ];
-		} else { $text = ''; }
-
-		if ( isset( $instance[ 'button_text' ] ) ) {
-			$button_text = $instance[ 'button_text' ];
-		} else { $button_text = false; }
-
-		if ( isset( $instance[ 'button_url' ] ) ) {
-			$button_url = $instance[ 'button_url' ];
-		} else { $button_url = false; }
-
 		?>
 
-		<input id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" class="title" type="hidden" value="<?php echo $title; ?>">
-		<input id="<?php echo $this->get_field_id( 'text' ); ?>" name="<?php echo $this->get_field_name( 'text' ); ?>" class="text organic-widgets-wysiwyg-anchor" type="hidden" value="<?php echo $text; ?>">
+		<input id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" class="title" type="hidden" value="<?php echo $instance['title']; ?>">
+		<input id="<?php echo $this->get_field_id( 'text' ); ?>" name="<?php echo $this->get_field_name( 'text' ); ?>" class="text organic-widgets-wysiwyg-anchor" type="hidden" value="<?php echo $instance['text']; ?>">
 		<p>
 			<label for="<?php echo $this->get_field_id( 'button_text' ); ?>"><?php _e('Button Text:', ORGANIC_WIDGETS_18N); ?></label>
-			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'button_text' ); ?>" name="<?php echo $this->get_field_name( 'button_text' ); ?>" value="<?php echo $button_text; ?>" />
+			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'button_text' ); ?>" name="<?php echo $this->get_field_name( 'button_text' ); ?>" value="<?php echo $instance['button_text']; ?>" />
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'button_url' ); ?>"><?php _e('Button URL', ORGANIC_WIDGETS_18N); ?></label>
-			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'button_url' ); ?>" name="<?php echo $this->get_field_name( 'button_url' ); ?>" value="<?php echo $button_url; ?>" />
+			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'button_url' ); ?>" name="<?php echo $this->get_field_name( 'button_url' ); ?>" value="<?php echo $instance['button_url']; ?>" />
 		</p>
+
+		<?php $this->content_aligner_input_markup( $instance ); ?>
 
 		<?php $this->section_background_input_markup( $instance, $this->bg_options );
 

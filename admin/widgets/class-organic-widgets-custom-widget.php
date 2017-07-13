@@ -73,7 +73,7 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
   protected function get_video_type( $video_url ) {
 
     if ( strpos( $video_url, 'youtube' ) !== -1 ) {
-			
+
   		return 'youtube';
 
   	} elseif ( strpos( $video_url, 'vimeo' ) !== -1  ) {
@@ -282,6 +282,10 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
 
   }
 
+	/**
+	 * Render the section background inputs
+	 *
+	 */
   protected function section_background_input_markup( $instance, $bg_options ) {
 
     $bg_color = array_key_exists( 'bg_color', $instance ) && $instance['bg_color'] ? $instance['bg_color'] : false;
@@ -325,6 +329,39 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
     <?php }
 
   }
+
+	/**
+	 * Render the content aligner input
+	 *
+	 * @param array $instance
+	 */
+	protected function content_aligner_input_markup( $instance ) {
+
+		?>
+		<label for="<?php echo $this->get_field_id( 'alignment' ); ?>"><?php _e('Content Alignment', ORGANIC_WIDGETS_18N); ?></label>
+		<div class="organic-widgets-content-alignment">
+			<table class="organic-widgets-content-alignment-table">
+				<tr>
+					<td class="organic-widgets-top-left" data-selected="<?php if ( 'top-left' == $instance['alignment'] ) { echo 'true'; } ?>"><i class="fa fa-angle-left organic-widget-fa-rotate-45" aria-hidden="true"></i></td>
+					<td class="organic-widgets-top-center" data-selected="<?php if ( 'top-center' == $instance['alignment'] ) { echo 'true'; } ?>"><i class="fa fa-angle-up" aria-hidden="true"></i></td>
+					<td class="organic-widgets-top-right" data-selected="<?php if ( 'top-right' == $instance['alignment'] ) { echo 'true'; } ?>"><i class="fa fa-angle-up organic-widget-fa-rotate-45" aria-hidden="true"></i></td>
+				</tr>
+				<tr>
+					<td class="organic-widgets-middle-left" data-selected="<?php if ( 'middle-left' == $instance['alignment'] ) { echo 'true'; } ?>"><i class="fa fa-angle-left" aria-hidden="true"></i></td>
+					<td class="organic-widgets-middle-center" data-selected="<?php if ( empty( $instance['alignment'] ) || 'middle-center' == $instance['alignment'] ) { echo 'true'; } ?>"><i class="fa fa-circle-thin" aria-hidden="true"></i></td>
+					<td class="organic-widgets-middle-right" data-selected="<?php if ( 'middle-right' == $instance['alignment'] ) { echo 'true'; } ?>"><i class="fa fa-angle-right" aria-hidden="true"></i></td>
+				</tr>
+				<tr>
+					<td class="organic-widgets-bottom-left" data-selected="<?php if ( 'bottom-left' == $instance['alignment'] ) { echo 'true'; } ?>"><i class="fa fa-angle-down organic-widget-fa-rotate-45" aria-hidden="true"></i></td>
+					<td class="organic-widgets-bottom-center" data-selected="<?php if ( 'bottom-center' == $instance['alignment'] ) { echo 'true'; } ?>"><i class="fa fa-angle-down" aria-hidden="true"></i></td>
+					<td class="organic-widgets-bottom-right" data-selected="<?php if ( 'bottom-right' == $instance['alignment'] ) { echo 'true'; } ?>"><i class="fa fa-angle-right organic-widget-fa-rotate-45" aria-hidden="true"></i></td>
+				</tr>
+			</table>
+		</div>
+		<input class="widefat" type="hidden" id="<?php echo $this->get_field_id( 'alignment' ); ?>" name="<?php echo $this->get_field_name( 'alignment' ); ?>" value="<?php echo $instance['alignment']; ?>" />
+		<?php
+
+	}
 
   /**
 	 * Render the image html output.
