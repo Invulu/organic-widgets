@@ -359,7 +359,6 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
 			</table>
 			<input class="widefat" type="hidden" id="<?php echo $this->get_field_id( 'alignment' ); ?>" name="<?php echo $this->get_field_name( 'alignment' ); ?>" value="<?php if ( ! empty( $instance['alignment'] ) ) echo $instance['alignment']; ?>" />
 		</div>
-
 		<?php
 
 	}
