@@ -102,37 +102,43 @@ class Organic_Widgets_Content_Slideshow_Section_Widget extends Organic_Widgets_C
 
 							<li <?php post_class(); ?> id="post-<?php the_ID(); ?>" <?php if ( has_post_thumbnail() ) { echo 'style="background-image:url(' . $thumb[0] . ')"'; } ?>>
 
-								<!-- BEGIN .organic-widgets-content -->
-								<div class="organic-widgets-content">
+								<!-- BEGIN .organic-widgets-aligner -->
+								<div class="organic-widgets-aligner <?php if ( ! empty( $instance['alignment'] ) ) { echo 'organic-widgets-aligner-'.esc_attr( $instance['alignment'] ); } else { echo 'organic-widgets-aligner-middle-center'; } ?>">
 
-									<!-- BEGIN .organic-widgets-content-slideshow-slide-content -->
-									<div class="organic-widgets-content-slideshow-slide-content organic-widgets-card">
+									<!-- BEGIN .organic-widgets-content -->
+									<div class="organic-widgets-content">
 
-										<h3><a href="<?php echo get_the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h3>
+										<!-- BEGIN .organic-widgets-content-slideshow-slide-content -->
+										<div class="organic-widgets-content-slideshow-slide-content organic-widgets-card">
 
-										<!-- BEGIN .organic-widgets-post-meta -->
-										<div class="organic-widgets-post-meta">
-											<p class="organic-widgets-post-date">
-												<?php echo get_the_modified_date(); ?>
-											</p>
-											<p class="organic-widgets-post-author">
-												<?php esc_html_e( 'By ', ORGANIC_WIDGETS_18N ); ?><?php esc_url( the_author_posts_link() ); ?>
-											</p>
-										<!-- END .organic-widgets-post-meta -->
+											<h3><a href="<?php echo get_the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h3>
+
+											<!-- BEGIN .organic-widgets-post-meta -->
+											<div class="organic-widgets-post-meta">
+												<p class="organic-widgets-post-date">
+													<?php echo get_the_modified_date(); ?>
+												</p>
+												<p class="organic-widgets-post-author">
+													<?php esc_html_e( 'By ', ORGANIC_WIDGETS_18N ); ?><?php esc_url( the_author_posts_link() ); ?>
+												</p>
+											<!-- END .organic-widgets-post-meta -->
+											</div>
+
+											<!-- BEGIN .excerpt -->
+											<div class="organic-widgets-excerpt">
+
+												<?php the_excerpt(); ?>
+
+											<!-- END .organic-widgets-excerpt -->
+											</div>
+
+										<!-- END .organic-widgets-content-slideshow-slide-content -->
 										</div>
 
-										<!-- BEGIN .excerpt -->
-										<div class="organic-widgets-excerpt">
-
-											<?php the_excerpt(); ?>
-
-										<!-- END .organic-widgets-excerpt -->
-										</div>
-
-									<!-- END .organic-widgets-content-slideshow-slide-content -->
+									<!-- END .organic-widgets-content -->
 									</div>
 
-								<!-- END .organic-widgets-content -->
+								<!-- END .organic-widgets-aligner -->
 								</div>
 
 							</li>
@@ -196,6 +202,9 @@ class Organic_Widgets_Content_Slideshow_Section_Widget extends Organic_Widgets_C
 				'name' => $this->get_field_name( 'category' )
 			)); ?>
 		</p>
+
+		<?php $this->content_aligner_input_markup( $instance ); ?>
+
 		<p>
 			<label for="<?php echo $this->get_field_id( 'max_posts' ); ?>"><?php _e('Max Number of Posts:', ORGANIC_WIDGETS_18N) ?></label>
 			<input type="number" min="1" max="10" value="<?php echo $max_posts; ?>" id="<?php echo $this->get_field_id('max_posts'); ?>" name="<?php echo $this->get_field_name('max_posts'); ?>" class="widefat" style="width:100%;"/>
@@ -232,6 +241,8 @@ class Organic_Widgets_Content_Slideshow_Section_Widget extends Organic_Widgets_C
 			$instance['category'] = strip_tags( $new_instance['category'] );
 		if ( isset( $new_instance['max_posts'] ) )
 			$instance['max_posts'] = strip_tags( $new_instance['max_posts'] );
+		if ( isset( $new_instance['alignment'] ) )
+			$instance['alignment'] = strip_tags( $new_instance['alignment'] );
 
 		return $instance;
 	}
@@ -244,6 +255,9 @@ class Organic_Widgets_Content_Slideshow_Section_Widget extends Organic_Widgets_C
 		wp_enqueue_media();
 		wp_enqueue_script( 'content-slideshow-section-widget-js', plugin_dir_url( __FILE__ ) . 'js/content-slideshow-section-widget.js', array( 'jquery', 'media-upload', 'media-views' ) );
 		wp_enqueue_style( 'organic-widgets-content-slideshow-section-widget-css', plugin_dir_url( __FILE__ ) . 'css/content-slideshow-section-widget.css' );
+
+		// Content Aligner
+		wp_enqueue_script( 'organic-widgets-module-content-aligner', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-content-aligner.js', array( 'jquery' ) );
 
 		wp_enqueue_style( 'wp-color-picker' );
 		wp_enqueue_script( 'wp-color-picker' );

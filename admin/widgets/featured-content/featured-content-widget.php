@@ -128,30 +128,36 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 			<!-- BEGIN .organic-widgets-section -->
 			<div class="organic-widgets-section organic-widgets-featured-content-section<?php if ( $first_last ) { echo esc_attr( $first_last ); } ?>" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?> <?php if ($group_id) { echo 'data-group-id="' . $group_id . '"'; } ?>>
 
-				<!-- BEGIN .organic-widgets-content -->
-				<div class="organic-widgets-content">
+				<!-- BEGIN .organic-widgets-aligner -->
+				<div class="organic-widgets-aligner <?php if ( ! empty( $instance['alignment'] ) ) { echo 'organic-widgets-aligner-'.esc_attr( $instance['alignment'] ); } else { echo 'organic-widgets-aligner-middle-center'; } ?>">
 
-					<div class="holder">
-						<div class="information">
-							<?php if ( ! empty( $instance['title'] ) ) { ?>
-								<h3><?php echo apply_filters( 'widget_title', $instance['title'] ); ?></h3>
-							<?php } ?>
-							<?php if ( ! empty( $instance['text'] ) ) { ?>
-								<div class="excerpt"><?php echo apply_filters( 'the_content', $instance['text'] ); ?></div>
-							<?php } ?>
-							<?php if ( ! empty( $link_url ) ) { ?>
-								<a class="button" href="<?php echo esc_url( $link_url ); ?>">
-									<?php if ( ! empty( $link_title ) ) { ?>
-										<?php echo $link_title ?>
-									<?php } else { ?>
-										<?php esc_html_e( 'Read More', ORGANIC_WIDGETS_18N ); ?>
-									<?php } ?>
-								</a>
-							<?php } ?>
+					<!-- BEGIN .organic-widgets-content -->
+					<div class="organic-widgets-content">
+
+						<div class="holder">
+							<div class="information">
+								<?php if ( ! empty( $instance['title'] ) ) { ?>
+									<h3><?php echo apply_filters( 'widget_title', $instance['title'] ); ?></h3>
+								<?php } ?>
+								<?php if ( ! empty( $instance['text'] ) ) { ?>
+									<div class="excerpt"><?php echo apply_filters( 'the_content', $instance['text'] ); ?></div>
+								<?php } ?>
+								<?php if ( ! empty( $link_url ) ) { ?>
+									<a class="button" href="<?php echo esc_url( $link_url ); ?>">
+										<?php if ( ! empty( $link_title ) ) { ?>
+											<?php echo $link_title ?>
+										<?php } else { ?>
+											<?php esc_html_e( 'Read More', ORGANIC_WIDGETS_18N ); ?>
+										<?php } ?>
+									</a>
+								<?php } ?>
+							</div>
 						</div>
+
+					<!-- END .organic-widgets-content -->
 					</div>
 
-				<!-- END .organic-widgets-content -->
+				<!-- END .organic-widgets-aligner -->
 				</div>
 
 			<!-- END .organic-widgets-section -->
@@ -219,6 +225,8 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 		</p>
 
 		<br/>
+
+		<?php $this->content_aligner_input_markup( $instance ); ?>
 
 		<h3><?php _e('Or Choose Existing Page:', ORGANIC_WIDGETS_18N) ?></h3>
 
@@ -291,6 +299,8 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 		} else {
 			$instance['text'] = wp_kses_post( $new_instance['text'] );
 		}
+		if ( isset( $new_instance['alignment'] ) )
+			$instance['alignment'] = strip_tags( $new_instance['alignment'] );
 		$instance['link_url'] = strip_tags( $new_instance['link_url'] );
 		$instance['link_title'] = strip_tags( $new_instance['link_title'] );
 
@@ -320,6 +330,9 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 		wp_enqueue_editor();
 		wp_enqueue_script( 'organic-featured-content-widgets', plugin_dir_url( __FILE__ ) . 'js/featured-content-widgets.js', array( 'jquery' ) );
 		wp_add_inline_script( 'organic-featured-content-widgets', 'wp.organicFeaturedContentWidgets.init();', 'after' );
+
+		// Content Aligner
+		wp_enqueue_script( 'organic-widgets-module-content-aligner', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-content-aligner.js', array( 'jquery' ) );
 
 		wp_enqueue_media();
 		wp_enqueue_script( 'organic-widgets-featured-content-widget-js', plugin_dir_url( __FILE__ ) . 'js/featured-content-widget.js', array( 'jquery', 'media-upload', 'media-views' ) );
