@@ -104,13 +104,7 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 				<!-- BEGIN .organic-widgets-content -->
 				<div class="organic-widgets-content">
 
-					<!-- BEGIN .entry-content -->
-					<div class="entry-content">
-
 					<?php the_content( esc_html__( 'Read More', ORGANIC_WIDGETS_18N ) ); ?>
-
-					<!-- END .entry-content -->
-					</div>
 
 				<!-- END .organic-widgets-content -->
 				</div>
