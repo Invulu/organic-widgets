@@ -363,6 +363,67 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
 
 	}
 
+	/**
+	 * Markup for Repeatable Form Items
+	 *
+	 * @param array $repeatable_array an array of the repeatable form items.
+	 * @param string $form_item_title the display text for the form item.
+	 */
+	protected function repeatable_form_item_input_markup( $repeatable_array, $form_item_title ) {
+		?>
+		<p>
+			<label for="<?php echo $this->get_field_id( 'repeatable_array' ); ?>"><h4><?php _e( $form_item_title, ORGANIC_WIDGETS_18N ) ?></h4></label>
+
+			<?php //Loop through each item and echo form section
+			$form_keys = array();
+			$form_orders = array();
+			if ( is_array( $repeatable_array ) ) {
+				usort( $repeatable_array, array( $this, 'sort_by_order' ) );
+				foreach ( $repeatable_array as $key => $repeatable ) {
+
+					if ( isset( $repeatable['order'] ) ) {
+						$order = $repeatable['order'];
+					} else {
+						$order = $key;
+					}
+
+					// Echo Form Item
+					$this->echo_repeatable_form_item( $key, $order, $repeatable );
+
+					// Add Key to Array
+					array_push( $form_keys, $key );
+					array_push( $form_orders, $order );
+
+				}
+			}
+
+			// Get Next ID
+			if ( count($form_keys) > 0 ) {
+				$key = max( $form_keys ) + 1;
+			} else {
+				$key = 1;
+			}
+
+			// Get Next Order
+			if ( count($form_orders) > 0 ) {
+				$order = max( $form_orders ) + 1;
+			} else {
+				$order = 1;
+			}
+
+			// Echo Form Item
+			$this->echo_repeatable_form_item( $key, $order ); ?>
+
+			<div class="organic-widgets-repeatable-add-item">
+				<i class="fa fa-plus"></i>
+			</div>
+
+			<input type="hidden" class="organic-widgets-repeatable-hidden-input" id="<?php echo $this->get_field_id('repeatable_array'); ?>" name="<?php echo $this->get_field_name('repeatable_array'); ?>" value='<?php if ( count($repeatable_array) > 0 ){ echo json_encode($repeatable_array); }?>' />
+
+		</p><?php
+
+	}
+
   /**
 	 * Render the image html output.
 	 *

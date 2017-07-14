@@ -66,7 +66,7 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 		$button_url = ( isset( $instance['button_url'] ) && '' != $instance['button_url'] ) ? $instance['button_url'] : false;
 		$num_columns = ( isset( $instance['num_columns'] ) ) ? $instance['num_columns'] : 4;
 
-		$features_array = ( isset( $instance['features_array'] ) ) ? json_decode( $instance['features_array'], true) :  array();
+		$repeatable_array = ( isset( $instance['repeatable_array'] ) ) ? json_decode( $instance['repeatable_array'], true) :  array();
 
 		echo $args['before_widget']; ?>
 
@@ -85,10 +85,10 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 
 				<div class="organic-widgets-feature-list-items-wrapper organic-widgets-flex-row">
 
-				<?php if ( is_array( $features_array ) && count($features_array) ) {
+				<?php if ( is_array( $repeatable_array ) && count($repeatable_array) ) {
 					$incrementer = 0;
-					usort( $features_array, array( $this, 'sort_by_order' ) );
-					foreach ( $features_array as $key => $feature ) {
+					usort( $repeatable_array, array( $this, 'sort_by_order' ) );
+					foreach ( $repeatable_array as $key => $repeatable ) {
 						$incrementer++;
 						?>
 
@@ -97,17 +97,17 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 							<div class="organic-widgets-information">
 
 								<div class="organic-widgets-feature-list-item-icon">
-									<i class="fa <?php echo esc_attr( $feature['icon'] ); ?>"></i>
+									<i class="fa <?php echo esc_attr( $repeatable['icon'] ); ?>"></i>
 								</div>
 
 								<div class="organic-widgets-feature-list-item-text">
 									<h6>
-										<?php if ( array_key_exists( 'link_url', $feature ) ) { echo '<a href="'.esc_url($feature['link_url']).'">'; } ?>
-											<?php if ( array_key_exists( 'title', $feature ) ) { echo esc_html( $feature['title'] ); } ?>
-										<?php if ( array_key_exists( 'link_url', $feature ) ) { echo '</a>'; } ?>
+										<?php if ( array_key_exists( 'link_url', $repeatable ) ) { echo '<a href="'.esc_url($repeatable['link_url']).'">'; } ?>
+											<?php if ( array_key_exists( 'title', $repeatable ) ) { echo esc_html( $repeatable['title'] ); } ?>
+										<?php if ( array_key_exists( 'link_url', $repeatable ) ) { echo '</a>'; } ?>
 									</h6>
 									<p>
-										<?php if ( array_key_exists( 'text', $feature ) ) { echo esc_html( $feature['text'] ); }?>
+										<?php if ( array_key_exists( 'text', $repeatable ) ) { echo esc_html( $repeatable['text'] ); }?>
 									</p>
 								</div>
 
@@ -190,10 +190,10 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 			$num_columns = $instance['num_columns'];
 		} else { $num_columns = 4; }
 
-		if ( isset( $instance['features_array'] ) ) {
-			$features_array = json_decode( $instance['features_array'], true );
+		if ( isset( $instance['repeatable_array'] ) ) {
+			$repeatable_array = json_decode( $instance['repeatable_array'], true );
 		} else {
-			$features_array = array();
+			$repeatable_array = array();
 		}
 
 
@@ -226,56 +226,7 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 
 			<hr/>
 
-			<p>
-				<label for="<?php echo $this->get_field_id( 'features_array' ); ?>"><h4><?php _e( 'Features:', ORGANIC_WIDGETS_18N ) ?></h4></label>
-
-				<?php //Loop through each item and echo form section
-				$form_keys = array();
-				$form_orders = array();
-				if ( is_array( $features_array ) ) {
-					usort( $features_array, array( $this, 'sort_by_order' ) );
-					foreach ( $features_array as $key => $feature ) {
-
-						if ( isset( $feature['order'] ) ) {
-							$order = $feature['order'];
-						} else {
-							$order = $key;
-						}
-
-						// Echo Form Item
-						$this->echo_feature_list_form_item( $key, $order, $feature );
-
-						// Add Key to Array
-						array_push( $form_keys, $key );
-						array_push( $form_orders, $order );
-
-					}
-				}
-
-				// Get Next ID
-				if ( count($form_keys) > 0 ) {
-					$key = max( $form_keys ) + 1;
-				} else {
-					$key = 1;
-				}
-
-				// Get Next Order
-				if ( count($form_orders) > 0 ) {
-					$order = max( $form_orders ) + 1;
-				} else {
-					$order = 1;
-				}
-
-				// Echo Form Item
-				$this->echo_feature_list_form_item( $key, $order ); ?>
-
-				<div class="organic-widgets-feature-list-add-item">
-					<i class="fa fa-plus"></i>
-				</div>
-
-				<input type="hidden" class="organic-widgets-repeatable-hidden-input" id="<?php echo $this->get_field_id('features_array'); ?>" name="<?php echo $this->get_field_name('features_array'); ?>" value='<?php if ( count($features_array) > 0 ){ echo json_encode($features_array); }?>' />
-
-			</p>
+			<?php $this->repeatable_form_item_input_markup( $repeatable_array, 'Features' ); ?>
 
 			<?php $this->section_background_input_markup( $instance, $this->bg_options ); ?>
 
@@ -310,13 +261,19 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 		<?php
 	}
 
-	protected function echo_feature_list_form_item( $id, $order, $feature = false ) {
+	/**
+	 * Ouput HTML for a Repeatable Feature List Form Item
+	 *
+	 *
+	 * @access public
+	 */
+	protected function echo_repeatable_form_item( $id, $order, $repeatable = false ) {
 		$id = (int) $id;
 		?>
 
 		<div class="organic-widgets-repeatable-form-item" data-feature-id="<?php echo $id; ?>" data-order="<?php echo $order; ?>">
 
-			<div class="organic-widgets-feature-list-select organic-widgets-repeatable-form-item-input" data-input-name="icon" data-activator="true" data-val="<?php if ( $feature && $feature['icon'] ) { echo esc_attr($feature['icon']); } ?>" data-feature-id="<?php echo $id; ?>">
+			<div class="organic-widgets-feature-list-select organic-widgets-repeatable-form-item-input" data-input-name="icon" data-activator="true" data-val="<?php if ( $repeatable && $repeatable['icon'] ) { echo esc_attr($repeatable['icon']); } ?>" data-feature-id="<?php echo $id; ?>">
 				<div class="organic-widgets-dropdown-button">
 					<div class="organic-widgets-feature-list-select-icon"><i class="fa fa-angle-down"></i></div>
 					<p><?php _e('Select Icon', ORGANIC_WIDGETS_18N); ?></p>
@@ -348,8 +305,8 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 						<label><?php _e('Icon:', ORGANIC_WIDGETS_18N); ?></label>
 					</p>
 					<div class="organic-widgets-feature-list-icon-preview">
-						<?php if ( $feature && isset( $feature['icon'] ) ) { ?>
-							<i class="fa <?php echo esc_attr($feature['icon']); ?>"></i>
+						<?php if ( $repeatable && isset( $repeatable['icon'] ) ) { ?>
+							<i class="fa <?php echo esc_attr($repeatable['icon']); ?>"></i>
 						<?php } ?>
 					</div>
 				</div>
@@ -357,15 +314,15 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 				<div class="organic-widgets-feature-list-text-fields-wrapper">
 					<p>
 						<label><?php _e( 'Feature Title:', ORGANIC_WIDGETS_18N ) ?></label>
-						<input class="widefat organic-widgets-feature-list-title-input organic-widgets-repeatable-form-item-input" data-input-name="title" data-activator="true" type="text" value="<?php if ( $feature && array_key_exists( 'title', $feature ) ) echo esc_html($feature['title']); ?>" />
+						<input class="widefat organic-widgets-feature-list-title-input organic-widgets-repeatable-form-item-input" data-input-name="title" data-activator="true" type="text" value="<?php if ( $repeatable && array_key_exists( 'title', $repeatable ) ) echo esc_html($repeatable['title']); ?>" />
 					</p>
 					<p>
 						<label><?php _e( 'Feature Link URL:', ORGANIC_WIDGETS_18N ) ?></label>
-						<input class="widefat organic-widgets-feature-list-link-url-input organic-widgets-repeatable-form-item-input" data-input-name="link_url" type="text" value="<?php if ( $feature && array_key_exists( 'link_url', $feature ) ) echo esc_url($feature['link_url']); ?>" />
+						<input class="widefat organic-widgets-feature-list-link-url-input organic-widgets-repeatable-form-item-input" data-input-name="link_url" type="text" value="<?php if ( $repeatable && array_key_exists( 'link_url', $repeatable ) ) echo esc_url($repeatable['link_url']); ?>" />
 					</p>
 					<p>
 						<label><?php _e( 'Feature text:', ORGANIC_WIDGETS_18N ) ?></label>
-						<textarea class="widefat organic-widgets-feature-list-text-input organic-widgets-repeatable-form-item-input" data-input-name="text" data-activator="true" rows="3" cols="20" ><?php if ( $feature && array_key_exists( 'text', $feature ) ) echo esc_html($feature['text']); ?></textarea>
+						<textarea class="widefat organic-widgets-feature-list-text-input organic-widgets-repeatable-form-item-input" data-input-name="text" data-activator="true" rows="3" cols="20" ><?php if ( $repeatable && array_key_exists( 'text', $repeatable ) ) echo esc_html($repeatable['text']); ?></textarea>
 					</p>
 				</div>
 
@@ -432,8 +389,8 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 		}
 		if ( isset( $new_instance['num_columns'] ) )
 			$instance['num_columns'] = strip_tags( $new_instance['num_columns'] );
-		if ( isset( $new_instance['features_array'] ) ) {
-			$instance['features_array'] = $new_instance['features_array'];
+		if ( isset( $new_instance['repeatable_array'] ) ) {
+			$instance['repeatable_array'] = $new_instance['repeatable_array'];
 		}
 
 		//Widget Title
@@ -460,7 +417,7 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 		// wp_enqueue_script( 'organic-widgets-feature-list-section-widget-js', plugin_dir_url( __FILE__ ) . 'js/feature-list-section-widget.js', array( 'jquery', 'media-upload', 'media-views' ) );
 		wp_enqueue_style( 'organic-widgets-feature-list-section-widget-css', plugin_dir_url( __FILE__ ) . 'css/feature-list-section-widget.css' );
 
-		// Repeatable Form Items 
+		// Repeatable Form Items
 		wp_enqueue_script( 'organic-widgets-module-repeatable-form-item-js', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-repeatable-form-items.js', array( 'jquery' ) );
 
 		wp_enqueue_style( 'organic-widgets-fontawesome', ORGANIC_WIDGETS_BASE_DIR . 'public/css/font-awesome.css' );

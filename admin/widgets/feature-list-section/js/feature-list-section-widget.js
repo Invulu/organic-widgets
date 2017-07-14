@@ -24,7 +24,7 @@
     });
 
 		//Listen to add
-    $('.organic-widgets-feature-list-add-item').unbind('click').on('click', function(){
+    $('.organic-widgets-repeatable-add-item').unbind('click').on('click', function(){
       organicWidgetsAddRepeatableFormItem(this);
     });
 

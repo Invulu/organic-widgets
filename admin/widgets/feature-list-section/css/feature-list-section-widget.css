@@ -209,7 +209,7 @@
 .organic-widgets-show .organic-widgets-feature-list-select-dropdown {
   display:block;
 }
-.organic-widgets-feature-list-add-item {
+.organic-widgets-repeatable-add-item {
   display: block;
   width: 100%;
   height: auto;
@@ -223,11 +223,11 @@
   box-sizing: border-box;
   cursor: pointer;
 }
-.organic-widgets-feature-list-add-item:hover, .organic-widgets-feature-list-add-item:focus {
+.organic-widgets-repeatable-add-item:hover, .organic-widgets-repeatable-add-item:focus {
   background: #999;
   color: #fff;
 }
-.organic-widgets-feature-list-add-item i {
+.organic-widgets-repeatable-add-item i {
   font-size: 30px;
   margin: auto;
 }
