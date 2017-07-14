@@ -89,6 +89,7 @@
 	$( document )
 	.ready( checkBackgroundBrightness )
 	.ready( groupGroupableWidgets )
+	.ready( editShortcutHoverBorderReady )
 	.ajaxComplete( checkBackgroundBrightness );
 
 	// WP Customizer
