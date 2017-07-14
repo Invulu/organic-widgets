@@ -18,14 +18,14 @@
 
 	}
 
-	/* Add Section Highlighting When Hovering Over Edit Shortcuts ---------------------*/
+	/* Group Groupable Widgets ---------------------*/
 	function groupGroupableWidgets() {
 
 		//Loop through all groups
 		$('.organic-widgets-groupable-first').each(function(){
 
 			var firstGroupItem = $(this);
-			var parentContainer = firstGroupItem.parents('.organic-widget');
+			var parentContainer = firstGroupItem.closest('.organic-widget');
 			var groupID = $(this).data('group-id');
 			var group = $('*[data-group-id="'+groupID+'"]');
 			var numItems = group.length;
@@ -46,7 +46,7 @@
 			//Loop through all elements of that group
 			group.each(function(){
 
-				var profileWidget = $(this).parents('.organic-widget');
+				var groupableWidget = $(this).closest('.organic-widget');
 
 				if ( $(this).hasClass('organic-widgets-groupable-first') ) {
 					var bgColor = $(this).css('background-color');
@@ -61,28 +61,18 @@
 				if ( ! $(this).hasClass('organic-widgets-groupable-widget') ) {
 					$(this).addClass('organic-widgets-groupable-widget');
 				}
-				if ( ! profileWidget.hasClass('organic-widget-masonry-wrapper') ) {
-					profileWidget.addClass('organic-widget-masonry-wrapper');
+				if ( ! groupableWidget.hasClass('organic-widget-masonry-wrapper') ) {
+					groupableWidget.addClass('organic-widget-masonry-wrapper');
 				}
-				profileWidget.addClass(itemClass);
+				groupableWidget.addClass(itemClass);
 
-				container.append(profileWidget);
+				container.append(groupableWidget);
 
 			});
 
 		});
 
-		masonryGroupSetup();
 		checkBackgroundBrightness();
-	}
-
-	/* Masonry ---------------------*/
-	function masonryGroupSetup() {
-		var $container = $('.organic-widgets-masonry-container.organic-widgets-profile-section-masonry-buffer');
-    $container.masonry({
-			itemSelector : '.organic-widget-masonry-wrapper.organic-widget'
-		});
-
 	}
 
 	function editShortcutHoverBorderReady() {

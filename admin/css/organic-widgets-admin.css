@@ -26,7 +26,21 @@
 .organic-widgets-feature-list-select, .organic-widgets-feature-list-select option {
   font-family: 'FontAwesome', sans-serif;
 }
-
+.organic-widgets-groupable-indicator-gold {
+  border-left: 4px solid #f4b942;
+}
+.organic-widgets-groupable-indicator-green {
+  border-left: 4px solid #31d04b;
+}
+.organic-widgets-groupable-indicator-red {
+  border-left: 4px solid #F24343;
+}
+.organic-widgets-groupable-indicator-blue {
+  border-left: 4px solid #008EC2;
+}
+.organic-widgets-groupable-indicator-purple {
+  border-left: 4px solid #c17aff;
+}
 /************************************************
 *	Welcome Screen
 ************************************************/

@@ -21,7 +21,7 @@ class Organic_Widgets_Pricing_Table_Widget extends Organic_Widgets_Custom_Widget
 	 */
 	function __construct() {
 		parent::__construct(
-			'organic_widgets_profile', // Base ID
+			'organic_widgets_pricing_table', // Base ID
 			__( 'Organic Pricing Table', ORGANIC_WIDGETS_18N ), // Name
 			array(
 				'description' => __( 'Display a table of features and prices', ORGANIC_WIDGETS_18N ),
@@ -80,32 +80,32 @@ class Organic_Widgets_Pricing_Table_Widget extends Organic_Widgets_Custom_Widget
 					<div class="organic-widgets-profile">
 
 						<?php if ( $instance['bg_image_id'] > 0 ) { ?>
-							<div class="organic-widgets-profile-img"><img src="<?php echo $instance['bg_image']; ?>" alt="<?php __( 'Profile Image', ORGANIC_WIDGETS_18N ) ?>" /></div>
+							<div class="organic-widgets-profile-img"><img src="<?php echo $instance['bg_image']; ?>" alt="<?php __( 'Pricing Table Image', ORGANIC_WIDGETS_18N ) ?>" /></div>
 						<?php } ?>
 
 						<!-- BEGIN .organic-widgets-card -->
 						<div class="organic-widgets-card">
 
-							<!-- BEGIN .organic-profile-content -->
-							<div class="organic-profile-content">
+							<!-- BEGIN .organic-pricing-table-content -->
+							<div class="organic-pricing-table-content">
 
 							<?php if ( ! empty( $instance['title'] ) ) { ?>
-								<h6 class="organic-widgets-profile-title"><?php echo apply_filters( 'widget_title', $instance['title'] ); ?></h6>
+								<h6 class="organic-widgets-pricing-table-title"><?php echo apply_filters( 'widget_title', $instance['title'] ); ?></h6>
 							<?php } ?>
 
-								<div class="organic-widgets-profile-divider"></div>
+								<div class="organic-widgets-pricing-table-divider"></div>
 
 							<?php if ( ! empty( $instance['text'] ) ) { ?>
-								<div class="organic-widgets-profile-excerpt"><?php echo apply_filters( 'the_content', $instance['text'] ); ?></div>
+								<div class="organic-widgets-pricing-table-excerpt"><?php echo apply_filters( 'the_content', $instance['text'] ); ?></div>
 							<?php } ?>
 
-							<!-- END .organic-profile-content -->
+							<!-- END .organic-pricing-table-content -->
 							</div>
 
 						<!-- END .organic-widgets-card -->
 						</div>
 
-					<!-- END .organic-widgets-profile -->
+					<!-- END .organic-widgets-pricing-table -->
 					</div>
 
 				<!-- END .organic-widgets-section -->
@@ -160,7 +160,7 @@ class Organic_Widgets_Pricing_Table_Widget extends Organic_Widgets_Custom_Widget
 		<?php $this->bg_image_scripts(); ?>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'bg_image' ); ?>"><?php _e( 'Profile Image:', ORGANIC_WIDGETS_18N ) ?></label>
+			<label for="<?php echo $this->get_field_id( 'bg_image' ); ?>"><?php _e( 'Pricing Table Image:', ORGANIC_WIDGETS_18N ) ?></label>
 			<div class="uploader">
 				<input type="submit" class="button" name="<?php echo $this->get_field_name('uploader_button'); ?>" id="<?php echo $this->get_field_id('uploader_button'); ?>" value="<?php if ( $instance['bg_image_id'] ) { _e( 'Change Image', ORGANIC_WIDGETS_18N ); }else { _e( 'Select Image', ORGANIC_WIDGETS_18N ); }?>" onclick="subpageWidgetImage.uploader( '<?php echo $this->id; ?>', '<?php echo $this->id_prefix; ?>' ); return false;" />
 				<input type="submit" class="organic_widgets-remove-image-button button" name="<?php echo $this->get_field_name('remover_button'); ?>" id="<?php echo $this->get_field_id('remover_button'); ?>" value="<?php _e('Remove Image', ORGANIC_WIDGETS_18N); ?>" onclick="subpageWidgetImage.remover( '<?php echo $this->id; ?>', '<?php echo $this->id_prefix; ?>', 'remover_button' ); return false;" <?php if ( $instance['bg_image_id'] < 1 ) { echo( 'style="display:none;"' ); } ?>/>
@@ -188,7 +188,7 @@ class Organic_Widgets_Pricing_Table_Widget extends Organic_Widgets_Custom_Widget
 	public function render_control_template_scripts() {
 
 		?>
-		<script type="text/html" id="tmpl-widget-organic_widgets_profile-control-fields">
+		<script type="text/html" id="tmpl-widget-organic_widgets_pricing_table-control-fields">
 
 			<# var elementIdPrefix = 'el' + String( Math.random() ).replace( /\D/g, '' ) + '_' #>
 
@@ -246,8 +246,8 @@ class Organic_Widgets_Pricing_Table_Widget extends Organic_Widgets_Custom_Widget
 
 		// Text Editor
 		wp_enqueue_editor();
-		wp_enqueue_script( 'organic-widgets-pricing-tables', plugin_dir_url( __FILE__ ) . 'js/pricing-tables.js', array( 'jquery' ) );
-		wp_add_inline_script( 'organic-widgets-pricing-tables', 'wp.organicProfileWidgets.init();', 'after' );
+		wp_enqueue_script( 'organic-widgets-pricing-tables', plugin_dir_url( __FILE__ ) . 'js/pricing-table-widgets.js', array( 'jquery' ) );
+		wp_add_inline_script( 'organic-widgets-pricing-tables', 'wp.organicPricingTableWidgets.init();', 'after' );
 
 		wp_enqueue_script( 'organic-widgets-module-groupable-widgets', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-groupable-widgets.js', array( 'jquery' ) );
 
