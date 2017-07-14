@@ -156,19 +156,17 @@
   padding-top: 0px;
   padding-bottom: 0px;
 }
-.organic-widgets-hero-section .organic-widgets-content {
-
-}
 .organic-widgets-hero-information {
   max-width: 800px;
   text-align: center;
   margin: 0px auto;
 }
 .organic-widgets-hero-information .organic-widgets-title {
-  font-size: 4em;
+  font-size: 3.6em;
 }
 .organic-widgets-hero-information .organic-widgets-text {
   font-size: 120%;
+  padding-bottom: 0px;
 }
 
 /************************************************
@@ -985,6 +983,24 @@ iframe.organic-widgets-video-bg {
   }
   [class*="organic-widgets-column"]:after {
   	clear: both;
+  }
+
+  .organic-widgets-section {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+  .organic-widgets-hero-section {
+    height: auto;
+  }
+  .organic-widgets-section.organic-widgets-hero-section {
+    background-attachment: scroll;
+  }
+  .organic-widgets-hero-section .organic-widgets-content {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+  .organic-widgets-hero-information .organic-widgets-title {
+    font-size: 2.6em;
   }
 
 }
