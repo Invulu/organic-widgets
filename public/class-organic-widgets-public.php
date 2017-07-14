@@ -208,10 +208,14 @@ class Organic_Widgets_Public {
 	 function add_body_class( $classes ) {
 
 		 global $post;
-		 $page_template_slug = get_page_template_slug( $post->ID );
-		 if ( strpos( $page_template_slug, 'organic-custom-template.php' ) !== false ) {
-			 $classes[] = 'organic-widgets-custom-template';
+
+		 if ( is_object( $post ) ) {
+			 $page_template_slug = get_page_template_slug( $post->ID );
+				if ( strpos( $page_template_slug, 'organic-custom-template.php' ) !== false ) {
+					$classes[] = 'organic-widgets-custom-template';
+				}
 		 }
+
      return $classes;
 
 	 }

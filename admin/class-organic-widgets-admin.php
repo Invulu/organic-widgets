@@ -101,7 +101,6 @@ class Organic_Widgets_Admin {
 					$is_custom_template = false;
 				}
 
-
 				// Construct Link URL
 				$base_url_string = admin_url( 'customize.php?');
 				$page_url = get_permalink( $post->ID );

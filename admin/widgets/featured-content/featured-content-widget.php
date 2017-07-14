@@ -331,6 +331,8 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 		wp_enqueue_script( 'organic-featured-content-widgets', plugin_dir_url( __FILE__ ) . 'js/featured-content-widgets.js', array( 'jquery' ) );
 		wp_add_inline_script( 'organic-featured-content-widgets', 'wp.organicFeaturedContentWidgets.init();', 'after' );
 
+		wp_enqueue_script( 'organic-widgets-module-groupable-widgets', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-groupable-widgets.js', array( 'jquery' ) );
+
 		// Content Aligner
 		wp_enqueue_script( 'organic-widgets-module-content-aligner', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-content-aligner.js', array( 'jquery' ) );
 

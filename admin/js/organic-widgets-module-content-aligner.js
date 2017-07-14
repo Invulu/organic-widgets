@@ -4,11 +4,9 @@
  (function( $ ) {
  	'use strict';
 
-  console.log('content align script');
   function contentAligner() {
-    console.log('contentAligner');
-    $('.organic-widgets-content-alignment-table td').on( 'click', function(){
 
+    $('.organic-widgets-content-alignment-table td').on( 'click', function(){
 
       var selected = $(this).data('selected');
       var alignment = $(this).data('alignment');

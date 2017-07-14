@@ -262,7 +262,6 @@
 		mainInput.trigger('change');
 		mainInput.val(JSON.stringify(thisItemData));
 
-		console.log(JSON.stringify(thisItemData));
 	}
 
 	// Binding main function

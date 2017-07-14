@@ -94,7 +94,6 @@
 
 	}
 
-
 	$( document )
 	.ready( checkBackgroundBrightness )
 	.ready( groupGroupableWidgets )
