@@ -179,6 +179,9 @@
   float: left;
   margin: 8px 18px 8px 0px;
 }
+.organic-widgets-blog-posts-section .organic-widgets-text {
+  margin-bottom: 0px;
+}
 .organic-widgets-blog-posts-section .organic-widgets-title,
 .organic-widgets-blog-posts-section .organic-widgets-text {
   text-align: center;
@@ -388,10 +391,10 @@
 ************************************************/
 
 .organic-widgets-section-masonry-buffer {
-  margin: 0 auto -18px;
+  margin: 0px auto;
   height: auto;
   width: 100%;
-  max-width: 1264px;
+  max-width: 1240px;
   position: relative;
 }
 .organic-widgets-profile {
