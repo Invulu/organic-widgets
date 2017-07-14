@@ -1,5 +1,5 @@
 /**
- * Subpage Section Widget JS
+ * Repeatable Form Item for Widgets JS
  */
 (function( $ ) {
 	'use strict';

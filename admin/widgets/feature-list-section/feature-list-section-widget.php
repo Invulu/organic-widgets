@@ -198,7 +198,7 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 
 
 		?>
-		<div class="organic-widgets-feature-list-widget-admin">
+		<div class="organic-widgets-repeatable-form-item-widget-admin">
 
 			<h4>Content</h4>
 
@@ -273,7 +273,7 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 					<i class="fa fa-plus"></i>
 				</div>
 
-				<input type="hidden" class="organic-widgets-feature-list-hidden-input" id="<?php echo $this->get_field_id('features_array'); ?>" name="<?php echo $this->get_field_name('features_array'); ?>" value='<?php if ( count($features_array) > 0 ){ echo json_encode($features_array); }?>' />
+				<input type="hidden" class="organic-widgets-repeatable-hidden-input" id="<?php echo $this->get_field_id('features_array'); ?>" name="<?php echo $this->get_field_name('features_array'); ?>" value='<?php if ( count($features_array) > 0 ){ echo json_encode($features_array); }?>' />
 
 			</p>
 
@@ -314,24 +314,24 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 		$id = (int) $id;
 		?>
 
-		<div class="organic-widgets-feature-list-item-form-item" data-feature-id="<?php echo $id; ?>" data-order="<?php echo $order; ?>">
+		<div class="organic-widgets-repeatable-form-item" data-feature-id="<?php echo $id; ?>" data-order="<?php echo $order; ?>">
 
-			<div class="organic-widgets-feature-list-select" data-val="<?php if ( $feature && $feature['icon'] ) { echo esc_attr($feature['icon']); } ?>" data-feature-id="<?php echo $id; ?>">
+			<div class="organic-widgets-feature-list-select organic-widgets-repeatable-form-item-input" data-input-name="icon" data-activator="true" data-val="<?php if ( $feature && $feature['icon'] ) { echo esc_attr($feature['icon']); } ?>" data-feature-id="<?php echo $id; ?>">
 				<div class="organic-widgets-dropdown-button">
 					<div class="organic-widgets-feature-list-select-icon"><i class="fa fa-angle-down"></i></div>
 					<p><?php _e('Select Icon', ORGANIC_WIDGETS_18N); ?></p>
 				</div>
-				<div class="organic-widgets-feature-move-button">
+				<div class="organic-widgets-repeatable-move-button">
 					<div class="organic-widgets-move-up">
 						<i class="fa fa-angle-up"></i>
 					</div>
 				</div>
-				<div class="organic-widgets-feature-move-button">
+				<div class="organic-widgets-repeatable-move-button">
 					<div class="organic-widgets-move-down">
 						<i class="fa fa-angle-down"></i>
 					</div>
 				</div>
-				<div class="organic-widgets-feature-delete-button">
+				<div class="organic-widgets-repeatable-delete-button">
 					<i class="fa fa-trash"></i>
 				</div>
 				<div class="organic-widgets-clear"></div>
@@ -357,15 +357,15 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 				<div class="organic-widgets-feature-list-text-fields-wrapper">
 					<p>
 						<label><?php _e( 'Feature Title:', ORGANIC_WIDGETS_18N ) ?></label>
-						<input class="widefat organic-widgets-feature-list-title-input" type="text" value="<?php if ( $feature && array_key_exists( 'title', $feature ) ) echo esc_html($feature['title']); ?>" />
+						<input class="widefat organic-widgets-feature-list-title-input organic-widgets-repeatable-form-item-input" data-input-name="title" data-activator="true" type="text" value="<?php if ( $feature && array_key_exists( 'title', $feature ) ) echo esc_html($feature['title']); ?>" />
 					</p>
 					<p>
 						<label><?php _e( 'Feature Link URL:', ORGANIC_WIDGETS_18N ) ?></label>
-						<input class="widefat organic-widgets-feature-list-link-url-input" type="text" value="<?php if ( $feature && array_key_exists( 'link_url', $feature ) ) echo esc_url($feature['link_url']); ?>" />
+						<input class="widefat organic-widgets-feature-list-link-url-input organic-widgets-repeatable-form-item-input" data-input-name="link_url" type="text" value="<?php if ( $feature && array_key_exists( 'link_url', $feature ) ) echo esc_url($feature['link_url']); ?>" />
 					</p>
 					<p>
 						<label><?php _e( 'Feature text:', ORGANIC_WIDGETS_18N ) ?></label>
-						<textarea class="widefat organic-widgets-feature-list-text-input" rows="3" cols="20" ><?php if ( $feature && array_key_exists( 'text', $feature ) ) echo esc_html($feature['text']); ?></textarea>
+						<textarea class="widefat organic-widgets-feature-list-text-input organic-widgets-repeatable-form-item-input" data-input-name="text" data-activator="true" rows="3" cols="20" ><?php if ( $feature && array_key_exists( 'text', $feature ) ) echo esc_html($feature['text']); ?></textarea>
 					</p>
 				</div>
 
@@ -457,8 +457,11 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 		wp_add_inline_script( 'organic-widgets-feature-list-widgets', 'wp.organicFeatureListWidgets.init();', 'after' );
 
 		wp_enqueue_media();
-		if ( ! is_customize_preview() ) { wp_enqueue_script( 'organic-widgets-feature-list-section-widget-js', plugin_dir_url( __FILE__ ) . 'js/feature-list-section-widget.js', array( 'jquery', 'media-upload', 'media-views' ) ); }
+		// wp_enqueue_script( 'organic-widgets-feature-list-section-widget-js', plugin_dir_url( __FILE__ ) . 'js/feature-list-section-widget.js', array( 'jquery', 'media-upload', 'media-views' ) );
 		wp_enqueue_style( 'organic-widgets-feature-list-section-widget-css', plugin_dir_url( __FILE__ ) . 'css/feature-list-section-widget.css' );
+
+		// Repeatable Form Items 
+		wp_enqueue_script( 'organic-widgets-module-repeatable-form-item-js', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-repeatable-form-items.js', array( 'jquery' ) );
 
 		wp_enqueue_style( 'organic-widgets-fontawesome', ORGANIC_WIDGETS_BASE_DIR . 'public/css/font-awesome.css' );
 
@@ -489,8 +492,6 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 	 * Enqueue customizer javascript.
 	 */
 	public function customizer_setup() {
-
-		wp_enqueue_script( 'organic-widgets-feature-list-section-widget-js', plugin_dir_url( __FILE__ ) . 'js/feature-list-section-widget.js', array( 'jquery', 'media-upload', 'media-views' ) );
 
 	}
 

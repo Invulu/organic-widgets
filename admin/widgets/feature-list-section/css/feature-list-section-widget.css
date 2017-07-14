@@ -27,7 +27,7 @@
   width: calc(100% - 80px);
   float: left;
 }
-.organic-widgets-feature-list-item-form-item {
+.organic-widgets-repeatable-form-item {
   border: 1px solid #ddd;
   box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.1);
   background: #fafafa;
@@ -37,7 +37,7 @@
 }
 
 /* Dropdown Button */
-.organic-widgets-dropdown-button, .organic-widgets-feature-move-button, .organic-widgets-feature-delete-button {
+.organic-widgets-dropdown-button, .organic-widgets-repeatable-move-button, .organic-widgets-repeatable-delete-button {
   border: none;
   cursor: pointer;
   box-sizing: border-box;
@@ -49,7 +49,7 @@
   /*border: 1px solid rgba(0, 0, 0, .5);*/
   text-align: center;
 }
-.organic-widgets-dropdown-button p, .organic-widgets-feature-move-button p, .organic-widgets-feature-delete-button p {
+.organic-widgets-dropdown-button p, .organic-widgets-repeatable-move-button p, .organic-widgets-repeatable-delete-button p {
   margin-top: 0;
   margin-bottom: 0;
 }
@@ -63,17 +63,17 @@
 .organic-widgets-dropdown-button p {
   margin-left: 18px;
 }
-.organic-widgets-show .organic-widgets-dropdown-button, .organic-widgets-show .organic-widgets-feature-delete-button {
+.organic-widgets-show .organic-widgets-dropdown-button, .organic-widgets-show .organic-widgets-repeatable-delete-button {
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 0px;
 }
-.organic-widgets-feature-move-button {
+.organic-widgets-repeatable-move-button {
   background-color: #ccc;
   width: 10%;
   padding: 0;
   display: inline;
 }
-.organic-widgets-feature-move-button i {
+.organic-widgets-repeatable-move-button i {
   font-size: 20px;
 }
 .organic-widgets-move-up, .organic-widgets-move-down {
@@ -92,7 +92,7 @@
 .organic-widgets-move-up {
   border-right: 1px solid #aaa;
 }
-.organic-widgets-feature-delete-button {
+.organic-widgets-repeatable-delete-button {
   width: 20%;
   background-color: #f24646;
   border-left: 1px solid #d00;
@@ -101,7 +101,7 @@
   font-size: 22px;
   padding: 6px 0 7px;
 }
-.organic-widgets-feature-delete-button:hover, .organic-widgets-feature-delete-button:focus {
+.organic-widgets-repeatable-delete-button:hover, .organic-widgets-repeatable-delete-button:focus {
   background-color: #a00;
 }
 /* Dropdown button on hover & focus */
