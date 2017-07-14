@@ -1049,7 +1049,6 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
 			'first' => true,
 			'last' => true,
 			'group_id' => false,
-
 		);
 
 		if ( $args ) {
@@ -1105,7 +1104,7 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
 			} else {
 				$test_widget_id_base = $widget_id_base;
 				$test_widget_key = $this_widget_key;
-				while ( $test_widget_id_base == $widget_id_base ) {
+				while ( $test_widget_id_base == $widget_id_base && $test_widget_key > 0 ) {
 					// Get previous widget
 					$test_widget_key = $test_widget_key - 1;
 					$test_widget_id = $this_widget_area[ $test_widget_key ];

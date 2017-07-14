@@ -92,9 +92,4 @@
 	.ready( editShortcutHoverBorderReady )
 	.ajaxComplete( checkBackgroundBrightness );
 
-	// WP Customizer
-	if ( typeof wp != "undefined" ) {
-		wp.customize.bind( 'preview-ready', _.defer( function() { editShortcutHoverBorder(); }));
-	}
-
 })( jQuery );

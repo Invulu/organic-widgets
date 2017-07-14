@@ -7,12 +7,12 @@
 
    if ( 'undefined' !== typeof wp && 'undefined' !== typeof wp.customize ) {
 
-     wp.customize.bind('pane-contents-reflowed', function(args,args2){
+     wp.customize.bind('pane-contents-reflowed', function(){
 
       var activeWidgets = getActiveWidgets();
 
-      if ( groupableWidgetsAffected( activeWidgets ) ) {
-        markWidgetGroups( activeWidgets );
+      if ( groupableWidgetsAffected() ) {
+        markWidgetGroups();
         wp.customize.previewer.refresh();
       }
 
@@ -31,11 +31,9 @@
     return activeWidgets;
   }
 
-  function markWidgetGroups( activeWidgets ) {
+  function markWidgetGroups() {
 
-    if (typeof activeWidgets === 'undefined' ) {
-     var activeWidgets = getActiveWidgets();
-    }
+    var activeWidgets = getActiveWidgets();
 
     var colors = [ 'gold', 'green', 'red', 'blue', 'purple' ];
     var colorIndex = 0;
@@ -47,13 +45,13 @@
       }
       $('#'+activeWidgets[i]).removeClass('organic-widgets-groupable-indicator');
 
-      if ( isGroupableWidget( activeWidgets[i]) && isConsecutive( activeWidgets, i ) ) {
+      if ( isGroupableWidget( activeWidgets[i]) && isConsecutive( i ) ) {
         $('#'+activeWidgets[i]).addClass('organic-widgets-groupable-indicator');
         $('#'+activeWidgets[i]).addClass('organic-widgets-groupable-indicator-'+colors[colorIndex % colors.length]);
       }
 
       //Increment Color if last item
-      if ( isLastInGroup( activeWidgets, i ) ) {
+      if ( isLastInGroup( i ) ) {
         colorIndex++;
       }
 
@@ -61,11 +59,9 @@
 
   }
 
-  function isConsecutive( activeWidgets, i ) {
+  function isConsecutive( i ) {
 
-    if ( ! isGroupableWidget( activeWidgets[i] ) ) {
-      return false;
-    }
+    var activeWidgets = getActiveWidgets();
 
     var groupableIDs = [
      'organic_widgets_profile',
@@ -74,7 +70,6 @@
     ];
 
     for ( var j = 0; j < groupableIDs.length; j++ ) {
-      console.log(j);
       if ( activeWidgets[i].indexOf(groupableIDs[j]) !== -1 && ( ( i-1 > -1 && activeWidgets[i-1].indexOf(groupableIDs[j]) !== -1 ) || ( i+1 < activeWidgets.length && activeWidgets[i+1].indexOf(groupableIDs[j]) !== -1  ) ) ) {
         return true;
       }
@@ -84,7 +79,9 @@
 
   }
 
-  function isLastInGroup( activeWidgets, i ) {
+  function isLastInGroup( i ) {
+
+    var activeWidgets = getActiveWidgets();
 
     if ( ! isGroupableWidget( activeWidgets[i] ) ) {
       return false;
@@ -97,17 +94,18 @@
     ];
 
     for ( var j = 0; j < groupableIDs.length; j++ ) {
-      console.log(j);
-      if ( activeWidgets[i].indexOf(groupableIDs[j]) !== -1 && ( ( i-1 > -1 && activeWidgets[i-1].indexOf(groupableIDs[j]) !== -1 ) || ( i+1 < activeWidgets.length && activeWidgets[i+1].indexOf(groupableIDs[j]) !== -1  ) ) ) {
+      if ( activeWidgets[i].indexOf(groupableIDs[j]) !== -1 && ! ( i+1 < activeWidgets.length && activeWidgets[i+1].indexOf(groupableIDs[j]) !== -1  ) ) {
         return true;
       }
     }
-    
-    return true;
+
+    return false;
 
   }
 
-  function groupableWidgetsAffected( activeWidgets ) {
+  function groupableWidgetsAffected() {
+
+    var activeWidgets = getActiveWidgets();
 
     for (var i = 0; i < activeWidgets.length; i++ ) {
      if ( isGroupableWidget( activeWidgets[i]) ) {
@@ -137,6 +135,16 @@
 
   }
 
-  markWidgetGroups();
+  $(window).on("load", function() {
+		markWidgetGroups();
+		if ( typeof wp.customize !== "undefined" ) {
+			wp.customize.state.bind('change', function() {
+				markWidgetGroups();
+			});
+			$('.customize-control-widget_form').on('click',function(){
+				markWidgetGroups();
+			});
+		}
+	});
 
 } );

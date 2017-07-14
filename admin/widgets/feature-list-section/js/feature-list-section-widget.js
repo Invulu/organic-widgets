@@ -269,7 +269,7 @@
 	.ajaxComplete( organicWidgetsCustomDropdown );
 
 	$(window).on("load", function() {
-		organicWidgetsCustomDropdown()
+		organicWidgetsCustomDropdown();
 		if ( typeof wp.customize !== "undefined" ) {
 			wp.customize.state.bind('change', function() {
 				organicWidgetsCustomDropdown();
