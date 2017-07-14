@@ -56,11 +56,7 @@ class Organic_Widgets_Profile_Widget extends Organic_Widgets_Custom_Widget {
 		$instance['bg_color'] = isset( $instance['bg_color'] ) ? $instance['bg_color'] : false;
 		$instance['bg_image_id'] = isset( $instance['bg_image_id'] ) ? $instance['bg_image_id'] : false;
 		$instance['bg_image'] = ( isset( $instance['bg_image'] ) && '' != $instance['bg_image'] ) ? $instance['bg_image'] : false;
-		$instance['personal_url'] = isset( $instance['personal_url'] ) ? $instance['personal_url'] : false;
-		$instance['twitter_url'] = isset( $instance['twitter_url'] ) ? $instance['twitter_url'] : false;
-		$instance['linkedin_url'] = isset( $instance['linkedin_url'] ) ? $instance['linkedin_url'] : false;
-		$instance['facebook_url'] = isset( $instance['facebook_url'] ) ? $instance['facebook_url'] : false;
-		$instance['email'] = isset( $instance['email'] ) ? $instance['email'] : false;
+		$repeatable_array = ( isset( $instance['repeatable_array'] ) ) ? json_decode( $instance['repeatable_array'], true) :  array();
 
 		$group = $this->organic_widgets_groupable_widget( $args );
 		$group_id = $group['group_id'];
@@ -109,28 +105,18 @@ class Organic_Widgets_Profile_Widget extends Organic_Widgets_Custom_Widget {
 								<div class="organic-widgets-profile-excerpt"><?php echo apply_filters( 'the_content', $instance['text'] ); ?></div>
 							<?php } ?>
 
-							<?php if ( ! empty( $instance['personal_url'] ) || ! empty( $instance['twitter_url'] ) || ! empty( $instance['linkedin_url'] ) || ! empty( $instance['facebook_url'] ) || ! empty( $instance['email'] ) ) { ?>
+							<?php if ( ! empty( $repeatable_array ) ) { ?>
 
 							<ul class="organic-widgets-social-icons">
 
-								<?php if ( ! empty( $instance['personal_url'] ) ) { ?>
-									<li><a href="<?php echo $instance['personal_url']; ?>" target="_blank"><span><?php esc_html_e( 'Personal Link', ORGANIC_WIDGETS_18N ); ?></span></a></li>
-								<?php } ?>
+								<?php foreach ( $repeatable_array as $social_link ) { ?>
 
-								<?php if ( ! empty( $instance['twitter_url'] ) ) { ?>
-									<li><a href="<?php echo $instance['twitter_url']; ?>" target="_blank"><span><?php esc_html_e( 'Twitter', ORGANIC_WIDGETS_18N ); ?></span></a></li>
-								<?php } ?>
+									<?php if ( ! empty( $social_link['link_url'] ) ) { ?>
 
-								<?php if ( ! empty( $instance['linkedin_url'] ) ) { ?>
-									<li><a href="<?php echo $instance['linkedin_url']; ?>" target="_blank"><span><?php esc_html_e( 'LinkedIn', ORGANIC_WIDGETS_18N ); ?></span></a></li>
-								<?php } ?>
+										<li><a href="<?php echo $social_link['link_url']; ?>" target="_blank"><i class="fa"></i></a></li>
 
-								<?php if ( ! empty( $instance['facebook_url'] ) ) { ?>
-									<li><a href="<?php echo $instance['facebook_url']; ?>" target="_blank"><span><?php esc_html_e( 'Facebook', ORGANIC_WIDGETS_18N ); ?></span></a></li>
-								<?php } ?>
+									<?php } ?>
 
-								<?php if ( ! empty( $instance['email'] ) ) { ?>
-									<li><a href="mailto:<?php echo $instance['email']; ?>" target="_blank"><span><?php esc_html_e( 'Email', ORGANIC_WIDGETS_18N ); ?></span></a></li>
 								<?php } ?>
 
 							</ul>
@@ -190,73 +176,103 @@ class Organic_Widgets_Profile_Widget extends Organic_Widgets_Custom_Widget {
 			$subtitle = $instance[ 'subtitle' ];
 		} else { $subtitle = ''; }
 
-		if (!isset( $instance['personal_url'] ) ) {
-			$instance['personal_url'] = false;
+		if ( isset( $instance['repeatable_array'] ) ) {
+			$repeatable_array = json_decode( $instance['repeatable_array'], true );
+		} else {
+			$repeatable_array = array();
 		}
-		if (!isset( $instance['twitter_url'] ) ) {
-			$instance['twitter_url'] = false;
-		}
-		if (!isset( $instance['linkedin_url'] ) ) {
-			$instance['linkedin_url'] = false;
-		}
-		if (!isset( $instance['facebook_url'] ) ) {
-			$instance['facebook_url'] = false;
-		}
-		if (!isset( $instance['email'] ) ) {
-			$instance['email'] = false;
-		} ?>
+		?>
 
-		<input id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" class="title organic-widgets-wysiwyg-anchor" type="hidden" value="<?php echo $title; ?>">
-		<input id="<?php echo $this->get_field_id( 'text' ); ?>" name="<?php echo $this->get_field_name( 'text' ); ?>" class="text" type="hidden" value="<?php echo $text; ?>">
+		<div class="organic-widgets-repeatable-form-item-widget-admin">
 
-		<?php $this->bg_image_scripts(); ?>
+			<input id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" class="title organic-widgets-wysiwyg-anchor" type="hidden" value="<?php echo $title; ?>">
+			<input id="<?php echo $this->get_field_id( 'text' ); ?>" name="<?php echo $this->get_field_name( 'text' ); ?>" class="text" type="hidden" value="<?php echo $text; ?>">
 
-		<p>
-			<label for="<?php echo $this->get_field_id( 'bg_image' ); ?>"><?php _e( 'Profile Image:', ORGANIC_WIDGETS_18N ) ?></label>
-			<div class="uploader">
-				<input type="submit" class="button" name="<?php echo $this->get_field_name('uploader_button'); ?>" id="<?php echo $this->get_field_id('uploader_button'); ?>" value="<?php if ( $instance['bg_image_id'] ) { _e( 'Change Image', ORGANIC_WIDGETS_18N ); }else { _e( 'Select Image', ORGANIC_WIDGETS_18N ); }?>" onclick="subpageWidgetImage.uploader( '<?php echo $this->id; ?>', '<?php echo $this->id_prefix; ?>' ); return false;" />
-				<input type="submit" class="organic_widgets-remove-image-button button" name="<?php echo $this->get_field_name('remover_button'); ?>" id="<?php echo $this->get_field_id('remover_button'); ?>" value="<?php _e('Remove Image', ORGANIC_WIDGETS_18N); ?>" onclick="subpageWidgetImage.remover( '<?php echo $this->id; ?>', '<?php echo $this->id_prefix; ?>', 'remover_button' ); return false;" <?php if ( $instance['bg_image_id'] < 1 ) { echo( 'style="display:none;"' ); } ?>/>
-				<div class="organic-widgets-widget-image-preview" id="<?php echo $this->get_field_id('preview'); ?>">
-					<?php echo $this->get_image_html($instance); ?>
+			<?php $this->bg_image_scripts(); ?>
+
+			<p>
+				<label for="<?php echo $this->get_field_id( 'bg_image' ); ?>"><?php _e( 'Profile Image:', ORGANIC_WIDGETS_18N ) ?></label>
+				<div class="uploader">
+					<input type="submit" class="button" name="<?php echo $this->get_field_name('uploader_button'); ?>" id="<?php echo $this->get_field_id('uploader_button'); ?>" value="<?php if ( $instance['bg_image_id'] ) { _e( 'Change Image', ORGANIC_WIDGETS_18N ); }else { _e( 'Select Image', ORGANIC_WIDGETS_18N ); }?>" onclick="subpageWidgetImage.uploader( '<?php echo $this->id; ?>', '<?php echo $this->id_prefix; ?>' ); return false;" />
+					<input type="submit" class="organic_widgets-remove-image-button button" name="<?php echo $this->get_field_name('remover_button'); ?>" id="<?php echo $this->get_field_id('remover_button'); ?>" value="<?php _e('Remove Image', ORGANIC_WIDGETS_18N); ?>" onclick="subpageWidgetImage.remover( '<?php echo $this->id; ?>', '<?php echo $this->id_prefix; ?>', 'remover_button' ); return false;" <?php if ( $instance['bg_image_id'] < 1 ) { echo( 'style="display:none;"' ); } ?>/>
+					<div class="organic-widgets-widget-image-preview" id="<?php echo $this->get_field_id('preview'); ?>">
+						<?php echo $this->get_image_html($instance); ?>
+					</div>
+					<input type="hidden" id="<?php echo $this->get_field_id('bg_image_id'); ?>" name="<?php echo $this->get_field_name('bg_image_id'); ?>" value="<?php echo abs($instance['bg_image_id']); ?>" />
+					<input type="hidden" id="<?php echo $this->get_field_id('bg_image'); ?>" name="<?php echo $this->get_field_name('bg_image'); ?>" value="<?php echo $instance['bg_image']; ?>" />
 				</div>
-				<input type="hidden" id="<?php echo $this->get_field_id('bg_image_id'); ?>" name="<?php echo $this->get_field_name('bg_image_id'); ?>" value="<?php echo abs($instance['bg_image_id']); ?>" />
-				<input type="hidden" id="<?php echo $this->get_field_id('bg_image'); ?>" name="<?php echo $this->get_field_name('bg_image'); ?>" value="<?php echo $instance['bg_image']; ?>" />
-			</div>
-		</p>
+			</p>
 
-		<p>
-			<label for="<?php echo $this->get_field_id( 'subtitle' ); ?>"><?php _e('Subtitle:', ORGANIC_WIDGETS_18N) ?></label>
-			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'subtitle' ); ?>" name="<?php echo $this->get_field_name( 'subtitle' ); ?>" value="<?php if ( $subtitle ) echo $subtitle; ?>" />
-		</p>
+			<p>
+				<label for="<?php echo $this->get_field_id( 'subtitle' ); ?>"><?php _e('Subtitle:', ORGANIC_WIDGETS_18N) ?></label>
+				<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'subtitle' ); ?>" name="<?php echo $this->get_field_name( 'subtitle' ); ?>" value="<?php if ( $subtitle ) echo $subtitle; ?>" />
+			</p>
 
-		<p>
-			<label for="<?php echo $this->get_field_id( 'personal_url' ); ?>"><?php _e('Personal Link or Social Media URL:', ORGANIC_WIDGETS_18N) ?></label>
-			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'personal_url' ); ?>" name="<?php echo $this->get_field_name( 'personal_url' ); ?>" value="<?php echo $instance['personal_url']; ?>" />
-		</p>
+			<?php $this->repeatable_form_item_input_markup( $repeatable_array, 'Social Links' ); ?>
 
-		<p>
-			<label for="<?php echo $this->get_field_id( 'twitter_url' ); ?>"><?php _e('Twitter Profile URL:', ORGANIC_WIDGETS_18N) ?></label>
-			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'twitter_url' ); ?>" name="<?php echo $this->get_field_name( 'twitter_url' ); ?>" value="<?php echo $instance['twitter_url']; ?>" />
-		</p>
+			<?php $this->section_background_input_markup( $instance, $this->bg_options ); ?>
 
-		<p>
-			<label for="<?php echo $this->get_field_id( 'linkedin_url' ); ?>"><?php _e('LinkedIn Profile URL:', ORGANIC_WIDGETS_18N) ?></label>
-			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'linkedin_url' ); ?>" name="<?php echo $this->get_field_name( 'linkedin_url' ); ?>" value="<?php echo $instance['linkedin_url']; ?>" />
-		</p>
-
-		<p>
-			<label for="<?php echo $this->get_field_id( 'facebook_url' ); ?>"><?php _e('Facebook Profile URL:', ORGANIC_WIDGETS_18N) ?></label>
-			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'facebook_url' ); ?>" name="<?php echo $this->get_field_name( 'facebook_url' ); ?>" value="<?php echo $instance['facebook_url']; ?>" />
-		</p>
-
-		<p>
-			<label for="<?php echo $this->get_field_id( 'email' ); ?>"><?php _e('Email Address:', ORGANIC_WIDGETS_18N) ?></label>
-			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'email' ); ?>" name="<?php echo $this->get_field_name( 'email' ); ?>" value="<?php echo $instance['email']; ?>" />
-		</p>
-
-		<?php $this->section_background_input_markup( $instance, $this->bg_options ); ?>
+		</div>
 
   <?php
+	}
+
+	/**
+	 * Ouput HTML for a Repeatable Social Link Form Item
+	 *
+	 *
+	 * @access protected
+	 */
+	protected function echo_repeatable_form_item( $id, $order, $repeatable = false ) {
+		$id = (int) $id;
+		?>
+
+		<div class="organic-widgets-repeatable-form-item" data-feature-id="<?php echo $id; ?>" data-order="<?php echo $order; ?>">
+
+			<div class="organic-widgets-feature-list-select">
+				<div class="organic-widgets-repeatable-move-button">
+					<div class="organic-widgets-move-up">
+						<i class="fa fa-angle-up"></i>
+					</div>
+				</div>
+				<div class="organic-widgets-repeatable-move-button">
+					<div class="organic-widgets-move-down">
+						<i class="fa fa-angle-down"></i>
+					</div>
+				</div>
+				<div class="organic-widgets-repeatable-delete-button">
+					<i class="fa fa-trash"></i>
+				</div>
+				<div class="organic-widgets-clear"></div>
+			</div>
+
+			<div class="">
+
+				<div class="organic-widgets-feature-list-icon-preview-wrapper">
+					<p>
+						<label><?php _e('Icon:', ORGANIC_WIDGETS_18N); ?></label>
+					</p>
+					<div class="organic-widgets-feature-list-icon-preview">
+						<?php if ( $repeatable && isset( $repeatable['icon'] ) ) { ?>
+							<i class="fa <?php echo esc_attr($repeatable['icon']); ?>"></i>
+						<?php } ?>
+					</div>
+				</div>
+
+				<div class="organic-widgets-feature-list-text-fields-wrapper">
+					<p>
+						<label><?php _e( 'Social Link:', ORGANIC_WIDGETS_18N ) ?></label>
+						<input class="widefat organic-widgets-feature-list-link-url-input organic-widgets-repeatable-form-item-input" data-input-name="link_url" data-activator="true" type="text" value="<?php if ( $repeatable && array_key_exists( 'link_url', $repeatable ) ) echo esc_url($repeatable['link_url']); ?>" />
+					</p>
+				</div>
+
+				<div class="organic-widgets-clear"></div>
+
+			</div>
+
+		</div>
+
+		<?php
 	}
 
 	/**
@@ -311,20 +327,13 @@ class Organic_Widgets_Profile_Widget extends Organic_Widgets_Custom_Widget {
 		} else {
 			$instance['text'] = wp_kses_post( $new_instance['text'] );
 		}
-		if (isset( $new_instance['personal_url'] ) )
-			$instance['personal_url'] = strip_tags( $new_instance['personal_url'] );
-		if (isset( $new_instance['twitter_url'] ) )
-			$instance['twitter_url'] = strip_tags( $new_instance['twitter_url'] );
-		if (isset( $new_instance['linkedin_url'] ) )
-			$instance['linkedin_url'] = strip_tags( $new_instance['linkedin_url'] );
-		if (isset( $new_instance['facebook_url'] ) )
-			$instance['facebook_url'] = strip_tags( $new_instance['facebook_url'] );
-		if (isset( $new_instance['email'] ) )
-			$instance['email'] = strip_tags( $new_instance['email'] );
 		if ( isset( $new_instance['bg_color'] ) && $this->check_hex_color( $new_instance['bg_color'] ) ) {
 			$instance['bg_color'] = strip_tags( $new_instance['bg_color'] );
 		} else {
 			$instance['bg_color'] = false;
+		}
+		if ( isset( $new_instance['repeatable_array'] ) ) {
+			$instance['repeatable_array'] = $new_instance['repeatable_array'];
 		}
 
 		return $instance;

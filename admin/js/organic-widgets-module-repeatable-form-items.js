@@ -240,9 +240,9 @@
 			// Find form items and collect values into array
 			var data = {};
 			var inputs = $(el).find('.organic-widgets-repeatable-form-item-input');
-			var activators = [];
+      var activators = [];
 			inputs.each(function(){
-				// Get input name and values and add to data array
+        // Get input name and values and add to data array
 				var inputName = $(this).attr('data-input-name');
 				var inputVal = $(this).attr('data-val') ? $(this).attr('data-val') : $(this).val();
 				data[inputName] = inputVal;
@@ -265,10 +265,9 @@
 			data['id'] = $(el).data('feature-id');
 
 			if ( active ) {
-				thisItemData[orderNumber] = data;
+        thisItemData[orderNumber] = data;
 			}
 			orderNumber++;
-
 		});
 
 		var mainInput = thisFormAdmin.find('.organic-widgets-repeatable-hidden-input');

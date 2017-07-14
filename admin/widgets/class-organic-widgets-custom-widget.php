@@ -463,8 +463,29 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
 		return $output;
 	}
 
+	/**
+	 * Function for sorting arrays with usort
+	 *
+	 * @param array $item to be compared with b
+	 * @param array $item to be compared with a
+	 *
+	 * @return int comparator
+	 */
+	protected function sort_by_order($a, $b) {
 
-	function getIconOptionsDivs() { ?>
+		if ( isset( $a['order'] ) && isset( $b['order'] ) ) {
+			return $a['order'] - $b['order'];
+		} else {
+			return -1;
+		}
+
+	}
+
+	/**
+	 * Outputs HTML for Selecting fontAwesome Icons
+	 *
+	 */
+	protected function getIconOptionsDivs() { ?>
 
 		<div class="organic-widgets-feature-select-item" data-val="fa-archive">
 			<div class="organic-widgets-feature-select-item-sizer"></div>

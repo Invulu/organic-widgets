@@ -222,8 +222,7 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 					<option <?php selected( $num_columns, '6'); ?> value="6">6</option>
 				</select>
 			</p>
-
-
+			
 			<hr/>
 
 			<?php $this->repeatable_form_item_input_markup( $repeatable_array, 'Features' ); ?>
@@ -265,7 +264,7 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 	 * Ouput HTML for a Repeatable Feature List Form Item
 	 *
 	 *
-	 * @access public
+	 * @access protected
 	 */
 	protected function echo_repeatable_form_item( $id, $order, $repeatable = false ) {
 		$id = (int) $id;
@@ -333,24 +332,6 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 		</div>
 
 		<?php
-	}
-
-	/**
-	 * Function for sorting arrays with usort
-	 *
-	 * @param array $item to be compared with b
-	 * @param array $item to be compared with a
-	 *
-	 * @return int comparator
-	 */
-	protected function sort_by_order($a, $b) {
-
-		if ( isset( $a['order'] ) && isset( $b['order'] ) ) {
-			return $a['order'] - $b['order'];
-		} else {
-			return -1;
-		}
-
 	}
 
 	/**
