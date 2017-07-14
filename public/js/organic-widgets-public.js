@@ -1,4 +1,5 @@
 (function( $ ) {
+
 	'use strict';
 
 	/* Check The Background Brightness ---------------------*/
@@ -37,7 +38,7 @@
 				var itemClass = 'organic-widgets-third';
 			}
 
-			parentContainer.before( '<div class="organic-widgets-section"><div class="organic-widgets-section-masonry-buffer organic-widgets-masonry-container" data-group-id="' + groupID + '"></div></div>');
+			parentContainer.before( '<div class="organic-widgets-section organic-widgets-group"><div class="organic-widgets-section-masonry-buffer organic-widgets-masonry-container" data-group-id="' + groupID + '"></div></div>');
 
 			//Get masonry container
 			var container = $('.organic-widgets-masonry-container[data-group-id="' + groupID + '"]');
@@ -75,6 +76,7 @@
 		checkBackgroundBrightness();
 	}
 
+
 	function editShortcutHoverBorderReady() {
 
 		// WP Customizer
@@ -87,7 +89,11 @@
 	$( document )
 	.ready( checkBackgroundBrightness )
 	.ready( groupGroupableWidgets )
-	.ready( editShortcutHoverBorderReady )
 	.ajaxComplete( checkBackgroundBrightness );
+
+	// WP Customizer
+	if ( typeof wp != "undefined" ) {
+		wp.customize.bind( 'preview-ready', _.defer( function() { editShortcutHoverBorder(); }));
+	}
 
 })( jQuery );

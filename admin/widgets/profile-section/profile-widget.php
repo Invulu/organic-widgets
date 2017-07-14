@@ -254,8 +254,6 @@ class Organic_Widgets_Profile_Widget extends Organic_Widgets_Custom_Widget {
 			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'email' ); ?>" name="<?php echo $this->get_field_name( 'email' ); ?>" value="<?php echo $instance['email']; ?>" />
 		</p>
 
-		<hr/>
-
 		<?php $this->section_background_input_markup( $instance, $this->bg_options ); ?>
 
   <?php
