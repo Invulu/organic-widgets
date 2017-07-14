@@ -24,9 +24,15 @@
 
   function getActiveWidgets() {
     var activeWidgets = [];
-    $('.control-section.open').find('.customize-control-widget_form').each(function(){
-     activeWidgets.push( $(this).attr('id') );
-    });
+    if ( wp.customize ) {
+      $('.control-section.open').find('.customize-control-widget_form').each(function(){
+       activeWidgets.push( $(this).attr('id') );
+      });
+    } else {
+      $('.widgets-holder-wrap').find('.widget').each(function(){
+        activeWidgets.push( $(this).attr('id') );
+      });
+    }
 
     return activeWidgets;
   }
@@ -144,7 +150,11 @@
 			$('.customize-control-widget_form').on('click',function(){
 				markWidgetGroups();
 			});
-		}
+		} else {
+      $( document ).ajaxStop( function() {
+        markWidgetGroups();
+      } );
+    }
 	});
 
 } );
