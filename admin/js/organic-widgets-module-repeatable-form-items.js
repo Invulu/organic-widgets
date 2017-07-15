@@ -107,6 +107,8 @@
 		var newItem = lastItem.clone();
 		newItem.attr('data-feature-id', newID);
 		newItem.attr('data-order', newOrder);
+    console.log(newItem.find('.organic-widgets-repeatable-item-number'));
+    newItem.find('.organic-widgets-repeatable-item-number').html(newOrder+1);
 		if ( newItem.hasClass('organic-widgets-show') ) {
 			newItem.removeClass('organic-widgets-show');
 			newItem.find('.organic-widgets-feature-list-icon-preview').html('');
@@ -141,30 +143,58 @@
 
 		// Move Up
 		if ( direction == 'up' && allFormItems.first().data('feature-id') != formItem.data('feature-id') ) {
-
+      console.log('up');
 			// Get previous item
 			var prevItem = formItem.prev('.organic-widgets-repeatable-form-item');
 
 			// Insert before previous
-			formItem.insertBefore(prevItem);
+      formItem.css('z-index',100);
+      prevItem.fadeTo(150,0);
+      var moveHeight = formItem.height() + 20;
 
-			// Update main input
-			var theForm = $(formItem).closest('.organic-widgets-repeatable-form-item-widget-admin');
-			organicWidgetsRepeatableFormItemUpdateMainArray(theForm);
+      // prevItem.css('opacity',0,400);
+      formItem.animate({marginTop: '-'+moveHeight+'px' }, 400, function(){
+        formItem.css('z-index','');
+        formItem.css('margin-top', '');
+        prevItem.hide();
+        formItem.insertBefore(prevItem);
+        prevItem.slideDown( 400, function(){
+          prevItem.fadeTo(150,1);
+          // Update main input
+          var theForm = $(formItem).closest('.organic-widgets-repeatable-form-item-widget-admin');
+          organicWidgetsRepeatableFormItemUpdateMainArray(theForm);
+        });
+
+      });
 
 		}
 		// Move Down
 		else if ( direction == 'down' && allFormItems.last().data('feature-id') != formItem.data('feature-id') ) {
-
+      console.log('down');
 			// Get next item
 			var nextItem = formItem.next('.organic-widgets-repeatable-form-item');
 
-			// Insert after next
-			formItem.insertAfter(nextItem);
+      // Insert before previous
+      formItem.css('z-index',100);
+      // nextItem.fadeTo(150,0);
+      var moveHeight = formItem.height() + 20;
 
-			// Update main input
-			var theForm = $(formItem).closest('.organic-widgets-repeatable-form-item-widget-admin');
-			organicWidgetsRepeatableFormItemUpdateMainArray(theForm);
+      nextItem.fadeTo(150,0 ,function(){
+        // prevItem.css('opacity',0,400);
+        formItem.animate({marginTop: moveHeight+'px' }, 400, function(){
+
+          formItem.css('z-index','');
+          formItem.css('margin-top', '');
+          formItem.insertAfter(nextItem);
+          nextItem.fadeTo(150,1);
+
+          // Update main input
+          var theForm = $(formItem).closest('.organic-widgets-repeatable-form-item-widget-admin');
+          organicWidgetsRepeatableFormItemUpdateMainArray(theForm);
+
+
+        });
+      });
 
 		}
 
@@ -250,6 +280,7 @@
 				if ( $(this).attr('data-activator') ) {
 					activators.push(inputName);
 				}
+
 			});
 
 			var active = false;
@@ -261,14 +292,20 @@
 				}
 			}
 
-			data['order'] = orderNumber;
-			data['id'] = $(el).data('feature-id');
+      // Order Numbers
+      data['order'] = orderNumber;
+      // Reset order numbers in title bars
+      $(this).find('.organic-widgets-repeatable-item-number').html( orderNumber+1 );
 
+      data['id'] = $(el).data('feature-id');
+
+      // If active, push into main object
 			if ( active ) {
         thisItemData[orderNumber] = data;
 			}
 			orderNumber++;
-		});
+
+    });
 
 		var mainInput = thisFormAdmin.find('.organic-widgets-repeatable-hidden-input');
 		mainInput.trigger('change');

@@ -272,32 +272,11 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 
 		<div class="organic-widgets-repeatable-form-item" data-feature-id="<?php echo $id; ?>" data-order="<?php echo $order; ?>">
 
-			<div class="organic-widgets-feature-list-select organic-widgets-repeatable-form-item-input" data-input-name="icon" data-activator="true" data-val="<?php if ( $repeatable && $repeatable['icon'] ) { echo esc_attr($repeatable['icon']); } ?>" data-feature-id="<?php echo $id; ?>">
-				<div class="organic-widgets-dropdown-button">
-					<div class="organic-widgets-feature-list-select-icon"><i class="fa fa-angle-down"></i></div>
-					<p><?php _e('Select Icon', ORGANIC_WIDGETS_18N); ?></p>
-				</div>
-				<div class="organic-widgets-repeatable-move-button">
-					<div class="organic-widgets-move-up">
-						<i class="fa fa-angle-up"></i>
-					</div>
-				</div>
-				<div class="organic-widgets-repeatable-move-button">
-					<div class="organic-widgets-move-down">
-						<i class="fa fa-angle-down"></i>
-					</div>
-				</div>
-				<div class="organic-widgets-repeatable-delete-button">
-					<i class="fa fa-trash"></i>
-				</div>
-				<div class="organic-widgets-clear"></div>
-				<div class="organic-widgets-feature-list-select-dropdown">
-					<?php $this->getIconOptionsDivs(); ?>
-					<div class="organic-widgets-clear"></div>
-				</div>
+			<div class="organic-widgets-repeatable-form-item-title-bar">
+				Feature <span class="organic-widgets-repeatable-item-number"><?php echo $order + 1; ?></span>
 			</div>
 
-			<div class="">
+			<div class="organic-widgets-repeatable-form-item-fields-wrapper">
 
 				<div class="organic-widgets-feature-list-icon-preview-wrapper">
 					<p>
@@ -327,7 +306,34 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 
 				<div class="organic-widgets-clear"></div>
 
+				<div class="organic-widgets-feature-list-select organic-widgets-repeatable-form-item-input" data-input-name="icon" data-activator="true" data-val="<?php if ( $repeatable && $repeatable['icon'] ) { echo esc_attr($repeatable['icon']); } ?>" data-feature-id="<?php echo $id; ?>">
+					<div class="organic-widgets-dropdown-button">
+						<div class="organic-widgets-feature-list-select-icon"><i class="fa fa-angle-down"></i></div>
+						<p><?php _e('Select Icon', ORGANIC_WIDGETS_18N); ?></p>
+					</div>
+					<div class="organic-widgets-repeatable-move-button">
+						<div class="organic-widgets-move-up">
+							<i class="fa fa-angle-up"></i>
+						</div>
+					</div>
+					<div class="organic-widgets-repeatable-move-button">
+						<div class="organic-widgets-move-down">
+							<i class="fa fa-angle-down"></i>
+						</div>
+					</div>
+					<div class="organic-widgets-repeatable-delete-button">
+						<i class="fa fa-trash"></i>
+					</div>
+					<div class="organic-widgets-clear"></div>
+					<div class="organic-widgets-feature-list-select-dropdown">
+						<?php $this->getIconOptionsDivs(); ?>
+						<div class="organic-widgets-clear"></div>
+					</div>
+				</div>
+
 			</div>
+
+
 
 		</div>
 

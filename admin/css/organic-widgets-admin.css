@@ -331,8 +331,20 @@ div.mce_inline_error {
   box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.1);
   background: #fafafa;
   border-radius: 4px;
-  padding: 10px 10px 0;
+  padding: 0 0 10px;
   margin-bottom: 10px;
+}
+.organic-widgets-repeatable-form-item-title-bar {
+  background: #ccc;
+  font-size: 1.2em;
+  text-align: center;
+  width: 100%;
+  height: auto;
+  padding: 8px;
+  box-sizing: border-box;
+}
+.organic-widgets-repeatable-form-item-fields-wrapper {
+  padding: 10px 10px 0;
 }
 
 /* Dropdown Button */
