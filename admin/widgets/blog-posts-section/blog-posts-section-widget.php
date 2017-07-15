@@ -114,7 +114,7 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 							<?php } ?>
 
 							<!-- BEGIN .organic-widgets-card -->
-							<div class="organic-widgets-card">
+							<div class="organic-widgets-card clearfix">
 
 								<h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
 
