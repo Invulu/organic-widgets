@@ -222,7 +222,7 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 					<option <?php selected( $num_columns, '6'); ?> value="6">6</option>
 				</select>
 			</p>
-			
+
 			<hr/>
 
 			<?php $this->repeatable_form_item_input_markup( $repeatable_array, 'Features' ); ?>
@@ -396,7 +396,7 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 
 		wp_enqueue_media();
 		// wp_enqueue_script( 'organic-widgets-feature-list-section-widget-js', plugin_dir_url( __FILE__ ) . 'js/feature-list-section-widget.js', array( 'jquery', 'media-upload', 'media-views' ) );
-		wp_enqueue_style( 'organic-widgets-feature-list-section-widget-css', plugin_dir_url( __FILE__ ) . 'css/feature-list-section-widget.css' );
+		// wp_enqueue_style( 'organic-widgets-feature-list-section-widget-css', plugin_dir_url( __FILE__ ) . 'css/feature-list-section-widget.css' );
 
 		// Repeatable Form Items
 		wp_enqueue_script( 'organic-widgets-module-repeatable-form-item-js', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-repeatable-form-items.js', array( 'jquery' ) );

@@ -183,7 +183,7 @@ class Organic_Widgets_Profile_Widget extends Organic_Widgets_Custom_Widget {
 		}
 		?>
 
-		<div class="organic-widgets-repeatable-form-item-widget-admin">
+		<div class="organic-widgets-repeatable-form-item-widget-admin organic-widgets-profile-form">
 
 			<input id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" class="title organic-widgets-wysiwyg-anchor" type="hidden" value="<?php echo $title; ?>">
 			<input id="<?php echo $this->get_field_id( 'text' ); ?>" name="<?php echo $this->get_field_name( 'text' ); ?>" class="text" type="hidden" value="<?php echo $text; ?>">
@@ -247,17 +247,6 @@ class Organic_Widgets_Profile_Widget extends Organic_Widgets_Custom_Widget {
 			</div>
 
 			<div class="">
-
-				<div class="organic-widgets-feature-list-icon-preview-wrapper">
-					<p>
-						<label><?php _e('Icon:', ORGANIC_WIDGETS_18N); ?></label>
-					</p>
-					<div class="organic-widgets-feature-list-icon-preview">
-						<?php if ( $repeatable && isset( $repeatable['icon'] ) ) { ?>
-							<i class="fa <?php echo esc_attr($repeatable['icon']); ?>"></i>
-						<?php } ?>
-					</div>
-				</div>
 
 				<div class="organic-widgets-feature-list-text-fields-wrapper">
 					<p>
