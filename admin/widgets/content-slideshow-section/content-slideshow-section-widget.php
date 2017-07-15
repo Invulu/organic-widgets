@@ -195,7 +195,7 @@ class Organic_Widgets_Content_Slideshow_Section_Widget extends Organic_Widgets_C
 		?>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'category' ); ?>"><?php _e('Testimonial Category:', ORGANIC_WIDGETS_18N) ?></label>
+			<label for="<?php echo $this->get_field_id( 'category' ); ?>"><?php _e('Post Category:', ORGANIC_WIDGETS_18N) ?></label>
 			<?php wp_dropdown_categories( array(
 				'selected' => $category,
 				'id' => $this->get_field_id( 'category' ),

@@ -31,6 +31,10 @@
 .organic-widget .button {
   margin: 12px auto;
 }
+.organic-widgets-content.organic-widgets-none {
+  margin-top: 48px;
+  margin-bottom: 48px;
+}
 
 /************************************************
 *	Core Widget Styles
@@ -737,6 +741,10 @@
 .organic-widgets-flexslider .flex-direction-nav .flex-prev i {
 	color: rgba(0, 0, 0, 0.4);
   font-weight: normal;
+  position: relative;
+  right: auto;
+  left: auto;
+  margin: 0px;
 }
 .organic-widgets-flexslider .flex-direction-nav a.flex-disabled {
 	opacity: 0;
