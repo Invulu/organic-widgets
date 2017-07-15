@@ -346,7 +346,9 @@ div.mce_inline_error {
 .organic-widgets-repeatable-form-item-fields-wrapper {
   padding: 10px 10px 0;
 }
-
+.organic-widgets-repeatable-actions {
+  margin: 0 10px;
+}
 /* Dropdown Button */
 .organic-widgets-dropdown-button, .organic-widgets-repeatable-move-button, .organic-widgets-repeatable-delete-button {
   border: none;

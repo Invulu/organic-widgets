@@ -229,7 +229,24 @@ class Organic_Widgets_Profile_Widget extends Organic_Widgets_Custom_Widget {
 
 		<div class="organic-widgets-repeatable-form-item" data-feature-id="<?php echo $id; ?>" data-order="<?php echo $order; ?>">
 
-			<div class="organic-widgets-feature-list-select">
+			<div class="organic-widgets-repeatable-form-item-title-bar">
+				Social Link <span class="organic-widgets-repeatable-item-number"><?php echo $order + 1; ?></span>
+			</div>
+
+			<div class="organic-widgets-repeatable-form-item-fields-wrapper">
+
+				<div class="organic-widgets-feature-list-text-fields-wrapper">
+					<p>
+						<label style="display:none;"><?php _e( 'Social Link:', ORGANIC_WIDGETS_18N ) ?></label>
+						<input class="widefat organic-widgets-feature-list-link-url-input organic-widgets-repeatable-form-item-input" data-input-name="link_url" data-activator="true" type="text" value="<?php if ( $repeatable && array_key_exists( 'link_url', $repeatable ) ) echo esc_url($repeatable['link_url']); ?>" />
+					</p>
+				</div>
+
+				<div class="organic-widgets-clear"></div>
+
+			</div>
+
+			<div class="organic-widgets-repeatable-actions">
 				<div class="organic-widgets-repeatable-move-button">
 					<div class="organic-widgets-move-up">
 						<i class="fa fa-angle-up"></i>
@@ -246,18 +263,6 @@ class Organic_Widgets_Profile_Widget extends Organic_Widgets_Custom_Widget {
 				<div class="organic-widgets-clear"></div>
 			</div>
 
-			<div class="">
-
-				<div class="organic-widgets-feature-list-text-fields-wrapper">
-					<p>
-						<label><?php _e( 'Social Link:', ORGANIC_WIDGETS_18N ) ?></label>
-						<input class="widefat organic-widgets-feature-list-link-url-input organic-widgets-repeatable-form-item-input" data-input-name="link_url" data-activator="true" type="text" value="<?php if ( $repeatable && array_key_exists( 'link_url', $repeatable ) ) echo esc_url($repeatable['link_url']); ?>" />
-					</p>
-				</div>
-
-				<div class="organic-widgets-clear"></div>
-
-			</div>
 
 		</div>
 
