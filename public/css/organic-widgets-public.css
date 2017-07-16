@@ -425,15 +425,14 @@
   margin-bottom: 6px;
 }
 .organic-widgets-profile-sub-title {
-  font-size: 0.8em;
+  font-size: 0.9em;
+  letter-spacing: 1px;
   padding: 0;
   margin-bottom: 10px;
   text-transform: uppercase;
 }
 .organic-widgets-profile-excerpt {
   margin-top: 1em;
-}
-.organic-widgets-profile .organic-widgets-social-icons {
 }
 
 /************************************************
@@ -513,7 +512,7 @@
 
 .organic-widget .organic-widgets-social-icons {
 	list-style: none;
-	margin: 1em 0 0;
+	margin: 24px 0px 0px 0px;
 	padding: 0px;
 }
 .organic-widget .organic-widgets-social-icons li {
@@ -529,31 +528,16 @@
 	text-decoration: none;
 	line-height: 36px;
 	min-width: 36px;
-	margin: 4px;
+	margin: 2px;
 	padding: 0px;
 	border-radius: 50%;
-	transition: color 0s;
-	-moz-transition: color 0s;
-	-webkit-transition: color 0s;
-	-o-transition: color 0s;
-  border-radius: 18px;
-  height:36px;
+  height: 36px;
   color: #999999;
-  border: 1px solid #999999;
-  border-color: #cccccc;
-  background-color: #fafafa;
-  transition: color 0.5s ease;
-  -moz-transition: color 0.5s ease;
-  -webkit-transition: color 0.5s ease;
-  -o-transition: color 0.5s ease;
-  transition: border 0.5s ease-out;
-  -moz-transition: border 0.5s ease-out;
-  -webkit-transition: border 0.5s ease-out;
-  -o-transition: border 0.5s ease-out;
-  transition: background-color 0.5s ease;
-  -moz-transition: background-color 0.5s ease;
-  -webkit-transition: background-color 0.5s ease;
-  -o-transition: background-color 0.5s ease;
+  background-color: rgba(0, 0, 0, 0.04);
+  transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
 }
 .organic-widget .organic-widgets-social-icons li a:hover {
   color: #666666;
@@ -592,6 +576,43 @@
 .organic-widget .organic-widgets-social-icons li a[href*="mailto:"]::before				{ content: '\f0e0'; }
 .organic-widget .organic-widgets-social-icons li a[href$="/feed/"]::before				{ content: '\f09e'; }
 .organic-widget .organic-widgets-social-icons li a[href$="/cart/"]::before				{ content: '\f07a'; }
+
+.organic-widget .organic-widgets-social-icons li a[href*="twitter.com"]:hover	{
+  color: #ffffff;
+	background: #00aced;
+}
+.organic-widget .organic-widgets-social-icons li a[href*="facebook.com"]:hover {
+  color: #ffffff;
+	background: #3b5998;
+}
+.organic-widget .organic-widgets-social-icons li a[href*="plus.google.com"]:hover	{
+  color: #ffffff;
+	background: #dd4b39;
+}
+.organic-widget .organic-widgets-social-icons li a[href*="linkedin.com"]:hover	{
+  color: #ffffff;
+	background: #007bb6;
+}
+.organic-widget .organic-widgets-social-icons li a[href*="pinterest.com"]:hover	{
+  color: #ffffff;
+	background: #cb2027;
+}
+.organic-widget .organic-widgets-social-icons li a[href*="youtube.com"]:hover	{
+  color: #ffffff;
+	background: #bb0000;
+}
+.organic-widget .organic-widgets-social-icons li a[href*="instagram.com"]:hover	{
+  color: #ffffff;
+	background: #517fa4;
+}
+.organic-widget .organic-widgets-social-icons li a[href*="dribbble.com"]:hover {
+  color: #ffffff;
+	background: #ea4c89;
+}
+.organic-widget .organic-widgets-social-icons li a[href*="foursquare.com"]:hover {
+  color: #ffffff;
+	background: #0072b1;
+}
 
 /************************************************
 *	Flexslider
