@@ -430,13 +430,6 @@
   margin-bottom: 10px;
   text-transform: uppercase;
 }
-.organic-widgets-profile-divider {
-  max-width: 600px;
-  width: 90%;
-  height: 2px;
-  margin: auto;
-  background-color: #cccccc;
-}
 .organic-widgets-profile-excerpt {
   margin-top: 1em;
 }

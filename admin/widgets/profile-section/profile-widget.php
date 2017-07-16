@@ -99,8 +99,6 @@ class Organic_Widgets_Profile_Widget extends Organic_Widgets_Custom_Widget {
 								<h3 class="organic-widgets-profile-sub-title"><?php echo $instance['subtitle']; ?></h3>
 							<?php } ?>
 
-								<div class="organic-widgets-profile-divider"></div>
-
 							<?php if ( ! empty( $instance['text'] ) ) { ?>
 								<div class="organic-widgets-profile-excerpt"><?php echo apply_filters( 'the_content', $instance['text'] ); ?></div>
 							<?php } ?>
