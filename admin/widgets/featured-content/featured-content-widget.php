@@ -67,9 +67,10 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 			$first_last = false;
 		}
 
+		echo $args['before_widget'];
+
 		if ( ! empty( $instance['page_id'] ) ) {
 
-			echo $args['before_widget'];
 			$bg_color = isset( $instance['bg_color'] ) ? $instance['bg_color'] : false;
 			$bg_image_id = isset( $instance['bg_image_id'] ) ? $instance['bg_image_id'] : false;
 			$bg_image = ( isset( $instance['bg_image'] ) && '' != $instance['bg_image'] ) ? $instance['bg_image'] : false;
@@ -105,15 +106,9 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 				</div>
 
 			<!-- END .organic-widgets-section -->
-			</div>
+			</div><?php
 
-			<?php
-
-			echo $args['after_widget'];
-
-		} elseif ( ! empty( $instance['title'] ) || ! empty( $instance['text'] ) ) {
-
-			echo $args['before_widget'];
+		} else {
 
 			$attr = array();
 			$attr = apply_filters( 'image_widget_image_attributes', $attr, $instance );
@@ -122,52 +117,53 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 			$bg_image = ( isset( $instance['bg_image'] ) && '' != $instance['bg_image'] ) ? $instance['bg_image'] : false;
 			$link_url = $instance['link_url'];
 			$link_title = $instance['link_title'];
-
 			?>
 
 			<!-- BEGIN .organic-widgets-section -->
 			<div class="organic-widgets-section organic-widgets-featured-content-section<?php if ( $first_last ) { echo esc_attr( $first_last ); } ?>" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?> <?php if ($group_id) { echo 'data-group-id="' . $group_id . '"'; } ?>>
 
-				<!-- BEGIN .organic-widgets-aligner -->
-				<div class="organic-widgets-aligner <?php if ( ! empty( $instance['alignment'] ) ) { echo 'organic-widgets-aligner-'.esc_attr( $instance['alignment'] ); } else { echo 'organic-widgets-aligner-middle-center'; } ?>">
+				<?php if ( ! empty( $instance['title'] ) || ! empty( $instance['text'] ) ) { ?>
 
-					<!-- BEGIN .organic-widgets-content -->
-					<div class="organic-widgets-content">
+					<!-- BEGIN .organic-widgets-aligner -->
+					<div class="organic-widgets-aligner <?php if ( ! empty( $instance['alignment'] ) ) { echo 'organic-widgets-aligner-'.esc_attr( $instance['alignment'] ); } else { echo 'organic-widgets-aligner-middle-center'; } ?>">
 
-						<div class="holder">
-							<div class="information">
-								<?php if ( ! empty( $instance['title'] ) ) { ?>
-									<h3><?php echo apply_filters( 'widget_title', $instance['title'] ); ?></h3>
-								<?php } ?>
-								<?php if ( ! empty( $instance['text'] ) ) { ?>
-									<div class="excerpt"><?php echo apply_filters( 'the_content', $instance['text'] ); ?></div>
-								<?php } ?>
-								<?php if ( ! empty( $link_url ) ) { ?>
-									<a class="button" href="<?php echo esc_url( $link_url ); ?>">
-										<?php if ( ! empty( $link_title ) ) { ?>
-											<?php echo $link_title ?>
-										<?php } else { ?>
-											<?php esc_html_e( 'Read More', ORGANIC_WIDGETS_18N ); ?>
-										<?php } ?>
-									</a>
-								<?php } ?>
+						<!-- BEGIN .organic-widgets-content -->
+						<div class="organic-widgets-content">
+
+							<div class="holder">
+								<div class="information">
+									<?php if ( ! empty( $instance['title'] ) ) { ?>
+										<h3><?php echo apply_filters( 'widget_title', $instance['title'] ); ?></h3>
+									<?php } ?>
+									<?php if ( ! empty( $instance['text'] ) ) { ?>
+										<div class="excerpt"><?php echo apply_filters( 'the_content', $instance['text'] ); ?></div>
+									<?php } ?>
+									<?php if ( ! empty( $link_url ) ) { ?>
+										<a class="button" href="<?php echo esc_url( $link_url ); ?>">
+											<?php if ( ! empty( $link_title ) ) { ?>
+												<?php echo $link_title ?>
+											<?php } else { ?>
+												<?php esc_html_e( 'Read More', ORGANIC_WIDGETS_18N ); ?>
+											<?php } ?>
+										</a>
+									<?php } ?>
+								</div>
 							</div>
+
+						<!-- END .organic-widgets-content -->
 						</div>
 
-					<!-- END .organic-widgets-content -->
+					<!-- END .organic-widgets-aligner -->
 					</div>
 
-				<!-- END .organic-widgets-aligner -->
-				</div>
+				<?php } ?>
 
 			<!-- END .organic-widgets-section -->
 			</div>
 
-			<?php
+		<?php }
 
-			echo $args['after_widget'];
-
-		}
+		echo $args['after_widget'];
 
 	}
 	/**

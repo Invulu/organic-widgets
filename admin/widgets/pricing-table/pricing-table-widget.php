@@ -65,19 +65,17 @@ class Organic_Widgets_Pricing_Table_Widget extends Organic_Widgets_Custom_Widget
 			$first_last = ' organic-widgets-groupable-last';
 		} else {
 			$first_last = false;
-		}
-
-		?>
+		} ?>
 
 		<?php echo $args['before_widget']; ?>
 
-		<?php if ( ! empty( $instance['title'] ) || ! empty( $instance['text'] ) || ! empty( $instance['subtitle'] ) ) { ?>
+			<!-- BEGIN .organic-widgets-section -->
+			<div class="organic-widgets-section organic_widgets-pricing-table-section<?php if ( $first_last ) { echo esc_attr( $first_last ); } ?>" <?php if ($instance['bg_color']) { ?>style="background-color:<?php echo $instance['bg_color']; ?>;"<?php } ?> <?php if ($group_id) { echo 'data-group-id="' . $group_id . '"'; } ?>>
 
-				<!-- BEGIN .organic-widgets-section -->
-				<div class="organic-widgets-section organic_widgets-profile-section<?php if ( $first_last ) { echo esc_attr( $first_last ); } ?>" <?php if ($instance['bg_color']) { ?>style="background-color:<?php echo $instance['bg_color']; ?>;"<?php } ?> <?php if ($group_id) { echo 'data-group-id="' . $group_id . '"'; } ?>>
+				<?php if ( ! empty( $instance['title'] ) || ! empty( $instance['text'] ) || ! empty( $instance['subtitle'] ) ) { ?>
 
-					<!-- BEGIN .organic-widgets-profile -->
-					<div class="organic-widgets-profile">
+					<!-- BEGIN .organic-widgets-pricing-table -->
+					<div class="organic-widgets-pricing-table">
 
 						<?php if ( $instance['bg_image_id'] > 0 ) { ?>
 							<div class="organic-widgets-profile-img"><img src="<?php echo $instance['bg_image']; ?>" alt="<?php __( 'Pricing Table Image', ORGANIC_WIDGETS_18N ) ?>" /></div>
@@ -108,12 +106,12 @@ class Organic_Widgets_Pricing_Table_Widget extends Organic_Widgets_Custom_Widget
 					<!-- END .organic-widgets-pricing-table -->
 					</div>
 
-				<!-- END .organic-widgets-section -->
-				</div>
+				<?php } //End Conditional checking for content ?>
+
+			<!-- END .organic-widgets-section -->
+			</div>
 
 			<?php echo $args['after_widget'];
-
-		} //End Conditional checking for content
 
 	} // End widget()
 
@@ -252,7 +250,7 @@ class Organic_Widgets_Pricing_Table_Widget extends Organic_Widgets_Custom_Widget
 		// Groupable Widget
 		wp_enqueue_script( 'organic-widgets-module-groupable-widgets', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-groupable-widgets.js', array( 'jquery' ) );
 
-		// Repeatable Form Items 
+		// Repeatable Form Items
 		wp_enqueue_script( 'organic-widgets-module-repeatable-form-item-js', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-repeatable-form-items.js', array( 'jquery' ) );
 
 		wp_enqueue_media();

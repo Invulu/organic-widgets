@@ -66,17 +66,14 @@ class Organic_Widgets_Profile_Widget extends Organic_Widgets_Custom_Widget {
 			$first_last = ' organic-widgets-groupable-last';
 		} else {
 			$first_last = false;
-		}
-
-
-		?>
+		} ?>
 
 		<?php echo $args['before_widget']; ?>
 
-		<?php if ( ! empty( $instance['title'] ) || ! empty( $instance['text'] ) || ! empty( $instance['subtitle'] ) ) { ?>
+			<!-- BEGIN .organic-widgets-section -->
+			<div class="organic-widgets-section organic_widgets-profile-section<?php if ( $first_last ) { echo esc_attr( $first_last ); } ?>" <?php if ($instance['bg_color']) { ?>style="background-color:<?php echo $instance['bg_color']; ?>;"<?php } ?> <?php if ($group_id) { echo 'data-group-id="' . $group_id . '"'; } ?>>
 
-				<!-- BEGIN .organic-widgets-section -->
-				<div class="organic-widgets-section organic_widgets-profile-section<?php if ( $first_last ) { echo esc_attr( $first_last ); } ?>" <?php if ($instance['bg_color']) { ?>style="background-color:<?php echo $instance['bg_color']; ?>;"<?php } ?> <?php if ($group_id) { echo 'data-group-id="' . $group_id . '"'; } ?>>
+				<?php if ( ! empty( $instance['title'] ) || ! empty( $instance['text'] ) || ! empty( $instance['subtitle'] ) ) { ?>
 
 					<!-- BEGIN .organic-widgets-profile -->
 					<div class="organic-widgets-profile">
@@ -132,12 +129,12 @@ class Organic_Widgets_Profile_Widget extends Organic_Widgets_Custom_Widget {
 					<!-- END .organic-widgets-profile -->
 					</div>
 
-				<!-- END .organic-widgets-section -->
-				</div>
+				<?php } //End Conditional checking for content ?>
+
+			<!-- END .organic-widgets-section -->
+			</div>
 
 			<?php echo $args['after_widget'];
-
-		} //End Conditional checking for content
 
 	} // End widget()
 
