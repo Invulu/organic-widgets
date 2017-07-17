@@ -111,7 +111,9 @@ class Organic_Widgets_Profile_Widget extends Organic_Widgets_Custom_Widget {
 
 									<?php if ( ! empty( $social_link['link_url'] ) ) { ?>
 
-										<li><a href="<?php echo $social_link['link_url']; ?>" target="_blank"><i class="fa"></i></a></li>
+										<?php $is_email = is_email( $social_link['link_url'] ) ? true : false; ?>
+
+										<li><a href="<?php if ( $is_email ) { echo 'mailto:'; } echo $social_link['link_url']; ?>" target="_blank"><i class="fa"></i></a></li>
 
 									<?php } ?>
 
@@ -236,7 +238,7 @@ class Organic_Widgets_Profile_Widget extends Organic_Widgets_Custom_Widget {
 				<div class="organic-widgets-feature-list-text-fields-wrapper">
 					<p>
 						<label style="display:none;"><?php _e( 'Social Link:', ORGANIC_WIDGETS_18N ) ?></label>
-						<input class="widefat organic-widgets-feature-list-link-url-input organic-widgets-repeatable-form-item-input" data-input-name="link_url" data-activator="true" type="text" value="<?php if ( $repeatable && array_key_exists( 'link_url', $repeatable ) ) echo esc_url($repeatable['link_url']); ?>" />
+						<input class="widefat organic-widgets-feature-list-link-url-input organic-widgets-repeatable-form-item-input" data-input-name="link_url" data-activator="true" type="text" value="<?php if ( $repeatable && array_key_exists( 'link_url', $repeatable ) ) { if ( is_email( $repeatable['link_url'] ) ) { echo esc_html( $repeatable['link_url'] ); } else { echo esc_url($repeatable['link_url']); } } ?>" />
 					</p>
 				</div>
 
