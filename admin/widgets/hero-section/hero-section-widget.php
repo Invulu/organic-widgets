@@ -60,13 +60,16 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 		$bg_image = ( isset( $instance['bg_image'] ) && '' != $instance['bg_image'] ) ? $instance['bg_image'] : false;
 		$bg_color = ( isset( $instance['bg_color'] ) && '' != $instance['bg_color'] ) ? $instance['bg_color'] : false;
 		$bg_video  = ( isset( $instance['bg_video'] ) && $instance['bg_video'] ) ? $instance['bg_video'] : false;
+		if ( isset( $instance['full_window_height'] ) ) {
+			$full_window_height = $instance['full_window_height'];
+		} else { $full_window_height = false; }
 
 		echo $args['before_widget'];
 
 		?>
 
 		<!-- BEGIN .organic-widgets-section -->
-		<div class="organic-widgets-section organic-widgets-hero-section" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
+		<div class="organic-widgets-section organic-widgets-hero-section <?php if ($full_window_height) echo 'organic-widgets-full-height-section'; ?>" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
 
 			<?php
 			// Video Background Section.
@@ -169,6 +172,10 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 			$bg_color = $instance['bg_color'];
 		} else { $bg_color = false; }
 
+		if ( isset( $instance['full_window_height'] ) ) {
+			$full_window_height = $instance['full_window_height'];
+		} else { $full_window_height = false; }
+
 		?>
 
 		<input id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" class="title" type="hidden" value="<?php if ( ! empty( $instance['title'] ) ) echo $instance['title']; ?>">
@@ -183,6 +190,11 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 		</p>
 
 		<?php $this->content_aligner_input_markup( $instance ); ?>
+
+		<p>
+			<label for="<?php echo $this->get_field_id( 'full_window_height' ); ?>"><?php _e('Full Window Height Section', ORGANIC_WIDGETS_18N); ?></label>
+			<input class="checkbox" type="checkbox" value="1" <?php checked( $full_window_height, '1' ); ?> id="<?php echo $this->get_field_id( 'full_window_height' ); ?>" name="<?php echo $this->get_field_name( 'full_window_height' ); ?>" />
+		</p>
 
 		<?php $this->section_background_input_markup( $instance, $this->bg_options );
 
@@ -233,6 +245,11 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 			$instance['bg_image'] = strip_tags( $new_instance['bg_image'] );
 		if ( isset( $new_instance['alignment'] ) )
 			$instance['alignment'] = strip_tags( $new_instance['alignment'] );
+		if ( isset( $new_instance['full_window_height'] ) ) {
+			$instance['full_window_height'] = true;
+		} else {
+			$instance['full_window_height'] = false;
+		}
 		if ( isset( $new_instance['bg_video'] ) && $this->check_video_url( $new_instance['bg_video'] ) ) {
 			$instance['bg_video'] = strip_tags( $new_instance['bg_video'] );
 		} else {

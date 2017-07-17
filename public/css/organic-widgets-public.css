@@ -153,15 +153,15 @@
 *	Hero Section Widget
 ************************************************/
 
-.organic-widgets-hero-section {
-  display: flex;
-  height: 100vh;
-  min-height: 480px;
-}
 .organic-widgets-section.organic-widgets-hero-section {
+  display: flex;
+  height: auto;
   background-attachment: fixed;
-  padding-top: 0px;
-  padding-bottom: 0px;
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+.organic-widgets-hero-section.organic-widgets-full-height-section {
+  height: 100vh;
 }
 .organic-widgets-hero-information {
   max-width: 800px;
