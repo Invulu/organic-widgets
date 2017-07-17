@@ -385,6 +385,7 @@ div.mce_inline_error {
   width: 10%;
   padding: 0;
   display: inline;
+  padding: 7px 0 8px;
 }
 .organic-widgets-profile-form .organic-widgets-repeatable-move-button, .organic-widgets-profile-form .organic-widgets-repeatable-delete-button {
   width: 33%;
@@ -395,11 +396,13 @@ div.mce_inline_error {
 .organic-widgets-move-up, .organic-widgets-move-down {
   color: #666;
 }
-.organic-widgets-move-up {
-  padding: 7px 0 8px;
+.organic-widgets-repeatable-actions .organic-widgets-move-up {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
 }
-.organic-widgets-move-down {
-  padding: 7px 0 8px;
+.organic-widgets-feature-list-select .organic-widgets-move-up  {
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
 }
 .organic-widgets-move-up:active, .organic-widgets-move-up:hover, .organic-widgets-move-down:active, .organic-widgets-move-down:hover {
   background-color: #999;

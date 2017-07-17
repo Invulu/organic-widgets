@@ -311,15 +311,11 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 						<div class="organic-widgets-feature-list-select-icon"><i class="fa fa-angle-down"></i></div>
 						<p><?php _e('Select Icon', ORGANIC_WIDGETS_18N); ?></p>
 					</div>
-					<div class="organic-widgets-repeatable-move-button">
-						<div class="organic-widgets-move-up">
+					<div class="organic-widgets-repeatable-move-button organic-widgets-move-up">
 							<i class="fa fa-angle-up"></i>
-						</div>
 					</div>
-					<div class="organic-widgets-repeatable-move-button">
-						<div class="organic-widgets-move-down">
+					<div class="organic-widgets-repeatable-move-button organic-widgets-move-down">
 							<i class="fa fa-angle-down"></i>
-						</div>
 					</div>
 					<div class="organic-widgets-repeatable-delete-button">
 						<i class="fa fa-trash"></i>
@@ -332,8 +328,6 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 				</div>
 
 			</div>
-
-
 
 		</div>
 
