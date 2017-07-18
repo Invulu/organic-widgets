@@ -89,15 +89,30 @@ class Organic_Widgets_Pricing_Table_Widget extends Organic_Widgets_Custom_Widget
 							<!-- BEGIN .organic-pricing-table-content -->
 							<div class="organic-pricing-table-content">
 
-							<?php if ( ! empty( $instance['title'] ) ) { ?>
-								<h6 class="organic-widgets-pricing-table-title"><?php echo apply_filters( 'widget_title', $instance['title'] ); ?></h6>
-							<?php } ?>
 
-								<div class="organic-widgets-pricing-table-divider"></div>
+								<table>
 
-							<?php if ( ! empty( $instance['text'] ) ) { ?>
-								<div class="organic-widgets-pricing-table-excerpt"><?php echo apply_filters( 'the_content', $instance['text'] ); ?></div>
-							<?php } ?>
+									<tr>
+										<th>
+											<?php if ( ! empty( $instance['title'] ) ) { ?>
+												<h6 class="organic-widgets-pricing-table-title"><?php echo apply_filters( 'widget_title', $instance['title'] ); ?></h6>
+											<?php } ?>
+
+												<div class="organic-widgets-pricing-table-divider"></div>
+
+											<?php if ( ! empty( $instance['text'] ) ) { ?>
+												<div class="organic-widgets-pricing-table-excerpt"><?php echo apply_filters( 'the_content', $instance['text'] ); ?></div>
+											<?php } ?>
+										</th>
+									</tr>
+
+									<?php foreach( $repeatable_array as $row ) { ?>
+										<tr>
+											<td><?php echo esc_html( $row['text_row'] ); ?></td>
+										</tr>
+									<?php } ?>
+
+								</table>
 
 							<!-- END .organic-pricing-table-content -->
 							</div>
@@ -218,7 +233,7 @@ class Organic_Widgets_Pricing_Table_Widget extends Organic_Widgets_Custom_Widget
 
 				<p>
 					<label style="display:none;"><?php _e( 'Text Row:', ORGANIC_WIDGETS_18N ) ?></label>
-					<input class="widefat organic-widgets-feature-list-text-row-input organic-widgets-repeatable-form-item-input" data-input-name="text_row" data-activator="true" type="text" value="<?php if ( $repeatable && array_key_exists( 'text_row', $repeatable ) ) { if ( is_email( $repeatable['text_row'] ) ) { echo esc_html( $repeatable['text_row'] ); } else { echo esc_url($repeatable['text_row']); } } ?>" />
+					<input class="widefat organic-widgets-feature-list-text-row-input organic-widgets-repeatable-form-item-input" data-input-name="text_row" data-activator="true" type="text" value="<?php if ( $repeatable && array_key_exists( 'text_row', $repeatable ) ) { echo esc_html($repeatable['text_row']); } ?>" />
 				</p>
 
 				<div class="organic-widgets-clear"></div>
