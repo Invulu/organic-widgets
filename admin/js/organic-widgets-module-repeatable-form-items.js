@@ -44,16 +44,7 @@
 		});
 
 		// Listen for changes on inputs
-		$('.organic-widgets-feature-list-text-input').on('change', function(){
-			var formItem = $(this).parent().parent('.organic-widgets-repeatable-form-item');
-			organicWidgetsRepeatableFormItemUpdateMainArray(this);
-		});
-		// Listen for changes on inputs
-		$('.organic-widgets-feature-list-link-url-input').on('change', function(){
-			var formItem = $(this).parent().parent('.organic-widgets-repeatable-form-item');
-			organicWidgetsRepeatableFormItemUpdateMainArray(this);
-		});
-		$('.organic-widgets-feature-list-title-input').on('change', function(){
+		$('.organic-widgets-repeatable-form-item-input').on('change', function(){
 			var formItem = $(this).parent().parent('.organic-widgets-repeatable-form-item');
 			organicWidgetsRepeatableFormItemUpdateMainArray(this);
 		});
@@ -230,7 +221,7 @@
 		var thisItem = $(feature);
 		var thisVal = thisItem.data('val');
 		var thisFeature = thisItem.parents('.organic-widgets-feature-list-select');
-		var thisFormItem = thisFeature.parent('.organic-widgets-repeatable-form-item');
+		var thisFormItem = thisFeature.closest('.organic-widgets-repeatable-form-item');
 		var thisButton = thisItem.parent().siblings('.organic-widgets-dropdown-button');
 		var thisPreview = thisFormItem.find('.organic-widgets-feature-list-icon-preview');
 
