@@ -79,11 +79,11 @@ class Organic_Widget_Areas {
 				register_sidebar( array(
             'name' => $page->post_title .' (Widgets)',
             'id' => $this->widget_prefix . 'page-'.$page->ID . '-widget-area',
-            'description' => 'This is the ' . $page->post_title . ' sidebar',
+            'description' => 'This is the ' . $page->post_title . ' sidebar.',
             'before_widget' => '<div id="%1$s" class="organic-widget organic-widget_%2$s">',
             'after_widget' => '</div>',
-            'before_title' => '<span style="display:none;">',
-          	'after_title' => '</span>'
+            'before_title' => '<h4 class="organic-widgets-default-title">',
+          	'after_title' => '</h4>'
         ) );
 			}
 
