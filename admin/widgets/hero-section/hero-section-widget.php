@@ -192,8 +192,8 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 		<?php $this->content_aligner_input_markup( $instance ); ?>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'full_window_height' ); ?>"><?php _e('Full Window Height Section', ORGANIC_WIDGETS_18N); ?></label>
 			<input class="checkbox" type="checkbox" value="1" <?php checked( $full_window_height, '1' ); ?> id="<?php echo $this->get_field_id( 'full_window_height' ); ?>" name="<?php echo $this->get_field_name( 'full_window_height' ); ?>" />
+			<label for="<?php echo $this->get_field_id( 'full_window_height' ); ?>"><?php _e('Full Window Height Section', ORGANIC_WIDGETS_18N); ?></label>
 		</p>
 
 		<?php $this->section_background_input_markup( $instance, $this->bg_options );
