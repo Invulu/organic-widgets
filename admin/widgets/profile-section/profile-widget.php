@@ -264,7 +264,6 @@ class Organic_Widgets_Profile_Widget extends Organic_Widgets_Custom_Widget {
 				<div class="organic-widgets-clear"></div>
 			</div>
 
-
 		</div>
 
 		<?php
@@ -346,6 +345,10 @@ class Organic_Widgets_Profile_Widget extends Organic_Widgets_Custom_Widget {
 		wp_add_inline_script( 'organic-widgets-profile-widgets', 'wp.organicProfileWidgets.init();', 'after' );
 
 		wp_enqueue_script( 'organic-widgets-module-groupable-widgets', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-groupable-widgets.js', array( 'jquery' ) );
+		wp_localize_script( 'organic-widgets-module-groupable-widgets', 'GroupableWidgets', array(
+			'active_pane' => false,
+			'widgets' => array()
+		) );
 
 		wp_enqueue_media();
 		// wp_enqueue_script( 'organic_widgets-profile-widget-js', plugin_dir_url( __FILE__ ) . 'js/profile-widget.js', array( 'jquery', 'media-upload', 'media-views' ) );

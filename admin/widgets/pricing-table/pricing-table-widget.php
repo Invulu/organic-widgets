@@ -178,6 +178,62 @@ class Organic_Widgets_Pricing_Table_Widget extends Organic_Widgets_Custom_Widget
 	}
 
 	/**
+	 * Ouput HTML for a Repeatable Social Link Form Item
+	 *
+	 *
+	 * @access protected
+	 */
+	 protected function echo_repeatable_form_item( $id = 'template', $order = 'template', $repeatable = false ) {
+
+	 	if ( $id === 'template' || $order === 'template' ) {
+	 		$template = true;
+	 		$id = '';
+	 		$order = '';
+	 	} else {
+	 		$id = (int) $id;
+	 		$template = false;
+	 	}
+		?>
+
+		<div class="<?php if ( $template ) { echo 'organic-widgets-repeatable-form-item-template'; } else { echo 'organic-widgets-repeatable-form-item'; } ?>" data-feature-id="<?php echo $id; ?>" data-order="<?php echo $order; ?>">
+
+			<div class="organic-widgets-repeatable-form-item-title-bar">
+				Social Link <span class="organic-widgets-repeatable-item-number"><?php echo $order + 1; ?></span>
+			</div>
+
+			<div class="organic-widgets-repeatable-form-item-fields-wrapper">
+
+				<div class="organic-widgets-feature-list-text-fields-wrapper">
+					<p>
+						<label style="display:none;"><?php _e( 'Feature Field:', ORGANIC_WIDGETS_18N ) ?></label>
+						<input class="widefat organic-widgets-feature-list-link-url-input organic-widgets-repeatable-form-item-input" data-input-name="link_url" data-activator="true" type="text" value="<?php if ( $repeatable && array_key_exists( 'feature_field', $repeatable ) ) { if ( is_email( $repeatable['feature_field'] ) ) { echo esc_html( $repeatable['feature_field'] ); } else { echo esc_url($repeatable['feature_field']); } } ?>" />
+					</p>
+				</div>
+
+				<div class="organic-widgets-clear"></div>
+
+			</div>
+
+			<div class="organic-widgets-repeatable-actions">
+				<div class="organic-widgets-repeatable-move-button organic-widgets-move-up">
+						<i class="fa fa-angle-up"></i>
+				</div>
+				<div class="organic-widgets-repeatable-move-button organic-widgets-move-down">
+						<i class="fa fa-angle-down"></i>
+				</div>
+				<div class="organic-widgets-repeatable-delete-button">
+					<i class="fa fa-trash"></i>
+				</div>
+				<div class="organic-widgets-clear"></div>
+			</div>
+
+
+		</div>
+
+		<?php
+	}
+
+	/**
 	 * Render form template scripts.
 	 *
 	 *
@@ -249,6 +305,10 @@ class Organic_Widgets_Pricing_Table_Widget extends Organic_Widgets_Custom_Widget
 
 		// Groupable Widget
 		wp_enqueue_script( 'organic-widgets-module-groupable-widgets', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-groupable-widgets.js', array( 'jquery' ) );
+		wp_localize_script( 'organic-widgets-module-groupable-widgets', 'GroupableWidgets', array(
+			'active_pane' => false,
+			'widgets' => array()
+		) );
 
 		// Repeatable Form Items
 		wp_enqueue_script( 'organic-widgets-module-repeatable-form-item-js', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-repeatable-form-items.js', array( 'jquery' ) );

@@ -9,8 +9,6 @@
 
      wp.customize.bind('pane-contents-reflowed', function(){
 
-      var activeWidgets = getActiveWidgets();
-
       if ( groupableWidgetsAffected() ) {
         markWidgetGroups();
         wp.customize.previewer.refresh();
@@ -63,6 +61,13 @@
 
     }
 
+    // Set variables if not set yet
+    var activePaneID = $('.control-section.open').attr('id');
+    if ( ! GroupableWidgets['active_pane'] && activePaneID ) {
+      GroupableWidgets['active_pane'] = activePaneID;
+      GroupableWidgets['widgets'] = getActiveWidgets();
+    }
+
   }
 
   function isConsecutive( i ) {
@@ -85,9 +90,15 @@
 
   }
 
-  function isLastInGroup( i ) {
+  function isLastInGroup( i, widgetsToCheck ) {
 
-    var activeWidgets = getActiveWidgets();
+    if ( widgetsToCheck == null ) {
+      var activeWidgets = getActiveWidgets();
+    } else {
+      var activeWidgets = widgetsToCheck;
+    }
+
+    if ( activeWidgets == null ) return false;
 
     if ( ! isGroupableWidget( activeWidgets[i] ) ) {
       return false;
@@ -109,17 +120,69 @@
 
   }
 
+  function getConsecutiveGroups( widgetArray ) {
+
+    var groups = [];
+    var groupIndex = 0;
+    groups[groupIndex] = [];
+
+    for ( var i = 0; i < widgetArray.length; i++ ) {
+
+      if ( isGroupableWidget( widgetArray[i] ) ) {
+        groups[groupIndex].push( widgetArray[i] );
+
+        if ( isLastInGroup( i, widgetArray ) ) {
+          groupIndex++;
+          groups[groupIndex] = [];
+        }
+
+      }
+
+    }
+
+    groups.pop();
+    return groups;
+
+  }
+
   function groupableWidgetsAffected() {
 
     var activeWidgets = getActiveWidgets();
 
-    for (var i = 0; i < activeWidgets.length; i++ ) {
-     if ( isGroupableWidget( activeWidgets[i]) ) {
-       return true;
-     }
+    // Check if no pane open
+    var activePaneID = $('.control-section.open').attr('id');
+    if ( ! activePaneID ) return false;
+
+    var newGroups = getConsecutiveGroups(activeWidgets);
+    var oldGroups = getConsecutiveGroups(GroupableWidgets['widgets']);
+
+    GroupableWidgets['widgets'] = getActiveWidgets();
+
+    if ( arraysEqual( oldGroups, newGroups ) ) {
+      return false;
+    } else {
+      return true;
     }
+
     return false;
 
+  }
+
+  function arraysEqual( arr1, arr2 ) {
+    if ( arr1.length !== arr2.length ) {
+      return false;
+    }
+    for ( var i = 0; i < arr1.length; i++ ) {
+      if ( arr1[i].length !== arr2[i].length ) {
+        return false;
+      }
+      for ( var j = 0; j < arr1.length; j++ ) {
+        if ( arr1[i][j] !== arr2[i][j] )  {
+          return false;
+        }
+      }
+    }
+    return true;
   }
 
   function isGroupableWidget( widgetID ) {
@@ -130,9 +193,9 @@
      'organic_widgets_pricing_table'
     ];
 
-    for (var i = 0; i < groupableIDs.length; i++ ) {
+    for (var k = 0; k < groupableIDs.length; k++ ) {
 
-      if ( widgetID.indexOf(groupableIDs[i]) !== -1 ) {
+      if ( widgetID.indexOf(groupableIDs[k]) !== -1 ) {
        return true;
       }
     }
@@ -143,7 +206,7 @@
 
   $(window).on("load", function() {
 		markWidgetGroups();
-		if ( typeof wp.customize !== "undefined" ) {
+    if ( typeof wp.customize !== "undefined" ) {
 			wp.customize.state.bind('change', function() {
 				markWidgetGroups();
 			});
