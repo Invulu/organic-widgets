@@ -115,8 +115,8 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 			$bg_color = isset( $instance['bg_color'] ) ? $instance['bg_color'] : false;
 			$bg_image_id = isset( $instance['bg_image_id'] ) ? $instance['bg_image_id'] : false;
 			$bg_image = ( isset( $instance['bg_image'] ) && '' != $instance['bg_image'] ) ? $instance['bg_image'] : false;
-			$link_url = $instance['link_url'];
-			$link_title = $instance['link_title'];
+			$link_url = ( isset( $instance['link_url'] ) ) ? $instance['link_url'] : false;
+			$link_title = ( isset( $instance['link_title'] ) ) ? $instance['link_title'] : false;
 			?>
 
 			<!-- BEGIN .organic-widgets-section -->

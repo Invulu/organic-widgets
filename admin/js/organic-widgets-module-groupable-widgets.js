@@ -158,11 +158,15 @@
 
     GroupableWidgets['widgets'] = getActiveWidgets();
 
-    if ( arraysEqual( oldGroups, newGroups ) ) {
-      return false;
-    } else {
-      return true;
-    }
+    /* Testing only if group composition is affected */
+    // if ( arraysEqual( oldGroups, newGroups ) ) {
+    //   return false;
+    // } else {
+    //   return true;
+    // }
+
+    /* Temporary force refresh if groupable widgets were are are present */
+    if ( newGroups.length || oldGroups.length ) return true;
 
     return false;
 
