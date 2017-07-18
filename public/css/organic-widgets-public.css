@@ -489,6 +489,30 @@
 }
 
 /************************************************
+*	Pricing Table Widget
+************************************************/
+
+.organic-widgets-group .organic_widgets-pricing-table-section {
+  padding-left: 0px;
+  padding-right: 1px;
+}
+.organic-widgets-pricing-table .organic-widgets-card {
+  padding: 0;
+}
+.organic-pricing-table-content {
+  padding: 0;
+}
+.organic-widgets-pricing-table-title {
+  text-align: center;
+}
+.organic-widgets-pricing-table table th {
+  padding: 20px;
+}
+.organic-widgets-pricing-table table td {
+  padding: 5px 20px;
+}
+
+/************************************************
 *	Text Color Conditionals
 ************************************************/
 

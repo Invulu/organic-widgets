@@ -89,13 +89,12 @@ class Organic_Widgets_Pricing_Table_Widget extends Organic_Widgets_Custom_Widget
 							<!-- BEGIN .organic-pricing-table-content -->
 							<div class="organic-pricing-table-content">
 
-
 								<table>
 
 									<tr>
 										<th>
 											<?php if ( ! empty( $instance['title'] ) ) { ?>
-												<h6 class="organic-widgets-pricing-table-title"><?php echo apply_filters( 'widget_title', $instance['title'] ); ?></h6>
+												<h4 class="organic-widgets-pricing-table-title"><?php echo apply_filters( 'widget_title', $instance['title'] ); ?></h4>
 											<?php } ?>
 
 												<div class="organic-widgets-pricing-table-divider"></div>
