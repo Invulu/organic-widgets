@@ -225,7 +225,7 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 
 			<hr/>
 
-			<?php $this->repeatable_form_item_input_markup( $repeatable_array, 'Features' ); ?>
+			<?php $this->repeatable_form_item_inputs_markup( $repeatable_array, 'Features' ); ?>
 
 			<?php $this->section_background_input_markup( $instance, $this->bg_options ); ?>
 
@@ -266,11 +266,20 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 	 *
 	 * @access protected
 	 */
-	protected function echo_repeatable_form_item( $id, $order, $repeatable = false ) {
-		$id = (int) $id;
+	protected function echo_repeatable_form_item( $id = 'template', $order = 'template', $repeatable = false ) {
+
+		if ( $id === 'template' || $order === 'template' ) {
+			$template = true;
+			$id = '';
+			$order = '';
+		} else {
+			$template = false;
+			$id = (int) $id;
+			$order = (int) $order;
+		}
 		?>
 
-		<div class="organic-widgets-repeatable-form-item" data-feature-id="<?php echo $id; ?>" data-order="<?php echo $order; ?>">
+		<div class="<?php if ( $template ) { echo 'organic-widgets-repeatable-form-item-template'; } else { echo 'organic-widgets-repeatable-form-item'; } ?>" data-feature-id="<?php echo $id; ?>" data-order="<?php echo $order; ?>">
 
 			<div class="organic-widgets-repeatable-form-item-title-bar">
 				Feature <span class="organic-widgets-repeatable-item-number"><?php echo $order + 1; ?></span>

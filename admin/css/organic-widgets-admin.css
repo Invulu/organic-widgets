@@ -550,6 +550,9 @@ div.mce_inline_error {
   font-size: 30px;
   margin: auto;
 }
+.organic-widgets-repeatable-form-item-template {
+  display: none;
+}
 #available-widgets [class*='organic_widgets_feature_list'] .widget-title::before {
 	font-family: 'dashicons';
 	content: '\f164';

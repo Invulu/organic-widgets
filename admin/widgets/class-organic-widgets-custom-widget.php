@@ -369,7 +369,7 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
 	 * @param array $repeatable_array an array of the repeatable form items.
 	 * @param string $form_item_title the display text for the form item.
 	 */
-	protected function repeatable_form_item_input_markup( $repeatable_array, $form_item_title ) {
+	protected function repeatable_form_item_inputs_markup( $repeatable_array, $form_item_title ) {
 		?>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'repeatable_array' ); ?>"><h4><?php _e( $form_item_title, ORGANIC_WIDGETS_18N ) ?></h4></label>
@@ -419,6 +419,8 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
 			</div>
 
 			<input type="hidden" class="organic-widgets-repeatable-hidden-input" id="<?php echo $this->get_field_id('repeatable_array'); ?>" name="<?php echo $this->get_field_name('repeatable_array'); ?>" value='<?php if ( count($repeatable_array) > 0 ){ echo json_encode($repeatable_array); }?>' />
+
+			<?php $this->echo_repeatable_form_item(); ?>
 
 		</p><?php
 

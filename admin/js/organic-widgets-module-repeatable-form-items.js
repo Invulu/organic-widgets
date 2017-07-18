@@ -78,11 +78,11 @@
 	function organicWidgetsAddRepeatableFormItem(addButton) {
 
 		// The Form
-		var theForm = $(addButton).parents('.organic-widgets-repeatable-form-item-widget-admin');
+		var theForm = $(addButton).closest('.organic-widgets-repeatable-form-item-widget-admin');
 
 		// Get Last Item
 		var allItems = theForm.find('.organic-widgets-repeatable-form-item');
-		var lastItem = allItems.last();
+    var lastItem = allItems.last();
 
 		var maxID = 0;
 		var maxOrder = 0;
@@ -104,10 +104,12 @@
 		var newOrder = maxOrder + 1;
 
 		// Create New Item
-		var newItem = lastItem.clone();
+    var templateItem = theForm.find('.organic-widgets-repeatable-form-item-template');
+    var newItem = templateItem.clone();
 		newItem.attr('data-feature-id', newID);
 		newItem.attr('data-order', newOrder);
-    console.log(newItem.find('.organic-widgets-repeatable-item-number'));
+    newItem.removeClass('organic-widgets-repeatable-form-item-template');
+    newItem.addClass('organic-widgets-repeatable-form-item');
     newItem.find('.organic-widgets-repeatable-item-number').html(newOrder+1);
 		if ( newItem.hasClass('organic-widgets-show') ) {
 			newItem.removeClass('organic-widgets-show');
@@ -123,7 +125,7 @@
 		newItem.find('.organic-widgets-feature-list-text-input').val('');
 
 		// Append New Item
-		$(newItem).insertAfter(lastItem);
+    $(newItem).insertAfter(lastItem);
 
 		// Rebind click events
 		organicWidgetsCustomDropdown();
@@ -143,7 +145,7 @@
 
 		// Move Up
 		if ( direction == 'up' && allFormItems.first().data('feature-id') != formItem.data('feature-id') ) {
-      console.log('up');
+
 			// Get previous item
 			var prevItem = formItem.prev('.organic-widgets-repeatable-form-item');
 
@@ -170,7 +172,7 @@
 		}
 		// Move Down
 		else if ( direction == 'down' && allFormItems.last().data('feature-id') != formItem.data('feature-id') ) {
-      console.log('down');
+
 			// Get next item
 			var nextItem = formItem.next('.organic-widgets-repeatable-form-item');
 
@@ -191,7 +193,6 @@
           // Update main input
           var theForm = $(formItem).closest('.organic-widgets-repeatable-form-item-widget-admin');
           organicWidgetsRepeatableFormItemUpdateMainArray(theForm);
-
 
         });
       });
@@ -310,7 +311,7 @@
 		var mainInput = thisFormAdmin.find('.organic-widgets-repeatable-hidden-input');
 		mainInput.trigger('change');
 		mainInput.val(JSON.stringify(thisItemData));
-
+    
 	}
 
 	// Binding main function

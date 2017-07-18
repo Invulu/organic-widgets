@@ -205,7 +205,7 @@ class Organic_Widgets_Profile_Widget extends Organic_Widgets_Custom_Widget {
 				<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'subtitle' ); ?>" name="<?php echo $this->get_field_name( 'subtitle' ); ?>" value="<?php if ( $subtitle ) echo $subtitle; ?>" />
 			</p>
 
-			<?php $this->repeatable_form_item_input_markup( $repeatable_array, 'Social Links' ); ?>
+			<?php $this->repeatable_form_item_inputs_markup( $repeatable_array, 'Social Links' ); ?>
 
 			<?php $this->section_background_input_markup( $instance, $this->bg_options ); ?>
 
@@ -220,11 +220,19 @@ class Organic_Widgets_Profile_Widget extends Organic_Widgets_Custom_Widget {
 	 *
 	 * @access protected
 	 */
-	protected function echo_repeatable_form_item( $id, $order, $repeatable = false ) {
-		$id = (int) $id;
+	 protected function echo_repeatable_form_item( $id = 'template', $order = 'template', $repeatable = false ) {
+
+	 	if ( $id === 'template' || $order === 'template' ) {
+	 		$template = true;
+	 		$id = '';
+	 		$order = '';
+	 	} else {
+	 		$id = (int) $id;
+	 		$template = false;
+	 	}
 		?>
 
-		<div class="organic-widgets-repeatable-form-item" data-feature-id="<?php echo $id; ?>" data-order="<?php echo $order; ?>">
+		<div class="<?php if ( $template ) { echo 'organic-widgets-repeatable-form-item-template'; } else { echo 'organic-widgets-repeatable-form-item'; } ?>" data-feature-id="<?php echo $id; ?>" data-order="<?php echo $order; ?>">
 
 			<div class="organic-widgets-repeatable-form-item-title-bar">
 				Social Link <span class="organic-widgets-repeatable-item-number"><?php echo $order + 1; ?></span>
