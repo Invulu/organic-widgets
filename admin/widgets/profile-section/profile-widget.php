@@ -240,29 +240,16 @@ class Organic_Widgets_Profile_Widget extends Organic_Widgets_Custom_Widget {
 
 			<div class="organic-widgets-repeatable-form-item-fields-wrapper">
 
-				<div class="organic-widgets-feature-list-text-fields-wrapper">
-					<p>
-						<label style="display:none;"><?php _e( 'Social Link:', ORGANIC_WIDGETS_18N ) ?></label>
-						<input class="widefat organic-widgets-feature-list-link-url-input organic-widgets-repeatable-form-item-input" data-input-name="link_url" data-activator="true" type="text" value="<?php if ( $repeatable && array_key_exists( 'link_url', $repeatable ) ) { if ( is_email( $repeatable['link_url'] ) ) { echo esc_html( $repeatable['link_url'] ); } else { echo esc_url($repeatable['link_url']); } } ?>" />
-					</p>
-				</div>
+				<p>
+					<label style="display:none;"><?php _e( 'Social Link:', ORGANIC_WIDGETS_18N ) ?></label>
+					<input class="widefat organic-widgets-feature-list-link-url-input organic-widgets-repeatable-form-item-input" data-input-name="link_url" data-activator="true" type="text" value="<?php if ( $repeatable && array_key_exists( 'link_url', $repeatable ) ) { if ( is_email( $repeatable['link_url'] ) ) { echo esc_html( $repeatable['link_url'] ); } else { echo esc_url($repeatable['link_url']); } } ?>" />
+				</p>
 
 				<div class="organic-widgets-clear"></div>
 
 			</div>
 
-			<div class="organic-widgets-repeatable-actions">
-				<div class="organic-widgets-repeatable-move-button organic-widgets-move-up">
-						<i class="fa fa-angle-up"></i>
-				</div>
-				<div class="organic-widgets-repeatable-move-button organic-widgets-move-down">
-						<i class="fa fa-angle-down"></i>
-				</div>
-				<div class="organic-widgets-repeatable-delete-button">
-					<i class="fa fa-trash"></i>
-				</div>
-				<div class="organic-widgets-clear"></div>
-			</div>
+			<?php $this->echo_repeatable_form_item_actions(); ?>
 
 		</div>
 

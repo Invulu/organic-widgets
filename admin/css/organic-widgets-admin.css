@@ -387,7 +387,7 @@ div.mce_inline_error {
   display: inline;
   padding: 7px 0 8px;
 }
-.organic-widgets-profile-form .organic-widgets-repeatable-move-button, .organic-widgets-profile-form .organic-widgets-repeatable-delete-button {
+.organic-widgets-repeatable-actions .organic-widgets-repeatable-move-button, .organic-widgets-repeatable-actions .organic-widgets-repeatable-delete-button {
   width: 33%;
 }
 .organic-widgets-repeatable-move-button i {

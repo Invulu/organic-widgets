@@ -311,7 +311,7 @@
 		var mainInput = thisFormAdmin.find('.organic-widgets-repeatable-hidden-input');
 		mainInput.trigger('change');
 		mainInput.val(JSON.stringify(thisItemData));
-    
+
 	}
 
 	// Binding main function

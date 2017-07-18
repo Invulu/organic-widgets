@@ -65,7 +65,9 @@ class Organic_Widgets_Pricing_Table_Widget extends Organic_Widgets_Custom_Widget
 			$first_last = ' organic-widgets-groupable-last';
 		} else {
 			$first_last = false;
-		} ?>
+		}
+		$repeatable_array = ( isset( $instance['repeatable_array'] ) ) ? json_decode( $instance['repeatable_array'], true) :  array();
+		?>
 
 		<?php echo $args['before_widget']; ?>
 
@@ -149,30 +151,41 @@ class Organic_Widgets_Pricing_Table_Widget extends Organic_Widgets_Custom_Widget
 		if ( isset( $instance[ 'subtitle' ] ) ) {
 			$subtitle = $instance[ 'subtitle' ];
 		} else { $subtitle = ''; }
+		if ( isset( $instance['repeatable_array'] ) ) {
+			$repeatable_array = json_decode( $instance['repeatable_array'], true );
+		} else {
+			$repeatable_array = array();
+		}
 
 		?>
 
-		<input id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" class="title organic-widgets-wysiwyg-anchor" type="hidden" value="<?php echo $title; ?>">
-		<input id="<?php echo $this->get_field_id( 'text' ); ?>" name="<?php echo $this->get_field_name( 'text' ); ?>" class="text" type="hidden" value="<?php echo $text; ?>">
+		<div class="organic-widgets-repeatable-form-item-widget-admin">
 
-		<?php $this->bg_image_scripts(); ?>
+			<input id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" class="title organic-widgets-wysiwyg-anchor" type="hidden" value="<?php echo $title; ?>">
+			<input id="<?php echo $this->get_field_id( 'text' ); ?>" name="<?php echo $this->get_field_name( 'text' ); ?>" class="text" type="hidden" value="<?php echo $text; ?>">
 
-		<p>
-			<label for="<?php echo $this->get_field_id( 'bg_image' ); ?>"><?php _e( 'Pricing Table Image:', ORGANIC_WIDGETS_18N ) ?></label>
-			<div class="uploader">
-				<input type="submit" class="button" name="<?php echo $this->get_field_name('uploader_button'); ?>" id="<?php echo $this->get_field_id('uploader_button'); ?>" value="<?php if ( $instance['bg_image_id'] ) { _e( 'Change Image', ORGANIC_WIDGETS_18N ); }else { _e( 'Select Image', ORGANIC_WIDGETS_18N ); }?>" onclick="subpageWidgetImage.uploader( '<?php echo $this->id; ?>', '<?php echo $this->id_prefix; ?>' ); return false;" />
-				<input type="submit" class="organic_widgets-remove-image-button button" name="<?php echo $this->get_field_name('remover_button'); ?>" id="<?php echo $this->get_field_id('remover_button'); ?>" value="<?php _e('Remove Image', ORGANIC_WIDGETS_18N); ?>" onclick="subpageWidgetImage.remover( '<?php echo $this->id; ?>', '<?php echo $this->id_prefix; ?>', 'remover_button' ); return false;" <?php if ( $instance['bg_image_id'] < 1 ) { echo( 'style="display:none;"' ); } ?>/>
-				<div class="organic-widgets-widget-image-preview" id="<?php echo $this->get_field_id('preview'); ?>">
-					<?php echo $this->get_image_html($instance); ?>
+			<?php $this->bg_image_scripts(); ?>
+
+			<p>
+				<label for="<?php echo $this->get_field_id( 'bg_image' ); ?>"><?php _e( 'Pricing Table Image:', ORGANIC_WIDGETS_18N ) ?></label>
+				<div class="uploader">
+					<input type="submit" class="button" name="<?php echo $this->get_field_name('uploader_button'); ?>" id="<?php echo $this->get_field_id('uploader_button'); ?>" value="<?php if ( $instance['bg_image_id'] ) { _e( 'Change Image', ORGANIC_WIDGETS_18N ); }else { _e( 'Select Image', ORGANIC_WIDGETS_18N ); }?>" onclick="subpageWidgetImage.uploader( '<?php echo $this->id; ?>', '<?php echo $this->id_prefix; ?>' ); return false;" />
+					<input type="submit" class="organic_widgets-remove-image-button button" name="<?php echo $this->get_field_name('remover_button'); ?>" id="<?php echo $this->get_field_id('remover_button'); ?>" value="<?php _e('Remove Image', ORGANIC_WIDGETS_18N); ?>" onclick="subpageWidgetImage.remover( '<?php echo $this->id; ?>', '<?php echo $this->id_prefix; ?>', 'remover_button' ); return false;" <?php if ( $instance['bg_image_id'] < 1 ) { echo( 'style="display:none;"' ); } ?>/>
+					<div class="organic-widgets-widget-image-preview" id="<?php echo $this->get_field_id('preview'); ?>">
+						<?php echo $this->get_image_html($instance); ?>
+					</div>
+					<input type="hidden" id="<?php echo $this->get_field_id('bg_image_id'); ?>" name="<?php echo $this->get_field_name('bg_image_id'); ?>" value="<?php echo abs($instance['bg_image_id']); ?>" />
+					<input type="hidden" id="<?php echo $this->get_field_id('bg_image'); ?>" name="<?php echo $this->get_field_name('bg_image'); ?>" value="<?php echo $instance['bg_image']; ?>" />
 				</div>
-				<input type="hidden" id="<?php echo $this->get_field_id('bg_image_id'); ?>" name="<?php echo $this->get_field_name('bg_image_id'); ?>" value="<?php echo abs($instance['bg_image_id']); ?>" />
-				<input type="hidden" id="<?php echo $this->get_field_id('bg_image'); ?>" name="<?php echo $this->get_field_name('bg_image'); ?>" value="<?php echo $instance['bg_image']; ?>" />
-			</div>
-		</p>
+			</p>
 
-		<hr/>
+			<hr/>
 
-		<?php $this->section_background_input_markup( $instance, $this->bg_options ); ?>
+			<?php $this->repeatable_form_item_inputs_markup( $repeatable_array, 'Text Rows' ); ?>
+
+			<?php $this->section_background_input_markup( $instance, $this->bg_options ); ?>
+
+		</div>
 
   <?php
 	}
@@ -198,35 +211,21 @@ class Organic_Widgets_Pricing_Table_Widget extends Organic_Widgets_Custom_Widget
 		<div class="<?php if ( $template ) { echo 'organic-widgets-repeatable-form-item-template'; } else { echo 'organic-widgets-repeatable-form-item'; } ?>" data-feature-id="<?php echo $id; ?>" data-order="<?php echo $order; ?>">
 
 			<div class="organic-widgets-repeatable-form-item-title-bar">
-				Social Link <span class="organic-widgets-repeatable-item-number"><?php echo $order + 1; ?></span>
+				Text Row <span class="organic-widgets-repeatable-item-number"><?php echo $order + 1; ?></span>
 			</div>
 
 			<div class="organic-widgets-repeatable-form-item-fields-wrapper">
 
-				<div class="organic-widgets-feature-list-text-fields-wrapper">
-					<p>
-						<label style="display:none;"><?php _e( 'Feature Field:', ORGANIC_WIDGETS_18N ) ?></label>
-						<input class="widefat organic-widgets-feature-list-link-url-input organic-widgets-repeatable-form-item-input" data-input-name="link_url" data-activator="true" type="text" value="<?php if ( $repeatable && array_key_exists( 'feature_field', $repeatable ) ) { if ( is_email( $repeatable['feature_field'] ) ) { echo esc_html( $repeatable['feature_field'] ); } else { echo esc_url($repeatable['feature_field']); } } ?>" />
-					</p>
-				</div>
+				<p>
+					<label style="display:none;"><?php _e( 'Text Row:', ORGANIC_WIDGETS_18N ) ?></label>
+					<input class="widefat organic-widgets-feature-list-text-row-input organic-widgets-repeatable-form-item-input" data-input-name="text_row" data-activator="true" type="text" value="<?php if ( $repeatable && array_key_exists( 'text_row', $repeatable ) ) { if ( is_email( $repeatable['text_row'] ) ) { echo esc_html( $repeatable['text_row'] ); } else { echo esc_url($repeatable['text_row']); } } ?>" />
+				</p>
 
 				<div class="organic-widgets-clear"></div>
 
 			</div>
 
-			<div class="organic-widgets-repeatable-actions">
-				<div class="organic-widgets-repeatable-move-button organic-widgets-move-up">
-						<i class="fa fa-angle-up"></i>
-				</div>
-				<div class="organic-widgets-repeatable-move-button organic-widgets-move-down">
-						<i class="fa fa-angle-down"></i>
-				</div>
-				<div class="organic-widgets-repeatable-delete-button">
-					<i class="fa fa-trash"></i>
-				</div>
-				<div class="organic-widgets-clear"></div>
-			</div>
-
+			<?php $this->echo_repeatable_form_item_actions(); ?>
 
 		</div>
 
@@ -287,6 +286,9 @@ class Organic_Widgets_Pricing_Table_Widget extends Organic_Widgets_Custom_Widget
 			$instance['bg_color'] = strip_tags( $new_instance['bg_color'] );
 		} else {
 			$instance['bg_color'] = false;
+		}
+		if ( isset( $new_instance['repeatable_array'] ) ) {
+			$instance['repeatable_array'] = $new_instance['repeatable_array'];
 		}
 
 		return $instance;

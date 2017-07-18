@@ -426,6 +426,28 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
 
 	}
 
+	/**
+	 * Render the image html output.
+	 *
+	 */
+	protected function echo_repeatable_form_item_actions() { ?>
+
+		<div class="organic-widgets-repeatable-actions">
+			<div class="organic-widgets-repeatable-move-button organic-widgets-move-up">
+					<i class="fa fa-angle-up"></i>
+			</div>
+			<div class="organic-widgets-repeatable-move-button organic-widgets-move-down">
+					<i class="fa fa-angle-down"></i>
+			</div>
+			<div class="organic-widgets-repeatable-delete-button">
+				<i class="fa fa-trash"></i>
+			</div>
+			<div class="organic-widgets-clear"></div>
+		</div>
+
+	<?php	
+	}
+
   /**
 	 * Render the image html output.
 	 *
