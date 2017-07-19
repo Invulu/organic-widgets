@@ -424,6 +424,7 @@
   text-align: center;
 }
 .organic-widgets-feature-list-item-icon i {
+  color: #000000;
   font-size: 32px;
   margin: auto;
 }
@@ -539,7 +540,8 @@
 .organic-widget .ocw-bg-dark h3, .organic-widgets-section.ocw-bg-dark h3,
 .organic-widget .ocw-bg-dark h4, .organic-widgets-section.ocw-bg-dark h4,
 .organic-widget .ocw-bg-dark h5, .organic-widgets-section.ocw-bg-dark h5,
-.organic-widget .ocw-bg-dark h6, .organic-widgets-section.ocw-bg-dark h6{
+.organic-widget .ocw-bg-dark h6, .organic-widgets-section.ocw-bg-dark h6,
+.organic-widgets-section.ocw-bg-dark .organic-widgets-feature-list-item-icon i {
   color: #ffffff;
 }
 .organic-widget .ocw-bg-dark p, .organic-widgets-section.ocw-bg-dark p,
@@ -549,6 +551,9 @@
 .organic-widget .ocw-bg-dark div, .organic-widgets-section.ocw-bg-dark div,
 .organic-widget .ocw-bg-dark blockquote, .organic-widgets-section.ocw-bg-dark blockquote {
   color: rgba(255, 255, 255, 0.7);
+}
+.organic-widget .ocw-bg-dark blockquote, .organic-widgets-section.ocw-bg-dark blockquote {
+  border-color: rgba(255, 255, 255, 0.4);
 }
 .organic-widget .ocw-bg-light.ocw-bg-img h1,
 .organic-widget .ocw-bg-light.ocw-bg-img h2,
