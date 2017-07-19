@@ -1075,15 +1075,15 @@ iframe.organic-widgets-video-bg {
 
 @media handheld, only screen and (max-width: 767px) {
 
-  .organic-widgets-flex-row {
-  	display: block;
-  }
   .organic-widgets-row {
   	width: 100%;
   	min-width: 0;
   	margin-left: 0;
   	margin-right: 0;
   	overflow: visible !important;
+  }
+  .organic-widgets-flex-row {
+  	display: block;
   }
   .organic-widgets-row .single,
   .organic-widgets-row .half,
@@ -1123,11 +1123,14 @@ iframe.organic-widgets-video-bg {
   	clear: both;
   }
 
+  .organic-ocw-container {
+    overflow: hidden;
+  }
   .organic-widgets-section {
     padding-top: 60px;
     padding-bottom: 60px;
   }
-  .organic-widgets-hero-section {
+  .organic-widgets-hero-section.organic-widgets-full-height-section {
     height: auto;
   }
   .organic-widgets-section.organic-widgets-hero-section {
