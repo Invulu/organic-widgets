@@ -511,6 +511,10 @@
 .organic-widgets-pricing-table table td {
   padding: 5px 20px;
 }
+.organic-widgets-pricing-table table td.organic-widgets-pricing-table-purchase-wrapper {
+  padding: 20px;
+  text-align: center;
+}
 
 /************************************************
 *	Text Color Conditionals

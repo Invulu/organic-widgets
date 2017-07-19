@@ -111,6 +111,16 @@ class Organic_Widgets_Pricing_Table_Widget extends Organic_Widgets_Custom_Widget
 										</tr>
 									<?php } ?>
 
+									<?php if ( ! empty( $instance['purchase_button_url'] ) ) { ?>
+										<tr>
+											<?php if ( ! empty( $instance['purchase_button_url'] ) ) { ?>
+												<td class="organic-widgets-pricing-table-purchase-wrapper">
+													<a class="organic-widgets-button button" href="<?php echo esc_url( $instance['purchase_button_url'] );?>"><?php if ( ! empty( $instance['purchase_button_text'] ) ) { echo esc_html( $instance['purchase_button_text'] ); } else { _e( 'See More', ORGANIC_WIDGETS_18N); } ?></a>
+												</td>
+											<?php } ?>
+										</tr>
+									<?php } ?>
+
 								</table>
 
 							<!-- END .organic-pricing-table-content -->
@@ -177,6 +187,15 @@ class Organic_Widgets_Pricing_Table_Widget extends Organic_Widgets_Custom_Widget
 
 			<input id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" class="title organic-widgets-wysiwyg-anchor" type="hidden" value="<?php echo $title; ?>">
 			<input id="<?php echo $this->get_field_id( 'text' ); ?>" name="<?php echo $this->get_field_name( 'text' ); ?>" class="text" type="hidden" value="<?php echo $text; ?>">
+
+			<p>
+				<label for="<?php echo $this->get_field_id( 'purchase_button_text' ); ?>"><?php _e('Purchase Button Text:', ORGANIC_WIDGETS_18N); ?></label>
+				<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'purchase_button_text' ); ?>" name="<?php echo $this->get_field_name( 'purchase_button_text' ); ?>" value="<?php if ( ! empty( $instance['purchase_button_text'] ) ) echo $instance['purchase_button_text']; ?>" />
+			</p>
+			<p>
+				<label for="<?php echo $this->get_field_id( 'purchase_button_url' ); ?>"><?php _e('Purchase Button URL', ORGANIC_WIDGETS_18N); ?></label>
+				<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'purchase_button_url' ); ?>" name="<?php echo $this->get_field_name( 'purchase_button_url' ); ?>" value="<?php if ( ! empty( $instance['purchase_button_url'] ) ) echo $instance['purchase_button_url']; ?>" />
+			</p>
 
 			<?php $this->bg_image_scripts(); ?>
 
@@ -296,6 +315,10 @@ class Organic_Widgets_Pricing_Table_Widget extends Organic_Widgets_Custom_Widget
 		} else {
 			$instance['text'] = wp_kses_post( $new_instance['text'] );
 		}
+		if ( isset( $new_instance['purchase_button_text'] ) )
+			$instance['purchase_button_text'] = strip_tags( $new_instance['purchase_button_text'] );
+		if ( isset( $new_instance['purchase_button_url'] ) )
+			$instance['purchase_button_url'] = strip_tags( $new_instance['purchase_button_url'] );
 		if ( isset( $new_instance['bg_color'] ) && $this->check_hex_color( $new_instance['bg_color'] ) ) {
 			$instance['bg_color'] = strip_tags( $new_instance['bg_color'] );
 		} else {
