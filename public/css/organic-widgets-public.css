@@ -505,15 +505,29 @@
 .organic-widgets-pricing-table-title {
   text-align: center;
 }
+.organic-widgets-pricing-table tr {
+  border: none;
+}
+.organic-widgets-pricing-table tr:nth-child(even) {
+  background: #eeeeee;
+}
+.organic-widgets-pricing-table tr:nth-child(odd) {
+  background: #ffffff;
+}
 .organic-widgets-pricing-table table th {
+  background: #ffffff;
   padding: 20px;
+  border: none;
 }
 .organic-widgets-pricing-table table td {
   padding: 5px 20px;
+  border: none;
 }
 .organic-widgets-pricing-table table td.organic-widgets-pricing-table-purchase-wrapper {
   padding: 20px;
   text-align: center;
+  background: #ffffff;
+  border: none;
 }
 
 /************************************************
