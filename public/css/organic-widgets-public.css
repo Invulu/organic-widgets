@@ -446,13 +446,6 @@
 *	Profile Widget
 ************************************************/
 
-.organic-widgets-section-masonry-buffer {
-  margin: 0px auto;
-  height: auto;
-  width: 100%;
-  max-width: 1240px;
-  position: relative;
-}
 .organic-widgets-profile {
   text-align: center;
   position: relative;
@@ -490,12 +483,30 @@
 }
 
 /************************************************
+*	Groupable Widgets
+************************************************/
+
+.organic-widgets-group-container.organic-widgets-section-masonry-buffer {
+  display: block;
+  align-items: center;
+}
+.organic-widgets-group-container {
+  display: flex;
+  align-items: center;
+  margin: 0px auto;
+  height: auto;
+  width: 100%;
+  max-width: 1240px;
+  position: relative;
+}
+
+/************************************************
 *	Pricing Table Widget
 ************************************************/
 
 .organic-widgets-group .organic_widgets-pricing-table-section {
   padding-left: 0px;
-  padding-right: 1px;
+  padding-right: 0px;
 }
 .organic-widgets-pricing-table .organic-widgets-card {
   padding: 0;
@@ -505,6 +516,10 @@
 }
 .organic-widgets-pricing-table-title {
   text-align: center;
+}
+.organic-widgets-pricing-table table {
+  border: 1px solid #eeeeee;
+  margin: 0;
 }
 .organic-widgets-pricing-table tr {
   border: none;
@@ -1124,6 +1139,11 @@ iframe.organic-widgets-video-bg {
   }
   .organic-widgets-hero-information .organic-widgets-title {
     font-size: 2.6em;
+  }
+
+  /* Group Styles */
+  .organic-widgets-group-container {
+    display: block;
   }
 
 }
