@@ -38,10 +38,15 @@
 				var itemClass = 'organic-widgets-third';
 			}
 
-			parentContainer.before( '<div class="organic-widgets-section organic-widgets-group"><div class="organic-widgets-section-masonry-buffer organic-widgets-masonry-container" data-group-id="' + groupID + '"></div></div>');
+			var masonryClass = '';
+			if ( groupableMasonryEnabled( parentContainer ) ) {
+				masonryClass = 'organic-widgets-section-masonry-buffer organic-widgets-masonry-container';
+			}
+
+			parentContainer.before( '<div class="organic-widgets-section organic-widgets-group"><div class="organic-widgets-group-container ' + masonryClass + '" data-group-id="' + groupID + '"></div></div>');
 
 			//Get masonry container
-			var container = $('.organic-widgets-masonry-container[data-group-id="' + groupID + '"]');
+			var container = $('.organic-widgets-group-container[data-group-id="' + groupID + '"]');
 			var containerWrapperSection = container.closest('.organic-widgets-section');
 
 			//Loop through all elements of that group
@@ -62,8 +67,12 @@
 				if ( ! $(this).hasClass('organic-widgets-groupable-widget') ) {
 					$(this).addClass('organic-widgets-groupable-widget');
 				}
-				if ( ! groupableWidget.hasClass('organic-widget-masonry-wrapper') ) {
+
+				// Check if should be masonry
+				if ( groupableMasonryEnabled( groupableWidget ) && ! groupableWidget.hasClass('organic-widget-masonry-wrapper') ) {
 					groupableWidget.addClass('organic-widget-masonry-wrapper');
+				} else {
+
 				}
 				groupableWidget.addClass(itemClass);
 
@@ -74,8 +83,19 @@
 		});
 
 		checkBackgroundBrightness();
+
 	}
 
+	/* Returns true or false is given widget should use masonry script */
+	function groupableMasonryEnabled( groupableWidget ) {
+
+		if ( groupableWidget.hasClass('organic-widget_widget_organic_widgets_pricing_table') ) {
+			return false;
+		} else {
+			return true;
+		}
+
+	}
 
 	function editShortcutHoverBorderReady() {
 
