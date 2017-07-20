@@ -303,13 +303,14 @@ div.mce_inline_error {
   margin-bottom: 0;
 }
 .organic-widgets-feature-list-icon-preview {
-  width: 80px;
-  height: 120px;
+  width: 70px;
+  padding-right: 10px;
+  height: 100px;
   display:block;
 }
 .organic-widgets-feature-list-icon-preview i {
   font-size: 50px;
-  margin: 30px 10px 10px;
+  margin: 15px 10px 10px;
 }
 .organic-widgets-feature-list-icon-preview img {
   width: 100%;
@@ -350,9 +351,6 @@ div.mce_inline_error {
 .organic-widgets-repeatable-form-item-fields-wrapper {
   padding: 10px 10px 0;
 }
-.organic-widgets-repeatable-actions {
-  margin: 0 10px;
-}
 /* Dropdown Button */
 .organic-widgets-dropdown-button, .organic-widgets-repeatable-move-button, .organic-widgets-repeatable-delete-button {
   border: none;
@@ -372,7 +370,8 @@ div.mce_inline_error {
 }
 .organic-widgets-dropdown-button {
   background-color: #9ECE42;
-  border-radius: 4px;
+  border-radius: 2px;
+  border: 1px solid #87b62f;
   width: 100%;
 }
 .organic-widgets-dropdown-button p {
@@ -387,7 +386,7 @@ div.mce_inline_error {
   width: 10%;
   padding: 0;
   display: inline;
-  padding: 7px 0 8px;
+  padding: 5px 0 6px;
 }
 .organic-widgets-repeatable-actions .organic-widgets-repeatable-move-button, .organic-widgets-repeatable-actions .organic-widgets-repeatable-delete-button {
   width: 33%;
@@ -399,8 +398,8 @@ div.mce_inline_error {
   color: #666;
 }
 .organic-widgets-repeatable-actions .organic-widgets-move-up {
-  border-top-left-radius: 4px;
-  border-bottom-left-radius: 4px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
 }
 .organic-widgets-feature-list-select .organic-widgets-move-up  {
   border-top-left-radius: 0px;
@@ -415,19 +414,22 @@ div.mce_inline_error {
 }
 .organic-widgets-repeatable-delete-button {
   width: 20%;
-  background-color: #f24646;
-  border-left: 1px solid #d00;
-  border-top-right-radius: 4px;
-  border-bottom-right-radius: 4px;
-  font-size: 22px;
+  background-color: #ccc;
+  border-left: 1px solid #aaa;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  font-size: 18px;
+  color: #f24646;
   padding: 6px 0 7px;
+  transition: background-color .5s ease, color .5s ease;
 }
 .organic-widgets-repeatable-delete-button:hover, .organic-widgets-repeatable-delete-button:focus {
-  background-color: #a00;
+  background-color: #f24646;
+  color: #fff;
 }
 /* Dropdown button on hover & focus */
 .organic-widgets-dropdown-button:hover, .organic-widgets-dropdown-button:focus {
-  background-color: #8db73a;
+  background-color: #87b62f;
 }
 .organic-widgets-feature-list-select-icon {
   width: 30px;

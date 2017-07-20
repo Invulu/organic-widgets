@@ -323,11 +323,6 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 
 				<div class="organic-widgets-clear"></div>
 
-				<p>
-					<label><?php _e( 'Feature text:', ORGANIC_WIDGETS_18N ) ?></label>
-					<textarea class="widefat organic-widgets-feature-list-text-input organic-widgets-repeatable-form-item-input" data-input-name="text" data-activator="true" rows="3" cols="20" ><?php if ( $repeatable && array_key_exists( 'text', $repeatable ) ) echo esc_html($repeatable['text']); ?></textarea>
-				</p>
-
 				<label><?php _e( 'Select Icon:', ORGANIC_WIDGETS_18N ); ?></label>
 				<p>
 					<div class="organic-widgets-feature-list-select organic-widgets-repeatable-form-item-input" data-input-name="icon" data-activator="true" data-val="<?php if ( $repeatable && $repeatable['icon'] ) { echo esc_attr($repeatable['icon']); } ?>" data-feature-id="<?php echo $id; ?>">
@@ -344,13 +339,17 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 				</p>
 
 				<p>
-					<label for="<?php echo $this->get_field_id( 'bg_image' ); ?>"><?php _e( 'Or Upload Custom Icon:', ORGANIC_WIDGETS_18N ); ?></label>
+					<label for="<?php echo $this->get_field_id( 'bg_image' ); ?>"><?php _e( 'Upload Icon:', ORGANIC_WIDGETS_18N ); ?></label>
 					<div class="organic-widgets-image-uploader">
 						<div class="button" id="<?php echo( $this->get_field_id( 'uploader_button' . $icon_id_string ) ); ?>" onclick="organicWidgetFeatureIconImage.uploader( '<?php echo $this->id; ?>', '<?php echo $this->id_prefix;?>', '<?php echo $icon_id_string; ?>' ); return false;" ><?php if ( isset( $repeatable['image_id'] ) ) { _e( 'Change Image', ORGANIC_WIDGETS_18N ); } else { _e( 'Select Image', ORGANIC_WIDGETS_18N ); }?></div>
 						<div class="organic-widgets-remove-image-button button" id="<?php echo( $this->get_field_id( 'remover_button' . $icon_id_string ) ); ?>" onclick="organicWidgetFeatureIconImage.remover( '<?php echo $this->id; ?>', '<?php echo $this->id_prefix;?>', '<?php echo $icon_id_string; ?>', 'remover_button' ); return false;" <?php if ( ! isset( $repeatable['image_id'] ) || $repeatable['image_id'] < 1 ) echo( 'style="display:none;"' ); ?>><?php _e( 'Remove Image', ORGANIC_WIDGETS_18N ); ?></div>
 						<input class="organic-widgets-repeatable-form-item-input" data-input-name="image_id" data-activator="true" type="hidden" id="<?php echo( $this->get_field_id( 'image_id' . $icon_id_string ) ); ?>" name="<?php echo( $this->get_field_name( 'image_id' . $icon_id_string ) ); ?>" value="<?php if ( isset( $repeatable['image_id'] ) ) echo abs( $repeatable['image_id'] ); ?>" />
-						<input class="organic-widgets-repeatable-form-item-input" data-input-name="image" data-activator="true" type="hidden" id="<?php echo( $this->get_field_id( 'image' . $icon_id_string ) ); ?>" name="<?php echo( $this->get_field_name( 'image' . $icon_id_string ) ); ?>" value="<?php if ( isset( $repeatable['image'] ) ) echo abs( $repeatable['image'] ); ?>" />
 					</div>
+				</p>
+
+				<p>
+					<label><?php _e( 'Feature text:', ORGANIC_WIDGETS_18N ) ?></label>
+					<textarea class="widefat organic-widgets-feature-list-text-input organic-widgets-repeatable-form-item-input" data-input-name="text" data-activator="true" rows="3" cols="20" ><?php if ( $repeatable && array_key_exists( 'text', $repeatable ) ) echo esc_html($repeatable['text']); ?></textarea>
 				</p>
 
 				<div class="organic-widgets-clear"></div>

@@ -36,14 +36,10 @@ jQuery(document).ready(function($){
 			// Change inputs
 			$("#" + widget_id_string + 'image_preview' + icon_id_string ).html(organicWidgetFeatureIconImage.imgHTML( attachment ));
 			$("#" + widget_id_string + 'image_id' + icon_id_string).val(attachment.id);
-			$("#" + widget_id_string + 'image' + icon_id_string).val(attachment.url);
 			$("#" + widget_id_string + 'uploader_button' + icon_id_string).html('Change Image');
 
 			// Trigger change in preview window
 			$("#" + icon_id_string + 'bg_image' + icon_id_string).trigger('change');
-
-			// var section = $('#' + widget_id).find('.organic-widgets-section');
-			// section.css('background-image', attachment);
 
 		},
 
