@@ -79,6 +79,14 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 			$page_excerpt = $this->organic_widgets_get_the_excerpt($page_id);
 			$page_title = get_the_title( $page_id );
 
+			$page_query = new WP_Query(array(
+				'post_type'	 				=> 'page',
+				'page_id' 					=> $page_id,
+				'posts_per_page' 		=> 1,
+			) );
+
+			if ( $page_query->have_posts() ) : while ( $page_query->have_posts() ) : $page_query->the_post();
+
 			?>
 
 			<!-- BEGIN .organic-widgets-section -->
@@ -96,7 +104,10 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 								<h3><?php echo apply_filters( 'widget_title', $page_title ); ?></h3>
 							<?php } ?>
 							<?php if ( ! empty( $page_excerpt ) ) { ?>
-								<div class="excerpt"><?php echo $page_excerpt; ?></div>
+								<div class="excerpt">
+									<?php the_excerpt(); ?>
+									<?php edit_post_link( esc_html__( '(Edit)', ORGANIC_WIDGETS_18N ), '<p>', '</p>' ); ?>
+								</div>
 							<?php } ?>
 							<a class="button" href="<?php echo get_the_permalink( $page_id );?>"><?php esc_html_e( 'Read More', ORGANIC_WIDGETS_18N ); ?></a>
 						</div>
@@ -107,6 +118,10 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 
 			<!-- END .organic-widgets-section -->
 			</div><?php
+
+			endwhile;
+			endif;
+			wp_reset_postdata();
 
 		} else {
 

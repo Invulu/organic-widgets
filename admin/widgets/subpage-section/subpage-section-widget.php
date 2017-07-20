@@ -106,6 +106,8 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 
 					<?php the_content( esc_html__( 'Read More', ORGANIC_WIDGETS_18N ) ); ?>
 
+					<?php edit_post_link( esc_html__( '(Edit)', ORGANIC_WIDGETS_18N ), '<p>', '</p>' ); ?>
+
 				<!-- END .organic-widgets-content -->
 				</div>
 
