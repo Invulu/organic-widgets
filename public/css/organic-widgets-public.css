@@ -370,14 +370,15 @@
 	margin: -60px auto 0px;
 	text-align: center;
 	height: auto;
-	width: 40%;
+	max-width: 160px;
 	border-radius: 50%;
 	background-size: cover;
 	background-position: center center;
   border: 12px solid #ffffff;
 }
 .organic-widgets-testimonial-slide-content {
-  margin-top: 60px;
+  max-width: 960px;
+  margin: 60px auto 12px;
 }
 .organic-widgets-testimonial-slide-content .organic-widgets-excerpt {
   font-size: 90%;

@@ -169,10 +169,10 @@ class Organic_Widgets_Team_Section_Widget extends Organic_Widgets_Custom_Widget 
 		} else { $category = false; }
 		if ( isset( $instance['num_columns'] ) ) {
 			$num_columns = $instance['num_columns'];
-		} else { $num_columns = 3; }
+		} else { $num_columns = 4; }
 		if ( isset( $instance['max_posts'] ) ) {
 			$max_posts = $instance['max_posts'];
-		} else { $max_posts = 3; }
+		} else { $max_posts = 4; }
 		if ( isset( $instance['bg_color'] ) ) {
 			$bg_color = $instance['bg_color'];
 		} else { $bg_color = false; }

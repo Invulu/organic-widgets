@@ -61,7 +61,8 @@ class Organic_Widgets_Testimonial_Section_Widget extends Organic_Widgets_Custom_
 		$bg_image = ( isset( $instance['bg_image'] ) && '' != $instance['bg_image'] ) ? $instance['bg_image'] : false;
 		$bg_color = ( isset( $instance['bg_color'] ) && '' != $instance['bg_color'] ) ? $instance['bg_color'] : false;
 		$category = ( isset( $instance['category'] ) ) ? $instance['category'] : 0;
-		$max_posts = ( isset( $instance['max_posts'] ) ) ? $instance['max_posts'] : 10;
+		$max_posts = ( isset( $instance['max_posts'] ) ) ? $instance['max_posts'] : 12;
+		$posts_per_slide = ( isset( $instance['posts_per_slide'] ) ) ? $instance['posts_per_slide'] : 3;
 
 		echo $args['before_widget'];
 		?>
@@ -110,7 +111,7 @@ class Organic_Widgets_Testimonial_Section_Widget extends Organic_Widgets_Custom_
 					<?php } ?>
 
 					<!-- BEGIN .flexslider -->
-					<div class="organic-widgets-flexslider loading" data-speed="<?php echo get_theme_mod( 'gpp_transition_interval', '12000' ); ?>">
+					<div class="organic-widgets-flexslider loading" data-per-slide="<?php echo $posts_per_slide ?>">
 
 					<div class="preloader"></div>
 
@@ -203,12 +204,12 @@ class Organic_Widgets_Testimonial_Section_Widget extends Organic_Widgets_Custom_
 		if ( isset( $instance['category'] ) ) {
 			$category = $instance['category'];
 		} else { $category = false; }
-		if ( isset( $instance['num_columns'] ) ) {
-			$num_columns = $instance['num_columns'];
-		} else { $num_columns = 3; }
 		if ( isset( $instance['max_posts'] ) ) {
 			$max_posts = $instance['max_posts'];
-		} else { $max_posts = 10; }
+		} else { $max_posts = 12; }
+		if ( isset( $instance['posts_per_slide'] ) ) {
+			$posts_per_slide = $instance['posts_per_slide'];
+		} else { $posts_per_slide = 3; }
 		if ( isset( $instance['bg_color'] ) ) {
 			$bg_color = $instance['bg_color'];
 		} else { $bg_color = false; }
@@ -236,7 +237,15 @@ class Organic_Widgets_Testimonial_Section_Widget extends Organic_Widgets_Custom_
 		<?php } ?>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'max_posts' ); ?>"><?php _e('Max Number of Posts:', ORGANIC_WIDGETS_18N) ?></label>
-			<input type="number" min="1" max="10" value="<?php echo $max_posts; ?>" id="<?php echo $this->get_field_id('max_posts'); ?>" name="<?php echo $this->get_field_name('max_posts'); ?>" class="widefat" style="width:100%;"/>
+			<input type="number" min="1" max="12" value="<?php echo $max_posts; ?>" id="<?php echo $this->get_field_id('max_posts'); ?>" name="<?php echo $this->get_field_name('max_posts'); ?>" class="widefat" style="width:100%;"/>
+		</p>
+		<p>
+			<label for="<?php echo $this->get_field_id( 'posts_per_slide' ); ?>"><?php _e('Posts Per Slide:', ORGANIC_WIDGETS_18N) ?></label>
+			<select id="<?php echo $this->get_field_id( 'posts_per_slide' ); ?>" name="<?php echo $this->get_field_name( 'posts_per_slide' ); ?>" class="widefat" style="width:100%;">
+				<option <?php selected( $posts_per_slide, '1'); ?> value="1">1</option>
+				<option <?php selected( $posts_per_slide, '2'); ?> value="2">2</option>
+		    <option <?php selected( $posts_per_slide, '3'); ?> value="3">3</option>
+			</select>
 		</p>
 
 		<?php $this->section_background_input_markup( $instance, $this->bg_options ); ?>
@@ -305,6 +314,8 @@ class Organic_Widgets_Testimonial_Section_Widget extends Organic_Widgets_Custom_
 			$instance['category'] = strip_tags( $new_instance['category'] );
 		if ( isset( $new_instance['max_posts'] ) )
 			$instance['max_posts'] = strip_tags( $new_instance['max_posts'] );
+		if ( isset( $new_instance['posts_per_slide'] ) )
+			$instance['posts_per_slide'] = strip_tags( $new_instance['posts_per_slide'] );
 
 		return $instance;
 	}

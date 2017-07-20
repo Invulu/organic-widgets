@@ -28,7 +28,7 @@
 				}
 			});
 			testimonial_slider.flexslider({
-				slideshowSpeed		: testimonial_slider.attr('data-speed'),
+				slideshowSpeed		: 18000,
 				animationDuration	: 800,
 				animation					: 'slide',
 				video							: false,
@@ -42,7 +42,7 @@
 				pauseOnHover			: true,
 				itemWidth 				: 320,
 				itemMargin				: 24,
-				maxItems					: 3,
+				maxItems					: testimonial_slider.attr('data-per-slide'),
 				minItems					: 1,
 
 				start: function(testimonial_slider) {
