@@ -301,19 +301,13 @@
 
 		var mainInput = thisFormAdmin.find('.organic-widgets-repeatable-hidden-input');
 		mainInput.trigger('change');
-		mainInput.val(JSON.stringify(thisItemData));
+    mainInput.val(JSON.stringify(thisItemData));
+    console.log(mainInput.val());
 
 	}
 
-  function organicWidgetsFeatureIconImage() {
-
-    
-
-  }
-
 	// Binding main function
 	$( document )
-  .ready( organicWidgetsFeatureIconImage )
 	.ajaxComplete( organicWidgetsCustomDropdown );
 
 	$(window).on("load", function() {

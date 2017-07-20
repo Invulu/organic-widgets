@@ -199,8 +199,6 @@ class Organic_Widgets {
 		$organic_blocks = new Organic_Widgets_Blocks( $this->get_plugin_name(), $this->get_version() );
 		$this->loader->add_action( 'admin_enqueue_scripts', $organic_blocks, 'enqueue_scripts' );
 
-
-
 		// Page Template Hooks
 		$plugin_page_template = new Organic_Page_Template( $this->get_plugin_name(), $this->get_version() );
 		$this->loader->add_action( 'plugins_loaded', $plugin_page_template, 'get_instance' );

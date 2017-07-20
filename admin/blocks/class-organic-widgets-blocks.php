@@ -61,11 +61,7 @@ class Organic_Widgets_Blocks {
 	 */
 	public function enqueue_scripts() {
 
-    if( is_plugin_active( 'gutenberg/gutenberg.php' ) && ORGANIC_WIDGETS_BLOCKS_ACTIVE ) {
-
-			//Get React Scripts
-			wp_enqueue_script( 'wp-react-boilerplate-admin',  ORGANIC_WIDGETS_BASE_DIR . '/build/admin.js', array(), $this->version, true );
-			wp_enqueue_style( 'wp-react-boilerplate-admin', ORGANIC_WIDGETS_BASE_DIR . '/build/admin.css', array(), $this->version);
+    if( ORGANIC_WIDGETS_BLOCKS_ACTIVE && is_plugin_active( 'gutenberg/gutenberg.php' ) ) {
 
 			// Find Blocks
 			$blocks = array(
@@ -80,16 +76,5 @@ class Organic_Widgets_Blocks {
 
 	}
 
-  /**
-   * Check if Gutenberg is active and include block classes if it is
-   *
-   * @since      1.0.0
-   */
-	public function include_block_classes() {
-
-
-
-
-	}
 
 }

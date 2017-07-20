@@ -369,7 +369,7 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
 	 * @param array $repeatable_array an array of the repeatable form items.
 	 * @param string $form_item_title the display text for the form item.
 	 */
-	protected function repeatable_form_item_inputs_markup( $repeatable_array, $form_item_title ) {
+	protected function repeatable_form_item_inputs_markup( $repeatable_array, $form_item_title, $instance = false ) {
 		?>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'repeatable_array' ); ?>"><h4><?php _e( $form_item_title, ORGANIC_WIDGETS_18N ) ?></h4></label>
@@ -388,7 +388,7 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
 					}
 
 					// Echo Form Item
-					$this->echo_repeatable_form_item( $key, $order, $repeatable );
+					$this->echo_repeatable_form_item( $key, $order, $repeatable, $instance );
 
 					// Add Key to Array
 					array_push( $form_keys, $key );
@@ -455,35 +455,42 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
 	 * @param bool $include_link will only render the link if this is set to true. Otherwise link is ignored.
 	 * @return string image html
 	 */
-	protected function get_image_HTML( $instance ) {
+	protected function get_image_html( $instance, $repeatable = false ) {
 
-		if ( isset( $instance['bg_image_id'] ) ) {
-			$bg_image_id = $instance['bg_image_id'];
-		} else { $bg_image_id = 0; }
+		error_log(print_r($repeatable,1));
+
+		if ( ! $repeatable ) {
+			if ( isset( $instance['bg_image_id'] ) ) {
+				$image_id = $instance['bg_image_id'];
+				$image = $instance['bg_image'];
+			} else { $image_id = 0; }
+		} else {
+			if ( isset( $repeatable['image_id'] ) ) {
+				$image_id = $repeatable['image_id'];
+				$image = $repeatable['image'];
+			} else { $image_id = 0; }
+		}
 
 		$output = '';
-
 		$size = 'organic-widgets-featured-large';
-
 		$attr = array();
 		$attr = apply_filters( 'image_widget_image_attributes', $attr, $instance );
-
-		$img_array = wp_get_attachment_image( $bg_image_id, $size, false, $attr );
+		$img_array = wp_get_attachment_image( $image_id, $size, false, $attr );
 
 		// If there is an bg_image, use it to render the image. Eventually we should kill this and simply rely on bg_image_ids.
-		if ( ! empty( $instance['bg_image'] ) ) {
+		if ( isset( $image ) && $image ) {
 			// If all we have is an image src url we can still render an image.
-			$attr['src'] = $instance['bg_image'];
+			$attr['src'] = esc_url($image);
 			$attr = array_map( 'esc_attr', $attr );
 			$output .= "<img ";
 			foreach ( $attr as $name => $value ) {
 				$output .= sprintf( ' %s="%s"', $name, $value );
 			}
 			$output .= ' />';
-		} elseif( abs( $bg_image_id ) > 0 ) {
-			$output .= $img_array[0];
+		} elseif ( abs( $image_id ) > 0 ) {
+			$output = '<img src="' . esc_url($img_array[0]) . '"/>';
 		}
-
+		error_log($output);
 		return $output;
 	}
 

@@ -7,7 +7,7 @@ jQuery(document).ready(function($){
 	organicWidgetFeatureIconImage = {
 
 		// Call this from the upload button to initiate the upload frame.
-		uploader : function( widget_id, widget_id_string, repeatable_id_string ) {
+		uploader : function( widget_id, widget_id_string, icon_id_string ) {
 
 			var frame = wp.media({
 				title : RepeatableIcon.frame_title,
@@ -19,10 +19,10 @@ jQuery(document).ready(function($){
 			// Handle results from media manager.
 			frame.on('close',function( ) {
 				var attachments = frame.state().get('selection').toJSON();
-				organicWidgetBackgroundImage.render( widget_id, icon_id_string, organicWidgetFeatureIconImage, attachments[0] );
+				organicWidgetFeatureIconImage.render( widget_id, widget_id_string, icon_id_string, attachments[0] );
 			});
 
-			var removerButton = $("#" + icon_id_string + 'remover_button');
+			var removerButton = $("#" + widget_id_string + 'remover_button' + icon_id_string);
 			removerButton.show();
 
 			frame.open();
@@ -31,24 +31,19 @@ jQuery(document).ready(function($){
 		},
 
 		// Output Image preview and populate widget form.
-		render : function( widget_id, icon_id_string, attachment ) {
+		render : function( widget_id, widget_id_string, icon_id_string, attachment ) {
 
 			// Change inputs
-			$("#" + icon_id_string + 'preview').html(organicWidgetBackgroundImage.imgHTML( attachment ));
-			$("#" + icon_id_string + 'fields').slideDown();
-			$("#" + icon_id_string + 'bg_image_id').val(attachment.id);
-			$("#" + icon_id_string + 'bg_image').val(attachment.url);
-			$("#" + icon_id_string + 'size').val('organic-widgets-featured-large');
-
-			$("#" + icon_id_string + 'uploader_button').val('Change Image');
+			$("#" + widget_id_string + 'image_preview' + icon_id_string ).html(organicWidgetFeatureIconImage.imgHTML( attachment ));
+			$("#" + widget_id_string + 'image_id' + icon_id_string).val(attachment.id);
+			$("#" + widget_id_string + 'image' + icon_id_string).val(attachment.url);
+			$("#" + widget_id_string + 'uploader_button' + icon_id_string).html('Change Image');
 
 			// Trigger change in preview window
-			$("#" + icon_id_string + 'bg_image').trigger('change');
+			$("#" + icon_id_string + 'bg_image' + icon_id_string).trigger('change');
 
-
-			var section = $('#' + widget_id).find('.organic-widgets-section');
-
-			section.css('background-image', attachment);
+			// var section = $('#' + widget_id).find('.organic-widgets-section');
+			// section.css('background-image', attachment);
 
 		},
 
@@ -73,17 +68,17 @@ jQuery(document).ready(function($){
 		},
 
 		// Call this from the upload button to initiate the upload frame.
-		remover : function( widget_id, icon_id_string, field_name ) {
+		remover : function( widget_id, widget_id_string, icon_id_string, field_name ) {
 
-			organicWidgetBackgroundImage.render( widget_id, icon_id_string, false );
+			organicWidgetFeatureIconImage.render( widget_id, widget_id_string, icon_id_string, false );
 
-			$("#" + icon_id_string + 'uploader_button').val('Select an Image');
+			$("#" + widget_id_string + 'uploader_button' + icon_id_string ).html('Select an Image');
 
-			var field = $("#" + icon_id_string + field_name);
+			var field = $("#" + widget_id_string + field_name + icon_id_string );
 			field.hide();
 
 			// Trigger change in preview window
-			$("#" + icon_id_string + 'bg_image').trigger('change');
+			$("#" + widget_id_string + 'bg_image' + icon_id_string ).trigger('change');
 
 			return false;
 		},

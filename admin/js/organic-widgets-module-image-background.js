@@ -39,14 +39,10 @@ jQuery(document).ready(function($){
 			$("#" + widget_id_string + 'fields').slideDown();
 			$("#" + widget_id_string + 'bg_image_id').val(attachment.id);
 			$("#" + widget_id_string + 'bg_image').val(attachment.url);
-			$("#" + widget_id_string + 'size').val('organic-widgets-featured-large');
-
 			$("#" + widget_id_string + 'uploader_button').val('Change Image');
 
 			// Trigger change in preview window
       $("#" + widget_id_string + 'bg_image').trigger('change');
-
-
 			var section = $('#' + widget_id).find('.organic-widgets-section');
 
 			section.css('background-image', attachment);

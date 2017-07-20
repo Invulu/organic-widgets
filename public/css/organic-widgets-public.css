@@ -428,6 +428,11 @@
   font-size: 32px;
   margin: auto;
 }
+.organic-widgets-feature-list-item-icon img {
+  width: 100%;
+  max-width: 40px;
+  height: auto;
+}
 .organic-widgets-feature-list-item-text h4 {
   font-weight: normal;
   margin-top: 18px;
