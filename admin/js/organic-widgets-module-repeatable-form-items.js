@@ -305,8 +305,15 @@
 
 	}
 
+  function organicWidgetsFeatureIconImage() {
+
+    
+
+  }
+
 	// Binding main function
 	$( document )
+  .ready( organicWidgetsFeatureIconImage )
 	.ajaxComplete( organicWidgetsCustomDropdown );
 
 	$(window).on("load", function() {

@@ -5,7 +5,7 @@ jQuery(document).ready(function($){
 
 
 	// Image Uploader Widget
-	subpageWidgetImage = {
+	organicWidgetBackgroundImage = {
 
 		// Call this from the upload button to initiate the upload frame.
 		uploader : function( widget_id, widget_id_string ) {
@@ -20,7 +20,7 @@ jQuery(document).ready(function($){
 			// Handle results from media manager.
 			frame.on('close',function( ) {
 				var attachments = frame.state().get('selection').toJSON();
-				subpageWidgetImage.render( widget_id, widget_id_string, attachments[0] );
+				organicWidgetBackgroundImage.render( widget_id, widget_id_string, attachments[0] );
 			});
 
 			var removerButton = $("#" + widget_id_string + 'remover_button');
@@ -35,7 +35,7 @@ jQuery(document).ready(function($){
 		render : function( widget_id, widget_id_string, attachment ) {
 
 			// Change inputs
-			$("#" + widget_id_string + 'preview').html(subpageWidgetImage.imgHTML( attachment ));
+			$("#" + widget_id_string + 'preview').html(organicWidgetBackgroundImage.imgHTML( attachment ));
 			$("#" + widget_id_string + 'fields').slideDown();
 			$("#" + widget_id_string + 'bg_image_id').val(attachment.id);
 			$("#" + widget_id_string + 'bg_image').val(attachment.url);
@@ -76,7 +76,7 @@ jQuery(document).ready(function($){
 		// Call this from the upload button to initiate the upload frame.
 		remover : function( widget_id, widget_id_string, field_name ) {
 
-			subpageWidgetImage.render( widget_id, widget_id_string, false );
+			organicWidgetBackgroundImage.render( widget_id, widget_id_string, false );
 
 			$("#" + widget_id_string + 'uploader_button').val('Select an Image');
 

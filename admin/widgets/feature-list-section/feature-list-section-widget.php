@@ -299,6 +299,20 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 				</div>
 
 				<div class="organic-widgets-feature-list-text-fields-wrapper">
+
+					<p>
+						<label for="<?php echo $this->get_field_id( 'bg_image' ); ?>"><?php _e( 'Or Upload Custom Icon:', ORGANIC_WIDGETS_18N ); ?></label>
+						<div class="uploader">
+							<input type="submit" class="button" name="" id="" value="<?php if ( $repeatable['image_id'] ) { _e( 'Change Image', ORGANIC_WIDGETS_18N ); }else { _e( 'Select Image', ORGANIC_WIDGETS_18N ); }?>" onclick="organicWidgetFeatureIconImage.uploader( '<?php echo $this->id; ?>', '<?php echo $this->id_prefix . '_repeatable-' . $id; ?>' ); return false;" />
+							<input type="submit" class="organic-widgets-remove-image-button button" name="" id="<?php echo $this->get_field_id('remover_button'); ?>" value="<?php _e('Remove Image', ORGANIC_WIDGETS_18N); ?>" onclick="organicWidgetFeatureIconImage.remover( '<?php echo $this->id; ?>', '<?php echo $this->id_prefix . '_repeatable-' . $id; ?>', 'remover_button' ); return false;" <?php if ( $repeatable['image_id'] < 1 ) { echo( 'style="display:none;"' ); } ?>/>
+							<div class="organic-widgets-widget-image-preview" id="">
+								<?php //echo $this->get_image_html($instance); ?>
+							</div>
+							<input type="hidden" id="" name="" value="<?php echo abs($repeatable['image_id']); ?>" />
+							<input type="hidden" id="" name="" value="<?php echo $repeatable['image']; ?>" />
+						</div>
+					</p>
+
 					<p>
 						<label><?php _e( 'Feature Title:', ORGANIC_WIDGETS_18N ) ?></label>
 						<input class="widefat organic-widgets-feature-list-title-input organic-widgets-repeatable-form-item-input" data-input-name="title" data-activator="true" type="text" value="<?php if ( $repeatable && array_key_exists( 'title', $repeatable ) ) echo esc_html($repeatable['title']); ?>" />
@@ -410,6 +424,7 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 		// Repeatable Form Items
 		wp_enqueue_script( 'organic-widgets-module-repeatable-form-item-js', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-repeatable-form-items.js', array( 'jquery' ) );
 
+
 		wp_enqueue_style( 'organic-widgets-fontawesome', ORGANIC_WIDGETS_BASE_DIR . 'public/css/font-awesome.css' );
 
 		wp_enqueue_style( 'wp-color-picker' );
@@ -418,6 +433,11 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 
 		wp_enqueue_script( 'organic-widgets-module-image-background', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-image-background.js', array( 'jquery', 'media-upload', 'media-views', 'wp-color-picker' ) );
 		wp_localize_script( 'organic-widgets-module-image-background', 'SubpageWidget', array(
+			'frame_title' => __( 'Select an Image', ORGANIC_WIDGETS_18N ),
+			'button_title' => __( 'Insert Into Widget', ORGANIC_WIDGETS_18N ),
+		) );
+		wp_enqueue_script( 'organic-widgets-module-repeatable-icon-image', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-repeatable-icon-image.js', array( 'jquery', 'media-upload', 'media-views' ) );
+		wp_localize_script( 'organic-widgets-module-repeatable-icon-image', 'RepeatableIcon', array(
 			'frame_title' => __( 'Select an Image', ORGANIC_WIDGETS_18N ),
 			'button_title' => __( 'Insert Into Widget', ORGANIC_WIDGETS_18N ),
 		) );
