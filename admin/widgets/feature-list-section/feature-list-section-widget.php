@@ -100,7 +100,7 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 
 						<div class="organic-widgets-feature-list-item organic-widgets-<?php echo $this->column_string( $num_columns ); ?>">
 
-							<div class="organic-widgets-information">
+							<div class="organic-widgets-card">
 
 								<div class="organic-widgets-feature-list-item-icon">
 

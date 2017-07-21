@@ -417,10 +417,8 @@
   box-sizing: border-box;
   min-width: 16.66%;
 }
-.organic-widgets-feature-list-item .organic-widgets-information {
+.organic-widgets-feature-list-item .organic-widgets-card {
   margin: 6px;
-  padding: 24px 12px;
-  box-sizing: border-box;
 }
 .organic-widgets-feature-list-item-icon {
   text-align: center;
