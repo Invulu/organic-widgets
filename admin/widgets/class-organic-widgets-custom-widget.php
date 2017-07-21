@@ -462,8 +462,8 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
 				$image_id = $instance['bg_image_id'];
 			} else { $image_id = 0; }
 		} else {
-			if ( isset( $repeatable['image_id'] ) ) {
-				$image_id = $repeatable['image_id'];
+			if ( isset( $repeatable['icon'] ) ) {
+				$image_id = $repeatable['icon'];
 			} else { $image_id = 0; }
 		}
 

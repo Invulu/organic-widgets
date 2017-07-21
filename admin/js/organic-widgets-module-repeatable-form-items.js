@@ -46,7 +46,6 @@
 		// Listen for changes on inputs
 		$('.organic-widgets-repeatable-form-item-input').on('change', function(){
 			var formItem = $(this).parent().parent('.organic-widgets-repeatable-form-item');
-      console.log('hiii');
       organicWidgetsRepeatableFormItemUpdateMainArray(this);
 		});
 
@@ -131,21 +130,26 @@
   /*--------- Give New IDs to image uploaders ----------*/
   function giveNewItemID( item, newID ) {
 
+    var preview = item.closest('.organic-widgets-repeatable-form-item').find('.organic-widgets-feature-list-icon-preview');
+    var existingIDString = preview.attr('id');
+    var newIDString = existingIDString.replace('__x__',newID);
+    preview.attr('id', newIDString);
     item.find('div').each(function(){
       var existingIDString = $(this).attr('id');
       var newIDString = existingIDString.replace('__x__',newID);
-      var existingID = $(this).attr('id', newIDString);
+      $(this).attr('id', newIDString);
       var existingOnClickString = $(this).attr('onclick');
       var newOnClickString = existingOnClickString.replace('__x__',newID);
-      var existingOnClick = $(this).attr('onclick', newOnClickString);
+      $(this).attr('onclick', newOnClickString);
     });
     item.find('input').each(function(){
       var existingIDString = $(this).attr('id');
       var newIDString = existingIDString.replace('__x__',newID);
-      var existingID = $(this).attr('id', newIDString);
+      $(this).attr('id', newIDString);
       var existingNameString = $(this).attr('name');
       var newNameString = existingNameString.replace('__x__',newID);
-      var existingName = $(this).attr('name', newNameString);
+      $(this).attr('name', newNameString);
+      $(this).attr('data-feature-id', newID);
     });
 
   }
@@ -327,8 +331,7 @@
     });
 
 		var mainInput = thisFormAdmin.find('.organic-widgets-repeatable-hidden-input');
-    console.log('mainInput');
-    console.log(mainInput);
+
     mainInput.trigger('change');
     mainInput.val(JSON.stringify(thisItemData));
     console.log(mainInput.val());

@@ -36,20 +36,18 @@ jQuery(document).ready(function($){
 
 			// Change inputs
 			$("#" + widget_id_string + 'image_preview' + icon_id_string ).html(organicWidgetFeatureIconImage.imgHTML( attachment ));
-			$("#" + widget_id_string + 'icon_id' + icon_id_string).val(attachment.id);
+			$("#" + widget_id_string + 'icon' + icon_id_string).val(attachment.id);
+			$('.organic-widgets-feature-list-select.organic-widgets-repeatable-form-item-input')
 			$("#" + widget_id_string + 'uploader_button' + icon_id_string).html('Change Image');
 
 			// Trigger change in preview window
-			$("#" + widget_id_string + 'icon_id' + icon_id_string).trigger('change');
-
-			console.log($("#" + widget_id_string + 'icon_id' + icon_id_string));
-
+			$("#" + widget_id_string + 'icon' + icon_id_string).trigger('change');
 
 		},
 
 		// Update input fields if it is empty
-		updateInputIfEmpty : function( icon_id_string, name, value ) {
-			var field = $("#" + icon_id_string + name);
+		updateInputIfEmpty : function( widget_id_string, icon_id_string, name, value ) {
+			var field = $("#" + widget_id_string + name + icon_id_string );
 			if ( field.val() == '' ) {
 				field.val(value);
 			}
@@ -78,7 +76,7 @@ jQuery(document).ready(function($){
 			field.hide();
 
 			// Trigger change in preview window
-			$("#" + widget_id_string + 'bg_image' + icon_id_string ).trigger('change');
+			$("#" + widget_id_string + 'icon' + icon_id_string ).trigger('change');
 
 			return false;
 		},

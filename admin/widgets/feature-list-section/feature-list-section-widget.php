@@ -65,7 +65,6 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 		$button_text = ( isset( $instance['button_text'] ) && '' != $instance['button_text'] ) ? $instance['button_text'] : false;
 		$button_url = ( isset( $instance['button_url'] ) && '' != $instance['button_url'] ) ? $instance['button_url'] : false;
 		$num_columns = ( isset( $instance['num_columns'] ) ) ? $instance['num_columns'] : 4;
-
 		$repeatable_array = ( isset( $instance['repeatable_array'] ) ) ? json_decode( $instance['repeatable_array'], true) :  array();
 
 		echo $args['before_widget']; ?>
@@ -386,8 +385,6 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 	 * @return array Updated safe values to be saved.
 	 */
 	public function update( $new_instance, $old_instance ) {
-
-		error_log(print_r($old_instance,1));
 
 		$instance = $old_instance;
 
