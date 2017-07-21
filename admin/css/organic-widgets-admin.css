@@ -571,3 +571,6 @@ div.mce_inline_error {
 .organic-widgets-image-uploader {
   margin-bottom: 2em;
 }
+.organic-widgets-image-uploader .button {
+  padding: 0 7px;
+}

@@ -254,7 +254,9 @@
     var thisFormItem = thisItem.closest('.organic-widgets-repeatable-form-item');
     var thisFeature = thisFormItem.find('.organic-widgets-repeatable-form-item-input[data-input-name="icon"]');
 		var thisButton = thisItem.parent().siblings('.organic-widgets-dropdown-button');
-		var thisPreview = thisFormItem.find('.organic-widgets-feature-list-icon-preview');
+    var removerButton = thisFormItem.find('.organic-widgets-remove-image-button');
+    var uploaderButton = thisFormItem.find('.organic-widgets-upload-image-button');
+    var thisPreview = thisFormItem.find('.organic-widgets-feature-list-icon-preview');
 
 		// Update HTML Values
 		thisPreview.html('<i class="fa ' + thisVal + '"></i>');
@@ -266,6 +268,10 @@
 		// Set active classes
 		thisItem.siblings().removeClass('organic-widgets-feature-active');
 		thisItem.addClass('organic-widgets-feature-active');
+
+    // Hide Remove Image Button
+    removerButton.hide();
+    uploaderButton.val('Select Image');
 
 		// HTML Changes
 		thisFormItem.find('.organic-widgets-feature-list-select-icon').html('<i class="fa fa-angle-down"></i>');
