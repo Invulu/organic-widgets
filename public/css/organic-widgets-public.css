@@ -203,6 +203,7 @@
 .organic-widgets-section.organic-widgets-hero-section {
   display: flex;
   height: auto;
+  min-height: 420px;
   background-attachment: fixed;
   padding-top: 60px;
   padding-bottom: 60px;
