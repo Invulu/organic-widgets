@@ -46,24 +46,28 @@
 		// Listen for changes on inputs
 		$('.organic-widgets-repeatable-form-item-input').on('change', function(){
 			var formItem = $(this).parent().parent('.organic-widgets-repeatable-form-item');
-			organicWidgetsRepeatableFormItemUpdateMainArray(this);
+      console.log('hiii');
+      organicWidgetsRepeatableFormItemUpdateMainArray(this);
 		});
 
 		// Prep hidden input value
 		$('.organic-widgets-repeatable-form-item-widget-admin').each(function(){
 			var formItem = $(this).find('.organic-widgets-repeatable-form-item').first();
 		});
+
   }
 
 	/*--------- Delete Feature ----------*/
 	function organicWidgetsDeleteRepeatableFormItem(feature) {
-		var formItem = $(feature).closest('.organic-widgets-repeatable-form-item');
+
+  	var formItem = $(feature).closest('.organic-widgets-repeatable-form-item');
 		var theForm = $(formItem).closest('.organic-widgets-repeatable-form-item-widget-admin');
 		if ( confirm("Are you sure you want to delete this?") ){
 			formItem.remove();
 			organicWidgetsRepeatableFormItemUpdateMainArray(theForm);
     }
-	}
+
+  }
 
 	/*--------- Delete Feature ----------*/
 	function organicWidgetsAddRepeatableFormItem(addButton) {
@@ -107,7 +111,8 @@
 			newItem.find('.organic-widgets-feature-list-icon-preview').html('');
 			newItem.find('.organic-widgets-feature-list-select-icon').html('<i class="fa fa-angle-down"></i>');
 		}
-		newItem.find('.organic-widgets-feature-list-select').attr('data-val', '');
+    giveNewItemID( newItem.find('.organic-widgets-image-uploader'), newID );
+    newItem.find('.organic-widgets-feature-list-select').attr('data-val', '');
 		newItem.find('.organic-widgets-feature-list-select').attr('data-feature-id', newID);
 		newItem.find('.organic-widgets-feature-list-icon-preview').html('');
 		newItem.find('.organic-widgets-feature-list-title-input').val('');
@@ -122,6 +127,28 @@
 		organicWidgetsCustomDropdown();
 
 	}
+
+  /*--------- Give New IDs to image uploaders ----------*/
+  function giveNewItemID( item, newID ) {
+
+    item.find('div').each(function(){
+      var existingIDString = $(this).attr('id');
+      var newIDString = existingIDString.replace('__x__',newID);
+      var existingID = $(this).attr('id', newIDString);
+      var existingOnClickString = $(this).attr('onclick');
+      var newOnClickString = existingOnClickString.replace('__x__',newID);
+      var existingOnClick = $(this).attr('onclick', newOnClickString);
+    });
+    item.find('input').each(function(){
+      var existingIDString = $(this).attr('id');
+      var newIDString = existingIDString.replace('__x__',newID);
+      var existingID = $(this).attr('id', newIDString);
+      var existingNameString = $(this).attr('name');
+      var newNameString = existingNameString.replace('__x__',newID);
+      var existingName = $(this).attr('name', newNameString);
+    });
+
+  }
 
 	/*--------- Move Feature Up ----------*/
 	function organicWidgetsReorderRepeatableFormItems( feature, direction ) {
@@ -220,14 +247,14 @@
 
 		var thisItem = $(feature);
 		var thisVal = thisItem.data('val');
-		var thisFeature = thisItem.parents('.organic-widgets-feature-list-select');
-		var thisFormItem = thisFeature.closest('.organic-widgets-repeatable-form-item');
+    var thisFormItem = thisItem.closest('.organic-widgets-repeatable-form-item');
+    var thisFeature = thisFormItem.find('.organic-widgets-repeatable-form-item-input[data-input-name="icon"]');
 		var thisButton = thisItem.parent().siblings('.organic-widgets-dropdown-button');
 		var thisPreview = thisFormItem.find('.organic-widgets-feature-list-icon-preview');
 
 		// Update HTML Values
 		thisPreview.html('<i class="fa ' + thisVal + '"></i>');
-		thisFeature.attr( 'data-val', thisVal );
+    thisFeature.val( thisVal );
 
 		// Update Main Data Array
 		organicWidgetsRepeatableFormItemUpdateMainArray(thisFormItem);
@@ -300,7 +327,9 @@
     });
 
 		var mainInput = thisFormAdmin.find('.organic-widgets-repeatable-hidden-input');
-		mainInput.trigger('change');
+    console.log('mainInput');
+    console.log(mainInput);
+    mainInput.trigger('change');
     mainInput.val(JSON.stringify(thisItemData));
     console.log(mainInput.val());
 

@@ -457,8 +457,6 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
 	 */
 	protected function get_image_html( $instance, $repeatable = false ) {
 
-		error_log(print_r($repeatable,1));
-
 		if ( ! $repeatable ) {
 			if ( isset( $instance['bg_image_id'] ) ) {
 				$image_id = $instance['bg_image_id'];
@@ -473,13 +471,15 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
 		if ( (int) $image_id > 0 ) {
 			$size = 'organic-widgets-featured-large';
 			$img_array = wp_get_attachment_image( $image_id, 'full', false );
-			error_log('img_array');
-			error_log(print_r($img_array,1));
-			$output = $img_array;
+			if ( is_array( $img_array ) ) {
+				$output = '<img src="'.$img_array[0].'" />';
+			} else {
+				$output = $img_array;
+			}
 		} else {
 			$output = '';
 		}
-		error_log($output);
+
 		return $output;
 
 	}

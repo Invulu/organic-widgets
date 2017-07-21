@@ -8,6 +8,7 @@ jQuery(document).ready(function($){
 
 		// Call this from the upload button to initiate the upload frame.
 		uploader : function( widget_id, widget_id_string, icon_id_string ) {
+			console.log(widget_id_string);
 
 			var frame = wp.media({
 				title : RepeatableIcon.frame_title,
@@ -35,11 +36,14 @@ jQuery(document).ready(function($){
 
 			// Change inputs
 			$("#" + widget_id_string + 'image_preview' + icon_id_string ).html(organicWidgetFeatureIconImage.imgHTML( attachment ));
-			$("#" + widget_id_string + 'image_id' + icon_id_string).val(attachment.id);
+			$("#" + widget_id_string + 'icon_id' + icon_id_string).val(attachment.id);
 			$("#" + widget_id_string + 'uploader_button' + icon_id_string).html('Change Image');
 
 			// Trigger change in preview window
-			$("#" + icon_id_string + 'bg_image' + icon_id_string).trigger('change');
+			$("#" + widget_id_string + 'icon_id' + icon_id_string).trigger('change');
+
+			console.log($("#" + widget_id_string + 'icon_id' + icon_id_string));
+
 
 		},
 
