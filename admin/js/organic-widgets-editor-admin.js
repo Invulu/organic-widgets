@@ -1,3 +1,6 @@
+/**
+ * JS for Edit Pages
+ */
 (function( $ ) {
 	'use strict';
 

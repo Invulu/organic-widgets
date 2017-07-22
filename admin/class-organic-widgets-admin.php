@@ -66,17 +66,6 @@ class Organic_Widgets_Admin {
 	}
 
 	/**
-	 * Register the JavaScript for the admin area.
-	 *
-	 * @since    1.0.0
-	 */
-	public function enqueue_scripts() {
-
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/organic-widgets-admin.js', array( 'jquery' ), $this->version, false );
-
-	}
-
-	/**
 	 * Register the JavaScript for the page editor admin area.
 	 *
 	 * @since    1.0.0

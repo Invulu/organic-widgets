@@ -1,5 +1,5 @@
 /**
- * Section Background Module JS
+ * JS for Image Backgrounds
  */
 jQuery(document).ready(function($){
 

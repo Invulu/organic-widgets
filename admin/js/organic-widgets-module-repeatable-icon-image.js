@@ -1,5 +1,5 @@
 /**
- * Feature List Icon Images
+ * JS for Repeatable Feature Icon Images
  */
 jQuery(document).ready(function($){
 

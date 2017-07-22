@@ -1,11 +1,18 @@
 # Organic Customizer Widgets
 Contributors: jqlee85, itsdavidmorgan
+
 Donate link: https://organicthemes.com
+
 Tags: customizer, widgets, testimonials, portfolio, features, fontawesome, icons, pricing tables, page builder, full-width sections, custom widget areas
+
 Requires at least: 4.7
+
 Tested up to: 4.8
+
 Stable tag: 4.8
+
 License: GPLv2 or later
+
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Transform the core WordPress Customizer into a page builder. Display and arrange widgets on any page as beautiful content sections, such as featured content slideshows, testimonials, team members, portfolios, feature lists, pricing tables and more. Whoa, cool.
@@ -28,7 +35,7 @@ e.g.
 
 Q: How do I start customizing a page with the Organic Widgets?
 
-A: Simply assign the "Organic Custom" page template to a page and make sure the page is published. This will create a new Widget Area named after the page. You can then add widgets to this widget area via the WordPress Customizer (recommended) or the Widgets page in the WordPress Admin. The Organic widgets have been designed to function as page sections, but you can also add other widgets as desired!
+A: Simply assign the "Organic Custom" page template to a page and save it. This will create a new Widget Area named after the page. You can then add widgets to this widget area via the WordPress Customizer (recommended) or the Widgets page in the WordPress Admin. The Organic widgets have been designed to function as page sections, but you can also add other widgets as desired!
 
 Q: Can I use the custom widgets with themes other than Organic Themes?
 

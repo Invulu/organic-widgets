@@ -1,5 +1,5 @@
 /**
- * Profile Section Widget JS
+ * JS for Groupable Widgets
  */
  jQuery( function( $ ) {
 

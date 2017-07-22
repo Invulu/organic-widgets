@@ -1,5 +1,5 @@
 /**
- * Repeatable Form Item for Widgets JS
+ * JS for Repeatable Form Items
  */
 (function( $ ) {
 	'use strict';
