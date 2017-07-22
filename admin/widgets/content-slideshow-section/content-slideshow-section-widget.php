@@ -129,6 +129,8 @@ class Organic_Widgets_Content_Slideshow_Section_Widget extends Organic_Widgets_C
 
 												<?php the_excerpt(); ?>
 
+												<?php edit_post_link( esc_html__( '(Edit)', ORGANIC_WIDGETS_18N ), '<p>', '</p>' ); ?>
+
 											<!-- END .organic-widgets-excerpt -->
 											</div>
 
