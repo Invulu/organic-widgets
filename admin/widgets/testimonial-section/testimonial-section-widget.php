@@ -331,8 +331,6 @@ class Organic_Widgets_Testimonial_Section_Widget extends Organic_Widgets_Custom_
 		wp_add_inline_script( 'organic-testimonial-section-widgets', 'wp.organicTestimonialSectionWidgets.init();', 'after' );
 
 		wp_enqueue_media();
-		wp_enqueue_script( 'testimonial-section-widget-js', plugin_dir_url( __FILE__ ) . 'js/testimonial-section-widget.js', array( 'jquery', 'media-upload', 'media-views' ) );
-		wp_enqueue_style( 'organic-widgets-testimonial-section-widget-css', plugin_dir_url( __FILE__ ) . 'css/testimonial-section-widget.css' );
 
 		wp_enqueue_style( 'wp-color-picker' );
 		wp_enqueue_script( 'wp-color-picker' );

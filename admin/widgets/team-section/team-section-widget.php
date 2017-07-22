@@ -296,9 +296,7 @@ class Organic_Widgets_Team_Section_Widget extends Organic_Widgets_Custom_Widget 
 		wp_add_inline_script( 'organic-team-section-widgets', 'wp.organicTeamSectionWidgets.init();', 'after' );
 
 		wp_enqueue_media();
-		wp_enqueue_script( 'team-section-widget-js', plugin_dir_url( __FILE__ ) . 'js/team-section-widget.js', array( 'jquery', 'media-upload', 'media-views' ) );
-		wp_enqueue_style( 'organic-widgets-team-section-widget-css', plugin_dir_url( __FILE__ ) . 'css/team-section-widget.css' );
-
+		
 		wp_enqueue_style( 'wp-color-picker' );
 		wp_enqueue_script( 'wp-color-picker' );
     wp_enqueue_script( 'organic-widgets-module-color-picker', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-color-picker.js', array( 'jquery', 'media-upload', 'media-views', 'wp-color-picker' ) );

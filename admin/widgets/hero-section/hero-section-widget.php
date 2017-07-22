@@ -315,8 +315,6 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 		wp_enqueue_script( 'organic-widgets-module-content-aligner', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-content-aligner.js', array( 'jquery' ) );
 
 		wp_enqueue_media();
-		wp_enqueue_script( 'organic-widgets-hero-widget-js', plugin_dir_url( __FILE__ ) . 'js/hero-widget.js', array( 'jquery', 'media-upload', 'media-views' ) );
-		wp_enqueue_style( 'organic-widgets-hero-widget-css', plugin_dir_url( __FILE__ ) . 'css/hero-widget.css' );
 
 		wp_enqueue_style( 'wp-color-picker' );
 		wp_enqueue_script( 'wp-color-picker' );
@@ -334,7 +332,9 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 	 * Enqueue public javascript.
 	 */
 	public function public_scripts() {
+
 		if ( ! wp_script_is('organic-widgets-backgroundimagebrightness-js') ) { wp_enqueue_script( 'organic-widgets-backgroundimagebrightness-js', ORGANIC_WIDGETS_BASE_DIR . 'public/js/jquery.backgroundbrightness.js', array( 'jquery' ) ); }
+
 	}
 
 } // class Organic_Widgets_Hero_Section_Widget

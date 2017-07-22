@@ -353,8 +353,6 @@ class Organic_Widgets_Pricing_Table_Widget extends Organic_Widgets_Custom_Widget
 		wp_enqueue_script( 'organic-widgets-module-repeatable-form-item-js', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-repeatable-form-items.js', array( 'jquery' ) );
 
 		wp_enqueue_media();
-		// wp_enqueue_script( 'organic_widgets-pricing-table-js', plugin_dir_url( __FILE__ ) . 'js/pricing-table.js', array( 'jquery', 'media-upload', 'media-views' ) );
-		wp_enqueue_style( 'organic_widgets-pricing-table-css', plugin_dir_url( __FILE__ ) . 'css/pricing-table.css' );
 
 		wp_enqueue_style( 'wp-color-picker' );
 		wp_enqueue_script( 'wp-color-picker' );

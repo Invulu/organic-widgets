@@ -1,6 +1,5 @@
 /**
- * All of the CSS for your admin-specific functionality should be
- * included in this file.
+ * Admin Specific CSS
  */
 
 .organic-widgets-clear {
@@ -573,4 +572,58 @@ div.mce_inline_error {
 }
 .organic-widgets-image-uploader .button {
   padding: 0 7px;
+}
+
+/************************************************
+*	Content Slideshow Section
+************************************************/
+
+#available-widgets [class*='organic_widgets_content_slideshow_section'] .widget-title::before {
+	font-family: 'dashicons';
+	content: '\f128';
+}
+
+/************************************************
+*	Featured Content Section
+************************************************/
+
+#available-widgets [class*='organic_widgets_featured_content'] .widget-title::before {
+	font-family: 'dashicons';
+	content: '\f464';
+}
+
+/************************************************
+*	Hero Section
+************************************************/
+
+#available-widgets [class*='organic_widgets_hero'] .widget-title::before {
+	font-family: 'FontAwesome';
+	content: '\f091';
+}
+
+/************************************************
+*	Portfolio Section
+************************************************/
+
+#available-widgets [class*='organic_widgets_portfolio_section'] .widget-title::before {
+	font-family: 'dashicons';
+	content: '\f161';
+}
+
+/************************************************
+*	Pricing Table Section
+************************************************/
+
+#available-widgets [class*='organic_widgets_pricing_table'] .widget-title::before {
+	font-family: 'FontAwesome';
+	content: '\f02c';
+}
+
+/************************************************
+*	Team Section
+************************************************/
+
+#available-widgets [class*='organic_widgets_team_section'] .widget-title::before {
+	font-family: 'dashicons';
+	content: '\f307';
 }

@@ -1,3 +1,0 @@
-/**
- * Portfolio Section Widget JS
- */

@@ -273,8 +273,6 @@ class Organic_Widgets_Portfolio_Section_Widget extends Organic_Widgets_Custom_Wi
 	public function admin_setup() {
 
 		wp_enqueue_media();
-		wp_enqueue_script( 'portfolio-section-widget-js', plugin_dir_url( __FILE__ ) . 'js/portfolio-section-widget.js', array( 'jquery', 'media-upload', 'media-views' ) );
-		wp_enqueue_style( 'organic-widgets-portfolio-section-widget-css', plugin_dir_url( __FILE__ ) . 'css/portfolio-section-widget.css' );
 
 		wp_enqueue_style( 'wp-color-picker' );
 		wp_enqueue_script( 'wp-color-picker' );

@@ -41,9 +41,6 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 		add_action( 'sidebar_admin_setup', array( $this, 'admin_setup' ) );
 		add_action( 'admin_footer-widgets.php', array( $this, 'render_control_template_scripts' ) );
 
-		// Customizer Scripts
-		add_action( 'customize_controls_enqueue_scripts', array($this, 'customizer_setup' ) );
-
 		// Public scripts
 		add_action( 'wp_enqueue_scripts', array( $this, 'public_scripts') );
 
@@ -434,8 +431,6 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 		wp_add_inline_script( 'organic-widgets-feature-list-widgets', 'wp.organicFeatureListWidgets.init();', 'after' );
 
 		wp_enqueue_media();
-		// wp_enqueue_script( 'organic-widgets-feature-list-section-widget-js', plugin_dir_url( __FILE__ ) . 'js/feature-list-section-widget.js', array( 'jquery', 'media-upload', 'media-views' ) );
-		// wp_enqueue_style( 'organic-widgets-feature-list-section-widget-css', plugin_dir_url( __FILE__ ) . 'css/feature-list-section-widget.css' );
 
 		// Repeatable Form Items
 		wp_enqueue_script( 'organic-widgets-module-repeatable-form-item-js', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-repeatable-form-items.js', array( 'jquery' ) );
@@ -468,13 +463,6 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 		if ( ! wp_script_is('organic-widgets-backgroundimagebrightness-js') ) { wp_enqueue_script( 'organic-widgets-backgroundimagebrightness-js', ORGANIC_WIDGETS_BASE_DIR . 'public/js/jquery.backgroundbrightness.js', array( 'jquery' ) ); }
 
 		wp_enqueue_style( 'organic-widgets-fontawesome', ORGANIC_WIDGETS_BASE_DIR . 'public/css/font-awesome.css' );
-
-	}
-
-	/**
-	 * Enqueue customizer javascript.
-	 */
-	public function customizer_setup() {
 
 	}
 

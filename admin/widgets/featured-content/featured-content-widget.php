@@ -353,8 +353,6 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 		wp_enqueue_script( 'organic-widgets-module-content-aligner', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-content-aligner.js', array( 'jquery' ) );
 
 		wp_enqueue_media();
-		wp_enqueue_script( 'organic-widgets-featured-content-widget-js', plugin_dir_url( __FILE__ ) . 'js/featured-content-widget.js', array( 'jquery', 'media-upload', 'media-views' ) );
-		wp_enqueue_style( 'organic-widgets-featured-content-widget-css', plugin_dir_url( __FILE__ ) . 'css/featured-content-widget.css' );
 
 		wp_enqueue_style( 'wp-color-picker' );
 		wp_enqueue_script( 'wp-color-picker' );

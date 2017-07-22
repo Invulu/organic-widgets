@@ -255,8 +255,6 @@ class Organic_Widgets_Content_Slideshow_Section_Widget extends Organic_Widgets_C
 	public function admin_setup() {
 
 		wp_enqueue_media();
-		wp_enqueue_script( 'content-slideshow-section-widget-js', plugin_dir_url( __FILE__ ) . 'js/content-slideshow-section-widget.js', array( 'jquery', 'media-upload', 'media-views' ) );
-		wp_enqueue_style( 'organic-widgets-content-slideshow-section-widget-css', plugin_dir_url( __FILE__ ) . 'css/content-slideshow-section-widget.css' );
 
 		// Content Aligner
 		wp_enqueue_script( 'organic-widgets-module-content-aligner', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-content-aligner.js', array( 'jquery' ) );
