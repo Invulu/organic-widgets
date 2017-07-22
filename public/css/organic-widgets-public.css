@@ -542,6 +542,14 @@
   padding-left: 0px;
   padding-right: 0px;
 }
+.organic-widgets-pricing-table {
+  max-width: 50%;
+  min-width: 360px;
+  margin: 0px auto;
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.12);
+  border-radius: 3px;
+  overflow: hidden;
+}
 .organic-widgets-pricing-table .organic-widgets-card {
   padding: 0;
 }
@@ -551,30 +559,49 @@
 .organic-widgets-pricing-table-title {
   text-align: center;
 }
+.organic-widgets-pricing-table-excerpt p {
+  font-weight: 400;
+  padding: 0;
+}
 .organic-widgets-pricing-table table {
-  border: 1px solid #eeeeee;
+  border: none;
   margin: 0;
+}
+.organic-widgets-pricing-table table thead,
+.organic-widgets-pricing-table table tfoot {
+  border: none;
 }
 .organic-widgets-pricing-table tr {
   border: none;
 }
 .organic-widgets-pricing-table tr:nth-child(even) {
-  background: #eeeeee;
+  background: rgba(0, 0, 0, 0.02);
 }
 .organic-widgets-pricing-table tr:nth-child(odd) {
-  background: #ffffff;
+  background: rgba(0, 0, 0, 0.06);
 }
 .organic-widgets-pricing-table table th {
   background: #ffffff;
-  padding: 20px;
+  padding: 24px;
   border: none;
 }
 .organic-widgets-pricing-table table td {
-  padding: 5px 20px;
+  padding: 8px 18px;
   border: none;
 }
+.organic-widgets-pricing-table table tbody td {
+  font-weight: 400;
+}
+.organic-widgets-pricing-table table tbody td::before {
+  color: #99cc66;
+  font-family: 'FontAwesome';
+  font-size: 16px;
+  font-weight: normal;
+  content: '\f00c';
+  margin-right: 8px;
+}
 .organic-widgets-pricing-table table td.organic-widgets-pricing-table-purchase-wrapper {
-  padding: 20px;
+  padding: 24px;
   text-align: center;
   background: #ffffff;
   border: none;

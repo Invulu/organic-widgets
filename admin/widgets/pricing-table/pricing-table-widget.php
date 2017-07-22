@@ -91,34 +91,40 @@ class Organic_Widgets_Pricing_Table_Widget extends Organic_Widgets_Custom_Widget
 
 								<table>
 
-									<tr>
-										<th>
-											<?php if ( ! empty( $instance['title'] ) ) { ?>
-												<h4 class="organic-widgets-pricing-table-title"><?php echo apply_filters( 'widget_title', $instance['title'] ); ?></h4>
-											<?php } ?>
+									<thead>
+										<tr>
+											<th>
+												<?php if ( ! empty( $instance['title'] ) ) { ?>
+													<h4 class="organic-widgets-pricing-table-title"><?php echo apply_filters( 'widget_title', $instance['title'] ); ?></h4>
+												<?php } ?>
 
-												<div class="organic-widgets-pricing-table-divider"></div>
+													<div class="organic-widgets-pricing-table-divider"></div>
 
-											<?php if ( ! empty( $instance['text'] ) ) { ?>
-												<div class="organic-widgets-pricing-table-excerpt"><?php echo apply_filters( 'the_content', $instance['text'] ); ?></div>
-											<?php } ?>
-										</th>
-									</tr>
+												<?php if ( ! empty( $instance['text'] ) ) { ?>
+													<div class="organic-widgets-pricing-table-excerpt"><?php echo apply_filters( 'the_content', $instance['text'] ); ?></div>
+												<?php } ?>
+											</th>
+										</tr>
+									</thead>
 
+									<tbody>
 									<?php foreach( $repeatable_array as $row ) { ?>
 										<tr>
 											<td><?php echo esc_html( $row['text_row'] ); ?></td>
 										</tr>
 									<?php } ?>
+									</tbody>
 
 									<?php if ( ! empty( $instance['purchase_button_url'] ) ) { ?>
-										<tr>
-											<?php if ( ! empty( $instance['purchase_button_url'] ) ) { ?>
-												<td class="organic-widgets-pricing-table-purchase-wrapper">
-													<a class="organic-widgets-button button" href="<?php echo esc_url( $instance['purchase_button_url'] );?>"><?php if ( ! empty( $instance['purchase_button_text'] ) ) { echo esc_html( $instance['purchase_button_text'] ); } else { _e( 'See More', ORGANIC_WIDGETS_18N); } ?></a>
-												</td>
-											<?php } ?>
-										</tr>
+										<tfoot>
+											<tr>
+												<?php if ( ! empty( $instance['purchase_button_url'] ) ) { ?>
+													<td class="organic-widgets-pricing-table-purchase-wrapper">
+														<a class="organic-widgets-button button" href="<?php echo esc_url( $instance['purchase_button_url'] );?>"><?php if ( ! empty( $instance['purchase_button_text'] ) ) { echo esc_html( $instance['purchase_button_text'] ); } else { _e( 'See More', ORGANIC_WIDGETS_18N); } ?></a>
+													</td>
+												<?php } ?>
+											</tr>
+										</tfoot>
 									<?php } ?>
 
 								</table>
