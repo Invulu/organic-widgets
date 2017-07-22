@@ -107,37 +107,41 @@ class Organic_Widget_Areas {
 		// Sync Widget Areas
 		$old_theme_mods = get_option('theme_mods_' . $old_theme->get_stylesheet() );
 		$old_theme_custom_widget_areas = array();
-		foreach( $old_theme_mods['sidebars_widgets']['data'] as $widget_area_name => $widget_area ) {
 
-			// Check for Organic Widgets
-			$length = strlen( $this->widget_prefix );
-			if ( $this->widget_prefix == substr( $widget_area_name, 0, $length ) ) {
-				$old_theme_custom_widget_areas[$widget_area_name] = $widget_area;
+		if ( array_key_exists( 'sidebars_widgets', $old_theme_mods ) ) {
+
+			foreach( $old_theme_mods['sidebars_widgets']['data'] as $widget_area_name => $widget_area ) {
+
+				// Check for Organic Widgets
+				$length = strlen( $this->widget_prefix );
+				if ( $this->widget_prefix == substr( $widget_area_name, 0, $length ) ) {
+					$old_theme_custom_widget_areas[$widget_area_name] = $widget_area;
+				}
+
 			}
 
-		}
+			// Loop Through New Theme's Widget Areas
+			$new_theme_mods = get_theme_mods();
+			$new_theme_custom_widget_areas = array();
+			foreach( $new_theme_mods['sidebars_widgets']['data'] as $widget_area_name => $widget_area ) {
 
-		// Loop Through New Theme's Widget Areas
-		$new_theme_mods = get_theme_mods();
-		$new_theme_custom_widget_areas = array();
-		foreach( $new_theme_mods['sidebars_widgets']['data'] as $widget_area_name => $widget_area ) {
+				// Check for Organic Widgets
+				$length = strlen( $this->widget_prefix );
+				if ( $this->widget_prefix == substr( $widget_area_name, 0, $length ) ) {
 
-			// Check for Organic Widgets
-			$length = strlen( $this->widget_prefix );
-			if ( $this->widget_prefix == substr( $widget_area_name, 0, $length ) ) {
+					//If entry exists in both, sync widgets
+					if ( array_key_exists($widget_area_name, $old_theme_custom_widget_areas) ) {
 
-				//If entry exists in both, sync widgets
-				if ( array_key_exists($widget_area_name, $old_theme_custom_widget_areas) ) {
+						$new_theme_mods['sidebars_widgets']['data'][$widget_area_name] = $old_theme_custom_widget_areas[$widget_area_name];
+						update_option('theme_mods_' . $new_theme->get_stylesheet(), $new_theme_mods );
 
-					$new_theme_mods['sidebars_widgets']['data'][$widget_area_name] = $old_theme_custom_widget_areas[$widget_area_name];
-					update_option('theme_mods_' . $new_theme->get_stylesheet(), $new_theme_mods );
+					}
 
 				}
 
 			}
 
 		}
-
 		// Check for conflicts between double assigned widgets?
 
 	}

@@ -340,7 +340,6 @@
 
     mainInput.trigger('change');
     mainInput.val(JSON.stringify(thisItemData));
-    console.log(mainInput.val());
 
 	}
 
