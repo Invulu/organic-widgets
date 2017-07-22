@@ -267,6 +267,10 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
 	/**
 	 * Render the section background inputs
 	 *
+	 * @since    	1.0.0
+	 *
+	 * @param		array 	$instance 	Widget instance
+	 * @param		array 	$instance 	Background options
 	 */
   protected function section_background_input_markup( $instance, $bg_options ) {
 
@@ -315,6 +319,8 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
 	/**
 	 * Render the content aligner input
 	 *
+	 * @since    	1.0.0
+	 *
 	 * @param array $instance
 	 */
 	protected function content_aligner_input_markup( $instance ) {
@@ -348,8 +354,11 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
 	/**
 	 * Markup for Repeatable Form Items
 	 *
-	 * @param array $repeatable_array an array of the repeatable form items.
-	 * @param string $form_item_title the display text for the form item.
+	 * @since    	1.0.0
+	 *
+	 * @param array 	$repeatable_array 	An array of the repeatable form items.
+	 * @param string 	$form_item_title 	The display text for the form item.
+	 * @param array 	$instance 	Widget instance
 	 */
 	protected function repeatable_form_item_inputs_markup( $repeatable_array, $form_item_title, $instance = false ) {
 		?>
@@ -409,7 +418,9 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
 	}
 
 	/**
-	 * Render the image html output.
+	 * Echo the actions to move repeatable items up, down and delete
+	 *
+	 * @since    	1.0.0
 	 *
 	 */
 	protected function echo_repeatable_form_item_actions() { ?>
@@ -433,9 +444,11 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
   /**
 	 * Render the image html output.
 	 *
-	 * @param array $instance
-	 * @param bool $include_link will only render the link if this is set to true. Otherwise link is ignored.
-	 * @return string image html
+	 * @since    	1.0.0
+	 *
+	 * @param 	array 	$instance 		Widget instance
+	 * @param 	array 	$repeatable 	Repeatable item
+	 * @return 	string 	image html
 	 */
 	protected function get_image_html( $instance, $repeatable = false ) {
 
@@ -469,6 +482,8 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
 	/**
 	 * Function for sorting arrays with usort
 	 *
+	 * @since    	1.0.0
+	 *
 	 * @param array $item to be compared with b
 	 * @param array $item to be compared with a
 	 *
@@ -487,6 +502,7 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
 	/**
 	 * Outputs HTML for Selecting fontAwesome Icons
 	 *
+	 * @since    	1.0.0
 	 */
 	protected function getIconOptionsDivs() { ?>
 
@@ -1127,6 +1143,9 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
 	 * Returns an array showing if a groupable array is first, last, and what the id of the first element is
 	 *
 	 * @since    1.0.0
+	 *
+	 * @param 	array 	$args 	Widget arguments to determine groupability
+	 * @return 	array 	Information about the widget's placement in a group
 	 */
 	protected function organic_widgets_groupable_widget( $args = false ) {
 
@@ -1210,4 +1229,4 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
 
 	}
 
-} // class Organic_Widgets_Subpage_Section_Widget
+} // class Organic_Widgets_Custom_Widget

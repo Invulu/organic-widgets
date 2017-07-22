@@ -68,6 +68,7 @@ function run_organic_widgets() {
 
 	$plugin = new Organic_Widgets();
 
+	// Define Constants
 	define( 'ORGANIC_WIDGETS_18N', $plugin->get_plugin_name() );
 	define( 'ORGANIC_WIDGETS_BASE_DIR', plugin_dir_url( __FILE__ ) );
 	define( 'ORGANIC_WIDGETS_BLOCKS_DIR', plugin_dir_url( __FILE__ ) . 'admin/blocks/' );
