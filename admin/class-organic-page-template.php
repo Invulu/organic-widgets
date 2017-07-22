@@ -10,7 +10,7 @@
  *
  *
  * @package    Organic_Widgets
- * @subpackage Organic_Widgets/public
+ * @subpackage Organic_Widgets/admin
  */
 
 /**
@@ -18,7 +18,7 @@
  *
  *
  * @package    Organic_Widgets
- * @subpackage Organic_Widgets/public
+ * @subpackage Organic_Widgets/admin
  * @author     Organic Themes <info@organicthemes.com>
  */
 class Organic_Page_Template {

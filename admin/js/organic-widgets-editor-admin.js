@@ -66,11 +66,8 @@
 		});
 	}
 
-
-
 	$( document )
 	.ready( checkSelectedTemplate )
 	.ready( pageTemplateListener );
-
 
 })( jQuery );

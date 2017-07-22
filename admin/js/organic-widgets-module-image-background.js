@@ -3,7 +3,6 @@
  */
 jQuery(document).ready(function($){
 
-
 	// Image Uploader Widget
 	organicWidgetBackgroundImage = {
 
@@ -85,9 +84,6 @@ jQuery(document).ready(function($){
 			return false;
 		},
 
-
 	};
-
-
 
 });

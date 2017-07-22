@@ -1,13 +1,20 @@
 <?php
-/* Adds functions to WP_Widget class */
+/**
+ * Child of the WP_Widget class
+ *
+ * @link       https://organicthemes.com
+ * @since      1.0.0
+ *
+ *
+ * @package    Organic_Widgets
+ * @subpackage Organic_Widgets/admin
+ */
+
 
 // Block direct requests.
 if ( !defined('ABSPATH') )
 	die( '-1' );
 
-/**
- * Adds Organic_Widgets_Subpage_Section_Widget widget.
- */
 class Organic_Widgets_Custom_Widget extends WP_Widget {
 
   /**
@@ -169,6 +176,11 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
 
   }
 
+	/**
+	 * Enqueue Scripts for Background Color
+	 *
+	 * @since    	1.0.0
+	 */
   public function bg_color_scripts() {
 
     // Scripts for Color Picker
@@ -184,6 +196,11 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
 
   }
 
+	/**
+	 * Enqueue Scripts for Background Images
+	 *
+	 * @since    	1.0.0
+	 */
   public function bg_image_scripts() {
 
     // Scripts for Image Background Module
@@ -196,10 +213,6 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
   			'button_title' => __( 'Insert Into Widget', ORGANIC_WIDGETS_18N ),
   		) );
     }
-
-  }
-
-  public function bg_video_scripts() {
 
   }
 
@@ -222,6 +235,12 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
 
 	}
 
+	/**
+	 * Echo Video Background HTML
+	 *
+	 * @since    	1.0.0
+	 * @param     array    $widget     Widget array
+	 */
 	protected function video_bg_html( $widget ) {
 
 		if ( ! is_array( $widget ) || ! count( $widget ) ) {
@@ -244,43 +263,6 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
 		}
 
 	}
-
-  protected function echo_color_picker_js( $color_picker_id = false ) {
-
-    $color_picker_id = $color_picker_id ? $color_picker_id : "'.organic-widgets-color-picker'";
-
-    ?>
-    <!-- Update customizer with color changes.  -->
-		<script type='text/javascript'>
-		/**
-		 * JS for Initializing Color Pickers
-		 */
-
-     ( function( $ ){
-				function initColorPicker( widget ) {
-					widget.find( '.organic-widgets-color-picker' ).wpColorPicker( {
-						change: _.throttle( function() { // For Customizer
-							$(this).trigger( 'change' );
-						}, 200 )
-					});
-				}
-
-				function onFormUpdate( event, widget ) {
-					initColorPicker( widget );
-				}
-
-				$( document ).on( 'widget-added widget-updated', onFormUpdate );
-
-				$( document ).ready( function() {
-					$( '#widgets-right .widget:has(.organic-widgets-color-picker)' ).each( function () {
-						initColorPicker( $( this ) );
-					} );
-				} );
-			}( jQuery ) );
-
-		</script><?php
-
-  }
 
 	/**
 	 * Render the section background inputs

@@ -589,7 +589,9 @@
 .organic-widget .ocw-bg-dark h3, .organic-widgets-section.ocw-bg-dark h3,
 .organic-widget .ocw-bg-dark h4, .organic-widgets-section.ocw-bg-dark h4,
 .organic-widget .ocw-bg-dark h5, .organic-widgets-section.ocw-bg-dark h5,
-.organic-widget .ocw-bg-dark h6, .organic-widgets-section.ocw-bg-dark h6 {
+.organic-widget .ocw-bg-dark h6, .organic-widgets-section.ocw-bg-dark h6,
+.organic-widget .ocw-bg-dark .organic-widgets-feature-list-item-icon i, .organic-widgets-section.ocw-bg-dark .organic-widgets-feature-list-item-icon i,
+#body .organic-widget .ocw-bg-dark .organic-widgets-feature-list-item-text h6 a, #body .organic-widgets-section.ocw-bg-dark .organic-widgets-feature-list-item-text h6 a {
   color: #ffffff;
 }
 .organic-widget .ocw-bg-dark p, .organic-widgets-section.ocw-bg-dark p,
@@ -613,7 +615,8 @@
 .organic-widget .ocw-bg-light.ocw-bg-img a,
 .organic-widget .ocw-bg-light.ocw-bg-img span,
 .organic-widget .ocw-bg-light.ocw-bg-img div,
-.organic-widget .ocw-bg-light.ocw-bg-img blockquote {
+.organic-widget .ocw-bg-light.ocw-bg-img blockquote,
+.organic-widget .ocw-bg-light.ocw-bg-img .organic-widgets-feature-list-item-icon i {
   color: #000000;
 }
 .organic-widget .ocw-bg-dark .organic-widgets-card h1, .organic-widgets-section.ocw-bg-dark .organic-widgets-card h1,
