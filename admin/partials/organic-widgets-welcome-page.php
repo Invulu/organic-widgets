@@ -1,11 +1,10 @@
 <?php
 /**
- * The custom Welcome page content.
+ * The Custom Welcome Page Content
  *
  * @package GivingPress Custom Admin
  * @since GivingPress Custom Admin 1.0
  */
-
 ?>
 
 <?php $current_user = wp_get_current_user(); ?>

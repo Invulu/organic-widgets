@@ -2,9 +2,12 @@
 
 /**
  * The page template functionality of the plugin.
+ * Adapted from The WordPress Page Templater by Harri Bell-Thomas
+ * URI: https://github.com/wpexplorer/page-templater
  *
  * @link       https://organicthemes.com
  * @since      1.0.0
+ *
  *
  * @package    Organic_Widgets
  * @subpackage Organic_Widgets/public
@@ -96,8 +99,10 @@ class Organic_Page_Template {
 	 *
 	 */
 	public function add_new_template( $posts_templates ) {
+
 		$posts_templates = array_merge( $posts_templates, $this->templates );
 		return $posts_templates;
+
 	}
 
 	/**

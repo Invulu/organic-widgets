@@ -1,7 +1,7 @@
 <?php
 
 /**
- * The admin-specific functionality of the plugin.
+ * The Custom Widget Area Code
  *
  * @link       https://organicthemes.com
  * @since      1.0.0

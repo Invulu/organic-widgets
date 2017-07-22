@@ -29,8 +29,10 @@ if ( ! defined( 'WPINC' ) ) {
  * This action is documented in includes/class-organic-widgets-activator.php
  */
 function activate_organic_widgets() {
+
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-organic-widgets-activator.php';
 	Organic_Widgets_Activator::activate();
+
 }
 
 /**
@@ -38,8 +40,10 @@ function activate_organic_widgets() {
  * This action is documented in includes/class-organic-widgets-deactivator.php
  */
 function deactivate_organic_widgets() {
+
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-organic-widgets-deactivator.php';
 	Organic_Widgets_Deactivator::deactivate();
+
 }
 
 register_activation_hook( __FILE__, 'activate_organic_widgets' );
@@ -63,6 +67,7 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-organic-widgets.php';
 function run_organic_widgets() {
 
 	$plugin = new Organic_Widgets();
+
 	define( 'ORGANIC_WIDGETS_18N', $plugin->get_plugin_name() );
 	define( 'ORGANIC_WIDGETS_BASE_DIR', plugin_dir_url( __FILE__ ) );
 	define( 'ORGANIC_WIDGETS_BLOCKS_DIR', plugin_dir_url( __FILE__ ) . 'admin/blocks/' );
@@ -72,6 +77,7 @@ function run_organic_widgets() {
 
 	// Keep false until blocks are ready
 	define( 'ORGANIC_WIDGETS_BLOCKS_ACTIVE', false );
+
 	$plugin->run();
 
 }
@@ -83,6 +89,7 @@ run_organic_widgets();
  * @since    1.0.0
  */
 function organic_widgets_welcome_screen() {
+
 	add_submenu_page(
 		'options-general.php',
 		esc_html__( 'Organic Widgets', ORGANIC_WIDGETS_18N ),
@@ -91,6 +98,7 @@ function organic_widgets_welcome_screen() {
 		'organic-widgets-welcome',
 		'organic_widgets_welcome_screen_content'
 	);
+
 }
 add_action( 'admin_menu', 'organic_widgets_welcome_screen' );
 
@@ -100,7 +108,9 @@ add_action( 'admin_menu', 'organic_widgets_welcome_screen' );
  * @since    1.0.0
  */
 function organic_widgets_welcome_screen_content() {
-	include_once plugin_dir_path( __FILE__ ) . '/admin/organic-widgets-welcome.php';
+
+	include_once plugin_dir_path( __FILE__ ) . '/admin/partials/organic-widgets-welcome-page.php';
+
 }
 
 /**
@@ -109,8 +119,10 @@ function organic_widgets_welcome_screen_content() {
  * @since    1.0.0
  */
 function organic_widgets_activation_redirect( $plugin ) {
+
 	if ( $plugin == plugin_basename( __FILE__ ) ) {
 		exit( wp_redirect( add_query_arg( array( 'page' => 'organic-widgets-welcome' ), admin_url( 'admin.php' ) ) ) );
 	}
+
 }
 add_action( 'activated_plugin', 'organic_widgets_activation_redirect' );
