@@ -237,14 +237,15 @@ class Organic_Widgets_Pricing_Table_Widget extends Organic_Widgets_Custom_Widget
 	 */
 	 protected function echo_repeatable_form_item( $id = 'template', $order = 'template', $repeatable = false ) {
 
-	 	if ( $id === 'template' || $order === 'template' ) {
-	 		$template = true;
-	 		$id = '';
-	 		$order = '';
-	 	} else {
-	 		$id = (int) $id;
-	 		$template = false;
-	 	}
+		 if ( $id === 'template' || $order === 'template' ) {
+			 $template = true;
+			 $id = '__x__';
+			 $order = '';
+		 } else {
+			 $template = false;
+			 $id = (int) $id;
+			 $order = (int) $order;
+		 }
 		?>
 
 		<div class="<?php if ( $template ) { echo 'organic-widgets-repeatable-form-item-template'; } else { echo 'organic-widgets-repeatable-form-item'; } ?>" data-feature-id="<?php echo $id; ?>" data-order="<?php echo $order; ?>">

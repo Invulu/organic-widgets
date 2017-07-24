@@ -45,8 +45,8 @@
 
 		// Listen for changes on inputs
 		$('.organic-widgets-repeatable-form-item-input').on('change', function(){
-			var formItem = $(this).parent().parent('.organic-widgets-repeatable-form-item');
-      organicWidgetsRepeatableFormItemUpdateMainArray(this);
+			var formItem = $(this).closest('.organic-widgets-repeatable-form-item');
+			organicWidgetsRepeatableFormItemUpdateMainArray(this);
 		});
 
 		// Prep hidden input value
@@ -131,26 +131,29 @@
   function giveNewItemID( item, newID ) {
 
     var preview = item.closest('.organic-widgets-repeatable-form-item').find('.organic-widgets-feature-list-icon-preview');
-    var existingIDString = preview.attr('id');
-    var newIDString = existingIDString.replace('__x__',newID);
-    preview.attr('id', newIDString);
-    item.find('div').each(function(){
-      var existingIDString = $(this).attr('id');
-      var newIDString = existingIDString.replace('__x__',newID);
-      $(this).attr('id', newIDString);
-      var existingOnClickString = $(this).attr('onclick');
-      var newOnClickString = existingOnClickString.replace('__x__',newID);
-      $(this).attr('onclick', newOnClickString);
-    });
-    item.find('input').each(function(){
-      var existingIDString = $(this).attr('id');
-      var newIDString = existingIDString.replace('__x__',newID);
-      $(this).attr('id', newIDString);
-      var existingNameString = $(this).attr('name');
-      var newNameString = existingNameString.replace('__x__',newID);
-      $(this).attr('name', newNameString);
-      $(this).attr('data-feature-id', newID);
-    });
+		if (preview.length) {
+			var existingIDString = preview.attr('id');
+	    var newIDString = existingIDString.replace('__x__',newID);
+	    preview.attr('id', newIDString);
+	    item.find('div').each(function(){
+	      var existingIDString = $(this).attr('id');
+	      var newIDString = existingIDString.replace('__x__',newID);
+	      $(this).attr('id', newIDString);
+	      var existingOnClickString = $(this).attr('onclick');
+	      var newOnClickString = existingOnClickString.replace('__x__',newID);
+	      $(this).attr('onclick', newOnClickString);
+	    });
+	    item.find('input').each(function(){
+	      var existingIDString = $(this).attr('id');
+	      var newIDString = existingIDString.replace('__x__',newID);
+	      $(this).attr('id', newIDString);
+	      var existingNameString = $(this).attr('name');
+	      var newNameString = existingNameString.replace('__x__',newID);
+	      $(this).attr('name', newNameString);
+	      $(this).attr('data-feature-id', newID);
+	    });
+		}
+
 
   }
 
@@ -336,10 +339,33 @@
 
     });
 
+		// Get Values and update main input
 		var mainInput = thisFormAdmin.find('.organic-widgets-repeatable-hidden-input');
+		var oldInputVal = mainInput.val();
+		var newInputVal = JSON.stringify(thisItemData);
+    mainInput.val(newInputVal);
 
-    mainInput.trigger('change');
-    mainInput.val(JSON.stringify(thisItemData));
+		// If there has been a change, trigger updates
+		if (oldInputVal !=  newInputVal ) {
+
+			mainInput.trigger('change');
+
+			// If customizer and there are new changes, force refresh
+			if ( typeof wp.customize !== "undefined" ) {
+
+				var saveButton = $(thisFormAdmin).closest('.form').find('[name=savewidget]');
+				// console.log($(thisFormAdmin).closest('.widget-content'));
+				// console.log(saveButton);
+				if ( saveButton.length ) {
+					if ( saveButton.css('display') !== 'none' ) {
+						// console.log(saveButton);
+						saveButton.trigger('click');
+					}
+				}
+
+			}
+
+		}
 
 	}
 
