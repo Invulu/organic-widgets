@@ -60,6 +60,8 @@ class Organic_Widgets_Content_Slideshow_Section_Widget extends Organic_Widgets_C
 		$bg_color = ( isset( $instance['bg_color'] ) && '' != $instance['bg_color'] ) ? $instance['bg_color'] : false;
 		$category = ( isset( $instance['category'] ) ) ? $instance['category'] : 0;
 		$max_posts = ( isset( $instance['max_posts'] ) ) ? $instance['max_posts'] : 5;
+		$slideshow_transition_style = ( isset( $instance['slideshow_transition_style'] ) ) ? $instance['slideshow_transition_style'] : 'fade';
+		$slideshow_interval = ( isset( $instance['slideshow_interval'] ) ) ? $instance['slideshow_interval'] : 1200;
 
 		echo $args['before_widget'];
 		?>
@@ -88,7 +90,7 @@ class Organic_Widgets_Content_Slideshow_Section_Widget extends Organic_Widgets_C
 			<?php if ( $slideshow_query->have_posts() ) { ?>
 
 				<!-- BEGIN .flexslider -->
-				<div class="organic-widgets-flexslider loading" data-speed="<?php echo get_theme_mod( 'gpp_transition_interval', '12000' ); ?>" data-transition="<?php echo get_theme_mod( 'gpp_transition_style', 'fade' ); ?>">
+				<div class="organic-widgets-flexslider loading" data-speed="<?php echo esc_attr($slideshow_interval); ?>" data-transition="<?php echo esc_attr($slideshow_transition_style); ?>">
 
 					<div class="preloader"></div>
 
@@ -193,6 +195,9 @@ class Organic_Widgets_Content_Slideshow_Section_Widget extends Organic_Widgets_C
 		if ( isset( $instance['bg_image_id'] ) && isset( $instance['bg_image'] ) ) {
 			$bg_image = $instance['bg_image'];
 		} else { $bg_image = false; }
+		$slideshow_transition_style = ( isset( $instance['slideshow_transition_style'] ) ) ? $instance['slideshow_transition_style'] : 'fade';
+		$slideshow_interval = ( isset( $instance['slideshow_interval'] ) ) ? $instance['slideshow_interval'] : 1200;
+
 
 		?>
 
@@ -203,6 +208,30 @@ class Organic_Widgets_Content_Slideshow_Section_Widget extends Organic_Widgets_C
 				'id' => $this->get_field_id( 'category' ),
 				'name' => $this->get_field_name( 'category' )
 			)); ?>
+		</p>
+
+		<p>
+			<label for="<?php echo $this->get_field_id( 'slideshow_transition_style' ); ?>"><?php _e('Slide Transition Style:', ORGANIC_WIDGETS_18N) ?></label>
+				<select id="<?php echo $this->get_field_id( 'slideshow_transition_style' ); ?>" name="<?php echo $this->get_field_name( 'slideshow_transition_style' ); ?>" class="widefat" style="width:100%;">
+					<option <?php selected( $slideshow_transition_style, 'fade'); ?> value="fade"><?php _e('Fade', ORGANIC_WIDGETS_18N) ?></option>
+					<option <?php selected( $slideshow_transition_style, 'slide'); ?> value="slide"><?php _e('Slide', ORGANIC_WIDGETS_18N) ?></option>
+				</select>
+		</p>
+
+		<p>
+			<label for="<?php echo $this->get_field_id( 'slideshow_interval' ); ?>"><?php _e('Slide Interval:', ORGANIC_WIDGETS_18N) ?></label>
+				<select id="<?php echo $this->get_field_id( 'slideshow_interval' ); ?>" name="<?php echo $this->get_field_name( 'slideshow_interval' ); ?>" class="widefat" style="width:100%;">
+					<option <?php selected( $slideshow_interval, '2000'); ?> value="2000"><?php _e('2 Seconds', ORGANIC_WIDGETS_18N) ?></option>
+					<option <?php selected( $slideshow_interval, '4000'); ?> value="4000"><?php _e('4 Seconds', ORGANIC_WIDGETS_18N) ?></option>
+					<option <?php selected( $slideshow_interval, '6000'); ?> value="6000"><?php _e('6 Seconds', ORGANIC_WIDGETS_18N) ?></option>
+					<option <?php selected( $slideshow_interval, '8000'); ?> value="8000"><?php _e('8 Seconds', ORGANIC_WIDGETS_18N) ?></option>
+					<option <?php selected( $slideshow_interval, '10000'); ?> value="10000"><?php _e('10 Seconds', ORGANIC_WIDGETS_18N) ?></option>
+					<option <?php selected( $slideshow_interval, '12000'); ?> value="12000"><?php _e('12 Seconds', ORGANIC_WIDGETS_18N) ?></option>
+					<option <?php selected( $slideshow_interval, '20000'); ?> value="20000"><?php _e('20 Seconds', ORGANIC_WIDGETS_18N) ?></option>
+					<option <?php selected( $slideshow_interval, '30000'); ?> value="30000"><?php _e('30 Seconds', ORGANIC_WIDGETS_18N) ?></option>
+					<option <?php selected( $slideshow_interval, '60000'); ?> value="60000"><?php _e('1 Minute', ORGANIC_WIDGETS_18N) ?></option>
+					<option <?php selected( $slideshow_interval, '999999999'); ?> value="999999999"><?php _e('Hold Frame', ORGANIC_WIDGETS_18N) ?></option>
+				</select>
 		</p>
 
 		<?php $this->content_aligner_input_markup( $instance ); ?>
@@ -245,6 +274,12 @@ class Organic_Widgets_Content_Slideshow_Section_Widget extends Organic_Widgets_C
 			$instance['max_posts'] = strip_tags( $new_instance['max_posts'] );
 		if ( isset( $new_instance['alignment'] ) )
 			$instance['alignment'] = strip_tags( $new_instance['alignment'] );
+		if ( isset( $new_instance['slideshow_transition_style'] ) )
+			$instance['slideshow_transition_style'] = $this->organic_widgets_sanitize_transition_style( strip_tags( $new_instance['slideshow_transition_style'] ) );
+		if ( isset( $new_instance['slideshow_interval'] ) )
+			$instance['slideshow_interval'] = $this->organic_widgets_sanitize_transition_interval( (int) strip_tags( $new_instance['slideshow_interval'] ) );
+
+
 
 		return $instance;
 	}
