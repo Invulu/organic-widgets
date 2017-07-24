@@ -30,8 +30,26 @@ if ( ! defined( 'WPINC' ) ) {
  */
 function activate_organic_widgets() {
 
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-organic-widgets-activator.php';
-	Organic_Widgets_Activator::activate();
+	global $wp_version;
+	$wp = '4.8';
+	$php = '5.6';
+
+	// Compare PHP and WP versions and make sure the plugin can run
+  if ( version_compare( PHP_VERSION, $php, '<' ) ) {
+		$flag = 'PHP';
+	} elseif ( version_compare( $wp_version, $wp, '<' ) ) {
+		$flag = 'WordPress';
+	} else {
+		// Activate
+		require_once plugin_dir_path( __FILE__ ) . 'includes/class-organic-widgets-activator.php';
+		Organic_Widgets_Activator::activate();
+		return;
+	}
+
+	// Notify User that versions are too old, and deactivate plugin
+  $version = 'PHP' == $flag ? $php : $wp;
+  deactivate_plugins( basename( __FILE__ ) );
+	wp_die('<p>The <strong>Organic Customizer Widgets</strong> plugin requires'.$flag.'  version '.$version.' or greater.</p>','Plugin Activation Error',  array( 'response'=>200, 'back_link'=>TRUE ) );
 
 }
 

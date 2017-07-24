@@ -38,7 +38,7 @@ class Organic_Widgets_Portfolio_Section_Widget extends Organic_Widgets_Custom_Wi
 		);
 
 		// Admin Scripts
-		add_action( 'sidebar_admin_setup', array( $this, 'admin_setup' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'admin_setup' ) );
 
 		// Public scripts
 		add_action( 'wp_enqueue_scripts', array( $this, 'public_scripts') );

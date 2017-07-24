@@ -37,7 +37,7 @@ class Organic_Widgets_Profile_Widget extends Organic_Widgets_Custom_Widget {
 		);
 
 		// Admin Scripts
-		add_action( 'sidebar_admin_setup', array( $this, 'admin_setup' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'admin_setup' ) );
 		add_action( 'admin_footer-widgets.php', array( $this, 'render_control_template_scripts' ) );
 
 		// Public scripts

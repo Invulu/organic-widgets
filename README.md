@@ -5,7 +5,7 @@ Donate link: https://organicthemes.com
 
 Tags: customizer, widgets, testimonials, portfolio, features, fontawesome, icons, pricing tables, page builder, full-width sections, custom widget areas
 
-Requires at least: 4.7
+Requires at least: 4.8
 
 Tested up to: 4.8
 
