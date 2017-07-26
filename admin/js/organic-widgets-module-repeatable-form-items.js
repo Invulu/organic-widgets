@@ -315,6 +315,7 @@
 
 			});
 
+
 			var active = false;
 			// Check if any activators have values
 			for ( var i = 0; i < activators.length; i++ ) {
@@ -326,8 +327,9 @@
 
       // Order Numbers
       data['order'] = orderNumber;
+			$(el).attr('data-order', orderNumber);
       // Reset order numbers in title bars
-      $(this).find('.organic-widgets-repeatable-item-number').html( orderNumber+1 );
+      $(this).find('.organic-widgets-repeatable-item-number').html( orderNumber +  1 );
 
       data['id'] = $(el).data('feature-id');
 
@@ -354,8 +356,7 @@
 			if ( typeof wp.customize !== "undefined" ) {
 
 				var saveButton = $(thisFormAdmin).closest('.form').find('[name=savewidget]');
-				// console.log($(thisFormAdmin).closest('.widget-content'));
-				// console.log(saveButton);
+
 				if ( saveButton.length ) {
 					if ( saveButton.css('display') !== 'none' ) {
 						// console.log(saveButton);
