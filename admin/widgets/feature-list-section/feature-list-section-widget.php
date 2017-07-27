@@ -110,9 +110,9 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 
 								<div class="organic-widgets-feature-list-item-text">
 									<h6>
-										<?php if ( array_key_exists( 'link_url', $repeatable ) ) { echo '<a href="'.esc_url($repeatable['link_url']).'">'; } ?>
+										<?php if ( '' != $repeatable['link_url'] ) { echo '<a href="'.esc_url($repeatable['link_url']).'">'; } ?>
 											<?php if ( array_key_exists( 'title', $repeatable ) ) { echo esc_html( $repeatable['title'] ); } ?>
-										<?php if ( array_key_exists( 'link_url', $repeatable ) ) { echo '</a>'; } ?>
+										<?php if ( '' != $repeatable['link_url'] ) { echo '</a>'; } ?>
 									</h6>
 									<p>
 										<?php if ( array_key_exists( 'text', $repeatable ) ) { echo esc_html( $repeatable['text'] ); }?>

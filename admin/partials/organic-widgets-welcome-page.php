@@ -180,7 +180,24 @@
 					<div class="theme">
 
 						<div class="theme-screenshot">
-							<img src="<?php echo esc_url( '//ts.w.org/wp-content/themes/natural-lite/screenshot.png' ); ?>" alt="" />
+							<img src="<?php echo plugins_url( '/screenshots/startup-screenshot.png', __FILE__ ); ?>" alt="" />
+						</div>
+
+						<h2 class="theme-name"><?php _e( 'StartUp Theme', ORGANIC_WIDGETS_18N ); ?></h2>
+
+						<div class="theme-actions">
+
+							<a class="button button-primary theme-install" href="<?php echo esc_url( 'https://organicthemes.com/theme/startup-theme/' ); ?>"><?php _e( 'Details' ); ?></a>
+							<a class="button" href="<?php echo esc_url( 'https://organicthemes.com/demo/startup/' ); ?>" target="_blank"><?php _e( 'View Demo' ); ?></a>
+
+						</div>
+
+					</div>
+
+					<div class="theme">
+
+						<div class="theme-screenshot">
+							<img src="<?php echo plugins_url( '/screenshots/natural-lite-screenshot.png', __FILE__ ); ?>" alt="" />
 						</div>
 
 						<h2 class="theme-name"><?php _e( 'Natural Lite', ORGANIC_WIDGETS_18N ); ?></h2>
@@ -197,7 +214,7 @@
 					<div class="theme">
 
 						<div class="theme-screenshot">
-							<img src="<?php echo esc_url( '//ts.w.org/wp-content/themes/swell-lite/screenshot.png' ); ?>" alt="" />
+							<img src="<?php echo plugins_url( '/screenshots/swell-lite-screenshot.png', __FILE__ ); ?>" alt="" />
 						</div>
 
 						<h2 class="theme-name"><?php _e( 'Swell Lite', ORGANIC_WIDGETS_18N ); ?></h2>
@@ -214,7 +231,7 @@
 					<div class="theme">
 
 						<div class="theme-screenshot">
-							<img src="<?php echo esc_url( '//ts.w.org/wp-content/themes/structure-lite/screenshot.png?ver=1.0.8' ); ?>" alt="" />
+							<img src="<?php echo plugins_url( '/screenshots/structure-lite-screenshot.png', __FILE__ ); ?>" alt="" />
 						</div>
 
 						<h2 class="theme-name"><?php _e( 'Structure Lite', ORGANIC_WIDGETS_18N ); ?></h2>
