@@ -92,7 +92,7 @@
 
 		</div>
 
-		<h2 class="admin-headline"><?php _e( 'Organic Customizer Widgets v1.0.0', ORGANIC_WIDGETS_18N ); ?></h2>
+		<h2 class="admin-headline"><?php _e( 'Organic Customizer Widgets', ORGANIC_WIDGETS_18N ); ?></h2>
 
 		<p class="admin-tagline"><?php _e( 'Aloha ' ) ?><b><?php global $userdata, $current_user, $user_identity; echo $user_identity ?></b><?php printf( __( ', you\'re moments away from creating awesome dynamic content on any page of your website! If this is your first time using the plugin, simply <a href="%1$s">add a new page</a> and apply the <b>Organic Custom</b> page template. Then, enter the WordPress <a href="%2$s">Customizer</a> to begin adding widgets to the page.', ORGANIC_WIDGETS_18N ), esc_url( admin_url( 'post-new.php?post_type=page' ) ), esc_url( admin_url( 'customize.php' ) ) ); ?></p>
 
