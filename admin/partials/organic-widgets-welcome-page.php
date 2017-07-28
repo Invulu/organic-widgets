@@ -119,7 +119,7 @@
 		<!-- BEGIN .feature-links -->
 		<div class="feature-links">
 
-			<a href="<?php echo esc_url('#') ?>" target="_blank">
+			<a href="<?php echo esc_url('https://organicthemes.com/organic-customizer-widgets') ?>" target="_blank">
 				<span class="icon">
 					<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
 					<path d="M16.5 20h-14c-0.827 0-1.5-0.673-1.5-1.5v-14c0-0.827 0.673-1.5 1.5-1.5h1c0.276 0 0.5 0.224 0.5 0.5s-0.224 0.5-0.5 0.5h-1c-0.276 0-0.5 0.224-0.5 0.5v14c0 0.276 0.224 0.5 0.5 0.5h14c0.276 0 0.5-0.224 0.5-0.5v-14c0-0.276-0.224-0.5-0.5-0.5h-1c-0.276 0-0.5-0.224-0.5-0.5s0.224-0.5 0.5-0.5h1c0.827 0 1.5 0.673 1.5 1.5v14c0 0.827-0.673 1.5-1.5 1.5z"></path>
@@ -134,7 +134,7 @@
 				</span>
 			</a>
 
-			<a href="<?php echo esc_url('#') ?>" target="_blank">
+			<a href="<?php echo esc_url('https://organicthemes.com/support/') ?>" target="_blank">
 				<span class="icon">
 					<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
 					<path d="M17.071 2.929c-1.889-1.889-4.4-2.929-7.071-2.929s-5.182 1.040-7.071 2.929c-1.889 1.889-2.929 4.4-2.929 7.071s1.040 5.182 2.929 7.071c1.889 1.889 4.4 2.929 7.071 2.929s5.182-1.040 7.071-2.929c1.889-1.889 2.929-4.4 2.929-7.071s-1.040-5.182-2.929-7.071zM10 15c-2.757 0-5-2.243-5-5s2.243-5 5-5c2.757 0 5 2.243 5 5s-2.243 5-5 5zM1 10c0-0.338 0.019-0.672 0.056-1h3.028c-0.055 0.325-0.084 0.659-0.084 1s0.029 0.675 0.084 1l-3.028-0c-0.036-0.328-0.056-0.662-0.056-1zM15.916 9h3.028c0.036 0.328 0.056 0.662 0.056 1s-0.019 0.672-0.056 1h-3.028c0.055-0.325 0.084-0.659 0.084-1s-0.029-0.675-0.084-1zM18.776 8h-3.119c-0.604-1.702-1.955-3.053-3.657-3.657l0-3.119c3.36 0.765 6.010 3.416 6.776 6.776zM11 1.056l-0 3.028c-0.325-0.055-0.659-0.084-1-0.084s-0.675 0.029-1 0.084v-3.028c0.328-0.036 0.662-0.056 1-0.056s0.672 0.019 1 0.056zM8 1.224v3.119c-1.702 0.604-3.053 1.955-3.657 3.657h-3.119c0.765-3.36 3.416-6.010 6.776-6.776zM1.224 12l3.119 0c0.604 1.702 1.955 3.053 3.657 3.657v3.119c-3.36-0.765-6.010-3.416-6.776-6.776zM9 18.944v-3.028c0.325 0.055 0.659 0.084 1 0.084s0.675-0.029 1-0.084v3.028c-0.328 0.037-0.662 0.056-1 0.056s-0.672-0.019-1-0.056zM12 18.776v-3.119c1.702-0.604 3.053-1.955 3.657-3.657h3.119c-0.765 3.36-3.416 6.010-6.776 6.776z"></path>
@@ -180,7 +180,7 @@
 					<div class="theme">
 
 						<div class="theme-screenshot">
-							<img src="<?php echo esc_url( '//ts.w.org/wp-content/themes/natural-lite/screenshot.png' ); ?>" alt="" />
+							<img src="<?php echo esc_url( ORGANIC_WIDGETS_ADMIN_IMG_DIR . 'natural-lite-screenshot.png' ); ?>" alt="" />
 						</div>
 
 						<h2 class="theme-name"><?php _e( 'Natural Lite', ORGANIC_WIDGETS_18N ); ?></h2>
@@ -197,7 +197,7 @@
 					<div class="theme">
 
 						<div class="theme-screenshot">
-							<img src="<?php echo esc_url( '//ts.w.org/wp-content/themes/swell-lite/screenshot.png' ); ?>" alt="" />
+							<img src="<?php echo esc_url( ORGANIC_WIDGETS_ADMIN_IMG_DIR . 'swell-lite-screenshot.png' ); ?>" alt="" />
 						</div>
 
 						<h2 class="theme-name"><?php _e( 'Swell Lite', ORGANIC_WIDGETS_18N ); ?></h2>
@@ -214,7 +214,7 @@
 					<div class="theme">
 
 						<div class="theme-screenshot">
-							<img src="<?php echo esc_url( '//ts.w.org/wp-content/themes/structure-lite/screenshot.png?ver=1.0.8' ); ?>" alt="" />
+							<img src="<?php echo esc_url( ORGANIC_WIDGETS_ADMIN_IMG_DIR . 'structure-light-screenshot.png' ); ?>" alt="" />
 						</div>
 
 						<h2 class="theme-name"><?php _e( 'Structure Lite', ORGANIC_WIDGETS_18N ); ?></h2>

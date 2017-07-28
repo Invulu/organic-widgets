@@ -359,7 +359,6 @@
 
 				if ( saveButton.length ) {
 					if ( saveButton.css('display') !== 'none' ) {
-						// console.log(saveButton);
 						saveButton.trigger('click');
 					}
 				}
