@@ -448,7 +448,7 @@
   min-width: 16.66%;
 }
 .organic-widgets-feature-list-item-content {
-  margin: 6px;
+  margin: 18px;
 }
 .organic-widgets-feature-list-item-icon {
   text-align: center;
@@ -472,6 +472,8 @@
   padding: 0px;
 }
 .organic-widgets-feature-list-items-wrapper {
+  width: calc(100% + 36px);
+  margin-left: -18px;
   margin-top: 12px;
   margin-bottom: 12px;
   overflow: hidden;

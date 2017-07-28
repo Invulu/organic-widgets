@@ -19,7 +19,7 @@ Transform the core WordPress Customizer into a page builder. Display and arrange
 
 ## Description
 
-Organic Customizer Widgets introduces several widgets that can be used for displaying existing page content or custom content in new ways. It includes a new Page Template, that when applied, creates a new widget area and displays that on the page. This allows users to utilize WordPress' core customizer interface to add widgets to their page, displaying them as page sections without the need for shortcodes or page builders. The widgets include basic styles, but will inherit styles from whichever theme is being used.
+Organic Customizer Widgets introduces several widgets that can be used for displaying existing page content or custom content in new ways. It includes a new Page Template, that when applied, creates a new widget area on that page. This allows users to utilize the core WordPress customizer interface to add widgets to their page, displaying them as page sections without the need for shortcodes or page builders. The widgets include basic styles, but will inherit styles from whichever theme is being used.
 
 ## Installation
 
@@ -36,7 +36,7 @@ Q: How do I start customizing a page with the Organic Widgets?
 
 A: Simply assign the "Organic Custom" page template to a page and save it. This will create a new Widget Area named after the page. You can then add widgets to this widget area via the WordPress Customizer (recommended) or the Widgets page in the WordPress Admin. The Organic Widgets have been designed to function as page sections, but you can also add other widgets as desired!
 
-Q: Can I use the custom widgets with themes other than Organic Themes?
+Q: Can I use Organic Widgets with themes other than Organic Themes?
 
 A: Yes, the custom widget areas and widgets will transfer between themes. The widgets contain basic styling so that they should work with most themes. That said, the widgets will look best on sites using Organic Themes, as they're designed with the plugin in mind. Custom CSS can always be used to override our default styles to customize the content to fit your needs.
 
