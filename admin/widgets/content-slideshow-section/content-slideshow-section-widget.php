@@ -61,7 +61,7 @@ class Organic_Widgets_Content_Slideshow_Section_Widget extends Organic_Widgets_C
 		$category = ( isset( $instance['category'] ) ) ? $instance['category'] : 0;
 		$max_posts = ( isset( $instance['max_posts'] ) ) ? $instance['max_posts'] : 5;
 		$slideshow_transition_style = ( isset( $instance['slideshow_transition_style'] ) ) ? $instance['slideshow_transition_style'] : 'fade';
-		$slideshow_interval = ( isset( $instance['slideshow_interval'] ) ) ? $instance['slideshow_interval'] : 1200;
+		$slideshow_interval = ( isset( $instance['slideshow_interval'] ) ) ? $instance['slideshow_interval'] : 12000;
 
 		echo $args['before_widget'];
 		?>
@@ -196,7 +196,7 @@ class Organic_Widgets_Content_Slideshow_Section_Widget extends Organic_Widgets_C
 			$bg_image = $instance['bg_image'];
 		} else { $bg_image = false; }
 		$slideshow_transition_style = ( isset( $instance['slideshow_transition_style'] ) ) ? $instance['slideshow_transition_style'] : 'fade';
-		$slideshow_interval = ( isset( $instance['slideshow_interval'] ) ) ? $instance['slideshow_interval'] : 1200;
+		$slideshow_interval = ( isset( $instance['slideshow_interval'] ) ) ? $instance['slideshow_interval'] : 12000;
 
 
 		?>

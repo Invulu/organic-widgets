@@ -540,9 +540,8 @@
 *	Pricing Table Widget
 ************************************************/
 
-.organic-widgets-group .organic_widgets-pricing-table-section {
-  padding-left: 0px;
-  padding-right: 0px;
+.organic-widgets-group .organic-widgets-pricing-table {
+  max-width: none;
 }
 .organic-widgets-pricing-table {
   max-width: 50%;
