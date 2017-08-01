@@ -66,7 +66,7 @@ class Organic_Widgets_Pricing_Table_Widget extends Organic_Widgets_Custom_Widget
 		} else {
 			$first_last = false;
 		}
-		$repeatable_array = ( isset( $instance['repeatable_array'] ) ) ? json_decode( $instance['repeatable_array'], true) :  array();
+		$repeatable_array = ( isset( $instance['repeatable_array'] ) && '' != $instance['repeatable_array'] ) ? json_decode( $instance['repeatable_array'], true) :  array();
 		?>
 
 		<?php echo $args['before_widget']; ?>
