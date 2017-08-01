@@ -361,6 +361,8 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
 	 * @param array 	$instance 	Widget instance
 	 */
 	protected function repeatable_form_item_inputs_markup( $repeatable_array, $form_item_title, $instance = false ) {
+
+		error_log(print_r($repeatable_array,1));
 		?>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'repeatable_array' ); ?>"><h4><?php _e( $form_item_title, ORGANIC_WIDGETS_18N ) ?></h4></label>
@@ -399,7 +401,7 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
 			if ( count($form_orders) > 0 ) {
 				$order = max( $form_orders ) + 1;
 			} else {
-				$order = 1;
+				$order = 0;
 			}
 
 			// Echo Form Item

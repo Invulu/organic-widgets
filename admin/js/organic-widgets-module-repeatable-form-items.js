@@ -315,6 +315,11 @@
 
 			});
 
+			// Order Numbers
+      data['order'] = orderNumber;
+			$(el).attr('data-order', orderNumber);
+      // Reset order numbers in title bars
+      $(this).find('.organic-widgets-repeatable-item-number').html( orderNumber +  1 );
 
 			var active = false;
 			// Check if any activators have values
@@ -324,12 +329,6 @@
 					break;
 				}
 			}
-
-      // Order Numbers
-      data['order'] = orderNumber;
-			$(el).attr('data-order', orderNumber);
-      // Reset order numbers in title bars
-      $(this).find('.organic-widgets-repeatable-item-number').html( orderNumber +  1 );
 
       data['id'] = $(el).data('feature-id');
 
