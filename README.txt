@@ -46,7 +46,7 @@ Follow the simple steps below to begin building a page with Organic Customizer W
 
 == Installation ==
 
-Note: This plugin relies on new WordPress features, so it requires WordPress version 4.8+ and PHP 5.6+
+Note: This plugin relies on new WordPress features, so it requires WordPress version 4.8+ and PHP 5.3.29+
 
 1. Upload 'organic-customizer-widgets' to the '/wp-content/plugins/' directory
 2. Activate the plugin through the 'Plugins' menu in WordPress

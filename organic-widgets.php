@@ -32,7 +32,7 @@ function activate_organic_widgets() {
 
 	global $wp_version;
 	$wp = '4.8';
-	$php = '5.6';
+	$php = '5.3.29';
 
 	// Compare PHP and WP versions and make sure the plugin can run
   if ( version_compare( PHP_VERSION, $php, '<' ) ) {
