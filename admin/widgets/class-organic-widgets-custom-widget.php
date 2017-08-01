@@ -362,7 +362,6 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
 	 */
 	protected function repeatable_form_item_inputs_markup( $repeatable_array, $form_item_title, $instance = false ) {
 
-		error_log(print_r($repeatable_array,1));
 		?>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'repeatable_array' ); ?>"><h4><?php _e( $form_item_title, ORGANIC_WIDGETS_18N ) ?></h4></label>
