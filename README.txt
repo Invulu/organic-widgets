@@ -1,5 +1,5 @@
 === Organic Customizer Widgets ===
-Contributors: jqlee85, itsdavidmorgan, organicthemes
+Contributors: jqlee85, itsdavidmorgan, organicthemes, raid33
 Donate link: https://organicthemes.com
 Tags: customizer, widgets, testimonials, portfolio, features, fontawesome, icons, pricing tables, page builder, full-width sections, custom widget areas, slideshows
 Stable tag: 1.0.1
