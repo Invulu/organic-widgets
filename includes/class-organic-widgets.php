@@ -207,6 +207,11 @@ class Organic_Widgets {
 		$this->loader->add_action( 'widgets_init', $plugin_widget_areas, 'register_widget_areas' );
 		$this->loader->add_action( 'switch_theme', $plugin_widget_areas, 'sync_widget_areas' );
 
+		// Content Import Hooks
+		// Before content import.
+		$this->loader->add_action( 'pt-ocdi/before_content_import_execution', $plugin_widget_areas, 'before_content_import_action', 5, 3 );
+		$this->loader->add_action( 'pt-ocdi/after_all_import_execution', $plugin_widget_areas, 'after_all_import_action', 20, 3 );
+
 
 	}
 

@@ -91,6 +91,36 @@ class Organic_Widget_Areas {
 
 	}
 
+
+	/**
+	 * Store Data of Widgets and Widget Areas to Be Imported
+	 *
+	 * @since    1.0.3
+	 */
+	public function before_content_import_action() {
+
+		//Get Widget Data Before Import, store info of which widgets are assigned to which areas
+		error_log('before_content_import_action');
+
+		//Get array of pages associated with the custom widget areas in the import
+
+	}
+
+	/**
+	 * Assign Inactive Widgets to Correct Widget Areas After Content Import
+	 *
+	 * @since    1.0.3
+	 */
+	public function after_all_import_action() {
+
+		// Determine if any of the pages with custom widget areas from import changed ids
+		// If so, go through and change the references in the widget import info to make sure widgets go to correct locations
+
+		// Loop through all widgets in inactive area, match them with the widget are they should be in, according to info stored from pre import action
+		error_log('after_all_import_action');
+
+	}
+
 	/**
 	 * Sync Organic Widget Configurations between Child/Parent Themes
 	 *
