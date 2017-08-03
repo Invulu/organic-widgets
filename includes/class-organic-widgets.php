@@ -209,7 +209,7 @@ class Organic_Widgets {
 
 		// Content Import Hooks
 		// Before content import.
-		$this->loader->add_action( 'pt-ocdi/before_content_import_execution', $plugin_widget_areas, 'before_content_import_action', 5, 3 );
+		$this->loader->add_action( 'pt-ocdi/before_widgets_import', $plugin_widget_areas, 'before_widgets_import_action', 5, 3 );
 		$this->loader->add_action( 'pt-ocdi/after_all_import_execution', $plugin_widget_areas, 'after_all_import_action', 20, 3 );
 
 

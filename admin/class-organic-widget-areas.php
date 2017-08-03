@@ -97,11 +97,11 @@ class Organic_Widget_Areas {
 	 *
 	 * @since    1.0.3
 	 */
-	public function before_content_import_action() {
+	public function before_widgets_import_action() {
 
 		//Get Widget Data Before Import, store info of which widgets are assigned to which areas
 		error_log('before_content_import_action');
-
+		$this->register_widget_areas();
 		//Get array of pages associated with the custom widget areas in the import
 
 	}
