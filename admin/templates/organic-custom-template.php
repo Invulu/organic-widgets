@@ -32,7 +32,7 @@ if ( locate_template( 'organic-custom-template.php' ) != '' ) {
 						<!-- BEGIN .organic-widgets-card -->
 						<div class="organic-widgets-card organic-widgets-no-content">
 
-							<p class="text-center"><?php printf( wp_kses( __( 'This page has the "Organic Custom" page template applied. Please enter the <a href="%1$s">WordPress Customizer</a> to begin adding widgets to the page.', ORGANIC_WIDGETS_18N ), array( 'a' => array( 'href' => array() ) ) ), esc_url( admin_url( 'customize.php' ) ) ); ?></p>
+							<p class="text-center"><?php printf( wp_kses( __( 'This page has the "Organic Custom" page template applied. Begin <a href="%1$s">Adding Widgets</a> to the page within the WordPress Customizer.', ORGANIC_WIDGETS_18N ), array( 'a' => array( 'href' => array() ) ) ), esc_url( admin_url( 'customize.php' ) ) ); ?></p>
 
 						<!-- END .organic-widgets-card -->
 						</div>

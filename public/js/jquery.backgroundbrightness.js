@@ -109,6 +109,7 @@
 
 		function getImageLightness(imageSrc, imgObject, callback) {
 			var img = document.createElement("img");
+			img.crossOrigin = "Anonymous";
 			img.src = imageSrc;
 			img.style.display = "none";
 			document.body.appendChild(img);

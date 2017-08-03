@@ -119,7 +119,7 @@
 		<!-- BEGIN .feature-links -->
 		<div class="feature-links">
 
-			<a href="<?php echo esc_url('https://organicthemes.com/organic-customizer-widgets') ?>" target="_blank">
+			<a href="<?php echo esc_url('https://organicthemes.com/tutorial/how-to-use-organic-customizer-widgets/') ?>" target="_blank">
 				<span class="icon">
 					<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
 					<path d="M16.5 20h-14c-0.827 0-1.5-0.673-1.5-1.5v-14c0-0.827 0.673-1.5 1.5-1.5h1c0.276 0 0.5 0.224 0.5 0.5s-0.224 0.5-0.5 0.5h-1c-0.276 0-0.5 0.224-0.5 0.5v14c0 0.276 0.224 0.5 0.5 0.5h14c0.276 0 0.5-0.224 0.5-0.5v-14c0-0.276-0.224-0.5-0.5-0.5h-1c-0.276 0-0.5-0.224-0.5-0.5s0.224-0.5 0.5-0.5h1c0.827 0 1.5 0.673 1.5 1.5v14c0 0.827-0.673 1.5-1.5 1.5z"></path>
