@@ -174,18 +174,82 @@ class Organic_Widgets_Admin {
 		// Get changed page id info
 		$id_changes = $this->get_id_changes( $custom_page_ids, $ocdi_importer_data );
 
-		error_log('$changed_ids');
-		error_log(print_r($id_changes,1));
+		// error_log('$changed_ids');
+		// error_log(print_r($id_changes,1));
 
-		//Rearrange Widgets
+		// Rearrange Widgets
 		if ( count($id_changes['pages']) ) {
 			$this->rearrange_widgets_after_import( $id_changes, $ocdi_importer_data );
 		}
 
+		// Swap Image URLs in widgets
+		if ( count($id_changes['attachments']) ) {
+			$this->swap_image_urls_in_widgets( $id_changes['attachments'] );
+		}
 
 
 
 	}
+
+	/**
+	 * Swap image URLs in widgets after import
+	 *
+	 * @since    1.0.3
+	 *
+	 * @param   array   $id_changes 					An array with the id changes during import
+	 *
+	 */
+	public function swap_image_urls_in_widgets( $images_to_change ) {
+
+		$widget_areas = get_option('sidebars_widgets');
+
+		$widget_option_names = array();
+
+		foreach ( $widget_areas as $widget_area ) {
+			if (is_array($widget_area)) {
+				foreach ( $widget_area as $widget_name ) {
+					$widget = $GLOBALS['wp_registered_widgets'][$widget_name];
+					$widget_option_name = $widget['callback'][0]->option_name;
+					// error_log(print_r($widget,1));
+					if ( ! in_array( $widget_option_name, $widget_option_names ) ) {
+						array_push( $widget_option_names, $widget_option_name );
+					}
+				}
+			}
+		}
+
+		foreach ( $widget_option_names as $widget_option_name ) {
+
+			$widgets_content = get_option($widget_option_name);
+			
+			error_log('===========================================');
+			error_log($widget_option_name);
+			error_log('===========================================');
+			error_log('ORIGINAL CONTENT');
+			error_log(print_r($widgets_content,1));
+
+			foreach ( $images_to_change as $image ) {
+				if ( is_array( $widgets_content ) ) {
+					foreach ( $widgets_content as $key1 => $widget_content ) {
+						if ( is_array( $widget_content ) ) {
+							foreach ($widget_content as $key2 => $content ) {
+								$widgets_content[$key1][$key2] = str_replace( $image['old_url'], $image['new_url'], $content );
+							}
+						}
+					}
+				}	
+				
+			
+			}
+
+			error_log('NEW CONTENT');
+			error_log(print_r($widgets_content,1));
+			// update_option( $widget_option_name, $widget_content );
+
+		}
+
+	}
+
 
 	/**
 	 * Rearrange Widgets if necessary after import
