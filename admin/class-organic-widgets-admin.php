@@ -174,11 +174,109 @@ class Organic_Widgets_Admin {
 		$custom_page_ids = $this->get_organic_custom_pages();
 
 		// Get changed page id info
-		$changed_page_ids = $this->get_id_changes( $custom_page_ids, $ocdi_importer_data );
+		$id_changes = $this->get_id_changes( $custom_page_ids, $ocdi_importer_data );
+		//
+		// // error_log('$changed_ids');
+		// error_log(print_r($id_changes,1));
 
-		error_log('$changed_page_ids');
-		error_log(print_r($changed_page_ids,1));
-		// error_log(print_r($ocdi_importer_data,1));
+		//Rearrange Widgets
+		if ( count($id_changes['pages']) ) {
+			$this->rearrange_widgets_after_import( $id_changes, $ocdi_importer_data );
+		}
+
+
+
+
+	}
+
+	/**
+	 * Rearrange Widgets if necessary after import
+	 *
+	 * @since    1.0.3
+	 *
+	 * @param   array   $id_changes 					An array with the id changes during import
+	 * @param   string  $ocdi_importer_data 	The info from the OCDI Import transient
+	 *
+	 */
+	public function rearrange_widgets_after_import( $id_changes, $ocdi_importer_data ) {
+
+		$widget_json = file_get_contents($ocdi_importer_data['selected_import_files']['widgets']);
+		$widget_areas = json_decode($widget_json,true);
+
+		// error_log(print_r($widget_areas,1));
+
+		foreach( $id_changes['pages'] as $change ) {
+
+			foreach ( $widget_areas as $widget_area => $widgets ) {
+
+					if ( strpos( $widget_area, 'organic-widgets_page' ) !== false && strpos( $widget_area, '-' . (string) $change['old_id'] . '-' ) !== false )  {
+
+						$new_widget_area = str_replace( (string) $change['old_id'], (string) $change['new_id'], $widget_area );
+
+						foreach ( $widgets as $widget_name => $widget_content ) {
+
+							// CHECK if widghet id has changed here
+
+							$this->move_widget_to_new_area( $widget_name, $widget_content, $new_widget_area );
+
+						}
+
+					}
+
+			}
+
+
+		}// End foreach for changes
+
+	}
+
+
+	/**
+	 * Move a widget to a new widget area
+	 *
+	 * @since    1.0.3
+	 *
+	 * @param   array  $widget 						Widget to move
+	 * @param   string  $new_widget_area 	Widget area to move to
+	 * @param   string  $old_widget_area 	Widget area to move to from
+	 *
+	 */
+	public function move_widget_to_new_area( $widget_name, $widget_content, $new_widget_area, $old_widget_area = 'wp_inactive_widgets' ) {
+
+		error_log('MOVING '. $widget_name. ' from ' . $old_widget_area . ' to '. $new_widget_area );
+
+		// Loop Through Theme's Widget Areas
+		$theme_mods = get_theme_mods();
+
+		if (array_key_exists('sidebars_widgets', $theme_mods)) {
+
+			$widget_areas = $theme_mods['sidebars_widgets']['data'];
+			if ( ! array_key_exists($new_widget_area, $widget_areas) ) {
+				$widget_areas[$new_widget_area] = array();
+			}
+
+			if(($key = array_search($widget_name, $widget_areas[$old_widget_area])) !== false) {
+				unset($widget_areas[$old_widget_area][$key]);
+			}
+
+			array_push(	$widget_areas[$new_widget_area], $widget_name );
+			update_option('theme_mods_' . get_stylesheet(), $theme_mods );
+
+		} else {
+			$widget_areas = get_option('sidebars_widgets');
+			if ( ! array_key_exists($new_widget_area, $widget_areas) ) {
+				$widget_areas[$new_widget_area] = array();
+			}
+
+			if(($key = array_search($widget_name, $widget_areas[$old_widget_area])) !== false) {
+				unset($widget_areas[$old_widget_area][$key]);
+			}
+
+			array_push(	$widget_areas[$new_widget_area], $widget_name );
+
+			update_option('sidebars_widgets', $widget_areas );
+
+		}
 
 	}
 
