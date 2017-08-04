@@ -139,7 +139,6 @@ class Organic_Widgets_Admin {
 	 */
 	public function before_widgets_import_action() {
 
-		error_log('before_content_import_action');
 
 	}
 
@@ -150,32 +149,15 @@ class Organic_Widgets_Admin {
 	 */
 	public function after_all_import_action() {
 
-		error_log('after_all_import_action');
 
 		// Get the import files used
 		$ocdi_importer_data = get_transient( 'ocdi_importer_data' );
-		//TEMP files
-		// $ocdi_importer_data = array(
-		// 	'frontend_error_messages' => array(),
-		// 	'log_file_path' => '/app/public/wp-content/uploads/2017/08/log_file_2017-08-04__09-58-09.txt',
-		// 	'selected_index' => 0,
-		// 	'selected_import_files' => array(
-		// 		'content' => '/app/public/wp-content/themes/organic-startup/demo/default-demo-content.xml',
-		// 		'widgets' => '/app/public/wp-content/themes/organic-startup/demo/default-demo-widgets.json',
-		// 		'customizer' => '/app/public/wp-content/themes/organic-startup/demo/default-demo-customizer.dat',
-		// 		'redux' => ''
-		// 	),
-		// 	'before_import_executed' => 1
-		// );
 
 		// Get page ids for pages with custom template applied
 		$custom_page_ids = $this->get_organic_custom_pages();
 
 		// Get changed page id info
 		$id_changes = $this->get_id_changes( $custom_page_ids, $ocdi_importer_data );
-
-		// error_log('$changed_ids');
-		// error_log(print_r($id_changes,1));
 
 		// Rearrange Widgets
 		if ( count($id_changes['pages']) ) {
@@ -210,7 +192,6 @@ class Organic_Widgets_Admin {
 				foreach ( $widget_area as $widget_name ) {
 					$widget = $GLOBALS['wp_registered_widgets'][$widget_name];
 					$widget_option_name = $widget['callback'][0]->option_name;
-					// error_log(print_r($widget,1));
 					if ( ! in_array( $widget_option_name, $widget_option_names ) ) {
 						array_push( $widget_option_names, $widget_option_name );
 					}
@@ -221,12 +202,6 @@ class Organic_Widgets_Admin {
 		foreach ( $widget_option_names as $widget_option_name ) {
 
 			$widgets_content = get_option($widget_option_name);
-			
-			error_log('===========================================');
-			error_log($widget_option_name);
-			error_log('===========================================');
-			error_log('ORIGINAL CONTENT');
-			error_log(print_r($widgets_content,1));
 
 			foreach ( $images_to_change as $image ) {
 				if ( is_array( $widgets_content ) ) {
@@ -242,9 +217,7 @@ class Organic_Widgets_Admin {
 			
 			}
 
-			error_log('NEW CONTENT');
-			error_log(print_r($widgets_content,1));
-			// update_option( $widget_option_name, $widget_content );
+			update_option( $widget_option_name, $widgets_content );
 
 		}
 
@@ -264,8 +237,6 @@ class Organic_Widgets_Admin {
 
 		$widget_json = file_get_contents($ocdi_importer_data['selected_import_files']['widgets']);
 		$widget_areas = json_decode($widget_json,true);
-
-		// error_log(print_r($widget_areas,1));
 
 		foreach( $id_changes['pages'] as $change ) {
 
@@ -304,8 +275,6 @@ class Organic_Widgets_Admin {
 	 *
 	 */
 	public function move_widget_to_new_area( $widget_name, $widget_content, $new_widget_area, $old_widget_area = 'wp_inactive_widgets' ) {
-
-		// error_log('MOVING '. $widget_name. ' from ' . $old_widget_area . ' to '. $new_widget_area );
 
 		// Loop Through Theme's Widget Areas
 		$theme_mods = get_theme_mods();
