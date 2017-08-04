@@ -37,6 +37,8 @@
 
 <div class="wrap welcome-screen">
 
+  <h2></h2>
+
 	<div class="intro clearfix">
 
 		<div class="logo-wrap">
