@@ -215,9 +215,11 @@
   display: flex;
   height: auto;
   min-height: 420px;
-  background-attachment: fixed;
   padding-top: 60px;
   padding-bottom: 60px;
+}
+.organic-widgets-section.organic-widgets-hero-section.organic-widgets-fixed-bg-img {
+  background-attachment: fixed;
 }
 .organic-widgets-hero-section.organic-widgets-full-height-section {
   height: 100vh;
@@ -719,7 +721,7 @@
   -o-transition: all 0.5s ease;
 }
 .organic-widget .organic-widgets-social-icons li a:hover {
-  color: #666666;
+  color: #ffffff !important;
   border-color: #666666;
   background-color: #ffffff;
 }
