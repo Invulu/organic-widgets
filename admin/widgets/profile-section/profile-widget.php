@@ -294,7 +294,8 @@ class Organic_Widgets_Profile_Widget extends Organic_Widgets_Custom_Widget {
 	public function update( $new_instance, $old_instance ) {
 
 		$instance = $old_instance;
-
+		if ( ! isset( $old_instance['created'] ) )
+			$instance['created'] = time();
 		if (isset( $new_instance['bg_image_id'] ) )
 			$instance['bg_image_id'] = strip_tags( $new_instance['bg_image_id'] );
 		if (isset( $new_instance['bg_image'] ) )

@@ -258,7 +258,8 @@ class Organic_Widgets_Content_Slideshow_Section_Widget extends Organic_Widgets_C
 	public function update( $new_instance, $old_instance ) {
 
 		$instance = $old_instance;
-
+		if ( ! isset( $old_instance['created'] ) )
+			$instance['created'] = time();
 		if (isset( $new_instance['bg_image_id'] ) )
 			$instance['bg_image_id'] = strip_tags( $new_instance['bg_image_id'] );
 		if (isset( $new_instance['bg_image'] ) )

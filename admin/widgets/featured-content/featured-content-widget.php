@@ -296,6 +296,8 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 	public function update( $new_instance, $old_instance ) {
 
 		$instance = array();
+		if ( ! isset( $old_instance['created'] ) )
+			$instance['created'] = time();
 		$instance['page_id'] = ( ! empty( $new_instance['page_id'] ) ) ? strip_tags( $new_instance['page_id'] ) : '';
 		if ( isset( $new_instance['bg_color'] ) && $this->check_hex_color( $new_instance['bg_color'] ) ) {
 			$instance['bg_color'] = strip_tags( $new_instance['bg_color'] );

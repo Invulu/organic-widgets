@@ -262,7 +262,8 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 	public function update( $new_instance, $old_instance ) {
 
 		$instance = $old_instance;
-
+		if ( ! isset( $old_instance['created'] ) )
+			$instance['created'] = time();
 		if ( isset( $new_instance['page_id'] ) && $new_instance['page_id'] > 0 );
 			$instance['page_id'] = strip_tags( $new_instance['page_id'] );
 		if ( isset( $new_instance['bg_image_id'] ) )

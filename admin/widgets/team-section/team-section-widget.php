@@ -258,7 +258,8 @@ class Organic_Widgets_Team_Section_Widget extends Organic_Widgets_Custom_Widget 
 	public function update( $new_instance, $old_instance ) {
 
 		$instance = $old_instance;
-
+		if ( ! isset( $old_instance['created'] ) )
+			$instance['created'] = time();
 		if (isset( $new_instance['title'] ) )
 			$instance['title'] = strip_tags( $new_instance['title'] );
 		if (isset( $new_instance['bg_image_id'] ) )
@@ -296,7 +297,7 @@ class Organic_Widgets_Team_Section_Widget extends Organic_Widgets_Custom_Widget 
 		wp_add_inline_script( 'organic-team-section-widgets', 'wp.organicTeamSectionWidgets.init();', 'after' );
 
 		wp_enqueue_media();
-		
+
 		wp_enqueue_style( 'wp-color-picker' );
 		wp_enqueue_script( 'wp-color-picker' );
     wp_enqueue_script( 'organic-widgets-module-color-picker', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-color-picker.js', array( 'jquery', 'media-upload', 'media-views', 'wp-color-picker' ) );

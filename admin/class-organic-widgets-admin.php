@@ -190,7 +190,7 @@ class Organic_Widgets_Admin {
 	 * @param   array   $custom_page_ids 			An array of the IDs of the pages to compare against import file
 	 * @param   string  $ocdi_importer_data 	The info from the OCDI Import transient
 	 *
-	 * @return	array 	$id_changes   	Array of the changes in IDs
+	 * @return	array 	$id_changes   	Array of id changes
 	 */
 	public function get_id_changes( $custom_page_ids, $ocdi_importer_data ) {
 

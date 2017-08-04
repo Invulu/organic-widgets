@@ -243,7 +243,8 @@ class Organic_Widgets_Portfolio_Section_Widget extends Organic_Widgets_Custom_Wi
 	public function update( $new_instance, $old_instance ) {
 
 		$instance = $old_instance;
-
+		if ( ! isset( $old_instance['created'] ) )
+			$instance['created'] = time();
 		if (isset( $new_instance['title'] ) )
 			$instance['title'] = strip_tags( $new_instance['title'] );
 		if (isset( $new_instance['bg_image_id'] ) )
