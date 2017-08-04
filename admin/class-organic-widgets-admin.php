@@ -139,9 +139,7 @@ class Organic_Widgets_Admin {
 	 */
 	public function before_widgets_import_action() {
 
-		//Get Widget Data Before Import, store info of which widgets are assigned to which areas
 		error_log('before_content_import_action');
-		//Get array of pages associated with the custom widget areas in the import
 
 	}
 
@@ -155,29 +153,29 @@ class Organic_Widgets_Admin {
 		error_log('after_all_import_action');
 
 		// Get the import files used
-		//$ocdi_importer_data = get_transient( 'ocdi_importer_data' );
+		$ocdi_importer_data = get_transient( 'ocdi_importer_data' );
 		//TEMP files
-		$ocdi_importer_data = array(
-			'frontend_error_messages' => array(),
-			'log_file_path' => '/app/public/wp-content/uploads/2017/08/log_file_2017-08-04__09-58-09.txt',
-			'selected_index' => 0,
-			'selected_import_files' => array(
-				'content' => '/app/public/wp-content/themes/organic-startup/demo/default-demo-content.xml',
-				'widgets' => '/app/public/wp-content/themes/organic-startup/demo/default-demo-widgets.json',
-				'customizer' => '/app/public/wp-content/themes/organic-startup/demo/default-demo-customizer.dat',
-				'redux' => ''
-			),
-			'before_import_executed' => 1
-		);
+		// $ocdi_importer_data = array(
+		// 	'frontend_error_messages' => array(),
+		// 	'log_file_path' => '/app/public/wp-content/uploads/2017/08/log_file_2017-08-04__09-58-09.txt',
+		// 	'selected_index' => 0,
+		// 	'selected_import_files' => array(
+		// 		'content' => '/app/public/wp-content/themes/organic-startup/demo/default-demo-content.xml',
+		// 		'widgets' => '/app/public/wp-content/themes/organic-startup/demo/default-demo-widgets.json',
+		// 		'customizer' => '/app/public/wp-content/themes/organic-startup/demo/default-demo-customizer.dat',
+		// 		'redux' => ''
+		// 	),
+		// 	'before_import_executed' => 1
+		// );
 
 		// Get page ids for pages with custom template applied
 		$custom_page_ids = $this->get_organic_custom_pages();
 
 		// Get changed page id info
 		$id_changes = $this->get_id_changes( $custom_page_ids, $ocdi_importer_data );
-		//
-		// // error_log('$changed_ids');
-		// error_log(print_r($id_changes,1));
+
+		error_log('$changed_ids');
+		error_log(print_r($id_changes,1));
 
 		//Rearrange Widgets
 		if ( count($id_changes['pages']) ) {
@@ -215,7 +213,7 @@ class Organic_Widgets_Admin {
 
 						foreach ( $widgets as $widget_name => $widget_content ) {
 
-							// CHECK if widghet id has changed here
+							// CHECK if widget id has changed here
 
 							$this->move_widget_to_new_area( $widget_name, $widget_content, $new_widget_area );
 
@@ -243,7 +241,7 @@ class Organic_Widgets_Admin {
 	 */
 	public function move_widget_to_new_area( $widget_name, $widget_content, $new_widget_area, $old_widget_area = 'wp_inactive_widgets' ) {
 
-		error_log('MOVING '. $widget_name. ' from ' . $old_widget_area . ' to '. $new_widget_area );
+		// error_log('MOVING '. $widget_name. ' from ' . $old_widget_area . ' to '. $new_widget_area );
 
 		// Loop Through Theme's Widget Areas
 		$theme_mods = get_theme_mods();
@@ -306,8 +304,6 @@ class Organic_Widgets_Admin {
 
 		// Get widgets
 		$widgets_file_path = $ocdi_importer_data['selected_import_files']['widgets'];
-		//tbd
-
 
 		// Pages
 		foreach( $custom_page_ids as $id ) {
@@ -330,10 +326,40 @@ class Organic_Widgets_Admin {
 		}// End foreach for pages
 
 		// Attachments
+		foreach ( $import_items['attachments'] as $import_image ) {
 
-		// Widgets
+			$title = $import_image['title'];
+			$old_id = $import_image['post_id'];
+			$old_url = $import_image['attachment_url'];
+
+			$new_id = $this->organic_widgets_get_image_id_by_title( $title );
+			$new_url = wp_get_attachment_url( $new_id );
+
+			$id_changes['attachments'][] = array(
+				'title' => $title,
+				'new_id' => $new_id,
+				'new_url' => $new_url,
+				'old_id' => $old_id,
+				'old_url' => $old_url
+			);
+
+		}// End foreach for import attachments
 
 		return $id_changes;
+
+	}
+
+	/**
+	 * Get attachment ID by image's title
+	 *
+	 * @since    1.0.3
+	 *
+	 */
+	function organic_widgets_get_image_id_by_title( $image_title ) {
+
+		global $wpdb;
+		$attachment = $wpdb->get_col( $wpdb->prepare("SELECT ID FROM $wpdb->posts WHERE post_title='%s';", $image_title ) );
+	  return $attachment[0];
 
 	}
 
