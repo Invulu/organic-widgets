@@ -2,7 +2,7 @@
 Contributors: jqlee85, itsdavidmorgan, organicthemes, raid33
 Donate link: https://organicthemes.com
 Tags: customizer, widgets, testimonials, portfolio, features, fontawesome, icons, pricing tables, page builder, full-width sections, custom widget areas, slideshows
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 Requires at least: 4.8
 Tested up to: 4.8
 License: GPLv2 or later
@@ -86,6 +86,12 @@ A: Most of the Organic Widgets are designed to be used as full-width sections on
 == Changelog ==
 
 = 1.0.3 =
+* Added fixed background position option to Hero Widget
+* Break customize url function out into static method and add to page template
+* Minor updates to content
+* Style tweaks
+
+= 1.0.2 =
 * Pricing Table Update
 
 = 1.0.1 =
@@ -93,4 +99,4 @@ A: Most of the Organic Widgets are designed to be used as full-width sections on
 * Readme Updates
 
 = 1.0.0 =
-* Initial plugin release.
+* Initial plugin release

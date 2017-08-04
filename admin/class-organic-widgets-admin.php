@@ -90,13 +90,8 @@ class Organic_Widgets_Admin {
 					$is_custom_template = false;
 				}
 
-				// Construct Link URL
-				$base_url_string = admin_url( 'customize.php?');
-				$page_url = get_permalink( $post->ID );
-				$page_url_string = 'url=' . urlencode($page_url);
-				$widget_section = 'sidebar-widgets-' . ORGANIC_WIDGET_PREFIX . 'page-'.$post->ID . '-widget-area';
-				$autofocus_string = '&autofocus[section]=' . $widget_section;
-				$customize_url = $base_url_string . $page_url_string . $autofocus_string;
+				$customize_url = $this->get_customize_url();
+
 				$leaf_icon_url = ORGANIC_WIDGETS_ADMIN_IMG_DIR . 'leaf-icon.png';
 
 				$postEditorVariables = array(
@@ -113,6 +108,27 @@ class Organic_Widgets_Admin {
 
 		}
 
+
+	}
+
+	/**
+	 * Get Customizer Url
+	 *
+	 * @since    1.0.3
+	 */
+	public static function get_customize_url() {
+
+		global $post;
+
+		// Construct Link URL
+		$base_url_string = admin_url( 'customize.php?');
+		$page_url = get_permalink( $post->ID );
+		$page_url_string = 'url=' . urlencode($page_url);
+		$widget_section = 'sidebar-widgets-' . ORGANIC_WIDGET_PREFIX . 'page-'.$post->ID . '-widget-area';
+		$autofocus_string = '&autofocus[section]=' . $widget_section;
+		$customize_url = $base_url_string . $page_url_string . $autofocus_string;
+
+		return $customize_url;
 
 	}
 

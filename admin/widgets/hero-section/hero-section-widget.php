@@ -63,13 +63,16 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 		if ( isset( $instance['full_window_height'] ) ) {
 			$full_window_height = $instance['full_window_height'];
 		} else { $full_window_height = false; }
+		if ( isset( $instance['bg_image_fixed'] ) ) {
+			$bg_image_fixed = $instance['bg_image_fixed'];
+		} else { $bg_image_fixed = false; }
 
 		echo $args['before_widget'];
 
 		?>
 
 		<!-- BEGIN .organic-widgets-section -->
-		<div class="organic-widgets-section organic-widgets-hero-section <?php if ($full_window_height) echo 'organic-widgets-full-height-section'; ?>" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
+		<div class="organic-widgets-section organic-widgets-hero-section <?php if ($full_window_height) echo 'organic-widgets-full-height-section'; ?> <?php if ($bg_image_fixed) echo 'organic-widgets-fixed-bg-img'; ?>" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
 
 			<?php
 			// Video Background Section.
@@ -181,26 +184,30 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 			$full_window_height = $instance['full_window_height'];
 		} else { $full_window_height = false; }
 
+		if ( isset( $instance['bg_image_fixed'] ) ) {
+			$bg_image_fixed = $instance['bg_image_fixed'];
+		} else { $bg_image_fixed = false; }
+
 		?>
 
 		<input id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" class="title" type="hidden" value="<?php if ( ! empty( $instance['title'] ) ) echo $instance['title']; ?>">
 		<input id="<?php echo $this->get_field_id( 'text' ); ?>" name="<?php echo $this->get_field_name( 'text' ); ?>" class="text organic-widgets-wysiwyg-anchor" type="hidden" value="<?php if ( ! empty( $instance['text'] ) ) echo $instance['text']; ?>">
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'button_one_text' ); ?>"><?php _e('Button One Text:', ORGANIC_WIDGETS_18N); ?></label>
+			<label for="<?php echo $this->get_field_id( 'button_one_text' ); ?>"><?php _e('Featured Button Text:', ORGANIC_WIDGETS_18N); ?></label>
 			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'button_one_text' ); ?>" name="<?php echo $this->get_field_name( 'button_one_text' ); ?>" value="<?php if ( ! empty( $instance['button_one_text'] ) ) echo $instance['button_one_text']; ?>" />
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'button_one_url' ); ?>"><?php _e('Button One URL', ORGANIC_WIDGETS_18N); ?></label>
+			<label for="<?php echo $this->get_field_id( 'button_one_url' ); ?>"><?php _e('Featured Button URL', ORGANIC_WIDGETS_18N); ?></label>
 			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'button_one_url' ); ?>" name="<?php echo $this->get_field_name( 'button_one_url' ); ?>" value="<?php if ( ! empty( $instance['button_one_url'] ) ) echo $instance['button_one_url']; ?>" />
 		</p>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'button_two_text' ); ?>"><?php _e('Button Two Text:', ORGANIC_WIDGETS_18N); ?></label>
+			<label for="<?php echo $this->get_field_id( 'button_two_text' ); ?>"><?php _e('Alternate Button Text:', ORGANIC_WIDGETS_18N); ?></label>
 			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'button_two_text' ); ?>" name="<?php echo $this->get_field_name( 'button_two_text' ); ?>" value="<?php if ( ! empty( $instance['button_two_text'] ) ) echo $instance['button_two_text']; ?>" />
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'button_two_url' ); ?>"><?php _e('Button Two URL', ORGANIC_WIDGETS_18N); ?></label>
+			<label for="<?php echo $this->get_field_id( 'button_two_url' ); ?>"><?php _e('Alternate Button URL', ORGANIC_WIDGETS_18N); ?></label>
 			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'button_two_url' ); ?>" name="<?php echo $this->get_field_name( 'button_two_url' ); ?>" value="<?php if ( ! empty( $instance['button_one_url'] ) ) echo $instance['button_two_url']; ?>" />
 		</p>
 
@@ -209,6 +216,11 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 		<p>
 			<input class="checkbox" type="checkbox" value="1" <?php checked( $full_window_height, '1' ); ?> id="<?php echo $this->get_field_id( 'full_window_height' ); ?>" name="<?php echo $this->get_field_name( 'full_window_height' ); ?>" />
 			<label for="<?php echo $this->get_field_id( 'full_window_height' ); ?>"><?php _e('Full Window Height Section', ORGANIC_WIDGETS_18N); ?></label>
+		</p>
+
+		<p>
+			<input class="checkbox" type="checkbox" value="1" <?php checked( $bg_image_fixed, '1' ); ?> id="<?php echo $this->get_field_id( 'bg_image_fixed' ); ?>" name="<?php echo $this->get_field_name( 'bg_image_fixed' ); ?>" />
+			<label for="<?php echo $this->get_field_id( 'bg_image_fixed' ); ?>"><?php _e('Fixed Position Background Image', ORGANIC_WIDGETS_18N); ?></label>
 		</p>
 
 		<?php $this->section_background_input_markup( $instance, $this->bg_options );
@@ -264,6 +276,11 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 			$instance['full_window_height'] = true;
 		} else {
 			$instance['full_window_height'] = false;
+		}
+		if ( isset( $new_instance['bg_image_fixed'] ) ) {
+			$instance['bg_image_fixed'] = true;
+		} else {
+			$instance['bg_image_fixed'] = false;
 		}
 		if ( isset( $new_instance['bg_video'] ) && $this->check_video_url( $new_instance['bg_video'] ) ) {
 			$instance['bg_video'] = strip_tags( $new_instance['bg_video'] );
