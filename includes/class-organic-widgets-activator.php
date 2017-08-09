@@ -31,6 +31,19 @@ class Organic_Widgets_Activator {
 	 */
 	public static function activate() {
 
+		$previous_widget_assignments = get_option('organic_widgets_prev_widget_assigments');
+		error_log(print_r($previous_widget_assignments,1));
+
+		$current_widget_assignments = get_option('sidebars_widgets');
+		error_log(print_r($current_widget_assignments,1));
+
+		// get list of current custom widget areas that should be registered
+
+		// for each of these areas, check the previous assignments for which widgets are assigned, and if the widget still exists, put it in the new area
+
+
+		// update_option('organic_widgets_prev_widget_assigments', $new_widget_assignments );
+
 	}
 
 }

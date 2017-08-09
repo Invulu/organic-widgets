@@ -31,6 +31,11 @@ class Organic_Widgets_Deactivator {
 	 */
 	public static function deactivate() {
 
+		$widget_assignments = get_option('sidebars_widgets');
+		error_log(print_r($widget_assignments,1));
+
+		update_option('organic_widgets_prev_widget_assigments', $widget_assignments );
+
 	}
 
 }
