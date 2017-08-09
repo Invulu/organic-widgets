@@ -85,6 +85,9 @@ A: Most of the Organic Widgets are designed to be used as full-width sections on
 
 == Changelog ==
 
+= 1.0.4 =
+* Fix widget sync function
+
 = 1.0.3 =
 * Add support for One Click Demo Import
 * Added fixed background position option to Hero Widget
