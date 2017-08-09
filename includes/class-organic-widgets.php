@@ -205,7 +205,7 @@ class Organic_Widgets {
 		// Widget Area Hooks
 		$plugin_widget_areas = new Organic_Widget_Areas( $this->get_plugin_name(), $this->get_version(), $this->get_widget_prefix() );
 		$this->loader->add_action( 'widgets_init', $plugin_widget_areas, 'register_widget_areas' );
-		$this->loader->add_action( 'switch_theme', $plugin_widget_areas, 'sync_widget_areas' );
+		// $this->loader->add_action( 'switch_theme', $plugin_widget_areas, 'sync_widget_areas' );
 
 		// Content Import Hooks
 		// Before content import.
