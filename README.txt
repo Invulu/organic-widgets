@@ -2,13 +2,13 @@
 Contributors: jqlee85, itsdavidmorgan, organicthemes, raid33
 Donate link: https://organicthemes.com
 Tags: customizer, widgets, testimonials, portfolio, features, fontawesome, icons, pricing tables, page builder, full-width sections, custom widget areas, slideshows
-Stable tag: 1.0.3
+Stable tag: 1.0.5
 Requires at least: 4.8
 Tested up to: 4.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Transform the core WordPress Customizer into a page builder. Display and arrange widgets on any page as beautiful content sections, such as featured content slideshows, testimonials, team members, portfolios, feature lists, pricing tables and more. Whoa, cool.
+Transform the core WordPress Customizer into a page builder. Display and arrange widgets on any page as beautiful content sections using any theme.
 
 == Description ==
 
@@ -16,23 +16,23 @@ Transform the core WordPress Customizer into a page builder. Display and arrange
 
 Organic Customizer Widgets introduces several custom widgets that can be used for displaying content in new ways. It includes a new Page Template, that when applied, creates a new widget area on that page. This allows users to utilize the core WordPress customizer interface to add widgets to their page, displaying them as page sections without the need for shortcodes or page builders. The widgets include basic styles, but will inherit styles from whichever theme is being used.
 
-= Demo Widgets =
+**Video Demo:**
 
-[View Live Demo of Widgets](https://organicthemes.com/demo/startup/ "StartUp Theme")
+https://www.youtube.com/watch?v=PwQJ5L0_oiM&t=13s
 
 = Widgets Included =
 
-* **Hero Widget** – A full browser height section with featured text and a call to action.
-* **Blog Posts Widget** – Display a section of blog posts from any category in a chosen layout.
-* **Content Slideshow Widget** – A full width slideshow of featured posts with background images.
-* **Feature List Widget** – A list of features with icons displayed in multiple column layouts.
-* **Portfolio Widget** – A section of posts displayed as portfolio images in a masonry layout.
-* **Subpage Widget** – Display any page content as a section within another page or use custom content.
-* **Team Members Widget** – A section of team members from a selected post category.
-* **Testimonials Widget** – A slideshow of testimonials from a selected category or custom post type.
-* **Profile Widget** – A personal profile widget with an image, bio and social media links.
-* **Pricing Table Widget** – Create a pricing table with a list of features and link to purchase.
-* **Featured Content Widget** – Custom content that can be grouped together with other featured content widgets.
+* **Hero Widget** [View Example](https://organicthemes.com/demo/startup/widgets/hero-widget/ "Hero Widget Example") – A full browser height section with a background image, featured text and a call to action.
+* **Blog Posts Widget** [View Example](https://organicthemes.com/demo/startup/widgets/blog-widget/ "Blog Widget Example") – Display a section of blog posts from any category in a chosen layout.
+* **Content Slideshow Widget** [View Example](https://organicthemes.com/demo/startup/widgets/content-slideshow-widget/ "Content Slideshow Widget Example") – A full width slideshow of featured posts with background images.
+* **Feature List Widget** [View Example](https://organicthemes.com/demo/startup/widgets/feature-list-widget/ "Feature List Widget Example") – A list of features with icons displayed in multiple column layouts.
+* **Portfolio Widget** [View Example](https://organicthemes.com/demo/startup/widgets/portfolio-widget/ "Portfolio Widget Example") – A section of posts displayed as portfolio images in a masonry layout.
+* **Subpage Widget** [View Example](https://organicthemes.com/demo/startup/widgets/subpage-widget/ "Subpage Widget Example") – Display existing page content as a section within another page or use custom content.
+* **Team Members Widget** [View Example](https://organicthemes.com/demo/startup/widgets/team-widget/ "Team Widget Example") – A section of team members from a selected post category.
+* **Testimonials Widget** [View Example](https://organicthemes.com/demo/startup/widgets/testimonials-widget/ "Testimonials Widget Example") – A slideshow of testimonials from a selected category or custom post type.
+* **Profile Widget** [View Example](https://organicthemes.com/demo/startup/widgets/profile-widget/ "Profile Widget Example") – A personal profile widget with an image, bio and social media links.
+* **Pricing Table Widget** [View Example](https://organicthemes.com/demo/startup/widgets/pricing-table-widget/ "Pricing Table Widget Example") – Create a pricing table with a list of features and link to purchase.
+* **Featured Content Widget** [View Example](https://organicthemes.com/demo/startup/widgets/featured-content-widget/ "Featured Content Widget Example") – Custom content that can be grouped together with other featured content widgets.
 
 = Getting Started =
 
@@ -84,6 +84,9 @@ A: Most of the Organic Widgets are designed to be used as full-width sections on
 5. A list of some of the custom widgets included as seen within the customizer.
 
 == Changelog ==
+
+= 1.0.5 =
+* Updated README.txt with video demo
 
 = 1.0.4 =
 * Fix widget sync function
