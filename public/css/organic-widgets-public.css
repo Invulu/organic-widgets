@@ -835,6 +835,9 @@
 	overflow: hidden;
 	zoom: 1;
 }
+.organic-widgets-flexslider.organic-widgets-single-slide .slides {
+  display: flex;
+}
 .organic-widgets-flexslider ul,
 .organic-widgets-flexslider li {
 	list-style-type: none;
@@ -843,6 +846,7 @@
 }
 .organic-widgets-flexslider .slides > li {
 	display: none;
+  align-self: center;
 	-webkit-backface-visibility: hidden;
 	background-position: center center;
 	background-size: cover;

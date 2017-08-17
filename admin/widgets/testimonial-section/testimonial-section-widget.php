@@ -111,7 +111,7 @@ class Organic_Widgets_Testimonial_Section_Widget extends Organic_Widgets_Custom_
 					<?php } ?>
 
 					<!-- BEGIN .flexslider -->
-					<div class="organic-widgets-flexslider loading" data-per-slide="<?php echo $posts_per_slide ?>">
+					<div class="organic-widgets-flexslider loading<?php if ( '1' === $posts_per_slide ) { ?> organic-widgets-single-slide<?php } ?>" data-per-slide="<?php echo $posts_per_slide ?>">
 
 					<div class="preloader"></div>
 
