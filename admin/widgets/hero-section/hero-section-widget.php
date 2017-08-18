@@ -67,6 +67,22 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 			$bg_image_fixed = $instance['bg_image_fixed'];
 		} else { $bg_image_fixed = false; }
 
+		if ( user_can_richedit() ) {
+			add_filter( 'the_editor_content', 'format_for_editor', 10, 2 );
+			$default_editor = 'tinymce';
+		} else {
+			$default_editor = 'html';
+		}
+		/** This filter is documented in wp-includes/class-wp-editor.php */
+		$text = apply_filters( 'the_editor_content', $instance['text'], $default_editor );
+		// Reset filter addition.
+		if ( user_can_richedit() ) {
+			remove_filter( 'the_editor_content', 'format_for_editor' );
+		}
+		// Prevent premature closing of textarea in case format_for_editor() didn't apply or the_editor_content filter did a wrong thing.
+		$escaped_text = preg_replace( '#</textarea#i', '&lt;/textarea', $text );
+
+
 		echo $args['before_widget'];
 
 		?>
@@ -93,7 +109,8 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 				// Output video HTML
 				$this->video_bg_html($video_info);
 
-			}?>
+			}
+			?>
 
 			<!-- BEGIN .organic-widgets-aligner -->
 			<div class="organic-widgets-aligner <?php if ( ! empty( $instance['alignment'] ) ) { echo 'organic-widgets-aligner-'.esc_attr( $instance['alignment'] ); } else { echo 'organic-widgets-aligner-middle-center'; } ?>">
@@ -111,7 +128,7 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 						<?php } ?>
 
 						<?php if ( ! empty( $instance['text'] ) ) { ?>
-							<div class="organic-widgets-text"><?php echo apply_filters( 'the_content', $instance['text'] ); ?></div>
+							<div class="organic-widgets-text"><?php echo $escaped_text; ?></div>
 						<?php } ?>
 
 						<?php if ( ! empty( $instance['button_one_url'] ) || ! empty( $instance['button_two_url'] ) ) { ?>
@@ -188,10 +205,26 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 			$bg_image_fixed = $instance['bg_image_fixed'];
 		} else { $bg_image_fixed = false; }
 
+		if ( user_can_richedit() ) {
+			add_filter( 'the_editor_content', 'format_for_editor', 10, 2 );
+			$default_editor = 'tinymce';
+		} else {
+			$default_editor = 'html';
+		}
+		/** This filter is documented in wp-includes/class-wp-editor.php */
+		$text = apply_filters( 'the_editor_content', $instance['text'], $default_editor );
+		// Reset filter addition.
+		if ( user_can_richedit() ) {
+			remove_filter( 'the_editor_content', 'format_for_editor' );
+		}
+		// Prevent premature closing of textarea in case format_for_editor() didn't apply or the_editor_content filter did a wrong thing.
+		$escaped_text = preg_replace( '#</textarea#i', '&lt;/textarea', $text );
 		?>
 
 		<input id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" class="title" type="hidden" value="<?php if ( ! empty( $instance['title'] ) ) echo $instance['title']; ?>">
 		<input id="<?php echo $this->get_field_id( 'text' ); ?>" name="<?php echo $this->get_field_name( 'text' ); ?>" class="text organic-widgets-wysiwyg-anchor" type="hidden" value="<?php if ( ! empty( $instance['text'] ) ) echo $instance['text']; ?>">
+		<input id="<?php echo $this->get_field_id( 'filter' ); ?>" name="<?php echo $this->get_field_name( 'filter' ); ?>" class="filter sync-input" type="hidden" value="on">
+		<input id="<?php echo $this->get_field_id( 'visual' ); ?>" name="<?php echo $this->get_field_name( 'visual' ); ?>" class="visual sync-input" type="hidden" value="on">
 
 		<p>
 			<label for="<?php echo $this->get_field_id( 'button_one_text' ); ?>"><?php _e('Featured Button Text:', ORGANIC_WIDGETS_18N); ?></label>
@@ -264,7 +297,26 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 	 */
 	public function update( $new_instance, $old_instance ) {
 
+
 		$instance = $old_instance;
+		if ( ! isset( $newinstance['filter'] ) )
+			$instance['filter'] = false;
+		if ( ! isset( $newinstance['visual'] ) )
+			$instance['visual'] = null;
+		// Upgrade 4.8.0 format.
+		if ( isset( $old_instance['filter'] ) && 'content' === $old_instance['filter'] ) {
+			$instance['visual'] = true;
+		}
+		if ( 'content' === $new_instance['filter'] ) {
+			$instance['visual'] = true;
+		}
+		if ( isset( $new_instance['visual'] ) ) {
+			$instance['visual'] = ! empty( $new_instance['visual'] );
+		}
+		// Filter is always true in visual mode.
+		if ( ! empty( $instance['visual'] ) ) {
+			$instance['filter'] = true;
+		}
 		if ( ! isset( $old_instance['created'] ) )
 			$instance['created'] = time();
 		if ( isset( $new_instance['bg_image_id'] ) )
@@ -296,8 +348,10 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 		if ( isset( $new_instance['title'] ) )
 			$instance['title'] = strip_tags( $new_instance['title'] );
 		if ( current_user_can( 'unfiltered_html' ) ) {
+			error_log('CURRENT USER CAN UNFILTERED HTML');
 			$instance['text'] = $new_instance['text'];
 		} else {
+			error_log('CURRENT USER CAN NOT UNFILTERED HTML');
 			$instance['text'] = wp_kses_post( $new_instance['text'] );
 		}
 		if ( isset( $new_instance['button_one_text'] ) )
