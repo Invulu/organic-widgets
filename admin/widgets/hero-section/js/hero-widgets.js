@@ -80,15 +80,19 @@ wp.organicHeroWidgets = ( function( $ ) {
 			// Sync input fields to hidden sync fields which actually get sent to the server.
 			_.each( control.fields, function( fieldInput, fieldName ) {
 				fieldInput.on( 'input change', function updateSyncField() {
-					var syncInput = control.syncContainer.find( '.sync-input.' + fieldName );
+					var syncInput = control.syncContainer.find( 'input[type=hidden].' + fieldName );
+					console.log(fieldName);
+					console.log(syncInput);
 					if ( syncInput.val() !== fieldInput.val() ) {
 						syncInput.val( fieldInput.val() );
+						console.log(fieldInput.val());
+						console.log(syncInput.val());
 						syncInput.trigger( 'change' );
 					}
 				});
 
 				// Note that syncInput cannot be re-used because it will be destroyed with each widget-updated event.
-				fieldInput.val( control.syncContainer.find( '.sync-input.' + fieldName ).val() );
+				fieldInput.val( control.syncContainer.find( 'input[type=hidden].' + fieldName ).val() );
 			});
 		},
 
@@ -144,11 +148,11 @@ wp.organicHeroWidgets = ( function( $ ) {
 			var control = this, syncInput;
 
 			if ( ! control.fields.title.is( document.activeElement ) ) {
-				syncInput = control.syncContainer.find( '.sync-input.title' );
+				syncInput = control.syncContainer.find( 'input[type=hidden].title' );
 				control.fields.title.val( syncInput.val() );
 			}
 
-			syncInput = control.syncContainer.find( '.sync-input.text' );
+			syncInput = control.syncContainer.find( 'input[type=hidden].text' );
 			if ( control.fields.text.is( ':visible' ) ) {
 				if ( ! control.fields.text.is( document.activeElement ) ) {
 					control.fields.text.val( syncInput.val() );
