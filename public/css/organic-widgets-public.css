@@ -142,6 +142,9 @@
   content: '';
   clear: both;
 }
+.organic-widgets-title + .organic-widgets-text p {
+  font-size: 120%;
+}
 .organic-widgets-text {
   padding-top: 0px;
   padding-bottom: 24px;
@@ -595,6 +598,7 @@
 }
 .organic-widgets-pricing-table table tbody td {
   font-weight: 400;
+  text-align: center;
 }
 .organic-widgets-pricing-table table tbody td::before {
   color: #99cc66;
