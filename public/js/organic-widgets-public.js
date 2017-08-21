@@ -71,14 +71,14 @@
 				// Check if should be masonry
 				if ( groupableMasonryEnabled( groupableWidget ) && ! groupableWidget.hasClass('organic-widget-masonry-wrapper') ) {
 					groupableWidget.addClass('organic-widget-masonry-wrapper');
-				} else {
-
 				}
 				groupableWidget.addClass(itemClass);
 
 				container.append(groupableWidget);
 
 			});
+
+			$('.organic-widgets-group .organic-widgets-featured-content-section .information').addClass('organic-widgets-card');
 
 		});
 

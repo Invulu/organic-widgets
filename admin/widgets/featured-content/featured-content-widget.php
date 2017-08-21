@@ -95,22 +95,17 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 				<!-- BEGIN .organic-widgets-content -->
 				<div class="organic-widgets-content">
 
-					<div class="holder">
-						<?php if ( $feature_img_id && 0 < $feature_img_id ) { ?>
-							<div class="feature-img"><?php echo get_the_post_thumbnail( $page_id, 'organic-widgets-featured-medium' )?></div>
-						<?php } ?>
-						<div class="information">
-							<?php if ( ! empty( $page_title ) ) { ?>
-								<h3><?php echo apply_filters( 'widget_title', $page_title ); ?></h3>
-							<?php } ?>
-							<?php if ( ! empty( $page_excerpt ) ) { ?>
-								<div class="excerpt">
-									<?php the_excerpt(); ?>
-									<?php edit_post_link( esc_html__( '(Edit)', ORGANIC_WIDGETS_18N ), '<p>', '</p>' ); ?>
-								</div>
-							<?php } ?>
-							<a class="button" href="<?php echo get_the_permalink( $page_id );?>"><?php esc_html_e( 'Read More', ORGANIC_WIDGETS_18N ); ?></a>
-						</div>
+					<?php if ( has_post_thumbnail() ) {  ?>
+						<div class="organic-widgets-img"><?php echo get_the_post_thumbnail( $page_id, 'organic-widgets-featured-medium' )?></div>
+					<?php } ?>
+
+					<!-- BEGIN .information -->
+					<div class="information">
+
+						<?php the_content( esc_html__( 'Read More', ORGANIC_WIDGETS_18N ) ); ?>
+						<?php edit_post_link( esc_html__( '(Edit)', ORGANIC_WIDGETS_18N ), '<p>', '</p>' ); ?>
+
+					<!-- END .information -->
 					</div>
 
 				<!-- END .organic-widgets-content -->
@@ -139,36 +134,35 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 
 				<?php if ( ! empty( $instance['title'] ) || ! empty( $instance['text'] ) ) { ?>
 
-					<!-- BEGIN .organic-widgets-aligner -->
-					<div class="organic-widgets-aligner <?php if ( ! empty( $instance['alignment'] ) ) { echo 'organic-widgets-aligner-'.esc_attr( $instance['alignment'] ); } else { echo 'organic-widgets-aligner-middle-center'; } ?>">
+					<!-- BEGIN .organic-widgets-content -->
+					<div class="organic-widgets-content">
 
-						<!-- BEGIN .organic-widgets-content -->
-						<div class="organic-widgets-content">
+						<!-- BEGIN .information -->
+						<div class="information">
 
-							<div class="holder">
-								<div class="information">
-									<?php if ( ! empty( $instance['title'] ) ) { ?>
-										<h3><?php echo apply_filters( 'widget_title', $instance['title'] ); ?></h3>
-									<?php } ?>
-									<?php if ( ! empty( $instance['text'] ) ) { ?>
-										<div class="excerpt"><?php echo apply_filters( 'the_content', $instance['text'] ); ?></div>
-									<?php } ?>
-									<?php if ( ! empty( $link_url ) ) { ?>
-										<a class="button" href="<?php echo esc_url( $link_url ); ?>">
-											<?php if ( ! empty( $link_title ) ) { ?>
-												<?php echo $link_title ?>
-											<?php } else { ?>
-												<?php esc_html_e( 'Read More', ORGANIC_WIDGETS_18N ); ?>
-											<?php } ?>
-										</a>
-									<?php } ?>
-								</div>
-							</div>
+							<?php if ( ! empty( $instance['title'] ) ) { ?>
+								<h3><?php echo apply_filters( 'widget_title', $instance['title'] ); ?></h3>
+							<?php } ?>
 
-						<!-- END .organic-widgets-content -->
+							<?php if ( ! empty( $instance['text'] ) ) { ?>
+								<?php echo apply_filters( 'the_content', $instance['text'] ); ?>
+							<?php } ?>
+
+							<?php if ( ! empty( $link_url ) ) { ?>
+								<br />
+								<a class="more-link" href="<?php echo esc_url( $link_url ); ?>">
+									<?php if ( ! empty( $link_title ) ) { ?>
+										<?php echo $link_title ?>
+									<?php } else { ?>
+										<?php esc_html_e( 'Read More', ORGANIC_WIDGETS_18N ); ?>
+									<?php } ?>
+								</a>
+							<?php } ?>
+
+						<!-- END .information -->
 						</div>
 
-					<!-- END .organic-widgets-aligner -->
+					<!-- END .organic-widgets-content -->
 					</div>
 
 				<?php } ?>
@@ -227,17 +221,15 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 		<input id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" class="title" type="hidden" value="<?php echo $title; ?>">
 		<input id="<?php echo $this->get_field_id( 'text' ); ?>" name="<?php echo $this->get_field_name( 'text' ); ?>" class="text organic-widgets-wysiwyg-anchor" type="hidden" value="<?php echo $text; ?>">
 		<p>
-			<label for="<?php echo $this->get_field_id( 'link_url' ); ?>"><?php _e('Link URL:', ORGANIC_WIDGETS_18N) ?></label>
-			<input class="widefat link_url" type="text" id="<?php echo $this->get_field_id( 'link_url' ); ?>" name="<?php echo $this->get_field_name( 'link_url' ); ?>" value="<?php echo $link_url; ?>" />
+			<label for="<?php echo $this->get_field_id( 'link_title' ); ?>"><?php _e('Button Text:', ORGANIC_WIDGETS_18N) ?></label>
+			<input class="widefat link_title" type="text" id="<?php echo $this->get_field_id( 'link_title' ); ?>" name="<?php echo $this->get_field_name( 'link_title' ); ?>" value="<?php echo $link_title; ?>" />
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'link_title' ); ?>"><?php _e('Link Text:', ORGANIC_WIDGETS_18N) ?></label>
-			<input class="widefat link_title" type="text" id="<?php echo $this->get_field_id( 'link_title' ); ?>" name="<?php echo $this->get_field_name( 'link_title' ); ?>" value="<?php echo $link_title; ?>" />
+			<label for="<?php echo $this->get_field_id( 'link_url' ); ?>"><?php _e('Button URL:', ORGANIC_WIDGETS_18N) ?></label>
+			<input class="widefat link_url" type="text" id="<?php echo $this->get_field_id( 'link_url' ); ?>" name="<?php echo $this->get_field_name( 'link_url' ); ?>" value="<?php echo $link_url; ?>" />
 		</p>
 
 		<br/>
-
-		<?php $this->content_aligner_input_markup( $instance ); ?>
 
 		<h3><?php _e('Or Choose Existing Page:', ORGANIC_WIDGETS_18N) ?></h3>
 
@@ -349,10 +341,6 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 			'active_pane' => false,
 			'widgets' => array()
 		) );
-
-
-		// Content Aligner
-		wp_enqueue_script( 'organic-widgets-module-content-aligner', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-content-aligner.js', array( 'jquery' ) );
 
 		wp_enqueue_media();
 

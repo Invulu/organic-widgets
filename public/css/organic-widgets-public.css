@@ -174,7 +174,6 @@
   position: relative;
   background-color: #ffffff;
 	padding: 24px;
-  border-radius: 3px;
 }
 .organic-widgets-card p {
   padding: 6px 0px;
@@ -390,6 +389,18 @@
 }
 
 /************************************************
+*	Featured Content Widget
+************************************************/
+
+.organic-widgets-featured-content-section .organic-widgets-img {
+  line-height: 0;
+  margin-bottom: 24px;
+}
+.organic-widgets-group .organic-widgets-featured-content-section .organic-widgets-img {
+  margin-bottom: 0;
+}
+
+/************************************************
 *	Testimonials Slideshow Widget
 ************************************************/
 
@@ -554,7 +565,6 @@
   min-width: 360px;
   margin: 0px auto;
   box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.12);
-  border-radius: 3px;
   overflow: hidden;
 }
 .organic-widgets-pricing-table .organic-widgets-card {
@@ -631,7 +641,6 @@
 }
 .organic-widget .ocw-bg-dark p, .organic-widgets-section.ocw-bg-dark p,
 .organic-widget .ocw-bg-dark p.wp-caption-text, .organic-widgets-section.ocw-bg-dark p.wp-caption-text,
-.organic-widget .ocw-bg-dark a, .organic-widgets-section.ocw-bg-dark a,
 .organic-widget .ocw-bg-dark span, .organic-widgets-section.ocw-bg-dark span,
 .organic-widget .ocw-bg-dark div, .organic-widgets-section.ocw-bg-dark div,
 .organic-widget .ocw-bg-dark blockquote, .organic-widgets-section.ocw-bg-dark blockquote {
@@ -669,7 +678,6 @@
   text-shadow: none !important;
 }
 .organic-widget .ocw-bg-dark .organic-widgets-card p, .organic-widgets-section.ocw-bg-dark .organic-widgets-card p,
-.organic-widget .ocw-bg-dark .organic-widgets-card a, .organic-widgets-section.ocw-bg-dark .organic-widgets-card a,
 .organic-widget .ocw-bg-dark .organic-widgets-card span, .organic-widgets-section.ocw-bg-dark .organic-widgets-card span,
 .organic-widget .ocw-bg-dark .organic-widgets-card div, .organic-widgets-section.ocw-bg-dark .organic-widgets-card div,
 .organic-widget .ocw-bg-dark .organic-widgets-card blockquote, .organic-widgets-section.ocw-bg-dark .organic-widgets-card blockquote {
