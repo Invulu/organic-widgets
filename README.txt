@@ -87,6 +87,7 @@ A: Most of the Organic Widgets are designed to be used as full-width sections on
 
 = 1.0.6 =
 * Updates to testimonial widget
+* Updates to featured content widget
 * Minor style updates
 
 = 1.0.5 =
