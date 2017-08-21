@@ -4,7 +4,7 @@ wp.organicBlogPostsSectionWidget = ( function( $ ) {
 	'use strict';
 
 	var component = {};
-	
+
 	/**
 	 * Text widget control.
 	 *

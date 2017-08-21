@@ -269,6 +269,8 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 
 
 		$instance = $old_instance;
+
+		/*--- Text/Title ----*/
 		if ( ! isset( $newinstance['filter'] ) )
 			$instance['filter'] = false;
 		if ( ! isset( $newinstance['visual'] ) )
@@ -287,6 +289,21 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 		if ( ! empty( $instance['visual'] ) ) {
 			$instance['filter'] = true;
 		}
+		if ( isset( $new_instance['title'] ) )
+			$instance['title'] = strip_tags( $new_instance['title'] );
+		if ( current_user_can( 'unfiltered_html' ) ) {
+			$instance['text'] = $new_instance['text'];
+		} else {
+			$instance['text'] = wp_kses_post( $new_instance['text'] );
+		}
+		// Widget Title
+		if ( isset( $new_instance['title'] )  && '' != $new_instance['title'] ) {
+			$instance['title'] = strip_tags( $new_instance['title'] );
+		} else {
+			$instance['title'] = '';
+		}
+		/*--- END Text/Title ----*/
+
 		if ( ! isset( $old_instance['created'] ) )
 			$instance['created'] = time();
 		if ( isset( $new_instance['bg_image_id'] ) )
@@ -315,15 +332,6 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 		} else {
 			$instance['bg_color'] = false;
 		}
-		if ( isset( $new_instance['title'] ) )
-			$instance['title'] = strip_tags( $new_instance['title'] );
-		if ( current_user_can( 'unfiltered_html' ) ) {
-			error_log('CURRENT USER CAN UNFILTERED HTML');
-			$instance['text'] = $new_instance['text'];
-		} else {
-			error_log('CURRENT USER CAN NOT UNFILTERED HTML');
-			$instance['text'] = wp_kses_post( $new_instance['text'] );
-		}
 		if ( isset( $new_instance['button_one_text'] ) )
 			$instance['button_one_text'] = strip_tags( $new_instance['button_one_text'] );
 		if ( isset( $new_instance['button_one_url'] ) )
@@ -333,12 +341,7 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 		if ( isset( $new_instance['button_one_url'] ) )
 			$instance['button_two_url'] = strip_tags( $new_instance['button_two_url'] );
 
-		// Widget Title
-		if ( isset( $new_instance['title'] )  && '' != $new_instance['title'] ) {
-			$instance['title'] = strip_tags( $new_instance['title'] );
-		} else {
-			$instance['title'] = '';
-		}
+
 
 		return $instance;
 	}
