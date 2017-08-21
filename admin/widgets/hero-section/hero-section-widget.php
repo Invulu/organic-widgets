@@ -350,8 +350,12 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 
 		// Text Editor
 		wp_enqueue_editor();
-		wp_enqueue_script( 'organic-widgets-hero-widgets', plugin_dir_url( __FILE__ ) . 'js/hero-widgets.js', array( 'jquery' ) );
-		wp_add_inline_script( 'organic-widgets-hero-widgets', 'wp.organicHeroWidgets.init();', 'after' );
+		// wp_enqueue_script( 'organic-widgets-hero-widgets', plugin_dir_url( __FILE__ ) . 'js/hero-widgets.js', array( 'jquery' ) );
+		wp_enqueue_script( 'organic-widgets-hero-widgets-text-title', plugin_dir_url( __FILE__ ) . 'js/hero-widgets.js', array( 'jquery' ) );
+		wp_localize_script( 'organic-widgets-hero-widgets-text-title', 'OrganicHeroWidget', array(
+			'id_base' => $this->id_base,
+		) );
+		wp_add_inline_script( 'organic-widgets-hero-widgets-text-title', 'wp.organicHeroWidget.init();', 'after' );
 
 		// Content Aligner
 		wp_enqueue_script( 'organic-widgets-module-content-aligner', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-content-aligner.js', array( 'jquery' ) );

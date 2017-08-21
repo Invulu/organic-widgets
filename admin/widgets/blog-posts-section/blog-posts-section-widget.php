@@ -307,8 +307,11 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 
 		// Text Editor
 		wp_enqueue_editor();
-		wp_enqueue_script( 'organic-widgets-blog-posts-section-widget', plugin_dir_url( __FILE__ ) . 'js/blog-posts-section-widgets.js', array( 'jquery' ) );
-		wp_add_inline_script( 'organic-widgets-blog-posts-section-widget', 'wp.organicBlogPostsSectionWidgets.init();', 'after' );
+		wp_enqueue_script( 'organic-widgets-blog-posts-section-text-title', plugin_dir_url( __FILE__ ) . 'js/blog-posts-section-widgets.js', array( 'jquery' ) );
+		wp_localize_script( 'organic-widgets-blog-posts-section-text-title', 'OrganicBlogPostsSectionWidget', array(
+			'id_base' => $this->id_base,
+		) );
+		wp_add_inline_script( 'organic-widgets-blog-posts-section-text-title', 'wp.organicBlogPostsSectionWidget.init();', 'after' );
 
 		wp_enqueue_media();
 
