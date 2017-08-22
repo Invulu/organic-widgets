@@ -163,12 +163,6 @@ class Organic_Widgets_Profile_Widget extends Organic_Widgets_Custom_Widget {
 		if (!isset( $instance['bg_image_id'] ) || $instance['bg_image_id'] < 1 ) {
 			$instance['bg_image_id'] = 0;
 		}
-		if ( isset( $instance[ 'title' ] ) ) {
-			$title = $instance[ 'title' ];
-		} else { $title = ''; }
-		if ( isset( $instance[ 'text' ] ) ) {
-			$text = $instance[ 'text' ];
-		} else { $text = ''; }
 		if ( isset( $instance[ 'subtitle' ] ) ) {
 			$subtitle = $instance[ 'subtitle' ];
 		} else { $subtitle = ''; }
@@ -182,8 +176,10 @@ class Organic_Widgets_Profile_Widget extends Organic_Widgets_Custom_Widget {
 
 		<div class="organic-widgets-repeatable-form-item-widget-admin organic-widgets-profile-form">
 
-			<input id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" class="title organic-widgets-wysiwyg-anchor" type="hidden" value="<?php echo $title; ?>">
-			<input id="<?php echo $this->get_field_id( 'text' ); ?>" name="<?php echo $this->get_field_name( 'text' ); ?>" class="text" type="hidden" value="<?php echo $text; ?>">
+			<input id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" class="title" type="hidden" value="<?php echo esc_attr( $instance['title'] ); ?>">
+			<input id="<?php echo $this->get_field_id( 'text' ); ?>" name="<?php echo $this->get_field_name( 'text' ); ?>" class="text organic-widgets-wysiwyg-anchor" type="hidden" value="<?php echo esc_attr( $instance['text'] ); ?>">
+			<input id="<?php echo $this->get_field_id( 'filter' ); ?>" name="<?php echo $this->get_field_name( 'filter' ); ?>" class="filter" type="hidden" value="on">
+			<input id="<?php echo $this->get_field_id( 'visual' ); ?>" name="<?php echo $this->get_field_name( 'visual' ); ?>" class="visual" type="hidden" value="on">
 
 			<?php $this->bg_image_scripts(); ?>
 
@@ -294,21 +290,49 @@ class Organic_Widgets_Profile_Widget extends Organic_Widgets_Custom_Widget {
 	public function update( $new_instance, $old_instance ) {
 
 		$instance = $old_instance;
+
+		/*--- Text/Title ----*/
+		if ( ! isset( $newinstance['filter'] ) )
+			$instance['filter'] = false;
+		if ( ! isset( $newinstance['visual'] ) )
+			$instance['visual'] = null;
+		// Upgrade 4.8.0 format.
+		if ( isset( $old_instance['filter'] ) && 'content' === $old_instance['filter'] ) {
+			$instance['visual'] = true;
+		}
+		if ( 'content' === $new_instance['filter'] ) {
+			$instance['visual'] = true;
+		}
+		if ( isset( $new_instance['visual'] ) ) {
+			$instance['visual'] = ! empty( $new_instance['visual'] );
+		}
+		// Filter is always true in visual mode.
+		if ( ! empty( $instance['visual'] ) ) {
+			$instance['filter'] = true;
+		}
+		if ( isset( $new_instance['title'] ) )
+			$instance['title'] = strip_tags( $new_instance['title'] );
+		if ( current_user_can( 'unfiltered_html' ) ) {
+			$instance['text'] = $new_instance['text'];
+		} else {
+			$instance['text'] = wp_kses_post( $new_instance['text'] );
+		}
+		// Widget Title
+		if ( isset( $new_instance['title'] )  && '' != $new_instance['title'] ) {
+			$instance['title'] = strip_tags( $new_instance['title'] );
+		} else {
+			$instance['title'] = '';
+		}
+		/*--- END Text/Title ----*/
+
 		if ( ! isset( $old_instance['created'] ) )
 			$instance['created'] = time();
 		if (isset( $new_instance['bg_image_id'] ) )
 			$instance['bg_image_id'] = strip_tags( $new_instance['bg_image_id'] );
 		if (isset( $new_instance['bg_image'] ) )
 			$instance['bg_image'] = strip_tags( $new_instance['bg_image'] );
-		if (isset( $new_instance['title'] ) )
-			$instance['title'] = strip_tags( $new_instance['title'] );
 		if (isset( $new_instance['subtitle'] ) )
 			$instance['subtitle'] = strip_tags( $new_instance['subtitle'] );
-		if ( current_user_can( 'unfiltered_html' ) ) {
-			$instance['text'] = $new_instance['text'];
-		} else {
-			$instance['text'] = wp_kses_post( $new_instance['text'] );
-		}
 		if ( isset( $new_instance['bg_color'] ) && $this->check_hex_color( $new_instance['bg_color'] ) ) {
 			$instance['bg_color'] = strip_tags( $new_instance['bg_color'] );
 		} else {
@@ -329,8 +353,11 @@ class Organic_Widgets_Profile_Widget extends Organic_Widgets_Custom_Widget {
 
 		// Text Editor
 		wp_enqueue_editor();
-		wp_enqueue_script( 'organic-widgets-profile-widgets', plugin_dir_url( __FILE__ ) . 'js/profile-widgets.js', array( 'jquery' ) );
-		wp_add_inline_script( 'organic-widgets-profile-widgets', 'wp.organicProfileWidgets.init();', 'after' );
+		wp_enqueue_script( 'organic-widgets-profile-widgets-text-title', plugin_dir_url( __FILE__ ) . 'js/profile-widgets.js', array( 'jquery' ) );
+		wp_localize_script( 'organic-widgets-profile-widgets-text-title', 'OrganicProfileWidget', array(
+			'id_base' => $this->id_base,
+		) );
+		wp_add_inline_script( 'organic-widgets-profile-widgets-text-title', 'wp.organicProfileWidget.init();', 'after' );
 
 		wp_enqueue_script( 'organic-widgets-module-groupable-widgets', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-groupable-widgets.js', array( 'jquery' ) );
 		wp_localize_script( 'organic-widgets-module-groupable-widgets', 'GroupableWidgets', array(

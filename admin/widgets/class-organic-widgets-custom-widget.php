@@ -1231,49 +1231,49 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
 	}
 
 	/**
- * Sanitize Slideshow Transition Interval.
- *
- * @param int or string $input Sanitizes user input.
- * @return array
- */
-function organic_widgets_sanitize_transition_interval( $input ) {
-	$valid = array(
-		2000 		=> esc_html__( '2 Seconds', ORGANIC_WIDGETS_18N ),
-		4000 		=> esc_html__( '4 Seconds', ORGANIC_WIDGETS_18N ),
-		6000 		=> esc_html__( '6 Seconds', ORGANIC_WIDGETS_18N ),
-		8000 		=> esc_html__( '8 Seconds', ORGANIC_WIDGETS_18N ),
-		10000 	=> esc_html__( '10 Seconds', ORGANIC_WIDGETS_18N ),
-		12000 	=> esc_html__( '12 Seconds', ORGANIC_WIDGETS_18N ),
-		20000 	=> esc_html__( '20 Seconds', ORGANIC_WIDGETS_18N ),
-		30000 	=> esc_html__( '30 Seconds', ORGANIC_WIDGETS_18N ),
-		60000 	=> esc_html__( '1 Minute', ORGANIC_WIDGETS_18N ),
-		999999999	=> esc_html__( 'Hold Frame', ORGANIC_WIDGETS_18N ),
-	);
+	 * Sanitize Slideshow Transition Interval.
+	 *
+	 * @param int or string $input Sanitizes user input.
+	 * @return array
+	 */
+	function organic_widgets_sanitize_transition_interval( $input ) {
+		$valid = array(
+			2000 		=> esc_html__( '2 Seconds', ORGANIC_WIDGETS_18N ),
+			4000 		=> esc_html__( '4 Seconds', ORGANIC_WIDGETS_18N ),
+			6000 		=> esc_html__( '6 Seconds', ORGANIC_WIDGETS_18N ),
+			8000 		=> esc_html__( '8 Seconds', ORGANIC_WIDGETS_18N ),
+			10000 	=> esc_html__( '10 Seconds', ORGANIC_WIDGETS_18N ),
+			12000 	=> esc_html__( '12 Seconds', ORGANIC_WIDGETS_18N ),
+			20000 	=> esc_html__( '20 Seconds', ORGANIC_WIDGETS_18N ),
+			30000 	=> esc_html__( '30 Seconds', ORGANIC_WIDGETS_18N ),
+			60000 	=> esc_html__( '1 Minute', ORGANIC_WIDGETS_18N ),
+			999999999	=> esc_html__( 'Hold Frame', ORGANIC_WIDGETS_18N ),
+		);
 
-	if ( array_key_exists( $input, $valid ) ) {
-		return $input;
-	} else {
-		return '';
+		if ( array_key_exists( $input, $valid ) ) {
+			return $input;
+		} else {
+			return '';
+		}
 	}
-}
 
-/**
- * Sanitize Slideshow Transition Style.
- *
- * @param string $input Sanitizes user input.
- * @return array
- */
-function organic_widgets_sanitize_transition_style( $input ) {
-	$valid = array(
-		'fade' 		=> esc_html__( 'Fade', ORGANIC_WIDGETS_18N ),
-		'slide' 	=> esc_html__( 'Slide', ORGANIC_WIDGETS_18N ),
-	);
+	/**
+	 * Sanitize Slideshow Transition Style.
+	 *
+	 * @param string $input Sanitizes user input.
+	 * @return array
+	 */
+	function organic_widgets_sanitize_transition_style( $input ) {
+		$valid = array(
+			'fade' 		=> esc_html__( 'Fade', ORGANIC_WIDGETS_18N ),
+			'slide' 	=> esc_html__( 'Slide', ORGANIC_WIDGETS_18N ),
+		);
 
-	if ( array_key_exists( $input, $valid ) ) {
-		return $input;
-	} else {
-		return '';
+		if ( array_key_exists( $input, $valid ) ) {
+			return $input;
+		} else {
+			return '';
+		}
 	}
-}
 
 } // class Organic_Widgets_Custom_Widget

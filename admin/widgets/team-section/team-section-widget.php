@@ -160,12 +160,6 @@ class Organic_Widgets_Team_Section_Widget extends Organic_Widgets_Custom_Widget 
 
 		// Setup Variables.
 		$this->id_prefix = $this->get_field_id('');
-		if ( isset( $instance['title'] ) ) {
-			$title = $instance['title'];
-		} else { $title = false; }
-		if ( isset( $instance[ 'text' ] ) ) {
-			$text = $instance[ 'text' ];
-		} else { $text = ''; }
 		if ( isset( $instance['category'] ) ) {
 			$category = $instance['category'];
 		} else { $category = false; }
@@ -187,8 +181,10 @@ class Organic_Widgets_Team_Section_Widget extends Organic_Widgets_Custom_Widget 
 
 		?>
 
-		<input id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" class="title" type="hidden" value="<?php echo $title; ?>">
-		<input id="<?php echo $this->get_field_id( 'text' ); ?>" name="<?php echo $this->get_field_name( 'text' ); ?>" class="text organic-widgets-wysiwyg-anchor" type="hidden" value="<?php echo $text; ?>">
+		<input id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" class="title" type="hidden" value="<?php echo esc_attr( $instance['title'] ); ?>">
+		<input id="<?php echo $this->get_field_id( 'text' ); ?>" name="<?php echo $this->get_field_name( 'text' ); ?>" class="text organic-widgets-wysiwyg-anchor" type="hidden" value="<?php echo esc_attr( $instance['text'] ); ?>">
+		<input id="<?php echo $this->get_field_id( 'filter' ); ?>" name="<?php echo $this->get_field_name( 'filter' ); ?>" class="filter" type="hidden" value="on">
+		<input id="<?php echo $this->get_field_id( 'visual' ); ?>" name="<?php echo $this->get_field_name( 'visual' ); ?>" class="visual" type="hidden" value="on">
 
 		<p>
 			<label for="<?php echo $this->get_field_id( 'category' ); ?>"><?php _e('Team Category:', ORGANIC_WIDGETS_18N) ?></label>
@@ -258,10 +254,43 @@ class Organic_Widgets_Team_Section_Widget extends Organic_Widgets_Custom_Widget 
 	public function update( $new_instance, $old_instance ) {
 
 		$instance = $old_instance;
+
+		/*--- Text/Title ----*/
+		if ( ! isset( $newinstance['filter'] ) )
+			$instance['filter'] = false;
+		if ( ! isset( $newinstance['visual'] ) )
+			$instance['visual'] = null;
+		// Upgrade 4.8.0 format.
+		if ( isset( $old_instance['filter'] ) && 'content' === $old_instance['filter'] ) {
+			$instance['visual'] = true;
+		}
+		if ( 'content' === $new_instance['filter'] ) {
+			$instance['visual'] = true;
+		}
+		if ( isset( $new_instance['visual'] ) ) {
+			$instance['visual'] = ! empty( $new_instance['visual'] );
+		}
+		// Filter is always true in visual mode.
+		if ( ! empty( $instance['visual'] ) ) {
+			$instance['filter'] = true;
+		}
+		if ( isset( $new_instance['title'] ) )
+			$instance['title'] = strip_tags( $new_instance['title'] );
+		if ( current_user_can( 'unfiltered_html' ) ) {
+			$instance['text'] = $new_instance['text'];
+		} else {
+			$instance['text'] = wp_kses_post( $new_instance['text'] );
+		}
+		// Widget Title
+		if ( isset( $new_instance['title'] )  && '' != $new_instance['title'] ) {
+			$instance['title'] = strip_tags( $new_instance['title'] );
+		} else {
+			$instance['title'] = '';
+		}
+		/*--- END Text/Title ----*/
+
 		if ( ! isset( $old_instance['created'] ) )
 			$instance['created'] = time();
-		if (isset( $new_instance['title'] ) )
-			$instance['title'] = strip_tags( $new_instance['title'] );
 		if (isset( $new_instance['bg_image_id'] ) )
 			$instance['bg_image_id'] = strip_tags( $new_instance['bg_image_id'] );
 		if (isset( $new_instance['bg_image'] ) )
@@ -270,11 +299,6 @@ class Organic_Widgets_Team_Section_Widget extends Organic_Widgets_Custom_Widget 
 			$instance['bg_color'] = strip_tags( $new_instance['bg_color'] );
 		} else {
 			$instance['bg_color'] = false;
-		}
-		if ( current_user_can( 'unfiltered_html' ) ) {
-			$instance['text'] = $new_instance['text'];
-		} else {
-			$instance['text'] = wp_kses_post( $new_instance['text'] );
 		}
 		if ( isset( $new_instance['category'] ) )
 			$instance['category'] = strip_tags( $new_instance['category'] );
@@ -293,8 +317,11 @@ class Organic_Widgets_Team_Section_Widget extends Organic_Widgets_Custom_Widget 
 
 		// Text Editor
 		wp_enqueue_editor();
-		wp_enqueue_script( 'organic-team-section-widgets', plugin_dir_url( __FILE__ ) . 'js/team-section-widgets.js', array( 'jquery' ) );
-		wp_add_inline_script( 'organic-team-section-widgets', 'wp.organicTeamSectionWidgets.init();', 'after' );
+		wp_enqueue_script( 'organic-widgets-team-section-widgets-text-title', plugin_dir_url( __FILE__ ) . 'js/team-section-widgets.js', array( 'jquery' ) );
+		wp_localize_script( 'organic-widgets-team-section-widgets-text-title', 'OrganicTeamSectionWidget', array(
+			'id_base' => $this->id_base,
+		) );
+		wp_add_inline_script( 'organic-widgets-team-section-widgets-text-title', 'wp.organicTeamSectionWidget.init();', 'after' );
 
 		wp_enqueue_media();
 

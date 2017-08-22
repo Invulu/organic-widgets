@@ -218,8 +218,11 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 		} else { $link_title = ''; }
 		?>
 
-		<input id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" class="title" type="hidden" value="<?php echo $title; ?>">
-		<input id="<?php echo $this->get_field_id( 'text' ); ?>" name="<?php echo $this->get_field_name( 'text' ); ?>" class="text organic-widgets-wysiwyg-anchor" type="hidden" value="<?php echo $text; ?>">
+		<input id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" class="title" type="hidden" value="<?php echo esc_attr( $instance['title'] ); ?>">
+		<input id="<?php echo $this->get_field_id( 'text' ); ?>" name="<?php echo $this->get_field_name( 'text' ); ?>" class="text organic-widgets-wysiwyg-anchor" type="hidden" value="<?php echo esc_attr( $instance['text'] ); ?>">
+		<input id="<?php echo $this->get_field_id( 'filter' ); ?>" name="<?php echo $this->get_field_name( 'filter' ); ?>" class="filter" type="hidden" value="on">
+		<input id="<?php echo $this->get_field_id( 'visual' ); ?>" name="<?php echo $this->get_field_name( 'visual' ); ?>" class="visual" type="hidden" value="on">
+
 		<p>
 			<label for="<?php echo $this->get_field_id( 'link_title' ); ?>"><?php _e('Button Text:', ORGANIC_WIDGETS_18N) ?></label>
 			<input class="widefat link_title" type="text" id="<?php echo $this->get_field_id( 'link_title' ); ?>" name="<?php echo $this->get_field_name( 'link_title' ); ?>" value="<?php echo $link_title; ?>" />
@@ -288,6 +291,41 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 	public function update( $new_instance, $old_instance ) {
 
 		$instance = array();
+
+		/*--- Text/Title ----*/
+		if ( ! isset( $newinstance['filter'] ) )
+			$instance['filter'] = false;
+		if ( ! isset( $newinstance['visual'] ) )
+			$instance['visual'] = null;
+		// Upgrade 4.8.0 format.
+		if ( isset( $old_instance['filter'] ) && 'content' === $old_instance['filter'] ) {
+			$instance['visual'] = true;
+		}
+		if ( 'content' === $new_instance['filter'] ) {
+			$instance['visual'] = true;
+		}
+		if ( isset( $new_instance['visual'] ) ) {
+			$instance['visual'] = ! empty( $new_instance['visual'] );
+		}
+		// Filter is always true in visual mode.
+		if ( ! empty( $instance['visual'] ) ) {
+			$instance['filter'] = true;
+		}
+		if ( isset( $new_instance['title'] ) )
+			$instance['title'] = strip_tags( $new_instance['title'] );
+		if ( current_user_can( 'unfiltered_html' ) ) {
+			$instance['text'] = $new_instance['text'];
+		} else {
+			$instance['text'] = wp_kses_post( $new_instance['text'] );
+		}
+		// Widget Title
+		if ( isset( $new_instance['title'] )  && '' != $new_instance['title'] ) {
+			$instance['title'] = strip_tags( $new_instance['title'] );
+		} else {
+			$instance['title'] = '';
+		}
+		/*--- END Text/Title ----*/
+
 		if ( ! isset( $old_instance['created'] ) )
 			$instance['created'] = time();
 		$instance['page_id'] = ( ! empty( $new_instance['page_id'] ) ) ? strip_tags( $new_instance['page_id'] ) : '';
@@ -298,12 +336,6 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 		}
 		$instance['bg_image_id'] = strip_tags( $new_instance['bg_image_id'] );
 		$instance['bg_image'] = strip_tags( $new_instance['bg_image'] );
-		$instance['title'] = strip_tags( $new_instance['title'] );
-		if ( current_user_can( 'unfiltered_html' ) ) {
-			$instance['text'] = $new_instance['text'];
-		} else {
-			$instance['text'] = wp_kses_post( $new_instance['text'] );
-		}
 		if ( isset( $new_instance['alignment'] ) )
 			$instance['alignment'] = strip_tags( $new_instance['alignment'] );
 		$instance['link_url'] = strip_tags( $new_instance['link_url'] );
@@ -333,8 +365,11 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 
 		// Text Editor
 		wp_enqueue_editor();
-		wp_enqueue_script( 'organic-featured-content-widgets', plugin_dir_url( __FILE__ ) . 'js/featured-content-widgets.js', array( 'jquery' ) );
-		wp_add_inline_script( 'organic-featured-content-widgets', 'wp.organicFeaturedContentWidgets.init();', 'after' );
+		wp_enqueue_script( 'organic-featured-content-widgets-text-title', plugin_dir_url( __FILE__ ) . 'js/featured-content-widgets.js', array( 'jquery' ) );
+		wp_localize_script( 'organic-featured-content-widgets-text-title', 'OrganicFeaturedContentWidget', array(
+			'id_base' => $this->id_base,
+		) );
+		wp_add_inline_script( 'organic-featured-content-widgets-text-title', 'wp.organicFeaturedContentWidget.init();', 'after' );
 
 		wp_enqueue_script( 'organic-widgets-module-groupable-widgets', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-groupable-widgets.js', array( 'jquery' ) );
 		wp_localize_script( 'organic-widgets-module-groupable-widgets', 'GroupableWidgets', array(

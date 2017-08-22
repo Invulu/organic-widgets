@@ -40,6 +40,9 @@
 .organic-widgets-groupable-indicator-purple {
   border-left: 4px solid #c17aff;
 }
+.organic-widgets-remove-image-button.button, .organic-widgets-remove-image-button.button:hover {
+  color: #fff;
+}
 /************************************************
 *	Welcome Screen
 ************************************************/
