@@ -353,7 +353,6 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 
 		// Text Editor
 		wp_enqueue_editor();
-		// wp_enqueue_script( 'organic-widgets-hero-widgets', plugin_dir_url( __FILE__ ) . 'js/hero-widgets.js', array( 'jquery' ) );
 		wp_enqueue_script( 'organic-widgets-hero-widgets-text-title', plugin_dir_url( __FILE__ ) . 'js/hero-widgets.js', array( 'jquery' ) );
 		wp_localize_script( 'organic-widgets-hero-widgets-text-title', 'OrganicHeroWidget', array(
 			'id_base' => $this->id_base,
