@@ -8,13 +8,13 @@ Tested up to: 4.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Transform the core WordPress Customizer into a page builder. Display and arrange widgets on any page as beautiful content sections using any theme.
+A collection of custom widgets to be used within the customizer to display and arrange various types of full width content sections, on any page.
 
 == Description ==
 
-Transform the core WordPress Customizer into a page builder. Display and arrange widgets on any page as beautiful content sections, such as featured content slideshows, testimonials, team members, portfolios, feature lists, pricing tables and more. Whoa, cool.
+Transform the core WordPress Customizer into a page builder! Display and arrange custom widgets as full width content sections on any page — such as post slideshows, testimonials, team members, portfolios, feature lists, pricing tables and more. Whoa, cool.
 
-Organic Customizer Widgets introduces several custom widgets that can be used for displaying content in new ways. It includes a new Page Template, that when applied, creates a new widget area on that page. This allows users to utilize the core WordPress customizer interface to add widgets to their page, displaying them as page sections without the need for shortcodes or page builders. The widgets include basic styles, but will inherit styles from whichever theme is being used.
+Organic Customizer Widgets introduces several widgets for displaying content in new ways. It includes a new page template, that when applied, creates a new widget area on that page. This allows the core WordPress customizer to be used like a page builder by adding widgets as content sections to any page. Each widget includes basic styles, but will otherwise inherit styles from the active theme.
 
 **Video Demo:**
 
