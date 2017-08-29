@@ -18,7 +18,7 @@
 				touch							: false,
 				controlNav				: false,
 				animationLoop			: true,
-				smoothHeight			: true,
+				smoothHeight			: content_slider.attr('data-height'),
 				pauseOnAction			: true,
 				pauseOnHover			: true,
 

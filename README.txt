@@ -2,7 +2,7 @@
 Contributors: jqlee85, itsdavidmorgan, organicthemes, raid33
 Donate link: https://organicthemes.com
 Tags: customizer, widgets, testimonials, portfolio, features, fontawesome, icons, pricing tables, page builder, full-width sections, custom widget areas, slideshows
-Stable tag: 1.0.6
+Stable tag: 1.0.7
 Requires at least: 4.8
 Tested up to: 4.8
 License: GPLv2 or later
@@ -12,13 +12,15 @@ A collection of custom widgets to be used within the customizer to display and a
 
 == Description ==
 
-Transform the core WordPress Customizer into a page builder! Display and arrange custom widgets as full width content sections on any page — such as post slideshows, testimonials, team members, portfolios, feature lists, pricing tables and more. Whoa, cool.
+Display and arrange custom widgets as full width content sections on any page — such as post slideshows, testimonials, team members, portfolios, feature lists, pricing tables and more. The widgets are designed to work with virtually any theme or page builder that uses widgets.
 
 Organic Customizer Widgets introduces several widgets for displaying content in new ways. It includes a new page template, that when applied, creates a new widget area on that page. This allows the core WordPress customizer to be used like a page builder by adding widgets as content sections to any page. Each widget includes basic styles, but will otherwise inherit styles from the active theme.
 
+[Live Demo](https://organicthemes.com/demo/startup/widgets/ "Live Widget Demos")
+
 **Video Demo:**
 
-https://www.youtube.com/watch?v=PwQJ5L0_oiM&t=13s
+[youtube https://www.youtube.com/watch?v=PwQJ5L0_oiM&t=13s]
 
 = Widgets Included =
 
@@ -84,6 +86,12 @@ A: Most of the Organic Widgets are designed to be used as full-width sections on
 5. A list of some of the custom widgets included as seen within the customizer.
 
 == Changelog ==
+
+= 1.0.7 =
+* Updated plugin description
+* Added fixed height option to content slideshow widget
+* Updated Structure Lite screenshot
+* General cleanup
 
 = 1.0.6 =
 * Updates to testimonial widget

@@ -62,6 +62,9 @@ class Organic_Widgets_Content_Slideshow_Section_Widget extends Organic_Widgets_C
 		$max_posts = ( isset( $instance['max_posts'] ) ) ? $instance['max_posts'] : 5;
 		$slideshow_transition_style = ( isset( $instance['slideshow_transition_style'] ) ) ? $instance['slideshow_transition_style'] : 'fade';
 		$slideshow_interval = ( isset( $instance['slideshow_interval'] ) ) ? $instance['slideshow_interval'] : 12000;
+		if ( isset( $instance['fixed_slide_height'] ) ) {
+			$fixed_slide_height = $instance['fixed_slide_height'];
+		} else { $fixed_slide_height = 0; }
 
 		echo $args['before_widget'];
 		?>
@@ -90,12 +93,12 @@ class Organic_Widgets_Content_Slideshow_Section_Widget extends Organic_Widgets_C
 			<?php if ( $slideshow_query->have_posts() ) { ?>
 
 				<!-- BEGIN .flexslider -->
-				<div class="organic-widgets-flexslider loading" data-speed="<?php echo esc_attr($slideshow_interval); ?>" data-transition="<?php echo esc_attr($slideshow_transition_style); ?>">
+				<div class="organic-widgets-flexslider loading" data-speed="<?php echo esc_attr($slideshow_interval); ?>" data-transition="<?php echo esc_attr($slideshow_transition_style); ?>" data-height="<?php echo esc_attr($fixed_slide_height); ?>">
 
 					<div class="preloader"></div>
 
 					<!-- BEGIN .slides -->
-					<ul class="slides">
+					<ul class="slides <?php if ( ! empty($fixed_slide_height) ) { echo 'organic-widgets-fixed-slide-height'; } ?>">
 
 						<?php	while ( $slideshow_query->have_posts() ) {
 
@@ -163,8 +166,6 @@ class Organic_Widgets_Content_Slideshow_Section_Widget extends Organic_Widgets_C
 
 		<?php echo $args['after_widget'];
 
-
-
 	}
 	/**
 	 * Back-end widget form.
@@ -177,27 +178,34 @@ class Organic_Widgets_Content_Slideshow_Section_Widget extends Organic_Widgets_C
 
 		// Setup Variables.
 		$this->id_prefix = $this->get_field_id('');
+
 		if ( isset( $instance['category'] ) ) {
 			$category = $instance['category'];
 		} else { $category = false; }
+
 		if ( isset( $instance['num_columns'] ) ) {
 			$num_columns = $instance['num_columns'];
 		} else { $num_columns = 3; }
+
 		if ( isset( $instance['max_posts'] ) ) {
 			$max_posts = $instance['max_posts'];
 		} else { $max_posts = 5; }
+
 		if ( isset( $instance['bg_color'] ) ) {
 			$bg_color = $instance['bg_color'];
 		} else { $bg_color = false; }
+
 		if ( isset( $instance['bg_image_id'] ) ) {
 			$bg_image_id = $instance['bg_image_id'];
 		} else { $bg_image_id = 0; }
+
 		if ( isset( $instance['bg_image_id'] ) && isset( $instance['bg_image'] ) ) {
 			$bg_image = $instance['bg_image'];
 		} else { $bg_image = false; }
+
 		$slideshow_transition_style = ( isset( $instance['slideshow_transition_style'] ) ) ? $instance['slideshow_transition_style'] : 'fade';
 		$slideshow_interval = ( isset( $instance['slideshow_interval'] ) ) ? $instance['slideshow_interval'] : 12000;
-
+		$fixed_slide_height = ( isset( $instance['fixed_slide_height'] ) ) ? $instance['fixed_slide_height'] : 0;
 
 		?>
 
@@ -237,6 +245,11 @@ class Organic_Widgets_Content_Slideshow_Section_Widget extends Organic_Widgets_C
 		<?php $this->content_aligner_input_markup( $instance ); ?>
 
 		<p>
+			<input class="checkbox" type="checkbox" value="1" <?php checked( $fixed_slide_height, '1' ); ?> id="<?php echo $this->get_field_id( 'fixed_slide_height' ); ?>" name="<?php echo $this->get_field_name( 'fixed_slide_height' ); ?>" />
+			<label for="<?php echo $this->get_field_id( 'fixed_slide_height' ); ?>"><?php _e('Fixed Height Slideshow', ORGANIC_WIDGETS_18N); ?></label>
+		</p>
+
+		<p>
 			<label for="<?php echo $this->get_field_id( 'max_posts' ); ?>"><?php _e('Max Number of Posts:', ORGANIC_WIDGETS_18N) ?></label>
 			<input type="number" min="1" max="10" value="<?php echo $max_posts; ?>" id="<?php echo $this->get_field_id('max_posts'); ?>" name="<?php echo $this->get_field_name('max_posts'); ?>" class="widefat" style="width:100%;"/>
 		</p>
@@ -260,9 +273,9 @@ class Organic_Widgets_Content_Slideshow_Section_Widget extends Organic_Widgets_C
 		$instance = $old_instance;
 		if ( ! isset( $old_instance['created'] ) )
 			$instance['created'] = time();
-		if (isset( $new_instance['bg_image_id'] ) )
+		if ( isset( $new_instance['bg_image_id'] ) )
 			$instance['bg_image_id'] = strip_tags( $new_instance['bg_image_id'] );
-		if (isset( $new_instance['bg_image'] ) )
+		if ( isset( $new_instance['bg_image'] ) )
 			$instance['bg_image'] = strip_tags( $new_instance['bg_image'] );
 		if ( isset( $new_instance['bg_color'] ) && $this->check_hex_color( $new_instance['bg_color'] ) ) {
 			$instance['bg_color'] = strip_tags( $new_instance['bg_color'] );
@@ -279,8 +292,11 @@ class Organic_Widgets_Content_Slideshow_Section_Widget extends Organic_Widgets_C
 			$instance['slideshow_transition_style'] = $this->organic_widgets_sanitize_transition_style( strip_tags( $new_instance['slideshow_transition_style'] ) );
 		if ( isset( $new_instance['slideshow_interval'] ) )
 			$instance['slideshow_interval'] = $this->organic_widgets_sanitize_transition_interval( (int) strip_tags( $new_instance['slideshow_interval'] ) );
-
-
+		if ( isset( $new_instance['fixed_slide_height'] ) && ! empty( $new_instance['fixed_slide_height'] ) ) {
+			$instance['fixed_slide_height'] = 1;
+		} else {
+			$instance['fixed_slide_height'] = 0;
+		}
 
 		return $instance;
 	}
@@ -319,7 +335,5 @@ class Organic_Widgets_Content_Slideshow_Section_Widget extends Organic_Widgets_C
 		if ( ! wp_script_is('organic-widgets-backgroundimagebrightness-js') ) { wp_enqueue_script( 'organic-widgets-backgroundimagebrightness-js', ORGANIC_WIDGETS_BASE_DIR . 'public/js/jquery.backgroundbrightness.js', array( 'jquery' ) ); }
 
 	}
-
-
 
 } // class Organic_Widgets_Content_Slideshow_Section_Widget

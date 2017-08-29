@@ -846,6 +846,7 @@
 	overflow: hidden;
 	zoom: 1;
 }
+.organic-widgets-flexslider .slides.organic-widgets-fixed-slide-height,
 .organic-widgets-flexslider.organic-widgets-single-slide .slides {
   display: flex;
 }
@@ -861,6 +862,9 @@
 	-webkit-backface-visibility: hidden;
 	background-position: center center;
 	background-size: cover;
+}
+.organic-widgets-flexslider .slides.organic-widgets-fixed-slide-height > li {
+  align-self: stretch;
 }
 .organic-widgets-flexslider .slides img {
 	width: 100%;

@@ -341,8 +341,6 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 		if ( isset( $new_instance['button_one_url'] ) )
 			$instance['button_two_url'] = strip_tags( $new_instance['button_two_url'] );
 
-
-
 		return $instance;
 	}
 
