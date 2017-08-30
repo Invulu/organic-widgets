@@ -262,6 +262,12 @@
 *	Featured Product Section Widget
 ************************************************/
 
+.organic-widgets-featured-product-section.organic-widgets-full-height-section {
+  min-height: 100vh;
+}
+.organic-widgets-featured-product-section.organic-widgets-fixed-bg-img {
+  background-attachment: fixed;
+}
 .organic-widgets-section.organic-widgets-featured-product-section .organic-widgets-content {
   display: flex;
   height: auto;
