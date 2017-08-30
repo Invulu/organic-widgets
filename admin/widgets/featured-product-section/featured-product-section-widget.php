@@ -102,7 +102,7 @@ class Organic_Widgets_Featured_Product_Section_Widget extends Organic_Widgets_Cu
 			<div class="organic-widgets-aligner <?php if ( ! empty( $instance['alignment'] ) ) { echo 'organic-widgets-aligner-'.esc_attr( $instance['alignment'] ); } else { echo 'organic-widgets-aligner-middle-center'; } ?>">
 
 				<!-- BEGIN .organic-widgets-content -->
-				<div class="organic-widgets-content">
+				<div class="organic-widgets-content organic-widgets-flex-row">
 
 					<?php if ( ! empty( $instance['title'] ) || ! empty( $instance['text'] ) || ! empty( $instance['button_one_url'] ) ) { ?>
 
