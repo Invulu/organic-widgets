@@ -7,7 +7,7 @@
  * @package           Organic_Widgets
  *
  * @wordpress-plugin
- * Plugin Name:       Customizer Widgets
+ * Plugin Name:       Organic Customizer Widgets
  * Plugin URI:        https://organicthemes.com/organic-customizer-widgets
  * Description:       Transform the core WordPress Customizer into a page builder. Display and arrange widgets on any page as beautiful content sections, such as featured content slideshows, testimonials, team members, portfolios, feature lists, pricing tables and more. Whoa, cool.
  * Version:           1.0.8
