@@ -34,8 +34,7 @@ class Organic_Widgets_Featured_Product_Section_Widget extends Organic_Widgets_Cu
 		// BG Options
 		$this->bg_options = array(
 			'color' => true,
-			'image' => true,
-			'video' => true
+			'image' => true
 		);
 
 		// Admin Scripts
@@ -364,8 +363,8 @@ class Organic_Widgets_Featured_Product_Section_Widget extends Organic_Widgets_Cu
 		if ( ! empty( $instance['visual'] ) ) {
 			$instance['filter'] = true;
 		}
-		if ( isset( $new_instance['title'] ) )
-			$instance['title'] = strip_tags( $new_instance['title'] );
+		// if ( isset( $new_instance['title'] ) )
+		$instance['title'] = strip_tags( $new_instance['title'] );
 		if ( current_user_can( 'unfiltered_html' ) ) {
 			$instance['text'] = $new_instance['text'];
 		} else {
