@@ -87,6 +87,13 @@ A: Most of the Organic Widgets are designed to be used as full-width sections on
 
 == Changelog ==
 
+= 1.0.8 =
+* Added featured product widget
+* Fixed button links for hero widget
+* Updated background image script prefixes
+* Updated link input styles to condense widget options
+* Additional style tweaks
+
 = 1.0.7 =
 * Updated plugin description
 * Added fixed height option to content slideshow widget

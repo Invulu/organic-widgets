@@ -43,6 +43,14 @@
 .organic-widgets-remove-image-button.button, .organic-widgets-remove-image-button.button:hover {
   color: #fff;
 }
+.organic-widgets-input-half {
+  float: left;
+  width: 49%;
+}
+.organic-widgets-input-half.last {
+  float: right;
+}
+
 /************************************************
 *	Welcome Screen
 ************************************************/
@@ -205,13 +213,14 @@ div.mce_inline_error {
 .organic-widgets-content-alignment {
   display: block;
   margin: 1em auto 2em;
+  overflow: hidden;
 }
 .organic-widgets-content-alignment-table {
+  display: table;
   border-collapse: collapse;
   table-layout: fixed;
   width: 100%;
   max-width: 120px;
-  border-radius: 5px;
 }
 .organic-widgets-content-alignment-table td {
   position: relative;
@@ -515,9 +524,8 @@ div.mce_inline_error {
   line-height: 10px;
   margin: 6px auto 0;
 }
-.organic-widgets-feature-select-item:nth-child(5n){
+.organic-widgets-feature-select-item:nth-child(5n) {
   border-right: none;
-
 }
 /* Change color of dropdown links on hover */
 .organic-widgets-feature-list-select-dropdown .organic-widgets-feature-select-item:hover {
@@ -596,6 +604,15 @@ div.mce_inline_error {
 #available-widgets [class*='organic_widgets_hero'] .widget-title::before {
 	font-family: 'FontAwesome';
 	content: '\f091';
+}
+
+/************************************************
+*	Featured Product Section
+************************************************/
+
+#available-widgets [class*='organic_widgets_featured_product'] .widget-title::before {
+	font-family: 'FontAwesome';
+	content: '\f1b2';
 }
 
 /************************************************

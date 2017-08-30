@@ -142,12 +142,9 @@
   content: '';
   clear: both;
 }
-.organic-widgets-title + .organic-widgets-text p {
-  font-size: 120%;
-}
 .organic-widgets-text {
   padding-top: 0px;
-  padding-bottom: 24px;
+  padding-bottom: 0px;
 }
 .organic-widgets-text p {
   padding: 6px 0px;
@@ -259,6 +256,57 @@
 .organic-widgets-hero-information .organic-widgets-text {
   font-size: 120%;
   padding-bottom: 0px;
+}
+
+/************************************************
+*	Featured Product Section Widget
+************************************************/
+
+.organic-widgets-section.organic-widgets-featured-product-section .organic-widgets-content {
+  display: flex;
+  height: auto;
+}
+.organic-widgets-featured-product-section .organic-widgets-aligner-middle-left .organic-widgets-content,
+.organic-widgets-featured-product-section .organic-widgets-aligner-middle-center .organic-widgets-content,
+.organic-widgets-featured-product-section .organic-widgets-aligner-middle-right .organic-widgets-content {
+  align-items: center;
+}
+.organic-widgets-featured-product-section .organic-widgets-aligner-bottom-left .organic-widgets-content,
+.organic-widgets-featured-product-section .organic-widgets-aligner-bottom-center .organic-widgets-content,
+.organic-widgets-featured-product-section .organic-widgets-aligner-bottom-right .organic-widgets-content {
+  align-items: flex-end;
+}
+.organic-widgets-featured-product-section .organic-widgets-aligner-top-right .organic-widgets-content,
+.organic-widgets-featured-product-section .organic-widgets-aligner-bottom-right .organic-widgets-content,
+.organic-widgets-featured-product-section .organic-widgets-aligner-middle-right .organic-widgets-content {
+  flex-direction: row-reverse;
+}
+.organic-widgets-featured-product-information {
+  padding-right: 48px;
+  box-sizing: border-box;
+}
+.organic-widgets-featured-product-information .organic-widgets-button-holder {
+  text-align: left;
+}
+.organic-widgets-aligner-middle-right .organic-widgets-featured-product-information,
+.organic-widgets-aligner-top-right .organic-widgets-featured-product-information,
+.organic-widgets-aligner-bottom-right .organic-widgets-featured-product-information {
+  padding-right: 0px;
+  padding-left: 48px;
+}
+.organic-widgets-featured-product-item {
+  display: flex;
+  position: relative;
+  max-width: 46%;
+}
+.organic-widgets-featured-product-img {
+  line-height: 0;
+}
+.organic-widgets-featured-product-item .organic-widgets-button-holder {
+  position: absolute;
+  align-self: center;
+  text-align: center;
+  width: 100%;
 }
 
 /************************************************

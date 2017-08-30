@@ -6,13 +6,13 @@ if ( !defined('ABSPATH') )
 	die( '-1' );
 
 add_action( 'widgets_init', function(){
-	register_widget( 'Organic_Widgets_Hero_Section_Widget' );
+	register_widget( 'Organic_Widgets_Featured_Product_Section_Widget' );
 });
 
 /**
- * Adds Organic_Widgets_Hero_Section_Widget widget.
+ * Adds Organic_Widgets_Featured_Product_Section_Widget widget.
  */
-class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget {
+class Organic_Widgets_Featured_Product_Section_Widget extends Organic_Widgets_Custom_Widget {
 
 	const CUSTOM_IMAGE_SIZE_SLUG = 'organic_widgets_widget_image_upload';
 
@@ -21,17 +21,17 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 	 */
 	function __construct() {
 		parent::__construct(
-			'organic_widgets_hero_section', // Base ID
-			__( 'Organic Hero', ORGANIC_WIDGETS_18N ), // Name
+			'organic_widgets_featured_product_section', // Base ID
+			__( 'Organic Featured Product', ORGANIC_WIDGETS_18N ), // Name
 			array(
-				'description' => __( 'A hero section with a background image and call to action.', ORGANIC_WIDGETS_18N ),
+				'description' => __( 'A section for featuring a single product image with a link.', ORGANIC_WIDGETS_18N ),
 				'customize_selective_refresh' => true,
 			) // Args
 		);
 
 		$this->id_prefix = $this->get_field_id('');
 
-		// Bg options
+		// BG Options
 		$this->bg_options = array(
 			'color' => true,
 			'image' => true,
@@ -60,6 +60,8 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 		$bg_image = ( isset( $instance['bg_image'] ) && '' != $instance['bg_image'] ) ? $instance['bg_image'] : false;
 		$bg_color = ( isset( $instance['bg_color'] ) && '' != $instance['bg_color'] ) ? $instance['bg_color'] : false;
 		$bg_video  = ( isset( $instance['bg_video'] ) && $instance['bg_video'] ) ? $instance['bg_video'] : false;
+		$featured_image_id = isset( $instance['featured_image_id'] ) ? $instance['featured_image_id'] : false;
+		$featured_image = ( isset( $instance['featured_image'] ) && '' != $instance['featured_image'] ) ? $instance['featured_image'] : false;
 		if ( isset( $instance['full_window_height'] ) ) {
 			$full_window_height = $instance['full_window_height'];
 		} else { $full_window_height = false; }
@@ -72,7 +74,7 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 		?>
 
 		<!-- BEGIN .organic-widgets-section -->
-		<div class="organic-widgets-section organic-widgets-hero-section <?php if ($full_window_height) echo 'organic-widgets-full-height-section'; ?> <?php if ($bg_image_fixed) echo 'organic-widgets-fixed-bg-img'; ?>" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
+		<div class="organic-widgets-section organic-widgets-featured-product-section <?php if ($full_window_height) echo 'organic-widgets-full-height-section'; ?> <?php if ($bg_image_fixed) echo 'organic-widgets-fixed-bg-img'; ?>" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
 
 			<?php
 			// Video Background Section.
@@ -104,8 +106,8 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 
 					<?php if ( ! empty( $instance['title'] ) || ! empty( $instance['text'] ) || ! empty( $instance['button_one_url'] ) ) { ?>
 
-						<!-- BEGIN .organic-widgets-hero-information -->
-						<div class="organic-widgets-hero-information">
+						<!-- BEGIN .organic-widgets-featured-product-information -->
+						<div class="organic-widgets-featured-product-information">
 
 						<?php if ( ! empty( $instance['title'] ) ) { ?>
 							<h2 class="organic-widgets-title"><?php echo apply_filters( 'widget_title', $instance['title'] ); ?></h2>
@@ -126,7 +128,23 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 							</div>
 						<?php } ?>
 
-					<!-- END .organic-widgets-hero-information -->
+					<!-- END .organic-widgets-featured-product-information -->
+					</div>
+
+					<?php } ?>
+
+					<?php if ( $instance['featured_image_id'] > 0 ) { ?>
+
+					<!-- BEGIN .organic-widgets-featured-product-item -->
+					<div class="organic-widgets-featured-product-item">
+
+						<?php if ( ! empty( $instance['button_three_url'] ) ) { ?>
+							<a class="organic-widgets-featured-product-img" href="<?php echo esc_url( $instance['button_three_url'] );?>"><img src="<?php echo $instance['featured_image']; ?>" alt="<?php __( 'Product Image', ORGANIC_WIDGETS_18N ) ?>" /></a>
+						<?php } else { ?>
+							<div class="organic-widgets-featured-product-img"><img src="<?php echo $instance['featured_image']; ?>" alt="<?php __( 'Product Image', ORGANIC_WIDGETS_18N ) ?>" /></div>
+						<?php } ?>
+
+					<!-- END .organic-widgets-featured-product-item -->
 					</div>
 
 					<?php } ?>
@@ -181,6 +199,14 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 			$bg_color = $instance['bg_color'];
 		} else { $bg_color = false; }
 
+		if ( isset( $instance['featured_image_id'] ) ) {
+			$featured_image_id = $instance['featured_image_id'];
+		} else { $featured_image_id = 0; }
+
+		if ( isset( $instance['featured_image_id'] ) && isset( $instance['featured_image'] ) ) {
+			$featured_image = $instance['featured_image'];
+		} else { $featured_image = false; }
+
 		if ( isset( $instance['full_window_height'] ) ) {
 			$full_window_height = $instance['full_window_height'];
 		} else { $full_window_height = false; }
@@ -214,6 +240,24 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'button_two_url' ); ?>" name="<?php echo $this->get_field_name( 'button_two_url' ); ?>" value="<?php if ( ! empty( $instance['button_two_url'] ) ) echo $instance['button_two_url']; ?>" />
 		</p>
 
+		<p>
+			<label for="<?php echo $this->get_field_id( 'featured_image' ); ?>"><?php _e( 'Product Image:', ORGANIC_WIDGETS_18N ); ?></label>
+			<div class="uploader">
+				<input type="submit" class="button" name="<?php echo $this->get_field_name('featured_image_uploader_button'); ?>" id="<?php echo $this->get_field_id('featured_image_uploader_button'); ?>" value="<?php if ( $featured_image_id ) { _e( 'Change Image', ORGANIC_WIDGETS_18N ); } else { _e( 'Select Image', ORGANIC_WIDGETS_18N ); }?>" onclick="organicWidgetFeaturedImage.uploader( '<?php echo $this->id; ?>', '<?php echo $this->id_prefix; ?>' ); return false;" />
+				<input type="submit" class="organic-widgets-remove-image-button button" name="<?php echo $this->get_field_name('featured_image_remover_button'); ?>" id="<?php echo $this->get_field_id('featured_image_remover_button'); ?>" value="<?php _e('Remove Image', ORGANIC_WIDGETS_18N); ?>" onclick="organicWidgetFeaturedImage.remover( '<?php echo $this->id; ?>', '<?php echo $this->id_prefix; ?>', 'featured_image_remover_button' ); return false;" <?php if ( $featured_image_id < 1 ) { echo( 'style="display:none;"' ); } ?>/>
+				<div class="organic-widgets-widget-image-preview" id="<?php echo $this->get_field_id('featured_image_preview'); ?>">
+					<?php echo $this->get_featured_image_html($instance); ?>
+				</div>
+				<input type="hidden" id="<?php echo $this->get_field_id('featured_image_id'); ?>" name="<?php echo $this->get_field_name('featured_image_id'); ?>" value="<?php echo abs($featured_image_id); ?>" />
+				<input type="hidden" id="<?php echo $this->get_field_id('featured_image'); ?>" name="<?php echo $this->get_field_name('featured_image'); ?>" value="<?php echo $featured_image; ?>" />
+			</div>
+		</p>
+
+		<p>
+			<label for="<?php echo $this->get_field_id( 'button_three_url' ); ?>"><?php _e('Product Image Link URL:', ORGANIC_WIDGETS_18N); ?></label>
+			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'button_three_url' ); ?>" name="<?php echo $this->get_field_name( 'button_three_url' ); ?>" value="<?php if ( ! empty( $instance['button_three_url'] ) ) echo $instance['button_three_url']; ?>" />
+		</p>
+
 		<?php $this->content_aligner_input_markup( $instance ); ?>
 
 		<p>
@@ -231,6 +275,37 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 	}
 
 	/**
+	 * Render the featured image html output.
+	 *
+	 * @since    	1.0.0
+	 *
+	 * @param 	array 	$instance 		Widget instance
+	 * @return 	string 	image html
+	 */
+	protected function get_featured_image_html( $instance ) {
+
+		if ( isset( $instance['featured_image_id'] ) ) {
+			$image_id = $instance['featured_image_id'];
+		} else { $image_id = 0; }
+
+		// If there is an bg_image, use it to render the image. Eventually we should kill this and simply rely on bg_image_ids.
+		if ( (int) $image_id > 0 ) {
+			$size = 'organic-widgets-featured-large';
+			$img_array = wp_get_attachment_image( $image_id, 'full', false );
+			if ( is_array( $img_array ) ) {
+				$output = '<img src="'.$img_array[0].'" />';
+			} else {
+				$output = $img_array;
+			}
+		} else {
+			$output = '';
+		}
+
+		return $output;
+
+	}
+
+	/**
 	 * Render form template scripts.
 	 *
 	 *
@@ -239,7 +314,7 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 	public function render_control_template_scripts() {
 
 		?>
-		<script type="text/html" id="tmpl-widget-organic_widgets_hero_section-control-fields">
+		<script type="text/html" id="tmpl-widget-organic_widgets_featured_product_section-control-fields">
 
 			<# var elementIdPrefix = 'el' + String( Math.random() ).replace( /\D/g, '' ) + '_' #>
 
@@ -332,6 +407,10 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 		} else {
 			$instance['bg_color'] = false;
 		}
+		if ( isset( $new_instance['featured_image_id'] ) )
+			$instance['featured_image_id'] = strip_tags( $new_instance['featured_image_id'] );
+		if ( isset( $new_instance['featured_image'] ) )
+			$instance['featured_image'] = strip_tags( $new_instance['featured_image'] );
 		if ( isset( $new_instance['button_one_text'] ) )
 			$instance['button_one_text'] = strip_tags( $new_instance['button_one_text'] );
 		if ( isset( $new_instance['button_one_url'] ) )
@@ -340,6 +419,8 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 			$instance['button_two_text'] = strip_tags( $new_instance['button_two_text'] );
 		if ( isset( $new_instance['button_two_url'] ) )
 			$instance['button_two_url'] = strip_tags( $new_instance['button_two_url'] );
+		if ( isset( $new_instance['button_three_url'] ) )
+			$instance['button_three_url'] = strip_tags( $new_instance['button_three_url'] );
 
 		return $instance;
 	}
@@ -351,11 +432,11 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 
 		// Text Editor
 		wp_enqueue_editor();
-		wp_enqueue_script( 'organic-widgets-hero-widgets-text-title', plugin_dir_url( __FILE__ ) . 'js/hero-widgets.js', array( 'jquery' ) );
-		wp_localize_script( 'organic-widgets-hero-widgets-text-title', 'OrganicHeroWidget', array(
+		wp_enqueue_script( 'organic-widgets-featured-product-widgets-text-title', plugin_dir_url( __FILE__ ) . 'js/featured-product-widgets.js', array( 'jquery' ) );
+		wp_localize_script( 'organic-widgets-featured-product-widgets-text-title', 'OrganicFeaturedProductWidget', array(
 			'id_base' => $this->id_base,
 		) );
-		wp_add_inline_script( 'organic-widgets-hero-widgets-text-title', 'wp.organicHeroWidget.init();', 'after' );
+		wp_add_inline_script( 'organic-widgets-featured-product-widgets-text-title', 'wp.organicFeaturedProductWidget.init();', 'after' );
 
 		// Content Aligner
 		wp_enqueue_script( 'organic-widgets-module-content-aligner', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-content-aligner.js', array( 'jquery' ) );
@@ -367,7 +448,13 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
     wp_enqueue_script( 'organic-widgets-module-color-picker', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-color-picker.js', array( 'jquery', 'media-upload', 'media-views', 'wp-color-picker' ) );
 
 		wp_enqueue_script( 'organic-widgets-module-image-background', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-image-background.js', array( 'jquery', 'media-upload', 'media-views', 'wp-color-picker' ) );
-		wp_localize_script( 'organic-widgets-module-image-background', 'HeroWidget', array(
+		wp_localize_script( 'organic-widgets-module-image-background', 'OrganicWidgetBG', array(
+			'frame_title' => __( 'Select an Image', ORGANIC_WIDGETS_18N ),
+			'button_title' => __( 'Insert Into Widget', ORGANIC_WIDGETS_18N ),
+		) );
+
+		wp_enqueue_script( 'organic-widgets-module-image-featured', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-image-featured.js', array( 'jquery', 'media-upload', 'media-views' ) );
+		wp_localize_script( 'organic-widgets-module-image-featured', 'OrganicWidgetIMG', array(
 			'frame_title' => __( 'Select an Image', ORGANIC_WIDGETS_18N ),
 			'button_title' => __( 'Insert Into Widget', ORGANIC_WIDGETS_18N ),
 		) );
@@ -383,4 +470,4 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 
 	}
 
-} // class Organic_Widgets_Hero_Section_Widget
+} // class Organic_Widgets_Featured_Product_Section_Widget

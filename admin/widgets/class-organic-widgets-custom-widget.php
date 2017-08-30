@@ -208,7 +208,7 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
       wp_enqueue_script( 'organic-widgets-module-image-background', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-image-background.js', array( 'jquery', 'media-upload', 'media-views', 'wp-color-picker' ) );
     }
 		if ( ! wp_script_is( 'organic-widgets-module-image-background', 'enqueued' ) ) {
-      wp_localize_script( 'organic-widgets-module-image-background', 'SubpageWidget', array(
+      wp_localize_script( 'organic-widgets-module-image-background', 'OrganicWidgetBG', array(
   			'frame_title' => __( 'Select an Image', ORGANIC_WIDGETS_18N ),
   			'button_title' => __( 'Insert Into Widget', ORGANIC_WIDGETS_18N ),
   		) );
