@@ -51,6 +51,9 @@
 .organic-widgets-default-title {
   display: none;
 }
+.organic-widgets-title + .organic-widgets-text {
+  margin-bottom: 24px;
+}
 
 /************************************************
 *	Core Widget Styles
