@@ -786,8 +786,7 @@
 }
 .organic-widget .organic-widgets-social-icons li a:hover {
   color: #ffffff !important;
-  border-color: #666666;
-  background-color: #ffffff;
+  background-color: #000000;
 }
 .organic-widget .organic-widgets-social-icons li a:hover {
 	transition: all .25s;
