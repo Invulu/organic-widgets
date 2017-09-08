@@ -444,7 +444,8 @@
 *	Featured Content Widget
 ************************************************/
 
-.organic-widgets-featured-content-section .organic-widgets-card {
+.organic-widgets-featured-content-section .organic-widgets-card,
+.organic-widgets-featured-content-section .organic-widgets-content .information {
   text-align: center;
 }
 .organic-widgets-featured-content-section .organic-widgets-img {
