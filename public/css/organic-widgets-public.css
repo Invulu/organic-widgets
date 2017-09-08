@@ -444,12 +444,21 @@
 *	Featured Content Widget
 ************************************************/
 
+.organic-widgets-featured-content-section .organic-widgets-card {
+  text-align: center;
+}
 .organic-widgets-featured-content-section .organic-widgets-img {
   line-height: 0;
   margin-bottom: 24px;
 }
 .organic-widgets-group .organic-widgets-featured-content-section .organic-widgets-img {
   margin-bottom: 0;
+}
+.organic-widgets-group-container .organic-widget {
+  border-left: 1px solid rgba(0, 0, 0, 0.12);
+}
+.organic-widgets-group-container .organic-widget:first-child {
+  border-left: none;
 }
 
 /************************************************

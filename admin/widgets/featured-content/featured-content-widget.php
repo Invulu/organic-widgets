@@ -150,7 +150,7 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 
 							<?php if ( ! empty( $link_url ) ) { ?>
 								<br />
-								<a class="more-link" href="<?php echo esc_url( $link_url ); ?>">
+								<a class="button" href="<?php echo esc_url( $link_url ); ?>">
 									<?php if ( ! empty( $link_title ) ) { ?>
 										<?php echo $link_title ?>
 									<?php } else { ?>
