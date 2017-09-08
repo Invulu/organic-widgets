@@ -1,18 +1,18 @@
 === Organic Customizer Widgets ===
 Contributors: jqlee85, itsdavidmorgan, organicthemes, raid33
 Donate link: https://organicthemes.com
-Tags: customizer, widgets, testimonials, portfolio, features, fontawesome, icons, pricing tables, page builder, full-width sections, custom widget areas, slideshows
+Tags: customizer, widgets, testimonials, portfolio, features, fontawesome, icons, pricing tables, page builder, full-width sections, custom widget areas, slideshows, bundle, custom widgets
 Stable tag: 1.0.8
 Requires at least: 4.8
 Tested up to: 4.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-A collection of custom widgets to be used within the customizer to display and arrange various types of full width content sections, on any page.
+A collection of 12 custom widgets to use within the customizer. Display and arrange them as various types of full width content sections on any page.
 
 == Description ==
 
-Display and arrange custom widgets as full width content sections on any page — such as post slideshows, testimonials, team members, portfolios, feature lists, pricing tables and more. The widgets are designed to work with virtually any theme or page builder that uses widgets.
+Display and arrange custom widgets as full width content sections on any page — such as post slideshows, testimonials, team members, portfolios, feature lists, pricing tables products and more. The widgets are designed to work with virtually any theme or page builder that uses widgets.
 
 Organic Customizer Widgets introduces several widgets for displaying content in new ways. It includes a new page template, that when applied, creates a new widget area on that page. This allows the core WordPress customizer to be used like a page builder by adding widgets as content sections to any page. Each widget includes basic styles, but will otherwise inherit styles from the active theme.
 
@@ -34,6 +34,7 @@ Organic Customizer Widgets introduces several widgets for displaying content in 
 * **Testimonials Widget** [View Example](https://organicthemes.com/demo/startup/widgets/testimonials-widget/ "Testimonials Widget Example") – A slideshow of testimonials from a selected category or custom post type.
 * **Profile Widget** [View Example](https://organicthemes.com/demo/startup/widgets/profile-widget/ "Profile Widget Example") – A personal profile widget with an image, bio and social media links.
 * **Pricing Table Widget** [View Example](https://organicthemes.com/demo/startup/widgets/pricing-table-widget/ "Pricing Table Widget Example") – Create a pricing table with a list of features and link to purchase.
+* **Featured Product Widget** [View Example](https://organicthemes.com/demo/startup/widgets/featured-product-widget/ "Featured Product Widget Example") – Display a product image with content and purchase link on the left or right.
 * **Featured Content Widget** [View Example](https://organicthemes.com/demo/startup/widgets/featured-content-widget/ "Featured Content Widget Example") – Custom content that can be grouped together with other featured content widgets.
 
 = Getting Started =
@@ -86,6 +87,11 @@ A: Most of the Organic Widgets are designed to be used as full-width sections on
 5. A list of some of the custom widgets included as seen within the customizer.
 
 == Changelog ==
+
+= 1.0.9 =
+* Updated README.txt with new widget example
+* Updated hero widget style and HTML
+* Updated featured content style
 
 = 1.0.8 =
 * Added featured product widget
