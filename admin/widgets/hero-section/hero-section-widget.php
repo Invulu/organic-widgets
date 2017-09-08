@@ -108,7 +108,7 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 						<div class="organic-widgets-hero-information">
 
 						<?php if ( ! empty( $instance['title'] ) ) { ?>
-							<h2 class="organic-widgets-title"><?php echo apply_filters( 'widget_title', $instance['title'] ); ?></h2>
+							<h1 class="organic-widgets-title"><?php echo apply_filters( 'widget_title', $instance['title'] ); ?></h1>
 						<?php } ?>
 
 						<?php if ( ! empty( $instance['text'] ) ) { ?>
