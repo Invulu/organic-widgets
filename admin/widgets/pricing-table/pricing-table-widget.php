@@ -95,7 +95,7 @@ class Organic_Widgets_Pricing_Table_Widget extends Organic_Widgets_Custom_Widget
 										<tr>
 											<th>
 												<?php if ( ! empty( $instance['title'] ) ) { ?>
-													<h4 class="organic-widgets-pricing-table-title"><?php echo apply_filters( 'widget_title', $instance['title'] ); ?></h4>
+													<h4 class="organic-widgets-pricing-table-title"><?php echo apply_filters( 'organic_widget_title', $instance['title'] ); ?></h4>
 												<?php } ?>
 
 													<div class="organic-widgets-pricing-table-divider"></div>
@@ -326,18 +326,12 @@ class Organic_Widgets_Pricing_Table_Widget extends Organic_Widgets_Custom_Widget
 		if ( ! empty( $instance['visual'] ) ) {
 			$instance['filter'] = true;
 		}
-		if ( isset( $new_instance['title'] ) )
-			$instance['title'] = strip_tags( $new_instance['title'] );
 		if ( current_user_can( 'unfiltered_html' ) ) {
+			$instance['title'] = $new_instance['title'];
 			$instance['text'] = $new_instance['text'];
 		} else {
+			$instance['title'] = wp_kses_post( $new_instance['title'] );
 			$instance['text'] = wp_kses_post( $new_instance['text'] );
-		}
-		// Widget Title
-		if ( isset( $new_instance['title'] )  && '' != $new_instance['title'] ) {
-			$instance['title'] = strip_tags( $new_instance['title'] );
-		} else {
-			$instance['title'] = '';
 		}
 		/*--- END Text/Title ----*/
 
