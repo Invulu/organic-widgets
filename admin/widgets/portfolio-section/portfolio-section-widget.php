@@ -265,6 +265,9 @@ class Organic_Widgets_Portfolio_Section_Widget extends Organic_Widgets_Custom_Wi
 		if ( isset( $new_instance['max_posts'] ) )
 			$instance['max_posts'] = strip_tags( $new_instance['max_posts'] );
 
+
+
+
 		return $instance;
 	}
 
@@ -272,6 +275,14 @@ class Organic_Widgets_Portfolio_Section_Widget extends Organic_Widgets_Custom_Wi
 	 * Enqueue admin javascript.
 	 */
 	public function admin_setup() {
+
+		// Text Editor
+		wp_enqueue_editor();
+		wp_enqueue_script( 'organic-widgets-portfolio-section-text-title', plugin_dir_url( __FILE__ ) . 'js/portfolio-section-widgets.js', array( 'jquery' ) );
+		wp_localize_script( 'organic-widgets-portfolio-section-text-title', 'OrganicPortfolioSectionWidget', array(
+			'id_base' => $this->id_base,
+		) );
+		wp_add_inline_script( 'organic-widgets-portfolio-section-text-title', 'wp.organicPortfolioSectionWidget.init();', 'after' );
 
 		wp_enqueue_media();
 
