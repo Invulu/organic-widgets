@@ -78,7 +78,7 @@ class Organic_Widgets {
 	public function __construct() {
 
 		$this->plugin_name = 'organic-widgets';
-		$this->version = '1.0.6';
+		$this->version = ORGANIC_WIDGETS_CURRENT_VERSION;
 		$this->widget_prefix = 'organic-widgets_';
 
 		$this->load_dependencies();

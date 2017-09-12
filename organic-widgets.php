@@ -19,6 +19,9 @@
  * Domain Path:       /languages
  */
 
+// Current Version (Keep in sync with Version # above)
+define ( 'ORGANIC_WIDGETS_CURRENT_VERSION', '1.0.11' );
+
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
 	die;
