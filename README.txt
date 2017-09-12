@@ -88,6 +88,9 @@ A: Most of the Organic Widgets are designed to be used as full-width sections on
 
 == Changelog ==
 
+= 1.1 =
+* Removed post edit link from subpage widget
+
 = 1.0.11 =
 * Fixed alignment issue for grouped widgets
 
