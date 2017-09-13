@@ -132,7 +132,7 @@ class Organic_Widgets_Featured_Product_Section_Widget extends Organic_Widgets_Cu
 
 					<?php } ?>
 
-					<?php if ( $instance['featured_image_id'] > 0 ) { ?>
+					<?php if ( $featured_image_id > 0 ) { ?>
 
 					<!-- BEGIN .organic-widgets-featured-product-item -->
 					<div class="organic-widgets-featured-product-item">
@@ -140,7 +140,7 @@ class Organic_Widgets_Featured_Product_Section_Widget extends Organic_Widgets_Cu
 						<?php if ( ! empty( $instance['button_three_url'] ) ) { ?>
 							<a class="organic-widgets-featured-product-img" href="<?php echo esc_url( $instance['button_three_url'] );?>"><img src="<?php echo $instance['featured_image']; ?>" alt="<?php __( 'Product Image', ORGANIC_WIDGETS_18N ) ?>" /></a>
 						<?php } else { ?>
-							<div class="organic-widgets-featured-product-img"><img src="<?php echo $instance['featured_image']; ?>" alt="<?php __( 'Product Image', ORGANIC_WIDGETS_18N ) ?>" /></div>
+							<div class="organic-widgets-featured-product-img"><img src="<?php echo esc_url( $featured_image ); ?>" alt="<?php __( 'Product Image', ORGANIC_WIDGETS_18N ) ?>" /></div>
 						<?php } ?>
 
 					<!-- END .organic-widgets-featured-product-item -->
