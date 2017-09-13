@@ -2,7 +2,7 @@
 Contributors: jqlee85, itsdavidmorgan, organicthemes, raid33
 Donate link: https://organicthemes.com
 Tags: customizer, widgets, testimonials, portfolio, features, fontawesome, icons, pricing tables, page builder, full-width sections, custom widget areas, slideshows, bundle, custom widgets
-Stable tag: 1.0.11
+Stable tag: 1.1
 Requires at least: 4.8
 Tested up to: 4.8
 License: GPLv2 or later
@@ -90,6 +90,9 @@ A: Most of the Organic Widgets are designed to be used as full-width sections on
 
 = 1.1 =
 * Removed post edit link from subpage widget
+* Allow basic HTML tags (<b><em><br>) in Widget Titles
+* Fix featured product Safari alignment bug
+* Add WYSIWYG editor to Portfolio widget content
 
 = 1.0.11 =
 * Fixed alignment issue for grouped widgets

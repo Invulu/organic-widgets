@@ -484,7 +484,7 @@ class Organic_Widgets_Admin {
 	/**
 	 * Add filter for widget titles allowing certain html tags
 	 *
-	 * @since    1.0.12
+	 * @since    1.1
 	 *
 	 * @param		string	$title						Filter input
 	 *
@@ -493,7 +493,7 @@ class Organic_Widgets_Admin {
 	public function title_filter( $title ) {
 
 		$filtered_title = strip_tags( $title, '<b><br><em><i>');
-	
+
 		return $filtered_title;
 
 	}
