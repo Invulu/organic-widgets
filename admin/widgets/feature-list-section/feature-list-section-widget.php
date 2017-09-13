@@ -72,14 +72,14 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 			<div class="organic-widgets-content">
 
 			<?php if ( ! empty( $instance['title'] ) ) { ?>
-				<h2 class="organic-widgets-title"><?php echo apply_filters( 'widget_title', $instance['title'] ); ?></h2>
+				<h2 class="organic-widgets-title"><?php echo apply_filters( 'organic_widget_title', $instance['title'] );?></h2>
 			<?php } ?>
 
 			<?php if ( ! empty( $instance['text'] ) ) { ?>
 				<div class="organic-widgets-text"><?php echo apply_filters( 'the_content', $instance['text'] ); ?></div>
 			<?php } ?>
 
-				<div class="organic-widgets-feature-list-items-wrapper organic-widgets-flex-row">
+				<div class="organic-widgets-feature-list-items-wrapper organic-widgets-flex-row organic-widgets-flex-wrap">
 
 				<?php if ( is_array( $repeatable_array ) && count($repeatable_array) ) {
 					$incrementer = 0;
@@ -407,19 +407,14 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 		if ( ! empty( $instance['visual'] ) ) {
 			$instance['filter'] = true;
 		}
-		if ( isset( $new_instance['title'] ) )
-			$instance['title'] = strip_tags( $new_instance['title'] );
 		if ( current_user_can( 'unfiltered_html' ) ) {
+			$instance['title'] = $new_instance['title'];
 			$instance['text'] = $new_instance['text'];
 		} else {
+			$instance['title'] = wp_kses_post( $new_instance['title'] );
 			$instance['text'] = wp_kses_post( $new_instance['text'] );
 		}
-		// Widget Title
-		if ( isset( $new_instance['title'] )  && '' != $new_instance['title'] ) {
-			$instance['title'] = strip_tags( $new_instance['title'] );
-		} else {
-			$instance['title'] = '';
-		}
+
 		/*--- END Text/Title ----*/
 
 		if ( ! isset( $old_instance['created'] ) )

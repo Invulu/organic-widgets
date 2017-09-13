@@ -71,7 +71,7 @@ class Organic_Widgets_Portfolio_Section_Widget extends Organic_Widgets_Custom_Wi
 			<div class="organic-widgets-content">
 
 			<?php if ( ! empty( $instance['title'] ) ) { ?>
-				<h2 class="organic-widgets-title"><?php echo apply_filters( 'widget_title', $instance['title'] ); ?></h2>
+				<h1 class="organic-widgets-title"><?php echo apply_filters( 'organic_widget_title', $instance['title'] ); ?></h1>
 			<?php } ?>
 
 			<?php if ( ! empty( $instance['text'] ) ) { ?>
@@ -114,7 +114,7 @@ class Organic_Widgets_Portfolio_Section_Widget extends Organic_Widgets_Custom_Wi
 					<!-- BEGIN .organic-widgets-masonry-wrapper -->
 					<div class="organic-widgets-masonry-wrapper organic-widgets-column organic-widgets-<?php echo $this->column_string( $num_columns ); ?>">
 
-						<?php if ( has_post_thumbnail() ) { ?>
+						<?php if ( has_post_thumbnail(get_the_ID()) ) { ?>
 
 						<article>
 
@@ -162,14 +162,15 @@ class Organic_Widgets_Portfolio_Section_Widget extends Organic_Widgets_Custom_Wi
 	*/
 	public function form( $instance ) {
 
+		$instance = wp_parse_args(
+			(array) $instance,
+			array(
+				'title' => '',
+				'text' => '',
+			)
+		);
+
 		// Setup Variables.
-		$this->id_prefix = $this->get_field_id('');
-		if ( isset( $instance['title'] ) ) {
-			$title = $instance['title'];
-		} else { $title = false; }
-		if ( isset( $instance[ 'text' ] ) ) {
-			$text = $instance[ 'text' ];
-		} else { $text = ''; }
 		if ( isset( $instance['category'] ) ) {
 			$category = $instance['category'];
 		} else { $category = false; }
@@ -191,15 +192,10 @@ class Organic_Widgets_Portfolio_Section_Widget extends Organic_Widgets_Custom_Wi
 
 		?>
 
-		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e('Title:', ORGANIC_WIDGETS_18N) ?></label>
-			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php if ( $title ) echo $title; ?>" />
-		</p>
-
-		<p>
-			<label for="<?php echo $this->get_field_id( 'text' ); ?>"><?php _e('Text:', ORGANIC_WIDGETS_18N) ?></label>
-			<textarea class="widefat" rows="6" cols="20" id="<?php echo $this->get_field_id( 'text' ); ?>" name="<?php echo $this->get_field_name( 'text' ); ?>"><?php echo $text; ?></textarea>
-		</p>
+		<input id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" class="title" type="hidden" value="<?php echo esc_attr( $instance['title'] ); ?>">
+		<input id="<?php echo $this->get_field_id( 'text' ); ?>" name="<?php echo $this->get_field_name( 'text' ); ?>" class="text organic-widgets-wysiwyg-anchor" type="hidden" value="<?php echo esc_attr( $instance['text'] ); ?>">
+		<input id="<?php echo $this->get_field_id( 'filter' ); ?>" name="<?php echo $this->get_field_name( 'filter' ); ?>" class="filter" type="hidden" value="on">
+		<input id="<?php echo $this->get_field_id( 'visual' ); ?>" name="<?php echo $this->get_field_name( 'visual' ); ?>" class="visual" type="hidden" value="on">
 
 		<?php if ( ! post_type_exists( 'jetpack-portfolio' ) ) { ?>
 			<p>
@@ -230,6 +226,32 @@ class Organic_Widgets_Portfolio_Section_Widget extends Organic_Widgets_Custom_Wi
 
   <?php
 	}
+
+	/**
+	 * Render form template scripts.
+	 *
+	 *
+	 * @access public
+	 */
+	public function render_control_template_scripts() {
+
+		?>
+		<script type="text/html" id="tmpl-widget-organic_widgets_portfolio_section-control-fields">
+
+			<# var elementIdPrefix = 'el' + String( Math.random() ).replace( /\D/g, '' ) + '_' #>
+
+			<p>
+				<label for="{{ elementIdPrefix }}title"><?php esc_html_e( 'Title:' ); ?></label>
+				<input id="{{ elementIdPrefix }}title" type="text" class="widefat title">
+			</p>
+			<p>
+				<label for="{{ elementIdPrefix }}text" class="screen-reader-text"><?php esc_html_e( 'Content:' ); ?></label>
+				<textarea id="{{ elementIdPrefix }}text" class="widefat text wp-editor-area" style="height: 200px" rows="16" cols="20"></textarea>
+			</p>
+		</script>
+		<?php
+	}
+
 	/**
 	 * Sanitize widget form values as they are saved.
 	 *
@@ -243,10 +265,37 @@ class Organic_Widgets_Portfolio_Section_Widget extends Organic_Widgets_Custom_Wi
 	public function update( $new_instance, $old_instance ) {
 
 		$instance = $old_instance;
+
+		/*--- Text/Title ----*/
+		if ( ! isset( $newinstance['filter'] ) )
+			$instance['filter'] = false;
+		if ( ! isset( $newinstance['visual'] ) )
+			$instance['visual'] = null;
+		// Upgrade 4.8.0 format.
+		if ( isset( $old_instance['filter'] ) && 'content' === $old_instance['filter'] ) {
+			$instance['visual'] = true;
+		}
+		if ( 'content' === $new_instance['filter'] ) {
+			$instance['visual'] = true;
+		}
+		if ( isset( $new_instance['visual'] ) ) {
+			$instance['visual'] = ! empty( $new_instance['visual'] );
+		}
+		// Filter is always true in visual mode.
+		if ( ! empty( $instance['visual'] ) ) {
+			$instance['filter'] = true;
+		}
+		if ( current_user_can( 'unfiltered_html' ) ) {
+			$instance['title'] = $new_instance['title'];
+			$instance['text'] = $new_instance['text'];
+		} else {
+			$instance['title'] = wp_kses_post( $new_instance['title'] );
+			$instance['text'] = wp_kses_post( $new_instance['text'] );
+		}
+		/*--- END Text/Title ----*/
+
 		if ( ! isset( $old_instance['created'] ) )
 			$instance['created'] = time();
-		if (isset( $new_instance['title'] ) )
-			$instance['title'] = strip_tags( $new_instance['title'] );
 		if (isset( $new_instance['bg_image_id'] ) )
 			$instance['bg_image_id'] = strip_tags( $new_instance['bg_image_id'] );
 		if (isset( $new_instance['bg_image'] ) )
@@ -256,14 +305,15 @@ class Organic_Widgets_Portfolio_Section_Widget extends Organic_Widgets_Custom_Wi
 		} else {
 			$instance['bg_color'] = false;
 		}
-		if ( isset( $new_instance['text'] ) )
-			$instance['text'] = strip_tags( $new_instance['text'] );
 		if ( isset( $new_instance['category'] ) )
 			$instance['category'] = strip_tags( $new_instance['category'] );
 		if ( isset( $new_instance['num_columns'] ) )
 			$instance['num_columns'] = strip_tags( $new_instance['num_columns'] );
 		if ( isset( $new_instance['max_posts'] ) )
 			$instance['max_posts'] = strip_tags( $new_instance['max_posts'] );
+
+
+
 
 		return $instance;
 	}
@@ -272,6 +322,14 @@ class Organic_Widgets_Portfolio_Section_Widget extends Organic_Widgets_Custom_Wi
 	 * Enqueue admin javascript.
 	 */
 	public function admin_setup() {
+
+		// Text Editor
+		wp_enqueue_editor();
+		wp_enqueue_script( 'organic-widgets-portfolio-section-text-title', plugin_dir_url( __FILE__ ) . 'js/portfolio-section-widgets.js', array( 'jquery' ) );
+		wp_localize_script( 'organic-widgets-portfolio-section-text-title', 'OrganicPortfolioSectionWidget', array(
+			'id_base' => $this->id_base,
+		) );
+		wp_add_inline_script( 'organic-widgets-portfolio-section-text-title', 'wp.organicPortfolioSectionWidget.init();', 'after' );
 
 		wp_enqueue_media();
 

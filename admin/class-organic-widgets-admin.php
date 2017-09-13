@@ -212,9 +212,9 @@ class Organic_Widgets_Admin {
 							}
 						}
 					}
-				}	
-				
-			
+				}
+
+
 			}
 
 			update_option( $widget_option_name, $widgets_content );
@@ -480,5 +480,23 @@ class Organic_Widgets_Admin {
 		return $custom_page_ids;
 
 	}
+
+	/**
+	 * Add filter for widget titles allowing certain html tags
+	 *
+	 * @since    1.0.12
+	 *
+	 * @param		string	$title						Filter input
+	 *
+	 * @return	string 	$filtered_title 	The filtered title
+	 */
+	public function title_filter( $title ) {
+
+		$filtered_title = strip_tags( $title, '<b><br><em><i>');
+	
+		return $filtered_title;
+
+	}
+
 
 }

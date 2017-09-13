@@ -1153,7 +1153,9 @@ iframe.organic-widgets-video-bg {
 .organic-widgets-flex-row {
 	display: flex;
 	align-items: stretch;
-	flex-wrap: wrap;
+}
+.organic-widgets-flex-wrap {
+  flex-wrap: wrap;
 }
 .organic-widgets-row {
 	width: 100%;
