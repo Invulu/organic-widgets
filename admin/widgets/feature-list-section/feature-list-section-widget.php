@@ -79,7 +79,7 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 				<div class="organic-widgets-text"><?php echo apply_filters( 'the_content', $instance['text'] ); ?></div>
 			<?php } ?>
 
-				<div class="organic-widgets-feature-list-items-wrapper organic-widgets-flex-row">
+				<div class="organic-widgets-feature-list-items-wrapper organic-widgets-flex-row organic-widgets-flex-wrap">
 
 				<?php if ( is_array( $repeatable_array ) && count($repeatable_array) ) {
 					$incrementer = 0;
