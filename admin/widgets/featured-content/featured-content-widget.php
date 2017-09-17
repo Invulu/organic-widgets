@@ -141,7 +141,7 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 						<div class="information">
 
 							<?php if ( ! empty( $instance['title'] ) ) { ?>
-								<h3><?php echo apply_filters( 'organic_widget_title', $instance['title'] ); ?></h3>
+								<h2><?php echo apply_filters( 'organic_widget_title', $instance['title'] ); ?></h2>
 							<?php } ?>
 
 							<?php if ( ! empty( $instance['text'] ) ) { ?>

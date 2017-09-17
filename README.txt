@@ -88,6 +88,10 @@ A: Most of the Organic Widgets are designed to be used as full-width sections on
 
 == Changelog ==
 
+= 1.1.1 =
+* Changed heading for featured content widget
+* Style tweak to hero widget
+
 = 1.1 =
 * Removed post edit link from subpage widget
 * Allow basic HTML tags (<b><em><br>) in Widget Titles
