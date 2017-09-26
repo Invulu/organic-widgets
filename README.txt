@@ -90,6 +90,7 @@ A: Most of the Organic Widgets are designed to be used as full-width sections on
 
 = 1.1.1 =
 * Changed heading for featured content widget
+* Updates to profile widget styles
 * Style tweak to hero widget
 
 = 1.1 =

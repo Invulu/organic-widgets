@@ -79,7 +79,9 @@ class Organic_Widgets_Profile_Widget extends Organic_Widgets_Custom_Widget {
 					<div class="organic-widgets-profile">
 
 						<?php if ( $instance['bg_image_id'] > 0 ) { ?>
-							<div class="organic-widgets-profile-img"><img src="<?php echo $instance['bg_image']; ?>" alt="<?php __( 'Profile Image', ORGANIC_WIDGETS_18N ) ?>" /></div>
+							<div class="organic-widgets-profile-img" style="background-image: url(<?php echo $instance['bg_image']; ?>);">
+								<img class="organic-widgets-hide-img" src="<?php echo $instance['bg_image']; ?>" alt="<?php __( 'Profile Image', ORGANIC_WIDGETS_18N ) ?>" />
+							</div>
 						<?php } ?>
 
 						<!-- BEGIN .organic-widgets-card -->
