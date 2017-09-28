@@ -1033,6 +1033,7 @@ img.organic-widgets-hide-img,
 .organic-widgets-flexslider .flex-control-nav {
 	position: absolute;
 	bottom: 0px;
+  right: 0px;
   width: 100%;
 	text-align: center;
 	margin: 0px;
