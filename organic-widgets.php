@@ -112,25 +112,39 @@ run_organic_widgets();
  */
 function organic_widgets_welcome_screen() {
 
+	// Add Menu Item
 	add_menu_page(
 		esc_html__( 'Organic Widgets', ORGANIC_WIDGETS_18N ),
 		esc_html__( 'Organic Widgets', ORGANIC_WIDGETS_18N ),
 		'manage_options',
 		'organic-widgets',
 		'organic_widgets_welcome_screen_content',
-		false,
+		'dashicons-screenoptions',
 		110
 	);
 
 	// Add Settings Page
 	add_submenu_page(
 		'organic-widgets',
-		esc_html__( 'Settings', ORGANIC_WIDGETS_18N ),
+		esc_html__( 'Organic Widgets Settings', ORGANIC_WIDGETS_18N ),
 		esc_html__( 'Settings', ORGANIC_WIDGETS_18N ),
 		'manage_options',
 		'organic-widgets-welcome',
-		'organic_widgets_welcome_screen_content'
+		'organic_widgets_settings_screen_content'
 	);
+
+	register_setting( 'organic-widgets-settings-group', 'organic_widgets_blog_posts_section' );
+	register_setting( 'organic-widgets-settings-group', 'organic_widgets_content_slideshow_section' );
+	register_setting( 'organic-widgets-settings-group', 'organic_widgets_feature_list_section' );
+	register_setting( 'organic-widgets-settings-group', 'organic_widgets_featured_content' );
+	register_setting( 'organic-widgets-settings-group', 'organic_widgets_featured_product_section' );
+	register_setting( 'organic-widgets-settings-group', 'organic_widgets_hero_section' );
+	register_setting( 'organic-widgets-settings-group', 'organic_widgets_portfolio_section' );
+	register_setting( 'organic-widgets-settings-group', 'organic_widgets_pricing_table' );
+	register_setting( 'organic-widgets-settings-group', 'organic_widgets_profile_section' );
+	register_setting( 'organic-widgets-settings-group', 'organic_widgets_subpage_section' );
+	register_setting( 'organic-widgets-settings-group', 'organic_widgets_team_section' );
+	register_setting( 'organic-widgets-settings-group', 'organic_widgets_testimonial_section' );
 
 }
 add_action( 'admin_menu', 'organic_widgets_welcome_screen' );
@@ -143,6 +157,17 @@ add_action( 'admin_menu', 'organic_widgets_welcome_screen' );
 function organic_widgets_welcome_screen_content() {
 
 	include_once plugin_dir_path( __FILE__ ) . '/admin/partials/organic-widgets-welcome-page.php';
+
+}
+
+/**
+ * Include settings screen content.
+ *
+ * @since    1.0.0
+ */
+function organic_widgets_settings_screen_content() {
+
+	include_once plugin_dir_path( __FILE__ ) . '/admin/partials/organic-widgets-settings-page.php';
 
 }
 
