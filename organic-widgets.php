@@ -112,10 +112,21 @@ run_organic_widgets();
  */
 function organic_widgets_welcome_screen() {
 
+	add_menu_page(
+		esc_html__( 'Organic Widgets', ORGANIC_WIDGETS_18N ),
+		esc_html__( 'Organic Widgets', ORGANIC_WIDGETS_18N ),
+		'manage_options',
+		'organic-widgets',
+		'organic_widgets_welcome_screen_content',
+		false,
+		110
+	);
+
+	// Add Settings Page
 	add_submenu_page(
-		'options-general.php',
-		esc_html__( 'Organic Widgets', ORGANIC_WIDGETS_18N ),
-		esc_html__( 'Organic Widgets', ORGANIC_WIDGETS_18N ),
+		'organic-widgets',
+		esc_html__( 'Settings', ORGANIC_WIDGETS_18N ),
+		esc_html__( 'Settings', ORGANIC_WIDGETS_18N ),
 		'manage_options',
 		'organic-widgets-welcome',
 		'organic_widgets_welcome_screen_content'
