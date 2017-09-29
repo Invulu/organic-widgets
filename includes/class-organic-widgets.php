@@ -142,19 +142,45 @@ class Organic_Widgets {
 		/**
 		 * The classes responsible for registering widgets
 		 */
+
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widgets/class-organic-widgets-custom-widget.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widgets/blog-posts-section/blog-posts-section-widget.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widgets/content-slideshow-section/content-slideshow-section-widget.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widgets/feature-list-section/feature-list-section-widget.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widgets/featured-content/featured-content-widget.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widgets/portfolio-section/portfolio-section-widget.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widgets/profile-section/profile-widget.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widgets/pricing-table/pricing-table-widget.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widgets/subpage-section/subpage-section-widget.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widgets/team-section/team-section-widget.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widgets/testimonial-section/testimonial-section-widget.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widgets/hero-section/hero-section-widget.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widgets/featured-product-section/featured-product-section-widget.php';
+
+		 if ( get_option('organic_widgets_blog_posts_section_activate',1) ) {
+			 require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widgets/blog-posts-section/blog-posts-section-widget.php';
+		 }
+		 if ( get_option('organic_widgets_content_slideshow_section_activate',1) ) {
+			 require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widgets/content-slideshow-section/content-slideshow-section-widget.php';
+		 }
+		 if ( get_option('organic_widgets_feature_list_section_activate',1) ) {
+			 require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widgets/feature-list-section/feature-list-section-widget.php';
+		 }
+		 if ( get_option('organic_widgets_featured_content_activate',1) ) {
+			 require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widgets/featured-content/featured-content-widget.php';
+		 }
+		 if ( get_option('organic_widgets_featured_product_section_activate',1) ) {
+			 require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widgets/featured-product-section/featured-product-section-widget.php';
+		 }
+		 if ( get_option('organic_widgets_hero_section_activate',1) ) {
+			 require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widgets/hero-section/hero-section-widget.php';
+		 }
+		 if ( get_option('organic_widgets_portfolio_section_activate',1) ) {
+			 require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widgets/portfolio-section/portfolio-section-widget.php';
+		 }
+		 if ( get_option('organic_widgets_profile_section_activate',1) ) {
+			 require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widgets/profile-section/profile-widget.php';
+		 }
+		 if ( get_option('organic_widgets_pricing_table_activate',1) ) {
+			 require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widgets/pricing-table/pricing-table-widget.php';
+		 }
+		 if ( get_option('organic_widgets_subpage_section_activate',1) ) {
+			 require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widgets/subpage-section/subpage-section-widget.php';
+		 }
+		 if ( get_option('organic_widgets_team_section_activate',1) ) {
+			 require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widgets/team-section/team-section-widget.php';
+		 }
+		 if ( get_option('organic_widgets_testimonial_section_activate',1) ) {
+			 require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widgets/testimonial-section/testimonial-section-widget.php';
+		 }
 
 		/**
 		 * the classes responsible for registering blocks

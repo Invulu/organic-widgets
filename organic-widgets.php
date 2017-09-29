@@ -133,18 +133,19 @@ function organic_widgets_welcome_screen() {
 		'organic_widgets_settings_screen_content'
 	);
 
-	register_setting( 'organic-widgets-settings-group', 'organic_widgets_blog_posts_section' );
-	register_setting( 'organic-widgets-settings-group', 'organic_widgets_content_slideshow_section' );
-	register_setting( 'organic-widgets-settings-group', 'organic_widgets_feature_list_section' );
-	register_setting( 'organic-widgets-settings-group', 'organic_widgets_featured_content' );
-	register_setting( 'organic-widgets-settings-group', 'organic_widgets_featured_product_section' );
-	register_setting( 'organic-widgets-settings-group', 'organic_widgets_hero_section' );
-	register_setting( 'organic-widgets-settings-group', 'organic_widgets_portfolio_section' );
-	register_setting( 'organic-widgets-settings-group', 'organic_widgets_pricing_table' );
-	register_setting( 'organic-widgets-settings-group', 'organic_widgets_profile_section' );
-	register_setting( 'organic-widgets-settings-group', 'organic_widgets_subpage_section' );
-	register_setting( 'organic-widgets-settings-group', 'organic_widgets_team_section' );
-	register_setting( 'organic-widgets-settings-group', 'organic_widgets_testimonial_section' );
+	// Register Settings to Show/Hide Widgets
+	register_setting( 'organic-widgets-settings-group', 'organic_widgets_blog_posts_section_activate' );
+	register_setting( 'organic-widgets-settings-group', 'organic_widgets_content_slideshow_section_activate' );
+	register_setting( 'organic-widgets-settings-group', 'organic_widgets_feature_list_section_activate' );
+	register_setting( 'organic-widgets-settings-group', 'organic_widgets_featured_content_activate' );
+	register_setting( 'organic-widgets-settings-group', 'organic_widgets_featured_product_section_activate' );
+	register_setting( 'organic-widgets-settings-group', 'organic_widgets_hero_section_activate' );
+	register_setting( 'organic-widgets-settings-group', 'organic_widgets_portfolio_section_activate' );
+	register_setting( 'organic-widgets-settings-group', 'organic_widgets_pricing_table_activate' );
+	register_setting( 'organic-widgets-settings-group', 'organic_widgets_profile_section_activate' );
+	register_setting( 'organic-widgets-settings-group', 'organic_widgets_subpage_section_activate' );
+	register_setting( 'organic-widgets-settings-group', 'organic_widgets_team_section_activate' );
+	register_setting( 'organic-widgets-settings-group', 'organic_widgets_testimonial_section_activate' );
 
 }
 add_action( 'admin_menu', 'organic_widgets_welcome_screen' );

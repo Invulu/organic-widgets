@@ -121,13 +121,12 @@
       <?php foreach( $ocw_settings as $ocw_setting ) { ?>
 
         <?php $name = $ocw_setting['name']; ?>
-        <?php $checked = get_option($ocw_setting['name']); ?>
         <?php $text = $ocw_setting['text'];?>
-        <?php error_log($text);?>
+
         <tr valign="top">
           <th scope="row"><?php esc_html_e( $text, ORGANIC_WIDGETS_18N ); ?></th>
           <td>
-            <input type="checkbox" name="<?php echo esc_attr($name); ?>" <?php echo esc_attr($checked); ?> />
+            <input type="checkbox" name="<?php echo esc_attr($name); ?>" value="1" <?php checked(get_option($ocw_setting['name'],1)); ?> />
           </td>
         </tr>
 
