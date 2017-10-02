@@ -133,20 +133,6 @@ function organic_widgets_welcome_screen() {
 		'organic_widgets_settings_screen_content'
 	);
 
-	// Register Settings to Show/Hide Widgets
-	// register_setting( 'organic-widgets-settings', 'organic_widgets_blog_posts_section_activate' );
-	// register_setting( 'organic-widgets-settings', 'organic_widgets_content_slideshow_section_activate' );
-	// register_setting( 'organic-widgets-settings', 'organic_widgets_feature_list_section_activate' );
-	// register_setting( 'organic-widgets-settings', 'organic_widgets_featured_content_activate' );
-	// register_setting( 'organic-widgets-settings', 'organic_widgets_featured_product_section_activate' );
-	// register_setting( 'organic-widgets-settings', 'organic_widgets_hero_section_activate' );
-	// register_setting( 'organic-widgets-settings', 'organic_widgets_portfolio_section_activate' );
-	// register_setting( 'organic-widgets-settings', 'organic_widgets_pricing_table_activate' );
-	// register_setting( 'organic-widgets-settings', 'organic_widgets_profile_section_activate' );
-	// register_setting( 'organic-widgets-settings', 'organic_widgets_subpage_section_activate' );
-	// register_setting( 'organic-widgets-settings', 'organic_widgets_team_section_activate' );
-	// register_setting( 'organic-widgets-settings', 'organic_widgets_testimonial_section_activate' );
-
 	add_settings_section(
     'organic_widgets_settings_section',
     'Organic Widgets Settings',
@@ -154,88 +140,58 @@ function organic_widgets_welcome_screen() {
     'organic-widgets-settings'
 	);
 
-	// add_settings_field(
-	// 	'organic_widgets_settings',
-  //   'Organic Widgets Settings',
-  //   'organic_widgets_settings_callback',
-  //   'organic-widgets-settings',
-  //   'organic_widgets_settings_section'
-	// );
-
-	register_setting( 'organic-widgets-settings', 'organic_widgets_settings');
+	register_setting( 'organic-widgets-settings', 'organic_widgets_settings', array('sanitize_callback'=>'organic_widgets_settings_sanitize_callback'));
 
 }
 add_action( 'admin_menu', 'organic_widgets_welcome_screen' );
 
+function organic_widgets_settings_sanitize_callback($options) {
+	
+	$organic_widgets = organic_widgets_get_organic_widgets();
+
+	foreach($organic_widgets as $key => $organic_widget) {
+		if ( !array_key_exists($organic_widget['settings-activate-slug'], $options) ){
+			$options[$organic_widget['settings-activate-slug']] = 0;
+		}
+	}
+	
+	// Sanitize Additional stylesheets
+	if ( !array_key_exists('additional_stylesheets', $options) ){
+		$options['additional_stylesheets'] = 0;
+	}
+
+	error_log('organic_widgets_settings_sanitize_callback');
+	error_log(print_r($organic_widgets,1));
+	return $options;
+}
+
 function organic_widgets_settings_callback() {
 
     $options = get_option( 'organic_widgets_settings' ) ? get_option( 'organic_widgets_settings' ) : array();
-		error_log(print_r($options,1));
-		?>
-		<table class="form-table">
-
-      <?php $ocw_settings = array(
-        array(
-          'name' => 'organic_widgets_blog_posts_section_activate',
-          'text' => 'Blog Posts Widget'
-        ),array(
-          'name' => 'organic_widgets_content_slideshow_section_activate',
-          'text' => 'Content Slideshow Widget'
-        ),array(
-          'name' => 'organic_widgets_feature_list_section_activate',
-          'text' => 'Feature List Widget'
-        ),
-        array(
-          'name' => 'organic_widgets_featured_content_activate',
-          'text' => 'Featured Content Widget'
-        ),array(
-          'name' => 'organic_widgets_featured_product_section_activate',
-          'text' => 'Featured Product Widget'
-        ),array(
-          'name' => 'organic_widgets_hero_section_activate',
-          'text' => 'Hero Section Widget'
-        ),
-        array(
-          'name' => 'organic_widgets_portfolio_section_activate',
-          'text' => 'Portfolio Widget'
-        ),array(
-          'name' => 'organic_widgets_pricing_table_activate',
-          'text' => 'Pricing Table Widget'
-        ),array(
-          'name' => 'organic_widgets_profile_section_activate',
-          'text' => 'Profile Widget'
-        ),
-        array(
-          'name' => 'organic_widgets_subpage_section_activate',
-          'text' => 'Subpage Widget'
-        ),array(
-          'name' => 'organic_widgets_team_section_activate',
-          'text' => 'Team Widget'
-        ),array(
-          'name' => 'organic_widgets_testimonial_section_activate',
-          'text' => 'Testimonials Widget'
-        ),
-      );?>
+	if ( !array_key_exists('additional_stylesheets', $options) ){
+		$options['additional_stylesheets'] = 0;
+	}	
+	$organic_widgets = organic_widgets_get_organic_widgets();
+	?>
+	<table class="form-table">
 
       <!-- BEGIN Active Widgets Settings -->
       <tr>
         <td><h3><?php _e( 'Active Widgets', ORGANIC_WIDGETS_18N ); ?></h3></td>
       </tr>
 
-      <?php foreach( $ocw_settings as $ocw_setting ) { ?>
+      <?php foreach( $organic_widgets as $organic_widget ) {
 
-        <?php $name = $ocw_setting['name']; ?>
-        <?php $text = $ocw_setting['text'];?>
-				<?php if ( !array_key_exists( $name, $options) ) {
-					$options[$name] = 1;
-				}
-				error_log('checked: '.checked($options[$name],1,1));
-				?>
+				$slug = $organic_widget['settings-activate-slug'];
+				$name = $organic_widget['settings-name'];
+				if ( !array_key_exists( $slug, $options) ) {
+					$options[$slug] = 1;
+				} ?>
 
         <tr valign="top">
-          <th scope="row"><?php esc_html_e( $text, ORGANIC_WIDGETS_18N ); ?></th>
+          <th scope="row"><?php esc_html_e( $name, ORGANIC_WIDGETS_18N ); ?></th>
           <td>
-            <input type="checkbox" name="organic_widgets_settings[<?php echo esc_attr($name); ?>]" value="1" <?php checked($options[$name],1,1); ?> />
+            <input type="checkbox" name="organic_widgets_settings[<?php echo esc_attr($slug); ?>]" value="1" <?php checked($options[$slug],1,1); ?> />
           </td>
         </tr>
 
@@ -257,13 +213,35 @@ function organic_widgets_settings_callback() {
           </select>
         </td>
       </tr>
-
       <!-- Stylsheet Selector Setting -->
 
     </table>
 
-
 <?php
+}
+
+/**
+ * Get All Organic Custom Widgets
+ *
+ * @since    1.1.2
+ */
+function organic_widgets_get_organic_widgets() {
+	
+	$organic_widgets = array();
+
+  	foreach(get_declared_classes() as $widget) {
+    	if(is_subclass_of($widget, 'Organic_Widgets_Custom_Widget') ) {
+    		$settings_name = str_replace( '_', ' ', str_replace('Organic_Widgets_', '', $widget) );
+			$settings_activate_slug = $widget . '_activate';
+			$organic_widgets[$widget] = array(
+				'settings-activate-slug' => $settings_activate_slug,
+				'settings-name' => $settings_name
+			);
+    	}
+    }
+
+	return $organic_widgets;
+
 }
 
 /**
