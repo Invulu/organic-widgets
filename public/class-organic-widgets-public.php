@@ -63,6 +63,20 @@ class Organic_Widgets_Public {
 
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/organic-widgets-public.css', array(), $this->version, 'all' );
 
+		$organic_widgets_settings = get_option('organic_widgets_settings');
+
+		if ( $organic_widgets_settings['additional_stylesheets'] ) {
+			
+			switch($organic_widgets_settings['additional_stylesheets']) {
+				case 2:
+					wp_enqueue_style( $this->plugin_name . '_additional_' .$organic_widgets_settings['additional_stylesheets'] , plugin_dir_url( __FILE__ ) . 'css/organic-widgets-public-additional-2.css', array(), $this->version, 'all' );
+					break;
+				case 3:
+					wp_enqueue_style( $this->plugin_name . '_additional_' .$organic_widgets_settings['additional_stylesheets'], plugin_dir_url( __FILE__ ) . 'css/organic-widgets-public-additional-3.css', array(), $this->version, 'all' );
+					break;
+			}
+		}
+
 	}
 
 	/**

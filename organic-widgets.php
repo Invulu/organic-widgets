@@ -160,8 +160,6 @@ function organic_widgets_settings_sanitize_callback($options) {
 		$options['additional_stylesheets'] = 0;
 	}
 
-	error_log('organic_widgets_settings_sanitize_callback');
-	error_log(print_r($organic_widgets,1));
 	return $options;
 }
 
