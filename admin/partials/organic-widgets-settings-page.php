@@ -61,79 +61,14 @@
 
 		</div>
 
-		<h2 class="admin-headline"><?php _e( 'Organic Widgets Settings', ORGANIC_WIDGETS_18N ); ?></h2>
-
   </div>
 
-  <h1>Organic Widgets Settings</h1>
-
   <form method="post" action="options.php">
-    <?php settings_fields( 'organic-widgets-settings-group' ); ?>
-    <?php do_settings_sections( 'organic-widgets-settings-group' ); ?>
 
-    <h3><?php  _e( 'Active Widgets', ORGANIC_WIDGETS_18N ); ?></h3>
-
-    <table class="form-table">
-
-      <?php $ocw_settings = array(
-        array(
-          'name' => 'organic_widgets_blog_posts_section_activate',
-          'text' => 'Blog Posts Widget'
-        ),array(
-          'name' => 'organic_widgets_content_slideshow_section_activate',
-          'text' => 'Content Slideshow Widget'
-        ),array(
-          'name' => 'organic_widgets_feature_list_section_activate',
-          'text' => 'Feature List Widget'
-        ),
-        array(
-          'name' => 'organic_widgets_featured_content_activate',
-          'text' => 'Featured Content Widget'
-        ),array(
-          'name' => 'organic_widgets_featured_product_section_activate',
-          'text' => 'Featured Product Widget'
-        ),array(
-          'name' => 'organic_widgets_hero_section_activate',
-          'text' => 'Hero Section Widget'
-        ),
-        array(
-          'name' => 'organic_widgets_portfolio_section_activate',
-          'text' => 'Portfolio Widget'
-        ),array(
-          'name' => 'organic_widgets_pricing_table_activate',
-          'text' => 'Pricing Table Widget'
-        ),array(
-          'name' => 'organic_widgets_profile_section_activate',
-          'text' => 'Profile Widget'
-        ),
-        array(
-          'name' => 'organic_widgets_subpage_section_activate',
-          'text' => 'Subpage Widget'
-        ),array(
-          'name' => 'organic_widgets_team_section_activate',
-          'text' => 'Team Widget'
-        ),array(
-          'name' => 'organic_widgets_testimonial_section_activate',
-          'text' => 'Testimonials Widget'
-        ),
-      );?>
-
-      <?php foreach( $ocw_settings as $ocw_setting ) { ?>
-
-        <?php $name = $ocw_setting['name']; ?>
-        <?php $text = $ocw_setting['text'];?>
-
-        <tr valign="top">
-          <th scope="row"><?php esc_html_e( $text, ORGANIC_WIDGETS_18N ); ?></th>
-          <td>
-            <input type="checkbox" name="<?php echo esc_attr($name); ?>" value="1" <?php checked(get_option($ocw_setting['name'],1)); ?> />
-          </td>
-        </tr>
-
-      <?php } ?>
-
-    </table>
+    <?php settings_fields( 'organic-widgets-settings' ); ?>
+    <?php do_settings_sections( 'organic-widgets-settings' ); ?>
     <?php submit_button(); ?>
+    
   </form>
 
 </div>
