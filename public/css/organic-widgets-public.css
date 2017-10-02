@@ -423,7 +423,7 @@ img.organic-widgets-hide-img,
 *	Content Slideshow Widget
 ************************************************/
 
-.organic-widgets-content-slideshow-section {
+.organic-ocw-container .organic-widgets-content-slideshow-section {
   padding: 0;
 }
 .organic-widgets-content-slideshow-section .slides li {
