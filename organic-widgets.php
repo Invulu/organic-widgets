@@ -206,6 +206,24 @@ function organic_widgets_settings_callback() {
 
 	<!-- END Active Widgets Settings -->
 
+	<!-- BEGIN Stylsheet Selector Setting -->
+
+	<!-- <div class="organic-widgets-style-settings">
+
+    <h3><?php // _e( 'Style Selector', ORGANIC_WIDGETS_18N ); ?></h3>
+
+    <p><b><?php // _e( 'Additional Stylesheet', ORGANIC_WIDGETS_18N ); ?></b></p>
+
+    <select id="organic_widgets_settings[additional_stylesheets]" name="organic_widgets_settings[additional_stylesheets]">
+      <option value="0" <?php // selected( $options['additional_stylesheets'], 0 ); ?>>Default</option>
+      <option value="2" <?php // selected( $options['additional_stylesheets'], 2 ); ?>>Style 2</option>
+      <option value="3" <?php // selected( $options['additional_stylesheets'], 3 ); ?>>Style 3</option>
+    </select>
+
+  </div> -->
+
+	<!-- Stylsheet Selector Setting -->
+
 <?php
 }
 
