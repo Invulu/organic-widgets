@@ -88,6 +88,9 @@ A: Most of the Organic Widgets are designed to be used as full-width sections on
 
 == Changelog ==
 
+= 1.1.3 =
+* Version Bump
+
 = 1.1.2 =
 * Move settings to top level menu item
 * Add settings to activate/deactivate Organic Customizer Widgets

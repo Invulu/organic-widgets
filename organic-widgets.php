@@ -10,7 +10,7 @@
  * Plugin Name:       Organic Customizer Widgets
  * Plugin URI:        https://organicthemes.com/organic-customizer-widgets
  * Description:       Transform the core WordPress Customizer into a page builder. Display and arrange widgets on any page as beautiful content sections, such as featured content slideshows, testimonials, team members, portfolios, feature lists, pricing tables and more. Whoa, cool.
- * Version:           1.1.2
+ * Version:           1.1.3
  * Author:            Organic Themes
  * Author URI:        https://organicthemes.com
  * License:           GPL-2.0+
@@ -20,7 +20,7 @@
  */
 
 // Current Version (Keep in sync with Version # above)
-define ( 'ORGANIC_WIDGETS_CURRENT_VERSION', '1.1.2' );
+define ( 'ORGANIC_WIDGETS_CURRENT_VERSION', '1.1.3' );
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -205,24 +205,6 @@ function organic_widgets_settings_callback() {
 	</div>
 
 	<!-- END Active Widgets Settings -->
-
-	<!-- BEGIN Stylsheet Selector Setting -->
-
-	<!-- <div class="organic-widgets-style-settings">
-
-    <h3><?php // _e( 'Style Selector', ORGANIC_WIDGETS_18N ); ?></h3>
-
-    <p><b><?php // _e( 'Additional Stylesheet', ORGANIC_WIDGETS_18N ); ?></b></p>
-
-    <select id="organic_widgets_settings[additional_stylesheets]" name="organic_widgets_settings[additional_stylesheets]">
-      <option value="0" <?php // selected( $options['additional_stylesheets'], 0 ); ?>>Default</option>
-      <option value="2" <?php // selected( $options['additional_stylesheets'], 2 ); ?>>Style 2</option>
-      <option value="3" <?php // selected( $options['additional_stylesheets'], 3 ); ?>>Style 3</option>
-    </select>
-
-  </div> -->
-
-	<!-- Stylsheet Selector Setting -->
 
 <?php
 }
