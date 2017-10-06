@@ -184,43 +184,45 @@ function organic_widgets_settings_callback() {
 	$organic_widgets = organic_widgets_get_organic_widgets();
 	?>
 
-	<h3><?php _e( 'Active Widgets', ORGANIC_WIDGETS_18N ); ?></h3>
+	<!-- BEGIN Active Widgets Settings -->
 
 	<div class="organic-widgets-display-settings">
 
-      <!-- BEGIN Active Widgets Settings -->
+    <h3><?php _e( 'Active Widgets', ORGANIC_WIDGETS_18N ); ?></h3>
 
-      <?php foreach( $organic_widgets as $organic_widget ) {
+    <?php foreach( $organic_widgets as $organic_widget ) {
 
-				$slug = $organic_widget['settings-activate-slug'];
-				$name = $organic_widget['settings-name'];
-				if ( !array_key_exists( $slug, $options) ) {
-					$options[$slug] = 1;
-				} ?>
+			$slug = $organic_widget['settings-activate-slug'];
+			$name = $organic_widget['settings-name'];
+			if ( !array_key_exists( $slug, $options) ) {
+				$options[$slug] = 1;
+			} ?>
 
-        <div class="organic-widgets-display-toggle"><label><input type="checkbox" name="organic_widgets_settings[<?php echo esc_attr($slug); ?>]" value="1" <?php checked($options[$slug],1,1); ?> /> <?php esc_html_e( $name, ORGANIC_WIDGETS_18N ); ?></label></div>
+      <div class="organic-widgets-display-toggle"><label><input type="checkbox" name="organic_widgets_settings[<?php echo esc_attr($slug); ?>]" value="1" <?php checked($options[$slug],1,1); ?> /> <?php esc_html_e( $name, ORGANIC_WIDGETS_18N ); ?></label></div>
 
-      <?php } ?>
+    <?php } ?>
 
-      <!-- END Active Widgets Settings -->
+	</div>
 
-		</div>
+	<!-- END Active Widgets Settings -->
 
-		<div class="organic-widgets-style-settings">
+	<!-- BEGIN Stylsheet Selector Setting -->
 
-      <!-- BEGIN Stylsheet Selector Setting -->
-      <h3><?php _e( 'Style Selector', ORGANIC_WIDGETS_18N ); ?></h3>
+	<!-- <div class="organic-widgets-style-settings">
 
-      <p><b><?php _e( 'Additional Stylesheet', ORGANIC_WIDGETS_18N ); ?></b></p>
+    <h3><?php // _e( 'Style Selector', ORGANIC_WIDGETS_18N ); ?></h3>
 
-      <select id="organic_widgets_settings[additional_stylesheets]" name="organic_widgets_settings[additional_stylesheets]">
-        <option value="0" <?php selected( $options['additional_stylesheets'], 0 ); ?>>Default</option>
-        <option value="2" <?php selected( $options['additional_stylesheets'], 2 ); ?>>Style 2</option>
-        <option value="3" <?php selected( $options['additional_stylesheets'], 3 ); ?>>Style 3</option>
-      </select>
-      <!-- Stylsheet Selector Setting -->
+    <p><b><?php // _e( 'Additional Stylesheet', ORGANIC_WIDGETS_18N ); ?></b></p>
 
-    </div>
+    <select id="organic_widgets_settings[additional_stylesheets]" name="organic_widgets_settings[additional_stylesheets]">
+      <option value="0" <?php // selected( $options['additional_stylesheets'], 0 ); ?>>Default</option>
+      <option value="2" <?php // selected( $options['additional_stylesheets'], 2 ); ?>>Style 2</option>
+      <option value="3" <?php // selected( $options['additional_stylesheets'], 3 ); ?>>Style 3</option>
+    </select>
+
+  </div> -->
+
+	<!-- Stylsheet Selector Setting -->
 
 <?php
 }
