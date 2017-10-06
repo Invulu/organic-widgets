@@ -60,8 +60,7 @@
 	padding: 0px;
 }
 .welcome-screen .intro {
-	padding: 24px;
-	border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+	padding-bottom: 24px;
 }
 .welcome-screen .logo-wrap {
   display: block;
@@ -93,14 +92,11 @@
 	margin-bottom: 0px;
 }
 .welcome-screen p.admin-tagline {
-	color: rgba(0, 0, 0, 0.4);
+	color: rgba(0, 0, 0, 0.6);
 	font-weight: 300;
 	font-size: 1.8em;
 	margin-top: 12px;
 	margin-bottom: 0px;
-}
-.welcome-screen .options {
-	padding: 24px;
 }
 .welcome-screen .feature-links {
 	display: flex;
@@ -156,6 +152,21 @@
 }
 
 /************************************************
+*	Settings Screen
+************************************************/
+
+.organic-widgets-display-settings {
+  display: block;
+  margin-bottom: 24px;
+  overflow: hidden;
+}
+.organic-widgets-display-settings .organic-widgets-display-toggle {
+  float: left;
+  min-width: 280px;
+  margin: 6px 0px;
+}
+
+/************************************************
 *	Newsletter Form
 ************************************************/
 
@@ -167,9 +178,6 @@
 }
 #mce-responses #mce-error-response {
   background-color: #ffcccc;
-}
-div.mce_inline_error {
-  display: none !important;
 }
 
 /************************************************

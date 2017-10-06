@@ -91,6 +91,9 @@ A: Most of the Organic Widgets are designed to be used as full-width sections on
 = 1.1.2 =
 * Move settings to top level menu item
 * Add settings to activate/deactivate Organic Customizer Widgets
+* Mobile style fix for profile widget
+* Style fix for content slideshow widget
+* Added new social media icons
 
 = 1.1.1 =
 * Changed heading for featured content widget

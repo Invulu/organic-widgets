@@ -6,9 +6,6 @@ if ( !defined('ABSPATH') )
 	die('-1');
 
 
-add_action( 'widgets_init', function(){
-	register_widget( 'Organic_Widgets_Blog_Posts_Section_Widget' );
-});
 /**
  * Adds Organic_Widgets_Blog_Posts_Section_Widget widget.
  */
