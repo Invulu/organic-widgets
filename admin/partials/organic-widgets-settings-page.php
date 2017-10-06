@@ -63,12 +63,21 @@
 
   </div>
 
+  <?php if (isset($_GET['settings-updated'])) { ?>
+    <div class="notice notice-success is-dismissible">
+    	<p><strong>Settings saved.</strong></p>
+    	<button type="button" class="notice-dismiss">
+    		<span class="screen-reader-text">Dismiss this notice.</span>
+    	</button>
+    </div>
+  <?php } ?>
+
   <form method="post" action="options.php">
 
     <?php settings_fields( 'organic-widgets-settings' ); ?>
     <?php do_settings_sections( 'organic-widgets-settings' ); ?>
     <?php submit_button(); ?>
-    
+
   </form>
 
 </div>

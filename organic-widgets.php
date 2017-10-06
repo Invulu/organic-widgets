@@ -239,11 +239,11 @@ function organic_widgets_get_organic_widgets() {
   	foreach(get_declared_classes() as $widget) {
     	if(is_subclass_of($widget, 'Organic_Widgets_Custom_Widget') ) {
     		$settings_name = str_replace( '_', ' ', str_replace('Organic_Widgets_', '', $widget) );
-			$settings_activate_slug = $widget . '_activate';
-			$organic_widgets[$widget] = array(
-				'settings-activate-slug' => $settings_activate_slug,
-				'settings-name' => $settings_name
-			);
+				$settings_activate_slug = $widget . '_activate';
+				$organic_widgets[$widget] = array(
+					'settings-activate-slug' => $settings_activate_slug,
+					'settings-name' => $settings_name
+				);
     	}
     }
 
