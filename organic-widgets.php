@@ -112,6 +112,18 @@ run_organic_widgets();
  */
 function organic_widgets_welcome_screen() {
 
+	$icon_svg = 'data:image/svg+xml;base64,' . base64_encode(
+		'<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="40px" height="40px" viewBox="120 10 40 40" xml:space="preserve">
+		<g>
+			<path fill="#a0a5aa" d="M144.128,11.221c-7.733,0-13.455,1.824-17.002,5.421c-8.137,8.252-5.41,17.112-4.38,19.634
+				c0.906,2.217,2.021,3.613,2.875,4.35l2.957-2.609l-0.278-13.13l2.999,10.728l4.374-3.86l0.438-10.677l1.894,8.617l10.528-8.433
+				l-8.292,10.76l8.57,1.933l-10.595,0.444l-3.776,4.422l10.614,3.049l-12.974-0.278l-2.522,2.956c0.092,0.11,0.194,0.228,0.315,0.344
+				c1.9,1.938,5.897,3.889,10.54,3.889c3.257,0,8.112-0.991,12.775-5.72c8.079-8.19,4.882-25.648,3.841-30.338
+				C154.816,12.222,149.721,11.221,144.128,11.221L144.128,11.221L144.128,11.221z"/>
+		</g>
+		</svg>'
+	);
+
 	// Add Menu Item
 	add_menu_page(
 		esc_html__( 'Organic Widgets', ORGANIC_WIDGETS_18N ),
@@ -119,7 +131,7 @@ function organic_widgets_welcome_screen() {
 		'manage_options',
 		'organic-widgets',
 		'organic_widgets_welcome_screen_content',
-		'dashicons-screenoptions',
+		$icon_svg,
 		110
 	);
 
@@ -146,7 +158,7 @@ function organic_widgets_welcome_screen() {
 add_action( 'admin_menu', 'organic_widgets_welcome_screen' );
 
 function organic_widgets_settings_sanitize_callback($options) {
-	
+
 	$organic_widgets = organic_widgets_get_organic_widgets();
 
 	foreach($organic_widgets as $key => $organic_widget) {
@@ -154,7 +166,7 @@ function organic_widgets_settings_sanitize_callback($options) {
 			$options[$organic_widget['settings-activate-slug']] = 0;
 		}
 	}
-	
+
 	// Sanitize Additional stylesheets
 	if ( !array_key_exists('additional_stylesheets', $options) ){
 		$options['additional_stylesheets'] = 0;
@@ -165,18 +177,18 @@ function organic_widgets_settings_sanitize_callback($options) {
 
 function organic_widgets_settings_callback() {
 
-    $options = get_option( 'organic_widgets_settings' ) ? get_option( 'organic_widgets_settings' ) : array();
+  $options = get_option( 'organic_widgets_settings' ) ? get_option( 'organic_widgets_settings' ) : array();
 	if ( !array_key_exists('additional_stylesheets', $options) ){
 		$options['additional_stylesheets'] = 0;
-	}	
+	}
 	$organic_widgets = organic_widgets_get_organic_widgets();
 	?>
-	<table class="form-table">
+
+	<h3><?php _e( 'Active Widgets', ORGANIC_WIDGETS_18N ); ?></h3>
+
+	<div class="organic-widgets-display-settings">
 
       <!-- BEGIN Active Widgets Settings -->
-      <tr>
-        <td><h3><?php _e( 'Active Widgets', ORGANIC_WIDGETS_18N ); ?></h3></td>
-      </tr>
 
       <?php foreach( $organic_widgets as $organic_widget ) {
 
@@ -186,34 +198,29 @@ function organic_widgets_settings_callback() {
 					$options[$slug] = 1;
 				} ?>
 
-        <tr valign="top">
-          <th scope="row"><?php esc_html_e( $name, ORGANIC_WIDGETS_18N ); ?></th>
-          <td>
-            <input type="checkbox" name="organic_widgets_settings[<?php echo esc_attr($slug); ?>]" value="1" <?php checked($options[$slug],1,1); ?> />
-          </td>
-        </tr>
+        <div class="organic-widgets-display-toggle"><label><input type="checkbox" name="organic_widgets_settings[<?php echo esc_attr($slug); ?>]" value="1" <?php checked($options[$slug],1,1); ?> /> <?php esc_html_e( $name, ORGANIC_WIDGETS_18N ); ?></label></div>
 
       <?php } ?>
+
       <!-- END Active Widgets Settings -->
 
-      <!-- BEGIN Stylsheet Selector Setting -->
-      <tr>
-        <td><h3><?php _e( 'Style Selector', ORGANIC_WIDGETS_18N ); ?></h3></td>
-      </tr>
+		</div>
 
-      <tr valign="top">
-        <th scope="row"><?php _e( 'Additional Stylesheet', ORGANIC_WIDGETS_18N ); ?></th>
-        <td>
-          <select id="organic_widgets_settings[additional_stylesheets]" name="organic_widgets_settings[additional_stylesheets]">
-            <option value="0" <?php selected( $options['additional_stylesheets'], 0 ); ?>>Default</option>
-            <option value="2" <?php selected( $options['additional_stylesheets'], 2 ); ?>>Style 2</option>
-            <option value="3" <?php selected( $options['additional_stylesheets'], 3 ); ?>>Style 3</option>
-          </select>
-        </td>
-      </tr>
+		<div class="organic-widgets-style-settings">
+
+      <!-- BEGIN Stylsheet Selector Setting -->
+      <h3><?php _e( 'Style Selector', ORGANIC_WIDGETS_18N ); ?></h3>
+
+      <p><b><?php _e( 'Additional Stylesheet', ORGANIC_WIDGETS_18N ); ?></b></p>
+
+      <select id="organic_widgets_settings[additional_stylesheets]" name="organic_widgets_settings[additional_stylesheets]">
+        <option value="0" <?php selected( $options['additional_stylesheets'], 0 ); ?>>Default</option>
+        <option value="2" <?php selected( $options['additional_stylesheets'], 2 ); ?>>Style 2</option>
+        <option value="3" <?php selected( $options['additional_stylesheets'], 3 ); ?>>Style 3</option>
+      </select>
       <!-- Stylsheet Selector Setting -->
 
-    </table>
+    </div>
 
 <?php
 }
@@ -224,7 +231,7 @@ function organic_widgets_settings_callback() {
  * @since    1.1.2
  */
 function organic_widgets_get_organic_widgets() {
-	
+
 	$organic_widgets = array();
 
   	foreach(get_declared_classes() as $widget) {
@@ -272,7 +279,7 @@ function organic_widgets_settings_screen_content() {
 function organic_widgets_activation_redirect( $plugin ) {
 
 	if ( $plugin == plugin_basename( __FILE__ ) ) {
-		exit( wp_redirect( add_query_arg( array( 'page' => 'organic-widgets-welcome' ), admin_url( 'admin.php' ) ) ) );
+		exit( wp_redirect( add_query_arg( array( 'page' => 'organic-widgets' ), admin_url( 'admin.php' ) ) ) );
 	}
 
 }
