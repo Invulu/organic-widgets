@@ -828,8 +828,14 @@ img.organic-widgets-hide-img,
 .organic-widget .organic-widgets-social-icons li a[href*="wordpress.com"]::before		{ content: '\f19a'; }
 .organic-widget .organic-widgets-social-icons li a[href*="youtube.com"]::before			{ content: '\f16a'; }
 .organic-widget .organic-widgets-social-icons li a[href*="vine.co"]::before				{ content: '\f1ca'; }
+.organic-widget .organic-widgets-social-icons li a[href*="spotify.com"]::before			{ content: '\f1bc'; }
+.organic-widget .organic-widgets-social-icons li a[href*="soundcloud.com"]::before			{ content: '\f1be'; }
+.organic-widget .organic-widgets-social-icons li a[href*="last.fm"]::before			{ content: '\f202'; }
 .organic-widget .organic-widgets-social-icons li a[href*="instagram.com"]::before		{ content: '\f16d'; }
 .organic-widget .organic-widgets-social-icons li a[href*="stackexchange.com"]::before	{ content: '\f18d'; }
+.organic-widget .organic-widgets-social-icons li a[href*="amazon.com"]::before			{ content: '\f270'; }
+.organic-widget .organic-widgets-social-icons li a[href*="flickr.com"]::before			{ content: '\f16e'; }
+.organic-widget .organic-widgets-social-icons li a[href*="vimeo.com"]::before			{ content: '\f27d'; }
 .organic-widget .organic-widgets-social-icons li a[href*="mailto:"]::before				{ content: '\f0e0'; }
 .organic-widget .organic-widgets-social-icons li a[href$="/feed/"]::before				{ content: '\f09e'; }
 .organic-widget .organic-widgets-social-icons li a[href$="/cart/"]::before				{ content: '\f07a'; }
@@ -1315,6 +1321,12 @@ iframe.organic-widgets-video-bg {
   .organic-widgets-aligner-bottom-right .organic-widgets-featured-product-information {
     padding-left: 0px;
     padding-right: 0px;
+  }
+  .organic-ocw-container .organic-widgets-section .organic-widgets-profile {
+    display: block;
+  }
+  .organic-ocw-container .organic-widgets-section .organic-widgets-profile-img {
+    max-width: none;
   }
 
 }
