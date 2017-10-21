@@ -505,34 +505,19 @@ class Organic_Widgets_Admin {
 	 *
 	 *
 	 */
-	public function save_widget_assignments() {
-
-		error_log('save_widget_assignments');
-		// error_log(get_stylesheet());
-		// $theme_mods = get_theme_mods();
-		// error_log(print_r($theme_mods,1));
-
-		$this->save_organic_widget_assignments();
-
-	}
-
 	public function save_organic_widget_assignments() {
 
-		$theme_mods = get_theme_mods();
-		error_log('THEME MODS');
-		error_log(print_r($theme_mods['sidebars_widgets'],1));
-
-		$option = get_option('sidebars_widgets');
-		error_log('OPTION SIDEBARS WIDGETS');
-		error_log(print_r($option,1));
-
-		$widgets = retrieve_widgets();
-
-		error_log('RETRIEVED WIDGETS');
-		error_log(print_r($widgets,1));
+		// $theme_mods = get_theme_mods();
+		// error_log('THEME MODS');
+		// error_log(print_r($theme_mods['sidebars_widgets'],1));
+		//
+		// $option = get_option('sidebars_widgets');
+		// error_log('OPTION SIDEBARS WIDGETS');
+		// error_log(print_r($option,1));
+		//
+		// $widgets = retrieve_widgets();
 
 	}
-
 
 
 }
