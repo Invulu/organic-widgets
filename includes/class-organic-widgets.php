@@ -240,7 +240,6 @@ class Organic_Widgets {
 		// After Content Import
 		$this->loader->add_action( 'pt-ocdi/after_all_import_execution', $plugin_admin, 'after_all_import_action', 20, 3 );
 
-		$this->loader->add_action( 'switch_theme', $plugin_admin, 'save_widget_assignments' );
 
 		// Add filter for widget titles
 		$this->loader->add_filter( 'organic_widget_title', $plugin_admin, 'title_filter' );

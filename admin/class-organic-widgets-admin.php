@@ -498,26 +498,5 @@ class Organic_Widgets_Admin {
 
 	}
 
-	/**
-	 * Save Widget Assignments on Theme Switch
-	 *
-	 * @since    1.1.5
-	 *
-	 *
-	 */
-	public function save_organic_widget_assignments() {
-
-		// $theme_mods = get_theme_mods();
-		// error_log('THEME MODS');
-		// error_log(print_r($theme_mods['sidebars_widgets'],1));
-		//
-		// $option = get_option('sidebars_widgets');
-		// error_log('OPTION SIDEBARS WIDGETS');
-		// error_log(print_r($option,1));
-		//
-		// $widgets = retrieve_widgets();
-
-	}
-
 
 }
