@@ -30,6 +30,11 @@ class Organic_Widgets_Deactivator {
 	 * @since    1.0.0
 	 */
 	public static function deactivate() {
+		error_log('deactivating');
+		$retrieved_widgets = retrieve_widgets();
+		error_log(print_r($retrieved_widgets,1));
+
+		update_option('organic_widgets_saved_widgets', $retrieve_widgets);
 
 	}
 
