@@ -31,6 +31,10 @@ class Organic_Widgets_Deactivator {
 	 */
 	public static function deactivate() {
 
+		// Retrieve Widgets and save in DB
+		$retrieved_widgets = retrieve_widgets();
+		update_option('organic_widgets_saved_widgets', $retrieved_widgets);
+
 	}
 
 }

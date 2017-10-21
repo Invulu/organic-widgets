@@ -31,6 +31,42 @@ class Organic_Widgets_Activator {
 	 */
 	public static function activate() {
 
+		//Check for previously saved organic widgets and add to widget areas
+		$previous_widgets = get_option('organic_widgets_saved_widgets');
+
+		if ( $previous_widgets ) {
+
+			$new_widgets = get_option('sidebars_widgets');
+			error_log('New Widgets');
+			error_log(print_r($new_widgets,1));
+
+			error_log('Previous Widgets Found');
+			error_log(print_r($previous_widgets,1));
+
+			//Loop through previous widgets
+			foreach( $previous_widgets as $widget_area => $widgets ) {
+				// If is Organic Widget Area and the area exists in the new widgets
+				if ( strpos($widget_area,'organic-widgets') !== false ) {
+					error_log($widget_area . 'is OCW area');
+					// Loop through widgets in area, and move to new area if not there already
+					foreach($widgets as $widget) {
+						if (!array_key_exists($widget_area, $new_widgets) ) {
+							error_log('not in new widget areas');
+							$new_widgets[$widget_area] = array();
+						}
+						if( !in_array( $widget, $new_widgets[$widget_area] ) ){
+							error_log('moving ' . $widget .' to ' . $widget_area );
+							array_push($new_widgets[$widget_area], $widget);
+		        }
+					}
+				}
+			}
+
+			// Update widgets in DB
+			update_option('sidebars_widgets', $new_widgets);
+
+		}// End if $previous_widgets
+
 	}
 
 }

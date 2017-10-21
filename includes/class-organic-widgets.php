@@ -145,7 +145,7 @@ class Organic_Widgets {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widgets/class-organic-widgets-custom-widget.php';
 
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widgets/blog-posts-section/blog-posts-section-widget.php';
-		
+
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widgets/content-slideshow-section/content-slideshow-section-widget.php';
 
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widgets/feature-list-section/feature-list-section-widget.php';
@@ -167,7 +167,7 @@ class Organic_Widgets {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widgets/team-section/team-section-widget.php';
 
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widgets/testimonial-section/testimonial-section-widget.php';
-		 
+
 		// Register Organic Widgets
 		add_action( 'widgets_init', function(){
 			//Register Widgets conditionally according to settings
@@ -179,8 +179,8 @@ class Organic_Widgets {
 				}
 			}
 		});
-		 
-		
+
+
 
 		/**
 		 * the classes responsible for registering blocks
@@ -239,6 +239,8 @@ class Organic_Widgets {
 		// $this->loader->add_action( 'pt-ocdi/before_widgets_import', $plugin_admin, 'before_widgets_import_action', 5, 3 );
 		// After Content Import
 		$this->loader->add_action( 'pt-ocdi/after_all_import_execution', $plugin_admin, 'after_all_import_action', 20, 3 );
+
+		$this->loader->add_action( 'switch_theme', $plugin_admin, 'save_widget_assignments' );
 
 		// Add filter for widget titles
 		$this->loader->add_filter( 'organic_widget_title', $plugin_admin, 'title_filter' );
