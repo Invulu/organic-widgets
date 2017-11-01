@@ -177,15 +177,15 @@ img.organic-widgets-hide-img,
 	padding: 24px;
 }
 .organic-widgets-post-meta {
-  font-size: 75%;
-  margin: 12px 0px;
+  font-size: 80%;
+  margin: 12px 0px 0px 0px;
   padding-left: 12px;
   border-left: 2px solid rgba(0, 0, 0, 0.12);
 }
 .organic-widgets-post-meta p.organic-widgets-post-date,
 .organic-widgets-post-meta p.organic-widgets-post-author {
   color: rgba(0, 0, 0, 0.4);
-  line-height: 1.8;
+  line-height: 1.6;
   margin: 0px;
   padding: 0px;
 }
@@ -200,7 +200,6 @@ img.organic-widgets-hide-img,
   margin-top: 12px;
 }
 .organic-widget .link-more {
-  padding: 0px;
   margin-bottom: 0px;
 }
 .organic-widget .link-more br {
@@ -605,17 +604,17 @@ img.organic-widgets-hide-img,
 *	Groupable Widgets
 ************************************************/
 
-.organic-widgets-group-container.organic-widgets-section-masonry-buffer {
-  display: block;
-  align-items: center;
-}
 .organic-widgets-group-container {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   margin: 0px auto;
   height: auto;
   width: 100%;
   position: relative;
+}
+.organic-widgets-group-container .organic-widget.organic-widget_widget_organic_widgets_featured_content {
+  align-self: stretch;
 }
 
 /************************************************
@@ -691,6 +690,75 @@ img.organic-widgets-hide-img,
 }
 
 /************************************************
+*	Give Plugin Widget
+************************************************/
+
+.organic-widget_widget_give_forms_widget .organic-widgets-default-title {
+  display: block;
+  max-width: 1240px;
+  margin: 0px auto 12px;
+}
+.organic-widget_widget_give_forms_widget {
+	background: #ffffff;
+  text-align: center;
+	margin-bottom: 0px;
+  padding: 48px 36px;
+  overflow: hidden;
+}
+.organic-widget_widget_give_forms_widget .give-form {
+  display: inline-block;
+  margin: 12px 0px;
+}
+.organic-widget_widget_give_forms_widget .give-form label {
+  text-align: left;
+}
+.organic-widget_widget_give_forms_widget .give-form-wrap {
+	background: none;
+	max-width: 1240px;
+	margin: 0px auto;
+	box-shadow: none;
+	border-radius: 0px;
+  box-sizing: border-box;
+}
+.organic-widget_widget_give_forms_widget form[id*=give-form] .give-donation-amount {
+  display: inline-block;
+  margin-bottom: 12px;
+}
+.organic-widget_widget_give_forms_widget form[id*=give-form] .give-donation-amount .give-currency-symbol,
+.organic-widget_widget_give_forms_widget form[id*=give-form] .give-donation-amount #give-amount {
+  height: 60px;
+  line-height: 60px;
+}
+.organic-widget_widget_give_forms_widget form[id*=give-form] .give-donation-amount .give-currency-symbol {
+  border-radius: 3px 0px 0px 3px;
+}
+.organic-widget_widget_give_forms_widget form[id*=give-form] .give-donation-amount #give-amount {
+  font-size: 120%;
+  border-radius: 0px 3px 3px 0px;
+}
+.organic-widget_widget_give_forms_widget [id*=give-form] div.give-form-content-wrap,
+.organic-widget_widget_give_forms_widget [id*=give-form] div.give-form-content-wrap.give_post_form-content {
+  margin: 0px;
+}
+.organic-widget_widget_give_forms_widget .give-form button.give-btn.give-btn-reveal,
+.organic-widget_widget_give_forms_widget .give-form button.give-btn.give-btn-modal {
+  color: #ffffff;
+  font-size: 120%;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 3px;
+}
+.organic-widget_widget_give_forms_widget .give-form .give-donation-levels-wrap button.give-btn {
+  background: #f4f4f4;
+  font-size: 80%;
+  margin-bottom: 0px;
+  border-radius: 3px;
+}
+.organic-widget_widget_give_forms_widget .give-form .give-donation-levels-wrap button.give-btn:hover {
+  background: #dddddd;
+}
+
+/************************************************
 *	Text Color Conditionals
 ************************************************/
 
@@ -713,6 +781,12 @@ img.organic-widgets-hide-img,
 }
 .organic-widget .ocw-bg-dark blockquote, .organic-widgets-section.ocw-bg-dark blockquote {
   border-color: rgba(255, 255, 255, 0.4);
+}
+.organic-widget .ocw-bg-dark form input, .organic-widgets-section.ocw-bg-dark form input,
+.organic-widget .ocw-bg-dark form select, .organic-widgets-section.ocw-bg-dark form select,
+.organic-widget .ocw-bg-dark form textarea, .organic-widgets-section.ocw-bg-dark form textarea {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.12);
 }
 .organic-widget .ocw-bg-light.ocw-bg-img h1,
 .organic-widget .ocw-bg-light.ocw-bg-img h2,
@@ -1114,7 +1188,6 @@ body.customize-posts-content {
 
 .organic-widgets-video-bg-section {
   position: relative;
-
 }
 .organic-widgets-video-bg-wrapper {
   position: absolute;
@@ -1126,7 +1199,6 @@ body.customize-posts-content {
   z-index: 3;
 }
 .organic-widgets-video-bg-container {
-  position: relative;
   align-items: center;
   justify-content: center;
   width: 100%;
@@ -1324,9 +1396,8 @@ iframe.organic-widgets-video-bg {
   .organic-ocw-container {
     overflow: hidden;
   }
-  .organic-widgets-section {
-    padding-top: 60px;
-    padding-bottom: 60px;
+  .organic-ocw-container .organic-widgets-section {
+    padding: 36px 24px;
   }
   .organic-widgets-hero-section.organic-widgets-full-height-section {
     height: auto;
@@ -1335,6 +1406,10 @@ iframe.organic-widgets-video-bg {
   .organic-widgets-section.organic-widgets-hero-section.organic-widgets-fixed-bg-img {
     background-attachment: scroll;
   }
+  .organic-widgets-card,
+  .organic-widgets-blog-posts-section .organic-widgets-single .organic-widgets-card {
+    padding: 18px;
+  }
   .organic-widgets-hero-section .organic-widgets-content {
     padding-top: 48px;
     padding-bottom: 48px;
@@ -1342,7 +1417,6 @@ iframe.organic-widgets-video-bg {
   .organic-widgets-hero-information .organic-widgets-title {
     font-size: 2.6em;
   }
-  .organic-widgets-group-container,
   .organic-widgets-blog-posts-section .organic-widgets-single article,
   .organic-widgets-featured-product-section.organic-widgets-full-height-section {
     display: block;

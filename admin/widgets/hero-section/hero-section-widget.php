@@ -68,7 +68,7 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 		?>
 
 		<!-- BEGIN .organic-widgets-section -->
-		<div class="organic-widgets-section organic-widgets-hero-section <?php if ($full_window_height) echo 'organic-widgets-full-height-section'; ?> <?php if ($bg_image_fixed) echo 'organic-widgets-fixed-bg-img'; ?>" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
+		<div class="organic-widgets-section organic-widgets-hero-section<?php if ($full_window_height) echo ' organic-widgets-full-height-section'; ?><?php if ($bg_image_fixed) echo ' organic-widgets-fixed-bg-img'; ?><?php if ($bg_video) echo ' ocw-bg-dark'; ?>" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
 
 			<?php
 			// Video Background Section.

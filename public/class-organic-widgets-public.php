@@ -66,7 +66,7 @@ class Organic_Widgets_Public {
 		$organic_widgets_settings = get_option('organic_widgets_settings');
 
 		if ( $organic_widgets_settings['additional_stylesheets'] ) {
-			
+
 			switch($organic_widgets_settings['additional_stylesheets']) {
 				case 2:
 					wp_enqueue_style( $this->plugin_name . '_additional_' .$organic_widgets_settings['additional_stylesheets'] , plugin_dir_url( __FILE__ ) . 'css/organic-widgets-public-additional-2.css', array(), $this->version, 'all' );
@@ -144,6 +144,7 @@ class Organic_Widgets_Public {
 					player".$widget['clean_widget_id']." = new YT.Player('".$widget['clean_widget_id']."', {
   					height: '1014',
   					width: '1920',
+						// fitToBackground: true,
   					videoId: '".$widget['video_id']."',
 						playerVars: {
   						'loop':  '1',
@@ -154,7 +155,7 @@ class Organic_Widgets_Public {
   						'start': '0',
   						'playlist': '".esc_html__( $widget['video_id'] )."',
   						'rel': '0',
-							'enablejsapi': '1' ,
+							'enablejsapi': '1',
 							'origin': '".get_site_url()."',
 							'iv_load_policy': '3'
   					},

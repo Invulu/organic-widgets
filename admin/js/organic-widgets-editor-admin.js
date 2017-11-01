@@ -6,7 +6,26 @@
 
 	function checkSelectedTemplate() {
 
+		var iframeTemplate = $('.editor-meta-boxes iframe').contents().find('#page_template');
 		var selectedTemplate = $('#page_template').find(':selected').val();
+
+		// Preparing customizer button for Gutenberg editor
+
+		// if ( $("#postdivrich" + name).length == 0) {
+		// 	iframeTemplate.change(function() {
+		// 		if ( $(this).val() == 'templates/organic-custom-template.php') {
+		// 			hideEditor();
+		// 		} else {
+		// 			showEditor();
+		// 		}
+		// 	})
+		// } else {
+		// 	if ( selectedTemplate.indexOf( 'organic-custom-template.php' ) !== -1 ) {
+		// 		hideEditor();
+		// 	} else {
+		// 		showEditor();
+		// 	}
+		// }
 
 		if ( selectedTemplate.indexOf( 'organic-custom-template.php' ) !== -1 ) {
 			hideEditor();
@@ -17,7 +36,7 @@
 	}
 
 	function hideEditor() {
-		var wpContentEditorDiv = $('#postdivrich');
+		var wpContentEditorDiv = $('#postdivrich, #editor .editor-layout__content');
 		var organicCustomEditDiv = $(document.createElement('div'));
 
 		if ( ! organicWidgets.isCustomTemplate ) {
@@ -48,7 +67,7 @@
 	}
 
 	function showEditor(){
-		$('#postdivrich').show();
+		$('#postdivrich, #editor .editor-layout__content').show();
 		$('#organic-widgets-post-editor').remove();
 	}
 

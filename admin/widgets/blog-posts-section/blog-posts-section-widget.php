@@ -81,13 +81,7 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 				'posts_per_page' => $max_posts,
 				'post_type' => 'post',
 				'suppress_filters' => 0,
-				'tax_query' => array(
-					array(
-						'taxonomy' => 'category',
-						'field'    => 'id',
-						'terms'    => $category
-					),
-				),
+				'cat' => $category,
 			) ); ?>
 
 			<?php if ( $wp_query->have_posts() ) : ?>
@@ -176,7 +170,7 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 		$this->id_prefix = $this->get_field_id('');
 		if ( isset( $instance['category'] ) ) {
 			$category = $instance['category'];
-		} else { $category = false; }
+		} else { $category = 0; }
 		if ( isset( $instance['num_columns'] ) ) {
 			$num_columns = $instance['num_columns'];
 		} else { $num_columns = 1; }
@@ -203,6 +197,7 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 		<p>
 			<label for="<?php echo $this->get_field_id( 'category' ); ?>"><?php _e('Post Category:', ORGANIC_WIDGETS_18N) ?></label>
 			<?php wp_dropdown_categories( array(
+				'show_option_all' => __( 'All Categories' ),
 				'selected' => $category,
 				'id' => $this->get_field_id( 'category' ),
 				'name' => $this->get_field_name( 'category' )

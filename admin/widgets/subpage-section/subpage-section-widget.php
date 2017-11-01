@@ -57,7 +57,9 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 		$bg_color = ( isset( $instance['bg_color'] ) && '' != $instance['bg_color'] ) ? $instance['bg_color'] : false;
 		$bg_video  = ( isset( $instance['bg_video'] ) && $instance['bg_video'] ) ? $instance['bg_video'] : false;
 
-		echo $args['before_widget']; ?>
+		echo $args['before_widget'];
+
+		if ( ! empty( $instance['page_id'] ) ) { ?>
 
 		<!-- BEGIN .organic-widgets-section -->
 		<div class="organic-widgets-section organic-widgets-subpage-section organic-widgets-video-bg-section" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
@@ -82,8 +84,6 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 				$this->video_bg_html($video_info);
 
 			}
-
-		if ( ! empty( $instance['page_id'] ) ) {
 
 			// Get Page Info
 			$page_id = $instance['page_id'];
@@ -114,28 +114,6 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 
 			echo $args['after_widget'];
 
-		} elseif ( ! empty( $instance['title'] ) || ! empty( $instance['text'] ) ) { ?>
-
-				<!-- BEGIN .organic-widgets-content -->
-				<div class="organic-widgets-content">
-
-					<?php if ( ! empty( $instance['title'] ) ) { ?>
-						<h2 class="organic-widgets-title"><?php echo apply_filters( 'organic_widget_title', $instance['title'] ); ?></h2>
-					<?php } ?>
-					<?php if ( ! empty( $instance['text']) ) { ?>
-						<div class="organic-widgets-text"><?php echo apply_filters( 'the_content', $instance['text'] ); ?></div>
-					<?php } ?>
-
-				<!-- END .organic-widgets-content -->
-				</div>
-
-			<!-- END .organic-widgets-section -->
-			</div>
-
-			<?php
-
-			echo $args['after_widget'];
-
 		}
 
 	}
@@ -148,14 +126,6 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 	 * @param array $instance Previously saved values from database.
 	 */
 	public function form( $instance ) {
-
-		$instance = wp_parse_args(
-			(array) $instance,
-			array(
-				'title' => '',
-				'text' => '',
-			)
-		);
 
 		$this->id_prefix = $this->get_field_id('');
 
@@ -185,15 +155,7 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 
 		?>
 
-		<input id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" class="title" type="hidden" value="<?php echo esc_attr( $instance['title'] ); ?>">
-		<input id="<?php echo $this->get_field_id( 'text' ); ?>" name="<?php echo $this->get_field_name( 'text' ); ?>" class="text organic-widgets-wysiwyg-anchor" type="hidden" value="<?php echo esc_attr( $instance['text'] ); ?>">
-		<input id="<?php echo $this->get_field_id( 'filter' ); ?>" name="<?php echo $this->get_field_name( 'filter' ); ?>" class="filter" type="hidden" value="on">
-		<input id="<?php echo $this->get_field_id( 'visual' ); ?>" name="<?php echo $this->get_field_name( 'visual' ); ?>" class="visual" type="hidden" value="on">
-
-		<hr />
-		<br />
-
-		<p><b><?php _e('OR Use Content From Page:', ORGANIC_WIDGETS_18N) ?></b></p>
+		<p><b><?php _e('Select Existing Page:', ORGANIC_WIDGETS_18N) ?></b></p>
 
 		<p>
 			<?php wp_dropdown_pages( array(
@@ -211,33 +173,6 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 	}
 
 	/**
-	 * Render form template scripts.
-	 *
-	 *
-	 * @access public
-	 */
-	public function render_control_template_scripts() {
-
-		?>
-		<script type="text/html" id="tmpl-widget-organic_widgets_subpage_section-control-fields">
-
-			<# var elementIdPrefix = 'el' + String( Math.random() ).replace( /\D/g, '' ) + '_' #>
-
-			<p><b><?php _e('Add Custom Content:', ORGANIC_WIDGETS_18N) ?></b></p>
-
-			<p>
-				<label for="{{ elementIdPrefix }}title"><?php esc_html_e( 'Title:' ); ?></label>
-				<input id="{{ elementIdPrefix }}title" type="text" class="widefat title">
-			</p>
-			<p>
-				<label for="{{ elementIdPrefix }}text" class="screen-reader-text"><?php esc_html_e( 'Content:' ); ?></label>
-				<textarea id="{{ elementIdPrefix }}text" class="widefat text wp-editor-area" style="height: 200px" rows="16" cols="20"></textarea>
-			</p>
-		</script>
-		<?php
-	}
-
-	/**
 	 * Sanitize widget form values as they are saved.
 	 *
 	 * @see WP_Widget::update()
@@ -250,34 +185,6 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 	public function update( $new_instance, $old_instance ) {
 
 		$instance = $old_instance;
-
-		/*--- Text/Title ----*/
-		if ( ! isset( $newinstance['filter'] ) )
-			$instance['filter'] = false;
-		if ( ! isset( $newinstance['visual'] ) )
-			$instance['visual'] = null;
-		// Upgrade 4.8.0 format.
-		if ( isset( $old_instance['filter'] ) && 'content' === $old_instance['filter'] ) {
-			$instance['visual'] = true;
-		}
-		if ( 'content' === $new_instance['filter'] ) {
-			$instance['visual'] = true;
-		}
-		if ( isset( $new_instance['visual'] ) ) {
-			$instance['visual'] = ! empty( $new_instance['visual'] );
-		}
-		// Filter is always true in visual mode.
-		if ( ! empty( $instance['visual'] ) ) {
-			$instance['filter'] = true;
-		}
-		if ( current_user_can( 'unfiltered_html' ) ) {
-			$instance['title'] = $new_instance['title'];
-			$instance['text'] = $new_instance['text'];
-		} else {
-			$instance['title'] = wp_kses_post( $new_instance['title'] );
-			$instance['text'] = wp_kses_post( $new_instance['text'] );
-		}
-		/*--- END Text/Title ----*/
 
 		if ( ! isset( $old_instance['created'] ) )
 			$instance['created'] = time();
@@ -310,14 +217,6 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 	 * Enqueue all the javascript.
 	 */
 	public function admin_setup() {
-
-		// Text Editor
-		wp_enqueue_editor();
-		wp_enqueue_script( 'organic-widgets-subpage-widgets-text-title', plugin_dir_url( __FILE__ ) . 'js/subpage-widgets.js', array( 'jquery' ) );
-		wp_localize_script( 'organic-widgets-subpage-widgets-text-title', 'OrganicSubpageWidget', array(
-			'id_base' => $this->id_base,
-		) );
-		wp_add_inline_script( 'organic-widgets-subpage-widgets-text-title', 'wp.organicSubpageWidget.init();', 'after' );
 
 		wp_enqueue_media();
 

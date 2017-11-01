@@ -2,9 +2,9 @@
 Contributors: jqlee85, itsdavidmorgan, organicthemes, raid33
 Donate link: https://organicthemes.com
 Tags: customizer, widgets, testimonials, portfolio, features, fontawesome, icons, pricing tables, page builder, full-width sections, custom widget areas, slideshows, bundle, custom widgets
-Stable tag: 1.1.5
+Stable tag: 1.1.6
 Requires at least: 4.8
-Tested up to: 4.8
+Tested up to: 4.8.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -87,6 +87,16 @@ A: Most of the Organic Widgets are designed to be used as full-width sections on
 5. A list of some of the custom widgets included as seen within the customizer.
 
 == Changelog ==
+
+= 1.1.6 =
+* Fixed background video display for hero widget
+* Added styles for Give donation plugin widget
+* Added "All Categories" option to blog widget
+* Simplified subpage widget options
+* Removed masonry classes from groupable widgets
+* Early prep for Gutenberg editor
+* Added styles for forms on dark backgrounds
+* Mobile style fixes
 
 = 1.1.5 =
 * Save widget assignments on plugin deactivation for restoring on plugin re-activation

@@ -180,8 +180,6 @@ class Organic_Widgets {
 			}
 		});
 
-
-
 		/**
 		 * the classes responsible for registering blocks
 		 */

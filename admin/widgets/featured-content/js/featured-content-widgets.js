@@ -426,4 +426,5 @@ wp.organicFeaturedContentWidget = ( function( $ ) {
 	};
 
 	return component;
+
 })( jQuery );

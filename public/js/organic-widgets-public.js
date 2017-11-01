@@ -22,7 +22,7 @@
 	/* Group Groupable Widgets ---------------------*/
 	function groupGroupableWidgets() {
 
-		//Loop through all groups
+		// Loop through all groups
 		$('.organic-widgets-groupable-first').each(function(){
 
 			var firstGroupItem = $(this);
@@ -38,18 +38,13 @@
 				var itemClass = 'organic-widgets-third';
 			}
 
-			var masonryClass = '';
-			if ( groupableMasonryEnabled( parentContainer ) ) {
-				masonryClass = 'organic-widgets-section-masonry-buffer organic-widgets-masonry-container';
-			}
+			parentContainer.before( '<div class="organic-widgets-section organic-widgets-group"><div class="organic-widgets-group-container" data-group-id="' + groupID + '"></div></div>');
 
-			parentContainer.before( '<div class="organic-widgets-section organic-widgets-group"><div class="organic-widgets-group-container ' + masonryClass + '" data-group-id="' + groupID + '"></div></div>');
-
-			//Get masonry container
+			// Get container
 			var container = $('.organic-widgets-group-container[data-group-id="' + groupID + '"]');
 			var containerWrapperSection = container.closest('.organic-widgets-section');
 
-			//Loop through all elements of that group
+			// Loop through all elements of that group
 			group.each(function(){
 
 				var groupableWidget = $(this).closest('.organic-widget');
@@ -68,12 +63,7 @@
 					$(this).addClass('organic-widgets-groupable-widget');
 				}
 
-				// Check if should be masonry
-				if ( groupableMasonryEnabled( groupableWidget ) && ! groupableWidget.hasClass('organic-widget-masonry-wrapper') ) {
-					groupableWidget.addClass('organic-widget-masonry-wrapper');
-				}
 				groupableWidget.addClass(itemClass);
-
 				container.append(groupableWidget);
 
 			});
@@ -83,17 +73,6 @@
 		});
 
 		checkBackgroundBrightness();
-
-	}
-
-	/* Returns true or false is given widget should use masonry script */
-	function groupableMasonryEnabled( groupableWidget ) {
-
-		if ( groupableWidget.hasClass('organic-widget_widget_organic_widgets_pricing_table') ) {
-			return false;
-		} else {
-			return true;
-		}
 
 	}
 
