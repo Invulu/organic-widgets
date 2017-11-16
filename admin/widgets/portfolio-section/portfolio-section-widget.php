@@ -167,6 +167,7 @@ class Organic_Widgets_Portfolio_Section_Widget extends Organic_Widgets_Custom_Wi
 		);
 
 		// Setup Variables.
+		$this->id_prefix = $this->get_field_id('');
 		if ( isset( $instance['category'] ) ) {
 			$category = $instance['category'];
 		} else { $category = false; }
@@ -211,7 +212,7 @@ class Organic_Widgets_Portfolio_Section_Widget extends Organic_Widgets_Custom_Wi
 
 		<p>
 			<label for="<?php echo $this->get_field_id( 'num_columns' ); ?>"><?php _e('Number of Columns:', ORGANIC_WIDGETS_18N) ?></label>
-			<select id="<?php echo $this->get_field_id('num_columns'); ?>" name="<?php echo $this->get_field_name('num_columns'); ?>" class="widefat" style="width:100%;">
+			<select id="<?php echo $this->get_field_id( 'num_columns' ); ?>" name="<?php echo $this->get_field_name('num_columns'); ?>" class="widefat" style="width:100%;">
 				<option <?php selected( $num_columns, '2'); ?> value="2">2</option>
 		    <option <?php selected( $num_columns, '3'); ?> value="3">3</option>
 		    <option <?php selected( $num_columns, '4'); ?> value="4">4</option>
@@ -307,9 +308,6 @@ class Organic_Widgets_Portfolio_Section_Widget extends Organic_Widgets_Custom_Wi
 			$instance['num_columns'] = strip_tags( $new_instance['num_columns'] );
 		if ( isset( $new_instance['max_posts'] ) )
 			$instance['max_posts'] = strip_tags( $new_instance['max_posts'] );
-
-
-
 
 		return $instance;
 	}

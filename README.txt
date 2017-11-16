@@ -2,7 +2,7 @@
 Contributors: jqlee85, itsdavidmorgan, organicthemes, raid33
 Donate link: https://organicthemes.com
 Tags: customizer, widgets, testimonials, portfolio, features, fontawesome, icons, pricing tables, page builder, full-width sections, custom widget areas, slideshows, bundle, custom widgets
-Stable tag: 1.1.6
+Stable tag: 1.1.7
 Requires at least: 4.8
 Tested up to: 4.8.3
 License: GPLv2 or later
@@ -87,6 +87,9 @@ A: Most of the Organic Widgets are designed to be used as full-width sections on
 5. A list of some of the custom widgets included as seen within the customizer.
 
 == Changelog ==
+
+= 1.1.7 =
+* Fixed background image display for portfolio widget
 
 = 1.1.6 =
 * Fixed background video display for hero widget
