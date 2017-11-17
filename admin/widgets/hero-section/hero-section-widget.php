@@ -56,6 +56,8 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 		$bg_image = ( isset( $instance['bg_image'] ) && '' != $instance['bg_image'] ) ? $instance['bg_image'] : false;
 		$bg_color = ( isset( $instance['bg_color'] ) && '' != $instance['bg_color'] ) ? $instance['bg_color'] : false;
 		$bg_video  = ( isset( $instance['bg_video'] ) && $instance['bg_video'] ) ? $instance['bg_video'] : false;
+		$featured_image_id = isset( $instance['featured_image_id'] ) ? $instance['featured_image_id'] : false;
+		$featured_image = ( isset( $instance['featured_image'] ) && '' != $instance['featured_image'] ) ? $instance['featured_image'] : false;
 		if ( isset( $instance['full_window_height'] ) ) {
 			$full_window_height = $instance['full_window_height'];
 		} else { $full_window_height = false; }
@@ -102,6 +104,10 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 
 						<!-- BEGIN .organic-widgets-hero-information -->
 						<div class="organic-widgets-hero-information">
+
+						<?php if ( $featured_image_id > 0 ) { ?>
+							<div class="organic-widgets-featured-image"><img src="<?php echo esc_url( $featured_image ); ?>" alt="<?php __( 'Featured Image', ORGANIC_WIDGETS_18N ) ?>" /></div>
+						<?php } ?>
 
 						<?php if ( ! empty( $instance['title'] ) ) { ?>
 							<h1 class="organic-widgets-title"><?php echo apply_filters( 'organic_widget_title', $instance['title'] ); ?></h1>
@@ -177,6 +183,14 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 			$bg_color = $instance['bg_color'];
 		} else { $bg_color = false; }
 
+		if ( isset( $instance['featured_image_id'] ) ) {
+			$featured_image_id = $instance['featured_image_id'];
+		} else { $featured_image_id = 0; }
+
+		if ( isset( $instance['featured_image_id'] ) && isset( $instance['featured_image'] ) ) {
+			$featured_image = $instance['featured_image'];
+		} else { $featured_image = false; }
+
 		if ( isset( $instance['full_window_height'] ) ) {
 			$full_window_height = $instance['full_window_height'];
 		} else { $full_window_height = false; }
@@ -191,6 +205,19 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 		<input id="<?php echo $this->get_field_id( 'text' ); ?>" name="<?php echo $this->get_field_name( 'text' ); ?>" class="text organic-widgets-wysiwyg-anchor" type="hidden" value="<?php echo esc_attr( $instance['text'] ); ?>">
 		<input id="<?php echo $this->get_field_id( 'filter' ); ?>" name="<?php echo $this->get_field_name( 'filter' ); ?>" class="filter" type="hidden" value="on">
 		<input id="<?php echo $this->get_field_id( 'visual' ); ?>" name="<?php echo $this->get_field_name( 'visual' ); ?>" class="visual" type="hidden" value="on">
+
+		<p>
+			<label for="<?php echo $this->get_field_id( 'featured_image' ); ?>"><?php _e( 'Featured Image:', ORGANIC_WIDGETS_18N ); ?></label>
+			<div class="uploader">
+				<input type="submit" class="button" name="<?php echo $this->get_field_name('featured_image_uploader_button'); ?>" id="<?php echo $this->get_field_id('featured_image_uploader_button'); ?>" value="<?php if ( $featured_image_id ) { _e( 'Change Image', ORGANIC_WIDGETS_18N ); } else { _e( 'Select Image', ORGANIC_WIDGETS_18N ); }?>" onclick="organicWidgetFeaturedImage.uploader( '<?php echo $this->id; ?>', '<?php echo $this->id_prefix; ?>' ); return false;" />
+				<input type="submit" class="organic-widgets-remove-image-button button" name="<?php echo $this->get_field_name('featured_image_remover_button'); ?>" id="<?php echo $this->get_field_id('featured_image_remover_button'); ?>" value="<?php _e('Remove Image', ORGANIC_WIDGETS_18N); ?>" onclick="organicWidgetFeaturedImage.remover( '<?php echo $this->id; ?>', '<?php echo $this->id_prefix; ?>', 'featured_image_remover_button' ); return false;" <?php if ( $featured_image_id < 1 ) { echo( 'style="display:none;"' ); } ?>/>
+				<div class="organic-widgets-widget-image-preview" id="<?php echo $this->get_field_id('featured_image_preview'); ?>">
+					<?php echo $this->get_featured_image_html($instance); ?>
+				</div>
+				<input type="hidden" id="<?php echo $this->get_field_id('featured_image_id'); ?>" name="<?php echo $this->get_field_name('featured_image_id'); ?>" value="<?php echo abs($featured_image_id); ?>" />
+				<input type="hidden" id="<?php echo $this->get_field_id('featured_image'); ?>" name="<?php echo $this->get_field_name('featured_image'); ?>" value="<?php echo $featured_image; ?>" />
+			</div>
+		</p>
 
 		<p class="organic-widgets-input-half">
 			<label for="<?php echo $this->get_field_id( 'button_one_text' ); ?>"><?php _e('Featured Link Text:', ORGANIC_WIDGETS_18N); ?></label>
@@ -223,6 +250,37 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 		</p>
 
 		<?php $this->section_background_input_markup( $instance, $this->bg_options );
+
+	}
+
+	/**
+	 * Render the featured image html output.
+	 *
+	 * @since    	1.0.0
+	 *
+	 * @param 	array 	$instance 		Widget instance
+	 * @return 	string 	image html
+	 */
+	protected function get_featured_image_html( $instance ) {
+
+		if ( isset( $instance['featured_image_id'] ) ) {
+			$image_id = $instance['featured_image_id'];
+		} else { $image_id = 0; }
+
+		// If there is an featured_image, use it to render the image. Eventually we should kill this and simply rely on featured_image_ids.
+		if ( (int) $image_id > 0 ) {
+			$size = 'organic-widgets-featured-large';
+			$img_array = wp_get_attachment_image( $image_id, 'full', false );
+			if ( is_array( $img_array ) ) {
+				$output = '<img src="'.$img_array[0].'" />';
+			} else {
+				$output = $img_array;
+			}
+		} else {
+			$output = '';
+		}
+
+		return $output;
 
 	}
 
@@ -262,7 +320,6 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 	 * @return array Updated safe values to be saved.
 	 */
 	public function update( $new_instance, $old_instance ) {
-
 
 		$instance = $old_instance;
 
@@ -322,6 +379,10 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 		} else {
 			$instance['bg_color'] = false;
 		}
+		if ( isset( $new_instance['featured_image_id'] ) )
+			$instance['featured_image_id'] = strip_tags( $new_instance['featured_image_id'] );
+		if ( isset( $new_instance['featured_image'] ) )
+			$instance['featured_image'] = strip_tags( $new_instance['featured_image'] );
 		if ( isset( $new_instance['button_one_text'] ) )
 			$instance['button_one_text'] = strip_tags( $new_instance['button_one_text'] );
 		if ( isset( $new_instance['button_one_url'] ) )
@@ -358,6 +419,12 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 
 		wp_enqueue_script( 'organic-widgets-module-image-background', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-image-background.js', array( 'jquery', 'media-upload', 'media-views', 'wp-color-picker' ) );
 		wp_localize_script( 'organic-widgets-module-image-background', 'HeroWidget', array(
+			'frame_title' => __( 'Select an Image', ORGANIC_WIDGETS_18N ),
+			'button_title' => __( 'Insert Into Widget', ORGANIC_WIDGETS_18N ),
+		) );
+
+		wp_enqueue_script( 'organic-widgets-module-image-featured', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-image-featured.js', array( 'jquery', 'media-upload', 'media-views' ) );
+		wp_localize_script( 'organic-widgets-module-image-featured', 'OrganicWidgetIMG', array(
 			'frame_title' => __( 'Select an Image', ORGANIC_WIDGETS_18N ),
 			'button_title' => __( 'Insert Into Widget', ORGANIC_WIDGETS_18N ),
 		) );

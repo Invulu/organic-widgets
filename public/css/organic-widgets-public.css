@@ -24,7 +24,8 @@ img.organic-widgets-hide-img,
 .organic-widget_widget_recent_comments,
 .organic-widget_widget_archive,
 .organic-widget_widget_categories,
-.organic-widget_widget_meta {
+.organic-widget_widget_meta,
+.organic-widget_widget_media_gallery {
   max-width: 1240px;
 }
 .organic-widgets-content {
@@ -68,9 +69,15 @@ img.organic-widgets-hide-img,
 .organic-widget_widget_text,
 .organic-widget_widget_media_video,
 .organic-widget_widget_media_audio,
-.organic-widget_widget_search {
+.organic-widget_widget_search,
+.organic-widget_widget_media_gallery {
 	margin: 0px auto;
-  padding: 72px 36px;
+  padding: 36px;
+}
+.organic-widget_widget_media_gallery .organic-widgets-default-title {
+  display: block;
+  text-align: center;
+  margin-bottom: 24px;
 }
 .organic-widget_widget_recent_entries,
 .organic-widget_widget_recent_comments,
@@ -222,6 +229,9 @@ img.organic-widgets-hide-img,
 }
 .organic-widgets-hero-section.organic-widgets-full-height-section {
   height: 100vh;
+}
+.organic-widgets-hero-information .organic-widgets-featured-image img {
+  max-height: 360px;
 }
 .organic-widgets-hero-information {
   text-align: center;

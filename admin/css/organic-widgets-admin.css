@@ -15,12 +15,16 @@
   background: #f24343 !important;
 }
 .organic-widgets-widget-image-preview {
-  margin-top: 20px;
+  background: #eeeeee;
+  margin-top: 12px;
 }
 .organic-widgets-widget-image-preview img {
-  width:100%;
-  max-width:600px;
-  height:auto;
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+}
+.widget-content .wp-picker-container {
+  margin-top: 6px;
 }
 .organic-widgets-feature-list-select, .organic-widgets-feature-list-select option {
   font-family: 'FontAwesome', sans-serif;

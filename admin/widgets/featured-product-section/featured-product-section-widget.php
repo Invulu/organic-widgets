@@ -283,7 +283,7 @@ class Organic_Widgets_Featured_Product_Section_Widget extends Organic_Widgets_Cu
 			$image_id = $instance['featured_image_id'];
 		} else { $image_id = 0; }
 
-		// If there is an bg_image, use it to render the image. Eventually we should kill this and simply rely on bg_image_ids.
+		// If there is an featured_image, use it to render the image. Eventually we should kill this and simply rely on featured_image_ids.
 		if ( (int) $image_id > 0 ) {
 			$size = 'organic-widgets-featured-large';
 			$img_array = wp_get_attachment_image( $image_id, 'full', false );
