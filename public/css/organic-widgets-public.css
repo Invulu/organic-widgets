@@ -117,7 +117,8 @@ img.organic-widgets-hide-img,
 .organic-widget_widget_recent_comments .organic-widgets-default-title,
 .organic-widget_widget_archive .organic-widgets-default-title,
 .organic-widget_widget_categories .organic-widgets-default-title,
-.organic-widget_widget_meta .organic-widgets-default-title {
+.organic-widget_widget_meta .organic-widgets-default-title,
+.organic-widget_widget_media_video .organic-widgets-default-title {
   display: block;
 }
 .organic-widget_widget_media_video {
@@ -473,6 +474,13 @@ img.organic-widgets-hide-img,
 .organic-widgets-testimonial-section .flex-viewport {
   padding-top: 12px;
   padding-bottom: 32px;
+}
+.organic-widgets-testimonial-stars {
+  text-align: center;
+  margin-top: 6px;
+}
+.organic-widgets-testimonial-stars .fa {
+  color: #cc9900;
 }
 .organic-widgets-testimonial-avatar {
 	position: relative;
