@@ -187,14 +187,18 @@
 
 						</div>
 
-						<h2 class="theme-name"><?php _e( 'StartUp Theme', ORGANIC_WIDGETS_18N ); ?></h2>
+            <div class="theme-id-container">
 
-						<div class="theme-actions">
+  						<h2 class="theme-name"><?php _e( 'StartUp Theme', ORGANIC_WIDGETS_18N ); ?></h2>
 
-							<a class="button button-primary theme-install" href="<?php echo esc_url( 'https://organicthemes.com/theme/startup-theme/' ); ?>"><?php _e( 'Details' ); ?></a>
-							<a class="button" href="<?php echo esc_url( 'https://organicthemes.com/demo/startup/' ); ?>" target="_blank"><?php _e( 'View Demo' ); ?></a>
+  						<div class="theme-actions">
 
-						</div>
+  							<a class="button button-primary theme-install" href="<?php echo esc_url( 'https://organicthemes.com/theme/startup-theme/' ); ?>"><?php _e( 'Details' ); ?></a>
+  							<a class="button" href="<?php echo esc_url( 'https://organicthemes.com/demo/startup/' ); ?>" target="_blank"><?php _e( 'View Demo' ); ?></a>
+
+  						</div>
+
+            </div>
 
 					</div>
 
@@ -206,14 +210,18 @@
 
 						</div>
 
-						<h2 class="theme-name"><?php _e( 'Swell Lite', ORGANIC_WIDGETS_18N ); ?></h2>
+            <div class="theme-id-container">
 
-						<div class="theme-actions">
+  						<h2 class="theme-name"><?php _e( 'Swell Lite', ORGANIC_WIDGETS_18N ); ?></h2>
 
-							<a class="button button-primary theme-install" href="<?php echo esc_url( admin_url( 'theme-install.php?theme=swell-lite' ) ); ?>"><?php _e( 'Details' ); ?></a>
-							<a class="button" href="<?php echo esc_url( 'https://organicthemes.com/demo/swell/' ); ?>" target="_blank"><?php _e( 'View Demo' ); ?></a>
+  						<div class="theme-actions">
 
-						</div>
+  							<a class="button button-primary theme-install" href="<?php echo esc_url( admin_url( 'theme-install.php?theme=swell-lite' ) ); ?>"><?php _e( 'Details' ); ?></a>
+  							<a class="button" href="<?php echo esc_url( 'https://organicthemes.com/demo/swell/' ); ?>" target="_blank"><?php _e( 'View Demo' ); ?></a>
+
+  						</div>
+
+            </div>
 
 					</div>
 
@@ -225,14 +233,18 @@
 
 						</div>
 
-						<h2 class="theme-name"><?php _e( 'Structure Lite', ORGANIC_WIDGETS_18N ); ?></h2>
+            <div class="theme-id-container">
 
-						<div class="theme-actions">
+  						<h2 class="theme-name"><?php _e( 'Structure Lite', ORGANIC_WIDGETS_18N ); ?></h2>
 
-							<a class="button button-primary theme-install" href="<?php echo esc_url( admin_url( 'theme-install.php?theme=structure-lite' ) ); ?>"><?php _e( 'Details' ); ?></a>
-							<a class="button" href="<?php echo esc_url( 'https://organicthemes.com/demo/structure-lite/' ); ?>" target="_blank"><?php _e( 'View Demo' ); ?></a>
+  						<div class="theme-actions">
 
-						</div>
+  							<a class="button button-primary theme-install" href="<?php echo esc_url( admin_url( 'theme-install.php?theme=structure-lite' ) ); ?>"><?php _e( 'Details' ); ?></a>
+  							<a class="button" href="<?php echo esc_url( 'https://organicthemes.com/demo/structure-lite/' ); ?>" target="_blank"><?php _e( 'View Demo' ); ?></a>
+
+  						</div>
+
+            </div>
 
 					</div>
 
@@ -244,14 +256,18 @@
 
 						</div>
 
-						<h2 class="theme-name"><?php _e( 'Natural Lite', ORGANIC_WIDGETS_18N ); ?></h2>
+            <div class="theme-id-container">
 
-						<div class="theme-actions">
+  						<h2 class="theme-name"><?php _e( 'Natural Lite', ORGANIC_WIDGETS_18N ); ?></h2>
 
-							<a class="button button-primary theme-install" href="<?php echo esc_url( admin_url( 'theme-install.php?theme=natural-lite' ) ); ?>"><?php _e( 'Details' ); ?></a>
-							<a class="button" href="<?php echo esc_url( 'https://organicthemes.com/demo/natural-lite/' ); ?>" target="_blank"><?php _e( 'View Demo' ); ?></a>
+  						<div class="theme-actions">
 
-						</div>
+  							<a class="button button-primary theme-install" href="<?php echo esc_url( admin_url( 'theme-install.php?theme=natural-lite' ) ); ?>"><?php _e( 'Details' ); ?></a>
+  							<a class="button" href="<?php echo esc_url( 'https://organicthemes.com/demo/natural-lite/' ); ?>" target="_blank"><?php _e( 'View Demo' ); ?></a>
+
+  						</div>
+
+            </div>
 
 					</div>
 
