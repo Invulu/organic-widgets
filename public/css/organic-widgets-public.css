@@ -473,7 +473,31 @@ img.organic-widgets-hide-img,
 }
 .organic-widgets-testimonial-section .flex-viewport {
   padding-top: 12px;
-  padding-bottom: 32px;
+  padding-bottom: 64px;
+}
+.organic-widgets-testimonial-section .organic-widgets-flexslider .flex-direction-nav {
+  width: 100%;
+  text-align: center;
+  bottom: 0;
+  right: auto;
+}
+.organic-widgets-testimonial-section .organic-widgets-flexslider .flex-direction-nav li {
+  float: none;
+  display: inline-block;
+}
+.organic-widgets-testimonial-section .organic-widgets-flexslider .flex-direction-nav li:last-child {
+  border-left: 1px solid rgba(0, 0, 0, 0.12);
+}
+.organic-widgets-testimonial-section .organic-widgets-flexslider .flex-direction-nav li a {
+  background: none;
+  line-height: 34px;
+}
+.organic-widgets-testimonial-section.ocw-bg-dark .organic-widgets-flexslider .flex-direction-nav li:last-child {
+  border-color: rgba(255, 255, 255, 0.24);
+}
+.organic-widgets-testimonial-section.ocw-bg-dark .organic-widgets-flexslider .flex-direction-nav li a i {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 24px;
 }
 .organic-widgets-testimonial-stars {
   text-align: center;
@@ -1148,7 +1172,7 @@ img.organic-widgets-hide-img,
 /* Control Nav */
 .organic-widgets-flexslider .flex-control-nav {
 	position: absolute;
-	bottom: 0px;
+	bottom: 32px;
   right: 0px;
   width: 100%;
 	text-align: center;

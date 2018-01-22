@@ -2,7 +2,7 @@
 Contributors: jqlee85, itsdavidmorgan, organicthemes, raid33
 Donate link: https://organicthemes.com
 Tags: customizer, widgets, testimonials, portfolio, features, fontawesome, icons, pricing tables, page builder, full-width sections, custom widget areas, slideshows, bundle, custom widgets
-Stable tag: 1.2.0
+Stable tag: 1.2.1
 Requires at least: 4.8
 Tested up to: 4.9.1
 License: GPLv2 or later
@@ -87,6 +87,10 @@ A: Most of the Organic Widgets are designed to be used as full-width sections on
 5. A list of some of the custom widgets included as seen within the customizer.
 
 == Changelog ==
+
+= 1.2.1 =
+* Fixed issue with unnecessary admin scripts being loaded on the front-end
+* Added directional navigation arrows to testimonials slider
 
 = 1.2.0 =
 * Fixed pricing table widget mobile style
