@@ -1501,5 +1501,8 @@ iframe.organic-widgets-video-bg {
   .organic-ocw-container .organic-widgets-section .organic-widgets-profile-img {
     max-width: none;
   }
+  .organic-widgets-portfolio-section .organic-widgets-portfolio-img .organic-widgets-img-text {
+    opacity: 1;
+  }
 
 }

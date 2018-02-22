@@ -154,6 +154,24 @@
 	height: 32px;
 	margin: 6px 18px 6px 6px;
 }
+.welcome-screen .theme-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+.welcome-screen .purchase-button {
+  background-color: #9ece42;
+  color: #ffffff;
+  font-size: 110%;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 12px 24px;
+  border-radius: 3px;
+}
+.welcome-screen .purchase-button:hover {
+  background: #7ba825;
+}
 
 /************************************************
 *	Settings Screen

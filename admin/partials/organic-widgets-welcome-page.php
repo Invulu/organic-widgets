@@ -169,8 +169,14 @@
 	<!-- BEGIN .options -->
 	<div class="options clearfix">
 
-		<h3><?php esc_html_e( 'Recommended Themes', ORGANIC_WIDGETS_18N ); ?></h3>
-		<p><?php esc_html_e( 'These themes are guaranteed to work seamlessly with Organic Customizer Widgets.', ORGANIC_WIDGETS_18N ); ?></p>
+    <div class="theme-header">
+      <div class="information">
+		    <h3><?php esc_html_e( 'Recommended Themes', ORGANIC_WIDGETS_18N ); ?></h3>
+		    <p><?php esc_html_e( 'These themes are guaranteed to work seamlessly with Organic Customizer Widgets.', ORGANIC_WIDGETS_18N ); ?></p>
+      </div>
+      <a class="purchase-button" href="<?php echo esc_url( 'https://organicthemes.com/checkout?edd_action=add_to_cart&download_id=283005/' ); ?>" target="_blank"><?php _e( 'Get 36+ Premium Themes! | $99/yr', ORGANIC_WIDGETS_18N ); ?></a>
+    </div>
+
 		<br />
 
 		<div class="featured-themes">
@@ -179,7 +185,7 @@
 
 				<div class="themes wp-clearfix">
 
-					<div class="theme">
+          <div class="theme">
 
 						<div class="theme-screenshot">
 
@@ -193,8 +199,54 @@
 
   						<div class="theme-actions">
 
-  							<a class="button button-primary theme-install" href="<?php echo esc_url( 'https://organicthemes.com/theme/startup-theme/' ); ?>"><?php _e( 'Details' ); ?></a>
-  							<a class="button" href="<?php echo esc_url( 'https://organicthemes.com/demo/startup/' ); ?>" target="_blank"><?php _e( 'View Demo' ); ?></a>
+  							<a class="button button-primary theme-install" href="<?php echo esc_url( 'https://organicthemes.com/theme/startup-theme/' ); ?>" target="_blank"><?php _e( 'Details' ); ?></a>
+  							<a class="button" href="<?php echo esc_url( 'https://organicthemes.com/demo/?demo=startup-theme' ); ?>" target="_blank"><?php _e( 'View Demo' ); ?></a>
+
+  						</div>
+
+            </div>
+
+					</div>
+
+          <div class="theme">
+
+						<div class="theme-screenshot">
+
+							<img src="<?php echo esc_url( ORGANIC_WIDGETS_ADMIN_IMG_DIR . 'purpose-screenshot.png' ); ?>" alt="" />
+
+						</div>
+
+            <div class="theme-id-container">
+
+  						<h2 class="theme-name"><?php _e( 'Purpose Theme', ORGANIC_WIDGETS_18N ); ?></h2>
+
+  						<div class="theme-actions">
+
+  							<a class="button button-primary theme-install" href="<?php echo esc_url( 'https://organicthemes.com/theme/purpose-theme/' ); ?>" target="_blank"><?php _e( 'Details' ); ?></a>
+  							<a class="button" href="<?php echo esc_url( 'https://organicthemes.com/demo/?demo=purpose-theme' ); ?>" target="_blank"><?php _e( 'View Demo' ); ?></a>
+
+  						</div>
+
+            </div>
+
+					</div>
+
+          <div class="theme">
+
+						<div class="theme-screenshot">
+
+							<img src="<?php echo esc_url( ORGANIC_WIDGETS_ADMIN_IMG_DIR . 'min-screenshot.png' ); ?>" alt="" />
+
+						</div>
+
+            <div class="theme-id-container">
+
+  						<h2 class="theme-name"><?php _e( 'Min Theme', ORGANIC_WIDGETS_18N ); ?></h2>
+
+  						<div class="theme-actions">
+
+  							<a class="button button-primary theme-install" href="<?php echo esc_url( 'https://organicthemes.com/theme/min-theme/' ); ?>" target="_blank"><?php _e( 'Details' ); ?></a>
+  							<a class="button" href="<?php echo esc_url( 'https://organicthemes.com/demo/?demo=min-theme' ); ?>" target="_blank"><?php _e( 'View Demo' ); ?></a>
 
   						</div>
 
@@ -216,7 +268,7 @@
 
   						<div class="theme-actions">
 
-  							<a class="button button-primary theme-install" href="<?php echo esc_url( admin_url( 'theme-install.php?theme=swell-lite' ) ); ?>"><?php _e( 'Details' ); ?></a>
+  							<a class="button button-primary theme-install" href="<?php echo esc_url( admin_url( 'theme-install.php?theme=swell-lite' ) ); ?>" target="_blank"><?php _e( 'Details' ); ?></a>
   							<a class="button" href="<?php echo esc_url( 'https://organicthemes.com/demo/swell/' ); ?>" target="_blank"><?php _e( 'View Demo' ); ?></a>
 
   						</div>
@@ -239,7 +291,7 @@
 
   						<div class="theme-actions">
 
-  							<a class="button button-primary theme-install" href="<?php echo esc_url( admin_url( 'theme-install.php?theme=structure-lite' ) ); ?>"><?php _e( 'Details' ); ?></a>
+  							<a class="button button-primary theme-install" href="<?php echo esc_url( admin_url( 'theme-install.php?theme=structure-lite' ) ); ?>" target="_blank"><?php _e( 'Details' ); ?></a>
   							<a class="button" href="<?php echo esc_url( 'https://organicthemes.com/demo/structure-lite/' ); ?>" target="_blank"><?php _e( 'View Demo' ); ?></a>
 
   						</div>
@@ -262,7 +314,7 @@
 
   						<div class="theme-actions">
 
-  							<a class="button button-primary theme-install" href="<?php echo esc_url( admin_url( 'theme-install.php?theme=natural-lite' ) ); ?>"><?php _e( 'Details' ); ?></a>
+  							<a class="button button-primary theme-install" href="<?php echo esc_url( admin_url( 'theme-install.php?theme=natural-lite' ) ); ?>" target="_blank"><?php _e( 'Details' ); ?></a>
   							<a class="button" href="<?php echo esc_url( 'https://organicthemes.com/demo/natural-lite/' ); ?>" target="_blank"><?php _e( 'View Demo' ); ?></a>
 
   						</div>
