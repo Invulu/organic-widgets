@@ -1,20 +1,22 @@
-=== Organic Customizer Widgets ===
-Contributors: jqlee85, itsdavidmorgan, organicthemes, raid33
+=== Simple WordPress Page Builder Plugin - Organic Customizer Widgets ===
+Contributors: jqlee85, itsdavidmorgan, organicthemes, raid33, wordpresspagebuilder
 Donate link: https://organicthemes.com
 Tags: customizer, widgets, testimonials, portfolio, features, fontawesome, icons, pricing tables, page builder, full-width sections, custom widget areas, slideshows, bundle, custom widgets
-Stable tag: 1.2.2
+Stable tag: 1.2.3
 Requires at least: 4.8
-Tested up to: 4.9.4
+Tested up to: 4.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-A collection of 12 custom widgets to use within the customizer. Display and arrange them as various types of full width content sections on any page.
+A simple WordPress page builder plugin, Organic Customizer widgets provides a collection of 12 custom widgets to be used in the customizer as content sections.
 
 == Description ==
 
-Display and arrange custom widgets as full width content sections on any page — such as post slideshows, testimonials, team members, portfolios, feature lists, pricing tables products and more. The widgets are designed to work with virtually any theme or page builder that uses widgets.
+Organic Customizer Widgets is a simple WordPress page builder plugin that provides a collection of 12 custom widgets to be used within the customizer. The widgets are displayed as full-width content sections on any page. It transforms the native WordPress customizer into a free and easy page building solution. Unlike other page builders, our solution uses the familiar interface of the customizer and native functionality of widgets. Therefore, it’s a fast, intuitive, easy and secure. There are no shortcodes, no excessive options, no confusing interfaces, and no vendor lock-in. Additionally, the plugin is designed to work with virtually any theme! It's easy WordPress page building, as it was meant to be.
 
-Organic Customizer Widgets introduces several widgets for displaying content in new ways. It includes a new page template, that when applied, creates a new widget area on that page. This allows the core WordPress customizer to be used like a page builder by adding widgets as content sections to any page. Each widget includes basic styles, but will otherwise inherit styles from the active theme.
+Display and arrange the custom widgets as content sections on any page — such as featured content slideshows, testimonials, team members, portfolios, feature lists, pricing tables, products, and more! Each widget features a variety of options for changing the background color, background image, display style and more! Use multiple of the same widgets, or as many different widgets as you like!
+
+Organic Customizer Widgets includes a new page template, that when applied, creates a new widget area on that page. This allows the WordPress customizer to be used as a page builder by adding widgets as content sections to any page using the "Organic Custom" page template. Drag and drop the widgets into your desired order, and the customizer will update in real-time to reflect your changes. Each widget includes basic styles and options, but will otherwise inherit styles from the active theme.
 
 [Live Demo](https://organicthemes.com/demo/startup/widgets/ "Live Widget Demos")
 
@@ -87,6 +89,12 @@ A: Most of the Organic Widgets are designed to be used as full-width sections on
 5. A list of some of the custom widgets included as seen within the customizer.
 
 == Changelog ==
+
+= 1.2.3 =
+* Fixed issue with widget scripts loading when widget was not active on page
+* Minor style update to Content Slideshow Widget
+* Updated plugin name and description
+* Added dismissible admin notices
 
 = 1.2.2 =
 * Fixed issue with portfolio widget titles not displaying on mobile

@@ -445,9 +445,6 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 		// Text Editor
 		wp_enqueue_editor();
 
-		// wp_enqueue_script( 'organic-widgets-feature-list-widgets', plugin_dir_url( __FILE__ ) . 'js/feature-list-widgets.js', array( 'jquery' ) );
-		// wp_add_inline_script( 'organic-widgets-feature-list-widgets', 'wp.organicFeatureListWidgets.init();', 'after' );
-
 		wp_enqueue_script( 'organic-widgets-feature-list-text-title', plugin_dir_url( __FILE__ ) . 'js/feature-list-widgets.js', array( 'jquery' ) );
 		wp_localize_script( 'organic-widgets-feature-list-text-title', 'OrganicFeatureListWidget', array(
 			'id_base' => $this->id_base,
@@ -458,7 +455,6 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 
 		// Repeatable Form Items
 		wp_enqueue_script( 'organic-widgets-module-repeatable-form-item-js', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-repeatable-form-items.js', array( 'jquery' ) );
-
 
 		wp_enqueue_style( 'organic-widgets-fontawesome', ORGANIC_WIDGETS_BASE_DIR . 'public/css/font-awesome.css' );
 
@@ -484,9 +480,8 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 	 */
 	public function public_scripts() {
 
-		if ( ! wp_script_is('organic-widgets-backgroundimagebrightness-js') ) { wp_enqueue_script( 'organic-widgets-backgroundimagebrightness-js', ORGANIC_WIDGETS_BASE_DIR . 'public/js/jquery.backgroundbrightness.js', array( 'jquery' ) ); }
-
 		wp_enqueue_style( 'organic-widgets-fontawesome', ORGANIC_WIDGETS_BASE_DIR . 'public/css/font-awesome.css' );
+		if ( ! wp_script_is('organic-widgets-backgroundimagebrightness-js') ) { wp_enqueue_script( 'organic-widgets-backgroundimagebrightness-js', ORGANIC_WIDGETS_BASE_DIR . 'public/js/jquery.backgroundbrightness.js', array( 'jquery' ) ); }
 
 	}
 

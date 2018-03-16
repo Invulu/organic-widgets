@@ -134,6 +134,9 @@ class Organic_Widgets_Team_Section_Widget extends Organic_Widgets_Custom_Widget 
 		<!-- END .organic-widgets-section -->
 		</div>
 
+		<?php wp_enqueue_script( 'organic-widgets-masonry', ORGANIC_WIDGETS_BASE_DIR . 'public/js/masonry.js', array( 'jquery', 'masonry' ) ); ?>
+		<?php wp_enqueue_script( 'team-section-widget-public-js', ORGANIC_WIDGETS_BASE_DIR . 'public/js/team-section.js', array( 'jquery', 'masonry' ) ); ?>
+
 		<?php echo $args['after_widget'];
 
 	}
@@ -307,7 +310,7 @@ class Organic_Widgets_Team_Section_Widget extends Organic_Widgets_Custom_Widget 
 
 		// Text Editor
 		wp_enqueue_editor();
-		wp_enqueue_script( 'organic-widgets-team-section-widgets-text-title', plugin_dir_url( __FILE__ ) . 'js/team-section-widgets.js', array( 'jquery' ) );
+		wp_enqueue_script( 'organic-widgets-team-section-widgets-text-title', plugin_dir_url( __FILE__ ) . 'js/team-section-widgets.js', array( 'jquery', 'masonry', ) );
 		wp_localize_script( 'organic-widgets-team-section-widgets-text-title', 'OrganicTeamSectionWidget', array(
 			'id_base' => $this->id_base,
 		) );
@@ -331,8 +334,8 @@ class Organic_Widgets_Team_Section_Widget extends Organic_Widgets_Custom_Widget 
 	 * Enqueue public javascript.
 	 */
 	public function public_scripts() {
-		wp_enqueue_script( 'organic-widgets-masonry', ORGANIC_WIDGETS_BASE_DIR . 'public/js/masonry.js', array( 'jquery', 'masonry' ) );
-		wp_enqueue_script( 'team-section-widget-public-js', ORGANIC_WIDGETS_BASE_DIR . 'public/js/team-section.js', array( 'jquery', 'masonry' ) );
+		// wp_enqueue_script( 'organic-widgets-masonry', ORGANIC_WIDGETS_BASE_DIR . 'public/js/masonry.js', array( 'jquery', 'masonry' ) );
+		// wp_enqueue_script( 'team-section-widget-public-js', ORGANIC_WIDGETS_BASE_DIR . 'public/js/team-section.js', array( 'jquery', 'masonry' ) );
 		if ( ! wp_script_is('organic-widgets-backgroundimagebrightness-js') ) { wp_enqueue_script( 'organic-widgets-backgroundimagebrightness-js', ORGANIC_WIDGETS_BASE_DIR . 'public/js/jquery.backgroundbrightness.js', array( 'jquery' ) ); }
 	}
 

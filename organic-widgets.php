@@ -10,7 +10,7 @@
  * Plugin Name:       Organic Customizer Widgets
  * Plugin URI:        https://organicthemes.com/organic-customizer-widgets
  * Description:       Transform the core WordPress Customizer into a page builder. Display and arrange widgets on any page as beautiful content sections, such as featured content slideshows, testimonials, team members, portfolios, feature lists, pricing tables and more. Whoa, cool.
- * Version:           1.2.2
+ * Version:           1.2.3
  * Author:            Organic Themes
  * Author URI:        https://organicthemes.com
  * License:           GPL-2.0+
@@ -20,7 +20,7 @@
  */
 
 // Current Version (Keep in sync with Version # above)
-define ( 'ORGANIC_WIDGETS_CURRENT_VERSION', '1.2.2' );
+define ( 'ORGANIC_WIDGETS_CURRENT_VERSION', '1.2.3' );
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -53,6 +53,9 @@ function activate_organic_widgets() {
   $version = 'PHP' == $flag ? $php : $wp;
   deactivate_plugins( basename( __FILE__ ) );
 	wp_die('<p>The <strong>Organic Customizer Widgets</strong> plugin requires'.$flag.'  version '.$version.' or greater.</p>','Plugin Activation Error',  array( 'response'=>200, 'back_link'=>TRUE ) );
+
+	// Adds plugin activation date
+	add_option( 'organic_widgets_install_date', date( 'Y-m-d h:i:s' ) );
 
 }
 
@@ -106,7 +109,7 @@ function run_organic_widgets() {
 run_organic_widgets();
 
 /**
- * Register hidden welcome screen page.
+ * Register Organic Widgets menu pages.
  *
  * @since    1.0.0
  */
@@ -219,7 +222,7 @@ function organic_widgets_get_organic_widgets() {
 	$organic_widgets = array();
 
   	foreach(get_declared_classes() as $widget) {
-    	if(is_subclass_of($widget, 'Organic_Widgets_Custom_Widget') ) {
+    	if (is_subclass_of($widget, 'Organic_Widgets_Custom_Widget') ) {
     		$settings_name = str_replace( '_', ' ', str_replace('Organic_Widgets_', '', $widget) );
 				$settings_activate_slug = $widget . '_activate';
 				$organic_widgets[$widget] = array(

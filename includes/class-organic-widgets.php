@@ -140,6 +140,12 @@ class Organic_Widgets {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-organic-widget-areas.php';
 
 		/**
+		 * The class responsible for registering admin notices
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-organic-admin-notices.php';
+		include_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/persist-admin-notices-dismissal/persist-admin-notices-dismissal.php';
+
+		/**
 		 * The classes responsible for registering widgets
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widgets/class-organic-widgets-custom-widget.php';
@@ -230,6 +236,13 @@ class Organic_Widgets {
 		// Widget Area Hooks
 		$plugin_widget_areas = new Organic_Widget_Areas( $this->get_plugin_name(), $this->get_version(), $this->get_widget_prefix() );
 		$this->loader->add_action( 'widgets_init', $plugin_widget_areas, 'register_widget_areas' );
+
+		// Admin Notices
+		$plugin_admin_notices = new Organic_Widgets_Admin_Notices( $this->get_plugin_name(), $this->get_version() );
+		$this->loader->add_action( 'admin_init', $plugin_admin_notices, array( 'PAnD', 'init' ) );
+		$this->loader->add_action( 'admin_notices', $plugin_admin_notices, 'organic_widgets_admin_notice_active' );
+		$this->loader->add_action( 'admin_notices', $plugin_admin_notices, 'organic_widgets_admin_notice_2_weeks' );
+		$this->loader->add_action( 'admin_notices', $plugin_admin_notices, 'organic_widgets_admin_notice_1_month' );
 
 		// Content Import Hooks
 		// Before content import.

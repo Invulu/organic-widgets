@@ -436,7 +436,7 @@ img.organic-widgets-hide-img,
 .organic-ocw-container .organic-widgets-content-slideshow-section {
   padding: 0;
 }
-.organic-widgets-content-slideshow-section .slides li {
+.organic-widgets-content-slideshow-section .slides li.post {
   min-height: 480px;
 }
 .organic-widgets-content-slideshow-slide-content {
