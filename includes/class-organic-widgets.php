@@ -239,10 +239,10 @@ class Organic_Widgets {
 
 		// Admin Notices
 		$plugin_admin_notices = new Organic_Widgets_Admin_Notices( $this->get_plugin_name(), $this->get_version() );
-		$this->loader->add_action( 'admin_init', $plugin_admin_notices, array( 'PAnD', 'init' ) );
-		$this->loader->add_action( 'admin_notices', $plugin_admin_notices, 'organic_widgets_admin_notice_active' );
-		$this->loader->add_action( 'admin_notices', $plugin_admin_notices, 'organic_widgets_admin_notice_2_weeks' );
-		$this->loader->add_action( 'admin_notices', $plugin_admin_notices, 'organic_widgets_admin_notice_1_month' );
+		add_action( 'admin_init', array( 'PAnD', 'init' ) );
+		$this->loader->add_action( 'admin_notices', $plugin_admin_notices, 'organic_widgets_admin_notice_active', 10 );
+		$this->loader->add_action( 'admin_notices', $plugin_admin_notices, 'organic_widgets_admin_notice_2_weeks', 10 );
+		$this->loader->add_action( 'admin_notices', $plugin_admin_notices, 'organic_widgets_admin_notice_1_month', 10 );
 
 		// Content Import Hooks
 		// Before content import.

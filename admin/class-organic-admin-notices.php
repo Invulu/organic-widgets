@@ -22,16 +22,10 @@ class Organic_Widgets_Admin_Notices {
 	/** Function organic_widgets_admin_notice */
 	function organic_widgets_admin_notice_active() {
 
-		$install_date = get_option( 'organic_widgets_install_date' );
-		// $install_date = date( '2018-02-12 12:00:00' ); // Testing date.
-		// $install_date = ''; // Testing date.
-
 		if ( ! PAnD::is_admin_notice_active( 'notice-organic-widgets-activated-forever' ) ) {
 			return;
 		}
 		?>
-
-		<?php if ( '' === $install_date ) { ?>
 
 			<div data-dismissible="notice-organic-widgets-activated-forever" class="notice updated is-dismissible">
 
@@ -41,7 +35,7 @@ class Organic_Widgets_Admin_Notices {
 
 			</div>
 
-		<?php }
+		<?php
 
 	}
 
