@@ -3,8 +3,10 @@
 	'use strict';
 
 	/* Check The Background Brightness ---------------------*/
-	function checkBackgroundBrightness(){
-		$('.organic-widgets-section').not('.organic-widgets-content-slideshow-section').backgroundBrightness();
+	function checkBrightness(){
+		$('.organic-widgets-section').not('.organic-widgets-content-slideshow-section').each(function(brightness) {
+			$(this).backgroundBrightness();
+		});
 	}
 
 	/* Add Section Highlighting When Hovering Over Edit Shortcuts ---------------------*/
@@ -50,14 +52,14 @@
 				var groupableWidget = $(this).closest('.organic-widget');
 
 				if ( $(this).hasClass('organic-widgets-groupable-first') ) {
-					var bgColor = $(this).css('background-color');
-					var bgImage = $(this).css('background-image');
-					$(this).css('background-color','');
-					$(this).css('background-image','');
-					containerWrapperSection.css('background-color', bgColor);
-					containerWrapperSection.css('background-image', bgImage);
+					var bgColor = $(this).css('backgroundColor');
+					var bgImage = $(this).css('backgroundImage');
+					$(this).css('backgroundColor','');
+					$(this).css('backgroundImage','');
+					containerWrapperSection.css('backgroundColor', bgColor);
+					containerWrapperSection.css('backgroundImage', bgImage);
 				} else {
-					$(this).css('background-color','');
+					$(this).css('backgroundColor','');
 				}
 				if ( ! $(this).hasClass('organic-widgets-groupable-widget') ) {
 					$(this).addClass('organic-widgets-groupable-widget');
@@ -72,7 +74,7 @@
 
 		});
 
-		checkBackgroundBrightness();
+		checkBrightness();
 
 	}
 
@@ -86,9 +88,9 @@
 	}
 
 	$( document )
-	.ready( checkBackgroundBrightness )
+	.ready( checkBrightness )
 	.ready( groupGroupableWidgets )
 	.ready( editShortcutHoverBorderReady )
-	.ajaxComplete( checkBackgroundBrightness );
+	.ajaxComplete( checkBrightness );
 
 })( jQuery );
