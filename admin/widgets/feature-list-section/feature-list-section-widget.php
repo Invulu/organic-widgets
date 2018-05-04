@@ -111,7 +111,7 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 										<?php if ( '' != $repeatable['link_url'] ) { echo '</a>'; } ?>
 									</h6>
 									<p>
-										<?php if ( array_key_exists( 'text', $repeatable ) ) { echo esc_html( $repeatable['text'] ); }?>
+										<?php if ( array_key_exists( 'text', $repeatable ) ) { echo $repeatable['text']; }?>
 									</p>
 								</div>
 
@@ -356,7 +356,7 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 
 				<p>
 					<label><?php _e( 'Feature text:', ORGANIC_WIDGETS_18N ) ?></label>
-					<textarea class="widefat organic-widgets-feature-list-text-input organic-widgets-repeatable-form-item-input" data-input-name="text" data-activator="true" rows="3" cols="20" ><?php if ( $repeatable && array_key_exists( 'text', $repeatable ) ) echo esc_html($repeatable['text']); ?></textarea>
+					<textarea class="widefat organic-widgets-feature-list-text-input organic-widgets-repeatable-form-item-input" data-input-name="text" data-activator="true" rows="3" cols="20" ><?php if ( $repeatable && array_key_exists( 'text', $repeatable ) ) echo $repeatable['text']; ?></textarea>
 				</p>
 
 				<div class="organic-widgets-clear"></div>

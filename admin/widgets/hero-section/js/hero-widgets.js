@@ -4,7 +4,7 @@ wp.organicHeroWidget = ( function( $ ) {
 	'use strict';
 
 	var component = {};
-	
+
 	/**
 	 * Text widget control.
 	 *

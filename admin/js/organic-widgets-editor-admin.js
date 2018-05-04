@@ -6,37 +6,28 @@
 
 	function checkSelectedTemplate() {
 
-		var iframeTemplate = $('.editor-meta-boxes iframe').contents().find('#page_template');
 		var selectedTemplate = $('#page_template').find(':selected').val();
+		var gutenbergTemplate = $('select[id^="template-selector"]').find(':selected').val();
 
-		// Preparing customizer button for Gutenberg editor
-
-		// if ( $("#postdivrich" + name).length == 0) {
-		// 	iframeTemplate.change(function() {
-		// 		if ( $(this).val() == 'templates/organic-custom-template.php') {
-		// 			hideEditor();
-		// 		} else {
-		// 			showEditor();
-		// 		}
-		// 	})
-		// } else {
-		// 	if ( selectedTemplate.indexOf( 'organic-custom-template.php' ) !== -1 ) {
-		// 		hideEditor();
-		// 	} else {
-		// 		showEditor();
-		// 	}
-		// }
-
-		if ( selectedTemplate.indexOf( 'organic-custom-template.php' ) !== -1 ) {
-			hideEditor();
+		// Customizer button for Gutenberg and Classic editor
+		if ( $("#postdivrich" + name).length == 0) {
+			if ( $('select[id^="template-selector"]').val() == 'templates/organic-custom-template.php') {
+				hideEditor();
+			} else {
+				showEditor();
+			}
 		} else {
-			showEditor();
+			if ( selectedTemplate.indexOf( 'organic-custom-template.php' ) !== -1 ) {
+				hideEditor();
+			} else {
+				showEditor();
+			}
 		}
 
 	}
 
 	function hideEditor() {
-		var wpContentEditorDiv = $('#postdivrich, #editor .editor-layout__content');
+		var wpContentEditorDiv = $('#postdivrich, #editor .editor-block-list__layout');
 		var organicCustomEditDiv = $(document.createElement('div'));
 
 		if ( ! organicWidgets.isCustomTemplate ) {
@@ -58,7 +49,7 @@
 		var customizeButton = '<a href="'+customizeLink+'" class="button button-primary button-large organic-widgets-customize-page-button '+buttonSize+'" '+customizeDisabled+'>Customize Page</a>';
 		organicCustomEditDiv.attr( 'id', 'organic-widgets-post-editor' );
 		organicCustomEditDiv.addClass('postbox');
-		organicCustomEditDiv.html('<h2 class="hndle ui-sortable-handle"><img src="'+organicWidgets.leafIcon+'"/><span>Organic Custom Widgets Page</span></h2><div class="organic-widgets-post-editor-content">' + setPageTemplate + customizeButton + '</div>');
+		organicCustomEditDiv.html('<div class="organic-widgets-post-editor-content"><h2><img src="'+organicWidgets.leafIcon+'"/><span>Organic Custom Widgets Page</span></h2>' + setPageTemplate + customizeButton + '</div>');
 		wpContentEditorDiv.before(organicCustomEditDiv);
 		wpContentEditorDiv.hide();
 
@@ -67,21 +58,25 @@
 	}
 
 	function showEditor(){
-		$('#postdivrich, #editor .editor-layout__content').show();
+		$('#postdivrich, #editor .editor-block-list__layout').show();
 		$('#organic-widgets-post-editor').remove();
 	}
 
 	function pageTemplateListener() {
-
-		$('#page_template').on( 'change', function(){
+		$('#page_template, select[id^="template-selector"]').on( 'change', function(){
 			checkSelectedTemplate();
 		});
-
 	}
 
 	function updatePostListener() {
 		$('#organic-widgets-update-post').on( 'click', function(){
 			$('#post').submit();
+		});
+		$('.gutenberg #organic-widgets-update-post').on( 'click', function(){
+			$('.editor-post-publish-button').click();
+			setTimeout( function() {
+				location.reload();
+			}, 2000 );
 		});
 	}
 

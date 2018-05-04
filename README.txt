@@ -1,8 +1,8 @@
-=== Simple Page Builder - Organic Customizer Widgets ===
+=== Simple WordPress Page Builder - Organic Customizer Widgets ===
 Contributors: jqlee85, itsdavidmorgan, organicthemes, raid33, wordpresspagebuilder
 Donate link: https://organicthemes.com
 Tags: customizer, widgets, testimonials, portfolio, features, fontawesome, icons, pricing tables, page builder, full-width sections, custom widget areas, slideshows, bundle, custom widgets
-Stable tag: 1.2.5
+Stable tag: 1.2.6
 Requires at least: 4.8
 Tested up to: 4.9
 License: GPLv2 or later
@@ -93,6 +93,10 @@ A: The Organic Customizer Widgets plugin requires PHP 5.3.29 or higher, as do ma
 5. A list of some of the custom widgets included as seen within the customizer.
 
 == Changelog ==
+
+= 1.2.6 =
+* Updates made to page template JS in preparation for Gutenberg
+* Removed HTML escaping for textarea fields within the Feature List widget
 
 = 1.2.5 =
 * Updated background brightness script to fix text color issues with IE
