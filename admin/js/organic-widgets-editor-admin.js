@@ -80,8 +80,8 @@
 		});
 	}
 
-	$( document )
-	.ready( checkSelectedTemplate )
-	.ready( pageTemplateListener );
+	$( window )
+	.load( checkSelectedTemplate )
+	.load( pageTemplateListener );
 
 })( jQuery );
