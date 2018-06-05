@@ -137,15 +137,17 @@ class Organic_Widgets_Testimonial_Section_Widget extends Organic_Widgets_Custom_
 
 										<?php } ?>
 
-										<div class="organic-widgets-testimonial-stars">
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-										</div>
+										<!-- BEGIN .organic-widgets-card-content -->
+										<div class="organic-widgets-card-content">
 
-										<div class="organic-widgets-excerpt"><?php the_excerpt(); ?></div>
+											<div class="organic-widgets-testimonial-stars">
+												<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+											</div>
+
+											<div class="organic-widgets-excerpt"><?php the_excerpt(); ?></div>
+
+										<!-- END .organic-widgets-card-content -->
+										</div>
 
 									<!-- END .organic-widgets-card -->
 									</div>

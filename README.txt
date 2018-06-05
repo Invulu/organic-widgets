@@ -2,7 +2,7 @@
 Contributors: jqlee85, itsdavidmorgan, organicthemes, raid33, wordpresspagebuilder
 Donate link: https://organicthemes.com
 Tags: customizer, widgets, testimonials, portfolio, features, fontawesome, icons, pricing tables, page builder, full-width sections, custom widget areas, slideshows, bundle, custom widgets
-Stable tag: 1.2.7
+Stable tag: 1.2.8
 Requires at least: 4.8
 Tested up to: 4.9
 License: GPLv2 or later
@@ -93,6 +93,10 @@ A: The Organic Customizer Widgets plugin requires PHP 5.3.29 or higher, as do ma
 5. A list of some of the custom widgets included as seen within the customizer.
 
 == Changelog ==
+
+= 1.2.8 =
+* Updates to HTML markup for content cards
+* Style tweaks and fixes
 
 = 1.2.7 =
 * Additional updates to page template JS after Gutenberg 2.8.0 update

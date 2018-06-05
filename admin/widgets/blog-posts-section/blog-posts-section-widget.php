@@ -98,31 +98,37 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 
 						<article>
 
-							<?php if ( has_post_thumbnail() ) { ?>
-								<a class="organic-widgets-featured-img" href="<?php the_permalink(); ?>" style="background-image: url(<?php echo esc_url( $thumb[0] ); ?>);">
-									<span class="organic-widgets-hide-img"><?php the_post_thumbnail(); ?></span>
-								</a>
-							<?php } ?>
-
 							<!-- BEGIN .organic-widgets-card -->
 							<div class="organic-widgets-card clearfix">
 
-								<h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
+								<?php if ( has_post_thumbnail() ) { ?>
+									<a class="organic-widgets-featured-img" href="<?php the_permalink(); ?>" style="background-image: url(<?php echo esc_url( $thumb[0] ); ?>);">
+										<span class="organic-widgets-hide-img"><?php the_post_thumbnail(); ?></span>
+									</a>
+								<?php } ?>
 
-								<!-- BEGIN .organic-widgets-post-meta -->
-								<div class="organic-widgets-post-meta">
-									<p class="organic-widgets-post-date">
-										<?php echo get_the_modified_date(); ?>
-									</p>
-									<p class="organic-widgets-post-author">
-										<?php esc_html_e( 'By ', ORGANIC_WIDGETS_18N ); ?><?php esc_url( the_author_posts_link() ); ?>
-									</p>
-								<!-- END .organic-widgets-post-meta -->
+								<!-- BEGIN .organic-widgets-card-content -->
+								<div class="organic-widgets-card-content">
+
+									<h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
+
+									<!-- BEGIN .organic-widgets-post-meta -->
+									<div class="organic-widgets-post-meta">
+										<p class="organic-widgets-post-date">
+											<?php echo get_the_modified_date(); ?>
+										</p>
+										<p class="organic-widgets-post-author">
+											<?php esc_html_e( 'By ', ORGANIC_WIDGETS_18N ); ?><?php esc_url( the_author_posts_link() ); ?>
+										</p>
+									<!-- END .organic-widgets-post-meta -->
+									</div>
+
+									<?php the_excerpt(); ?>
+
+									<?php edit_post_link( esc_html__( '(Edit)', ORGANIC_WIDGETS_18N ), '<p>', '</p>' ); ?>
+
+								<!-- END .organic-widgets-card-content -->
 								</div>
-
-								<?php the_excerpt(); ?>
-
-								<?php edit_post_link( esc_html__( '(Edit)', ORGANIC_WIDGETS_18N ), '<p>', '</p>' ); ?>
 
 							<!-- END .organic-widgets-card -->
 							</div>

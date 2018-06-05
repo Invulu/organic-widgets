@@ -70,7 +70,7 @@
 
 			});
 
-			$('.organic-widgets-group .organic-widgets-featured-content-section .information').addClass('organic-widgets-card');
+			$('.organic-widgets-group .organic-widgets-featured-content-section .organic-widgets-content').addClass('organic-widgets-card');
 
 		});
 

@@ -74,17 +74,17 @@ class Organic_Widgets_Profile_Widget extends Organic_Widgets_Custom_Widget {
 					<!-- BEGIN .organic-widgets-profile -->
 					<div class="organic-widgets-profile">
 
-						<?php if ( $instance['bg_image_id'] > 0 ) { ?>
-							<div class="organic-widgets-profile-img" style="background-image: url(<?php echo $instance['bg_image']; ?>);">
-								<img class="organic-widgets-hide-img" src="<?php echo $instance['bg_image']; ?>" alt="<?php __( 'Profile Image', ORGANIC_WIDGETS_18N ) ?>" />
-							</div>
-						<?php } ?>
-
 						<!-- BEGIN .organic-widgets-card -->
 						<div class="organic-widgets-card">
 
+							<?php if ( $instance['bg_image_id'] > 0 ) { ?>
+								<div class="organic-widgets-profile-img" style="background-image: url(<?php echo $instance['bg_image']; ?>);">
+									<img class="organic-widgets-hide-img" src="<?php echo $instance['bg_image']; ?>" alt="<?php __( 'Profile Image', ORGANIC_WIDGETS_18N ) ?>" />
+								</div>
+							<?php } ?>
+
 							<!-- BEGIN .organic-profile-content -->
-							<div class="organic-profile-content">
+							<div class="organic-profile-content organic-widgets-card-content">
 
 							<?php if ( ! empty( $instance['title'] ) ) { ?>
 								<h4 class="organic-widgets-profile-title"><?php echo apply_filters( 'organic_widget_title', $instance['title'] ); ?></h4>

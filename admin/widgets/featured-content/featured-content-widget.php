@@ -95,13 +95,13 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 						<div class="organic-widgets-img"><?php echo get_the_post_thumbnail( $page_id, 'organic-widgets-featured-medium' )?></div>
 					<?php } ?>
 
-					<!-- BEGIN .information -->
-					<div class="information">
+					<!-- BEGIN .organic-widgets-card-content -->
+					<div class="organic-widgets-card-content">
 
 						<?php the_content( esc_html__( 'Read More', ORGANIC_WIDGETS_18N ) ); ?>
 						<?php edit_post_link( esc_html__( '(Edit)', ORGANIC_WIDGETS_18N ), '<p>', '</p>' ); ?>
 
-					<!-- END .information -->
+					<!-- END .organic-widgets-card-content -->
 					</div>
 
 				<!-- END .organic-widgets-content -->
@@ -133,8 +133,8 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 					<!-- BEGIN .organic-widgets-content -->
 					<div class="organic-widgets-content">
 
-						<!-- BEGIN .information -->
-						<div class="information">
+						<!-- BEGIN .organic-widgets-card-content -->
+						<div class="organic-widgets-card-content">
 
 							<?php if ( ! empty( $instance['title'] ) ) { ?>
 								<h2><?php echo apply_filters( 'organic_widget_title', $instance['title'] ); ?></h2>
@@ -154,7 +154,7 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 								</a>
 							<?php } ?>
 
-						<!-- END .information -->
+						<!-- END .organic-widgets-card-content -->
 						</div>
 
 					<!-- END .organic-widgets-content -->

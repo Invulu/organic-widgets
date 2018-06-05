@@ -75,12 +75,12 @@ class Organic_Widgets_Pricing_Table_Widget extends Organic_Widgets_Custom_Widget
 					<!-- BEGIN .organic-widgets-pricing-table -->
 					<div class="organic-widgets-pricing-table">
 
-						<?php if ( $instance['bg_image_id'] > 0 ) { ?>
-							<div class="organic-widgets-profile-img"><img src="<?php echo $instance['bg_image']; ?>" alt="<?php __( 'Pricing Table Image', ORGANIC_WIDGETS_18N ) ?>" /></div>
-						<?php } ?>
-
 						<!-- BEGIN .organic-widgets-card -->
 						<div class="organic-widgets-card">
+
+							<?php if ( $instance['bg_image_id'] > 0 ) { ?>
+								<div class="organic-widgets-profile-img"><img src="<?php echo $instance['bg_image']; ?>" alt="<?php __( 'Pricing Table Image', ORGANIC_WIDGETS_18N ) ?>" /></div>
+							<?php } ?>
 
 							<!-- BEGIN .organic-pricing-table-content -->
 							<div class="organic-pricing-table-content">

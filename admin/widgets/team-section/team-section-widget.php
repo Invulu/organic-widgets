@@ -100,18 +100,24 @@ class Organic_Widgets_Team_Section_Widget extends Organic_Widgets_Custom_Widget 
 
 						<article>
 
-							<?php if ( has_post_thumbnail() ) { ?>
-								<div class="organic-widgets-featured-img"><?php the_post_thumbnail(); ?></div>
-							<?php } ?>
-
 							<!-- BEGIN .organic-widgets-card -->
 							<div class="organic-widgets-card">
 
-								<h5 class="organic-widgets-member-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
+								<?php if ( has_post_thumbnail() ) { ?>
+									<div class="organic-widgets-featured-img"><?php the_post_thumbnail(); ?></div>
+								<?php } ?>
 
-								<?php the_content( esc_html__( 'Learn More', ORGANIC_WIDGETS_18N ) ); ?>
+								<!-- BEGIN .organic-widgets-card-content -->
+								<div class="organic-widgets-card-content">
 
-								<?php edit_post_link( esc_html__( '(Edit)', ORGANIC_WIDGETS_18N ), '<p>', '</p>' ); ?>
+									<h5 class="organic-widgets-member-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
+
+									<?php the_content( esc_html__( 'Learn More', ORGANIC_WIDGETS_18N ) ); ?>
+
+									<?php edit_post_link( esc_html__( '(Edit)', ORGANIC_WIDGETS_18N ), '<p>', '</p>' ); ?>
+
+								<!-- END .organic-widgets-card-content -->
+								</div>
 
 							<!-- END .organic-widgets-card -->
 							</div>
