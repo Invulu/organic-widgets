@@ -139,6 +139,7 @@ class Organic_Widgets_Portfolio_Section_Widget extends Organic_Widgets_Custom_Wi
 				</div>
 
 			<?php endif; ?>
+			<?php wp_reset_postdata(); ?>
 
 			<!-- END .organic-widgets-content -->
 			</div>

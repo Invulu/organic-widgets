@@ -125,7 +125,7 @@
 .welcome-screen .feature-links a {
 	display: flex;
 	align-items: center;
-  max-width: 33.3%;
+  max-width: 25%;
 	text-decoration: none;
 	margin: 6px 0px;
 	padding: 12px;
@@ -135,6 +135,9 @@
 .welcome-screen .feature-links a:first-child {
   border-right: none;
   border-radius: 3px 0px 0px 3px;
+}
+.welcome-screen .feature-links a:nth-child(3) {
+  border-left: none;
 }
 .welcome-screen .feature-links a:last-child {
   border-left: none;

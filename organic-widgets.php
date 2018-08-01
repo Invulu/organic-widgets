@@ -7,10 +7,10 @@
  * @package           Organic_Widgets
  *
  * @wordpress-plugin
- * Plugin Name:       Organic Customizer Widgets
+ * Plugin Name:       Organic Builder Widgets
  * Plugin URI:        https://organicthemes.com/organic-customizer-widgets
  * Description:       Transform the core WordPress Customizer into a page builder. Display and arrange widgets on any page as beautiful content sections, such as featured content slideshows, testimonials, team members, portfolios, feature lists, pricing tables and more. Whoa, cool.
- * Version:           1.2.8
+ * Version:           1.2.9
  * Author:            Organic Themes
  * Author URI:        https://organicthemes.com
  * License:           GPL-2.0+
@@ -20,7 +20,7 @@
  */
 
 // Current Version (Keep in sync with Version # above)
-define ( 'ORGANIC_WIDGETS_CURRENT_VERSION', '1.2.8' );
+define ( 'ORGANIC_WIDGETS_CURRENT_VERSION', '1.2.9' );
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -44,6 +44,9 @@ function activate_organic_widgets() {
 		$flag = 'WordPress';
 	} else {
 		// Activate
+		if ( is_plugin_active( 'organic-widgets-pro/organic-widgets.php' ) ) {
+			add_action( 'update_option_active_plugins', 'deactivate_organic_widgets_pro_version' );
+		}
 		require_once plugin_dir_path( __FILE__ ) . 'includes/class-organic-widgets-activator.php';
 		Organic_Widgets_Activator::activate();
 		return;
@@ -52,7 +55,7 @@ function activate_organic_widgets() {
 	// Notify User that versions are too old, and deactivate plugin
   $version = 'PHP' == $flag ? $php : $wp;
   deactivate_plugins( basename( __FILE__ ) );
-	wp_die('<p>The <strong>Organic Customizer Widgets</strong> plugin requires'.$flag.'  version '.$version.' or greater.</p>','Plugin Activation Error',  array( 'response'=>200, 'back_link'=>TRUE ) );
+	wp_die('<p>The <strong>Organic Builder Widgets</strong> plugin requires'.$flag.'  version '.$version.' or greater.</p>','Plugin Activation Error',  array( 'response'=>200, 'back_link'=>TRUE ) );
 
 	// Adds plugin activation date
 	add_option( 'organic_widgets_install_date', date( 'Y-m-d h:i:s' ) );
@@ -72,6 +75,13 @@ function deactivate_organic_widgets() {
 
 register_activation_hook( __FILE__, 'activate_organic_widgets' );
 register_deactivation_hook( __FILE__, 'deactivate_organic_widgets' );
+
+/**
+ * This function deactivates the premium plugin version upon activation.
+ */
+function deactivate_organic_widgets_pro_version(){
+	deactivate_plugins( 'organic-widgets-pro/organic-widgets.php' );
+}
 
 /**
  * The core plugin class that is used to define internationalization,

@@ -144,6 +144,7 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 				</div>
 
 			<?php endif; ?>
+			<?php wp_reset_postdata(); ?>
 
 			<!-- END .organic-widgets-content -->
 			</div>
