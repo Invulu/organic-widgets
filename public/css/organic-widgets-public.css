@@ -242,6 +242,7 @@ img.organic-widgets-hide-img,
   max-height: 360px;
 }
 .organic-widgets-hero-information {
+  max-width: 720px;
   text-align: center;
   margin: 0px auto;
 }
@@ -252,7 +253,6 @@ img.organic-widgets-hide-img,
 .organic-widgets-aligner-middle-left .organic-widgets-button-holder,
 .organic-widgets-aligner-bottom-left .organic-widgets-button-holder {
   text-align: left;
-  max-width: 640px;
   margin-left: 0px;
   margin-right: 0px;
 }
@@ -263,7 +263,6 @@ img.organic-widgets-hide-img,
 .organic-widgets-aligner-middle-right .organic-widgets-button-holder,
 .organic-widgets-aligner-bottom-right .organic-widgets-button-holder {
   text-align: right;
-  max-width: 640px;
   margin-left: 0px;
   margin-right: 0px;
 }
@@ -331,9 +330,6 @@ img.organic-widgets-hide-img,
 *	Blog Posts Section Widget
 ************************************************/
 
-.organic-widgets-blog-posts-section .organic-widgets-text {
-  margin-bottom: 0px;
-}
 .organic-widgets-blog-posts-section .organic-widgets-title,
 .organic-widgets-blog-posts-section .organic-widgets-text {
   text-align: center;
@@ -342,15 +338,18 @@ img.organic-widgets-hide-img,
   background-size: cover;
   background-position: center;
 }
-.organic-widgets-blog-posts-section .organic-widgets-single article {
-  display: flex;
-  align-items: stretch;
-}
 .organic-widgets-blog-posts-section .organic-widgets-single .organic-widgets-featured-img {
   min-width: 40%;
 }
 .organic-widgets-blog-posts-section .organic-widgets-single .organic-widgets-card-content {
   padding: 36px;
+}
+.organic-widgets-blog-posts-section .organic-widgets-single article,
+.organic-widgets-blog-posts-section .organic-widgets-single .organic-widgets-card {
+  display: flex;
+}
+.organic-widgets-blog-posts-section .organic-widgets-single .organic-widgets-hide-img {
+  display: none;
 }
 
 /************************************************
@@ -607,10 +606,10 @@ img.organic-widgets-hide-img,
   margin: auto;
   box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.12);
 }
-.organic-widgets-profile .organic-widgets-card {
+.organic-ocw-container .organic-widgets-profile .organic-widgets-card {
   display: flex;
 }
-.organic-widgets-group-container .organic-widgets-profile .organic-widgets-card {
+.organic-ocw-container .organic-widgets-group-container .organic-widgets-profile .organic-widgets-card {
   display: block;
 }
 .organic-ocw-container .organic-widgets-section .organic-widgets-profile-img {
