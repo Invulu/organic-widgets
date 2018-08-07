@@ -36,7 +36,6 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 
 		// Admin Scripts
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_setup' ) );
-		add_action( 'admin_footer-widgets.php', array( $this, 'render_control_template_scripts' ) );
 
 		// Public scripts
 		add_action( 'wp_enqueue_scripts', array( $this, 'public_scripts') );

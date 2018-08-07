@@ -1,5 +1,4 @@
 <?php
-
 /**
  *
  * @link              https://organicthemes.com
@@ -10,7 +9,7 @@
  * Plugin Name:       Organic Builder Widgets
  * Plugin URI:        https://organicthemes.com/organic-customizer-widgets
  * Description:       Transform the core WordPress Customizer into a page builder. Display and arrange widgets on any page as beautiful content sections, such as featured content slideshows, testimonials, team members, portfolios, feature lists, pricing tables and more. Whoa, cool.
- * Version:           1.2.10
+ * Version:           1.2.12
  * Author:            Organic Themes
  * Author URI:        https://organicthemes.com
  * License:           GPL-2.0+
@@ -19,13 +18,17 @@
  * Domain Path:       /languages
  */
 
-// Current Version (Keep in sync with Version # above)
-define ( 'ORGANIC_WIDGETS_CURRENT_VERSION', '1.2.10' );
+// Current Version (Keep in sync with Version # above).
+define( 'ORGANIC_WIDGETS_CURRENT_VERSION', '1.2.12' );
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
 	die;
 }
+
+register_activation_hook( __FILE__, 'activate_organic_widgets' );
+register_deactivation_hook( __FILE__, 'deactivate_organic_widgets' );
+add_action( 'admin_init', 'organic_widgets_welcome_redirect' );
 
 /**
  * The code that runs during plugin activation.
@@ -37,28 +40,27 @@ function activate_organic_widgets() {
 	$wp = '4.8';
 	$php = '5.3.29';
 
-	// Compare PHP and WP versions and make sure the plugin can run
-  if ( version_compare( PHP_VERSION, $php, '<' ) ) {
+	// Compare PHP and WP versions and make sure the plugin can run.
+	if ( version_compare( PHP_VERSION, $php, '<' ) ) {
 		$flag = 'PHP';
 	} elseif ( version_compare( $wp_version, $wp, '<' ) ) {
 		$flag = 'WordPress';
 	} else {
-		// Activate
+		// Activate.
 		if ( is_plugin_active( 'organic-widgets-pro/organic-widgets.php' ) ) {
 			add_action( 'update_option_active_plugins', 'deactivate_organic_widgets_pro_version' );
 		}
+		add_option( 'organic_widgets_install_date', date( 'Y-m-d h:i:s' ) );
+		add_option( 'organic_widgets_activation_redirect', true );
 		require_once plugin_dir_path( __FILE__ ) . 'includes/class-organic-widgets-activator.php';
 		Organic_Widgets_Activator::activate();
 		return;
 	}
 
-	// Notify User that versions are too old, and deactivate plugin
-  $version = 'PHP' == $flag ? $php : $wp;
-  deactivate_plugins( basename( __FILE__ ) );
-	wp_die('<p>The <strong>Organic Builder Widgets</strong> plugin requires'.$flag.'  version '.$version.' or greater.</p>','Plugin Activation Error',  array( 'response'=>200, 'back_link'=>TRUE ) );
-
-	// Adds plugin activation date
-	add_option( 'organic_widgets_install_date', date( 'Y-m-d h:i:s' ) );
+	// Notify User that versions are too old, and deactivate plugin.
+	$version = 'PHP' == $flag ? $php : $wp;
+	deactivate_plugins( basename( __FILE__ ) );
+	wp_die( '<p>The <strong>Organic Builder Widgets</strong> plugin requires' . $flag . '  version ' . $version . ' or greater.</p>', 'Plugin Activation Error', array( 'response' => 200, 'back_link' => true ) );
 
 }
 
@@ -73,14 +75,23 @@ function deactivate_organic_widgets() {
 
 }
 
-register_activation_hook( __FILE__, 'activate_organic_widgets' );
-register_deactivation_hook( __FILE__, 'deactivate_organic_widgets' );
-
 /**
  * This function deactivates the premium plugin version upon activation.
  */
-function deactivate_organic_widgets_pro_version(){
+function deactivate_organic_widgets_pro_version() {
 	deactivate_plugins( 'organic-widgets-pro/organic-widgets.php' );
+}
+
+/**
+ * This function redirects users to the welcome page upon activation.
+ */
+function organic_widgets_welcome_redirect() {
+	if ( get_option( 'organic_widgets_activation_redirect', false ) ) {
+		delete_option( 'organic_widgets_activation_redirect' );
+		if ( ! isset( $_GET['activate-multi'] ) ) {
+			wp_redirect( add_query_arg( array( 'page' => 'organic-widgets' ), admin_url( 'admin.php' ) ) );
+		}
+	}
 }
 
 /**
@@ -102,7 +113,7 @@ function run_organic_widgets() {
 
 	$plugin = new Organic_Widgets();
 
-	// Define Constants
+	// Define Constants.
 	define( 'ORGANIC_WIDGETS_18N', $plugin->get_plugin_name() );
 	define( 'ORGANIC_WIDGETS_BASE_DIR', plugin_dir_url( __FILE__ ) );
 	define( 'ORGANIC_WIDGETS_BLOCKS_DIR', plugin_dir_url( __FILE__ ) . 'admin/blocks/' );
@@ -110,7 +121,7 @@ function run_organic_widgets() {
 	define( 'ORGANIC_WIDGETS_ADMIN_JS_DIR', plugin_dir_url( __FILE__ ) . 'admin/js/' );
 	define( 'ORGANIC_WIDGETS_ADMIN_CSS_DIR', plugin_dir_url( __FILE__ ) . 'admin/css/' );
 
-	// Keep false until blocks are ready
+	// Keep false until blocks are ready.
 	define( 'ORGANIC_WIDGETS_BLOCKS_ACTIVE', false );
 
 	$plugin->run();
@@ -137,7 +148,7 @@ function organic_widgets_welcome_screen() {
 		</svg>'
 	);
 
-	// Add Menu Item
+	// Add Menu Item.
 	add_menu_page(
 		esc_html__( 'Organic Widgets', ORGANIC_WIDGETS_18N ),
 		esc_html__( 'Organic Widgets', ORGANIC_WIDGETS_18N ),
@@ -148,7 +159,7 @@ function organic_widgets_welcome_screen() {
 		110
 	);
 
-	// Add Settings Page
+	// Add Settings Page.
 	add_submenu_page(
 		'organic-widgets',
 		'Organic Widgets Settings',
@@ -159,29 +170,29 @@ function organic_widgets_welcome_screen() {
 	);
 
 	add_settings_section(
-    'organic_widgets_settings_section',
-    'Organic Widgets Settings',
-    'organic_widgets_settings_callback',
-    'organic-widgets-settings'
+		'organic_widgets_settings_section',
+		'Organic Widgets Settings',
+		'organic_widgets_settings_callback',
+		'organic-widgets-settings'
 	);
 
-	register_setting( 'organic-widgets-settings', 'organic_widgets_settings', array('sanitize_callback'=>'organic_widgets_settings_sanitize_callback'));
+	register_setting( 'organic-widgets-settings', 'organic_widgets_settings', array( 'sanitize_callback' => 'organic_widgets_settings_sanitize_callback' ) );
 
 }
 add_action( 'admin_menu', 'organic_widgets_welcome_screen' );
 
-function organic_widgets_settings_sanitize_callback($options) {
+function organic_widgets_settings_sanitize_callback( $options ) {
 
 	$organic_widgets = organic_widgets_get_organic_widgets();
 
 	foreach($organic_widgets as $key => $organic_widget) {
-		if ( !array_key_exists($organic_widget['settings-activate-slug'], $options) ){
+		if ( ! array_key_exists( $organic_widget['settings-activate-slug'], $options ) ) {
 			$options[$organic_widget['settings-activate-slug']] = 0;
 		}
 	}
 
-	// Sanitize Additional stylesheets
-	if ( !array_key_exists('additional_stylesheets', $options) ){
+	// Sanitize Additional stylesheets.
+	if ( ! array_key_exists( 'additional_stylesheets', $options ) ) {
 		$options['additional_stylesheets'] = 0;
 	}
 
@@ -190,7 +201,7 @@ function organic_widgets_settings_sanitize_callback($options) {
 
 function organic_widgets_settings_callback() {
 
-  $options = get_option( 'organic_widgets_settings' ) ? get_option( 'organic_widgets_settings' ) : array();
+	$options = get_option( 'organic_widgets_settings' ) ? get_option( 'organic_widgets_settings' ) : array();
 	if ( !array_key_exists('additional_stylesheets', $options) ){
 		$options['additional_stylesheets'] = 0;
 	}
@@ -201,25 +212,26 @@ function organic_widgets_settings_callback() {
 
 	<div class="organic-widgets-display-settings">
 
-    <h3><?php _e( 'Active Widgets', ORGANIC_WIDGETS_18N ); ?></h3>
+		<h3><?php _e( 'Active Widgets', ORGANIC_WIDGETS_18N ); ?></h3>
 
-    <?php foreach( $organic_widgets as $organic_widget ) {
-
+		<?php
+		foreach ( $organic_widgets as $organic_widget ) {
 			$slug = $organic_widget['settings-activate-slug'];
 			$name = $organic_widget['settings-name'];
-			if ( !array_key_exists( $slug, $options) ) {
+			if ( ! array_key_exists( $slug, $options ) ) {
 				$options[$slug] = 1;
-			} ?>
+			}
+			?>
 
-      <div class="organic-widgets-display-toggle"><label><input type="checkbox" name="organic_widgets_settings[<?php echo esc_attr($slug); ?>]" value="1" <?php checked($options[$slug],1,1); ?> /> <?php esc_html_e( $name, ORGANIC_WIDGETS_18N ); ?></label></div>
+			<div class="organic-widgets-display-toggle"><label><input type="checkbox" name="organic_widgets_settings[<?php echo esc_attr( $slug ); ?>]" value="1" <?php checked( $options[$slug], 1, 1 ); ?> /> <?php esc_html_e( $name, ORGANIC_WIDGETS_18N ); ?></label></div>
 
-    <?php } ?>
+		<?php } ?>
 
 	</div>
 
 	<!-- END Active Widgets Settings -->
 
-<?php
+	<?php
 }
 
 /**
@@ -231,16 +243,16 @@ function organic_widgets_get_organic_widgets() {
 
 	$organic_widgets = array();
 
-  	foreach(get_declared_classes() as $widget) {
-    	if (is_subclass_of($widget, 'Organic_Widgets_Custom_Widget') ) {
-    		$settings_name = str_replace( '_', ' ', str_replace('Organic_Widgets_', '', $widget) );
-				$settings_activate_slug = $widget . '_activate';
-				$organic_widgets[$widget] = array(
-					'settings-activate-slug' => $settings_activate_slug,
-					'settings-name' => $settings_name
-				);
-    	}
-    }
+	foreach ( get_declared_classes() as $widget ) {
+		if ( is_subclass_of( $widget, 'Organic_Widgets_Custom_Widget' ) ) {
+			$settings_name            = str_replace( '_', ' ', str_replace( 'Organic_Widgets_', '', $widget ) );
+			$settings_activate_slug   = $widget . '_activate';
+			$organic_widgets[$widget] = array(
+				'settings-activate-slug' => $settings_activate_slug,
+				'settings-name'          => $settings_name,
+			);
+		}
+	}
 
 	return $organic_widgets;
 
@@ -267,17 +279,3 @@ function organic_widgets_settings_screen_content() {
 	include_once plugin_dir_path( __FILE__ ) . '/admin/partials/organic-widgets-settings-page.php';
 
 }
-
-/**
- * Redirect to welcome screen upon plugin activation.
- *
- * @since    1.0.0
- */
-function organic_widgets_activation_redirect( $plugin ) {
-
-	if ( $plugin == plugin_basename( __FILE__ ) ) {
-		exit( wp_redirect( add_query_arg( array( 'page' => 'organic-widgets' ), admin_url( 'admin.php' ) ) ) );
-	}
-
-}
-add_action( 'activated_plugin', 'organic_widgets_activation_redirect' );

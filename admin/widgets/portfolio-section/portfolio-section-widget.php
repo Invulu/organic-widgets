@@ -229,31 +229,6 @@ class Organic_Widgets_Portfolio_Section_Widget extends Organic_Widgets_Custom_Wi
 	}
 
 	/**
-	 * Render form template scripts.
-	 *
-	 *
-	 * @access public
-	 */
-	public function render_control_template_scripts() {
-
-		?>
-		<script type="text/html" id="tmpl-widget-organic_widgets_portfolio_section-control-fields">
-
-			<# var elementIdPrefix = 'el' + String( Math.random() ).replace( /\D/g, '' ) + '_' #>
-
-			<p>
-				<label for="{{ elementIdPrefix }}title"><?php esc_html_e( 'Title:' ); ?></label>
-				<input id="{{ elementIdPrefix }}title" type="text" class="widefat title">
-			</p>
-			<p>
-				<label for="{{ elementIdPrefix }}text" class="screen-reader-text"><?php esc_html_e( 'Content:' ); ?></label>
-				<textarea id="{{ elementIdPrefix }}text" class="widefat text wp-editor-area" style="height: 200px" rows="16" cols="20"></textarea>
-			</p>
-		</script>
-		<?php
-	}
-
-	/**
 	 * Sanitize widget form values as they are saved.
 	 *
 	 * @see WP_Widget::update()

@@ -2,7 +2,7 @@
 Contributors: jqlee85, itsdavidmorgan, organicthemes, raid33, wordpresspagebuilder
 Donate link: https://organicthemes.com
 Tags: builder, customizer, widgets, slideshows, testimonials, portfolio, fontawesome, icons, pricing tables, page builder, full-width sections, custom widget areas, bundle, custom widgets
-Stable tag: 1.2.10
+Stable tag: 1.2.12
 Requires at least: 4.8
 Tested up to: 4.9
 License: GPLv2 or later
@@ -12,6 +12,8 @@ A simple WordPress page builder plugin, Organic Builder Widgets provides a colle
 
 == Description ==
 
+[youtube https://www.youtube.com/watch?v=PwQJ5L0_oiM&t=13s]
+
 Organic Builder Widgets is a simple WordPress page builder plugin that provides a collection of 12 custom widgets to be used within the customizer. The widgets are displayed as full-width content sections on any page. It transforms the native WordPress customizer into a free and easy page building solution. Unlike other page builders, our solution uses the familiar interface of the customizer and native functionality of widgets. Therefore, it’s a fast, intuitive, easy and secure. There are no shortcodes, no excessive options, no confusing interfaces, and no vendor lock-in. Additionally, the plugin is designed to work with virtually any theme! It's easy WordPress page building, as it was meant to be.
 
 Display and arrange the custom widgets as content sections on any page — such as featured content slideshows, testimonials, team members, portfolios, feature lists, pricing tables, products, and more! Each widget features a variety of options for changing the background color, background image, display style and more! Use multiple of the same widgets, or as many different widgets as you like!
@@ -19,10 +21,6 @@ Display and arrange the custom widgets as content sections on any page — such 
 Organic Builder Widgets includes a new page template, that when applied, creates a new widget area on that page. This allows the WordPress customizer to be used as a page builder by adding widgets as content sections to any page using the "Organic Custom" page template. Drag and drop the widgets into your desired order, and the customizer will update in real-time to reflect your changes. Each widget includes basic styles and options, but will otherwise inherit styles from the active theme.
 
 [Live Demo](https://organicthemes.com/demo/startup/widgets/ "Live Widget Demos")
-
-**Video Demo:**
-
-[youtube https://www.youtube.com/watch?v=PwQJ5L0_oiM&t=13s]
 
 = Widgets Included =
 
@@ -93,6 +91,13 @@ A: The Organic Builder Widgets plugin requires PHP 5.3.29 or higher, as do many 
 5. A list of some of the custom widgets included as seen within the customizer.
 
 == Changelog ==
+
+= 1.2.12 =
+* Fixed redirect issue that was throwing warning when plugin activated from TGMPA
+* General cleanup
+
+= 1.2.11 =
+* Fixed valid callback warning within Subpage Widget
 
 = 1.2.10 =
 * Style fix for single column blog posts
