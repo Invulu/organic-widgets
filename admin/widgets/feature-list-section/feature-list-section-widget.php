@@ -77,50 +77,53 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 
 				<div class="organic-widgets-feature-list-items-wrapper organic-widgets-flex-row organic-widgets-flex-wrap">
 
-				<?php if ( is_array( $repeatable_array ) && count($repeatable_array) ) {
-					$incrementer = 0;
-					usort( $repeatable_array, array( $this, 'sort_by_order' ) );
-					foreach ( $repeatable_array as $key => $repeatable ) {
+					<?php
+					if ( is_array( $repeatable_array ) && count( $repeatable_array ) ) {
+						$incrementer = 0;
+						usort( $repeatable_array, array( $this, 'sort_by_order' ) );
+						foreach ( $repeatable_array as $key => $repeatable ) {
 
-						if ( $repeatable && isset( $repeatable['icon'] ) ) {
-							$icon_type = strpos( $repeatable['icon'], 'fa' ) !== false ? 'fontawesome' : 'image';
-						} else {
-							$icon_type = false;
-						}
+							if ( $repeatable && isset( $repeatable['icon'] ) ) {
+								$icon_type = strpos( $repeatable['icon'], 'fa' ) !== false ? 'fontawesome' : 'image';
+							} else {
+								$icon_type = false;
+							}
 
-						$incrementer++;
-						?>
+							$incrementer++;
+							?>
 
-						<div class="organic-widgets-feature-list-item organic-widgets-<?php echo $this->column_string( $num_columns ); ?>">
+							<div class="organic-widgets-feature-list-item organic-widgets-<?php echo $this->column_string( $num_columns ); ?>">
 
-							<div class="organic-widgets-feature-list-item-content">
+								<div class="organic-widgets-feature-list-item-content">
 
-								<div class="organic-widgets-feature-list-item-icon">
+									<div class="organic-widgets-feature-list-item-icon">
 
-									<?php if ( $icon_type == 'image' ) { ?>
-										<?php echo $this->get_image_html( $instance, $repeatable ); ?>
-									<?php } elseif ( $icon_type == 'fontawesome' ) { ?>
-										<i class="fa <?php echo esc_attr( $repeatable['icon'] ); ?>"></i>
-									<?php }?>
-								</div>
+										<?php if ( $icon_type == 'image' ) { ?>
+											<?php echo $this->get_image_html( $instance, $repeatable ); ?>
+										<?php } elseif ( $icon_type == 'fontawesome' ) { ?>
+											<i class="fa <?php echo esc_attr( $repeatable['icon'] ); ?>"></i>
+										<?php } ?>
 
-								<div class="organic-widgets-feature-list-item-text">
-									<h6>
-										<?php if ( '' != $repeatable['link_url'] ) { echo '<a href="'.esc_url($repeatable['link_url']).'">'; } ?>
-											<?php if ( array_key_exists( 'title', $repeatable ) ) { echo esc_html( $repeatable['title'] ); } ?>
-										<?php if ( '' != $repeatable['link_url'] ) { echo '</a>'; } ?>
-									</h6>
-									<p>
-										<?php if ( array_key_exists( 'text', $repeatable ) ) { echo $repeatable['text']; }?>
-									</p>
+									</div>
+
+									<div class="organic-widgets-feature-list-item-text">
+										<h6>
+											<?php if ( '' != $repeatable['link_url'] ) { echo '<a href="' . esc_url( $repeatable['link_url'] ) . '">'; } ?>
+												<?php if ( array_key_exists( 'title', $repeatable ) ) { echo esc_html( $repeatable['title'] ); } ?>
+											<?php if ( '' != $repeatable['link_url'] ) { echo '</a>'; } ?>
+										</h6>
+										<p>
+											<?php if ( array_key_exists( 'text', $repeatable ) ) { echo $repeatable['text']; }?>
+										</p>
+									</div>
+
 								</div>
 
 							</div>
 
-						</div>
-
-					<?php }
-				} ?>
+						<?php }
+					}
+					?>
 
 				</div>
 
@@ -219,11 +222,11 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 			<p>
 				<label for="<?php echo $this->get_field_id( 'num_columns' ); ?>"><?php _e('Number of Columns:', ORGANIC_WIDGETS_18N); ?></label>
 				<select id="<?php echo $this->get_field_id('num_columns'); ?>" name="<?php echo $this->get_field_name('num_columns'); ?>" class="widefat" style="width:100%;">
-			    <option <?php selected( $num_columns, '2'); ?> value="2">2</option>
-			    <option <?php selected( $num_columns, '3'); ?> value="3">3</option>
-			    <option <?php selected( $num_columns, '4'); ?> value="4">4</option>
-					<option <?php selected( $num_columns, '5'); ?> value="5">5</option>
-					<option <?php selected( $num_columns, '6'); ?> value="6">6</option>
+					<option <?php selected( $num_columns, '2' ); ?> value="2">2</option>
+					<option <?php selected( $num_columns, '3' ); ?> value="3">3</option>
+					<option <?php selected( $num_columns, '4' ); ?> value="4">4</option>
+					<option <?php selected( $num_columns, '5' ); ?> value="5">5</option>
+					<option <?php selected( $num_columns, '6' ); ?> value="6">6</option>
 				</select>
 			</p>
 
@@ -244,13 +247,12 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 	 * @access public
 	 */
 	public function render_control_template_scripts() {
-
 		?>
 		<script type="text/html" id="tmpl-widget-organic_widgets_feature_list_section-control-fields">
 
 			<# var elementIdPrefix = 'el' + String( Math.random() ).replace( /\D/g, '' ) + '_' #>
 
-			<p><b><?php _e('Add Custom Content:', ORGANIC_WIDGETS_18N) ?></b></p>
+			<p><b><?php _e( 'Add Custom Content:', ORGANIC_WIDGETS_18N ) ?></b></p>
 
 			<p>
 				<label for="{{ elementIdPrefix }}title"><?php esc_html_e( 'Title:' ); ?></label>

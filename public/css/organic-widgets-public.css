@@ -871,19 +871,23 @@ img.organic-widgets-hide-img,
 .organic-widget .ocw-bg-dark .organic-widgets-card h4, .organic-widgets-section.ocw-bg-dark .organic-widgets-card h4,
 .organic-widget .ocw-bg-dark .organic-widgets-card h5, .organic-widgets-section.ocw-bg-dark .organic-widgets-card h5,
 .organic-widget .ocw-bg-dark .organic-widgets-card h6, .organic-widgets-section.ocw-bg-dark .organic-widgets-card h6,
-.organic-widget .ocw-bg-dark .organic-widgets-card h1 a, .organic-widgets-section.ocw-bg-dark .organic-widgets-card h1 a,
-.organic-widget .ocw-bg-dark .organic-widgets-card h2 a, .organic-widgets-section.ocw-bg-dark .organic-widgets-card h2 a,
-.organic-widget .ocw-bg-dark .organic-widgets-card h3 a, .organic-widgets-section.ocw-bg-dark .organic-widgets-card h3 a,
-.organic-widget .ocw-bg-dark .organic-widgets-card h4 a, .organic-widgets-section.ocw-bg-dark .organic-widgets-card h4 a,
-.organic-widget .ocw-bg-dark .organic-widgets-card h5 a, .organic-widgets-section.ocw-bg-dark .organic-widgets-card h5 a,
-.organic-widget .ocw-bg-dark .organic-widgets-card h6 a, .organic-widgets-section.ocw-bg-dark .organic-widgets-card h6 a {
+.organic-widget .ocw-bg-light .organic-widgets-card h1, .organic-widgets-section.ocw-bg-light .organic-widgets-card h1,
+.organic-widget .ocw-bg-light .organic-widgets-card h2, .organic-widgets-section.ocw-bg-light .organic-widgets-card h2,
+.organic-widget .ocw-bg-light .organic-widgets-card h3, .organic-widgets-section.ocw-bg-light .organic-widgets-card h3,
+.organic-widget .ocw-bg-light .organic-widgets-card h4, .organic-widgets-section.ocw-bg-light .organic-widgets-card h4,
+.organic-widget .ocw-bg-light .organic-widgets-card h5, .organic-widgets-section.ocw-bg-light .organic-widgets-card h5,
+.organic-widget .ocw-bg-light .organic-widgets-card h6, .organic-widgets-section.ocw-bg-light .organic-widgets-card h6 {
   color: rgba(0, 0, 0, 0.9);
   text-shadow: none !important;
 }
 .organic-widget .ocw-bg-dark .organic-widgets-card p, .organic-widgets-section.ocw-bg-dark .organic-widgets-card p,
 .organic-widget .ocw-bg-dark .organic-widgets-card span, .organic-widgets-section.ocw-bg-dark .organic-widgets-card span,
 .organic-widget .ocw-bg-dark .organic-widgets-card div, .organic-widgets-section.ocw-bg-dark .organic-widgets-card div,
-.organic-widget .ocw-bg-dark .organic-widgets-card blockquote, .organic-widgets-section.ocw-bg-dark .organic-widgets-card blockquote {
+.organic-widget .ocw-bg-dark .organic-widgets-card blockquote, .organic-widgets-section.ocw-bg-dark .organic-widgets-card blockquote,
+.organic-widget .ocw-bg-light .organic-widgets-card p, .organic-widgets-section.ocw-bg-light .organic-widgets-card p,
+.organic-widget .ocw-bg-light .organic-widgets-card span, .organic-widgets-section.ocw-bg-light .organic-widgets-card span,
+.organic-widget .ocw-bg-light .organic-widgets-card div, .organic-widgets-section.ocw-bg-light .organic-widgets-card div,
+.organic-widget .ocw-bg-light .organic-widgets-card blockquote, .organic-widgets-section.ocw-bg-light .organic-widgets-card blockquote {
   color: rgba(0, 0, 0, 0.6);
   text-shadow: none !important;
 }
