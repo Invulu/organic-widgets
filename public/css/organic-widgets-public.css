@@ -175,6 +175,9 @@ img.organic-widgets-hide-img,
 	background-color: #ffffff;
 	margin: 12px;
 }
+.organic-widgets-post-holder .organic-widgets-single article {
+  margin: 12px 0px;
+}
 .organic-widgets-post-holder .organic-widgets-third article,
 .organic-widgets-post-holder .organic-widgets-third article,
 .organic-widgets-post-holder .organic-widgets-fourth article,
