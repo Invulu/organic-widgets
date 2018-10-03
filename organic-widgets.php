@@ -9,7 +9,7 @@
  * Plugin Name:       Organic Builder Widgets
  * Plugin URI:        https://organicthemes.com/organic-customizer-widgets
  * Description:       Transform the core WordPress Customizer into a page builder. Display and arrange widgets on any page as beautiful content sections, such as featured content slideshows, testimonials, team members, portfolios, feature lists, pricing tables and more. Whoa, cool.
- * Version:           1.2.14
+ * Version:           1.3.0
  * Author:            Organic Themes
  * Author URI:        https://organicthemes.com
  * License:           GPL-2.0+
@@ -19,7 +19,7 @@
  */
 
 // Current Version (Keep in sync with Version # above).
-define( 'ORGANIC_WIDGETS_CURRENT_VERSION', '1.2.14' );
+define( 'ORGANIC_WIDGETS_CURRENT_VERSION', '1.3.0' );
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -130,6 +130,27 @@ function run_organic_widgets() {
 run_organic_widgets();
 
 /**
+ * Add plugin action links.
+ *
+ * Add a link to the settings page on the plugins.php page.
+ *
+ * @since 1.0.0
+ *
+ * @param array $links List of existing plugin action links.
+ * @return array List of modified plugin action links.
+ */
+function organic_widgets_action_links( $links ) {
+
+	$links = array_merge( array(
+		'<a class="plugin-upgrade-link" href="' . esc_url( 'https://organicthemes.com/builder/' ) . '" target="_blank"><i class="fa fa-arrow-circle-up"></i> ' . __( 'Upgrade Available', ORGANIC_WIDGETS_18N ) . '</a>'
+	), $links );
+
+	return $links;
+
+}
+add_action( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'organic_widgets_action_links' );
+
+/**
  * Register Organic Widgets menu pages.
  *
  * @since    1.0.0
@@ -174,6 +195,15 @@ function organic_widgets_welcome_screen() {
 		'Organic Widgets Settings',
 		'organic_widgets_settings_callback',
 		'organic-widgets-settings'
+	);
+
+	// Add Upgrade Link.
+	add_submenu_page(
+		'organic-widgets',
+		'Upgrade',
+		esc_html__( 'Upgrade', ORGANIC_WIDGETS_18N ),
+		'manage_options',
+		'https://organicthemes.com/builder/'
 	);
 
 	register_setting( 'organic-widgets-settings', 'organic_widgets_settings', array( 'sanitize_callback' => 'organic_widgets_settings_sanitize_callback' ) );

@@ -2,8 +2,8 @@
 /* Registers a widget to show a Team subsection on a page */
 
 // Block direct requests.
-if ( !defined('ABSPATH') )
-	die('-1');
+if ( ! defined( 'ABSPATH' ) )
+	die( '-1' );
 
 
 /**
@@ -18,29 +18,32 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 	 */
 	function __construct() {
 		parent::__construct(
-			'organic_widgets_blog_posts_section', // Base ID
-			__( 'Organic Blog Posts', ORGANIC_WIDGETS_18N ), // Name
+			'organic_widgets_blog_posts_section', // Base ID.
+			__( 'Organic Blog Posts', ORGANIC_WIDGETS_18N ), // Name.
 			array(
 				'description' => __( 'A section displaying recent blog posts.', ORGANIC_WIDGETS_18N ),
 				'customize_selective_refresh' => true,
-			) // Args
+			) // Args.
 		);
 
 		$this->id_prefix = $this->get_field_id('');
 
-		// Bg options
+		// Bg options.
 		$this->bg_options = array(
 			'color' => true,
 			'image' => true
 		);
 
-		// Admin Scripts
+		// Admin Scripts.
 		add_action( 'admin_print_scripts-widgets.php', array( $this, 'admin_setup' ) );
 		add_action( 'admin_footer-widgets.php', array( $this, 'render_control_template_scripts' ) );
 
-		// Public scripts
-		add_action( 'wp_enqueue_scripts', array( $this, 'public_scripts') );
+		// Public scripts.
+		if ( is_active_widget( false, false, $this->id_base ) || is_customize_preview() ) {
+			add_action( 'wp_enqueue_scripts', array( $this, 'public_scripts') );
+		}
 	}
+
 	/**
 	 * Front-end display of widget.
 	 *
@@ -61,6 +64,7 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 		$max_posts = ( isset( $instance['max_posts'] ) ) ? $instance['max_posts'] : 3;
 
 		echo $args['before_widget'];
+
 		?>
 
 		<!-- BEGIN .organic-widgets-section -->
@@ -152,10 +156,9 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 		<!-- END .organic-widgets-section -->
 		</div>
 
-		<?php wp_enqueue_script( 'organic-widgets-masonry', ORGANIC_WIDGETS_BASE_DIR . 'public/js/masonry.js', array( 'jquery', 'masonry' ) ); ?>
-		<?php wp_enqueue_script( 'blog-posts-section-widget-public-js', ORGANIC_WIDGETS_BASE_DIR . 'public/js/blog-posts-section.js', array( 'jquery', 'masonry' ) ); ?>
+		<?php
 
-		<?php echo $args['after_widget'];
+		echo $args['after_widget'];
 
 	}
 
@@ -219,22 +222,21 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'num_columns' ); ?>"><?php _e('Number of Columns:', ORGANIC_WIDGETS_18N) ?></label>
-			<select id="<?php echo $this->get_field_id('num_columns'); ?>" name="<?php echo $this->get_field_name('num_columns'); ?>" class="widefat" style="width:100%;">
-				<option <?php selected( $num_columns, '1'); ?> value="1">1</option>
-				<option <?php selected( $num_columns, '2'); ?> value="2">2</option>
-		    <option <?php selected( $num_columns, '3'); ?> value="3">3</option>
-		    <option <?php selected( $num_columns, '4'); ?> value="4">4</option>
+			<select id="<?php echo $this->get_field_id( 'num_columns' ); ?>" name="<?php echo $this->get_field_name( 'num_columns' ); ?>" class="widefat" style="width:100%;">
+				<option <?php selected( $num_columns, '1' ); ?> value="1">1</option>
+				<option <?php selected( $num_columns, '2' ); ?> value="2">2</option>
+				<option <?php selected( $num_columns, '3' ); ?> value="3">3</option>
+				<option <?php selected( $num_columns, '4' ); ?> value="4">4</option>
 			</select>
 		</p>
 
 		<?php $this->section_background_input_markup( $instance, $this->bg_options ); ?>
 
-  <?php
+		<?php
 	}
 
 	/**
 	 * Render form template scripts.
-	 *
 	 *
 	 * @access public
 	 */
@@ -325,7 +327,7 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 	 */
 	public function admin_setup() {
 
-		// Text Editor
+		// Text Editor.
 		wp_enqueue_editor();
 		wp_enqueue_script( 'organic-widgets-blog-posts-section-text-title', plugin_dir_url( __FILE__ ) . 'js/blog-posts-section-widgets.js', array( 'jquery' ) );
 		wp_localize_script( 'organic-widgets-blog-posts-section-text-title', 'OrganicBlogPostsSectionWidget', array(
@@ -337,7 +339,7 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 
 		wp_enqueue_style( 'wp-color-picker' );
 		wp_enqueue_script( 'wp-color-picker' );
-    wp_enqueue_script( 'organic-widgets-module-color-picker', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-color-picker.js', array( 'jquery', 'wp-color-picker' ) );
+		wp_enqueue_script( 'organic-widgets-module-color-picker', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-color-picker.js', array( 'jquery', 'wp-color-picker' ) );
 
 		wp_enqueue_script( 'organic-widgets-module-image-background', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-image-background.js', array( 'jquery', 'media-upload', 'media-views', 'wp-color-picker' ) );
 		wp_localize_script( 'organic-widgets-module-image-background', 'OrganicWidgetBG', array(
@@ -352,8 +354,7 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 	 */
 	public function public_scripts() {
 
-		// wp_enqueue_script( 'organic-widgets-masonry', ORGANIC_WIDGETS_BASE_DIR . 'public/js/masonry.js', array( 'jquery', 'masonry' ) );
-		// wp_enqueue_script( 'blog-posts-section-widget-public-js', ORGANIC_WIDGETS_BASE_DIR . 'public/js/blog-posts-section.js', array( 'jquery', 'masonry' ) );
+		wp_enqueue_script( 'organic-widgets-masonry', ORGANIC_WIDGETS_BASE_DIR . 'public/js/masonry.js', array( 'jquery', 'masonry' ) );
 		if ( ! wp_script_is('organic-widgets-backgroundimagebrightness-js') ) { wp_enqueue_script( 'organic-widgets-backgroundimagebrightness-js', ORGANIC_WIDGETS_BASE_DIR . 'public/js/jquery.backgroundbrightness.js', array( 'jquery' ) ); }
 
 	}

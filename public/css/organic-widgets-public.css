@@ -402,6 +402,10 @@ img.organic-widgets-hide-img,
 	-ms-transform: scale(1.1);
 	-webkit-backface-visibility: hidden;
 }
+.organic-widgets-portfolio-section .organic-widgets-portfolio-link {
+  height: 100%;
+  width: 100%;
+}
 .organic-widgets-portfolio-section .organic-widgets-portfolio-img .organic-widgets-img-text {
   display: flex;
 	position: absolute;
@@ -422,19 +426,18 @@ img.organic-widgets-hide-img,
   box-sizing: border-box;
 }
 .organic-widgets-portfolio-section .organic-widgets-portfolio-img .organic-widgets-img-text:hover {
-	opacity: 1;
+  opacity: 1;
 }
 .organic-widgets-portfolio-section .organic-widgets-portfolio-img h6 {
-  background-color: rgba(0, 0, 0, 0.8);
-  border-radius: 2px;
-  align-self: center;
-	margin: 0px;
-	padding: 12px 18px;
-}
-.organic-widgets-portfolio-section .organic-widgets-portfolio-img h6 a {
   position: relative;
-  color: #ffffff !important;
-	font-size: 1.1em;
+  color: #ffffff;
+  background-color: rgba(0, 0, 0, 0.8);
+  font-size: 1.2em;
+  line-height: 1.3;
+  align-self: center;
+  margin: 0px;
+  padding: 12px 18px;
+  border-radius: 2px;
   z-index: 9;
 }
 
@@ -460,12 +463,12 @@ img.organic-widgets-hide-img,
 *	Featured Content Widget
 ************************************************/
 
-.organic-widgets-featured-content-section .organic-widgets-card {
-  text-align: center;
-}
 .organic-widgets-featured-content-section .organic-widgets-img {
   line-height: 0;
   margin-bottom: 24px;
+}
+.organic-widgets-featured-content-section .organic-widgets-card-content {
+  text-align: center;
 }
 .organic-widgets-group .organic-widgets-featured-content-section .organic-widgets-img {
   margin-bottom: 0;
@@ -1413,8 +1416,21 @@ iframe.organic-widgets-video-bg {
 .organic-widgets-row, .organic-widgets-clearfix { zoom: 1; }
 
 /************************************************
-*	Phone Grid
+*	Mobile Styles
 ************************************************/
+
+/* Tablet Media Query */
+
+@media handheld, only screen and (max-width: 1023px) {
+
+  .organic-widgets-section.organic-widgets-hero-section,
+  .organic-widgets-section.organic-widgets-hero-section.organic-widgets-fixed-bg-img {
+    background-attachment: scroll;
+  }
+
+}
+
+/* Phone Media Query */
 
 @media handheld, only screen and (max-width: 767px) {
 
@@ -1474,10 +1490,6 @@ iframe.organic-widgets-video-bg {
   }
   .organic-widgets-hero-section.organic-widgets-full-height-section {
     height: auto;
-  }
-  .organic-widgets-section.organic-widgets-hero-section,
-  .organic-widgets-section.organic-widgets-hero-section.organic-widgets-fixed-bg-img {
-    background-attachment: scroll;
   }
   .organic-widgets-card-content,
   .organic-widgets-blog-posts-section .organic-widgets-single .organic-widgets-card-content {

@@ -59,9 +59,8 @@ class Organic_Widgets_Admin_Notices {
 
 			<div data-dismissible="notice-organic-widgets-weeks-forever" class="notice updated is-dismissible">
 
-				<h2 style="margin-bottom: 0px;"><?php printf( __( 'Sweet! You\'ve been using <a href="%1$s" target="_blank">Organic Builder Widgets</a> for a couple weeks! Could you please take a moment to give us a <a href="%2$s" target="_blank"><strong>5-star rating</strong></a>?', ORGANIC_WIDGETS_18N ), 'https://organicthemes.com/', 'https://wordpress.org/support/plugin/organic-customizer-widgets/reviews/#new-post' ); ?></h2>
-				<p><?php esc_html_e( 'A positive rating will keep us motivated to continue supporting and improving this free plugin, and will help spread its popularity. Your help is greatly appreciated!', ORGANIC_WIDGETS_18N ); ?></p>
-				<p><?php printf( __( '<button class="button button-primary" href="%1$s" target="_blank">Leave 5-Star Rating!</button>', ORGANIC_WIDGETS_18N ), 'https://wordpress.org/support/plugin/organic-customizer-widgets/reviews/#new-post' ); ?></p>
+				<h2 style="margin-bottom: 0px;"><?php printf( __( 'Sweet! You\'ve been using <a href="%1$s" target="_blank">Organic Builder Widgets</a> for a couple weeks! Upgrade to the <a href="%2$s" target="_blank"><strong>Pro Version</strong></a> for additional widgets, options, support!', ORGANIC_WIDGETS_18N ), 'https://organicthemes.com/builder/', 'https://organicthemes.com/checkout?edd_action=add_to_cart&download_id=348835/' ); ?></h2>
+				<p><?php printf( __( '<button class="button button-primary" href="%1$s" target="_blank">Upgrade To Pro</button>', ORGANIC_WIDGETS_18N ), 'https://organicthemes.com/checkout?edd_action=add_to_cart&download_id=348835/' ); ?></p>
 
 			</div>
 

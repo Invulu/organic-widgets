@@ -174,20 +174,20 @@ class Organic_Widgets {
 
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widgets/testimonial-section/testimonial-section-widget.php';
 
-		// Register Organic Widgets
-		add_action( 'widgets_init', function(){
-			//Register Widgets conditionally according to settings
-			$organic_widgets_settings = get_option('organic_widgets_settings') ? get_option('organic_widgets_settings') : array();
+		// Register Organic Widgets.
+		add_action( 'widgets_init', function() {
+			// Register Widgets conditionally according to settings.
+			$organic_widgets_settings = get_option( 'organic_widgets_settings' ) ? get_option( 'organic_widgets_settings' ) : array();
 			$organic_widgets = organic_widgets_get_organic_widgets();
-			foreach( $organic_widgets as $organic_widget_name => $organic_widget ) {
-				if ( ! array_key_exists( $organic_widget['settings-activate-slug'], $organic_widgets_settings ) || $organic_widgets_settings[$organic_widget['settings-activate-slug']] ) {
+			foreach ( $organic_widgets as $organic_widget_name => $organic_widget ) {
+				if ( ! array_key_exists( $organic_widget['settings-activate-slug'], $organic_widgets_settings ) || $organic_widgets_settings[ $organic_widget['settings-activate-slug'] ] ) {
 					register_widget( $organic_widget_name );
 				}
 			}
 		});
 
 		/**
-		 * the classes responsible for registering blocks
+		 * The classes responsible for registering blocks
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/blocks/class-organic-widgets-blocks.php';
 
@@ -225,6 +225,7 @@ class Organic_Widgets {
 		$plugin_admin = new Organic_Widgets_Admin( $this->get_plugin_name(), $this->get_version() );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_editor_scripts' );
+		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_admin_scripts' );
 
 		$organic_blocks = new Organic_Widgets_Blocks( $this->get_plugin_name(), $this->get_version() );
 		$this->loader->add_action( 'admin_enqueue_scripts', $organic_blocks, 'enqueue_scripts' );

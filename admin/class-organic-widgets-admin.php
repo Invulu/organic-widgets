@@ -60,9 +60,16 @@ class Organic_Widgets_Admin {
 	 * @since    1.0.0
 	 */
 	public function enqueue_styles() {
-
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/organic-widgets-admin.css', array(), $this->version, 'all' );
+	}
 
+	/**
+	 * Register the scripts for the admin area.
+	 *
+	 * @since    1.0.0
+	 */
+	public function enqueue_admin_scripts() {
+		wp_enqueue_script( $this->plugin_name . '-admin-script', plugin_dir_url( __FILE__ ) . 'js/organic-widgets-admin.js', array(), $this->version, 'all' );
 	}
 
 	/**
@@ -74,7 +81,7 @@ class Organic_Widgets_Admin {
 
 		global $post;
 
-		if( ( 'post.php' == $hook_suffix || 'post-new.php' == $hook_suffix ) && ( is_object( $post ) && 'page' == $post->post_type ) ) {
+		if ( ( 'post.php' == $hook_suffix || 'post-new.php' == $hook_suffix ) && ( is_object( $post ) && 'page' == $post->post_type ) ) {
 
 			// Register Script
 			wp_register_script( $this->plugin_name . '-editor-script', plugin_dir_url( __FILE__ ) . 'js/organic-widgets-editor-admin.js', array( 'jquery' ), $this->version, false );

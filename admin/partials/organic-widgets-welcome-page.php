@@ -121,6 +121,28 @@
 		<!-- BEGIN .feature-links -->
 		<div class="feature-links">
 
+      <a class="feature-link-upgrade" href="<?php echo esc_url('https://organicthemes.com/builder/') ?>" target="_blank">
+				<span class="icon">
+          <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+          	 width="20px" height="20px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve">
+          <path fill="#99CC33" d="M2.782,3.782C0.988,5.576,0,7.962,0,10.5s0.988,4.923,2.782,6.718C4.576,19.014,6.962,20,9.5,20
+          	s4.923-0.988,6.718-2.782C18.014,15.424,19,13.038,19,10.501s-0.988-4.923-2.782-6.718c-1.794-1.795-4.18-2.782-6.718-2.782
+          	S4.577,1.989,2.782,3.782L2.782,3.782z"/>
+          <path fill="#ffffff" d="M2.782,3.782C0.988,5.576,0,7.962,0,10.5s0.988,4.923,2.782,6.718C4.576,19.014,6.962,20,9.5,20
+          	s4.923-0.988,6.718-2.782C18.014,15.424,19,13.038,19,10.501s-0.988-4.923-2.782-6.718c-1.794-1.795-4.18-2.782-6.718-2.782
+          	S4.577,1.989,2.782,3.782L2.782,3.782z M18,10.5c0,4.688-3.812,8.5-8.5,8.5C4.813,19,1,15.188,1,10.5C1,5.813,4.813,2,9.5,2
+          	C14.188,2,18,5.813,18,10.5z"/>
+          <path fill="#ffffff" d="M9.147,4.647l-4,4c-0.195,0.195-0.195,0.512,0,0.707s0.512,0.195,0.707,0L9,6.207V16.5
+          	C9,16.775,9.224,17,9.5,17s0.5-0.225,0.5-0.5V6.207l3.146,3.146c0.195,0.195,0.513,0.195,0.707,0C13.952,9.255,14,9.127,14,9
+          	s-0.049-0.256-0.146-0.353l-4-4C9.658,4.452,9.341,4.452,9.147,4.647L9.147,4.647z"/>
+          </svg>
+				</span>
+				<span class="info">
+					<h4><?php esc_html_e( 'Upgrade To Pro', ORGANIC_WIDGETS_18N ); ?></h4>
+					<p><?php esc_html_e( 'Buy Organic Builder Widgets Pro for additional widgets and options!', ORGANIC_WIDGETS_18N ); ?></p>
+				</span>
+			</a>
+
 			<a href="<?php echo esc_url('https://organicthemes.com/tutorial/how-to-use-organic-customizer-widgets/') ?>" target="_blank">
 				<span class="icon">
 					<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
@@ -148,19 +170,6 @@
 				</span>
 			</a>
 
-			<a href="<?php echo esc_url('https://organicthemes.com/themes/') ?>" target="_blank">
-				<span class="icon">
-					<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
-					<path d="M3.5 14h13c0.827 0 1.5-0.673 1.5-1.5v-8c0-0.827-0.673-1.5-1.5-1.5h-13c-0.827 0-1.5 0.673-1.5 1.5v8c0 0.827 0.673 1.5 1.5 1.5zM3 4.5c0-0.276 0.224-0.5 0.5-0.5h13c0.276 0 0.5 0.224 0.5 0.5v8c0 0.276-0.224 0.5-0.5 0.5h-13c-0.276 0-0.5-0.224-0.5-0.5v-8z"></path>
-					<path d="M19.5 15h-19c-0.276 0-0.5 0.224-0.5 0.5v1c0 0.827 0.673 1.5 1.5 1.5h17c0.827 0 1.5-0.673 1.5-1.5v-1c0-0.276-0.224-0.5-0.5-0.5zM18.5 17h-17c-0.276 0-0.5-0.224-0.5-0.5v-0.5h18v0.5c0 0.276-0.224 0.5-0.5 0.5z"></path>
-					</svg>
-				</span>
-				<span class="info">
-					<h4><?php esc_html_e( 'Compatible Themes', ORGANIC_WIDGETS_18N ); ?></h4>
-					<p><?php esc_html_e( 'Although the plugin is designed to work with most themes, not all are created equal.', ORGANIC_WIDGETS_18N ); ?></p>
-				</span>
-			</a>
-
       <a href="<?php echo esc_url('https://wordpress.org/support/plugin/organic-customizer-widgets/reviews/?filter=5#new-post') ?>" target="_blank">
 				<span class="icon">
           <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20">
@@ -169,7 +178,7 @@
 				</span>
 				<span class="info">
 					<h4><?php esc_html_e( 'Leave A Review', ORGANIC_WIDGETS_18N ); ?></h4>
-					<p><?php esc_html_e( 'Love using the plugin? Please take a moment to leave us a review. It really helps.', ORGANIC_WIDGETS_18N ); ?></p>
+					<p><?php esc_html_e( 'Love the plugin? Take a moment to leave us a review. It really helps.', ORGANIC_WIDGETS_18N ); ?></p>
 				</span>
 			</a>
 
@@ -186,7 +195,7 @@
 		    <h3><?php esc_html_e( 'Recommended Themes', ORGANIC_WIDGETS_18N ); ?></h3>
 		    <p><?php esc_html_e( 'These themes are guaranteed to work seamlessly with Organic Builder Widgets.', ORGANIC_WIDGETS_18N ); ?></p>
       </div>
-      <a class="purchase-button" href="<?php echo esc_url( 'https://organicthemes.com/checkout?edd_action=add_to_cart&download_id=283005/' ); ?>" target="_blank"><?php _e( 'Get 36+ Premium Themes! | $99/yr', ORGANIC_WIDGETS_18N ); ?></a>
+      <!-- <a class="purchase-button" href="<?php // echo esc_url( 'https://organicthemes.com/checkout?edd_action=add_to_cart&download_id=283005/' ); ?>" target="_blank"><?php // _e( 'Get 36+ Premium Themes! | $99/yr', ORGANIC_WIDGETS_18N ); ?></a> -->
     </div>
 
 		<br />

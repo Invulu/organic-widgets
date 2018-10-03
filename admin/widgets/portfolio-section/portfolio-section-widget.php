@@ -107,31 +107,28 @@ class Organic_Widgets_Portfolio_Section_Widget extends Organic_Widgets_Custom_Wi
 
 					<?php while ( $wp_query->have_posts() ) : $wp_query->the_post(); ?>
 
-					<!-- BEGIN .organic-widgets-masonry-wrapper -->
-					<div class="organic-widgets-masonry-wrapper organic-widgets-column organic-widgets-<?php echo $this->column_string( $num_columns ); ?>">
+					<?php if ( has_post_thumbnail( get_the_ID() ) ) { ?>
 
-						<?php if ( has_post_thumbnail(get_the_ID()) ) { ?>
+					<!-- BEGIN .organic-widgets-masonry-wrapper -->
+					<div class="organic-widgets-masonry-wrapper organic-widgets-column organic-widgets-portfolio-item organic-widgets-<?php echo $this->column_string( $num_columns ); ?>">
 
 						<article>
 
 							<div class="organic-widgets-portfolio-img">
 
-								<div class="organic-widgets-img-text">
-									<h6><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h6>
-								</div>
-
-								<a class="organic-widgets-featured-img" href="<?php the_permalink(); ?>">
-									<?php the_post_thumbnail(); ?>
+								<a class="organic-widgets-portfolio-link" href="<?php the_permalink(); ?>">
+									<div class="organic-widgets-img-text"><h6><?php the_title(); ?></h6></div>
+									<div class="organic-widgets-featured-img"><?php the_post_thumbnail(); ?></div>
 								</a>
 
 							</div>
 
 						</article>
 
-						<?php } ?>
-
 					<!-- END .organic-widgets-masonry-wrapper -->
 					</div>
+
+					<?php } ?>
 
 					<?php endwhile; ?>
 

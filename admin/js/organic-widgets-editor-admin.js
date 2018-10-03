@@ -11,7 +11,7 @@
 
     // Customizer button for Gutenberg and Classic editor
     if ($('#postdivrich' + name).length === 0) {
-      if ($('select[id^="template-selector"]').val() === 'templates/organic-custom-template.php') {
+      if ($('.editor-page-attributes__template select').val() === 'templates/organic-custom-template.php') {
         hideEditor()
       } else {
         showEditor()
@@ -59,7 +59,7 @@
   }
 
   function pageTemplateListener () {
-    $('#page_template, select[id^="template-selector"]').on('change', function () {
+    $('#page_template, .editor-page-attributes__template select').on('change', function () {
       checkSelectedTemplate()
     })
   }
