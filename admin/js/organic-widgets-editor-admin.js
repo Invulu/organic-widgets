@@ -7,10 +7,15 @@
 
   function checkSelectedTemplate () {
     var selectedTemplate = $('#page_template').find(':selected').val()
-    // var gutenbergTemplate = $('select[id^="template-selector"]').find(':selected').val()
 
     // Customizer button for Gutenberg and Classic editor
-    if ($('#postdivrich' + name).length === 0) {
+    if ($('#editor' + name).length === 0) {
+      if (selectedTemplate.indexOf('organic-custom-template.php') !== -1) {
+        hideEditor()
+      } else {
+        showEditor()
+      }
+    } else if ($('#postdivrich' + name).length === 0) {
       if ($('.editor-page-attributes__template select').val() === 'templates/organic-custom-template.php') {
         hideEditor()
       } else {
@@ -33,7 +38,11 @@
       var customizeDisabled = 'disabled'
       var submitDisabled = ''
       var customizeLink = '#'
-      var updateButton = '<div id="organic-widgets-update-post" class="button button-primary button-large organic-button-large" ' + submitDisabled + '>Update</div>'
+      if ($('.block-editor')[0]) {
+        var updateButton = '<div id="organic-widgets-update-post" class="button button-primary button-large organic-button-large" ' + submitDisabled + '>Publish</div>'
+      } else {
+        var updateButton = '<div id="organic-widgets-update-post" class="button button-primary button-large organic-button-large" ' + submitDisabled + '>Update</div>'
+      }
       var setPageTemplate = '<div class="organic-widgets-post-editor-update-post"><p>Please update post to apply custom template</p>' + updateButton + '<p>And then...</p></div>'
       var buttonSize = ''
     } else {
@@ -68,11 +77,12 @@
     $('#organic-widgets-update-post').on('click', function () {
       $('#post').submit()
     })
-    $('.gutenberg__editor #organic-widgets-update-post').on('click', function () {
+    $('.block-editor #organic-widgets-update-post').on('click', function () {
+      $('.editor-post-publish-panel__toggle').click()
       $('.editor-post-publish-button').click()
       setTimeout(function () {
         location.reload()
-      }, 2000)
+      }, 1000)
     })
   }
 

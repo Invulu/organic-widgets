@@ -246,14 +246,16 @@
 	margin-bottom: 24px;
 	padding: 0px;
 }
+#organic-widgets-post-editor h2 span {
+	font-size: 18px;
+	font-weight: bold;
+	margin-left: 30px;
+}
 #organic-widgets-post-editor img {
 	height: auto;
 	width: 20px;
 	display: inline-block;
 	position: absolute;
-}
-#organic-widgets-post-editor h2 span {
-	margin-left: 30px;
 }
 
 /************************************************

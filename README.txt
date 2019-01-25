@@ -1,14 +1,14 @@
-=== Organic Builder Widgets ===
+=== Organic Builder Widgets - An Easier Page Builder ===
 Contributors: jqlee85, itsdavidmorgan, organicthemes, raid33, wordpresspagebuilder
 Donate link: https://organicthemes.com
 Tags: builder, customizer, widgets, slideshows, testimonials, portfolio, fontawesome, icons, pricing tables, page builder, full-width sections, custom widget areas, bundle, custom widgets
-Stable tag: 1.3.1
+Stable tag: 1.3.2
 Requires at least: 4.8
 Tested up to: 5.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-A simple WordPress page builder plugin, Organic Builder Widgets provides a collection of 12 custom widgets to be used in the customizer as content sections.
+A simple page builder, Organic Builder Widgets provides a collection of 12 custom widgets to be used in the customizer as content sections.
 
 == Description ==
 
@@ -57,6 +57,7 @@ The following widgets are only available by upgrading to the [Pro Version](https
   * Split Content Widget
 * Many More Options For Existing Widgets
   * Google Font Options
+  * Additional Style Choices
   * Additional Background Options
   * Custom Widget Height And Width Options
   * Filterable Option For Portfolio Widget
@@ -119,6 +120,9 @@ A: The Organic Builder Widgets plugin requires PHP 5.3.29 or higher, as do many 
 5. A list of some of the custom widgets included as seen within the customizer.
 
 == Changelog ==
+
+= 1.3.2 =
+* Updated admin JS for publishing page template
 
 = 1.3.1 =
 * General cleanup of activator file
