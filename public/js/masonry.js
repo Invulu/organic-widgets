@@ -4,11 +4,11 @@
 	/* Masonry ---------------------*/
 	function masonrySetup() {
 		var $container = $('.organic-widgets-masonry-container');
-    $container.masonry({
+		$container.masonry({
 			itemSelector : '.organic-widgets-masonry-wrapper'
 		});
 	}
 
-  $( window ).load( masonrySetup );
+	$( window ).load( masonrySetup );
 
 })( jQuery );

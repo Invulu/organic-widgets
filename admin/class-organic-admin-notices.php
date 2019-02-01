@@ -29,8 +29,8 @@ class Organic_Widgets_Admin_Notices {
 
 			<div data-dismissible="notice-organic-widgets-activated-forever" class="notice updated is-dismissible">
 
-				<h2 style="margin-bottom: 0px;"><?php printf( __( 'Thanks for using <a href="%1$s" target="_blank">Organic Builder Widgets</a>! If you like the plugin, could you please take a moment to give us a <a href="%2$s" target="_blank"><strong>5-star rating</strong></a>?', ORGANIC_WIDGETS_18N ), 'https://organicthemes.com/', 'https://wordpress.org/support/plugin/organic-customizer-widgets/reviews/#new-post' ); ?></h2>
-				<p><?php esc_html_e( 'A positive rating will keep us motivated to continue supporting and improving this free plugin, and will help spread its popularity. Your help is greatly appreciated!', ORGANIC_WIDGETS_18N ); ?></p>
+				<h2 style="margin-bottom: 0px;"><?php printf( __( 'Thanks for using <a href="%1$s" target="_blank">Organic Builder Widgets</a>! If you like the plugin, please take a moment to give us a <a href="%2$s" target="_blank"><strong>5-star rating</strong></a>?', ORGANIC_WIDGETS_18N ), 'https://organicthemes.com/', 'https://wordpress.org/support/plugin/organic-customizer-widgets/reviews/#new-post' ); ?></h2>
+				<p><?php esc_html_e( 'A positive rating will motivate us to continue supporting and improving this free plugin. Your help is greatly appreciated! Consider it your good deed for the day. ;)', ORGANIC_WIDGETS_18N ); ?></p>
 				<p><?php printf( __( '<button class="button button-primary" href="%1$s" target="_blank">Leave 5-Star Rating!</button>', ORGANIC_WIDGETS_18N ), 'https://wordpress.org/support/plugin/organic-customizer-widgets/reviews/#new-post' ); ?></p>
 
 			</div>

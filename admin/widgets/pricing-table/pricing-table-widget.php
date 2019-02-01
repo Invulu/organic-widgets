@@ -218,7 +218,7 @@ class Organic_Widgets_Pricing_Table_Widget extends Organic_Widgets_Custom_Widget
 
 		</div>
 
-  <?php
+		<?php
 	}
 
 	/**
@@ -227,29 +227,29 @@ class Organic_Widgets_Pricing_Table_Widget extends Organic_Widgets_Custom_Widget
 	 *
 	 * @access protected
 	 */
-	 protected function echo_repeatable_form_item( $id = 'template', $order = 'template', $repeatable = false ) {
+	protected function echo_repeatable_form_item( $id = 'template', $order = 'template', $repeatable = false ) {
 
-		 if ( $id === 'template' || $order === 'template' ) {
-			 $template = true;
-			 $id = '__x__';
-			 $order = '';
-		 } else {
-			 $template = false;
-			 $id = (int) $id;
-			 $order = (int) $order;
-		 }
+		if ( 'template' === $id || 'template' === $order ) {
+			$template = true;
+			$id = '__x__';
+			$order = '';
+		} else {
+			$template = false;
+			$id = (int) $id;
+			$order = (int) $order;
+		}
 		?>
 
 		<div class="<?php if ( $template ) { echo 'organic-widgets-repeatable-form-item-template'; } else { echo 'organic-widgets-repeatable-form-item'; } ?>" data-feature-id="<?php echo $id; ?>" data-order="<?php echo $order; ?>">
 
 			<div class="organic-widgets-repeatable-form-item-title-bar">
-				Text Row <span class="organic-widgets-repeatable-item-number"><?php echo $order + 1; ?></span>
+				<?php esc_html_e( 'Text Row', ORGANIC_WIDGETS_18N ); ?> <span class="organic-widgets-repeatable-item-number"><?php echo $order + 1; ?></span>
 			</div>
 
 			<div class="organic-widgets-repeatable-form-item-fields-wrapper">
 
 				<p>
-					<label style="display:none;"><?php _e( 'Text Row:', ORGANIC_WIDGETS_18N ) ?></label>
+					<label style="display:none;"><?php esc_html_e( 'Text Row:', ORGANIC_WIDGETS_18N ); ?></label>
 					<input class="widefat organic-widgets-feature-list-text-row-input organic-widgets-repeatable-form-item-input" data-input-name="text_row" data-activator="true" type="text" value="<?php if ( $repeatable && array_key_exists( 'text_row', $repeatable ) ) { echo $repeatable['text_row']; } ?>" />
 				</p>
 

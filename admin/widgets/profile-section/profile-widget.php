@@ -205,7 +205,7 @@ class Organic_Widgets_Profile_Widget extends Organic_Widgets_Custom_Widget {
 
 		</div>
 
-  <?php
+		<?php
 	}
 
 	/**
@@ -214,28 +214,28 @@ class Organic_Widgets_Profile_Widget extends Organic_Widgets_Custom_Widget {
 	 *
 	 * @access protected
 	 */
-	 protected function echo_repeatable_form_item( $id = 'template', $order = 'template', $repeatable = false ) {
+	protected function echo_repeatable_form_item( $id = 'template', $order = 'template', $repeatable = false ) {
 
-	 	if ( $id === 'template' || $order === 'template' ) {
-	 		$template = true;
-	 		$id = '';
-	 		$order = '';
-	 	} else {
-	 		$id = (int) $id;
-	 		$template = false;
-	 	}
+		if ( 'template' === $id || 'template' === $order ) {
+			$template = true;
+			$id = '';
+			$order = '';
+		} else {
+			$id = (int) $id;
+			$template = false;
+		}
 		?>
 
 		<div class="<?php if ( $template ) { echo 'organic-widgets-repeatable-form-item-template'; } else { echo 'organic-widgets-repeatable-form-item'; } ?>" data-feature-id="<?php echo $id; ?>" data-order="<?php echo $order; ?>">
 
 			<div class="organic-widgets-repeatable-form-item-title-bar">
-				Social Link <span class="organic-widgets-repeatable-item-number"><?php echo $order + 1; ?></span>
+				<?php esc_html_e( 'Social Link', ORGANIC_WIDGETS_18N ); ?> <span class="organic-widgets-repeatable-item-number"><?php echo $order + 1; ?></span>
 			</div>
 
 			<div class="organic-widgets-repeatable-form-item-fields-wrapper">
 
 				<p>
-					<label style="display:none;"><?php _e( 'Social Link:', ORGANIC_WIDGETS_18N ) ?></label>
+					<label style="display:none;"><?php esc_html_e( 'Social Link:', ORGANIC_WIDGETS_18N ); ?></label>
 					<input class="widefat organic-widgets-feature-list-link-url-input organic-widgets-repeatable-form-item-input" data-input-name="link_url" data-activator="true" type="text" value="<?php if ( $repeatable && array_key_exists( 'link_url', $repeatable ) ) { if ( is_email( $repeatable['link_url'] ) ) { echo esc_html( $repeatable['link_url'] ); } else { echo esc_url($repeatable['link_url']); } } ?>" />
 				</p>
 

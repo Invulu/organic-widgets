@@ -274,7 +274,7 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 	 */
 	protected function echo_repeatable_form_item( $id = 'template', $order = 'template', $repeatable = false, $instance = false ) {
 
-		if ( $id === 'template' || $order === 'template' ) {
+		if ( 'template' === $id || 'template' === $order ) {
 			$template = true;
 			$id = '__x__';
 			$order = '';
@@ -296,14 +296,14 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 		<div class="<?php if ( $template ) { echo 'organic-widgets-repeatable-form-item-template'; } else { echo 'organic-widgets-repeatable-form-item'; } ?>" data-feature-id="<?php echo $id; ?>" data-order="<?php echo $order; ?>">
 
 			<div class="organic-widgets-repeatable-form-item-title-bar">
-				Feature <span class="organic-widgets-repeatable-item-number"><?php echo $order + 1; ?></span>
+				<?php esc_html_e( 'Feature', ORGANIC_WIDGETS_18N ); ?> <span class="organic-widgets-repeatable-item-number"><?php echo $order + 1; ?></span>
 			</div>
 
 			<div class="organic-widgets-repeatable-form-item-fields-wrapper">
 
 				<div class="organic-widgets-feature-list-icon-preview-wrapper">
 					<p>
-						<label><?php _e('Icon:', ORGANIC_WIDGETS_18N); ?></label>
+						<label><?php esc_html_e( 'Icon:', ORGANIC_WIDGETS_18N ); ?></label>
 					</p>
 					<div class="organic-widgets-feature-list-icon-preview" id="<?php echo( $this->get_field_id( 'image_preview' . $icon_id_string ) ); ?>">
 						<?php if ( $icon_type && $icon_type == 'image' && $repeatable['icon'] > 0 ) { ?>
