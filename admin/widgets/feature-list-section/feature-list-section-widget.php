@@ -296,7 +296,14 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 		<div class="<?php if ( $template ) { echo 'organic-widgets-repeatable-form-item-template'; } else { echo 'organic-widgets-repeatable-form-item'; } ?>" data-feature-id="<?php echo $id; ?>" data-order="<?php echo $order; ?>">
 
 			<div class="organic-widgets-repeatable-form-item-title-bar">
-				<?php esc_html_e( 'Feature', ORGANIC_WIDGETS_18N ); ?> <span class="organic-widgets-repeatable-item-number"><?php echo $order + 1; ?></span>
+				<?php esc_html_e( 'Feature', ORGANIC_WIDGETS_18N ); ?>
+				<span class="organic-widgets-repeatable-item-number">
+					<?php
+					if ( is_numeric( $order ) ) {
+						echo $order + 1;
+					}
+					?>
+				</span>
 			</div>
 
 			<div class="organic-widgets-repeatable-form-item-fields-wrapper">
