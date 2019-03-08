@@ -1,9 +1,13 @@
 <?php
-/* Registers a widget to show a Team subsection on a page */
+/**
+ * Registers a widget to show a section of team members.
+ *
+ * @package Organic Widgets
+ */
 
 // Block direct requests.
-if ( !defined('ABSPATH') )
-	die('-1');
+if ( ! defined( 'ABSPATH' ) )
+	die( '-1' );
 
 /**
  * Adds Organic_Widgets_Team_Section_Widget widget.
@@ -17,28 +21,28 @@ class Organic_Widgets_Team_Section_Widget extends Organic_Widgets_Custom_Widget 
 	 */
 	function __construct() {
 		parent::__construct(
-			'organic_widgets_team_section', // Base ID
-			__( 'Organic Team Members', ORGANIC_WIDGETS_18N ), // Name
+			'organic_widgets_team_section', // Base ID.
+			__( 'Organic Team Members', ORGANIC_WIDGETS_18N ), // Name.
 			array(
 				'description' => __( 'A section displaying team members.', ORGANIC_WIDGETS_18N ),
 				'customize_selective_refresh' => true,
-			) // Args
+			) // Args.
 		);
 
-		$this->id_prefix = $this->get_field_id('');
+		$this->id_prefix = $this->get_field_id( '' );
 
-		// Bg options
+		// Bg options.
 		$this->bg_options = array(
 			'color' => true,
-			'image' => true
+			'image' => true,
 		);
 
-		// Admin Scripts
+		// Admin Scripts.
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_setup' ) );
 		add_action( 'admin_footer-widgets.php', array( $this, 'render_control_template_scripts' ) );
 
-		// Public scripts
-		add_action( 'wp_enqueue_scripts', array( $this, 'public_scripts') );
+		// Public scripts.
+		add_action( 'wp_enqueue_scripts', array( $this, 'public_scripts' ) );
 	}
 	/**
 	 * Front-end display of widget.
@@ -60,12 +64,13 @@ class Organic_Widgets_Team_Section_Widget extends Organic_Widgets_Custom_Widget 
 		$max_posts = ( isset( $instance['max_posts'] ) ) ? $instance['max_posts'] : 4;
 
 		echo $args['before_widget'];
+
 		?>
 
-		<!-- BEGIN .organic-widgets-section -->
+		<?php /** BEGIN .organic-widgets-section */ ?>
 		<div class="organic-widgets-section organic-widgets-team-section" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
 
-			<!-- BEGIN .organic-widgets-content -->
+			<?php /** BEGIN .organic-widgets-content */ ?>
 			<div class="organic-widgets-content">
 
 			<?php if ( ! empty( $instance['title'] ) ) { ?>
@@ -81,33 +86,34 @@ class Organic_Widgets_Team_Section_Widget extends Organic_Widgets_Custom_Widget 
 				'post_type' => 'post',
 				'suppress_filters' => 0,
 				'tax_query' => array(
-			    array(
-			      'taxonomy' => 'category',
-			      'field'    => 'id',
-			      'terms'    => $category
-			    ),
-			  ),
-			) ); ?>
+					array(
+						'taxonomy' => 'category',
+						'field'    => 'id',
+						'terms'    => $category
+					),
+				),
+			)); ?>
+
 			<?php if ( $wp_query->have_posts() ) : ?>
 
-				<!-- BEGIN .organic-widgets-row -->
+				<?php /** BEGIN .organic-widgets-row */ ?>
 				<div class="organic-widgets-row organic-widgets-team-holder organic-widgets-post-holder organic-widgets-masonry-container">
 
 					<?php while ( $wp_query->have_posts() ) : $wp_query->the_post(); ?>
 
-					<!-- BEGIN .organic-widgets-masonry-wrapper -->
+					<?php /** BEGIN .organic-widgets-masonry-wrapper */ ?>
 					<div class="organic-widgets-masonry-wrapper organic-widgets-column organic-widgets-<?php echo $this->column_string( $num_columns ); ?>">
 
 						<article>
 
-							<!-- BEGIN .organic-widgets-card -->
+							<?php /** BEGIN .organic-widgets-card */ ?>
 							<div class="organic-widgets-card">
 
 								<?php if ( has_post_thumbnail() ) { ?>
 									<div class="organic-widgets-featured-img"><?php the_post_thumbnail(); ?></div>
 								<?php } ?>
 
-								<!-- BEGIN .organic-widgets-card-content -->
+								<?php /** BEGIN .organic-widgets-card-content */ ?>
 								<div class="organic-widgets-card-content">
 
 									<h5 class="organic-widgets-member-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
@@ -116,29 +122,29 @@ class Organic_Widgets_Team_Section_Widget extends Organic_Widgets_Custom_Widget 
 
 									<?php edit_post_link( esc_html__( '(Edit)', ORGANIC_WIDGETS_18N ), '<p>', '</p>' ); ?>
 
-								<!-- END .organic-widgets-card-content -->
+								<?php /** END .organic-widgets-card-content */ ?>
 								</div>
 
-							<!-- END .organic-widgets-card -->
+							<?php /** END .organic-widgets-card */ ?>
 							</div>
 
 						</article>
 
-					<!-- END .organic-widgets-masonry-wrapper -->
+					<?php /** END .organic-widgets-masonry-wrapper */ ?>
 					</div>
 
 					<?php endwhile; ?>
 
-				<!-- END .organic-widgets-row -->
+				<?php /** END .organic-widgets-row */ ?>
 				</div>
 
 			<?php endif; ?>
 			<?php wp_reset_postdata(); ?>
 
-			<!-- END .organic-widgets-content -->
+			<?php /** END .organic-widgets-content */ ?>
 			</div>
 
-		<!-- END .organic-widgets-section -->
+		<?php /** END .organic-widgets-section */ ?>
 		</div>
 
 		<?php wp_enqueue_script( 'organic-widgets-masonry', ORGANIC_WIDGETS_BASE_DIR . 'public/js/masonry.js', array( 'jquery', 'masonry' ) ); ?>
@@ -159,12 +165,12 @@ class Organic_Widgets_Team_Section_Widget extends Organic_Widgets_Custom_Widget 
 			(array) $instance,
 			array(
 				'title' => '',
-				'text' => '',
+				'text'  => '',
 			)
 		);
 
 		// Setup Variables.
-		$this->id_prefix = $this->get_field_id('');
+		$this->id_prefix = $this->get_field_id( '' );
 		if ( isset( $instance['category'] ) ) {
 			$category = $instance['category'];
 		} else { $category = false; }

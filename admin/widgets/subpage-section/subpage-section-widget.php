@@ -1,8 +1,12 @@
 <?php
-/* Registers a widget to show a subsection on a page */
+/**
+ * Registers a widget to show a page section on another page.
+ *
+ * @package Organic Widgets
+ */
 
 // Block direct requests.
-if ( !defined('ABSPATH') )
+if ( ! defined( 'ABSPATH' ) )
 	die( '-1' );
 
 /**
@@ -17,28 +21,28 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 	 */
 	function __construct() {
 		parent::__construct(
-			'organic_widgets_subpage_section', // Base ID
-			__( 'Organic Subpage', ORGANIC_WIDGETS_18N ), // Name
+			'organic_widgets_subpage_section', // Base ID.
+			__( 'Organic Subpage', ORGANIC_WIDGETS_18N ), // Name.
 			array(
 				'description' => __( 'A subpage\'s content displayed as a section of another page.', ORGANIC_WIDGETS_18N ),
 				'customize_selective_refresh' => true,
-			) // Args
+			) // Args.
 		);
 
-		$this->id_prefix = $this->get_field_id('');
+		$this->id_prefix = $this->get_field_id( '' );
 
-		// Bg options
+		// Bg options.
 		$this->bg_options = array(
 			'color' => true,
 			'image' => true,
-			'video' => true
+			'video' => true,
 		);
 
-		// Admin Scripts
+		// Admin Scripts.
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_setup' ) );
 
-		// Public scripts
-		add_action( 'wp_enqueue_scripts', array( $this, 'public_scripts') );
+		// Public scripts.
+		add_action( 'wp_enqueue_scripts', array( $this, 'public_scripts' ) );
 
 	}
 	/**
@@ -60,51 +64,51 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 
 		if ( ! empty( $instance['page_id'] ) ) { ?>
 
-		<!-- BEGIN .organic-widgets-section -->
+		<?php /** BEGIN .organic-widgets-section */ ?>
 		<div class="organic-widgets-section organic-widgets-subpage-section organic-widgets-video-bg-section" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
 
 			<?php
 			// Video Background Section.
 			if ( $bg_video ) {
 
-				//Prep arguments
+				// Prep arguments.
 				$video_info = array(
-					'video' => $bg_video,
-					'video_type' => $this->get_video_type( $bg_video ),
-					'video_id' => $this->youtube_id_from_url( $bg_video ),
-					'widget_id' => $this->id,
-					'clean_widget_id' => $this->sanitize_js_variable( $this->id )
+					'video'           => $bg_video,
+					'video_type'      => $this->get_video_type( $bg_video ),
+					'video_id'        => $this->youtube_id_from_url( $bg_video ),
+					'widget_id'       => $this->id,
+					'clean_widget_id' => $this->sanitize_js_variable( $this->id ),
 				);
 
-				// Add video bg to global var
+				// Add video bg to global var.
 				$this->add_video_bg( $video_info );
 
-				// Output video HTML
-				$this->video_bg_html($video_info);
+				// Output video HTML.
+				$this->video_bg_html( $video_info );
 
 			}
 
-			// Get Page Info
+			// Get Page Info.
 			$page_id = $instance['page_id'];
 			$the_featured_image = get_the_post_thumbnail_url( $page_id, 'organic-widgets-featured-large' );
 
 			$page_query = new WP_Query(array(
-				'post_type'	 				=> 'page',
-				'page_id' 					=> $page_id,
-				'posts_per_page' 		=> 1,
+				'post_type'      => 'page',
+				'page_id'        => $page_id,
+				'posts_per_page' => 1,
 			) );
 
 			if ( $page_query->have_posts() ) : while ( $page_query->have_posts() ) : $page_query->the_post(); ?>
 
-				<!-- BEGIN .organic-widgets-content -->
+				<?php /** BEGIN .organic-widgets-content */ ?>
 				<div class="organic-widgets-content">
 
 					<?php the_content( esc_html__( 'Read More', ORGANIC_WIDGETS_18N ) ); ?>
 
-				<!-- END .organic-widgets-content -->
+				<?php /** END .organic-widgets-content */ ?>
 				</div>
 
-			<!-- END .organic-widgets-section -->
+			<?php /** END .organic-widgets-section */ ?>
 			</div>
 
 			<?php endwhile;
@@ -126,10 +130,10 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 	 */
 	public function form( $instance ) {
 
-		$this->id_prefix = $this->get_field_id('');
+		$this->id_prefix = $this->get_field_id( '' );
 
-		if ( isset( $instance[ 'page_id' ] ) ) {
-			$page_id = $instance[ 'page_id' ];
+		if ( isset( $instance['page_id'] ) ) {
+			$page_id = $instance['page_id'];
 		} else { $page_id = 0; }
 
 		if ( isset( $instance['bg_image_id'] ) ) {

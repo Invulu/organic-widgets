@@ -1,5 +1,9 @@
 <?php
-/* Registers a widget to show a profile */
+/**
+ * Registers a widget to show a profile.
+ *
+ * @package Organic Widgets
+ */
 
 // Block direct requests.
 if ( ! defined( 'ABSPATH' ) )
@@ -17,27 +21,27 @@ class Organic_Widgets_Profile_Widget extends Organic_Widgets_Custom_Widget {
 	 */
 	function __construct() {
 		parent::__construct(
-			'organic_widgets_profile', // Base ID
-			__( 'Organic Profile', ORGANIC_WIDGETS_18N ), // Name
+			'organic_widgets_profile', // Base ID.
+			__( 'Organic Profile', ORGANIC_WIDGETS_18N ), // Name.
 			array(
 				'description' => __( 'Display a personal profile.', ORGANIC_WIDGETS_18N ),
 				'customize_selective_refresh' => false,
-			) // Args
+			) // Args.
 		);
 
-		$this->id_prefix = $this->get_field_id('');
+		$this->id_prefix = $this->get_field_id( '' );
 
-		// Bg options
+		// Bg options.
 		$this->bg_options = array(
 			'color' => true,
 		);
 
-		// Admin Scripts
+		// Admin Scripts.
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_setup' ) );
 		add_action( 'admin_footer-widgets.php', array( $this, 'render_control_template_scripts' ) );
 
-		// Public scripts
-		add_action( 'wp_enqueue_scripts', array( $this, 'public_scripts') );
+		// Public scripts.
+		add_action( 'wp_enqueue_scripts', array( $this, 'public_scripts' ) );
 	}
 	/**
 	 * Front-end display of widget.
@@ -66,15 +70,15 @@ class Organic_Widgets_Profile_Widget extends Organic_Widgets_Custom_Widget {
 
 		<?php echo $args['before_widget']; ?>
 
-			<!-- BEGIN .organic-widgets-section -->
+			<?php /** BEGIN .organic-widgets-section */ ?>
 			<div class="organic-widgets-section organic_widgets-profile-section<?php if ( $first_last ) { echo esc_attr( $first_last ); } ?>" <?php if ($instance['bg_color']) { ?>style="background-color:<?php echo $instance['bg_color']; ?>;"<?php } ?> <?php if ($group_id) { echo 'data-group-id="' . $group_id . '"'; } ?>>
 
 				<?php if ( ! empty( $instance['title'] ) || ! empty( $instance['text'] ) || ! empty( $instance['subtitle'] ) ) { ?>
 
-					<!-- BEGIN .organic-widgets-profile -->
+					<?php /** BEGIN .organic-widgets-profile */ ?>
 					<div class="organic-widgets-profile">
 
-						<!-- BEGIN .organic-widgets-card -->
+						<?php /** BEGIN .organic-widgets-card */ ?>
 						<div class="organic-widgets-card">
 
 							<?php if ( $instance['bg_image_id'] > 0 ) { ?>
@@ -83,7 +87,7 @@ class Organic_Widgets_Profile_Widget extends Organic_Widgets_Custom_Widget {
 								</div>
 							<?php } ?>
 
-							<!-- BEGIN .organic-profile-content -->
+							<?php /** BEGIN .organic-profile-content */ ?>
 							<div class="organic-profile-content organic-widgets-card-content">
 
 							<?php if ( ! empty( $instance['title'] ) ) { ?>
@@ -118,18 +122,18 @@ class Organic_Widgets_Profile_Widget extends Organic_Widgets_Custom_Widget {
 
 							<?php } ?>
 
-							<!-- END .organic-profile-content -->
+							<?php /** END .organic-profile-content */ ?>
 							</div>
 
-						<!-- END .organic-widgets-card -->
+						<?php /** END .organic-widgets-card */ ?>
 						</div>
 
-					<!-- END .organic-widgets-profile -->
+					<?php /** END .organic-widgets-profile */ ?>
 					</div>
 
 				<?php } //End Conditional checking for content ?>
 
-			<!-- END .organic-widgets-section -->
+			<?php /** END .organic-widgets-section */ ?>
 			</div>
 
 			<?php echo $args['after_widget'];
@@ -149,7 +153,7 @@ class Organic_Widgets_Profile_Widget extends Organic_Widgets_Custom_Widget {
 			(array) $instance,
 			array(
 				'title' => '',
-				'text' => '',
+				'text'  => '',
 			)
 		);
 

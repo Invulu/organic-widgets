@@ -2,7 +2,7 @@
 Contributors: jqlee85, itsdavidmorgan, organicthemes, raid33, wordpresspagebuilder
 Donate link: https://organicthemes.com
 Tags: builder, customizer, widgets, slideshows, testimonials, portfolio, fontawesome, icons, pricing tables, page builder, full-width sections, custom widget areas, bundle, custom widgets
-Stable tag: 1.3.4
+Stable tag: 1.3.5
 Requires at least: 4.8
 Tested up to: 5.0
 License: GPLv2 or later
@@ -120,6 +120,12 @@ A: The Organic Builder Widgets plugin requires PHP 5.3.29 or higher, as do many 
 5. A list of some of the custom widgets included as seen within the customizer.
 
 == Changelog ==
+
+= 1.3.5 =
+* Replaced HTML commenting with PHP commenting to resolve wpautop issues when widgets are used in content
+* Added styles to hide empty paragraph tags and line breaks as a result of wpautop
+* General cleanup
+* Style tweaks
 
 = 1.3.4 =
 * Fixed 3 PHP warnings that were a result of non-numeric values

@@ -162,7 +162,8 @@ img.organic-widgets-hide-img,
   padding-bottom: 0px;
 }
 .organic-widgets-text p {
-  padding: 6px 0px;
+  margin: 18px 0px;
+  padding: 0px;
 }
 .organic-widgets-post-holder {
   width: calc(100% + 24px);
@@ -189,6 +190,10 @@ img.organic-widgets-hide-img,
   position: relative;
   background-color: #ffffff;
 	padding: 0px;
+}
+.organic-widgets-card p {
+  margin: 18px 0px;
+  padding: 0px;
 }
 .organic-widgets-card-content {
   padding: 24px;
@@ -576,6 +581,10 @@ img.organic-widgets-hide-img,
 .organic-widgets-feature-list-item-icon {
   text-align: center;
 }
+.organic-widgets-feature-list-item-icon p {
+  margin: 12px 0px;
+  padding: 0px;
+}
 .organic-widgets-feature-list-item-icon i {
   color: #000000;
   font-size: 32px;
@@ -592,6 +601,7 @@ img.organic-widgets-hide-img,
 }
 .organic-widgets-feature-list-item-text p {
   font-size: 90%;
+  margin: 0px;
   padding: 0px;
 }
 .organic-widgets-feature-list-items-wrapper {
@@ -693,11 +703,12 @@ img.organic-widgets-hide-img,
 }
 .organic-widgets-pricing-table-excerpt p {
   font-weight: 400;
-  padding: 0;
+  margin: 0px;
+  padding: 0px;
 }
 .organic-widgets-pricing-table table {
   border: none;
-  margin: 0;
+  margin: 0px;
 }
 .organic-widgets-pricing-table table thead,
 .organic-widgets-pricing-table table tfoot {
@@ -1347,6 +1358,19 @@ iframe.organic-widgets-video-bg {
 .organic-widgets-aligner .organic-widgets-content {
   margin-left: 0px;
   margin-right: 0px;
+}
+
+/************************************************
+*  WPautop Fixes
+************************************************/
+
+.organic-widget p:empty,
+.organic-widget .button br,
+.organic-widgets-button-holder br,
+.organic-widget .pagination .nav-links br,
+.organic-widget .organic-widgets-business-time br,
+.organic-widgets-portfolio-section .organic-widgets-portfolio-link + p {
+  display: none;
 }
 
 /************************************************

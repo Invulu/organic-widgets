@@ -1,8 +1,12 @@
 <?php
-/* Registers a widget to show a features on a page */
+/**
+ * Registers a widget to show a list of features.
+ *
+ * @package Organic Widgets
+ */
 
 // Block direct requests.
-if ( !defined('ABSPATH') )
+if ( ! defined( 'ABSPATH' ) )
 	die( '-1' );
 
 /**
@@ -17,28 +21,28 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 	 */
 	function __construct() {
 		parent::__construct(
-			'organic_widgets_feature_list_section', // Base ID
-			__( 'Organic Feature List', ORGANIC_WIDGETS_18N ), // Name
+			'organic_widgets_feature_list_section', // Base ID.
+			__( 'Organic Feature List', ORGANIC_WIDGETS_18N ), // Name.
 			array(
 				'description' => __( 'A list of features with icons.', ORGANIC_WIDGETS_18N ),
 				'customize_selective_refresh' => true,
-			) // Args
+			) // Args.
 		);
 
-		$this->id_prefix = $this->get_field_id('');
+		$this->id_prefix = $this->get_field_id( '' );
 
-		// Bg options
+		// Bg options.
 		$this->bg_options = array(
 			'color' => true,
-			'image' => true
+			'image' => true,
 		);
 
-		// Admin Scripts
+		// Admin Scripts.
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_setup' ) );
 		add_action( 'admin_footer-widgets.php', array( $this, 'render_control_template_scripts' ) );
 
-		// Public scripts
-		add_action( 'wp_enqueue_scripts', array( $this, 'public_scripts') );
+		// Public scripts.
+		add_action( 'wp_enqueue_scripts', array( $this, 'public_scripts' ) );
 
 	}
 	/**
@@ -64,7 +68,7 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 
 		<div class="organic-widgets-section organic-widgets-feature-list-section" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
 
-			<!-- BEGIN .organic-widgets-content -->
+			<?php /** BEGIN .organic-widgets-content */ ?>
 			<div class="organic-widgets-content">
 
 			<?php if ( ! empty( $instance['title'] ) ) { ?>
@@ -133,7 +137,7 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 				</div>
 			<?php } ?>
 
-			<!-- END .organic-widgets-content -->
+			<?php /** END .organic-widgets-content */ ?>
 			</div>
 
 		</div>

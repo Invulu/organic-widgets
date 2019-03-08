@@ -1,8 +1,12 @@
 <?php
-/* Registers a widget to show a subsection on a page */
+/**
+ * Registers a widget to display a hero section.
+ *
+ * @package Organic Widgets
+ */
 
 // Block direct requests.
-if ( !defined('ABSPATH') )
+if ( ! defined( 'ABSPATH' ) )
 	die( '-1' );
 
 /**
@@ -17,29 +21,29 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 	 */
 	function __construct() {
 		parent::__construct(
-			'organic_widgets_hero_section', // Base ID
-			__( 'Organic Hero', ORGANIC_WIDGETS_18N ), // Name
+			'organic_widgets_hero_section', // Base ID.
+			__( 'Organic Hero', ORGANIC_WIDGETS_18N ), // Name.
 			array(
 				'description' => __( 'A hero section with a background image and call to action.', ORGANIC_WIDGETS_18N ),
 				'customize_selective_refresh' => true,
-			) // Args
+			) // Args.
 		);
 
-		$this->id_prefix = $this->get_field_id('');
+		$this->id_prefix = $this->get_field_id( '' );
 
-		// Bg options
+		// Bg options.
 		$this->bg_options = array(
 			'color' => true,
 			'image' => true,
-			'video' => true
+			'video' => true,
 		);
 
-		// Admin Scripts
+		// Admin Scripts.
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_setup' ) );
 		add_action( 'admin_footer-widgets.php', array( $this, 'render_control_template_scripts' ) );
 
-		// Public scripts
-		add_action( 'wp_enqueue_scripts', array( $this, 'public_scripts') );
+		// Public scripts.
+		add_action( 'wp_enqueue_scripts', array( $this, 'public_scripts' ) );
 
 	}
 	/**
@@ -69,7 +73,7 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 
 		?>
 
-		<!-- BEGIN .organic-widgets-section -->
+		<?php /** BEGIN .organic-widgets-section */ ?>
 		<div class="organic-widgets-section organic-widgets-hero-section<?php if ($full_window_height) echo ' organic-widgets-full-height-section'; ?><?php if ($bg_image_fixed) echo ' organic-widgets-fixed-bg-img'; ?><?php if ($bg_video) echo ' ocw-bg-dark'; ?>" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
 
 			<?php
@@ -94,15 +98,15 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 			}
 			?>
 
-			<!-- BEGIN .organic-widgets-aligner -->
+			<?php /** BEGIN .organic-widgets-aligner */ ?>
 			<div class="organic-widgets-aligner <?php if ( ! empty( $instance['alignment'] ) ) { echo 'organic-widgets-aligner-'.esc_attr( $instance['alignment'] ); } else { echo 'organic-widgets-aligner-middle-center'; } ?>">
 
-				<!-- BEGIN .organic-widgets-content -->
+				<?php /** BEGIN .organic-widgets-content */ ?>
 				<div class="organic-widgets-content">
 
 					<?php if ( ! empty( $instance['title'] ) || ! empty( $instance['text'] ) || ! empty( $instance['button_one_url'] ) ) { ?>
 
-						<!-- BEGIN .organic-widgets-hero-information -->
+						<?php /** BEGIN .organic-widgets-hero-information */ ?>
 						<div class="organic-widgets-hero-information">
 
 						<?php if ( $featured_image_id > 0 ) { ?>
@@ -128,18 +132,18 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 							</div>
 						<?php } ?>
 
-					<!-- END .organic-widgets-hero-information -->
+					<?php /** END .organic-widgets-hero-information */ ?>
 					</div>
 
 					<?php } ?>
 
-				<!-- END .organic-widgets-content -->
+				<?php /** END .organic-widgets-content */ ?>
 				</div>
 
-			<!-- END .organic-widgets-aligner -->
+			<?php /** END .organic-widgets-aligner */ ?>
 			</div>
 
-		<!-- END .organic-widgets-section -->
+		<?php /** END .organic-widgets-section */ ?>
 		</div>
 
 		<?php

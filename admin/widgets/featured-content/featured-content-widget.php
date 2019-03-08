@@ -1,5 +1,9 @@
 <?php
-/* Registers a widget to show a Featured Content subsection on a page */
+/**
+ * Registers a widget to show a groupable featured content subsection.
+ *
+ * @package Organic Widgets
+ */
 
 // Block direct requests.
 if ( !defined('ABSPATH') )
@@ -17,30 +21,28 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 	 */
 	function __construct() {
 		parent::__construct(
-			'organic_widgets_featured_content', // Base ID
-			__( 'Organic Featured Content', ORGANIC_WIDGETS_18N ), // Name
+			'organic_widgets_featured_content', // Base ID.
+			__( 'Organic Featured Content', ORGANIC_WIDGETS_18N ), // Name.
 			array(
 				'description' => __( 'A widget for displaying an existing page or custom content.', ORGANIC_WIDGETS_18N ),
 				'customize_selective_refresh' => false,
-			) // Args
+			) // Args.
 		);
 
-		$this->id_prefix = $this->get_field_id('');
+		$this->id_prefix = $this->get_field_id( '' );
 
-		// Bg options
+		// Bg options.
 		$this->bg_options = array(
 			'color' => true,
-			'image' => true
+			'image' => true,
 		);
 
-		// Admin Scripts
+		// Admin Scripts.
 		add_action( 'admin_print_scripts-widgets.php', array( $this, 'admin_setup' ) );
 		add_action( 'admin_footer-widgets.php', array( $this, 'render_control_template_scripts' ) );
 
-		// Public scripts
-		add_action( 'wp_enqueue_scripts', array( $this, 'public_scripts') );
-
-
+		// Public scripts.
+		add_action( 'wp_enqueue_scripts', array( $this, 'public_scripts' ) );
 
 	}
 	/**
@@ -85,29 +87,29 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 
 			?>
 
-			<!-- BEGIN .organic-widgets-section -->
+			<?php /** BEGIN .organic-widgets-section */ ?>
 			<div class="organic-widgets-section organic-widgets-featured-content-section<?php if ( $first_last ) { echo esc_attr( $first_last ); } ?>" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?> <?php if ($group_id) { echo 'data-group-id="' . $group_id . '"'; } ?>>
 
-				<!-- BEGIN .organic-widgets-content -->
+				<?php /** BEGIN .organic-widgets-content */ ?>
 				<div class="organic-widgets-content">
 
 					<?php if ( has_post_thumbnail() ) {  ?>
 						<div class="organic-widgets-img"><?php echo get_the_post_thumbnail( $page_id, 'organic-widgets-featured-medium' )?></div>
 					<?php } ?>
 
-					<!-- BEGIN .organic-widgets-card-content -->
+					<?php /** BEGIN .organic-widgets-card-content */ ?>
 					<div class="organic-widgets-card-content">
 
 						<?php the_content( esc_html__( 'Read More', ORGANIC_WIDGETS_18N ) ); ?>
 						<?php edit_post_link( esc_html__( '(Edit)', ORGANIC_WIDGETS_18N ), '<p>', '</p>' ); ?>
 
-					<!-- END .organic-widgets-card-content -->
+					<?php /** END .organic-widgets-card-content */ ?>
 					</div>
 
-				<!-- END .organic-widgets-content -->
+				<?php /** END .organic-widgets-content */ ?>
 				</div>
 
-			<!-- END .organic-widgets-section -->
+			<?php /** END .organic-widgets-section */ ?>
 			</div><?php
 
 			endwhile;
@@ -125,15 +127,15 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 			$link_title = ( isset( $instance['link_title'] ) ) ? $instance['link_title'] : false;
 			?>
 
-			<!-- BEGIN .organic-widgets-section -->
+			<?php /** BEGIN .organic-widgets-section */ ?>
 			<div class="organic-widgets-section organic-widgets-featured-content-section<?php if ( $first_last ) { echo esc_attr( $first_last ); } ?>" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?> <?php if ($group_id) { echo 'data-group-id="' . $group_id . '"'; } ?>>
 
 				<?php if ( ! empty( $instance['title'] ) || ! empty( $instance['text'] ) ) { ?>
 
-					<!-- BEGIN .organic-widgets-content -->
+					<?php /** BEGIN .organic-widgets-content */ ?>
 					<div class="organic-widgets-content">
 
-						<!-- BEGIN .organic-widgets-card-content -->
+						<?php /** BEGIN .organic-widgets-card-content */ ?>
 						<div class="organic-widgets-card-content">
 
 							<?php if ( ! empty( $instance['title'] ) ) { ?>
@@ -154,15 +156,15 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 								</a>
 							<?php } ?>
 
-						<!-- END .organic-widgets-card-content -->
+						<?php /** END .organic-widgets-card-content */ ?>
 						</div>
 
-					<!-- END .organic-widgets-content -->
+					<?php /** END .organic-widgets-content */ ?>
 					</div>
 
 				<?php } ?>
 
-			<!-- END .organic-widgets-section -->
+			<?php /** END .organic-widgets-section */ ?>
 			</div>
 
 		<?php }

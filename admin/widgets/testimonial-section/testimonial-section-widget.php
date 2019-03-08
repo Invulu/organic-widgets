@@ -1,9 +1,13 @@
 <?php
-/* Registers a widget to show a Team subsection on a page */
+/**
+ * Registers a widget to display a slideshow of testimonials.
+ *
+ * @package Organic Widgets
+ */
 
 // Block direct requests.
-if ( !defined('ABSPATH') )
-	die('-1');
+if ( ! defined( 'ABSPATH' ) )
+	die( '-1' );
 
 /**
  * Adds Organic_Widgets_Testimonial_Section_Widget widget.
@@ -17,28 +21,28 @@ class Organic_Widgets_Testimonial_Section_Widget extends Organic_Widgets_Custom_
 	 */
 	function __construct() {
 		parent::__construct(
-			'organic_widgets_testimonial_section', // Base ID
-			__( 'Organic Testimonials', ORGANIC_WIDGETS_18N ), // Name
+			'organic_widgets_testimonial_section', // Base ID.
+			__( 'Organic Testimonials', ORGANIC_WIDGETS_18N ), // Name.
 			array(
 				'description' => __( 'A section displaying testimonial posts.', ORGANIC_WIDGETS_18N ),
 				'customize_selective_refresh' => true,
-			) // Args
+			) // Args.
 		);
 
-		$this->id_prefix = $this->get_field_id('');
+		$this->id_prefix = $this->get_field_id( '' );
 
-		// Bg options
+		// Bg options.
 		$this->bg_options = array(
 			'color' => true,
-			'image' => true
+			'image' => true,
 		);
 
-		// Admin Scripts
+		// Admin Scripts.
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_setup' ) );
 		add_action( 'admin_footer-widgets.php', array( $this, 'render_control_template_scripts' ) );
 
-		// Public scripts
-		add_action( 'wp_enqueue_scripts', array( $this, 'public_scripts') );
+		// Public scripts.
+		add_action( 'wp_enqueue_scripts', array( $this, 'public_scripts' ) );
 	}
 
 	/**
@@ -63,7 +67,7 @@ class Organic_Widgets_Testimonial_Section_Widget extends Organic_Widgets_Custom_
 		echo $args['before_widget'];
 		?>
 
-		<!-- BEGIN .organic-widgets-section -->
+		<?php /** BEGIN .organic-widgets-section */ ?>
 		<div class="organic-widgets-section organic-widgets-testimonial-section" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
 
 			<?php
@@ -95,7 +99,7 @@ class Organic_Widgets_Testimonial_Section_Widget extends Organic_Widgets_Custom_
 
 			<?php if ( $slideshow_query->have_posts() ) { ?>
 
-				<!-- BEGIN .organic-widgets-content -->
+				<?php /** BEGIN .organic-widgets-content */ ?>
 				<div class="organic-widgets-content">
 
 					<?php if ( ! empty( $instance['title'] ) ) { ?>
@@ -106,12 +110,12 @@ class Organic_Widgets_Testimonial_Section_Widget extends Organic_Widgets_Custom_
 						<div class="organic-widgets-text"><?php echo apply_filters( 'the_content', $instance['text'] ); ?></div>
 					<?php } ?>
 
-					<!-- BEGIN .flexslider -->
+					<?php /** BEGIN .flexslider */ ?>
 					<div class="organic-widgets-flexslider loading<?php if ( '1' === $posts_per_slide ) { ?> organic-widgets-single-slide<?php } ?>" data-per-slide="<?php echo $posts_per_slide ?>">
 
 					<div class="preloader"></div>
 
-						<!-- BEGIN .slides -->
+						<?php /** BEGIN .slides */ ?>
 						<ul class="slides">
 
 							<?php	while ( $slideshow_query->have_posts() ) {
@@ -123,10 +127,10 @@ class Organic_Widgets_Testimonial_Section_Widget extends Organic_Widgets_Custom_
 
 								<article>
 
-								<!-- BEGIN .organic-widgets-testimonial-slide-content -->
+								<?php /** BEGIN .organic-widgets-testimonial-slide-content */ ?>
 								<div class="organic-widgets-testimonial-slide-content">
 
-									<!-- BEGIN .organic-widgets-card -->
+									<?php /** BEGIN .organic-widgets-card */ ?>
 									<div class="organic-widgets-card">
 
 										<?php if ( has_post_thumbnail() ) { ?>
@@ -137,7 +141,7 @@ class Organic_Widgets_Testimonial_Section_Widget extends Organic_Widgets_Custom_
 
 										<?php } ?>
 
-										<!-- BEGIN .organic-widgets-card-content -->
+										<?php /** BEGIN .organic-widgets-card-content */ ?>
 										<div class="organic-widgets-card-content">
 
 											<div class="organic-widgets-testimonial-stars">
@@ -146,15 +150,15 @@ class Organic_Widgets_Testimonial_Section_Widget extends Organic_Widgets_Custom_
 
 											<div class="organic-widgets-excerpt"><?php the_excerpt(); ?></div>
 
-										<!-- END .organic-widgets-card-content -->
+										<?php /** END .organic-widgets-card-content */ ?>
 										</div>
 
-									<!-- END .organic-widgets-card -->
+									<?php /** END .organic-widgets-card */ ?>
 									</div>
 
 									<p class="organic-widgets-testimonial-author"><?php the_title(); ?></p>
 
-								<!-- END .organic-widgets-testimonial-slide-content -->
+								<?php /** END .organic-widgets-testimonial-slide-content */ ?>
 								</div>
 
 								</article>
@@ -163,19 +167,19 @@ class Organic_Widgets_Testimonial_Section_Widget extends Organic_Widgets_Custom_
 
 							<?php } ?>
 
-						<!-- END .slides -->
+						<?php /** END .slides */ ?>
 						</ul>
 
-					<!-- END .flexslider -->
+					<?php /** END .flexslider */ ?>
 					</div>
 
-				<!-- END .organic-widgets-content -->
+				<?php /** END .organic-widgets-content */ ?>
 				</div>
 
 			<?php } ?>
 			<?php wp_reset_postdata(); ?>
 
-		<!-- END .organic-widgets-section -->
+		<?php /** END .organic-widgets-section */ ?>
 		</div>
 
 		<?php wp_enqueue_script( 'organic-widgets-masonry', ORGANIC_WIDGETS_BASE_DIR . 'public/js/masonry.js', array( 'jquery', 'masonry' ) ); ?>

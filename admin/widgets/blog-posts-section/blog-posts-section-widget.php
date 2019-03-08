@@ -1,5 +1,9 @@
 <?php
-/* Registers a widget to show a Team subsection on a page */
+/**
+ * Registers a widget to show a section of blog posts.
+ *
+ * @package Organic Widgets
+ */
 
 // Block direct requests.
 if ( ! defined( 'ABSPATH' ) )
@@ -26,12 +30,12 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 			) // Args.
 		);
 
-		$this->id_prefix = $this->get_field_id('');
+		$this->id_prefix = $this->get_field_id( '' );
 
 		// Bg options.
 		$this->bg_options = array(
 			'color' => true,
-			'image' => true
+			'image' => true,
 		);
 
 		// Admin Scripts.
@@ -40,7 +44,7 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 
 		// Public scripts.
 		if ( is_active_widget( false, false, $this->id_base ) || is_customize_preview() ) {
-			add_action( 'wp_enqueue_scripts', array( $this, 'public_scripts') );
+			add_action( 'wp_enqueue_scripts', array( $this, 'public_scripts' ) );
 		}
 	}
 
@@ -67,10 +71,10 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 
 		?>
 
-		<!-- BEGIN .organic-widgets-section -->
+		<?php /** BEGIN .organic-widgets-section */ ?>
 		<div class="organic-widgets-section organic-widgets-blog-posts-section" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
 
-			<!-- BEGIN .organic-widgets-content -->
+			<?php /** BEGIN .organic-widgets-content */ ?>
 			<div class="organic-widgets-content">
 
 			<?php if ( ! empty( $instance['title'] ) ) { ?>
@@ -90,19 +94,19 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 
 			<?php if ( $wp_query->have_posts() ) : ?>
 
-				<!-- BEGIN .organic-widgets-row -->
+				<?php /** BEGIN .organic-widgets-row */ ?>
 				<div class="organic-widgets-blog-posts-holder organic-widgets-post-holder organic-widgets-row organic-widgets-masonry-container">
 
 					<?php while ( $wp_query->have_posts() ) : $wp_query->the_post(); ?>
 
 					<?php $thumb = ( '' != get_the_post_thumbnail() ) ? wp_get_attachment_image_src( get_post_thumbnail_id(), 'full' ) : false; ?>
 
-					<!-- BEGIN .organic-widgets-masonry-wrapper -->
+					<?php /** BEGIN .organic-widgets-masonry-wrapper */ ?>
 					<div class="organic-widgets-masonry-wrapper organic-widgets-column organic-widgets-<?php echo $this->column_string( $num_columns ); ?>">
 
 						<article>
 
-							<!-- BEGIN .organic-widgets-card -->
+							<?php /** BEGIN .organic-widgets-card */ ?>
 							<div class="organic-widgets-card clearfix">
 
 								<?php if ( has_post_thumbnail() ) { ?>
@@ -111,12 +115,12 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 									</a>
 								<?php } ?>
 
-								<!-- BEGIN .organic-widgets-card-content -->
+								<?php /** BEGIN .organic-widgets-card-content */ ?>
 								<div class="organic-widgets-card-content">
 
 									<h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
 
-									<!-- BEGIN .organic-widgets-post-meta -->
+									<?php /** BEGIN .organic-widgets-post-meta */ ?>
 									<div class="organic-widgets-post-meta">
 										<p class="organic-widgets-post-date">
 											<?php echo get_the_modified_date(); ?>
@@ -124,36 +128,36 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 										<p class="organic-widgets-post-author">
 											<?php esc_html_e( 'By ', ORGANIC_WIDGETS_18N ); ?><?php esc_url( the_author_posts_link() ); ?>
 										</p>
-									<!-- END .organic-widgets-post-meta -->
+									<?php /** END .organic-widgets-post-meta */ ?>
 									</div>
 
 									<?php the_excerpt(); ?>
 
 									<?php edit_post_link( esc_html__( '(Edit)', ORGANIC_WIDGETS_18N ), '<p>', '</p>' ); ?>
 
-								<!-- END .organic-widgets-card-content -->
+								<?php /** END .organic-widgets-card-content */ ?>
 								</div>
 
-							<!-- END .organic-widgets-card -->
+							<?php /** END .organic-widgets-card */ ?>
 							</div>
 
 						</article>
 
-					<!-- END .organic-widgets-masonry-wrapper -->
+					<?php /** END .organic-widgets-masonry-wrapper */ ?>
 					</div>
 
 					<?php endwhile; ?>
 
-				<!-- END .organic-widgets-row -->
+				<?php /** END .organic-widgets-row */ ?>
 				</div>
 
 			<?php endif; ?>
 			<?php wp_reset_postdata(); ?>
 
-			<!-- END .organic-widgets-content -->
+			<?php /** END .organic-widgets-content */ ?>
 			</div>
 
-		<!-- END .organic-widgets-section -->
+		<?php /** END .organic-widgets-section */ ?>
 		</div>
 
 		<?php

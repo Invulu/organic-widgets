@@ -1,8 +1,12 @@
 <?php
-/* Registers a widget to show a subsection on a page */
+/**
+ * Registers a widget to show a featured product section with an image and link.
+ *
+ * @package Organic Widgets
+ */
 
 // Block direct requests.
-if ( !defined('ABSPATH') )
+if ( ! defined( 'ABSPATH' ) )
 	die( '-1' );
 
 /**
@@ -17,28 +21,28 @@ class Organic_Widgets_Featured_Product_Section_Widget extends Organic_Widgets_Cu
 	 */
 	function __construct() {
 		parent::__construct(
-			'organic_widgets_featured_product_section', // Base ID
-			__( 'Organic Featured Product', ORGANIC_WIDGETS_18N ), // Name
+			'organic_widgets_featured_product_section', // Base ID.
+			__( 'Organic Featured Product', ORGANIC_WIDGETS_18N ), // Name.
 			array(
 				'description' => __( 'A section for featuring a single product image with a link.', ORGANIC_WIDGETS_18N ),
 				'customize_selective_refresh' => true,
-			) // Args
+			) // Args.
 		);
 
-		$this->id_prefix = $this->get_field_id('');
+		$this->id_prefix = $this->get_field_id( '' );
 
-		// BG Options
+		// BG Options.
 		$this->bg_options = array(
 			'color' => true,
-			'image' => true
+			'image' => true,
 		);
 
-		// Admin Scripts
+		// Admin Scripts.
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_setup' ) );
 		add_action( 'admin_footer-widgets.php', array( $this, 'render_control_template_scripts' ) );
 
-		// Public scripts
-		add_action( 'wp_enqueue_scripts', array( $this, 'public_scripts') );
+		// Public scripts.
+		add_action( 'wp_enqueue_scripts', array( $this, 'public_scripts' ) );
 
 	}
 	/**
@@ -68,40 +72,40 @@ class Organic_Widgets_Featured_Product_Section_Widget extends Organic_Widgets_Cu
 
 		?>
 
-		<!-- BEGIN .organic-widgets-section -->
+		<?php /** BEGIN .organic-widgets-section */ ?>
 		<div class="organic-widgets-section organic-widgets-featured-product-section <?php if ($full_window_height) echo 'organic-widgets-full-height-section'; ?> <?php if ($bg_image_fixed) echo 'organic-widgets-fixed-bg-img'; ?>" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
 
 			<?php
 			// Video Background Section.
 			if ( $bg_video ) {
 
-				//Prep arguments
+				// Prep arguments.
 				$video_info = array(
-					'video' => $bg_video,
-					'video_type' => $this->get_video_type( $bg_video ),
-					'video_id' => $this->youtube_id_from_url( $bg_video ),
-					'widget_id' => $this->id,
-					'clean_widget_id' => $this->sanitize_js_variable( $this->id )
+					'video'           => $bg_video,
+					'video_type'      => $this->get_video_type( $bg_video ),
+					'video_id'        => $this->youtube_id_from_url( $bg_video ),
+					'widget_id'       => $this->id,
+					'clean_widget_id' => $this->sanitize_js_variable( $this->id ),
 				);
 
-				// Add video bg to global var
+				// Add video bg to global var.
 				$this->add_video_bg( $video_info );
 
-				// Output video HTML
-				$this->video_bg_html($video_info);
+				// Output video HTML.
+				$this->video_bg_html( $video_info );
 
 			}
 			?>
 
-			<!-- BEGIN .organic-widgets-aligner -->
+			<?php /** BEGIN .organic-widgets-aligner */ ?>
 			<div class="organic-widgets-aligner <?php if ( ! empty( $instance['alignment'] ) ) { echo 'organic-widgets-aligner-'.esc_attr( $instance['alignment'] ); } else { echo 'organic-widgets-aligner-middle-center'; } ?>">
 
-				<!-- BEGIN .organic-widgets-content -->
+				<?php /** BEGIN .organic-widgets-content */ ?>
 				<div class="organic-widgets-content organic-widgets-flex-row">
 
 					<?php if ( ! empty( $instance['title'] ) || ! empty( $instance['text'] ) || ! empty( $instance['button_one_url'] ) ) { ?>
 
-						<!-- BEGIN .organic-widgets-featured-product-information -->
+						<?php /** BEGIN .organic-widgets-featured-product-information */ ?>
 						<div class="organic-widgets-featured-product-information">
 
 						<?php if ( ! empty( $instance['title'] ) ) { ?>
@@ -123,14 +127,14 @@ class Organic_Widgets_Featured_Product_Section_Widget extends Organic_Widgets_Cu
 							</div>
 						<?php } ?>
 
-					<!-- END .organic-widgets-featured-product-information -->
+					<?php /** END .organic-widgets-featured-product-information */ ?>
 					</div>
 
 					<?php } ?>
 
 					<?php if ( $featured_image_id > 0 ) { ?>
 
-					<!-- BEGIN .organic-widgets-featured-product-item -->
+					<?php /** BEGIN .organic-widgets-featured-product-item */ ?>
 					<div class="organic-widgets-featured-product-item">
 
 						<?php if ( ! empty( $instance['button_three_url'] ) ) { ?>
@@ -139,18 +143,18 @@ class Organic_Widgets_Featured_Product_Section_Widget extends Organic_Widgets_Cu
 							<div class="organic-widgets-featured-product-img"><img src="<?php echo esc_url( $featured_image ); ?>" alt="<?php __( 'Product Image', ORGANIC_WIDGETS_18N ) ?>" /></div>
 						<?php } ?>
 
-					<!-- END .organic-widgets-featured-product-item -->
+					<?php /** END .organic-widgets-featured-product-item */ ?>
 					</div>
 
 					<?php } ?>
 
-				<!-- END .organic-widgets-content -->
+				<?php /** END .organic-widgets-content */ ?>
 				</div>
 
-			<!-- END .organic-widgets-aligner -->
+			<?php /** END .organic-widgets-aligner */ ?>
 			</div>
 
-		<!-- END .organic-widgets-section -->
+		<?php /** END .organic-widgets-section */ ?>
 		</div>
 
 		<?php
@@ -172,7 +176,7 @@ class Organic_Widgets_Featured_Product_Section_Widget extends Organic_Widgets_Cu
 			(array) $instance,
 			array(
 				'title' => '',
-				'text' => '',
+				'text'  => '',
 			)
 		);
 

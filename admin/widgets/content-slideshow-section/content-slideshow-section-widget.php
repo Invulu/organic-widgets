@@ -1,9 +1,13 @@
 <?php
-/* Registers a widget to show a Team subsection on a page */
+/**
+ * Registers a widget to show a slideshow of posts.
+ *
+ * @package Organic Widgets
+ */
 
 // Block direct requests.
-if ( !defined('ABSPATH') )
-	die('-1');
+if ( ! defined( 'ABSPATH' ) )
+	die( '-1' );
 
 /**
  * Adds Organic_Widgets_Content_Slideshow_Section_Widget widget.
@@ -17,20 +21,20 @@ class Organic_Widgets_Content_Slideshow_Section_Widget extends Organic_Widgets_C
 	 */
 	function __construct() {
 		parent::__construct(
-			'organic_widgets_content_slideshow_section', // Base ID
-			__( 'Organic Content Slideshow', ORGANIC_WIDGETS_18N ), // Name
+			'organic_widgets_content_slideshow_section', // Base ID.
+			__( 'Organic Content Slideshow', ORGANIC_WIDGETS_18N ), // Name.
 			array(
 				'description' => __( 'A content slideshow.', ORGANIC_WIDGETS_18N ),
 				'customize_selective_refresh' => true,
-			) // Args
+			) // Args.
 		);
 
-		$this->id_prefix = $this->get_field_id('');
+		$this->id_prefix = $this->get_field_id( '' );
 
 		// Bg options.
 		$this->bg_options = array(
 			'color' => true,
-			'image' => true
+			'image' => true,
 		);
 
 		// Admin Scripts.
@@ -66,9 +70,10 @@ class Organic_Widgets_Content_Slideshow_Section_Widget extends Organic_Widgets_C
 		} else { $fixed_slide_height = 0; }
 
 		echo $args['before_widget'];
+
 		?>
 
-		<!-- BEGIN .organic-widgets-section -->
+		<?php /** BEGIN .organic-widgets-section */ ?>
 		<div class="organic-widgets-section organic-widgets-content-slideshow-section" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
 
 			<?php
@@ -91,12 +96,12 @@ class Organic_Widgets_Content_Slideshow_Section_Widget extends Organic_Widgets_C
 
 			<?php if ( $slideshow_query->have_posts() ) { ?>
 
-				<!-- BEGIN .flexslider -->
+				<?php /** BEGIN .flexslider */ ?>
 				<div class="organic-widgets-flexslider loading" data-speed="<?php echo esc_attr($slideshow_interval); ?>" data-transition="<?php echo esc_attr($slideshow_transition_style); ?>" data-height="<?php echo esc_attr($fixed_slide_height); ?>">
 
 					<div class="preloader"></div>
 
-					<!-- BEGIN .slides -->
+					<?php /** BEGIN .slides */ ?>
 					<ul class="slides <?php if ( ! empty($fixed_slide_height) ) { echo 'organic-widgets-fixed-slide-height'; } ?>">
 
 						<?php	while ( $slideshow_query->have_posts() ) {
@@ -106,18 +111,18 @@ class Organic_Widgets_Content_Slideshow_Section_Widget extends Organic_Widgets_C
 
 							<li <?php post_class(); ?> id="post-<?php the_ID(); ?>" <?php if ( has_post_thumbnail() ) { echo 'style="background-image:url(' . $thumb[0] . ')"'; } ?>>
 
-								<!-- BEGIN .organic-widgets-aligner -->
+								<?php /** BEGIN .organic-widgets-aligner */ ?>
 								<div class="organic-widgets-aligner <?php if ( ! empty( $instance['alignment'] ) ) { echo 'organic-widgets-aligner-'.esc_attr( $instance['alignment'] ); } else { echo 'organic-widgets-aligner-middle-center'; } ?>">
 
-									<!-- BEGIN .organic-widgets-content -->
+									<?php /** BEGIN .organic-widgets-content */ ?>
 									<div class="organic-widgets-content">
 
-										<!-- BEGIN .organic-widgets-content-slideshow-slide-content -->
+										<?php /** BEGIN .organic-widgets-content-slideshow-slide-content */ ?>
 										<div class="organic-widgets-content-slideshow-slide-content organic-widgets-card">
 
 											<h3><a href="<?php echo get_the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h3>
 
-											<!-- BEGIN .organic-widgets-post-meta -->
+											<?php /** BEGIN .organic-widgets-post-meta */ ?>
 											<div class="organic-widgets-post-meta">
 												<p class="organic-widgets-post-date">
 													<?php echo get_the_modified_date(); ?>
@@ -125,42 +130,42 @@ class Organic_Widgets_Content_Slideshow_Section_Widget extends Organic_Widgets_C
 												<p class="organic-widgets-post-author">
 													<?php esc_html_e( 'By ', ORGANIC_WIDGETS_18N ); ?><?php esc_url( the_author_posts_link() ); ?>
 												</p>
-											<!-- END .organic-widgets-post-meta -->
+											<?php /** END .organic-widgets-post-meta */ ?>
 											</div>
 
-											<!-- BEGIN .excerpt -->
+											<?php /** BEGIN .excerpt */ ?>
 											<div class="organic-widgets-excerpt">
 
 												<?php the_excerpt(); ?>
 
 												<?php edit_post_link( esc_html__( '(Edit)', ORGANIC_WIDGETS_18N ), '<p>', '</p>' ); ?>
 
-											<!-- END .organic-widgets-excerpt -->
+											<?php /** END .organic-widgets-excerpt */ ?>
 											</div>
 
-										<!-- END .organic-widgets-content-slideshow-slide-content -->
+										<?php /** END .organic-widgets-content-slideshow-slide-content */ ?>
 										</div>
 
-									<!-- END .organic-widgets-content -->
+									<?php /** END .organic-widgets-content */ ?>
 									</div>
 
-								<!-- END .organic-widgets-aligner -->
+								<?php /** END .organic-widgets-aligner */ ?>
 								</div>
 
 							</li>
 
 						<?php } ?>
 
-					<!-- END .slides -->
+					<?php /** END .slides */ ?>
 					</ul>
 
-				<!-- END .flexslider -->
+				<?php /** END .flexslider */ ?>
 				</div>
 
 			<?php } ?>
 			<?php wp_reset_postdata(); ?>
 
-		<!-- END .organic-widgets-section -->
+		<?php /** END .organic-widgets-section */ ?>
 		</div>
 
 		<?php echo $args['after_widget'];
@@ -172,7 +177,7 @@ class Organic_Widgets_Content_Slideshow_Section_Widget extends Organic_Widgets_C
 	 * @see WP_Widget::form()
 	 *
 	 * @param array $instance Previously saved values from database.
-	*/
+	 */
 	public function form( $instance ) {
 
 		// Setup Variables.

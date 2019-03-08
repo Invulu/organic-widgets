@@ -1,9 +1,13 @@
 <?php
-/* Registers a widget to show a Portfolio subsection on a page */
+/**
+ * Registers a widget to display a portfolio section.
+ *
+ * @package Organic Widgets
+ */
 
 // Block direct requests.
-if ( !defined('ABSPATH') )
-	die('-1');
+if ( ! defined( 'ABSPATH' ) )
+	die( '-1' );
 
 /**
  * Adds Organic_Widgets_Portfolio_Section_Widget widget.
@@ -17,28 +21,29 @@ class Organic_Widgets_Portfolio_Section_Widget extends Organic_Widgets_Custom_Wi
 	 */
 	function __construct() {
 		parent::__construct(
-			'organic_widgets_portfolio_section', // Base ID
-			__( 'Organic Portfolio', ORGANIC_WIDGETS_18N ), // Name
+			'organic_widgets_portfolio_section', // Base ID.
+			__( 'Organic Portfolio', ORGANIC_WIDGETS_18N ), // Name.
 			array(
 				'description' => __( 'A section displaying portfolio posts.', ORGANIC_WIDGETS_18N ),
 				'customize_selective_refresh' => true,
-			) // Args
+			) // Args.
 		);
 
-		$this->id_prefix = $this->get_field_id('');
+		$this->id_prefix = $this->get_field_id( '' );
 
-		// Bg options
+		// Bg options.
 		$this->bg_options = array(
 			'color' => true,
-			'image' => true
+			'image' => true,
 		);
 
-		// Admin Scripts
+		// Admin Scripts.
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_setup' ) );
 
-		// Public scripts
-		add_action( 'wp_enqueue_scripts', array( $this, 'public_scripts') );
+		// Public scripts.
+		add_action( 'wp_enqueue_scripts', array( $this, 'public_scripts' ) );
 	}
+
 	/**
 	 * Front-end display of widget.
 	 *
@@ -59,11 +64,13 @@ class Organic_Widgets_Portfolio_Section_Widget extends Organic_Widgets_Custom_Wi
 		$max_posts = ( isset( $instance['max_posts'] ) ) ? $instance['max_posts'] : 12;
 
 		echo $args['before_widget'];
+
 		?>
-		<!-- BEGIN .organic-widgets-section -->
+
+		<?php /** BEGIN .organic-widgets-section */ ?>
 		<div class="organic-widgets-section organic-widgets-portfolio-section" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
 
-			<!-- BEGIN .organic-widgets-content -->
+			<?php /** BEGIN .organic-widgets-content */ ?>
 			<div class="organic-widgets-content">
 
 			<?php if ( ! empty( $instance['title'] ) ) { ?>
@@ -102,14 +109,14 @@ class Organic_Widgets_Portfolio_Section_Widget extends Organic_Widgets_Custom_Wi
 
 			if ( $wp_query->have_posts() ) : ?>
 
-				<!-- BEGIN .organic-widgets-row -->
+				<?php /** BEGIN .organic-widgets-row */ ?>
 				<div class="organic-widgets-row organic-widgets-portfolio-holder organic-widgets-post-holder organic-widgets-masonry-container">
 
 					<?php while ( $wp_query->have_posts() ) : $wp_query->the_post(); ?>
 
 					<?php if ( has_post_thumbnail( get_the_ID() ) ) { ?>
 
-					<!-- BEGIN .organic-widgets-masonry-wrapper -->
+					<?php /** BEGIN .organic-widgets-masonry-wrapper */ ?>
 					<div class="organic-widgets-masonry-wrapper organic-widgets-column organic-widgets-portfolio-item organic-widgets-<?php echo $this->column_string( $num_columns ); ?>">
 
 						<article>
@@ -125,23 +132,23 @@ class Organic_Widgets_Portfolio_Section_Widget extends Organic_Widgets_Custom_Wi
 
 						</article>
 
-					<!-- END .organic-widgets-masonry-wrapper -->
+					<?php /** END .organic-widgets-masonry-wrapper */ ?>
 					</div>
 
 					<?php } ?>
 
 					<?php endwhile; ?>
 
-				<!-- END .organic-widgets-row -->
+				<?php /** END .organic-widgets-row */ ?>
 				</div>
 
 			<?php endif; ?>
 			<?php wp_reset_postdata(); ?>
 
-			<!-- END .organic-widgets-content -->
+			<?php /** END .organic-widgets-content */ ?>
 			</div>
 
-		<!-- END .organic-widgets-section -->
+		<?php /** END .organic-widgets-section */ ?>
 		</div>
 
 		<?php wp_enqueue_script( 'organic-widgets-masonry', ORGANIC_WIDGETS_BASE_DIR . 'public/js/masonry.js', array( 'jquery', 'masonry' ) ); ?>
