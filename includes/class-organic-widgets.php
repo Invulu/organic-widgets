@@ -146,6 +146,12 @@ class Organic_Widgets {
 		include_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/persist-admin-notices-dismissal/persist-admin-notices-dismissal.php';
 
 		/**
+		 * The class responsible for recommending additional plugins
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/plugin-activation.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/plugin-activation-class.php';
+
+		/**
 		 * The classes responsible for registering widgets
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widgets/class-organic-widgets-custom-widget.php';
