@@ -43,7 +43,8 @@ img.organic-widgets-hide-img,
   line-height: 0;
   overflow: hidden;
 }
-.organic-widget .button {
+.organic-widget .button,
+.organic-widget .button:hover {
   margin: 12px auto;
 }
 .organic-widgets-content.organic-widgets-none {
@@ -219,6 +220,7 @@ img.organic-widgets-hide-img,
 }
 .organic-widgets-button-holder {
   display: block;
+  width: 100%;
   text-align: center;
   margin-top: 12px;
 }

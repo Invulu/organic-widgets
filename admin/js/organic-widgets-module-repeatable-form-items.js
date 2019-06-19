@@ -46,19 +46,39 @@
       var formItem = $(this).closest('.organic-widgets-repeatable-form-item')
       var pastedData = e.originalEvent.clipboardData.getData('text')
       if (pastedData) {
-        setTimeout(function () { organicWidgetsRepeatableFormItemUpdateMainArray(formItem) }, 500)
+        setTimeout(function () { organicWidgetsRepeatableFormItemUpdateMainArray(formItem) }, 250)
       }
     })
     $('.organic-widgets-repeatable-form-item-input[type="hidden"]').unbind('change')
     $('.organic-widgets-repeatable-form-item-input[type="hidden"]').on('change', function () {
       var formItem = $(this).closest('.organic-widgets-repeatable-form-item')
-      organicWidgetsRepeatableFormItemUpdateMainArray(formItem)
+      setTimeout(function () { organicWidgetsRepeatableFormItemUpdateMainArray(formItem) }, 250)
     })
 
+    // Timer function for key release
+    function throttle (f, delay) {
+      var timer = null
+      return function () {
+        var context = this, args = arguments;
+        clearTimeout(timer)
+        timer = window.setTimeout(function () {
+          f.apply(context, args)
+        },
+        delay || 750)
+      }
+    }
+
+    // Listen for user to stop typing
+    $('.organic-widgets-repeatable-form-item textarea, .organic-widgets-repeatable-form-item-input[type="text"]').keyup(throttle(function () {
+      var formItem = $(this).closest('.organic-widgets-repeatable-form-item')
+      organicWidgetsRepeatableFormItemUpdateMainArray(formItem)
+    }))
+
+    // Listen for user to press backspace or enter keys
     // $('.organic-widgets-repeatable-form-item textarea, .organic-widgets-repeatable-form-item-input[type="text"]').keyup(function (e) {
     //   var formItem = $(this).closest('.organic-widgets-repeatable-form-item')
     //   if (e.keyCode === 8 || e.keyCode === 46 || e.keyCode === 13 || e.keyCode === 190) { // Backspace, delete and enter key
-    //     organicWidgetsRepeatableFormItemUpdateMainArray(formItem)
+    //     setTimeout(function () { organicWidgetsRepeatableFormItemUpdateMainArray(formItem) }, 250)
     //   } else { // Rest ignore
     //     e.preventDefault()
     //   }
@@ -88,7 +108,7 @@
             // console.log('SaveButton found on second try');
             saveButton.trigger('click')
           }
-        }, 300)
+        }, 250)
       }
     })
 
@@ -305,7 +325,7 @@
       var activators = []
       inputs.each(function () {
         // Get input name and values and add to data array
-        var inputName = $(this).attr('data-input-name');
+        var inputName = $(this).attr('data-input-name')
         var inputVal = $(this).attr('data-val') ? $(this).attr('data-val') : $(this).val()
         data[inputName] = inputVal
         // Add to activator array if item is activator
@@ -345,6 +365,7 @@
     mainInput.val(newInputVal)
 
     var saveButton = $(thisFormAdmin).closest('.form').find('[name=savewidget]')
+    var saveButtonClass = $(thisFormAdmin).closest('.form').find('.widget-control-save')
     var moveButton = $(thisFormAdmin).closest('.form').find('.organic-widgets-repeatable-move-button')
 
     // If there has been a change, trigger updates
@@ -357,16 +378,18 @@
           saveButton.trigger('click')
         }
         // If move buttons clicked and save button is hidden, force refresh
-        if (moveButton.one('click')) {
-          setTimeout(function () { saveButton.trigger('click') }, 1500)
+        if (saveButtonClass.css('display') === 'none' && moveButton.one('click')) {
+          setTimeout(function () {
+            saveButton.trigger('click')
+          }, 1500)
         }
       }
     }
   }
 
   // Binding main function
-  $(document)
-    .ajaxComplete(organicWidgetsCustomDropdown)
+  // Commented out to avoid double loading
+  // $(document).ajaxComplete(organicWidgetsCustomDropdown)
 
   // On Document Ready, Bind Functions
   $(document).on('ready', function () {
@@ -378,7 +401,7 @@
       wp.customize.state.bind('change', function () {
         // console.log('wp.customize.state changed');
         // Event Bindings
-        organicDebounce(organicWidgetsBindToSettings(), 500)
+        organicDebounce(organicWidgetsBindToSettings(), 250)
       })
     }
   })

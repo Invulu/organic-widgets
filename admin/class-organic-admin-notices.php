@@ -29,9 +29,9 @@ class Organic_Widgets_Admin_Notices {
 
 			<div data-dismissible="notice-organic-widgets-activated-forever" class="notice updated is-dismissible">
 
-				<h2 style="margin-bottom: 0px;"><?php printf( __( 'Thanks for using <a href="%1$s" target="_blank">Organic Builder Widgets</a>! If you like the plugin, please take a moment to give us a <a href="%2$s" target="_blank"><strong>5-star rating</strong></a>?', ORGANIC_WIDGETS_18N ), 'https://organicthemes.com/', 'https://wordpress.org/support/plugin/organic-customizer-widgets/reviews/#new-post' ); ?></h2>
+				<h4 style="margin-bottom: 0px;"><?php printf( __( 'Thanks for using <a href="%1$s" target="_blank">Organic Builder Widgets</a>! If you like the plugin, please take a moment to give us a <a href="%2$s" target="_blank"><strong>5-star rating</strong></a>?', ORGANIC_WIDGETS_18N ), 'https://organicthemes.com/', 'https://wordpress.org/support/plugin/organic-customizer-widgets/reviews/#new-post' ); ?></h4>
 				<p><?php esc_html_e( 'A positive rating will motivate us to continue supporting and improving this free plugin. Your help is greatly appreciated! Consider it your good deed for the day. ;)', ORGANIC_WIDGETS_18N ); ?></p>
-				<p><?php printf( __( '<button class="button button-primary" href="%1$s" target="_blank">Leave 5-Star Rating!</button>', ORGANIC_WIDGETS_18N ), 'https://wordpress.org/support/plugin/organic-customizer-widgets/reviews/#new-post' ); ?></p>
+				<p><?php printf( __( '<a class="button button-primary" href="%1$s" target="_blank">Leave 5-Star Rating!</a>', ORGANIC_WIDGETS_18N ), 'https://wordpress.org/support/plugin/organic-customizer-widgets/reviews/#new-post' ); ?></p>
 
 			</div>
 
@@ -39,16 +39,44 @@ class Organic_Widgets_Admin_Notices {
 
 	}
 
-	/** Function organic_widgets_admin_notice */
+	/** Function organic_widgets_admin_notice_1_week */
+	function organic_widgets_admin_notice_1_week() {
+
+		$install_date = get_option( 'organic_widgets_install_date' );
+		$display_date = date( 'Y-m-d h:i:s' );
+		$datetime1    = new DateTime( $install_date );
+		$datetime2    = new DateTime( $display_date );
+		$diff_intrval = round( ( $datetime2->format( 'U' ) - $datetime1->format( 'U' ) ) / ( 60 * 60 * 24 ) );
+
+		if ( ! PAnD::is_admin_notice_active( 'notice-organic-widgets-one-week-forever' ) ) {
+			return;
+		}
+		?>
+
+		<?php if ( $diff_intrval >= 5 ) { ?>
+
+			<div data-dismissible="notice-organic-widgets-one-week-forever" class="notice updated is-dismissible">
+
+				<h4 style="margin-bottom: 0px;"><?php printf( __( 'Save 20&#37; on <a href="%1$s" target="_blank">Builder Widgets Pro</a> by upgrading today!', ORGANIC_WIDGETS_18N ), 'https://organicthemes.com/builder/' ); ?></h4>
+				<p><?php printf( __( 'Create amazing custom page designs with more widgets, options, and support! Use the discount code <strong>BUILDERUP</strong> to save 20&#37; when <a href="%1$s" target="_blank">purchasing</a> from Organic Themes!', ORGANIC_WIDGETS_18N ), 'https://organicthemes.com/pricing/' ); ?></p>
+				<p><?php printf( __( '<a class="button button-primary" href="%1$s" target="_blank">Get Builder Widgets Pro!</a>', ORGANIC_WIDGETS_18N ), 'https://organicthemes.com/builder/' ); ?></p>
+
+			</div>
+
+		<?php } ?>
+
+		<?php
+
+	}
+
+	/** Function organic_widgets_admin_notice_2_weeks */
 	function organic_widgets_admin_notice_2_weeks() {
 
 		$install_date = get_option( 'organic_widgets_install_date' );
-		// $install_date = date( '2018-02-12 12:00:00' ); // Testing date.
-		// $install_date = ''; // Testing date.
 		$display_date = date( 'Y-m-d h:i:s' );
-		$datetime1 = new DateTime( $install_date );
-		$datetime2 = new DateTime( $display_date );
-		$diff_intrval = round( ($datetime2->format( 'U' ) - $datetime1->format( 'U' )) / (60 * 60 * 24) );
+		$datetime1    = new DateTime( $install_date );
+		$datetime2    = new DateTime( $display_date );
+		$diff_intrval = round( ( $datetime2->format( 'U' ) - $datetime1->format( 'U' ) ) / ( 60 * 60 * 24 ) );
 
 		if ( ! PAnD::is_admin_notice_active( 'notice-organic-widgets-weeks-forever' ) ) {
 			return;
@@ -64,7 +92,9 @@ class Organic_Widgets_Admin_Notices {
 
 			</div>
 
-		<?php }
+		<?php } ?>
+
+		<?php
 
 	}
 

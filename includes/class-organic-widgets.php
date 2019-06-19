@@ -146,12 +146,6 @@ class Organic_Widgets {
 		include_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/persist-admin-notices-dismissal/persist-admin-notices-dismissal.php';
 
 		/**
-		 * The class responsible for recommending additional plugins
-		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/plugin-activation.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/plugin-activation-class.php';
-
-		/**
 		 * The classes responsible for registering widgets
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widgets/class-organic-widgets-custom-widget.php';
@@ -227,7 +221,7 @@ class Organic_Widgets {
 	 */
 	private function define_admin_hooks() {
 
-		// Admin Hooks
+		// Admin Hooks.
 		$plugin_admin = new Organic_Widgets_Admin( $this->get_plugin_name(), $this->get_version() );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_editor_scripts' );
@@ -236,20 +230,21 @@ class Organic_Widgets {
 		$organic_blocks = new Organic_Widgets_Blocks( $this->get_plugin_name(), $this->get_version() );
 		$this->loader->add_action( 'admin_enqueue_scripts', $organic_blocks, 'enqueue_scripts' );
 
-		// Page Template Hooks
+		// Page Template Hooks.
 		$plugin_page_template = new Organic_Page_Template( $this->get_plugin_name(), $this->get_version() );
 		$this->loader->add_action( 'plugins_loaded', $plugin_page_template, 'get_instance' );
 
-		// Widget Area Hooks
+		// Widget Area Hooks.
 		$plugin_widget_areas = new Organic_Widget_Areas( $this->get_plugin_name(), $this->get_version(), $this->get_widget_prefix() );
 		$this->loader->add_action( 'widgets_init', $plugin_widget_areas, 'register_widget_areas' );
 
-		// Admin Notices
+		// Admin Notices.
 		$plugin_admin_notices = new Organic_Widgets_Admin_Notices( $this->get_plugin_name(), $this->get_version() );
 		add_action( 'admin_init', array( 'PAnD', 'init' ) );
 		$this->loader->add_action( 'admin_notices', $plugin_admin_notices, 'organic_widgets_admin_notice_active', 10 );
+		$this->loader->add_action( 'admin_notices', $plugin_admin_notices, 'organic_widgets_admin_notice_1_week', 10 );
 		$this->loader->add_action( 'admin_notices', $plugin_admin_notices, 'organic_widgets_admin_notice_2_weeks', 10 );
-		$this->loader->add_action( 'admin_notices', $plugin_admin_notices, 'organic_widgets_admin_notice_1_month', 10 );
+		// $this->loader->add_action( 'admin_notices', $plugin_admin_notices, 'organic_widgets_admin_notice_1_month', 10 );
 
 		// Content Import Hooks
 		// Before content import.
@@ -258,12 +253,8 @@ class Organic_Widgets {
 		// After Content Import
 		$this->loader->add_action( 'pt-ocdi/after_all_import_execution', $plugin_admin, 'after_all_import_action', 20, 3 );
 
-
-		// Add filter for widget titles
+		// Add filter for widget titles.
 		$this->loader->add_filter( 'organic_widget_title', $plugin_admin, 'title_filter' );
-
-
-
 
 	}
 
