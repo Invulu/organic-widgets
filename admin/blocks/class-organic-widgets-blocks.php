@@ -56,7 +56,7 @@ class Organic_Widgets_Blocks {
 	 */
 	public function enqueue_blocks() {
 
-		if ( ORGANIC_WIDGETS_BLOCKS_ACTIVE && is_gutenberg_active() ) {
+		if ( ORGANIC_WIDGETS_BLOCKS_ACTIVE && organic_widgets_gutenberg_active() ) {
 
 			/**
 			 * BLOCK: Widget Area Block.

@@ -9,7 +9,7 @@
  * Plugin Name:       Organic Builder Widgets
  * Plugin URI:        https://organicthemes.com/organic-customizer-widgets
  * Description:       Transform the core WordPress Customizer into a page builder. Display and arrange widgets on any page as beautiful content sections, such as featured content slideshows, testimonials, team members, portfolios, feature lists, pricing tables and more. Whoa, cool.
- * Version:           1.3.9
+ * Version:           1.3.10
  * Author:            Organic Themes
  * Author URI:        https://organicthemes.com
  * License:           GPL-2.0+
@@ -19,7 +19,7 @@
  */
 
 // Current Version (Keep in sync with Version # above).
-define( 'ORGANIC_WIDGETS_CURRENT_VERSION', '1.3.9' );
+define( 'ORGANIC_WIDGETS_CURRENT_VERSION', '1.3.10' );
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -135,7 +135,7 @@ run_organic_widgets();
  *
  * @return bool
  */
-function is_gutenberg_active() {
+function organic_widgets_gutenberg_active() {
 	// Gutenberg plugin is installed and activated.
 	$gutenberg = ! ( false === has_filter( 'replace_editor', 'gutenberg_init' ) );
 
@@ -146,7 +146,7 @@ function is_gutenberg_active() {
 		return false;
 	}
 
-	if ( is_classic_editor_plugin_active() ) {
+	if ( organic_widgets_classic_editor_plugin_active() ) {
 		$editor_option       = get_option( 'classic-editor-replace' );
 		$block_editor_active = array( 'no-replace', 'block' );
 
@@ -161,7 +161,7 @@ function is_gutenberg_active() {
  *
  * @return bool
  */
-function is_classic_editor_plugin_active() {
+function organic_widgets_classic_editor_plugin_active() {
 	if ( ! function_exists( 'is_plugin_active' ) ) {
 		include_once ABSPATH . 'wp-admin/includes/plugin.php';
 	}
