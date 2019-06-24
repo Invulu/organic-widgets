@@ -2,9 +2,9 @@
 Contributors: jqlee85, itsdavidmorgan, organicthemes, raid33, wordpresspagebuilder
 Donate link: https://organicthemes.com
 Tags: builder, customizer, widgets, slideshows, testimonials, portfolio, fontawesome, icons, pricing tables, page builder, full-width sections, custom widget areas, bundle, custom widgets
-Stable tag: 1.3.8
+Stable tag: 1.3.9
 Requires at least: 4.8
-Tested up to: 5.0
+Tested up to: 5.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,9 +14,11 @@ A simple page builder, Organic Builder Widgets provides a collection of 12 custo
 
 [youtube https://www.youtube.com/watch?v=PwQJ5L0_oiM&t=13s]
 
-Organic Builder Widgets is a simple WordPress page builder plugin that provides a collection of 12 custom widgets to be used within the customizer. The widgets are displayed as full-width content sections on any page. It transforms the native WordPress customizer into a free and easy page building solution. Unlike other page builders, our solution uses the familiar interface of the customizer and native functionality of widgets. Therefore, it’s a fast, intuitive, easy and secure. There are no shortcodes, no excessive options, no confusing interfaces, and no vendor lock-in. Additionally, the plugin is designed to work with virtually any theme! It's easy WordPress page building, as it was meant to be.
+Organic Builder Widgets is a simple WordPress page builder plugin that provides a collection of 12 custom widgets to be used within the customizer. The widgets are displayed as full-width content sections on any page. It transforms the native WordPress customizer into a free and easy page building solution. Unlike other page builders, our solution uses the familiar interface of the customizer and native functionality of widgets. Therefore, it’s a fast, intuitive, easy and secure. There are no shortcodes, no excessive options, no confusing interfaces, and no vendor lock-in. Additionally, the plugin is designed to work with virtually any theme! It's an easy WordPress page building solution, as it was meant to be.
 
-Display and arrange the custom widgets as content sections on any page — such as featured content slideshows, testimonials, team members, portfolios, feature lists, pricing tables, products, and more! Each widget features a variety of options for changing the background color, background image, display style and more! Use multiple of the same widgets, or as many different widgets as you like!
+Display and arrange the custom widgets as content sections on any page — such as featured content slideshows, hero sections with background videos, testimonial sliders, team members, portfolios, feature icon lists, pricing tables, products, and more! Each widget features a variety of options for changing the background color, background image, display style and more! Use multiple of the same widgets, or as many different widgets as you like!
+
+Additionally, the Builder Widgets plugin includes the Widget Area Block for the Gutenberg block editor. This custom block allows you to register multiple widget areas within any page or post using the block editor. As a result, blocks and traditional widgets can be used together to create dynamic page content!
 
 Upgrade to [Organic Builder Widgets Pro](https://organicthemes.com/builder/ "Organic Builder Widgets Pro") for only **$39/yr** and receive **4 additional widgets** and many more options for existing widgets, including options for changing fonts, layouts, custom heights and widths, adding filterable portfolios, blog pagination, and much more!
 
@@ -38,6 +40,10 @@ Organic Builder Widgets includes a new page template, that when applied, creates
 * **Pricing Table Widget** [View Example](https://organicthemes.com/demo/startup/widgets/pricing-table-widget/ "Pricing Table Widget Example") – Create a pricing table with a list of features and link to purchase.
 * **Featured Product Widget** [View Example](https://organicthemes.com/demo/startup/widgets/featured-product-widget/ "Featured Product Widget Example") – Display a product image with content and purchase link on the left or right.
 * **Featured Content Widget** [View Example](https://organicthemes.com/demo/startup/widgets/featured-content-widget/ "Featured Content Widget Example") – Custom content that can be grouped together with other featured content widgets.
+
+= Blocks Included =
+
+* **Widget Area Block** [View Block](https://wordpress.org/plugins/organic-widget-area-block/ "Widget Area Block") – A Gutenberg block for creating custom widget areas within the block editor. As a result, blocks and widgets can be used together!
 
 = Pro Widgets =
 
@@ -120,6 +126,11 @@ A: The Organic Builder Widgets plugin requires PHP 5.3.29 or higher, as do many 
 5. A list of some of the custom widgets included as seen within the customizer.
 
 == Changelog ==
+
+= 1.3.9 =
+* Style fix for profile widget image
+* Added conditional functions to check if Gutenberg editor is active
+* Added Widget Area Block for Gutenberg block editor
 
 = 1.3.8 =
 * Prevent applying page template from hiding content editor

@@ -9,7 +9,7 @@
  * Plugin Name:       Organic Builder Widgets
  * Plugin URI:        https://organicthemes.com/organic-customizer-widgets
  * Description:       Transform the core WordPress Customizer into a page builder. Display and arrange widgets on any page as beautiful content sections, such as featured content slideshows, testimonials, team members, portfolios, feature lists, pricing tables and more. Whoa, cool.
- * Version:           1.3.8
+ * Version:           1.3.9
  * Author:            Organic Themes
  * Author URI:        https://organicthemes.com
  * License:           GPL-2.0+
@@ -19,7 +19,7 @@
  */
 
 // Current Version (Keep in sync with Version # above).
-define( 'ORGANIC_WIDGETS_CURRENT_VERSION', '1.3.8' );
+define( 'ORGANIC_WIDGETS_CURRENT_VERSION', '1.3.9' );
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -122,12 +122,56 @@ function run_organic_widgets() {
 	define( 'ORGANIC_WIDGETS_ADMIN_CSS_DIR', plugin_dir_url( __FILE__ ) . 'admin/css/' );
 
 	// Keep false until blocks are ready.
-	define( 'ORGANIC_WIDGETS_BLOCKS_ACTIVE', false );
+	define( 'ORGANIC_WIDGETS_BLOCKS_ACTIVE', true );
 
 	$plugin->run();
 
 }
 run_organic_widgets();
+
+/**
+ * Check if Block Editor is active.
+ * Must only be used after plugins_loaded action is fired.
+ *
+ * @return bool
+ */
+function is_gutenberg_active() {
+	// Gutenberg plugin is installed and activated.
+	$gutenberg = ! ( false === has_filter( 'replace_editor', 'gutenberg_init' ) );
+
+	// Block editor since 5.0.
+	$block_editor = version_compare( $GLOBALS['wp_version'], '5.0-beta', '>' );
+
+	if ( ! $gutenberg && ! $block_editor ) {
+		return false;
+	}
+
+	if ( is_classic_editor_plugin_active() ) {
+		$editor_option       = get_option( 'classic-editor-replace' );
+		$block_editor_active = array( 'no-replace', 'block' );
+
+		return in_array( $editor_option, $block_editor_active, true );
+	}
+
+	return true;
+}
+
+/**
+ * Check if Classic Editor plugin is active.
+ *
+ * @return bool
+ */
+function is_classic_editor_plugin_active() {
+	if ( ! function_exists( 'is_plugin_active' ) ) {
+		include_once ABSPATH . 'wp-admin/includes/plugin.php';
+	}
+
+	if ( is_plugin_active( 'classic-editor/classic-editor.php' ) ) {
+		return true;
+	}
+
+	return false;
+}
 
 /**
  * Add plugin action links.

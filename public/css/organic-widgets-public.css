@@ -641,7 +641,7 @@ img.organic-widgets-hide-img,
 }
 .organic-ocw-container .organic-widgets-section.organic-widgets-group .organic-widgets-profile-img {
   max-width: none;
-  min-width: none;
+  min-width: auto;
 }
 .organic-widgets-profile-img {
   display: block;
