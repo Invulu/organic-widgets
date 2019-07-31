@@ -125,7 +125,7 @@ class Organic_Widgets_Portfolio_Section_Widget extends Organic_Widgets_Custom_Wi
 
 								<a class="organic-widgets-portfolio-link" href="<?php the_permalink(); ?>">
 									<div class="organic-widgets-img-text"><h6><?php the_title(); ?></h6></div>
-									<div class="organic-widgets-featured-img"><?php the_post_thumbnail(); ?></div>
+									<div class="organic-widgets-featured-img"><?php the_post_thumbnail( 'large' ); ?></div>
 								</a>
 
 							</div>

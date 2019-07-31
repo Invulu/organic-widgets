@@ -9,7 +9,7 @@
  * Plugin Name:       Organic Builder Widgets
  * Plugin URI:        https://organicthemes.com/organic-customizer-widgets
  * Description:       Transform the core WordPress Customizer into a page builder. Display and arrange widgets on any page as beautiful content sections, such as featured content slideshows, testimonials, team members, portfolios, feature lists, pricing tables and more. Whoa, cool.
- * Version:           1.3.11
+ * Version:           1.3.13
  * Author:            Organic Themes
  * Author URI:        https://organicthemes.com
  * License:           GPL-2.0+
@@ -19,7 +19,7 @@
  */
 
 // Current Version (Keep in sync with Version # above).
-define( 'ORGANIC_WIDGETS_CURRENT_VERSION', '1.3.11' );
+define( 'ORGANIC_WIDGETS_CURRENT_VERSION', '1.3.13' );
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -140,7 +140,7 @@ function organic_widgets_gutenberg_active() {
 	$gutenberg = ! ( false === has_filter( 'replace_editor', 'gutenberg_init' ) );
 
 	// Block editor since 5.0.
-	$block_editor = version_compare( $GLOBALS['wp_version'], '5.0-beta', '>' );
+	$block_editor = version_compare( get_bloginfo( 'version' ), '5.0-beta', '>=' );
 
 	if ( ! $gutenberg && ! $block_editor ) {
 		return false;

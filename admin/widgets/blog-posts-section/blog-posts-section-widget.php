@@ -99,7 +99,7 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 
 					<?php while ( $wp_query->have_posts() ) : $wp_query->the_post(); ?>
 
-					<?php $thumb = ( '' != get_the_post_thumbnail() ) ? wp_get_attachment_image_src( get_post_thumbnail_id(), 'full' ) : false; ?>
+					<?php $thumb = ( '' != get_the_post_thumbnail() ) ? wp_get_attachment_image_src( get_post_thumbnail_id(), 'large' ) : false; ?>
 
 					<?php /** BEGIN .organic-widgets-masonry-wrapper */ ?>
 					<div class="organic-widgets-masonry-wrapper organic-widgets-column organic-widgets-<?php echo $this->column_string( $num_columns ); ?>">

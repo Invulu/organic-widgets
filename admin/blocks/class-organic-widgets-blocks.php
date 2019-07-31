@@ -56,15 +56,10 @@ class Organic_Widgets_Blocks {
 	 */
 	public function enqueue_blocks() {
 
-		if ( ORGANIC_WIDGETS_BLOCKS_ACTIVE && organic_widgets_gutenberg_active() ) {
-
-			/**
-			 * BLOCK: Widget Area Block.
-			 */
-			if ( ! class_exists( 'WidgetArea' ) ) {
-				include_once plugin_dir_path( __FILE__ ) . '/widget-area/index.php';
-			}
-		}
+		/**
+		 * BLOCK: Widget Area Block.
+		 */
+		include_once plugin_dir_path( __FILE__ ) . '/widget-area/index.php';
 
 	}
 

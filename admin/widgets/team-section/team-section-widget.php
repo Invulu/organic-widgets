@@ -110,7 +110,7 @@ class Organic_Widgets_Team_Section_Widget extends Organic_Widgets_Custom_Widget 
 							<div class="organic-widgets-card">
 
 								<?php if ( has_post_thumbnail() ) { ?>
-									<div class="organic-widgets-featured-img"><?php the_post_thumbnail(); ?></div>
+									<div class="organic-widgets-featured-img"><?php the_post_thumbnail( 'large' ); ?></div>
 								<?php } ?>
 
 								<?php /** BEGIN .organic-widgets-card-content */ ?>

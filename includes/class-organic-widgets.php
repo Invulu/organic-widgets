@@ -227,8 +227,9 @@ class Organic_Widgets {
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_editor_scripts' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_admin_scripts' );
 
-		$organic_blocks = new Organic_Widgets_Blocks( $this->get_plugin_name(), $this->get_version() );
-		// $this->loader->add_action( 'init', $organic_blocks, 'enqueue_blocks' );
+		if ( ORGANIC_WIDGETS_BLOCKS_ACTIVE && organic_widgets_gutenberg_active() && ! class_exists( 'WidgetArea' ) ) {
+			$organic_blocks = new Organic_Widgets_Blocks( $this->get_plugin_name(), $this->get_version() );
+		}
 
 		// Page Template Hooks.
 		$plugin_page_template = new Organic_Page_Template( $this->get_plugin_name(), $this->get_version() );
