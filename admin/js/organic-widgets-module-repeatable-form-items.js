@@ -41,56 +41,76 @@
     })
 
     // Listen for changes on inputs
-    $('.organic-widgets-repeatable-form-item textarea').unbind('paste')
-    $('.organic-widgets-repeatable-form-item textarea').on('paste', function (e) {
-      var formItem = $(this).closest('.organic-widgets-repeatable-form-item')
-      var pastedData = e.originalEvent.clipboardData.getData('text')
-      if (pastedData) {
-        setTimeout(function () { organicWidgetsRepeatableFormItemUpdateMainArray(formItem) }, 250)
-      }
-    })
-    $('.organic-widgets-repeatable-form-item-input[type="hidden"]').unbind('change')
-    $('.organic-widgets-repeatable-form-item-input[type="hidden"]').on('change', function () {
-      var formItem = $(this).closest('.organic-widgets-repeatable-form-item')
-      setTimeout(function () { organicWidgetsRepeatableFormItemUpdateMainArray(formItem) }, 250)
-    })
-
-    // Timer function for key release
-    function throttle (f, delay) {
-      var timer = null
-      return function () {
-        var context = this, args = arguments;
-        clearTimeout(timer)
-        timer = window.setTimeout(function () {
-          f.apply(context, args)
-        },
-        delay || 750)
-      }
-    }
-
-    // Listen for user to stop typing
-    $('.organic-widgets-repeatable-form-item textarea, .organic-widgets-repeatable-form-item-input[type="text"]').keyup(throttle(function () {
-      var formItem = $(this).closest('.organic-widgets-repeatable-form-item')
-      organicWidgetsRepeatableFormItemUpdateMainArray(formItem)
-    }))
-
-    // Listen for user to press backspace or enter keys
-    // $('.organic-widgets-repeatable-form-item textarea, .organic-widgets-repeatable-form-item-input[type="text"]').keyup(function (e) {
+    // $('.organic-widgets-repeatable-form-item textarea').unbind('paste')
+    // $('.organic-widgets-repeatable-form-item textarea').on('paste', function (e) {
     //   var formItem = $(this).closest('.organic-widgets-repeatable-form-item')
-    //   if (e.keyCode === 8 || e.keyCode === 46 || e.keyCode === 13 || e.keyCode === 190) { // Backspace, delete and enter key
+    //   var pastedData = e.originalEvent.clipboardData.getData('text')
+    //   if (pastedData) {
     //     setTimeout(function () { organicWidgetsRepeatableFormItemUpdateMainArray(formItem) }, 250)
-    //   } else { // Rest ignore
-    //     e.preventDefault()
     //   }
     // })
-
-    // Text Fields
-    $('.organic-widgets-repeatable-form-item textarea, .organic-widgets-repeatable-form-item-input[type="text"]').unbind('change')
-    $('.organic-widgets-repeatable-form-item textarea, .organic-widgets-repeatable-form-item-input[type="text"]').on('change', function () {
+    // $('.organic-widgets-repeatable-form-item-input[type="hidden"]').unbind('change')
+    // $('.organic-widgets-repeatable-form-item-input[type="hidden"]').on('change', function () {
+    //   var formItem = $(this).closest('.organic-widgets-repeatable-form-item')
+    //   organicDebounce(organicWidgetsRepeatableFormItemUpdateMainArray(formItem), 750)
+    // })
+    $('.organic-widgets-repeatable-form-item textarea, .organic-widgets-repeatable-form-item-input[type="text"], .organic-widgets-repeatable-form-item-input[type="hidden"]').unbind('change')
+    $('.organic-widgets-repeatable-form-item textarea, .organic-widgets-repeatable-form-item-input[type="text"], .organic-widgets-repeatable-form-item-input[type="hidden"]').on('change', function () {
       // console.log('newhandler on change');
       var formItem = $(this).closest('.organic-widgets-repeatable-form-item')
       organicWidgetsRepeatableFormItemUpdateMainArray(formItem)
     })
+
+    // Listen for user to stop typing
+    $.fn.extend({
+      donetyping: function (callback, timeout) {
+        timeout = timeout || 750 // .75 second default timeout
+        var timeoutReference
+        var doneTyping = function (el) {
+          if (!timeoutReference) return
+          timeoutReference = null
+          callback.call(el)
+        }
+        return this.each(function (i, el) {
+          var $el = $(el)
+          // Chrome Fix (Use keyup over keypress to detect backspace)
+          $el.is(':input') && $el.on('keyup keypress paste', function (e) {
+            // This catches the backspace button in chrome, but also prevents
+            // the event from triggering too preemptively. Without this line,
+            // using tab/shift+tab will make the focused element fire the callback.
+            if (e.type === 'keyup' && e.keyCode !== 8) return
+            // Check if timeout has been set. If it has, "reset" the clock and start over again
+            if (timeoutReference) clearTimeout(timeoutReference)
+            timeoutReference = setTimeout(function () {
+              // if we made it here, our timeout has elapsed. Fire the callback.
+              doneTyping(el)
+            }, timeout)
+          }).on('blur', function () {
+            // If we can, fire the event since we're leaving the field.
+            doneTyping(el)
+          })
+        })
+      }
+    })
+    $('.organic-widgets-repeatable-form-item textarea, .organic-widgets-repeatable-form-item-input[type="text"]').donetyping(function () {
+      var formItem = $(this).closest('.organic-widgets-repeatable-form-item')
+      organicWidgetsRepeatableFormItemUpdateMainArray(formItem)
+    })
+    // Old Method
+    // $('.organic-widgets-repeatable-form-item textarea, .organic-widgets-repeatable-form-item-input[type="text"]').keyup(function () {
+    //   var formItem = $(this).closest('.organic-widgets-repeatable-form-item')
+    //   organicDebounce(organicWidgetsRepeatableFormItemUpdateMainArray(formItem), 750)
+    // })
+
+    // Listen for user to press backspace or enter keys
+    // $('.organic-widgets-repeatable-form-item textarea, .organic-widgets-repeatable-form-item-input[type="text"]').keyup(function (e) {
+    //   var formItem = $(this).closest('.organic-widgets-repeatable-form-item')
+    //   if (e.keyCode === 8 || e.keyCode === 32 || e.keyCode === 46 || e.keyCode === 13 || e.keyCode === 190) { // Backspace, space, delete and enter key
+    //     organicDebounce(organicWidgetsRepeatableFormItemUpdateMainArray(formItem), 750)
+    //   } else { // Rest ignore
+    //     e.preventDefault()
+    //   }
+    // })
 
     // Form Changed
     $('.customize-control-widget_form').unbind('change')
@@ -381,7 +401,7 @@
         if (saveButtonClass.css('display') === 'none' && moveButton.one('click')) {
           setTimeout(function () {
             saveButton.trigger('click')
-          }, 1500)
+          }, 750)
         }
       }
     }
@@ -412,8 +432,8 @@
     organicDebounce(organicWidgetsCustomDropdown(), 250)
 
     // Click on form
-    $('.customize-control-widget_form').unbind('click')
-    $('.customize-control-widget_form').on('click', function () {
+    // $('.customize-control-widget_form').unbind('click')
+    $('.customize-control-widget_form').unbind('click').click(function () {
       // Initialize Repeatable Settings
       organicDebounce(organicWidgetsCustomDropdown(), 250)
     })

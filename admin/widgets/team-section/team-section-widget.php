@@ -147,8 +147,6 @@ class Organic_Widgets_Team_Section_Widget extends Organic_Widgets_Custom_Widget 
 		<?php /** END .organic-widgets-section */ ?>
 		</div>
 
-		<?php wp_enqueue_script( 'organic-widgets-masonry', ORGANIC_WIDGETS_BASE_DIR . 'public/js/masonry.js', array( 'jquery', 'masonry' ) ); ?>
-
 		<?php echo $args['after_widget'];
 
 	}
@@ -346,9 +344,15 @@ class Organic_Widgets_Team_Section_Widget extends Organic_Widgets_Custom_Widget 
 	 * Enqueue public javascript.
 	 */
 	public function public_scripts() {
-		if ( ! wp_script_is( 'organic-widgets-backgroundimagebrightness-js' ) ) {
-			wp_enqueue_script( 'organic-widgets-backgroundimagebrightness-js', ORGANIC_WIDGETS_BASE_DIR . 'public/js/jquery.backgroundbrightness.js', array( 'jquery' ) );
+
+		if ( ! wp_script_is( 'organic-widgets-masonry' ) ) {
+			wp_enqueue_script( 'organic-widgets-masonry', ORGANIC_WIDGETS_BASE_DIR . 'public/js/masonry-setup.js', array( 'jquery', 'masonry' ), '1.0', true );
 		}
+
+		if ( ! wp_script_is( 'organic-widgets-backgroundimagebrightness-js' ) ) {
+			wp_enqueue_script( 'organic-widgets-backgroundimagebrightness-js', ORGANIC_WIDGETS_BASE_DIR . 'public/js/jquery.backgroundbrightness.js', array( 'jquery' ), '1.0', true );
+		}
+
 	}
 
 } // class Organic_Widgets_Team_Section_Widget

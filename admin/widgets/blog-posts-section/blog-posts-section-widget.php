@@ -107,7 +107,7 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 						<article>
 
 							<?php /** BEGIN .organic-widgets-card */ ?>
-							<div class="organic-widgets-card clearfix">
+							<div class="organic-widgets-card">
 
 								<?php if ( has_post_thumbnail() ) { ?>
 									<a class="organic-widgets-featured-img" href="<?php the_permalink(); ?>" style="background-image: url(<?php echo esc_url( $thumb[0] ); ?>);">
@@ -358,8 +358,13 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 	 */
 	public function public_scripts() {
 
-		wp_enqueue_script( 'organic-widgets-masonry', ORGANIC_WIDGETS_BASE_DIR . 'public/js/masonry.js', array( 'jquery', 'masonry' ) );
-		if ( ! wp_script_is('organic-widgets-backgroundimagebrightness-js') ) { wp_enqueue_script( 'organic-widgets-backgroundimagebrightness-js', ORGANIC_WIDGETS_BASE_DIR . 'public/js/jquery.backgroundbrightness.js', array( 'jquery' ) ); }
+		if ( ! wp_script_is( 'organic-widgets-masonry' ) ) {
+			wp_enqueue_script( 'organic-widgets-masonry', ORGANIC_WIDGETS_BASE_DIR . 'public/js/masonry-setup.js', array( 'jquery', 'masonry' ), '1.0', true );
+		}
+
+		if ( ! wp_script_is( 'organic-widgets-backgroundimagebrightness-js' ) ) {
+			wp_enqueue_script( 'organic-widgets-backgroundimagebrightness-js', ORGANIC_WIDGETS_BASE_DIR . 'public/js/jquery.backgroundbrightness.js', array( 'jquery' ), '1.0', true );
+		}
 
 	}
 

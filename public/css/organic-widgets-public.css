@@ -191,6 +191,7 @@ img.organic-widgets-hide-img,
   position: relative;
   background-color: #ffffff;
 	padding: 0px;
+  overflow: hidden;
 }
 .organic-widgets-card p {
   margin: 18px 0px;
@@ -357,6 +358,7 @@ img.organic-widgets-hide-img,
 .organic-widgets-blog-posts-section .organic-widgets-single article,
 .organic-widgets-blog-posts-section .organic-widgets-single .organic-widgets-card {
   display: flex;
+  width: 100%;
 }
 .organic-widgets-blog-posts-section .organic-widgets-single .organic-widgets-hide-img {
   display: none;
@@ -527,7 +529,7 @@ img.organic-widgets-hide-img,
 }
 .organic-widgets-testimonial-avatar {
 	position: relative;
-	margin: -60px auto 0px;
+	margin: 24px auto 0px;
 	text-align: center;
 	height: auto;
 	max-width: 160px;
@@ -538,7 +540,7 @@ img.organic-widgets-hide-img,
 }
 .organic-widgets-testimonial-slide-content {
   max-width: 960px;
-  margin: 60px auto 12px;
+  margin: 12px auto 12px;
 }
 .organic-widgets-testimonial-slide-content .organic-widgets-excerpt {
   font-size: 110%;
@@ -605,6 +607,12 @@ img.organic-widgets-hide-img,
   font-size: 90%;
   margin: 0px;
   padding: 0px;
+}
+.organic-widgets-feature-list-item-text a.button,
+.organic-widgets-feature-list-item-text a.button:link,
+.organic-widgets-feature-list-item-text a.button:visited {
+  line-height: 1.2;
+  margin-top: 18px;
 }
 .organic-widgets-feature-list-items-wrapper {
   width: calc(100% + 36px);
@@ -700,7 +708,8 @@ img.organic-widgets-hide-img,
   box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.12);
   overflow: hidden;
 }
-.organic-widgets-pricing-table-title {
+.organic-widgets-pricing-table-title,
+.organic-widgets-pricing-table-excerpt {
   text-align: center;
 }
 .organic-widgets-pricing-table-excerpt p {

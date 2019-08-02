@@ -151,9 +151,9 @@ class Organic_Widgets_Portfolio_Section_Widget extends Organic_Widgets_Custom_Wi
 		<?php /** END .organic-widgets-section */ ?>
 		</div>
 
-		<?php wp_enqueue_script( 'organic-widgets-masonry', ORGANIC_WIDGETS_BASE_DIR . 'public/js/masonry.js', array( 'jquery', 'masonry' ) ); ?>
+		<?php
 
-		<?php echo $args['after_widget'];
+		echo $args['after_widget'];
 
 	}
 	/**
@@ -299,9 +299,9 @@ class Organic_Widgets_Portfolio_Section_Widget extends Organic_Widgets_Custom_Wi
 	 */
 	public function admin_setup() {
 
-		// Text Editor
+		// Text Editor.
 		wp_enqueue_editor();
-		wp_enqueue_script( 'organic-widgets-portfolio-section-text-title', plugin_dir_url( __FILE__ ) . 'js/portfolio-section-widgets.js', array( 'jquery' ) );
+		wp_enqueue_script( 'organic-widgets-portfolio-section-text-title', plugin_dir_url( __FILE__ ) . 'js/portfolio-section-widgets.js', array( 'jquery' ), '1.0', true );
 		wp_localize_script( 'organic-widgets-portfolio-section-text-title', 'OrganicPortfolioSectionWidget', array(
 			'id_base' => $this->id_base,
 		) );
@@ -311,11 +311,11 @@ class Organic_Widgets_Portfolio_Section_Widget extends Organic_Widgets_Custom_Wi
 
 		wp_enqueue_style( 'wp-color-picker' );
 		wp_enqueue_script( 'wp-color-picker' );
-    wp_enqueue_script( 'organic-widgets-module-color-picker', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-color-picker.js', array( 'jquery', 'wp-color-picker' ) );
+		wp_enqueue_script( 'organic-widgets-module-color-picker', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-color-picker.js', array( 'jquery', 'wp-color-picker' ), '1.0', true );
 
-		wp_enqueue_script( 'organic-widgets-module-image-background', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-image-background.js', array( 'jquery', 'media-upload', 'media-views', 'wp-color-picker' ) );
+		wp_enqueue_script( 'organic-widgets-module-image-background', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-image-background.js', array( 'jquery', 'media-upload', 'media-views', 'wp-color-picker' ), '1.0', true );
 		wp_localize_script( 'organic-widgets-module-image-background', 'OrganicWidgetBG', array(
-			'frame_title' => __( 'Select an Image', ORGANIC_WIDGETS_18N ),
+			'frame_title'  => __( 'Select an Image', ORGANIC_WIDGETS_18N ),
 			'button_title' => __( 'Insert Into Widget', ORGANIC_WIDGETS_18N ),
 		) );
 
@@ -326,8 +326,12 @@ class Organic_Widgets_Portfolio_Section_Widget extends Organic_Widgets_Custom_Wi
 	 */
 	public function public_scripts() {
 
+		if ( ! wp_script_is( 'organic-widgets-masonry' ) ) {
+			wp_enqueue_script( 'organic-widgets-masonry', ORGANIC_WIDGETS_BASE_DIR . 'public/js/masonry-setup.js', array( 'jquery', 'masonry' ), '1.0', true );
+		}
+
 		if ( ! wp_script_is( 'organic-widgets-backgroundimagebrightness-js' ) ) {
-			wp_enqueue_script( 'organic-widgets-backgroundimagebrightness-js', ORGANIC_WIDGETS_BASE_DIR . 'public/js/jquery.backgroundbrightness.js', array( 'jquery' ) );
+			wp_enqueue_script( 'organic-widgets-backgroundimagebrightness-js', ORGANIC_WIDGETS_BASE_DIR . 'public/js/jquery.backgroundbrightness.js', array( 'jquery' ), '1.0', true );
 		}
 
 	}
