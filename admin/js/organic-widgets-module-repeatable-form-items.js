@@ -7,7 +7,7 @@
   // Bind all click events and prep dropdown
   function organicWidgetsCustomDropdown () {
     // Listen for click to open/close dropdown
-    $('.organic-widgets-dropdown-button').off('click').on('click', function () {
+    $('.organic-widgets-dropdown-button').unbind('click').click(function () {
       if ($(this).closest('.organic-widgets-repeatable-form-item').hasClass('organic-widgets-show')) {
         organicWidgetsCloseDropdown(this)
       } else {
@@ -16,44 +16,31 @@
     })
 
     // Listen for delete
-    $('.organic-widgets-repeatable-delete-button').off('click').on('click', function () {
+    $('.organic-widgets-repeatable-delete-button').unbind('click').click(function () {
       organicWidgetsDeleteRepeatableFormItem(this)
     })
 
     // Listen to add
-    $('.organic-widgets-repeatable-add-item').off('click').on('click', function () {
+    $('.organic-widgets-repeatable-add-item').unbind('click').click(function () {
       organicWidgetsAddRepeatableFormItem(this)
     })
 
     // Listen for move up
-    $('.organic-widgets-move-up').off('click').on('click', function () {
+    $('.organic-widgets-move-up').unbind('click').click(function () {
       organicWidgetsReorderRepeatableFormItems(this, 'up')
     })
 
     // Listen for move down
-    $('.organic-widgets-move-down').off('click').on('click', function () {
+    $('.organic-widgets-move-down').unbind('click').click(function () {
       organicWidgetsReorderRepeatableFormItems(this, 'down')
     })
 
     // Listen for click to choose feature
-    $('.organic-widgets-feature-select-item').off('click').on('click', function () {
+    $('.organic-widgets-feature-select-item').unbind('click').click(function () {
       organicWidgetsChooseFeature(this)
     })
 
     // Listen for changes on inputs
-    // $('.organic-widgets-repeatable-form-item textarea').unbind('paste')
-    // $('.organic-widgets-repeatable-form-item textarea').on('paste', function (e) {
-    //   var formItem = $(this).closest('.organic-widgets-repeatable-form-item')
-    //   var pastedData = e.originalEvent.clipboardData.getData('text')
-    //   if (pastedData) {
-    //     setTimeout(function () { organicWidgetsRepeatableFormItemUpdateMainArray(formItem) }, 250)
-    //   }
-    // })
-    // $('.organic-widgets-repeatable-form-item-input[type="hidden"]').unbind('change')
-    // $('.organic-widgets-repeatable-form-item-input[type="hidden"]').on('change', function () {
-    //   var formItem = $(this).closest('.organic-widgets-repeatable-form-item')
-    //   organicDebounce(organicWidgetsRepeatableFormItemUpdateMainArray(formItem), 750)
-    // })
     $('.organic-widgets-repeatable-form-item textarea, .organic-widgets-repeatable-form-item-input[type="text"], .organic-widgets-repeatable-form-item-input[type="hidden"]').unbind('change')
     $('.organic-widgets-repeatable-form-item textarea, .organic-widgets-repeatable-form-item-input[type="text"], .organic-widgets-repeatable-form-item-input[type="hidden"]').on('change', function () {
       // console.log('newhandler on change');
@@ -94,43 +81,29 @@
     })
     $('.organic-widgets-repeatable-form-item textarea, .organic-widgets-repeatable-form-item-input[type="text"]').donetyping(function () {
       var formItem = $(this).closest('.organic-widgets-repeatable-form-item')
-      organicWidgetsRepeatableFormItemUpdateMainArray(formItem)
+      var theForm = $(formItem).closest('.organic-widgets-repeatable-form-item-widget-admin')
+      organicWidgetsRepeatableFormItemUpdateMainArray(theForm)
     })
-    // Old Method
-    // $('.organic-widgets-repeatable-form-item textarea, .organic-widgets-repeatable-form-item-input[type="text"]').keyup(function () {
-    //   var formItem = $(this).closest('.organic-widgets-repeatable-form-item')
-    //   organicDebounce(organicWidgetsRepeatableFormItemUpdateMainArray(formItem), 750)
-    // })
-
-    // Listen for user to press backspace or enter keys
-    // $('.organic-widgets-repeatable-form-item textarea, .organic-widgets-repeatable-form-item-input[type="text"]').keyup(function (e) {
-    //   var formItem = $(this).closest('.organic-widgets-repeatable-form-item')
-    //   if (e.keyCode === 8 || e.keyCode === 32 || e.keyCode === 46 || e.keyCode === 13 || e.keyCode === 190) { // Backspace, space, delete and enter key
-    //     organicDebounce(organicWidgetsRepeatableFormItemUpdateMainArray(formItem), 750)
-    //   } else { // Rest ignore
-    //     e.preventDefault()
-    //   }
-    // })
 
     // Form Changed
-    $('.customize-control-widget_form').unbind('change')
-    $('.customize-control-widget_form').on('change', function () {
-      // console.log('.customize-control-widget_form changed');
-      var saveButton = $(this).find('.form').find('[name=savewidget]')
-
-      if (saveButton.css('display') !== 'none') {
-        // console.log('savebutton exists');
-        saveButton.trigger('click')
-      } else {
-        // console.log('NO savebutton');
-        setTimeout(function () {
-          if (saveButton.css('display') !== 'none') {
-            // console.log('SaveButton found on second try');
-            saveButton.trigger('click')
-          }
-        }, 250)
-      }
-    })
+    // $('.customize-control-widget_form').unbind('change')
+    // $('.customize-control-widget_form').on('change', function () {
+    //   // console.log('.customize-control-widget_form changed');
+    //   var saveButton = $(this).find('.form').find('[name=savewidget]')
+    //
+    //   if (saveButton.css('display') !== 'none') {
+    //     // console.log('savebutton exists');
+    //     saveButton.trigger('click')
+    //   } else {
+    //     // console.log('NO savebutton');
+    //     setTimeout(function () {
+    //       if (saveButton.css('display') !== 'none') {
+    //         // console.log('SaveButton found on second try');
+    //         saveButton.trigger('click')
+    //       }
+    //     }, 250)
+    //   }
+    // })
 
     // TEST trigger update on non-repeatable select items
     // $('.customize-control-widget_form').find('select').unbind('change');
@@ -218,9 +191,9 @@
         var existingIDString = $(this).attr('id')
         var newIDString = existingIDString.replace('__x__', newID)
         $(this).attr('id', newIDString)
-        var existingNameString = $(this).attr('name')
-        var newNameString = existingNameString.replace('__x__', newID)
-        $(this).attr('name', newNameString)
+        // var existingNameString = $(this).attr('name')
+        // var newNameString = existingNameString.replace('__x__', newID)
+        // $(this).attr('name', newNameString)
         $(this).attr('data-feature-id', newID)
       })
     }
@@ -228,13 +201,10 @@
 
   /* --------- Move Feature Up / Down ---------- */
   function organicWidgetsReorderRepeatableFormItems (feature, direction) {
-    if ($(feature).hasClass('organic-widgets-repeatable-form-item')) {
-      var formItem = $(feature)
-    } else {
-      var formItem = $(feature).closest('.organic-widgets-repeatable-form-item')
-    }
-    var form = $(formItem).parents('.organic-widgets-repeatable-form-item-widget-admin')
-    var allFormItems = form.find('.organic-widgets-repeatable-form-item')
+    var formItem = $(feature).closest('.organic-widgets-repeatable-form-item')
+    var theForm = $(formItem).closest('.organic-widgets-repeatable-form-item-widget-admin')
+    var allFormItems = theForm.find('.organic-widgets-repeatable-form-item')
+    var moveHeight = formItem.height() + 20
     // Move Up
     if (direction === 'up' && allFormItems.first().data('feature-id') !== formItem.data('feature-id')) {
       // Get previous item
@@ -242,7 +212,6 @@
       // Insert before previous
       formItem.css('z-index', 100)
       prevItem.fadeTo(150, 0)
-      var moveHeight = formItem.height() + 20
       formItem.animate({ marginTop: '-' + moveHeight + 'px' }, 400, function () {
         formItem.css('z-index', '')
         formItem.css('margin-top', '')
@@ -251,18 +220,15 @@
         prevItem.slideDown(400, function () {
           prevItem.fadeTo(150, 1)
           // Update main input
-          var theForm = $(formItem).closest('.organic-widgets-repeatable-form-item-widget-admin')
           organicWidgetsRepeatableFormItemUpdateMainArray(theForm)
         })
       })
-    }
     // Move Down
-    else if (direction === 'down' && allFormItems.last().data('feature-id') !== formItem.data('feature-id')) {
+    } else if (direction === 'down' && allFormItems.last().data('feature-id') !== formItem.data('feature-id')) {
       // Get next item
       var nextItem = formItem.next('.organic-widgets-repeatable-form-item')
       // Insert before previous
       formItem.css('z-index', 100)
-      var moveHeight = formItem.height() + 20
 
       nextItem.fadeTo(150, 0, function () {
         // prevItem.css('opacity',0,400);
@@ -273,7 +239,6 @@
           nextItem.fadeTo(150, 1)
 
           // Update main input
-          var theForm = $(formItem).closest('.organic-widgets-repeatable-form-item-widget-admin')
           organicWidgetsRepeatableFormItemUpdateMainArray(theForm)
         })
       })
@@ -327,7 +292,7 @@
   }
 
   /* ---------- Update Hidden Input Array ------------- */
-  function organicWidgetsRepeatableFormItemUpdateMainArray(item) {
+  function organicWidgetsRepeatableFormItemUpdateMainArray (item) {
     // Get thisFormAdmin
     if ($(item).hasClass('organic-widgets-repeatable-form-item-widget-admin')) {
       var thisFormAdmin = $(item)
@@ -385,8 +350,8 @@
     mainInput.val(newInputVal)
 
     var saveButton = $(thisFormAdmin).closest('.form').find('[name=savewidget]')
-    var saveButtonClass = $(thisFormAdmin).closest('.form').find('.widget-control-save')
-    var moveButton = $(thisFormAdmin).closest('.form').find('.organic-widgets-repeatable-move-button')
+    // var saveButtonClass = $(thisFormAdmin).closest('.form').find('.widget-control-save')
+    // var moveButton = $(thisFormAdmin).closest('.form').find('.organic-widgets-repeatable-move-button')
 
     // If there has been a change, trigger updates
     if (oldInputVal !== newInputVal) {
@@ -397,19 +362,9 @@
         if (saveButton.length) {
           saveButton.trigger('click')
         }
-        // If move buttons clicked and save button is hidden, force refresh
-        if (saveButtonClass.css('display') === 'none' && moveButton.one('click')) {
-          setTimeout(function () {
-            saveButton.trigger('click')
-          }, 750)
-        }
       }
     }
   }
-
-  // Binding main function
-  // Commented out to avoid double loading
-  // $(document).ajaxComplete(organicWidgetsCustomDropdown)
 
   // On Document Ready, Bind Functions
   $(document).on('ready', function () {
@@ -421,7 +376,7 @@
       wp.customize.state.bind('change', function () {
         // console.log('wp.customize.state changed');
         // Event Bindings
-        organicDebounce(organicWidgetsBindToSettings(), 250)
+        organicWidgetsBindToSettings()
       })
     }
   })
@@ -429,13 +384,12 @@
   // Function to bind events
   function organicWidgetsBindToSettings () {
     // console.log('organicWidgetsBindToSettings');
-    organicDebounce(organicWidgetsCustomDropdown(), 250)
+    organicWidgetsCustomDropdown()
 
     // Click on form
-    // $('.customize-control-widget_form').unbind('click')
     $('.customize-control-widget_form').unbind('click').click(function () {
       // Initialize Repeatable Settings
-      organicDebounce(organicWidgetsCustomDropdown(), 250)
+      organicWidgetsCustomDropdown()
     })
   }
 
