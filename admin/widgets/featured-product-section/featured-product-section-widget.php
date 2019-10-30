@@ -22,9 +22,9 @@ class Organic_Widgets_Featured_Product_Section_Widget extends Organic_Widgets_Cu
 	function __construct() {
 		parent::__construct(
 			'organic_widgets_featured_product_section', // Base ID.
-			__( 'Organic Featured Product', ORGANIC_WIDGETS_18N ), // Name.
+			__( 'Organic Featured Product', 'organic-widgets' ), // Name.
 			array(
-				'description' => __( 'A section for featuring a single product image with a link.', ORGANIC_WIDGETS_18N ),
+				'description' => __( 'A section for featuring a single product image with a link.', 'organic-widgets' ),
 				'customize_selective_refresh' => true,
 			) // Args.
 		);
@@ -119,10 +119,10 @@ class Organic_Widgets_Featured_Product_Section_Widget extends Organic_Widgets_Cu
 						<?php if ( ! empty( $instance['button_one_url'] ) || ! empty( $instance['button_two_url'] ) ) { ?>
 							<div class="organic-widgets-button-holder">
 								<?php if ( ! empty( $instance['button_one_url'] ) ) { ?>
-									<a class="organic-widgets-button button" href="<?php echo esc_url( $instance['button_one_url'] );?>"><?php if ( ! empty( $instance['button_one_text'] ) ) { echo esc_html( $instance['button_one_text'] ); } else { _e( 'See More', ORGANIC_WIDGETS_18N); } ?></a>
+									<a class="organic-widgets-button button" href="<?php echo esc_url( $instance['button_one_url'] );?>"><?php if ( ! empty( $instance['button_one_text'] ) ) { echo esc_html( $instance['button_one_text'] ); } else { _e( 'See More', 'organic-widgets' ); } ?></a>
 								<?php } ?>
 								<?php if ( ! empty( $instance['button_two_url'] ) ) { ?>
-									<a class="organic-widgets-button button alt" href="<?php echo esc_url( $instance['button_two_url'] );?>"><?php if ( ! empty( $instance['button_two_text'] ) ) { echo esc_html( $instance['button_two_text'] ); } else { _e( 'See More', ORGANIC_WIDGETS_18N); } ?></a>
+									<a class="organic-widgets-button button alt" href="<?php echo esc_url( $instance['button_two_url'] );?>"><?php if ( ! empty( $instance['button_two_text'] ) ) { echo esc_html( $instance['button_two_text'] ); } else { _e( 'See More', 'organic-widgets' ); } ?></a>
 								<?php } ?>
 							</div>
 						<?php } ?>
@@ -138,9 +138,9 @@ class Organic_Widgets_Featured_Product_Section_Widget extends Organic_Widgets_Cu
 					<div class="organic-widgets-featured-product-item">
 
 						<?php if ( ! empty( $instance['button_three_url'] ) ) { ?>
-							<a class="organic-widgets-featured-product-img" href="<?php echo esc_url( $instance['button_three_url'] );?>"><img src="<?php echo $instance['featured_image']; ?>" alt="<?php __( 'Product Image', ORGANIC_WIDGETS_18N ) ?>" /></a>
+							<a class="organic-widgets-featured-product-img" href="<?php echo esc_url( $instance['button_three_url'] );?>"><img src="<?php echo $instance['featured_image']; ?>" alt="<?php __( 'Product Image', 'organic-widgets' ) ?>" /></a>
 						<?php } else { ?>
-							<div class="organic-widgets-featured-product-img"><img src="<?php echo esc_url( $featured_image ); ?>" alt="<?php __( 'Product Image', ORGANIC_WIDGETS_18N ) ?>" /></div>
+							<div class="organic-widgets-featured-product-img"><img src="<?php echo esc_url( $featured_image ); ?>" alt="<?php __( 'Product Image', 'organic-widgets' ) ?>" /></div>
 						<?php } ?>
 
 					<?php /** END .organic-widgets-featured-product-item */ ?>
@@ -222,28 +222,28 @@ class Organic_Widgets_Featured_Product_Section_Widget extends Organic_Widgets_Cu
 		<input id="<?php echo $this->get_field_id( 'visual' ); ?>" name="<?php echo $this->get_field_name( 'visual' ); ?>" class="visual" type="hidden" value="on">
 
 		<p class="organic-widgets-input-half">
-			<label for="<?php echo $this->get_field_id( 'button_one_text' ); ?>"><?php _e('Featured Link Text:', ORGANIC_WIDGETS_18N); ?></label>
+			<label for="<?php echo $this->get_field_id( 'button_one_text' ); ?>"><?php _e('Featured Link Text:', 'organic-widgets' ); ?></label>
 			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'button_one_text' ); ?>" name="<?php echo $this->get_field_name( 'button_one_text' ); ?>" value="<?php if ( ! empty( $instance['button_one_text'] ) ) echo $instance['button_one_text']; ?>" />
 		</p>
 		<p class="organic-widgets-input-half last">
-			<label for="<?php echo $this->get_field_id( 'button_one_url' ); ?>"><?php _e('Featured Link URL:', ORGANIC_WIDGETS_18N); ?></label>
+			<label for="<?php echo $this->get_field_id( 'button_one_url' ); ?>"><?php _e('Featured Link URL:', 'organic-widgets' ); ?></label>
 			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'button_one_url' ); ?>" name="<?php echo $this->get_field_name( 'button_one_url' ); ?>" value="<?php if ( ! empty( $instance['button_one_url'] ) ) echo $instance['button_one_url']; ?>" />
 		</p>
 
 		<p class="organic-widgets-input-half">
-			<label for="<?php echo $this->get_field_id( 'button_two_text' ); ?>"><?php _e('Alternate Link Text:', ORGANIC_WIDGETS_18N); ?></label>
+			<label for="<?php echo $this->get_field_id( 'button_two_text' ); ?>"><?php _e('Alternate Link Text:', 'organic-widgets' ); ?></label>
 			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'button_two_text' ); ?>" name="<?php echo $this->get_field_name( 'button_two_text' ); ?>" value="<?php if ( ! empty( $instance['button_two_text'] ) ) echo $instance['button_two_text']; ?>" />
 		</p>
 		<p class="organic-widgets-input-half last">
-			<label for="<?php echo $this->get_field_id( 'button_two_url' ); ?>"><?php _e('Alternate Link URL:', ORGANIC_WIDGETS_18N); ?></label>
+			<label for="<?php echo $this->get_field_id( 'button_two_url' ); ?>"><?php _e('Alternate Link URL:', 'organic-widgets' ); ?></label>
 			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'button_two_url' ); ?>" name="<?php echo $this->get_field_name( 'button_two_url' ); ?>" value="<?php if ( ! empty( $instance['button_two_url'] ) ) echo $instance['button_two_url']; ?>" />
 		</p>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'featured_image' ); ?>"><?php _e( 'Product Image:', ORGANIC_WIDGETS_18N ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'featured_image' ); ?>"><?php _e( 'Product Image:', 'organic-widgets' ); ?></label>
 			<div class="uploader">
-				<input type="submit" class="button" name="<?php echo $this->get_field_name('featured_image_uploader_button'); ?>" id="<?php echo $this->get_field_id('featured_image_uploader_button'); ?>" value="<?php if ( $featured_image_id ) { _e( 'Change Image', ORGANIC_WIDGETS_18N ); } else { _e( 'Select Image', ORGANIC_WIDGETS_18N ); }?>" onclick="organicWidgetFeaturedImage.uploader( '<?php echo $this->id; ?>', '<?php echo $this->id_prefix; ?>' ); return false;" />
-				<input type="submit" class="organic-widgets-remove-image-button button" name="<?php echo $this->get_field_name('featured_image_remover_button'); ?>" id="<?php echo $this->get_field_id('featured_image_remover_button'); ?>" value="<?php _e('Remove Image', ORGANIC_WIDGETS_18N); ?>" onclick="organicWidgetFeaturedImage.remover( '<?php echo $this->id; ?>', '<?php echo $this->id_prefix; ?>', 'featured_image_remover_button' ); return false;" <?php if ( $featured_image_id < 1 ) { echo( 'style="display:none;"' ); } ?>/>
+				<input type="submit" class="button" name="<?php echo $this->get_field_name('featured_image_uploader_button'); ?>" id="<?php echo $this->get_field_id('featured_image_uploader_button'); ?>" value="<?php if ( $featured_image_id ) { _e( 'Change Image', 'organic-widgets' ); } else { _e( 'Select Image', 'organic-widgets' ); }?>" onclick="organicWidgetFeaturedImage.uploader( '<?php echo $this->id; ?>', '<?php echo $this->id_prefix; ?>' ); return false;" />
+				<input type="submit" class="organic-widgets-remove-image-button button" name="<?php echo $this->get_field_name('featured_image_remover_button'); ?>" id="<?php echo $this->get_field_id('featured_image_remover_button'); ?>" value="<?php _e('Remove Image', 'organic-widgets' ); ?>" onclick="organicWidgetFeaturedImage.remover( '<?php echo $this->id; ?>', '<?php echo $this->id_prefix; ?>', 'featured_image_remover_button' ); return false;" <?php if ( $featured_image_id < 1 ) { echo( 'style="display:none;"' ); } ?>/>
 				<div class="organic-widgets-widget-image-preview" id="<?php echo $this->get_field_id('featured_image_preview'); ?>">
 					<?php echo $this->get_featured_image_html($instance); ?>
 				</div>
@@ -253,7 +253,7 @@ class Organic_Widgets_Featured_Product_Section_Widget extends Organic_Widgets_Cu
 		</p>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'button_three_url' ); ?>"><?php _e('Product Image Link URL:', ORGANIC_WIDGETS_18N); ?></label>
+			<label for="<?php echo $this->get_field_id( 'button_three_url' ); ?>"><?php _e('Product Image Link URL:', 'organic-widgets' ); ?></label>
 			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'button_three_url' ); ?>" name="<?php echo $this->get_field_name( 'button_three_url' ); ?>" value="<?php if ( ! empty( $instance['button_three_url'] ) ) echo $instance['button_three_url']; ?>" />
 		</p>
 
@@ -261,12 +261,12 @@ class Organic_Widgets_Featured_Product_Section_Widget extends Organic_Widgets_Cu
 
 		<p>
 			<input class="checkbox" type="checkbox" value="1" <?php checked( $full_window_height, '1' ); ?> id="<?php echo $this->get_field_id( 'full_window_height' ); ?>" name="<?php echo $this->get_field_name( 'full_window_height' ); ?>" />
-			<label for="<?php echo $this->get_field_id( 'full_window_height' ); ?>"><?php _e('Full Window Height Section', ORGANIC_WIDGETS_18N); ?></label>
+			<label for="<?php echo $this->get_field_id( 'full_window_height' ); ?>"><?php _e('Full Window Height Section', 'organic-widgets' ); ?></label>
 		</p>
 
 		<p>
 			<input class="checkbox" type="checkbox" value="1" <?php checked( $bg_image_fixed, '1' ); ?> id="<?php echo $this->get_field_id( 'bg_image_fixed' ); ?>" name="<?php echo $this->get_field_name( 'bg_image_fixed' ); ?>" />
-			<label for="<?php echo $this->get_field_id( 'bg_image_fixed' ); ?>"><?php _e('Fixed Position Background Image', ORGANIC_WIDGETS_18N); ?></label>
+			<label for="<?php echo $this->get_field_id( 'bg_image_fixed' ); ?>"><?php _e('Fixed Position Background Image', 'organic-widgets' ); ?></label>
 		</p>
 
 		<?php $this->section_background_input_markup( $instance, $this->bg_options );
@@ -442,14 +442,14 @@ class Organic_Widgets_Featured_Product_Section_Widget extends Organic_Widgets_Cu
 
 		wp_enqueue_script( 'organic-widgets-module-image-background', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-image-background.js', array( 'jquery', 'media-upload', 'media-views', 'wp-color-picker' ) );
 		wp_localize_script( 'organic-widgets-module-image-background', 'OrganicWidgetBG', array(
-			'frame_title' => __( 'Select an Image', ORGANIC_WIDGETS_18N ),
-			'button_title' => __( 'Insert Into Widget', ORGANIC_WIDGETS_18N ),
+			'frame_title' => __( 'Select an Image', 'organic-widgets' ),
+			'button_title' => __( 'Insert Into Widget', 'organic-widgets' ),
 		) );
 
 		wp_enqueue_script( 'organic-widgets-module-image-featured', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-image-featured.js', array( 'jquery', 'media-upload', 'media-views' ) );
 		wp_localize_script( 'organic-widgets-module-image-featured', 'OrganicWidgetIMG', array(
-			'frame_title' => __( 'Select an Image', ORGANIC_WIDGETS_18N ),
-			'button_title' => __( 'Insert Into Widget', ORGANIC_WIDGETS_18N ),
+			'frame_title' => __( 'Select an Image', 'organic-widgets' ),
+			'button_title' => __( 'Insert Into Widget', 'organic-widgets' ),
 		) );
 
 	}

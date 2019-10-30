@@ -22,9 +22,9 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 	function __construct() {
 		parent::__construct(
 			'organic_widgets_subpage_section', // Base ID.
-			__( 'Organic Subpage', ORGANIC_WIDGETS_18N ), // Name.
+			__( 'Organic Subpage', 'organic-widgets' ), // Name.
 			array(
-				'description' => __( 'A subpage\'s content displayed as a section of another page.', ORGANIC_WIDGETS_18N ),
+				'description' => __( 'A subpage\'s content displayed as a section of another page.', 'organic-widgets' ),
 				'customize_selective_refresh' => true,
 			) // Args.
 		);
@@ -103,7 +103,7 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 				<?php /** BEGIN .organic-widgets-content */ ?>
 				<div class="organic-widgets-content">
 
-					<?php the_content( esc_html__( 'Read More', ORGANIC_WIDGETS_18N ) ); ?>
+					<?php the_content( esc_html__( 'Read More', 'organic-widgets' ) ); ?>
 
 				<?php /** END .organic-widgets-content */ ?>
 				</div>
@@ -158,7 +158,7 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 
 		?>
 
-		<p><b><?php _e('Select Existing Page:', ORGANIC_WIDGETS_18N) ?></b></p>
+		<p><b><?php _e('Select Existing Page:', 'organic-widgets' ) ?></b></p>
 
 		<p>
 			<?php wp_dropdown_pages( array(
@@ -166,7 +166,7 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 				'selected' => $page_id,
 				'id' => $this->get_field_id( 'page_id' ),
 				'name' => $this->get_field_name( 'page_id' ),
-				'show_option_none' => __( '— Select Existing Page —', ORGANIC_WIDGETS_18N ),
+				'show_option_none' => __( '— Select Existing Page —', 'organic-widgets' ),
 				'option_none_value' => '0',
 			) ); ?>
 		</p>
@@ -229,8 +229,8 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 
 		wp_enqueue_script( 'organic-widgets-module-image-background', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-image-background.js', array( 'jquery', 'media-upload', 'media-views', 'wp-color-picker' ) );
 		wp_localize_script( 'organic-widgets-module-image-background', 'OrganicWidgetBG', array(
-			'frame_title' => __( 'Select an Image', ORGANIC_WIDGETS_18N ),
-			'button_title' => __( 'Insert Into Widget', ORGANIC_WIDGETS_18N ),
+			'frame_title' => __( 'Select an Image', 'organic-widgets' ),
+			'button_title' => __( 'Insert Into Widget', 'organic-widgets' ),
 		) );
 
 	}

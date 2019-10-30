@@ -29,9 +29,9 @@ class Organic_Widgets_Admin_Notices {
 
 			<div data-dismissible="notice-organic-widgets-activated-forever" class="notice updated is-dismissible">
 
-				<h4 style="margin-bottom: 0px;"><?php printf( __( 'Thanks for using <a href="%1$s" target="_blank">Organic Builder Widgets</a>! If you like the plugin, please take a moment to give us a <a href="%2$s" target="_blank"><strong>5-star rating</strong></a>?', ORGANIC_WIDGETS_18N ), 'https://organicthemes.com/', 'https://wordpress.org/support/plugin/organic-customizer-widgets/reviews/#new-post' ); ?></h4>
-				<p><?php esc_html_e( 'A positive rating will motivate us to continue supporting and improving this free plugin. Your help is greatly appreciated! Consider it your good deed for the day. ;)', ORGANIC_WIDGETS_18N ); ?></p>
-				<p><?php printf( __( '<a class="button button-primary" href="%1$s" target="_blank">Leave 5-Star Rating!</a>', ORGANIC_WIDGETS_18N ), 'https://wordpress.org/support/plugin/organic-customizer-widgets/reviews/#new-post' ); ?></p>
+				<h4 style="margin-bottom: 0px;"><?php printf( __( 'Thanks for using <a href="%1$s" target="_blank">Organic Builder Widgets</a>! If you like the plugin, please take a moment to give us a <a href="%2$s" target="_blank"><strong>5-star rating</strong></a>?', 'organic-widgets' ), 'https://organicthemes.com/', 'https://wordpress.org/support/plugin/organic-customizer-widgets/reviews/#new-post' ); ?></h4>
+				<p><?php esc_html_e( 'A positive rating will motivate us to continue supporting and improving this free plugin. Your help is greatly appreciated! Consider it your good deed for the day. ;)', 'organic-widgets' ); ?></p>
+				<p><?php printf( __( '<a class="button button-primary" href="%1$s" target="_blank">Leave 5-Star Rating!</a>', 'organic-widgets' ), 'https://wordpress.org/support/plugin/organic-customizer-widgets/reviews/#new-post' ); ?></p>
 
 			</div>
 
@@ -57,9 +57,9 @@ class Organic_Widgets_Admin_Notices {
 
 			<div data-dismissible="notice-organic-widgets-one-week-forever" class="notice updated is-dismissible">
 
-				<h4 style="margin-bottom: 0px;"><?php printf( __( 'Save 20&#37; on <a href="%1$s" target="_blank">Builder Widgets Pro</a> by upgrading today!', ORGANIC_WIDGETS_18N ), 'https://organicthemes.com/builder/' ); ?></h4>
-				<p><?php printf( __( 'Create amazing custom page designs with more widgets, options, and support! Use the discount code <strong>BUILDERUP</strong> to save 20&#37; when <a href="%1$s" target="_blank">purchasing</a> from Organic Themes!', ORGANIC_WIDGETS_18N ), 'https://organicthemes.com/pricing/' ); ?></p>
-				<p><?php printf( __( '<a class="button button-primary" href="%1$s" target="_blank">Get Builder Widgets Pro!</a>', ORGANIC_WIDGETS_18N ), 'https://organicthemes.com/builder/' ); ?></p>
+				<h4 style="margin-bottom: 0px;"><?php printf( __( 'Save 20&#37; on <a href="%1$s" target="_blank">Builder Widgets Pro</a> by upgrading today!', 'organic-widgets' ), 'https://organicthemes.com/builder/' ); ?></h4>
+				<p><?php printf( __( 'Create amazing custom page designs with more widgets, options, and support! Use the discount code <strong>BUILDERUP</strong> to save 20&#37; when <a href="%1$s" target="_blank">purchasing</a> from Organic Themes!', 'organic-widgets' ), 'https://organicthemes.com/pricing/' ); ?></p>
+				<p><?php printf( __( '<a class="button button-primary" href="%1$s" target="_blank">Get Builder Widgets Pro!</a>', 'organic-widgets' ), 'https://organicthemes.com/builder/' ); ?></p>
 
 			</div>
 
@@ -87,8 +87,8 @@ class Organic_Widgets_Admin_Notices {
 
 			<div data-dismissible="notice-organic-widgets-weeks-forever" class="notice updated is-dismissible">
 
-				<h2 style="margin-bottom: 0px;"><?php printf( __( 'Sweet! You\'ve been using <a href="%1$s" target="_blank">Organic Builder Widgets</a> for a couple weeks! Upgrade to the <a href="%2$s" target="_blank"><strong>Pro Version</strong></a> for additional widgets, options, support!', ORGANIC_WIDGETS_18N ), 'https://organicthemes.com/builder/', 'https://organicthemes.com/checkout?edd_action=add_to_cart&download_id=348835/' ); ?></h2>
-				<p><?php printf( __( '<button class="button button-primary" href="%1$s" target="_blank">Upgrade To Pro</button>', ORGANIC_WIDGETS_18N ), 'https://organicthemes.com/checkout?edd_action=add_to_cart&download_id=348835/' ); ?></p>
+				<h2 style="margin-bottom: 0px;"><?php printf( __( 'Sweet! You\'ve been using <a href="%1$s" target="_blank">Organic Builder Widgets</a> for a couple weeks! Upgrade to the <a href="%2$s" target="_blank"><strong>Pro Version</strong></a> for additional widgets, options, support!', 'organic-widgets' ), 'https://organicthemes.com/builder/', 'https://organicthemes.com/checkout?edd_action=add_to_cart&download_id=348835/' ); ?></h2>
+				<p><?php printf( __( '<button class="button button-primary" href="%1$s" target="_blank">Upgrade To Pro</button>', 'organic-widgets' ), 'https://organicthemes.com/checkout?edd_action=add_to_cart&download_id=348835/' ); ?></p>
 
 			</div>
 
@@ -144,8 +144,8 @@ class Organic_Widgets_Admin_Notices {
 
 			<div data-dismissible="notice-organic-widgets-month-forever" class="notice updated is-dismissible">
 
-				<h2 style="margin-bottom: 0px;"><?php printf( __( 'Whoa! You\'ve been using <a href="%1$s" target="_blank">Organic Builder Widgets</a> for a whole month!', ORGANIC_WIDGETS_18N ), 'https://organicthemes.com/' ); ?></h2>
-				<p><?php esc_html_e( 'We\'re just a couple dudes trying to make the web a better place. Please take a moment to show your appreciation by liking and subscribing! Your support is greatly appreciated!', ORGANIC_WIDGETS_18N ); ?></p>
+				<h2 style="margin-bottom: 0px;"><?php printf( __( 'Whoa! You\'ve been using <a href="%1$s" target="_blank">Organic Builder Widgets</a> for a whole month!', 'organic-widgets' ), 'https://organicthemes.com/' ); ?></h2>
+				<p><?php esc_html_e( 'We\'re just a couple dudes trying to make the web a better place. Please take a moment to show your appreciation by liking and subscribing! Your support is greatly appreciated!', 'organic-widgets' ); ?></p>
 
 				<div class="follows" style="overflow: hidden; margin-bottom: 12px;">
 
@@ -170,7 +170,7 @@ class Organic_Widgets_Admin_Notices {
 						<div class="twitter-follow" style="float: left; margin-left: 6px;"><a class="twitter-follow-button" href="https://twitter.com/OrganicThemes" data-show-count="false">Follow @OrganicThemes</a></div>
 					</div>
 
-					<a class="button button-primary" style="float: right; margin-left: 12px;" href="<?php echo esc_url( 'https://organicthemes.com/themes/' ); ?>" target="_blank"><?php _e( 'Get 36+ Premium Themes! | $99/yr', ORGANIC_WIDGETS_18N ); ?></a>
+					<a class="button button-primary" style="float: right; margin-left: 12px;" href="<?php echo esc_url( 'https://organicthemes.com/themes/' ); ?>" target="_blank"><?php _e( 'Get 36+ Premium Themes! | $99/yr', 'organic-widgets' ); ?></a>
 
 				</div>
 

@@ -22,9 +22,9 @@ class Organic_Widgets_Content_Slideshow_Section_Widget extends Organic_Widgets_C
 	function __construct() {
 		parent::__construct(
 			'organic_widgets_content_slideshow_section', // Base ID.
-			__( 'Organic Content Slideshow', ORGANIC_WIDGETS_18N ), // Name.
+			__( 'Organic Content Slideshow', 'organic-widgets' ), // Name.
 			array(
-				'description' => __( 'A content slideshow.', ORGANIC_WIDGETS_18N ),
+				'description' => __( 'A content slideshow.', 'organic-widgets' ),
 				'customize_selective_refresh' => true,
 			) // Args.
 		);
@@ -128,7 +128,7 @@ class Organic_Widgets_Content_Slideshow_Section_Widget extends Organic_Widgets_C
 													<?php echo get_the_modified_date(); ?>
 												</p>
 												<p class="organic-widgets-post-author">
-													<?php esc_html_e( 'By ', ORGANIC_WIDGETS_18N ); ?><?php esc_url( the_author_posts_link() ); ?>
+													<?php esc_html_e( 'By ', 'organic-widgets' ); ?><?php esc_url( the_author_posts_link() ); ?>
 												</p>
 											<?php /** END .organic-widgets-post-meta */ ?>
 											</div>
@@ -138,7 +138,7 @@ class Organic_Widgets_Content_Slideshow_Section_Widget extends Organic_Widgets_C
 
 												<?php the_excerpt(); ?>
 
-												<?php edit_post_link( esc_html__( '(Edit)', ORGANIC_WIDGETS_18N ), '<p>', '</p>' ); ?>
+												<?php edit_post_link( esc_html__( '(Edit)', 'organic-widgets' ), '<p>', '</p>' ); ?>
 
 											<?php /** END .organic-widgets-excerpt */ ?>
 											</div>
@@ -214,7 +214,7 @@ class Organic_Widgets_Content_Slideshow_Section_Widget extends Organic_Widgets_C
 		?>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'category' ); ?>"><?php _e('Post Category:', ORGANIC_WIDGETS_18N) ?></label>
+			<label for="<?php echo $this->get_field_id( 'category' ); ?>"><?php _e('Post Category:', 'organic-widgets' ) ?></label>
 			<?php wp_dropdown_categories( array(
 				'selected' => $category,
 				'id' => $this->get_field_id( 'category' ),
@@ -223,26 +223,26 @@ class Organic_Widgets_Content_Slideshow_Section_Widget extends Organic_Widgets_C
 		</p>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'slideshow_transition_style' ); ?>"><?php _e('Slide Transition Style:', ORGANIC_WIDGETS_18N) ?></label>
+			<label for="<?php echo $this->get_field_id( 'slideshow_transition_style' ); ?>"><?php _e('Slide Transition Style:', 'organic-widgets' ) ?></label>
 				<select id="<?php echo $this->get_field_id( 'slideshow_transition_style' ); ?>" name="<?php echo $this->get_field_name( 'slideshow_transition_style' ); ?>" class="widefat" style="width:100%;">
-					<option <?php selected( $slideshow_transition_style, 'fade'); ?> value="fade"><?php _e('Fade', ORGANIC_WIDGETS_18N) ?></option>
-					<option <?php selected( $slideshow_transition_style, 'slide'); ?> value="slide"><?php _e('Slide', ORGANIC_WIDGETS_18N) ?></option>
+					<option <?php selected( $slideshow_transition_style, 'fade'); ?> value="fade"><?php _e('Fade', 'organic-widgets' ) ?></option>
+					<option <?php selected( $slideshow_transition_style, 'slide'); ?> value="slide"><?php _e('Slide', 'organic-widgets' ) ?></option>
 				</select>
 		</p>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'slideshow_interval' ); ?>"><?php _e('Slide Interval:', ORGANIC_WIDGETS_18N) ?></label>
+			<label for="<?php echo $this->get_field_id( 'slideshow_interval' ); ?>"><?php _e('Slide Interval:', 'organic-widgets' ) ?></label>
 				<select id="<?php echo $this->get_field_id( 'slideshow_interval' ); ?>" name="<?php echo $this->get_field_name( 'slideshow_interval' ); ?>" class="widefat" style="width:100%;">
-					<option <?php selected( $slideshow_interval, '2000'); ?> value="2000"><?php _e('2 Seconds', ORGANIC_WIDGETS_18N) ?></option>
-					<option <?php selected( $slideshow_interval, '4000'); ?> value="4000"><?php _e('4 Seconds', ORGANIC_WIDGETS_18N) ?></option>
-					<option <?php selected( $slideshow_interval, '6000'); ?> value="6000"><?php _e('6 Seconds', ORGANIC_WIDGETS_18N) ?></option>
-					<option <?php selected( $slideshow_interval, '8000'); ?> value="8000"><?php _e('8 Seconds', ORGANIC_WIDGETS_18N) ?></option>
-					<option <?php selected( $slideshow_interval, '10000'); ?> value="10000"><?php _e('10 Seconds', ORGANIC_WIDGETS_18N) ?></option>
-					<option <?php selected( $slideshow_interval, '12000'); ?> value="12000"><?php _e('12 Seconds', ORGANIC_WIDGETS_18N) ?></option>
-					<option <?php selected( $slideshow_interval, '20000'); ?> value="20000"><?php _e('20 Seconds', ORGANIC_WIDGETS_18N) ?></option>
-					<option <?php selected( $slideshow_interval, '30000'); ?> value="30000"><?php _e('30 Seconds', ORGANIC_WIDGETS_18N) ?></option>
-					<option <?php selected( $slideshow_interval, '60000'); ?> value="60000"><?php _e('1 Minute', ORGANIC_WIDGETS_18N) ?></option>
-					<option <?php selected( $slideshow_interval, '999999999'); ?> value="999999999"><?php _e('Hold Frame', ORGANIC_WIDGETS_18N) ?></option>
+					<option <?php selected( $slideshow_interval, '2000'); ?> value="2000"><?php _e('2 Seconds', 'organic-widgets' ) ?></option>
+					<option <?php selected( $slideshow_interval, '4000'); ?> value="4000"><?php _e('4 Seconds', 'organic-widgets' ) ?></option>
+					<option <?php selected( $slideshow_interval, '6000'); ?> value="6000"><?php _e('6 Seconds', 'organic-widgets' ) ?></option>
+					<option <?php selected( $slideshow_interval, '8000'); ?> value="8000"><?php _e('8 Seconds', 'organic-widgets' ) ?></option>
+					<option <?php selected( $slideshow_interval, '10000'); ?> value="10000"><?php _e('10 Seconds', 'organic-widgets' ) ?></option>
+					<option <?php selected( $slideshow_interval, '12000'); ?> value="12000"><?php _e('12 Seconds', 'organic-widgets' ) ?></option>
+					<option <?php selected( $slideshow_interval, '20000'); ?> value="20000"><?php _e('20 Seconds', 'organic-widgets' ) ?></option>
+					<option <?php selected( $slideshow_interval, '30000'); ?> value="30000"><?php _e('30 Seconds', 'organic-widgets' ) ?></option>
+					<option <?php selected( $slideshow_interval, '60000'); ?> value="60000"><?php _e('1 Minute', 'organic-widgets' ) ?></option>
+					<option <?php selected( $slideshow_interval, '999999999'); ?> value="999999999"><?php _e('Hold Frame', 'organic-widgets' ) ?></option>
 				</select>
 		</p>
 
@@ -250,11 +250,11 @@ class Organic_Widgets_Content_Slideshow_Section_Widget extends Organic_Widgets_C
 
 		<p>
 			<input class="checkbox" type="checkbox" value="1" <?php checked( $fixed_slide_height, '1' ); ?> id="<?php echo $this->get_field_id( 'fixed_slide_height' ); ?>" name="<?php echo $this->get_field_name( 'fixed_slide_height' ); ?>" />
-			<label for="<?php echo $this->get_field_id( 'fixed_slide_height' ); ?>"><?php _e('Fixed Height Slideshow', ORGANIC_WIDGETS_18N); ?></label>
+			<label for="<?php echo $this->get_field_id( 'fixed_slide_height' ); ?>"><?php _e('Fixed Height Slideshow', 'organic-widgets' ); ?></label>
 		</p>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'max_posts' ); ?>"><?php _e('Max Number of Posts:', ORGANIC_WIDGETS_18N) ?></label>
+			<label for="<?php echo $this->get_field_id( 'max_posts' ); ?>"><?php _e('Max Number of Posts:', 'organic-widgets' ) ?></label>
 			<input type="number" min="1" max="10" value="<?php echo $max_posts; ?>" id="<?php echo $this->get_field_id('max_posts'); ?>" name="<?php echo $this->get_field_name('max_posts'); ?>" class="widefat" style="width:100%;"/>
 		</p>
 
@@ -322,8 +322,8 @@ class Organic_Widgets_Content_Slideshow_Section_Widget extends Organic_Widgets_C
 
 		wp_enqueue_script( 'organic-widgets-module-image-background', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-image-background.js', array( 'jquery', 'media-upload', 'media-views', 'wp-color-picker' ) );
 		wp_localize_script( 'organic-widgets-module-image-background', 'OrganicWidgetBG', array(
-			'frame_title' => __( 'Select an Image', ORGANIC_WIDGETS_18N ),
-			'button_title' => __( 'Insert Into Widget', ORGANIC_WIDGETS_18N ),
+			'frame_title' => __( 'Select an Image', 'organic-widgets' ),
+			'button_title' => __( 'Insert Into Widget', 'organic-widgets' ),
 		) );
 
 	}

@@ -209,8 +209,8 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
     }
 		if ( ! wp_script_is( 'organic-widgets-module-image-background', 'enqueued' ) ) {
       wp_localize_script( 'organic-widgets-module-image-background', 'OrganicWidgetBG', array(
-  			'frame_title' => __( 'Select an Image', ORGANIC_WIDGETS_18N ),
-  			'button_title' => __( 'Insert Into Widget', ORGANIC_WIDGETS_18N ),
+  			'frame_title' => __( 'Select an Image', 'organic-widgets' ),
+  			'button_title' => __( 'Insert Into Widget', 'organic-widgets' ),
   		) );
     }
 
@@ -283,21 +283,21 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
 
 		<hr />
 
-    <h3><?php _e( 'Section Background Options:', ORGANIC_WIDGETS_18N ); ?></h3>
+    <h3><?php _e( 'Section Background Options:', 'organic-widgets' ); ?></h3>
 
     <?php if ( array_key_exists( 'color', $bg_options ) && $bg_options['color'] ) { ?>
       <p>
-  			<label for="<?php echo $this->get_field_name('bg_color'); ?>"><?php _e( 'Background Color:', ORGANIC_WIDGETS_18N ); ?></label><br>
+  			<label for="<?php echo $this->get_field_name('bg_color'); ?>"><?php _e( 'Background Color:', 'organic-widgets' ); ?></label><br>
   			<input type="text" name="<?php echo $this->get_field_name('bg_color'); ?>" id="<?php echo $this->get_field_id( 'bg_color' ); ?>" value="<?php echo esc_attr($bg_color); ?>" class="organic-widgets-color-picker" />
   		</p>
     <?php } ?>
 
     <?php if ( array_key_exists( 'image', $bg_options ) && $bg_options['image'] ) { ?>
       <p>
-  			<label for="<?php echo $this->get_field_id( 'bg_image' ); ?>"><?php _e( 'Background Image:', ORGANIC_WIDGETS_18N ); ?></label>
+  			<label for="<?php echo $this->get_field_id( 'bg_image' ); ?>"><?php _e( 'Background Image:', 'organic-widgets' ); ?></label>
   			<div class="uploader">
-  				<input type="submit" class="button" name="<?php echo $this->get_field_name('uploader_button'); ?>" id="<?php echo $this->get_field_id('uploader_button'); ?>" value="<?php if ( $bg_image_id ) { _e( 'Change Image', ORGANIC_WIDGETS_18N ); }else { _e( 'Select Image', ORGANIC_WIDGETS_18N ); }?>" onclick="organicWidgetBackgroundImage.uploader( '<?php echo $this->id; ?>', '<?php echo $this->id_prefix; ?>' ); return false;" />
-  				<input type="submit" class="organic-widgets-remove-image-button button" name="<?php echo $this->get_field_name('remover_button'); ?>" id="<?php echo $this->get_field_id('remover_button'); ?>" value="<?php _e('Remove Image', ORGANIC_WIDGETS_18N); ?>" onclick="organicWidgetBackgroundImage.remover( '<?php echo $this->id; ?>', '<?php echo $this->id_prefix; ?>', 'remover_button' ); return false;" <?php if ( $bg_image_id < 1 ) { echo( 'style="display:none;"' ); } ?>/>
+  				<input type="submit" class="button" name="<?php echo $this->get_field_name('uploader_button'); ?>" id="<?php echo $this->get_field_id('uploader_button'); ?>" value="<?php if ( $bg_image_id ) { _e( 'Change Image', 'organic-widgets' ); }else { _e( 'Select Image', 'organic-widgets' ); }?>" onclick="organicWidgetBackgroundImage.uploader( '<?php echo $this->id; ?>', '<?php echo $this->id_prefix; ?>' ); return false;" />
+  				<input type="submit" class="organic-widgets-remove-image-button button" name="<?php echo $this->get_field_name('remover_button'); ?>" id="<?php echo $this->get_field_id('remover_button'); ?>" value="<?php _e('Remove Image', 'organic-widgets' ); ?>" onclick="organicWidgetBackgroundImage.remover( '<?php echo $this->id; ?>', '<?php echo $this->id_prefix; ?>', 'remover_button' ); return false;" <?php if ( $bg_image_id < 1 ) { echo( 'style="display:none;"' ); } ?>/>
   				<div class="organic-widgets-widget-image-preview" id="<?php echo $this->get_field_id('preview'); ?>">
   					<?php echo $this->get_image_html($instance); ?>
   				</div>
@@ -309,7 +309,7 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
 
     <?php if ( array_key_exists( 'video', $bg_options ) && $bg_options['video'] ) { ?>
       <p>
-  			<label for="<?php echo $this->get_field_id( 'bg_video' ); ?>"><?php _e('YouTube Background Video:', ORGANIC_WIDGETS_18N) ?></label>
+  			<label for="<?php echo $this->get_field_id( 'bg_video' ); ?>"><?php _e('YouTube Background Video:', 'organic-widgets' ) ?></label>
   			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'bg_video' ); ?>" name="<?php echo $this->get_field_name( 'bg_video' ); ?>" value="<?php echo esc_url($bg_video); ?>" />
   		</p>
     <?php }
@@ -326,7 +326,7 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
 	protected function content_aligner_input_markup( $instance ) {
 
 		?>
-		<label for="<?php echo $this->get_field_id( 'alignment' ); ?>"><?php _e('Content Alignment', ORGANIC_WIDGETS_18N); ?></label>
+		<label for="<?php echo $this->get_field_id( 'alignment' ); ?>"><?php _e('Content Alignment', 'organic-widgets' ); ?></label>
 		<div class="organic-widgets-content-alignment">
 			<table class="organic-widgets-content-alignment-table">
 				<tr>
@@ -364,7 +364,7 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
 
 		?>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'repeatable_array' ); ?>"><h4><?php _e( $form_item_title, ORGANIC_WIDGETS_18N ) ?></h4></label>
+			<label for="<?php echo $this->get_field_id( 'repeatable_array' ); ?>"><h4><?php _e( $form_item_title, 'organic-widgets' ) ?></h4></label>
 
 			<?php //Loop through each item and echo form section
 			$form_keys = array();
@@ -1238,16 +1238,16 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
 	 */
 	function organic_widgets_sanitize_transition_interval( $input ) {
 		$valid = array(
-			2000 		=> esc_html__( '2 Seconds', ORGANIC_WIDGETS_18N ),
-			4000 		=> esc_html__( '4 Seconds', ORGANIC_WIDGETS_18N ),
-			6000 		=> esc_html__( '6 Seconds', ORGANIC_WIDGETS_18N ),
-			8000 		=> esc_html__( '8 Seconds', ORGANIC_WIDGETS_18N ),
-			10000 	=> esc_html__( '10 Seconds', ORGANIC_WIDGETS_18N ),
-			12000 	=> esc_html__( '12 Seconds', ORGANIC_WIDGETS_18N ),
-			20000 	=> esc_html__( '20 Seconds', ORGANIC_WIDGETS_18N ),
-			30000 	=> esc_html__( '30 Seconds', ORGANIC_WIDGETS_18N ),
-			60000 	=> esc_html__( '1 Minute', ORGANIC_WIDGETS_18N ),
-			999999999	=> esc_html__( 'Hold Frame', ORGANIC_WIDGETS_18N ),
+			2000 		=> esc_html__( '2 Seconds', 'organic-widgets' ),
+			4000 		=> esc_html__( '4 Seconds', 'organic-widgets' ),
+			6000 		=> esc_html__( '6 Seconds', 'organic-widgets' ),
+			8000 		=> esc_html__( '8 Seconds', 'organic-widgets' ),
+			10000 	=> esc_html__( '10 Seconds', 'organic-widgets' ),
+			12000 	=> esc_html__( '12 Seconds', 'organic-widgets' ),
+			20000 	=> esc_html__( '20 Seconds', 'organic-widgets' ),
+			30000 	=> esc_html__( '30 Seconds', 'organic-widgets' ),
+			60000 	=> esc_html__( '1 Minute', 'organic-widgets' ),
+			999999999	=> esc_html__( 'Hold Frame', 'organic-widgets' ),
 		);
 
 		if ( array_key_exists( $input, $valid ) ) {
@@ -1265,8 +1265,8 @@ class Organic_Widgets_Custom_Widget extends WP_Widget {
 	 */
 	function organic_widgets_sanitize_transition_style( $input ) {
 		$valid = array(
-			'fade' 		=> esc_html__( 'Fade', ORGANIC_WIDGETS_18N ),
-			'slide' 	=> esc_html__( 'Slide', ORGANIC_WIDGETS_18N ),
+			'fade' 		=> esc_html__( 'Fade', 'organic-widgets' ),
+			'slide' 	=> esc_html__( 'Slide', 'organic-widgets' ),
 		);
 
 		if ( array_key_exists( $input, $valid ) ) {

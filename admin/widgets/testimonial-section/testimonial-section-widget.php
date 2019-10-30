@@ -22,9 +22,9 @@ class Organic_Widgets_Testimonial_Section_Widget extends Organic_Widgets_Custom_
 	function __construct() {
 		parent::__construct(
 			'organic_widgets_testimonial_section', // Base ID.
-			__( 'Organic Testimonials', ORGANIC_WIDGETS_18N ), // Name.
+			__( 'Organic Testimonials', 'organic-widgets' ), // Name.
 			array(
-				'description' => __( 'A section displaying testimonial posts.', ORGANIC_WIDGETS_18N ),
+				'description' => __( 'A section displaying testimonial posts.', 'organic-widgets' ),
 				'customize_selective_refresh' => true,
 			) // Args.
 		);
@@ -236,7 +236,7 @@ class Organic_Widgets_Testimonial_Section_Widget extends Organic_Widgets_Custom_
 
 		<?php if ( ! post_type_exists( 'jetpack-testimonial' ) ) { ?>
 			<p>
-				<label for="<?php echo $this->get_field_id( 'category' ); ?>"><?php _e('Testimonial Category:', ORGANIC_WIDGETS_18N) ?></label>
+				<label for="<?php echo $this->get_field_id( 'category' ); ?>"><?php _e('Testimonial Category:', 'organic-widgets' ) ?></label>
 				<?php wp_dropdown_categories( array(
 					'selected' => $category,
 					'id' => $this->get_field_id( 'category' ),
@@ -245,11 +245,11 @@ class Organic_Widgets_Testimonial_Section_Widget extends Organic_Widgets_Custom_
 			</p>
 		<?php } ?>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'max_posts' ); ?>"><?php _e('Max Number of Posts:', ORGANIC_WIDGETS_18N) ?></label>
+			<label for="<?php echo $this->get_field_id( 'max_posts' ); ?>"><?php _e('Max Number of Posts:', 'organic-widgets' ) ?></label>
 			<input type="number" min="1" max="12" value="<?php echo $max_posts; ?>" id="<?php echo $this->get_field_id('max_posts'); ?>" name="<?php echo $this->get_field_name('max_posts'); ?>" class="widefat" style="width:100%;"/>
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'posts_per_slide' ); ?>"><?php _e('Posts Per Slide:', ORGANIC_WIDGETS_18N) ?></label>
+			<label for="<?php echo $this->get_field_id( 'posts_per_slide' ); ?>"><?php _e('Posts Per Slide:', 'organic-widgets' ) ?></label>
 			<select id="<?php echo $this->get_field_id( 'posts_per_slide' ); ?>" name="<?php echo $this->get_field_name( 'posts_per_slide' ); ?>" class="widefat" style="width:100%;">
 				<option <?php selected( $posts_per_slide, '1'); ?> value="1">1</option>
 				<option <?php selected( $posts_per_slide, '2'); ?> value="2">2</option>
@@ -275,7 +275,7 @@ class Organic_Widgets_Testimonial_Section_Widget extends Organic_Widgets_Custom_
 
 			<# var elementIdPrefix = 'el' + String( Math.random() ).replace( /\D/g, '' ) + '_' #>
 
-			<p><b><?php _e('Add Custom Content:', ORGANIC_WIDGETS_18N) ?></b></p>
+			<p><b><?php _e('Add Custom Content:', 'organic-widgets' ) ?></b></p>
 
 			<p>
 				<label for="{{ elementIdPrefix }}title"><?php esc_html_e( 'Title:' ); ?></label>
@@ -373,8 +373,8 @@ class Organic_Widgets_Testimonial_Section_Widget extends Organic_Widgets_Custom_
 
 		wp_enqueue_script( 'organic-widgets-module-image-background', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-image-background.js', array( 'jquery', 'media-upload', 'media-views', 'wp-color-picker' ) );
 		wp_localize_script( 'organic-widgets-module-image-background', 'OrganicWidgetBG', array(
-			'frame_title' => __( 'Select an Image', ORGANIC_WIDGETS_18N ),
-			'button_title' => __( 'Insert Into Widget', ORGANIC_WIDGETS_18N ),
+			'frame_title' => __( 'Select an Image', 'organic-widgets' ),
+			'button_title' => __( 'Insert Into Widget', 'organic-widgets' ),
 		) );
 
 	}

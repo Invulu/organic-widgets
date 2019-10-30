@@ -22,9 +22,9 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 	function __construct() {
 		parent::__construct(
 			'organic_widgets_featured_content', // Base ID.
-			__( 'Organic Featured Content', ORGANIC_WIDGETS_18N ), // Name.
+			__( 'Organic Featured Content', 'organic-widgets' ), // Name.
 			array(
-				'description' => __( 'A widget for displaying an existing page or custom content.', ORGANIC_WIDGETS_18N ),
+				'description' => __( 'A widget for displaying an existing page or custom content.', 'organic-widgets' ),
 				'customize_selective_refresh' => false,
 			) // Args.
 		);
@@ -100,8 +100,8 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 					<?php /** BEGIN .organic-widgets-card-content */ ?>
 					<div class="organic-widgets-card-content">
 
-						<?php the_content( esc_html__( 'Read More', ORGANIC_WIDGETS_18N ) ); ?>
-						<?php edit_post_link( esc_html__( '(Edit)', ORGANIC_WIDGETS_18N ), '<p>', '</p>' ); ?>
+						<?php the_content( esc_html__( 'Read More', 'organic-widgets' ) ); ?>
+						<?php edit_post_link( esc_html__( '(Edit)', 'organic-widgets' ), '<p>', '</p>' ); ?>
 
 					<?php /** END .organic-widgets-card-content */ ?>
 					</div>
@@ -151,7 +151,7 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 									<?php if ( ! empty( $link_title ) ) { ?>
 										<?php echo $link_title ?>
 									<?php } else { ?>
-										<?php esc_html_e( 'Read More', ORGANIC_WIDGETS_18N ); ?>
+										<?php esc_html_e( 'Read More', 'organic-widgets' ); ?>
 									<?php } ?>
 								</a>
 							<?php } ?>
@@ -221,17 +221,17 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 		<input id="<?php echo $this->get_field_id( 'visual' ); ?>" name="<?php echo $this->get_field_name( 'visual' ); ?>" class="visual" type="hidden" value="on">
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'link_title' ); ?>"><?php _e('Button Text:', ORGANIC_WIDGETS_18N) ?></label>
+			<label for="<?php echo $this->get_field_id( 'link_title' ); ?>"><?php _e('Button Text:', 'organic-widgets' ) ?></label>
 			<input class="widefat link_title" type="text" id="<?php echo $this->get_field_id( 'link_title' ); ?>" name="<?php echo $this->get_field_name( 'link_title' ); ?>" value="<?php echo $link_title; ?>" />
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'link_url' ); ?>"><?php _e('Button URL:', ORGANIC_WIDGETS_18N) ?></label>
+			<label for="<?php echo $this->get_field_id( 'link_url' ); ?>"><?php _e('Button URL:', 'organic-widgets' ) ?></label>
 			<input class="widefat link_url" type="text" id="<?php echo $this->get_field_id( 'link_url' ); ?>" name="<?php echo $this->get_field_name( 'link_url' ); ?>" value="<?php echo $link_url; ?>" />
 		</p>
 
 		<br/>
 
-		<h3><?php _e('Or Choose Existing Page:', ORGANIC_WIDGETS_18N) ?></h3>
+		<h3><?php _e('Or Choose Existing Page:', 'organic-widgets' ) ?></h3>
 
 		<p>
 			<?php wp_dropdown_pages( array(
@@ -239,7 +239,7 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 				'selected' => $page_id,
 				'id' => $this->get_field_id( 'page_id' ),
 				'name' => $this->get_field_name( 'page_id' ),
-				'show_option_none' => __( '— Select Existing Page —', ORGANIC_WIDGETS_18N ),
+				'show_option_none' => __( '— Select Existing Page —', 'organic-widgets' ),
 				'option_none_value' => '0',
 			) ); ?>
 		</p>
@@ -261,7 +261,7 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 
 			<# var elementIdPrefix = 'el' + String( Math.random() ).replace( /\D/g, '' ) + '_' #>
 
-			<h3><?php _e('Add Custom Content:', ORGANIC_WIDGETS_18N) ?></h3>
+			<h3><?php _e('Add Custom Content:', 'organic-widgets' ) ?></h3>
 
 			<p>
 				<label for="{{ elementIdPrefix }}title"><?php esc_html_e( 'Title:' ); ?></label>
@@ -376,8 +376,8 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 
 		wp_enqueue_script( 'organic-widgets-module-image-background', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-image-background.js', array( 'jquery', 'media-upload', 'media-views', 'wp-color-picker' ) );
 		wp_localize_script( 'organic-widgets-module-image-background', 'FeaturedContentWidget', array(
-			'frame_title' => __( 'Select an Image', ORGANIC_WIDGETS_18N ),
-			'button_title' => __( 'Insert Into Widget', ORGANIC_WIDGETS_18N ),
+			'frame_title' => __( 'Select an Image', 'organic-widgets' ),
+			'button_title' => __( 'Insert Into Widget', 'organic-widgets' ),
 		) );
 
 	}

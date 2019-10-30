@@ -22,9 +22,9 @@ class Organic_Widgets_Portfolio_Section_Widget extends Organic_Widgets_Custom_Wi
 	function __construct() {
 		parent::__construct(
 			'organic_widgets_portfolio_section', // Base ID.
-			__( 'Organic Portfolio', ORGANIC_WIDGETS_18N ), // Name.
+			__( 'Organic Portfolio', 'organic-widgets' ), // Name.
 			array(
-				'description' => __( 'A section displaying portfolio posts.', ORGANIC_WIDGETS_18N ),
+				'description' => __( 'A section displaying portfolio posts.', 'organic-widgets' ),
 				'customize_selective_refresh' => true,
 			) // Args.
 		);
@@ -203,7 +203,7 @@ class Organic_Widgets_Portfolio_Section_Widget extends Organic_Widgets_Custom_Wi
 
 		<?php if ( ! post_type_exists( 'jetpack-portfolio' ) ) { ?>
 			<p>
-				<label for="<?php echo $this->get_field_id( 'category' ); ?>"><?php _e('Portfolio Category:', ORGANIC_WIDGETS_18N) ?></label>
+				<label for="<?php echo $this->get_field_id( 'category' ); ?>"><?php _e('Portfolio Category:', 'organic-widgets' ) ?></label>
 				<?php wp_dropdown_categories( array(
 					'selected' => $category,
 					'id' => $this->get_field_id( 'category' ),
@@ -213,12 +213,12 @@ class Organic_Widgets_Portfolio_Section_Widget extends Organic_Widgets_Custom_Wi
 		<?php } ?>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'max_posts' ); ?>"><?php _e('Max Number of Posts:', ORGANIC_WIDGETS_18N) ?></label>
+			<label for="<?php echo $this->get_field_id( 'max_posts' ); ?>"><?php _e('Max Number of Posts:', 'organic-widgets' ) ?></label>
 			<input type="number" min="1" max="16" value="<?php echo $max_posts; ?>" id="<?php echo $this->get_field_id('max_posts'); ?>" name="<?php echo $this->get_field_name('max_posts'); ?>" class="widefat" style="width:100%;"/>
 		</p>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'num_columns' ); ?>"><?php _e('Number of Columns:', ORGANIC_WIDGETS_18N) ?></label>
+			<label for="<?php echo $this->get_field_id( 'num_columns' ); ?>"><?php _e('Number of Columns:', 'organic-widgets' ) ?></label>
 			<select id="<?php echo $this->get_field_id( 'num_columns' ); ?>" name="<?php echo $this->get_field_name('num_columns'); ?>" class="widefat" style="width:100%;">
 				<option <?php selected( $num_columns, '2'); ?> value="2">2</option>
 		    <option <?php selected( $num_columns, '3'); ?> value="3">3</option>
@@ -315,8 +315,8 @@ class Organic_Widgets_Portfolio_Section_Widget extends Organic_Widgets_Custom_Wi
 
 		wp_enqueue_script( 'organic-widgets-module-image-background', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-image-background.js', array( 'jquery', 'media-upload', 'media-views', 'wp-color-picker' ), '1.0', true );
 		wp_localize_script( 'organic-widgets-module-image-background', 'OrganicWidgetBG', array(
-			'frame_title'  => __( 'Select an Image', ORGANIC_WIDGETS_18N ),
-			'button_title' => __( 'Insert Into Widget', ORGANIC_WIDGETS_18N ),
+			'frame_title'  => __( 'Select an Image', 'organic-widgets' ),
+			'button_title' => __( 'Insert Into Widget', 'organic-widgets' ),
 		) );
 
 	}

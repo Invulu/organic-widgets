@@ -5,7 +5,7 @@
 (function ($) {
   'use strict'
 
-  function checkSelectedTemplate() {
+  function checkSelectedTemplate () {
     var selectedTemplate = $('#page_template').find(':selected').val()
     // var gutenbergTemplate = $('select[id^="template-selector"]').find(':selected').val()
 
@@ -31,7 +31,7 @@
     }
   }
 
-  function hideEditor() {
+  function hideEditor () {
     var wpContentEditorDiv = $('#postdivrich, #editor .editor-block-list__layout')
     var organicCustomEditDiv = $(document.createElement('div'))
 
@@ -59,36 +59,33 @@
     organicCustomEditDiv.addClass('postbox')
     organicCustomEditDiv.html('<div class="organic-widgets-post-editor-content"><h2><img src="' + organicWidgets.leafIcon + '"/><span>Organic Custom Widgets Page</span></h2><div class="information"><p><strong>Please Note:</strong> Only Widgets are displayed using this page template.</p> <p>Click "Customize Page" to add Builder Widgets to the page.</p></div>' + setPageTemplate + customizeButton + '</div>')
     wpContentEditorDiv.before(organicCustomEditDiv)
-    //wpContentEditorDiv.hide()
+    // wpContentEditorDiv.hide()
     updatePostListener()
   }
 
-  function showEditor() {
+  function showEditor () {
     $('#postdivrich, #editor .editor-block-list__layout').show()
     $('#organic-widgets-post-editor').remove()
   }
 
-  function pageTemplateListener() {
-    $('#page_template, .editor-page-attributes__template select').on('change', function() {
-      checkSelectedTemplate()
-    })
-  }
-
-  function updatePostListener() {
-    $('#organic-widgets-update-post').on('click', function() {
+  function updatePostListener () {
+    $('#organic-widgets-update-post').on('click', function () {
       $('#post').submit()
     })
-    $('.block-editor #organic-widgets-update-post').on('click', function() {
+    $('.block-editor #organic-widgets-update-post').on('click', function () {
       $('.editor-post-publish-panel__toggle').click()
       $('.editor-post-publish-button').click()
-      setTimeout(function() {
+      setTimeout(function () {
         location.reload()
       }, 1000)
     })
   }
 
-  $(window)
-    .load(pageTemplateListener)
-    .load(checkSelectedTemplate);
+  $(document).on('change', '#page_template, .editor-page-attributes__template select', function () {
+    checkSelectedTemplate()
+  })
 
-})(jQuery);
+  $(window)
+    .load(checkSelectedTemplate)
+
+})(jQuery)

@@ -94,12 +94,12 @@
 
 		</div>
 
-		<h2 class="admin-headline"><?php _e( 'Organic Builder Widgets', ORGANIC_WIDGETS_18N ); ?></h2>
+		<h2 class="admin-headline"><?php esc_html_e( 'Organic Builder Widgets', 'organic-widgets' ); ?></h2>
 
 		<!-- BEGIN .feature-links -->
 		<div class="feature-links">
 
-			<a class="feature-link-upgrade" href="<?php echo esc_url('https://organicthemes.com/builder/') ?>" target="_blank">
+			<a class="feature-link-upgrade" href="<?php echo esc_url( 'https://organicthemes.com/builder/' ); ?>" target="_blank">
 				<span class="icon">
 					<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 						 width="20px" height="20px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve">
@@ -116,8 +116,8 @@
 					</svg>
 				</span>
 				<span class="info">
-					<h4><?php esc_html_e( 'Upgrade To Pro', ORGANIC_WIDGETS_18N ); ?></h4>
-					<p><?php esc_html_e( 'Buy Organic Builder Widgets Pro for additional widgets and options!', ORGANIC_WIDGETS_18N ); ?></p>
+					<h4><?php esc_html_e( 'Upgrade To Pro', 'organic-widgets' ); ?></h4>
+					<p><?php esc_html_e( 'Buy Organic Builder Widgets Pro for additional widgets and options!', 'organic-widgets' ); ?></p>
 				</span>
 			</a>
 
@@ -131,8 +131,8 @@
 					</svg>
 				</span>
 				<span class="info">
-					<h4><?php esc_html_e( 'Getting Started', ORGANIC_WIDGETS_18N ); ?></h4>
-					<p><?php esc_html_e( 'Review our guide to using the simple Organic Builder Widgets plugin.', ORGANIC_WIDGETS_18N ); ?></p>
+					<h4><?php esc_html_e( 'Getting Started', 'organic-widgets' ); ?></h4>
+					<p><?php esc_html_e( 'Review our guide to using the simple Organic Builder Widgets plugin.', 'organic-widgets' ); ?></p>
 				</span>
 			</a>
 
@@ -143,8 +143,8 @@
 					</svg>
 				</span>
 				<span class="info">
-					<h4><?php esc_html_e( 'Support Questions', ORGANIC_WIDGETS_18N ); ?></h4>
-					<p><?php esc_html_e( 'Have a question or need some help? Get support from Organic Themes.', ORGANIC_WIDGETS_18N ); ?></p>
+					<h4><?php esc_html_e( 'Support Questions', 'organic-widgets' ); ?></h4>
+					<p><?php esc_html_e( 'Have a question or need some help? Get support from Organic Themes.', 'organic-widgets' ); ?></p>
 				</span>
 			</a>
 
@@ -155,17 +155,17 @@
 					</svg>
 				</span>
 				<span class="info">
-					<h4><?php esc_html_e( 'Leave A Review', ORGANIC_WIDGETS_18N ); ?></h4>
-					<p><?php esc_html_e( 'Love the plugin? Take a moment to leave us a review. It really helps.', ORGANIC_WIDGETS_18N ); ?></p>
+					<h4><?php esc_html_e( 'Leave A Review', 'organic-widgets' ); ?></h4>
+					<p><?php esc_html_e( 'Love the plugin? Take a moment to leave us a review. It really helps.', 'organic-widgets' ); ?></p>
 				</span>
 			</a>
 
 		<!-- END .feature-links -->
 		</div>
 
-		<p class="admin-tagline"><?php _e( 'Aloha ' ) ?><b><?php global $userdata, $current_user, $user_identity; echo $user_identity ?></b><?php printf( __( ', you\'re moments away from creating awesome dynamic content on any page of your website! If this is your first time using the plugin, simply <a href="%1$s">add a new page</a> and apply the <b>Organic Custom</b> page template. Then, enter the WordPress <a href="%2$s">Customizer</a> to begin adding widgets to the page.', ORGANIC_WIDGETS_18N ), esc_url( admin_url( 'post-new.php?post_type=page' ) ), esc_url( admin_url( 'customize.php' ) ) ); ?></p>
+		<p class="admin-tagline"><?php esc_html_e( 'Aloha ' ) ?><b><?php global $userdata, $current_user, $user_identity; echo $user_identity ?></b><?php printf( __( ', you\'re moments away from creating awesome dynamic content on any page of your website! If this is your first time using the plugin, simply <a href="%1$s">add a new page</a> and apply the <b>Organic Custom</b> page template. Then, enter the WordPress <a href="%2$s">Customizer</a> to begin adding widgets to the page.', 'organic-widgets' ), esc_url( admin_url( 'post-new.php?post_type=page' ) ), esc_url( admin_url( 'customize.php' ) ) ); ?></p>
 
-		<p><?php printf( __( 'Enter your email to receive important updates and information from <a href="%1$s" target="_blank">Organic Themes</a>.', ORGANIC_WIDGETS_18N ), 'https://organicthemes.com' ); ?></p>
+		<p><?php printf( __( 'Enter your email to receive important updates and information from <a href="%1$s" target="_blank">Organic Themes</a>.', 'organic-widgets' ), 'https://organicthemes.com' ); ?></p>
 
 		<div id="mc_embed_signup" class="clear" style="overflow: hidden; margin-bottom: 12px;">
 			<form action="//organicthemes.us1.list-manage.com/subscribe/post?u=7cf6b005868eab70f031dc806&amp;id=c3cce2fac0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
@@ -188,9 +188,9 @@
 	</div>
 
 	<div class="feature-heading">
-		<h2><?php esc_html_e( '4 BIG Reasons To Upgrade', ORGANIC_WIDGETS_18N ); ?></h2>
-		<p><?php esc_html_e( 'Consider the following reasons for upgrading to Organic Builder Widgets Pro.', ORGANIC_WIDGETS_18N ); ?></p>
-		<p><a class="purchase-button" href="<?php echo esc_url( 'https://organicthemes.com/checkout?edd_action=add_to_cart&download_id=348835/' ); ?>" target="_blank"><?php _e( 'Get Builder Widgets Pro! | Only $39/yr', ORGANIC_WIDGETS_18N ); ?></a><p>
+		<h2 class="admin-headline"><?php _e( 'Upgrade to <b>Builder Widgets Pro</b> v2.0', 'organic-widgets' ); ?></h2>
+		<p class="admin-tagline"><?php _e( '<b>Version 2.0</b> is now a bigger, better WordPress page builder! <br/>Consider the following <b>4 BIG</b> reasons to upgrade:', 'organic-widgets' ); ?></p>
+		<p><a class="purchase-button" href="<?php echo esc_url( 'https://organicthemes.com/checkout?edd_action=add_to_cart&download_id=348835/' ); ?>" target="_blank"><?php esc_html_e( 'Get Builder Widgets Pro! | Only $39/yr', 'organic-widgets' ); ?></a><p>
 	</div>
 
 	<br />
@@ -199,14 +199,28 @@
 	<div class="widgets-upgrade">
 
 		<div class="flex-row">
-			<div class="number"><span>1</span></div>
-			<div class="information">
-				<h4><?php esc_html_e( 'More Widgets', ORGANIC_WIDGETS_18N ); ?></h4>
-				<p><?php esc_html_e( 'In addition to the 12 free widgets, Organic Builder Widgets Pro includes 4 new premium widgets. View examples of the premium widgets:', ORGANIC_WIDGETS_18N ); ?></p>
-				<p><a href="<?php echo esc_url( 'https://organicthemes.com/demo/startup/widgets/events-widget/' ); ?>" target="_blank"><?php esc_html_e( 'Events Widget →', ORGANIC_WIDGETS_18N ); ?></a></p>
-				<p><a href="<?php echo esc_url( 'https://organicthemes.com/demo/startup/widgets/business-info-widget/' ); ?>" target="_blank"><?php esc_html_e( 'Business Info Widget →', ORGANIC_WIDGETS_18N ); ?></a></p>
-				<p><a href="<?php echo esc_url( 'https://organicthemes.com/demo/startup/widgets/image-slideshow-widget/' ); ?>" target="_blank"><?php esc_html_e( 'Image Slideshow Widget →', ORGANIC_WIDGETS_18N ); ?></a></p>
-				<p><a href="<?php echo esc_url( 'https://organicthemes.com/demo/startup/widgets/split-content-widget/' ); ?>" target="_blank"><?php esc_html_e( 'Split Content Widget →', ORGANIC_WIDGETS_18N ); ?></a></p>
+			<div class="info-container">
+				<div class="number"><span>1</span></div>
+				<div class="information">
+					<h4><?php esc_html_e( '12 New Premium Widgets', 'organic-widgets' ); ?></h4>
+					<p><?php _e( '<b>Builder Widgets Pro</b> includes 12 additional premium widgets, for a total of 24 widgets. Create beautiful pages with ease, directly within the WordPress Customizer. View examples of the premium widgets:', 'organic-widgets' ); ?></p>
+					<ul>
+						<li><i class="fa fa-calendar-check-o" aria-hidden="true"></i> <a href="<?php echo esc_url( 'https://organicthemes.com/demo/startup/widgets/events-widget/' ); ?>" target="_blank"><?php esc_html_e( 'Events Widget →', 'organic-widgets' ); ?></a></li>
+						<li><i class="fa fa-building" aria-hidden="true"></i> <a href="<?php echo esc_url( 'https://organicthemes.com/demo/startup/widgets/business-info-widget/' ); ?>" target="_blank"><?php esc_html_e( 'Business Info Widget →', 'organic-widgets' ); ?></a></li>
+						<li><i class="fa fa-picture-o" aria-hidden="true"></i> <a href="<?php echo esc_url( 'https://organicthemes.com/demo/startup/widgets/image-slideshow-widget/' ); ?>" target="_blank"><?php esc_html_e( 'Image Slideshow Widget →', 'organic-widgets' ); ?></a></li>
+						<li><i class="fa fa-pause" aria-hidden="true"></i> <a href="<?php echo esc_url( 'https://organicthemes.com/demo/startup/widgets/split-content-widget/' ); ?>" target="_blank"><?php esc_html_e( 'Split Content Widget →', 'organic-widgets' ); ?></a></li>
+						<li><i class="fa fa-toggle-on" aria-hidden="true"></i> <a href="<?php echo esc_url( 'https://organicthemes.com/demo/startup/widgets/toggle-tabs-widget/' ); ?>" target="_blank"><?php esc_html_e( 'Toggle & Tabs Widget →', 'organic-widgets' ); ?></a></li>
+						<li><i class="fa fa-search" aria-hidden="true"></i> <a href="<?php echo esc_url( 'https://organicthemes.com/demo/startup/widgets/search-widget/' ); ?>" target="_blank"><?php esc_html_e( 'Advanced Search Widget →', 'organic-widgets' ); ?></a></li>
+					</ul>
+					<ul>
+						<li><i class="fa fa-cutlery" aria-hidden="true"></i> <a href="<?php echo esc_url( 'https://organicthemes.com/demo/startup/widgets/food-menu-widget/' ); ?>" target="_blank"><?php esc_html_e( 'Food Menu Widget →', 'organic-widgets' ); ?></a></li>
+						<li><i class="fa fa-user-circle" aria-hidden="true"></i> <a href="<?php echo esc_url( 'https://organicthemes.com/demo/startup/widgets/login-widget/' ); ?>" target="_blank"><?php esc_html_e( 'Login Widget →', 'organic-widgets' ); ?></a></li>
+						<li><i class="fa fa-music" aria-hidden="true"></i> <a href="<?php echo esc_url( 'https://organicthemes.com/demo/startup/widgets/audio-playlist-widget/' ); ?>" target="_blank"><?php esc_html_e( 'Audio Playlist Widget →', 'organic-widgets' ); ?></a></li>
+						<li><i class="fa fa-film" aria-hidden="true"></i> <a href="<?php echo esc_url( 'https://organicthemes.com/demo/startup/widgets/featured-video-widget/' ); ?>" target="_blank"><?php esc_html_e( 'Featured Video Widget →', 'organic-widgets' ); ?></a></li>
+						<li><i class="fa fa-th" aria-hidden="true"></i> <a href="<?php echo esc_url( 'https://organicthemes.com/demo/startup/image-gallery-widget/' ); ?>" target="_blank"><?php esc_html_e( 'Image Gallery Widget →', 'organic-widgets' ); ?></a></li>
+						<li><i class="fa fa-video-camera" aria-hidden="true"></i> <a href="<?php echo esc_url( 'https://organicthemes.com/demo/startup/video-gallery-widget/' ); ?>" target="_blank"><?php esc_html_e( 'Video Gallery Widget →', 'organic-widgets' ); ?></a></li>
+					</ul>
+				</div>
 			</div>
 			<div class="img-container">
 				<img src="<?php echo esc_url( ORGANIC_WIDGETS_ADMIN_IMG_DIR . 'widgets-premium-collage.png' ); ?>" alt="" />
@@ -214,10 +228,12 @@
 		</div>
 
 		<div class="flex-row">
-			<div class="number"><span>2</span></div>
-			<div class="information">
-				<h4><?php esc_html_e( 'More Options', ORGANIC_WIDGETS_18N ); ?></h4>
-				<p><?php esc_html_e( 'The Pro Version includes options to change Fonts, Layouts, Visibility, and more for each widget. Additionally, existing widgets have new options for Filterable Portfolios, Blog Pagination, Scalable Images, Additional Icons, and much more.', ORGANIC_WIDGETS_18N ); ?></p>
+			<div class="info-container">
+				<div class="number"><span>2</span></div>
+				<div class="information">
+					<h4><?php esc_html_e( 'Many More Options', 'organic-widgets' ); ?></h4>
+					<p><?php _e( '<b>Builder Widgets Pro</b> includes more options to change <b><u>Fonts</u>, <u>Layouts</u>, <u>Visibility</u>, <u>Styles</u> and more</b> for each widget. Additionally, existing widgets have new options for <b><u>Filterable Portfolios</u>, <u>Blog Pagination</u>, <u>Scalable Images</u>, <u>Additional Icons</u>, and much more.</b>', 'organic-widgets' ); ?></p>
+				</div>
 			</div>
 			<div class="img-container">
 				<img src="<?php echo esc_url( ORGANIC_WIDGETS_ADMIN_IMG_DIR . 'widgets-options-collage.png' ); ?>" alt="" />
@@ -225,10 +241,12 @@
 		</div>
 
 		<div class="flex-row">
-			<div class="number"><span>3</span></div>
-			<div class="information">
-				<h4><?php esc_html_e( 'Plugin Compatibility', ORGANIC_WIDGETS_18N ); ?></h4>
-				<p><?php esc_html_e( 'Organic Builder Widgets Pro includes styles and compatibility for widgets from popular plugins like WooCommerce, Gravity Forms, Easy Digital Downloads, and more. Additionally, core WordPress widgets are designed to work with the plugin.', ORGANIC_WIDGETS_18N ); ?></p>
+			<div class="info-container">
+				<div class="number"><span>3</span></div>
+				<div class="information">
+					<h4><?php esc_html_e( 'Plugin Compatibility', 'organic-widgets' ); ?></h4>
+					<p><?php _e( '<b>Builder Widgets Pro</b> includes styles and compatibility for widgets from popular plugins like <b><u>WooCommerce</u></b>, <b><u>Gravity Forms</u></b>, <b><u>Easy Digital Downloads</u></b>, and more. Additionally, core WordPress widgets are designed to work with the plugin.', 'organic-widgets' ); ?></p>
+				</div>
 			</div>
 			<div class="img-container">
 				<img src="<?php echo esc_url( ORGANIC_WIDGETS_ADMIN_IMG_DIR . 'widgets-compatibility-collage.png' ); ?>" alt="" />
@@ -236,14 +254,20 @@
 		</div>
 
 		<div class="flex-row">
-			<div class="number"><span>4</span></div>
-			<div class="information">
-				<h4><?php esc_html_e( 'Awesome Support', ORGANIC_WIDGETS_18N ); ?></h4>
-				<p><?php esc_html_e( 'Organic Themes is a small business of family and friends founded on the island of Maui. We work hard to maintain high quality, personalized support to keep our customers happy and stoked.', ORGANIC_WIDGETS_18N ); ?></p>
+			<div class="info-container">
+				<div class="number"><span>4</span></div>
+				<div class="information">
+					<h4><?php esc_html_e( 'Awesome Support', 'organic-widgets' ); ?></h4>
+					<p><?php esc_html_e( 'Organic Themes is a small business of family and friends founded on the island of Maui. We work hard to maintain high quality, personalized support to keep our customers happy and stoked.', 'organic-widgets' ); ?></p>
+				</div>
 			</div>
 			<div class="img-container">
 				<img src="<?php echo esc_url( ORGANIC_WIDGETS_ADMIN_IMG_DIR . 'widgets-customer-support.png' ); ?>" alt="" />
 			</div>
+		</div>
+
+		<div class="button-holder">
+			<a class="purchase-button large" href="<?php echo esc_url( 'https://organicthemes.com/builder/' ); ?>" target="_blank"><?php esc_html_e( 'Learn More About Builder Widgets Pro', 'organic-widgets' ); ?></a>
 		</div>
 
 	<!-- END .widgets-upgrade-container -->
@@ -253,9 +277,9 @@
 	<div class="options clearfix">
 
 		<div class="feature-heading">
-			<h2><?php esc_html_e( 'Recommended Themes', ORGANIC_WIDGETS_18N ); ?></h2>
-			<p><?php esc_html_e( 'Organic Themes are guaranteed to work seamlessly with Organic Builder Widgets.', ORGANIC_WIDGETS_18N ); ?></p>
-			<p><a class="purchase-button" href="<?php echo esc_url( 'https://organicthemes.com/checkout?edd_action=add_to_cart&download_id=283005/' ); ?>" target="_blank"><?php _e( 'Get Builder Widgets Pro & 40+ Premium Themes! | $99/yr', ORGANIC_WIDGETS_18N ); ?></a></p>
+			<h2 class="admin-headline"><?php esc_html_e( 'Recommended Themes', 'organic-widgets' ); ?></h2>
+			<p class="admin-tagline"><?php _e( '<b>Organic Themes</b> are guaranteed to work seamlessly with the Organic Builder Widgets plugin.', 'organic-widgets' ); ?></p>
+			<p><a class="purchase-button" href="<?php echo esc_url( 'https://organicthemes.com/checkout?edd_action=add_to_cart&download_id=283005/' ); ?>" target="_blank"><?php esc_html_e( 'Get Builder Widgets Pro & 40+ Premium Themes! | $99/yr', 'organic-widgets' ); ?></a></p>
 			<br />
 		</div>
 
@@ -277,12 +301,12 @@
 
 						<div class="theme-id-container">
 
-							<h2 class="theme-name"><?php _e( 'StartUp Theme', ORGANIC_WIDGETS_18N ); ?></h2>
+							<h2 class="theme-name"><?php esc_html_e( 'StartUp Theme', 'organic-widgets' ); ?></h2>
 
 							<div class="theme-actions">
 
-								<a class="button button-primary theme-install" href="<?php echo esc_url( 'https://organicthemes.com/theme/startup-theme/' ); ?>" target="_blank"><?php _e( 'Details' ); ?></a>
-								<a class="button" href="<?php echo esc_url( 'https://organicthemes.com/demo/?demo=startup-theme' ); ?>" target="_blank"><?php _e( 'View Demo' ); ?></a>
+								<a class="button button-primary theme-install" href="<?php echo esc_url( 'https://organicthemes.com/theme/startup-theme/' ); ?>" target="_blank"><?php esc_html_e( 'Details' ); ?></a>
+								<a class="button" href="<?php echo esc_url( 'https://organicthemes.com/demo/startup/' ); ?>" target="_blank"><?php esc_html_e( 'View Demo' ); ?></a>
 
 							</div>
 
@@ -300,12 +324,12 @@
 
 						<div class="theme-id-container">
 
-							<h2 class="theme-name"><?php _e( 'Purpose Theme', ORGANIC_WIDGETS_18N ); ?></h2>
+							<h2 class="theme-name"><?php esc_html_e( 'Purpose Theme', 'organic-widgets' ); ?></h2>
 
 							<div class="theme-actions">
 
-								<a class="button button-primary theme-install" href="<?php echo esc_url( 'https://organicthemes.com/theme/purpose-theme/' ); ?>" target="_blank"><?php _e( 'Details' ); ?></a>
-								<a class="button" href="<?php echo esc_url( 'https://organicthemes.com/demo/?demo=purpose-theme' ); ?>" target="_blank"><?php _e( 'View Demo' ); ?></a>
+								<a class="button button-primary theme-install" href="<?php echo esc_url( 'https://organicthemes.com/theme/purpose-theme/' ); ?>" target="_blank"><?php esc_html_e( 'Details' ); ?></a>
+								<a class="button" href="<?php echo esc_url( 'https://organicthemes.com/demo/purpose-business/' ); ?>" target="_blank"><?php esc_html_e( 'View Demo' ); ?></a>
 
 							</div>
 
@@ -323,12 +347,81 @@
 
 						<div class="theme-id-container">
 
-							<h2 class="theme-name"><?php _e( 'Min Theme', ORGANIC_WIDGETS_18N ); ?></h2>
+							<h2 class="theme-name"><?php esc_html_e( 'Min Theme', 'organic-widgets' ); ?></h2>
 
 							<div class="theme-actions">
 
-								<a class="button button-primary theme-install" href="<?php echo esc_url( 'https://organicthemes.com/theme/min-theme/' ); ?>" target="_blank"><?php _e( 'Details' ); ?></a>
-								<a class="button" href="<?php echo esc_url( 'https://organicthemes.com/demo/?demo=min-theme' ); ?>" target="_blank"><?php _e( 'View Demo' ); ?></a>
+								<a class="button button-primary theme-install" href="<?php echo esc_url( 'https://organicthemes.com/theme/min-theme/' ); ?>" target="_blank"><?php esc_html_e( 'Details' ); ?></a>
+								<a class="button" href="<?php echo esc_url( 'https://organicthemes.com/demo/min/' ); ?>" target="_blank"><?php esc_html_e( 'View Demo' ); ?></a>
+
+							</div>
+
+						</div>
+
+					</div>
+
+					<div class="theme">
+
+						<div class="theme-screenshot">
+
+							<img src="<?php echo esc_url( ORGANIC_WIDGETS_ADMIN_IMG_DIR . 'gamer-screenshot.png' ); ?>" alt="" />
+
+						</div>
+
+						<div class="theme-id-container">
+
+							<h2 class="theme-name"><?php esc_html_e( 'Gamer Theme', 'organic-widgets' ); ?></h2>
+
+							<div class="theme-actions">
+
+								<a class="button button-primary theme-install" href="<?php echo esc_url( 'https://organicthemes.com/theme/gamer-theme/' ); ?>" target="_blank"><?php esc_html_e( 'Details' ); ?></a>
+								<a class="button" href="<?php echo esc_url( 'https://organicthemes.com/demo/gamer/' ); ?>" target="_blank"><?php esc_html_e( 'View Demo' ); ?></a>
+
+							</div>
+
+						</div>
+
+					</div>
+
+					<div class="theme">
+
+						<div class="theme-screenshot">
+
+							<img src="<?php echo esc_url( ORGANIC_WIDGETS_ADMIN_IMG_DIR . 'artisan-screenshot.png' ); ?>" alt="" />
+
+						</div>
+
+						<div class="theme-id-container">
+
+							<h2 class="theme-name"><?php esc_html_e( 'Artisan Theme', 'organic-widgets' ); ?></h2>
+
+							<div class="theme-actions">
+
+								<a class="button button-primary theme-install" href="<?php echo esc_url( 'https://organicthemes.com/theme/artisan-theme/' ); ?>" target="_blank"><?php esc_html_e( 'Details' ); ?></a>
+								<a class="button" href="<?php echo esc_url( 'https://organicthemes.com/demo/artisan/' ); ?>" target="_blank"><?php esc_html_e( 'View Demo' ); ?></a>
+
+							</div>
+
+						</div>
+
+					</div>
+
+					<div class="theme">
+
+						<div class="theme-screenshot">
+
+							<img src="<?php echo esc_url( ORGANIC_WIDGETS_ADMIN_IMG_DIR . 'nonprofit-screenshot.png' ); ?>" alt="" />
+
+						</div>
+
+						<div class="theme-id-container">
+
+							<h2 class="theme-name"><?php esc_html_e( 'NonProfit Theme', 'organic-widgets' ); ?></h2>
+
+							<div class="theme-actions">
+
+								<a class="button button-primary theme-install" href="<?php echo esc_url( 'https://organicthemes.com/theme/non-profit-theme/' ); ?>" target="_blank"><?php esc_html_e( 'Details' ); ?></a>
+								<a class="button" href="<?php echo esc_url( 'https://organicthemes.com/demo/nonprofit/' ); ?>" target="_blank"><?php esc_html_e( 'View Demo' ); ?></a>
 
 							</div>
 
@@ -346,12 +439,12 @@
 
 						<div class="theme-id-container">
 
-							<h2 class="theme-name"><?php _e( 'Swell Lite', ORGANIC_WIDGETS_18N ); ?></h2>
+							<h2 class="theme-name"><?php esc_html_e( 'Swell Lite', 'organic-widgets' ); ?></h2>
 
 							<div class="theme-actions">
 
-								<a class="button button-primary theme-install" href="<?php echo esc_url( admin_url( 'theme-install.php?theme=swell-lite' ) ); ?>" target="_blank"><?php _e( 'Details' ); ?></a>
-								<a class="button" href="<?php echo esc_url( 'https://organicthemes.com/demo/swell/' ); ?>" target="_blank"><?php _e( 'View Demo' ); ?></a>
+								<a class="button button-primary theme-install" href="<?php echo esc_url( admin_url( 'theme-install.php?theme=swell-lite' ) ); ?>" target="_blank"><?php esc_html_e( 'Details' ); ?></a>
+								<a class="button" href="<?php echo esc_url( 'https://organicthemes.com/demo/swell/' ); ?>" target="_blank"><?php esc_html_e( 'View Demo' ); ?></a>
 
 							</div>
 
@@ -369,12 +462,12 @@
 
 						<div class="theme-id-container">
 
-							<h2 class="theme-name"><?php _e( 'Structure Lite', ORGANIC_WIDGETS_18N ); ?></h2>
+							<h2 class="theme-name"><?php esc_html_e( 'Structure Lite', 'organic-widgets' ); ?></h2>
 
 							<div class="theme-actions">
 
-								<a class="button button-primary theme-install" href="<?php echo esc_url( admin_url( 'theme-install.php?theme=structure-lite' ) ); ?>" target="_blank"><?php _e( 'Details' ); ?></a>
-								<a class="button" href="<?php echo esc_url( 'https://organicthemes.com/demo/structure-lite/' ); ?>" target="_blank"><?php _e( 'View Demo' ); ?></a>
+								<a class="button button-primary theme-install" href="<?php echo esc_url( admin_url( 'theme-install.php?theme=structure-lite' ) ); ?>" target="_blank"><?php esc_html_e( 'Details' ); ?></a>
+								<a class="button" href="<?php echo esc_url( 'https://organicthemes.com/demo/structure-lite/' ); ?>" target="_blank"><?php esc_html_e( 'View Demo' ); ?></a>
 
 							</div>
 
@@ -392,12 +485,12 @@
 
 						<div class="theme-id-container">
 
-							<h2 class="theme-name"><?php _e( 'Natural Lite', ORGANIC_WIDGETS_18N ); ?></h2>
+							<h2 class="theme-name"><?php esc_html_e( 'Natural Lite', 'organic-widgets' ); ?></h2>
 
 							<div class="theme-actions">
 
-								<a class="button button-primary theme-install" href="<?php echo esc_url( admin_url( 'theme-install.php?theme=natural-lite' ) ); ?>" target="_blank"><?php _e( 'Details' ); ?></a>
-								<a class="button" href="<?php echo esc_url( 'https://organicthemes.com/demo/natural-lite/' ); ?>" target="_blank"><?php _e( 'View Demo' ); ?></a>
+								<a class="button button-primary theme-install" href="<?php echo esc_url( admin_url( 'theme-install.php?theme=natural-lite' ) ); ?>" target="_blank"><?php esc_html_e( 'Details' ); ?></a>
+								<a class="button" href="<?php echo esc_url( 'https://organicthemes.com/demo/natural-lite/' ); ?>" target="_blank"><?php esc_html_e( 'View Demo' ); ?></a>
 
 							</div>
 

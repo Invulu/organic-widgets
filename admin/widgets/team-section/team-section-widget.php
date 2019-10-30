@@ -22,9 +22,9 @@ class Organic_Widgets_Team_Section_Widget extends Organic_Widgets_Custom_Widget 
 	function __construct() {
 		parent::__construct(
 			'organic_widgets_team_section', // Base ID.
-			__( 'Organic Team Members', ORGANIC_WIDGETS_18N ), // Name.
+			__( 'Organic Team Members', 'organic-widgets' ), // Name.
 			array(
-				'description' => __( 'A section displaying team members.', ORGANIC_WIDGETS_18N ),
+				'description' => __( 'A section displaying team members.', 'organic-widgets' ),
 				'customize_selective_refresh' => true,
 			) // Args.
 		);
@@ -118,9 +118,9 @@ class Organic_Widgets_Team_Section_Widget extends Organic_Widgets_Custom_Widget 
 
 									<h5 class="organic-widgets-member-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
 
-									<?php the_content( esc_html__( 'Learn More', ORGANIC_WIDGETS_18N ) ); ?>
+									<?php the_content( esc_html__( 'Learn More', 'organic-widgets' ) ); ?>
 
-									<?php edit_post_link( esc_html__( '(Edit)', ORGANIC_WIDGETS_18N ), '<p>', '</p>' ); ?>
+									<?php edit_post_link( esc_html__( '(Edit)', 'organic-widgets' ), '<p>', '</p>' ); ?>
 
 								<?php /** END .organic-widgets-card-content */ ?>
 								</div>
@@ -196,7 +196,7 @@ class Organic_Widgets_Team_Section_Widget extends Organic_Widgets_Custom_Widget 
 		<input id="<?php echo $this->get_field_id( 'visual' ); ?>" name="<?php echo $this->get_field_name( 'visual' ); ?>" class="visual" type="hidden" value="on">
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'category' ); ?>"><?php _e('Team Category:', ORGANIC_WIDGETS_18N) ?></label>
+			<label for="<?php echo $this->get_field_id( 'category' ); ?>"><?php _e('Team Category:', 'organic-widgets' ) ?></label>
 			<?php wp_dropdown_categories( array(
 				'selected' => $category,
 				'id' => $this->get_field_id( 'category' ),
@@ -204,11 +204,11 @@ class Organic_Widgets_Team_Section_Widget extends Organic_Widgets_Custom_Widget 
 			)); ?>
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'max_posts' ); ?>"><?php _e('Max Number of Posts:', ORGANIC_WIDGETS_18N) ?></label>
+			<label for="<?php echo $this->get_field_id( 'max_posts' ); ?>"><?php _e('Max Number of Posts:', 'organic-widgets' ) ?></label>
 			<input type="number" min="1" max="16" value="<?php echo $max_posts; ?>" id="<?php echo $this->get_field_id('max_posts'); ?>" name="<?php echo $this->get_field_name('max_posts'); ?>" class="widefat" style="width:100%;"/>
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'num_columns' ); ?>"><?php _e('Number of Columns:', ORGANIC_WIDGETS_18N) ?></label>
+			<label for="<?php echo $this->get_field_id( 'num_columns' ); ?>"><?php _e('Number of Columns:', 'organic-widgets' ) ?></label>
 			<select id="<?php echo $this->get_field_id('num_columns'); ?>" name="<?php echo $this->get_field_name('num_columns'); ?>" class="widefat" style="width:100%;">
 				<option <?php selected( $num_columns, '1'); ?> value="1">1</option>
 				<option <?php selected( $num_columns, '2'); ?> value="2">2</option>
@@ -236,7 +236,7 @@ class Organic_Widgets_Team_Section_Widget extends Organic_Widgets_Custom_Widget 
 
 			<# var elementIdPrefix = 'el' + String( Math.random() ).replace( /\D/g, '' ) + '_' #>
 
-			<p><b><?php _e('Add Custom Content:', ORGANIC_WIDGETS_18N) ?></b></p>
+			<p><b><?php _e('Add Custom Content:', 'organic-widgets' ) ?></b></p>
 
 			<p>
 				<label for="{{ elementIdPrefix }}title"><?php esc_html_e( 'Title:' ); ?></label>
@@ -334,8 +334,8 @@ class Organic_Widgets_Team_Section_Widget extends Organic_Widgets_Custom_Widget 
 
 		wp_enqueue_script( 'organic-widgets-module-image-background', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-image-background.js', array( 'jquery', 'media-upload', 'media-views', 'wp-color-picker' ) );
 		wp_localize_script( 'organic-widgets-module-image-background', 'OrganicWidgetBG', array(
-			'frame_title' => __( 'Select an Image', ORGANIC_WIDGETS_18N ),
-			'button_title' => __( 'Insert Into Widget', ORGANIC_WIDGETS_18N ),
+			'frame_title' => __( 'Select an Image', 'organic-widgets' ),
+			'button_title' => __( 'Insert Into Widget', 'organic-widgets' ),
 		) );
 
 	}

@@ -6,8 +6,9 @@
  */
 
 // Block direct requests.
-if ( ! defined( 'ABSPATH' ) )
+if ( ! defined( 'ABSPATH' ) ) {
 	die( '-1' );
+}
 
 
 /**
@@ -23,9 +24,9 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 	function __construct() {
 		parent::__construct(
 			'organic_widgets_blog_posts_section', // Base ID.
-			__( 'Organic Blog Posts', ORGANIC_WIDGETS_18N ), // Name.
+			__( 'Organic Blog Posts', 'organic-widgets' ), // Name.
 			array(
-				'description' => __( 'A section displaying recent blog posts.', ORGANIC_WIDGETS_18N ),
+				'description'                 => __( 'A section displaying recent blog posts.', 'organic-widgets' ),
 				'customize_selective_refresh' => true,
 			) // Args.
 		);
@@ -58,21 +59,29 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 	 */
 	public function widget( $args, $instance ) {
 
-		$attr = array();
-		$attr = apply_filters( 'image_widget_image_attributes', $attr, $instance );
+		$attr        = array();
+		$attr        = apply_filters( 'image_widget_image_attributes', $attr, $instance );
 		$bg_image_id = isset( $instance['bg_image_id'] ) ? $instance['bg_image_id'] : false;
-		$bg_image = ( isset( $instance['bg_image'] ) && '' != $instance['bg_image'] ) ? $instance['bg_image'] : false;
-		$bg_color = ( isset( $instance['bg_color'] ) && '' != $instance['bg_color'] ) ? $instance['bg_color'] : false;
-		$category = ( isset( $instance['category'] ) ) ? $instance['category'] : 0;
+		$bg_image    = ( isset( $instance['bg_image'] ) && '' != $instance['bg_image'] ) ? $instance['bg_image'] : false;
+		$bg_color    = ( isset( $instance['bg_color'] ) && '' != $instance['bg_color'] ) ? $instance['bg_color'] : false;
+		$category    = ( isset( $instance['category'] ) ) ? $instance['category'] : 0;
 		$num_columns = ( isset( $instance['num_columns'] ) ) ? $instance['num_columns'] : 1;
-		$max_posts = ( isset( $instance['max_posts'] ) ) ? $instance['max_posts'] : 3;
+		$max_posts   = ( isset( $instance['max_posts'] ) ) ? $instance['max_posts'] : 3;
 
 		echo $args['before_widget'];
 
 		?>
 
 		<?php /** BEGIN .organic-widgets-section */ ?>
-		<div class="organic-widgets-section organic-widgets-blog-posts-section" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
+		<div class="organic-widgets-section organic-widgets-blog-posts-section"
+		<?php
+		if ( 0 < $bg_image_id ) {
+			?>
+			style="background-image:url(<?php echo $bg_image; ?>);"
+			<?php
+		} elseif ( $bg_color ) {
+			?>
+			style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
 
 			<?php /** BEGIN .organic-widgets-content */ ?>
 			<div class="organic-widgets-content">
@@ -85,21 +94,32 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 				<div class="organic-widgets-text"><?php echo apply_filters( 'the_content', $instance['text'] ); ?></div>
 			<?php } ?>
 
-			<?php $wp_query = new WP_Query( array(
-				'posts_per_page' => $max_posts,
-				'post_type' => 'post',
-				'suppress_filters' => 0,
-				'cat' => $category,
-			) ); ?>
+			<?php
+			$wp_query = new WP_Query(
+				array(
+					'posts_per_page'   => $max_posts,
+					'post_type'        => 'post',
+					'suppress_filters' => 0,
+					'cat'              => $category,
+				)
+			);
+			?>
 
 			<?php if ( $wp_query->have_posts() ) : ?>
 
 				<?php /** BEGIN .organic-widgets-row */ ?>
 				<div class="organic-widgets-blog-posts-holder organic-widgets-post-holder organic-widgets-row organic-widgets-masonry-container">
 
-					<?php while ( $wp_query->have_posts() ) : $wp_query->the_post(); ?>
+					<?php
+					while ( $wp_query->have_posts() ) :
+						$wp_query->the_post();
+						?>
 
-					<?php $thumb = ( '' != get_the_post_thumbnail() ) ? wp_get_attachment_image_src( get_post_thumbnail_id(), 'large' ) : false; ?>
+					<?php if ( '2' >= $num_columns ) { ?>
+						<?php $thumb = ( '' !== get_the_post_thumbnail() ) ? wp_get_attachment_image_src( get_post_thumbnail_id(), 'large' ) : false; ?>
+					<?php } else { ?>
+						<?php $thumb = ( '' !== get_the_post_thumbnail() ) ? wp_get_attachment_image_src( get_post_thumbnail_id(), 'medium_large' ) : false; ?>
+					<?php } ?>
 
 					<?php /** BEGIN .organic-widgets-masonry-wrapper */ ?>
 					<div class="organic-widgets-masonry-wrapper organic-widgets-column organic-widgets-<?php echo $this->column_string( $num_columns ); ?>">
@@ -111,7 +131,7 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 
 								<?php if ( has_post_thumbnail() ) { ?>
 									<a class="organic-widgets-featured-img" href="<?php the_permalink(); ?>" style="background-image: url(<?php echo esc_url( $thumb[0] ); ?>);">
-										<span class="organic-widgets-hide-img"><?php the_post_thumbnail(); ?></span>
+										<span class="organic-widgets-hide-img"><?php the_post_thumbnail( 'medium_large' ); ?></span>
 									</a>
 								<?php } ?>
 
@@ -123,17 +143,17 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 									<?php /** BEGIN .organic-widgets-post-meta */ ?>
 									<div class="organic-widgets-post-meta">
 										<p class="organic-widgets-post-date">
-											<?php echo get_the_modified_date(); ?>
+											<?php echo esc_html( get_the_modified_date() ); ?>
 										</p>
 										<p class="organic-widgets-post-author">
-											<?php esc_html_e( 'By ', ORGANIC_WIDGETS_18N ); ?><?php esc_url( the_author_posts_link() ); ?>
+											<?php esc_html_e( 'By ', 'organic-widgets' ); ?><?php esc_url( the_author_posts_link() ); ?>
 										</p>
 									<?php /** END .organic-widgets-post-meta */ ?>
 									</div>
 
 									<?php the_excerpt(); ?>
 
-									<?php edit_post_link( esc_html__( '(Edit)', ORGANIC_WIDGETS_18N ), '<p>', '</p>' ); ?>
+									<?php edit_post_link( esc_html__( '(Edit)', 'organic-widgets' ), '<p>', '</p>' ); ?>
 
 								<?php /** END .organic-widgets-card-content */ ?>
 								</div>
@@ -143,7 +163,7 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 
 						</article>
 
-					<?php /** END .organic-widgets-masonry-wrapper */ ?>
+						<?php /** END .organic-widgets-masonry-wrapper */ ?>
 					</div>
 
 					<?php endwhile; ?>
@@ -172,37 +192,43 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 	 * @see WP_Widget::form()
 	 *
 	 * @param array $instance Previously saved values from database.
-	*/
+	 */
 	public function form( $instance ) {
 
 		$instance = wp_parse_args(
 			(array) $instance,
 			array(
 				'title' => '',
-				'text' => '',
+				'text'  => '',
 			)
 		);
 
 		// Setup Variables.
-		$this->id_prefix = $this->get_field_id('');
+		$this->id_prefix = $this->get_field_id( '' );
 		if ( isset( $instance['category'] ) ) {
 			$category = $instance['category'];
-		} else { $category = 0; }
+		} else {
+			$category = 0; }
 		if ( isset( $instance['num_columns'] ) ) {
 			$num_columns = $instance['num_columns'];
-		} else { $num_columns = 1; }
+		} else {
+			$num_columns = 1; }
 		if ( isset( $instance['max_posts'] ) ) {
 			$max_posts = $instance['max_posts'];
-		} else { $max_posts = 3; }
+		} else {
+			$max_posts = 3; }
 		if ( isset( $instance['bg_color'] ) ) {
 			$bg_color = $instance['bg_color'];
-		} else { $bg_color = false; }
+		} else {
+			$bg_color = false; }
 		if ( isset( $instance['bg_image_id'] ) ) {
 			$bg_image_id = $instance['bg_image_id'];
-		} else { $bg_image_id = 0; }
+		} else {
+			$bg_image_id = 0; }
 		if ( isset( $instance['bg_image_id'] ) && isset( $instance['bg_image'] ) ) {
 			$bg_image = $instance['bg_image'];
-		} else { $bg_image = false; }
+		} else {
+			$bg_image = false; }
 
 		?>
 
@@ -212,20 +238,24 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 		<input id="<?php echo $this->get_field_id( 'visual' ); ?>" name="<?php echo $this->get_field_name( 'visual' ); ?>" class="visual" type="hidden" value="on">
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'category' ); ?>"><?php _e('Post Category:', ORGANIC_WIDGETS_18N) ?></label>
-			<?php wp_dropdown_categories( array(
-				'show_option_all' => __( 'All Categories' ),
-				'selected' => $category,
-				'id' => $this->get_field_id( 'category' ),
-				'name' => $this->get_field_name( 'category' )
-			)); ?>
+			<label for="<?php echo $this->get_field_id( 'category' ); ?>"><?php _e( 'Post Category:', 'organic-widgets' ); ?></label>
+			<?php
+			wp_dropdown_categories(
+				array(
+					'show_option_all' => __( 'All Categories' ),
+					'selected'        => $category,
+					'id'              => $this->get_field_id( 'category' ),
+					'name'            => $this->get_field_name( 'category' ),
+				)
+			);
+			?>
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'max_posts' ); ?>"><?php _e('Max Number of Posts:', ORGANIC_WIDGETS_18N) ?></label>
-			<input type="number" min="1" max="16" value="<?php echo $max_posts; ?>" id="<?php echo $this->get_field_id('max_posts'); ?>" name="<?php echo $this->get_field_name('max_posts'); ?>" class="widefat" style="width:100%;"/>
+			<label for="<?php echo $this->get_field_id( 'max_posts' ); ?>"><?php _e( 'Max Number of Posts:', 'organic-widgets' ); ?></label>
+			<input type="number" min="1" max="16" value="<?php echo $max_posts; ?>" id="<?php echo $this->get_field_id( 'max_posts' ); ?>" name="<?php echo $this->get_field_name( 'max_posts' ); ?>" class="widefat" style="width:100%;"/>
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'num_columns' ); ?>"><?php _e('Number of Columns:', ORGANIC_WIDGETS_18N) ?></label>
+			<label for="<?php echo $this->get_field_id( 'num_columns' ); ?>"><?php _e( 'Number of Columns:', 'organic-widgets' ); ?></label>
 			<select id="<?php echo $this->get_field_id( 'num_columns' ); ?>" name="<?php echo $this->get_field_name( 'num_columns' ); ?>" class="widefat" style="width:100%;">
 				<option <?php selected( $num_columns, '1' ); ?> value="1">1</option>
 				<option <?php selected( $num_columns, '2' ); ?> value="2">2</option>
@@ -278,10 +308,12 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 		$instance = $old_instance;
 
 		/*--- Text/Title ----*/
-		if ( ! isset( $newinstance['filter'] ) )
+		if ( ! isset( $newinstance['filter'] ) ) {
 			$instance['filter'] = false;
-		if ( ! isset( $newinstance['visual'] ) )
+		}
+		if ( ! isset( $newinstance['visual'] ) ) {
 			$instance['visual'] = null;
+		}
 		// Upgrade 4.8.0 format.
 		if ( isset( $old_instance['filter'] ) && 'content' === $old_instance['filter'] ) {
 			$instance['visual'] = true;
@@ -298,30 +330,36 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 		}
 		if ( current_user_can( 'unfiltered_html' ) ) {
 			$instance['title'] = $new_instance['title'];
-			$instance['text'] = $new_instance['text'];
+			$instance['text']  = $new_instance['text'];
 		} else {
 			$instance['title'] = wp_kses_post( $new_instance['title'] );
-			$instance['text'] = wp_kses_post( $new_instance['text'] );
+			$instance['text']  = wp_kses_post( $new_instance['text'] );
 		}
 		/*--- END Text/Title ----*/
 
-		if ( ! isset( $old_instance['created'] ) )
+		if ( ! isset( $old_instance['created'] ) ) {
 			$instance['created'] = time();
-		if (isset( $new_instance['bg_image_id'] ) )
+		}
+		if ( isset( $new_instance['bg_image_id'] ) ) {
 			$instance['bg_image_id'] = strip_tags( $new_instance['bg_image_id'] );
-		if (isset( $new_instance['bg_image'] ) )
+		}
+		if ( isset( $new_instance['bg_image'] ) ) {
 			$instance['bg_image'] = strip_tags( $new_instance['bg_image'] );
+		}
 		if ( isset( $new_instance['bg_color'] ) && $this->check_hex_color( $new_instance['bg_color'] ) ) {
 			$instance['bg_color'] = strip_tags( $new_instance['bg_color'] );
 		} else {
 			$instance['bg_color'] = false;
 		}
-		if ( isset( $new_instance['category'] ) )
+		if ( isset( $new_instance['category'] ) ) {
 			$instance['category'] = strip_tags( $new_instance['category'] );
-		if ( isset( $new_instance['num_columns'] ) )
+		}
+		if ( isset( $new_instance['num_columns'] ) ) {
 			$instance['num_columns'] = strip_tags( $new_instance['num_columns'] );
-		if ( isset( $new_instance['max_posts'] ) )
+		}
+		if ( isset( $new_instance['max_posts'] ) ) {
 			$instance['max_posts'] = strip_tags( $new_instance['max_posts'] );
+		}
 
 		return $instance;
 	}
@@ -334,9 +372,13 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 		// Text Editor.
 		wp_enqueue_editor();
 		wp_enqueue_script( 'organic-widgets-blog-posts-section-text-title', plugin_dir_url( __FILE__ ) . 'js/blog-posts-section-widgets.js', array( 'jquery' ) );
-		wp_localize_script( 'organic-widgets-blog-posts-section-text-title', 'OrganicBlogPostsSectionWidget', array(
-			'id_base' => $this->id_base,
-		) );
+		wp_localize_script(
+			'organic-widgets-blog-posts-section-text-title',
+			'OrganicBlogPostsSectionWidget',
+			array(
+				'id_base' => $this->id_base,
+			)
+		);
 		wp_add_inline_script( 'organic-widgets-blog-posts-section-text-title', 'wp.organicBlogPostsSectionWidget.init();', 'after' );
 
 		wp_enqueue_media();
@@ -346,10 +388,14 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 		wp_enqueue_script( 'organic-widgets-module-color-picker', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-color-picker.js', array( 'jquery', 'wp-color-picker' ) );
 
 		wp_enqueue_script( 'organic-widgets-module-image-background', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-image-background.js', array( 'jquery', 'media-upload', 'media-views', 'wp-color-picker' ) );
-		wp_localize_script( 'organic-widgets-module-image-background', 'OrganicWidgetBG', array(
-			'frame_title' => __( 'Select an Image', ORGANIC_WIDGETS_18N ),
-			'button_title' => __( 'Insert Into Widget', ORGANIC_WIDGETS_18N ),
-		) );
+		wp_localize_script(
+			'organic-widgets-module-image-background',
+			'OrganicWidgetBG',
+			array(
+				'frame_title'  => __( 'Select an Image', 'organic-widgets' ),
+				'button_title' => __( 'Insert Into Widget', 'organic-widgets' ),
+			)
+		);
 
 	}
 

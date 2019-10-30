@@ -260,14 +260,43 @@ input.organic-widgets-input-range::-moz-focus-outer {
 }
 .widgets-upgrade {
 	margin: 24px 0px;
+	padding-bottom: 24px;
+	border-bottom: 2px solid rgba(0, 0, 0, 0.12);
+}
+.widgets-upgrade .purchase-button.large {
+  margin-bottom: 36px;
+  padding: 24px 48px;
+  font-size: 140%;
+}
+.widgets-upgrade .button-holder {
+  text-align: center;
 }
 .widgets-upgrade .img-container img {
 	max-width: 100%;
 }
+.widgets-upgrade .info-container {
+  text-align: center;
+  padding: 24px;
+}
 .widgets-upgrade .information {
 	width: 100%;
-	padding: 48px;
+	padding: 0px;
 	box-sizing: border-box;
+}
+.widgets-upgrade .information ul {
+  display: inline-block;
+  text-align: left;
+  margin: 0px auto;
+  padding: 0px 24px;
+  box-sizing: border-box;
+}
+.widgets-upgrade .information ul li {
+  margin: 12px 0px;
+}
+.widgets-upgrade .information ul li .fa {
+  font-size: 18px;
+  width: 20px;
+  margin-right: 4px;
 }
 .widgets-upgrade .information h4 {
 	font-size: 1.8em;
@@ -282,18 +311,25 @@ input.organic-widgets-input-range::-moz-focus-outer {
 	position: relative;
 	z-index: 4;
 }
+.widgets-upgrade .flex-row:nth-child(2),
+.widgets-upgrade .flex-row:nth-child(4) {
+  flex-direction: row-reverse;
+}
 .widgets-upgrade .flex-row .number {
 	display: block;
-	font-size: 2.4em;
+	font-size: 2.8em;
 	max-width: 120px;
+  margin: 0px auto;
 }
 .widgets-upgrade .flex-row .number span {
 	display: inline-block;
+  background: #9ece42;
+  color: #ffffff;
+  font-weight: 800;
 	height: 80px;
 	width: 80px;
 	text-align: center;
 	line-height: 80px;
-	margin-left: 24px;
 	border: 2px solid rgba(0, 0, 0, 0.12);
 	border-radius: 50%;
 }

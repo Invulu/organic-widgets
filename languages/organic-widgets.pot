@@ -3,14 +3,14 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: Organic Builder Widgets\n"
-"POT-Creation-Date: 2019-02-01 10:38-0500\n"
-"PO-Revision-Date: 2019-02-01 10:38-0500\n"
+"POT-Creation-Date: 2019-10-21 15:03-0400\n"
+"PO-Revision-Date: 2019-10-21 15:02-0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.2.4\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: organic-widgets.php\n"
@@ -19,7 +19,12 @@ msgstr ""
 "esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
 "_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "X-Poedit-SearchPath-0: .\n"
-"X-Poedit-SearchPathExcluded-0: *.js\n"
+"X-Poedit-SearchPathExcluded-0: *.min.js\n"
+
+#: admin/blocks/class-organic-widgets-blocks.php:128
+msgid ""
+"Add widgets here to appear in your sidebar on blog posts and archive pages."
+msgstr ""
 
 #: admin/class-organic-admin-notices.php:32
 #, php-format
@@ -39,11 +44,33 @@ msgstr ""
 #: admin/class-organic-admin-notices.php:34
 #, php-format
 msgid ""
-"<button class=\"button button-primary\" href=\"%1$s\" target=\"_blank"
-"\">Leave 5-Star Rating!</button>"
+"<a class=\"button button-primary\" href=\"%1$s\" target=\"_blank\">Leave 5-"
+"Star Rating!</a>"
+msgstr ""
+
+#: admin/class-organic-admin-notices.php:60
+#, php-format
+msgid ""
+"Save 20&#37; on <a href=\"%1$s\" target=\"_blank\">Builder Widgets Pro</a> "
+"by upgrading today!"
+msgstr ""
+
+#: admin/class-organic-admin-notices.php:61
+#, php-format
+msgid ""
+"Create amazing custom page designs with more widgets, options, and support! "
+"Use the discount code <strong>BUILDERUP</strong> to save 20&#37; when <a "
+"href=\"%1$s\" target=\"_blank\">purchasing</a> from Organic Themes!"
 msgstr ""
 
 #: admin/class-organic-admin-notices.php:62
+#, php-format
+msgid ""
+"<a class=\"button button-primary\" href=\"%1$s\" target=\"_blank\">Get "
+"Builder Widgets Pro!</a>"
+msgstr ""
+
+#: admin/class-organic-admin-notices.php:90
 #, php-format
 msgid ""
 "Sweet! You've been using <a href=\"%1$s\" target=\"_blank\">Organic Builder "
@@ -52,28 +79,28 @@ msgid ""
 "support!"
 msgstr ""
 
-#: admin/class-organic-admin-notices.php:63
+#: admin/class-organic-admin-notices.php:91
 #, php-format
 msgid ""
 "<button class=\"button button-primary\" href=\"%1$s\" target=\"_blank"
 "\">Upgrade To Pro</button>"
 msgstr ""
 
-#: admin/class-organic-admin-notices.php:117
+#: admin/class-organic-admin-notices.php:147
 #, php-format
 msgid ""
 "Whoa! You've been using <a href=\"%1$s\" target=\"_blank\">Organic Builder "
 "Widgets</a> for a whole month!"
 msgstr ""
 
-#: admin/class-organic-admin-notices.php:118
+#: admin/class-organic-admin-notices.php:148
 msgid ""
 "We're just a couple dudes trying to make the web a better place. Please take "
 "a moment to show your appreciation by liking and subscribing! Your support "
 "is greatly appreciated!"
 msgstr ""
 
-#: admin/class-organic-admin-notices.php:143
+#: admin/class-organic-admin-notices.php:173
 msgid "Get 36+ Premium Themes! | $99/yr"
 msgstr ""
 
@@ -82,11 +109,43 @@ msgstr ""
 msgid "Organic Builder Widgets"
 msgstr ""
 
-#: admin/partials/organic-widgets-welcome-page.php:99
+#: admin/partials/organic-widgets-welcome-page.php:119
+msgid "Upgrade To Pro"
+msgstr ""
+
+#: admin/partials/organic-widgets-welcome-page.php:120
+msgid "Buy Organic Builder Widgets Pro for additional widgets and options!"
+msgstr ""
+
+#: admin/partials/organic-widgets-welcome-page.php:134
+msgid "Getting Started"
+msgstr ""
+
+#: admin/partials/organic-widgets-welcome-page.php:135
+msgid "Review our guide to using the simple Organic Builder Widgets plugin."
+msgstr ""
+
+#: admin/partials/organic-widgets-welcome-page.php:146
+msgid "Support Questions"
+msgstr ""
+
+#: admin/partials/organic-widgets-welcome-page.php:147
+msgid "Have a question or need some help? Get support from Organic Themes."
+msgstr ""
+
+#: admin/partials/organic-widgets-welcome-page.php:158
+msgid "Leave A Review"
+msgstr ""
+
+#: admin/partials/organic-widgets-welcome-page.php:159
+msgid "Love the plugin? Take a moment to leave us a review. It really helps."
+msgstr ""
+
+#: admin/partials/organic-widgets-welcome-page.php:166
 msgid "Aloha "
 msgstr ""
 
-#: admin/partials/organic-widgets-welcome-page.php:99
+#: admin/partials/organic-widgets-welcome-page.php:166
 #, php-format
 msgid ""
 ", you're moments away from creating awesome dynamic content on any page of "
@@ -96,206 +155,253 @@ msgid ""
 "adding widgets to the page."
 msgstr ""
 
-#: admin/partials/organic-widgets-welcome-page.php:101
+#: admin/partials/organic-widgets-welcome-page.php:168
 #, php-format
 msgid ""
 "Enter your email to receive important updates and information from <a href="
 "\"%1$s\" target=\"_blank\">Organic Themes</a>."
 msgstr ""
 
-#: admin/partials/organic-widgets-welcome-page.php:141
-msgid "Upgrade To Pro"
+#: admin/partials/organic-widgets-welcome-page.php:191
+msgid "4 BIG Reasons To Upgrade"
 msgstr ""
 
-#: admin/partials/organic-widgets-welcome-page.php:142
-msgid "Buy Organic Builder Widgets Pro for additional widgets and options!"
-msgstr ""
-
-#: admin/partials/organic-widgets-welcome-page.php:156
-msgid "Getting Started"
-msgstr ""
-
-#: admin/partials/organic-widgets-welcome-page.php:157
-msgid "Review our guide to using the simple Organic Builder Widgets plugin."
-msgstr ""
-
-#: admin/partials/organic-widgets-welcome-page.php:168
-msgid "Support Questions"
-msgstr ""
-
-#: admin/partials/organic-widgets-welcome-page.php:169
-msgid "Have a question or need some help? Get support from Organic Themes."
-msgstr ""
-
-#: admin/partials/organic-widgets-welcome-page.php:180
-msgid "Leave A Review"
-msgstr ""
-
-#: admin/partials/organic-widgets-welcome-page.php:181
-msgid "Love the plugin? Take a moment to leave us a review. It really helps."
-msgstr ""
-
-#: admin/partials/organic-widgets-welcome-page.php:195
-msgid "Recommended Themes"
-msgstr ""
-
-#: admin/partials/organic-widgets-welcome-page.php:196
+#: admin/partials/organic-widgets-welcome-page.php:192
 msgid ""
-"These themes are guaranteed to work seamlessly with Organic Builder Widgets."
+"Consider the following reasons for upgrading to Organic Builder Widgets Pro."
+msgstr ""
+
+#: admin/partials/organic-widgets-welcome-page.php:193
+msgid "Get Builder Widgets Pro! | Only $39/yr"
+msgstr ""
+
+#: admin/partials/organic-widgets-welcome-page.php:204
+msgid "More Widgets"
+msgstr ""
+
+#: admin/partials/organic-widgets-welcome-page.php:205
+msgid ""
+"In addition to the 12 free widgets, Organic Builder Widgets Pro includes 4 "
+"new premium widgets. View examples of the premium widgets:"
+msgstr ""
+
+#: admin/partials/organic-widgets-welcome-page.php:206
+msgid "Events Widget →"
+msgstr ""
+
+#: admin/partials/organic-widgets-welcome-page.php:207
+msgid "Business Info Widget →"
+msgstr ""
+
+#: admin/partials/organic-widgets-welcome-page.php:208
+msgid "Image Slideshow Widget →"
+msgstr ""
+
+#: admin/partials/organic-widgets-welcome-page.php:209
+msgid "Split Content Widget →"
 msgstr ""
 
 #: admin/partials/organic-widgets-welcome-page.php:219
-msgid "StartUp Theme"
+msgid "More Options"
 msgstr ""
 
-#: admin/partials/organic-widgets-welcome-page.php:223
-#: admin/partials/organic-widgets-welcome-page.php:246
-#: admin/partials/organic-widgets-welcome-page.php:269
-#: admin/partials/organic-widgets-welcome-page.php:292
-#: admin/partials/organic-widgets-welcome-page.php:315
-#: admin/partials/organic-widgets-welcome-page.php:338
-msgid "Details"
+#: admin/partials/organic-widgets-welcome-page.php:220
+msgid ""
+"The Pro Version includes options to change Fonts, Layouts, Visibility, and "
+"more for each widget. Additionally, existing widgets have new options for "
+"Filterable Portfolios, Blog Pagination, Scalable Images, Additional Icons, "
+"and much more."
 msgstr ""
 
-#: admin/partials/organic-widgets-welcome-page.php:224
-#: admin/partials/organic-widgets-welcome-page.php:247
-#: admin/partials/organic-widgets-welcome-page.php:270
-#: admin/partials/organic-widgets-welcome-page.php:293
-#: admin/partials/organic-widgets-welcome-page.php:316
-#: admin/partials/organic-widgets-welcome-page.php:339
-msgid "View Demo"
+#: admin/partials/organic-widgets-welcome-page.php:230
+msgid "Plugin Compatibility"
+msgstr ""
+
+#: admin/partials/organic-widgets-welcome-page.php:231
+msgid ""
+"Organic Builder Widgets Pro includes styles and compatibility for widgets "
+"from popular plugins like WooCommerce, Gravity Forms, Easy Digital "
+"Downloads, and more. Additionally, core WordPress widgets are designed to "
+"work with the plugin."
+msgstr ""
+
+#: admin/partials/organic-widgets-welcome-page.php:241
+msgid "Awesome Support"
 msgstr ""
 
 #: admin/partials/organic-widgets-welcome-page.php:242
+msgid ""
+"Organic Themes is a small business of family and friends founded on the "
+"island of Maui. We work hard to maintain high quality, personalized support "
+"to keep our customers happy and stoked."
+msgstr ""
+
+#: admin/partials/organic-widgets-welcome-page.php:256
+msgid "Recommended Themes"
+msgstr ""
+
+#: admin/partials/organic-widgets-welcome-page.php:257
+msgid ""
+"Organic Themes are guaranteed to work seamlessly with Organic Builder "
+"Widgets."
+msgstr ""
+
+#: admin/partials/organic-widgets-welcome-page.php:258
+msgid "Get Builder Widgets Pro & 40+ Premium Themes! | $99/yr"
+msgstr ""
+
+#: admin/partials/organic-widgets-welcome-page.php:280
+msgid "StartUp Theme"
+msgstr ""
+
+#: admin/partials/organic-widgets-welcome-page.php:284
+#: admin/partials/organic-widgets-welcome-page.php:307
+#: admin/partials/organic-widgets-welcome-page.php:330
+#: admin/partials/organic-widgets-welcome-page.php:353
+#: admin/partials/organic-widgets-welcome-page.php:376
+#: admin/partials/organic-widgets-welcome-page.php:399
+msgid "Details"
+msgstr ""
+
+#: admin/partials/organic-widgets-welcome-page.php:285
+#: admin/partials/organic-widgets-welcome-page.php:308
+#: admin/partials/organic-widgets-welcome-page.php:331
+#: admin/partials/organic-widgets-welcome-page.php:354
+#: admin/partials/organic-widgets-welcome-page.php:377
+#: admin/partials/organic-widgets-welcome-page.php:400
+msgid "View Demo"
+msgstr ""
+
+#: admin/partials/organic-widgets-welcome-page.php:303
 msgid "Purpose Theme"
 msgstr ""
 
-#: admin/partials/organic-widgets-welcome-page.php:265
+#: admin/partials/organic-widgets-welcome-page.php:326
 msgid "Min Theme"
 msgstr ""
 
-#: admin/partials/organic-widgets-welcome-page.php:288
+#: admin/partials/organic-widgets-welcome-page.php:349
 msgid "Swell Lite"
 msgstr ""
 
-#: admin/partials/organic-widgets-welcome-page.php:311
+#: admin/partials/organic-widgets-welcome-page.php:372
 msgid "Structure Lite"
 msgstr ""
 
-#: admin/partials/organic-widgets-welcome-page.php:334
+#: admin/partials/organic-widgets-welcome-page.php:395
 msgid "Natural Lite"
 msgstr ""
 
-#: admin/templates/organic-custom-template.php:35
+#: admin/templates/organic-custom-template.php:39
 #, php-format
 msgid ""
 "This page has the \"Organic Custom\" page template applied. Begin <a href="
 "\"%1$s\">Adding Widgets</a> to the page within the WordPress Customizer."
 msgstr ""
 
-#: admin/widgets/blog-posts-section/blog-posts-section-widget.php:22
+#: admin/widgets/blog-posts-section/blog-posts-section-widget.php:27
 msgid "Organic Blog Posts"
 msgstr ""
 
-#: admin/widgets/blog-posts-section/blog-posts-section-widget.php:24
+#: admin/widgets/blog-posts-section/blog-posts-section-widget.php:29
 msgid "A section displaying recent blog posts."
 msgstr ""
 
-#: admin/widgets/blog-posts-section/blog-posts-section-widget.php:125
-#: admin/widgets/content-slideshow-section/content-slideshow-section-widget.php:123
+#: admin/widgets/blog-posts-section/blog-posts-section-widget.php:149
+#: admin/widgets/content-slideshow-section/content-slideshow-section-widget.php:131
 msgid "By "
 msgstr ""
 
-#: admin/widgets/blog-posts-section/blog-posts-section-widget.php:132
-#: admin/widgets/content-slideshow-section/content-slideshow-section-widget.php:133
-#: admin/widgets/featured-content/featured-content-widget.php:102
-#: admin/widgets/team-section/team-section-widget.php:117
+#: admin/widgets/blog-posts-section/blog-posts-section-widget.php:156
+#: admin/widgets/content-slideshow-section/content-slideshow-section-widget.php:141
+#: admin/widgets/featured-content/featured-content-widget.php:104
+#: admin/widgets/team-section/team-section-widget.php:123
 msgid "(Edit)"
 msgstr ""
 
-#: admin/widgets/blog-posts-section/blog-posts-section-widget.php:211
-#: admin/widgets/content-slideshow-section/content-slideshow-section-widget.php:212
+#: admin/widgets/blog-posts-section/blog-posts-section-widget.php:241
+#: admin/widgets/content-slideshow-section/content-slideshow-section-widget.php:217
 msgid "Post Category:"
 msgstr ""
 
-#: admin/widgets/blog-posts-section/blog-posts-section-widget.php:213
+#: admin/widgets/blog-posts-section/blog-posts-section-widget.php:245
 msgid "All Categories"
 msgstr ""
 
-#: admin/widgets/blog-posts-section/blog-posts-section-widget.php:220
-#: admin/widgets/content-slideshow-section/content-slideshow-section-widget.php:252
-#: admin/widgets/portfolio-section/portfolio-section-widget.php:209
-#: admin/widgets/team-section/team-section-widget.php:203
-#: admin/widgets/testimonial-section/testimonial-section-widget.php:245
+#: admin/widgets/blog-posts-section/blog-posts-section-widget.php:254
+#: admin/widgets/content-slideshow-section/content-slideshow-section-widget.php:257
+#: admin/widgets/portfolio-section/portfolio-section-widget.php:216
+#: admin/widgets/team-section/team-section-widget.php:207
+#: admin/widgets/testimonial-section/testimonial-section-widget.php:248
 msgid "Max Number of Posts:"
 msgstr ""
 
-#: admin/widgets/blog-posts-section/blog-posts-section-widget.php:224
-#: admin/widgets/feature-list-section/feature-list-section-widget.php:223
-#: admin/widgets/portfolio-section/portfolio-section-widget.php:214
-#: admin/widgets/team-section/team-section-widget.php:207
+#: admin/widgets/blog-posts-section/blog-posts-section-widget.php:258
+#: admin/widgets/feature-list-section/feature-list-section-widget.php:238
+#: admin/widgets/portfolio-section/portfolio-section-widget.php:221
+#: admin/widgets/team-section/team-section-widget.php:211
 msgid "Number of Columns:"
 msgstr ""
 
-#: admin/widgets/blog-posts-section/blog-posts-section-widget.php:251
-#: admin/widgets/feature-list-section/feature-list-section-widget.php:258
-#: admin/widgets/featured-content/featured-content-widget.php:265
-#: admin/widgets/featured-product-section/featured-product-section-widget.php:317
-#: admin/widgets/hero-section/hero-section-widget.php:301
-#: admin/widgets/pricing-table/pricing-table-widget.php:281
-#: admin/widgets/profile-section/profile-widget.php:267
-#: admin/widgets/team-section/team-section-widget.php:238
-#: admin/widgets/testimonial-section/testimonial-section-widget.php:278
+#: admin/widgets/blog-posts-section/blog-posts-section-widget.php:285
+#: admin/widgets/feature-list-section/feature-list-section-widget.php:277
+#: admin/widgets/featured-content/featured-content-widget.php:267
+#: admin/widgets/featured-product-section/featured-product-section-widget.php:321
+#: admin/widgets/hero-section/hero-section-widget.php:305
+#: admin/widgets/pricing-table/pricing-table-widget.php:292
+#: admin/widgets/profile-section/profile-widget.php:278
+#: admin/widgets/team-section/team-section-widget.php:242
+#: admin/widgets/testimonial-section/testimonial-section-widget.php:281
 msgid "Title:"
 msgstr ""
 
-#: admin/widgets/blog-posts-section/blog-posts-section-widget.php:255
-#: admin/widgets/feature-list-section/feature-list-section-widget.php:262
-#: admin/widgets/featured-content/featured-content-widget.php:269
-#: admin/widgets/featured-product-section/featured-product-section-widget.php:321
-#: admin/widgets/hero-section/hero-section-widget.php:305
-#: admin/widgets/pricing-table/pricing-table-widget.php:285
-#: admin/widgets/profile-section/profile-widget.php:271
-#: admin/widgets/team-section/team-section-widget.php:242
-#: admin/widgets/testimonial-section/testimonial-section-widget.php:282
+#: admin/widgets/blog-posts-section/blog-posts-section-widget.php:289
+#: admin/widgets/feature-list-section/feature-list-section-widget.php:281
+#: admin/widgets/featured-content/featured-content-widget.php:271
+#: admin/widgets/featured-product-section/featured-product-section-widget.php:325
+#: admin/widgets/hero-section/hero-section-widget.php:309
+#: admin/widgets/pricing-table/pricing-table-widget.php:296
+#: admin/widgets/profile-section/profile-widget.php:282
+#: admin/widgets/team-section/team-section-widget.php:246
+#: admin/widgets/testimonial-section/testimonial-section-widget.php:285
 msgid "Content:"
 msgstr ""
 
-#: admin/widgets/blog-posts-section/blog-posts-section-widget.php:346
+#: admin/widgets/blog-posts-section/blog-posts-section-widget.php:395
 #: admin/widgets/class-organic-widgets-custom-widget.php:212
-#: admin/widgets/content-slideshow-section/content-slideshow-section-widget.php:319
-#: admin/widgets/feature-list-section/feature-list-section-widget.php:467
-#: admin/widgets/feature-list-section/feature-list-section-widget.php:472
-#: admin/widgets/featured-content/featured-content-widget.php:377
-#: admin/widgets/featured-product-section/featured-product-section-widget.php:441
-#: admin/widgets/featured-product-section/featured-product-section-widget.php:447
-#: admin/widgets/hero-section/hero-section-widget.php:422
-#: admin/widgets/hero-section/hero-section-widget.php:428
-#: admin/widgets/portfolio-section/portfolio-section-widget.php:311
-#: admin/widgets/pricing-table/pricing-table-widget.php:388
-#: admin/widgets/profile-section/profile-widget.php:368
-#: admin/widgets/subpage-section/subpage-section-widget.php:228
-#: admin/widgets/team-section/team-section-widget.php:333
-#: admin/widgets/testimonial-section/testimonial-section-widget.php:373
+#: admin/widgets/content-slideshow-section/content-slideshow-section-widget.php:325
+#: admin/widgets/feature-list-section/feature-list-section-widget.php:495
+#: admin/widgets/feature-list-section/feature-list-section-widget.php:500
+#: admin/widgets/featured-content/featured-content-widget.php:379
+#: admin/widgets/featured-product-section/featured-product-section-widget.php:445
+#: admin/widgets/featured-product-section/featured-product-section-widget.php:451
+#: admin/widgets/hero-section/hero-section-widget.php:426
+#: admin/widgets/hero-section/hero-section-widget.php:432
+#: admin/widgets/portfolio-section/portfolio-section-widget.php:318
+#: admin/widgets/pricing-table/pricing-table-widget.php:401
+#: admin/widgets/profile-section/profile-widget.php:379
+#: admin/widgets/subpage-section/subpage-section-widget.php:232
+#: admin/widgets/team-section/team-section-widget.php:337
+#: admin/widgets/testimonial-section/testimonial-section-widget.php:376
 msgid "Select an Image"
 msgstr ""
 
-#: admin/widgets/blog-posts-section/blog-posts-section-widget.php:347
+#: admin/widgets/blog-posts-section/blog-posts-section-widget.php:396
 #: admin/widgets/class-organic-widgets-custom-widget.php:213
-#: admin/widgets/content-slideshow-section/content-slideshow-section-widget.php:320
-#: admin/widgets/feature-list-section/feature-list-section-widget.php:468
-#: admin/widgets/feature-list-section/feature-list-section-widget.php:473
-#: admin/widgets/featured-content/featured-content-widget.php:378
-#: admin/widgets/featured-product-section/featured-product-section-widget.php:442
-#: admin/widgets/featured-product-section/featured-product-section-widget.php:448
-#: admin/widgets/hero-section/hero-section-widget.php:423
-#: admin/widgets/hero-section/hero-section-widget.php:429
-#: admin/widgets/portfolio-section/portfolio-section-widget.php:312
-#: admin/widgets/pricing-table/pricing-table-widget.php:389
-#: admin/widgets/profile-section/profile-widget.php:369
-#: admin/widgets/subpage-section/subpage-section-widget.php:229
-#: admin/widgets/team-section/team-section-widget.php:334
-#: admin/widgets/testimonial-section/testimonial-section-widget.php:374
+#: admin/widgets/content-slideshow-section/content-slideshow-section-widget.php:326
+#: admin/widgets/feature-list-section/feature-list-section-widget.php:496
+#: admin/widgets/feature-list-section/feature-list-section-widget.php:501
+#: admin/widgets/featured-content/featured-content-widget.php:380
+#: admin/widgets/featured-product-section/featured-product-section-widget.php:446
+#: admin/widgets/featured-product-section/featured-product-section-widget.php:452
+#: admin/widgets/hero-section/hero-section-widget.php:427
+#: admin/widgets/hero-section/hero-section-widget.php:433
+#: admin/widgets/portfolio-section/portfolio-section-widget.php:319
+#: admin/widgets/pricing-table/pricing-table-widget.php:402
+#: admin/widgets/profile-section/profile-widget.php:380
+#: admin/widgets/subpage-section/subpage-section-widget.php:233
+#: admin/widgets/team-section/team-section-widget.php:338
+#: admin/widgets/testimonial-section/testimonial-section-widget.php:377
 msgid "Insert Into Widget"
 msgstr ""
 
@@ -312,29 +418,29 @@ msgid "Background Image:"
 msgstr ""
 
 #: admin/widgets/class-organic-widgets-custom-widget.php:299
-#: admin/widgets/feature-list-section/feature-list-section-widget.php:351
-#: admin/widgets/featured-product-section/featured-product-section-widget.php:241
-#: admin/widgets/hero-section/hero-section-widget.php:212
-#: admin/widgets/pricing-table/pricing-table-widget.php:203
-#: admin/widgets/profile-section/profile-widget.php:187
+#: admin/widgets/feature-list-section/feature-list-section-widget.php:377
+#: admin/widgets/featured-product-section/featured-product-section-widget.php:245
+#: admin/widgets/hero-section/hero-section-widget.php:216
+#: admin/widgets/pricing-table/pricing-table-widget.php:207
+#: admin/widgets/profile-section/profile-widget.php:191
 msgid "Change Image"
 msgstr ""
 
 #: admin/widgets/class-organic-widgets-custom-widget.php:299
-#: admin/widgets/feature-list-section/feature-list-section-widget.php:351
-#: admin/widgets/featured-product-section/featured-product-section-widget.php:241
-#: admin/widgets/hero-section/hero-section-widget.php:212
-#: admin/widgets/pricing-table/pricing-table-widget.php:203
-#: admin/widgets/profile-section/profile-widget.php:187
+#: admin/widgets/feature-list-section/feature-list-section-widget.php:377
+#: admin/widgets/featured-product-section/featured-product-section-widget.php:245
+#: admin/widgets/hero-section/hero-section-widget.php:216
+#: admin/widgets/pricing-table/pricing-table-widget.php:207
+#: admin/widgets/profile-section/profile-widget.php:191
 msgid "Select Image"
 msgstr ""
 
 #: admin/widgets/class-organic-widgets-custom-widget.php:300
-#: admin/widgets/feature-list-section/feature-list-section-widget.php:352
-#: admin/widgets/featured-product-section/featured-product-section-widget.php:242
-#: admin/widgets/hero-section/hero-section-widget.php:213
-#: admin/widgets/pricing-table/pricing-table-widget.php:204
-#: admin/widgets/profile-section/profile-widget.php:188
+#: admin/widgets/feature-list-section/feature-list-section-widget.php:378
+#: admin/widgets/featured-product-section/featured-product-section-widget.php:246
+#: admin/widgets/hero-section/hero-section-widget.php:217
+#: admin/widgets/pricing-table/pricing-table-widget.php:208
+#: admin/widgets/profile-section/profile-widget.php:192
 msgid "Remove Image"
 msgstr ""
 
@@ -347,377 +453,378 @@ msgid "Content Alignment"
 msgstr ""
 
 #: admin/widgets/class-organic-widgets-custom-widget.php:1241
-#: admin/widgets/content-slideshow-section/content-slideshow-section-widget.php:231
+#: admin/widgets/content-slideshow-section/content-slideshow-section-widget.php:236
 msgid "2 Seconds"
 msgstr ""
 
 #: admin/widgets/class-organic-widgets-custom-widget.php:1242
-#: admin/widgets/content-slideshow-section/content-slideshow-section-widget.php:232
+#: admin/widgets/content-slideshow-section/content-slideshow-section-widget.php:237
 msgid "4 Seconds"
 msgstr ""
 
 #: admin/widgets/class-organic-widgets-custom-widget.php:1243
-#: admin/widgets/content-slideshow-section/content-slideshow-section-widget.php:233
+#: admin/widgets/content-slideshow-section/content-slideshow-section-widget.php:238
 msgid "6 Seconds"
 msgstr ""
 
 #: admin/widgets/class-organic-widgets-custom-widget.php:1244
-#: admin/widgets/content-slideshow-section/content-slideshow-section-widget.php:234
+#: admin/widgets/content-slideshow-section/content-slideshow-section-widget.php:239
 msgid "8 Seconds"
 msgstr ""
 
 #: admin/widgets/class-organic-widgets-custom-widget.php:1245
-#: admin/widgets/content-slideshow-section/content-slideshow-section-widget.php:235
+#: admin/widgets/content-slideshow-section/content-slideshow-section-widget.php:240
 msgid "10 Seconds"
 msgstr ""
 
 #: admin/widgets/class-organic-widgets-custom-widget.php:1246
-#: admin/widgets/content-slideshow-section/content-slideshow-section-widget.php:236
+#: admin/widgets/content-slideshow-section/content-slideshow-section-widget.php:241
 msgid "12 Seconds"
 msgstr ""
 
 #: admin/widgets/class-organic-widgets-custom-widget.php:1247
-#: admin/widgets/content-slideshow-section/content-slideshow-section-widget.php:237
+#: admin/widgets/content-slideshow-section/content-slideshow-section-widget.php:242
 msgid "20 Seconds"
 msgstr ""
 
 #: admin/widgets/class-organic-widgets-custom-widget.php:1248
-#: admin/widgets/content-slideshow-section/content-slideshow-section-widget.php:238
+#: admin/widgets/content-slideshow-section/content-slideshow-section-widget.php:243
 msgid "30 Seconds"
 msgstr ""
 
 #: admin/widgets/class-organic-widgets-custom-widget.php:1249
-#: admin/widgets/content-slideshow-section/content-slideshow-section-widget.php:239
+#: admin/widgets/content-slideshow-section/content-slideshow-section-widget.php:244
 msgid "1 Minute"
 msgstr ""
 
 #: admin/widgets/class-organic-widgets-custom-widget.php:1250
-#: admin/widgets/content-slideshow-section/content-slideshow-section-widget.php:240
+#: admin/widgets/content-slideshow-section/content-slideshow-section-widget.php:245
 msgid "Hold Frame"
 msgstr ""
 
 #: admin/widgets/class-organic-widgets-custom-widget.php:1268
-#: admin/widgets/content-slideshow-section/content-slideshow-section-widget.php:223
+#: admin/widgets/content-slideshow-section/content-slideshow-section-widget.php:228
 msgid "Fade"
 msgstr ""
 
 #: admin/widgets/class-organic-widgets-custom-widget.php:1269
-#: admin/widgets/content-slideshow-section/content-slideshow-section-widget.php:224
+#: admin/widgets/content-slideshow-section/content-slideshow-section-widget.php:229
 msgid "Slide"
 msgstr ""
 
-#: admin/widgets/content-slideshow-section/content-slideshow-section-widget.php:21
+#: admin/widgets/content-slideshow-section/content-slideshow-section-widget.php:25
 msgid "Organic Content Slideshow"
 msgstr ""
 
-#: admin/widgets/content-slideshow-section/content-slideshow-section-widget.php:23
+#: admin/widgets/content-slideshow-section/content-slideshow-section-widget.php:27
 msgid "A content slideshow."
 msgstr ""
 
-#: admin/widgets/content-slideshow-section/content-slideshow-section-widget.php:221
+#: admin/widgets/content-slideshow-section/content-slideshow-section-widget.php:226
 msgid "Slide Transition Style:"
 msgstr ""
 
-#: admin/widgets/content-slideshow-section/content-slideshow-section-widget.php:229
+#: admin/widgets/content-slideshow-section/content-slideshow-section-widget.php:234
 msgid "Slide Interval:"
 msgstr ""
 
-#: admin/widgets/content-slideshow-section/content-slideshow-section-widget.php:248
+#: admin/widgets/content-slideshow-section/content-slideshow-section-widget.php:253
 msgid "Fixed Height Slideshow"
 msgstr ""
 
-#: admin/widgets/feature-list-section/feature-list-section-widget.php:21
+#: admin/widgets/feature-list-section/feature-list-section-widget.php:25
 msgid "Organic Feature List"
 msgstr ""
 
-#: admin/widgets/feature-list-section/feature-list-section-widget.php:23
+#: admin/widgets/feature-list-section/feature-list-section-widget.php:27
 msgid "A list of features with icons."
 msgstr ""
 
-#: admin/widgets/feature-list-section/feature-list-section-widget.php:132
-#: admin/widgets/featured-product-section/featured-product-section-widget.php:118
-#: admin/widgets/featured-product-section/featured-product-section-widget.php:121
-#: admin/widgets/hero-section/hero-section-widget.php:123
-#: admin/widgets/hero-section/hero-section-widget.php:126
-#: admin/widgets/pricing-table/pricing-table-widget.php:119
+#: admin/widgets/feature-list-section/feature-list-section-widget.php:130
+#: admin/widgets/team-section/team-section-widget.php:121
+msgid "Learn More"
+msgstr ""
+
+#: admin/widgets/feature-list-section/feature-list-section-widget.php:147
+#: admin/widgets/featured-product-section/featured-product-section-widget.php:122
+#: admin/widgets/featured-product-section/featured-product-section-widget.php:125
+#: admin/widgets/hero-section/hero-section-widget.php:127
+#: admin/widgets/hero-section/hero-section-widget.php:130
+#: admin/widgets/pricing-table/pricing-table-widget.php:123
 msgid "See More"
 msgstr ""
 
-#: admin/widgets/feature-list-section/feature-list-section-widget.php:215
-#: admin/widgets/featured-content/featured-content-widget.php:222
+#: admin/widgets/feature-list-section/feature-list-section-widget.php:230
+#: admin/widgets/featured-content/featured-content-widget.php:224
 msgid "Button Text:"
 msgstr ""
 
-#: admin/widgets/feature-list-section/feature-list-section-widget.php:219
+#: admin/widgets/feature-list-section/feature-list-section-widget.php:234
 msgid "Button URL"
 msgstr ""
 
-#: admin/widgets/feature-list-section/feature-list-section-widget.php:255
-#: admin/widgets/featured-content/featured-content-widget.php:262
-#: admin/widgets/team-section/team-section-widget.php:235
-#: admin/widgets/testimonial-section/testimonial-section-widget.php:275
+#: admin/widgets/feature-list-section/feature-list-section-widget.php:274
+#: admin/widgets/featured-content/featured-content-widget.php:264
+#: admin/widgets/team-section/team-section-widget.php:239
+#: admin/widgets/testimonial-section/testimonial-section-widget.php:278
 msgid "Add Custom Content:"
 msgstr ""
 
-#: admin/widgets/feature-list-section/feature-list-section-widget.php:299
+#: admin/widgets/feature-list-section/feature-list-section-widget.php:318
 msgid "Feature"
 msgstr ""
 
-#: admin/widgets/feature-list-section/feature-list-section-widget.php:306
+#: admin/widgets/feature-list-section/feature-list-section-widget.php:332
 msgid "Icon:"
 msgstr ""
 
-#: admin/widgets/feature-list-section/feature-list-section-widget.php:320
+#: admin/widgets/feature-list-section/feature-list-section-widget.php:346
 msgid "Feature Title:"
 msgstr ""
 
-#: admin/widgets/feature-list-section/feature-list-section-widget.php:325
+#: admin/widgets/feature-list-section/feature-list-section-widget.php:351
 msgid "Feature Link URL:"
 msgstr ""
 
-#: admin/widgets/feature-list-section/feature-list-section-widget.php:333
+#: admin/widgets/feature-list-section/feature-list-section-widget.php:359
 msgid "Select Icon:"
 msgstr ""
 
-#: admin/widgets/feature-list-section/feature-list-section-widget.php:338
+#: admin/widgets/feature-list-section/feature-list-section-widget.php:364
 msgid "Select Icon"
 msgstr ""
 
-#: admin/widgets/feature-list-section/feature-list-section-widget.php:349
+#: admin/widgets/feature-list-section/feature-list-section-widget.php:375
 msgid "Custom Icon Image:"
 msgstr ""
 
-#: admin/widgets/feature-list-section/feature-list-section-widget.php:358
+#: admin/widgets/feature-list-section/feature-list-section-widget.php:384
 msgid "Feature text:"
 msgstr ""
 
-#: admin/widgets/featured-content/featured-content-widget.php:21
+#: admin/widgets/featured-content/featured-content-widget.php:25
 msgid "Organic Featured Content"
 msgstr ""
 
-#: admin/widgets/featured-content/featured-content-widget.php:23
+#: admin/widgets/featured-content/featured-content-widget.php:27
 msgid "A widget for displaying an existing page or custom content."
 msgstr ""
 
-#: admin/widgets/featured-content/featured-content-widget.php:101
-#: admin/widgets/featured-content/featured-content-widget.php:152
-#: admin/widgets/subpage-section/subpage-section-widget.php:102
+#: admin/widgets/featured-content/featured-content-widget.php:103
+#: admin/widgets/featured-content/featured-content-widget.php:154
+#: admin/widgets/subpage-section/subpage-section-widget.php:106
 msgid "Read More"
 msgstr ""
 
-#: admin/widgets/featured-content/featured-content-widget.php:226
+#: admin/widgets/featured-content/featured-content-widget.php:228
 msgid "Button URL:"
 msgstr ""
 
-#: admin/widgets/featured-content/featured-content-widget.php:232
+#: admin/widgets/featured-content/featured-content-widget.php:234
 msgid "Or Choose Existing Page:"
 msgstr ""
 
-#: admin/widgets/featured-content/featured-content-widget.php:240
-#: admin/widgets/subpage-section/subpage-section-widget.php:165
+#: admin/widgets/featured-content/featured-content-widget.php:242
+#: admin/widgets/subpage-section/subpage-section-widget.php:169
 msgid "— Select Existing Page —"
 msgstr ""
 
-#: admin/widgets/featured-product-section/featured-product-section-widget.php:21
+#: admin/widgets/featured-product-section/featured-product-section-widget.php:25
 msgid "Organic Featured Product"
 msgstr ""
 
-#: admin/widgets/featured-product-section/featured-product-section-widget.php:23
+#: admin/widgets/featured-product-section/featured-product-section-widget.php:27
 msgid "A section for featuring a single product image with a link."
 msgstr ""
 
-#: admin/widgets/featured-product-section/featured-product-section-widget.php:137
-#: admin/widgets/featured-product-section/featured-product-section-widget.php:139
+#: admin/widgets/featured-product-section/featured-product-section-widget.php:141
+#: admin/widgets/featured-product-section/featured-product-section-widget.php:143
 msgid "Product Image"
-msgstr ""
-
-#: admin/widgets/featured-product-section/featured-product-section-widget.php:221
-#: admin/widgets/hero-section/hero-section-widget.php:223
-msgid "Featured Link Text:"
 msgstr ""
 
 #: admin/widgets/featured-product-section/featured-product-section-widget.php:225
 #: admin/widgets/hero-section/hero-section-widget.php:227
-msgid "Featured Link URL:"
+msgid "Featured Link Text:"
 msgstr ""
 
-#: admin/widgets/featured-product-section/featured-product-section-widget.php:230
-#: admin/widgets/hero-section/hero-section-widget.php:232
-msgid "Alternate Link Text:"
+#: admin/widgets/featured-product-section/featured-product-section-widget.php:229
+#: admin/widgets/hero-section/hero-section-widget.php:231
+msgid "Featured Link URL:"
 msgstr ""
 
 #: admin/widgets/featured-product-section/featured-product-section-widget.php:234
 #: admin/widgets/hero-section/hero-section-widget.php:236
+msgid "Alternate Link Text:"
+msgstr ""
+
+#: admin/widgets/featured-product-section/featured-product-section-widget.php:238
+#: admin/widgets/hero-section/hero-section-widget.php:240
 msgid "Alternate Link URL:"
 msgstr ""
 
-#: admin/widgets/featured-product-section/featured-product-section-widget.php:239
+#: admin/widgets/featured-product-section/featured-product-section-widget.php:243
 msgid "Product Image:"
 msgstr ""
 
-#: admin/widgets/featured-product-section/featured-product-section-widget.php:252
+#: admin/widgets/featured-product-section/featured-product-section-widget.php:256
 msgid "Product Image Link URL:"
 msgstr ""
 
-#: admin/widgets/featured-product-section/featured-product-section-widget.php:260
-#: admin/widgets/hero-section/hero-section-widget.php:244
+#: admin/widgets/featured-product-section/featured-product-section-widget.php:264
+#: admin/widgets/hero-section/hero-section-widget.php:248
 msgid "Full Window Height Section"
 msgstr ""
 
-#: admin/widgets/featured-product-section/featured-product-section-widget.php:265
-#: admin/widgets/hero-section/hero-section-widget.php:249
+#: admin/widgets/featured-product-section/featured-product-section-widget.php:269
+#: admin/widgets/hero-section/hero-section-widget.php:253
 msgid "Fixed Position Background Image"
 msgstr ""
 
-#: admin/widgets/hero-section/hero-section-widget.php:21
+#: admin/widgets/hero-section/hero-section-widget.php:25
 msgid "Organic Hero"
 msgstr ""
 
-#: admin/widgets/hero-section/hero-section-widget.php:23
+#: admin/widgets/hero-section/hero-section-widget.php:27
 msgid "A hero section with a background image and call to action."
 msgstr ""
 
-#: admin/widgets/hero-section/hero-section-widget.php:109
+#: admin/widgets/hero-section/hero-section-widget.php:113
 msgid "Featured Image"
 msgstr ""
 
-#: admin/widgets/hero-section/hero-section-widget.php:210
+#: admin/widgets/hero-section/hero-section-widget.php:214
 msgid "Featured Image:"
 msgstr ""
 
-#: admin/widgets/portfolio-section/portfolio-section-widget.php:21
+#: admin/widgets/portfolio-section/portfolio-section-widget.php:25
 msgid "Organic Portfolio"
 msgstr ""
 
-#: admin/widgets/portfolio-section/portfolio-section-widget.php:23
+#: admin/widgets/portfolio-section/portfolio-section-widget.php:27
 msgid "A section displaying portfolio posts."
 msgstr ""
 
-#: admin/widgets/portfolio-section/portfolio-section-widget.php:199
+#: admin/widgets/portfolio-section/portfolio-section-widget.php:206
 msgid "Portfolio Category:"
 msgstr ""
 
-#: admin/widgets/pricing-table/pricing-table-widget.php:21
+#: admin/widgets/pricing-table/pricing-table-widget.php:25
 msgid "Organic Pricing Table"
 msgstr ""
 
-#: admin/widgets/pricing-table/pricing-table-widget.php:23
+#: admin/widgets/pricing-table/pricing-table-widget.php:27
 msgid "Display a table of features and prices"
 msgstr ""
 
-#: admin/widgets/pricing-table/pricing-table-widget.php:82
+#: admin/widgets/pricing-table/pricing-table-widget.php:86
 msgid "Pricing Table Image"
 msgstr ""
 
-#: admin/widgets/pricing-table/pricing-table-widget.php:190
+#: admin/widgets/pricing-table/pricing-table-widget.php:194
 msgid "Purchase Button Text:"
 msgstr ""
 
-#: admin/widgets/pricing-table/pricing-table-widget.php:194
+#: admin/widgets/pricing-table/pricing-table-widget.php:198
 msgid "Purchase Button URL"
 msgstr ""
 
-#: admin/widgets/pricing-table/pricing-table-widget.php:201
+#: admin/widgets/pricing-table/pricing-table-widget.php:205
 msgid "Pricing Table Image:"
 msgstr ""
 
-#: admin/widgets/pricing-table/pricing-table-widget.php:246
+#: admin/widgets/pricing-table/pricing-table-widget.php:250
 msgid "Text Row"
 msgstr ""
 
-#: admin/widgets/pricing-table/pricing-table-widget.php:252
+#: admin/widgets/pricing-table/pricing-table-widget.php:263
 msgid "Text Row:"
 msgstr ""
 
-#: admin/widgets/profile-section/profile-widget.php:21
+#: admin/widgets/profile-section/profile-widget.php:25
 msgid "Organic Profile"
 msgstr ""
 
-#: admin/widgets/profile-section/profile-widget.php:23
+#: admin/widgets/profile-section/profile-widget.php:27
 msgid "Display a personal profile."
 msgstr ""
 
-#: admin/widgets/profile-section/profile-widget.php:82
+#: admin/widgets/profile-section/profile-widget.php:86
 msgid "Profile Image"
 msgstr ""
 
-#: admin/widgets/profile-section/profile-widget.php:185
+#: admin/widgets/profile-section/profile-widget.php:189
 msgid "Profile Image:"
 msgstr ""
 
-#: admin/widgets/profile-section/profile-widget.php:198
+#: admin/widgets/profile-section/profile-widget.php:202
 msgid "Subtitle:"
 msgstr ""
 
-#: admin/widgets/profile-section/profile-widget.php:232
+#: admin/widgets/profile-section/profile-widget.php:236
 msgid "Social Link"
 msgstr ""
 
-#: admin/widgets/profile-section/profile-widget.php:238
+#: admin/widgets/profile-section/profile-widget.php:249
 msgid "Social Link:"
 msgstr ""
 
-#: admin/widgets/subpage-section/subpage-section-widget.php:21
+#: admin/widgets/subpage-section/subpage-section-widget.php:25
 msgid "Organic Subpage"
 msgstr ""
 
-#: admin/widgets/subpage-section/subpage-section-widget.php:23
+#: admin/widgets/subpage-section/subpage-section-widget.php:27
 msgid "A subpage's content displayed as a section of another page."
 msgstr ""
 
-#: admin/widgets/subpage-section/subpage-section-widget.php:157
+#: admin/widgets/subpage-section/subpage-section-widget.php:161
 msgid "Select Existing Page:"
 msgstr ""
 
-#: admin/widgets/team-section/team-section-widget.php:21
+#: admin/widgets/team-section/team-section-widget.php:25
 msgid "Organic Team Members"
 msgstr ""
 
-#: admin/widgets/team-section/team-section-widget.php:23
+#: admin/widgets/team-section/team-section-widget.php:27
 msgid "A section displaying team members."
 msgstr ""
 
-#: admin/widgets/team-section/team-section-widget.php:115
-msgid "Learn More"
-msgstr ""
-
-#: admin/widgets/team-section/team-section-widget.php:195
+#: admin/widgets/team-section/team-section-widget.php:199
 msgid "Team Category:"
 msgstr ""
 
-#: admin/widgets/testimonial-section/testimonial-section-widget.php:21
+#: admin/widgets/testimonial-section/testimonial-section-widget.php:25
 msgid "Organic Testimonials"
 msgstr ""
 
-#: admin/widgets/testimonial-section/testimonial-section-widget.php:23
+#: admin/widgets/testimonial-section/testimonial-section-widget.php:27
 msgid "A section displaying testimonial posts."
 msgstr ""
 
-#: admin/widgets/testimonial-section/testimonial-section-widget.php:236
+#: admin/widgets/testimonial-section/testimonial-section-widget.php:239
 msgid "Testimonial Category:"
 msgstr ""
 
-#: admin/widgets/testimonial-section/testimonial-section-widget.php:249
+#: admin/widgets/testimonial-section/testimonial-section-widget.php:252
 msgid "Posts Per Slide:"
 msgstr ""
 
-#: organic-widgets.php:145
+#: organic-widgets.php:185
 msgid "Upgrade Available"
 msgstr ""
 
-#: organic-widgets.php:174 organic-widgets.php:175
+#: organic-widgets.php:214 organic-widgets.php:215
 msgid "Organic Widgets"
 msgstr ""
 
-#: organic-widgets.php:187
+#: organic-widgets.php:227
 msgid "Settings"
 msgstr ""
 
-#: organic-widgets.php:204
+#: organic-widgets.php:244
 msgid "Upgrade"
 msgstr ""
 
-#: organic-widgets.php:245
+#: organic-widgets.php:285
 msgid "Active Widgets"
 msgstr ""
 

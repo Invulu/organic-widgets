@@ -2,19 +2,19 @@
 Contributors: jqlee85, itsdavidmorgan, organicthemes, raid33, wordpresspagebuilder
 Donate link: https://organicthemes.com
 Tags: builder, customizer, widgets, slideshows, testimonials, portfolio, fontawesome, icons, pricing tables, page builder, full-width sections, custom widget areas, bundle, custom widgets
-Stable tag: 1.3.16
+Stable tag: 1.4
 Requires at least: 4.8
 Tested up to: 5.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-A simple page builder, Organic Builder Widgets provides a collection of 12 custom widgets to be used in the customizer as content sections.
+A simple page builder, Organic Builder Widgets provides a collection of 12 custom widgets to be used in the Customizer as content sections.
 
 == Description ==
 
 [youtube https://www.youtube.com/watch?v=PwQJ5L0_oiM&t=13s]
 
-Organic Builder Widgets is a simple WordPress page builder plugin that provides a collection of 12 custom widgets to be used within the customizer. The widgets are displayed as full-width content sections on any page. It transforms the native WordPress customizer into a free and easy page building solution. Unlike other page builders, our solution uses the familiar interface of the customizer and native functionality of widgets. Therefore, it’s a fast, intuitive, easy and secure. There are no shortcodes, no excessive options, no confusing interfaces, and no vendor lock-in. Additionally, the plugin is designed to work with virtually any theme! It's an easy WordPress page building solution, as it was meant to be.
+Organic Builder Widgets is a simple WordPress page builder plugin that provides a collection of 12 custom widgets to be used within the Customizer. The widgets are displayed as full-width content sections on any page. It transforms the native WordPress customizer into a free and easy page building solution. Unlike other page builders, our solution uses the familiar interface of the customizer and native functionality of widgets. Therefore, it’s a fast, intuitive, easy and secure. There are no shortcodes, no excessive options, no confusing interfaces, and no vendor lock-in. Additionally, the plugin is designed to work with virtually any theme! It's an easy WordPress page building solution, as it was meant to be.
 
 Display and arrange the custom widgets as content sections on any page — such as featured content slideshows, hero sections with background videos, testimonial sliders, team members, portfolios, feature icon lists, pricing tables, products, and more! Each widget features a variety of options for changing the background color, background image, display style and more! Use multiple of the same widgets, or as many different widgets as you like!
 
@@ -22,7 +22,7 @@ Additionally, the Builder Widgets plugin includes the Widget Area Block for the 
 
 Upgrade to [Organic Builder Widgets Pro](https://organicthemes.com/builder/ "Organic Builder Widgets Pro") for only **$39/yr** and receive **4 additional widgets** and many more options for existing widgets, including options for changing fonts, layouts, custom heights and widths, adding filterable portfolios, blog pagination, and much more!
 
-Organic Builder Widgets includes a new page template, that when applied, creates a new widget area on that page. This allows the WordPress customizer to be used as a page builder by adding widgets as content sections to any page using the "Organic Custom" page template. Drag and drop the widgets into your desired order, and the customizer will update in real-time to reflect your changes. Each widget includes basic styles and options, but will otherwise inherit styles from the active theme.
+Organic Builder Widgets includes a new page template, that when applied, creates a new widget area on that page. This allows the WordPress Customizer to be used as a page builder by adding widgets as content sections to any page using the "Organic Custom" page template. Drag and drop the widgets into your desired order, and the Customizer will update in real-time to reflect your changes. Each widget includes basic styles and options, but will otherwise inherit styles from the active theme.
 
 [Live Demo](https://organicthemes.com/demo/startup/widgets/ "Live Widget Demos")
 
@@ -53,14 +53,30 @@ The following widgets are only available by upgrading to the [Pro Version](https
 * **Business Info Widget** [View Example](https://organicthemes.com/demo/startup/widgets/business-info-widget/ "Business Info Widget Example") – A page section for displaying your business information including business hours, location, map, social links, and contact information.
 * **Image Slideshow Widget** [View Example](https://organicthemes.com/demo/startup/widgets/image-slideshow-widget/ "Image Slideshow Widget Example") – An image slideshow section with optional slide content and link.
 * **Split Content Widget** [View Example](https://organicthemes.com/demo/startup/widgets/split-content-widget/ "Split Content Widget Example") – Display a featured image and title on one side, and content on the other. Optionally flip tiles for variation.
+* **Toggle & Tabs Widget** [View Example](https://organicthemes.com/demo/startup/widgets/toggle-tabs-widget/ "Toggle & Tabs Widget Example") – Create toggle and tab sections, perfect for displaying FAQ's, features, and documentation.
+* **Advanced Search Widget** [View Example](https://organicthemes.com/demo/startup/widgets/search-widget/ "Advanced Search Widget Example") – Display a featured search section, and choose to search within specific custom post types — great for listing sites.
+* **Food & Drink Menu Widget** [View Example](https://organicthemes.com/demo/startup/widgets/food-menu-widget/ "Food & Drink Widget Example") – Create as many food and drink menus as you want on any page — an excellent solution for restaurant and cafe websites.
+* **Client Login Widget** [View Example](https://organicthemes.com/demo/startup/widgets/login-widget/ "Client Login Widget Example") – Add a login form to any page, perfect for membership sites, client login sections, or landing pages.
+* **Audio Playlist Widget** [View Example](https://organicthemes.com/demo/startup/widgets/audio-playlist-widget/ "Audio Playlist Widget Example") – Display a beautifully styled audio playlist section on any page, a great solution for musician and podcast websites.
+* **Featured Video Widget** [View Example](https://organicthemes.com/demo/startup/widgets/featured-video-widget/ "Featured Video Widget Example") – Now you can easily showcase a promotional video section on any page of your website.
+* **Image Gallery Widget** [View Example](https://organicthemes.com/demo/startup/image-gallery-widget/ "Image Gallery Widget Example") – An improved image gallery widget that displays images within a beautiful masonry grid layout.
+* **Video Gallery Widget** [View Example](https://organicthemes.com/demo/startup/video-gallery-widget/ "Video Gallery Widget Example") – Display a gallery of multiple featured videos in a seamless masonry grid — perfect for vloggers and entertainers.
 
 = Reasons To Upgrade =
 
-* 4 Additional Widgets
+* 12 Additional Widgets
   * Event Widget
   * Image Slideshow Widget
   * Business Info Widget
   * Split Content Widget
+  * Toggle & Tabs Widget
+  * Advanced Search Widget
+  * Food & Drink Menu Widget
+  * Client Login Widget
+  * Audio Playlist Widget
+  * Featured Video Widget
+  * Image Gallery Widget
+  * Video Gallery Widget
 * Many More Options For Existing Widgets
   * Google Font Options
   * Additional Style Choices
@@ -89,9 +105,13 @@ Note: This plugin relies on new WordPress features, so it requires WordPress ver
 1. Upload 'organic-customizer-widgets' to the '/wp-content/plugins/' directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Apply the 'Organic Custom' template to the desired page
-4. Click 'Customize Page' in the page editor, navigate to the customizer ('Appearance > Widgets'), or the widgets page ('Appearance > Widgets') to add widgets to the page.
+4. Click 'Customize Page' in the page editor, navigate to the Customizer ('Appearance > Widgets'), or the widgets page ('Appearance > Widgets') to add widgets to the page.
 
 == Frequently Asked Questions ==
+
+= Q: What is an Organic Builder Widget? =
+
+A: A builder widget is a unique widget used to create a content section within a page that serves a specific purpose. For instance, a food menu, slideshow or an events section on a page.
 
 = Q: Why would I use Organic Builder Widgets over other page builders? =
 
@@ -117,15 +137,29 @@ A: Most of the Organic Widgets are designed to be used as full-width sections on
 
 A: The Organic Builder Widgets plugin requires PHP 5.3.29 or higher, as do many plugins with advanced functionality. Your PHP version can be updated by contacting your hosting provider. We would recommend doing this regardless of whether you use the plugin, as WordPress may begin requiring PHP 7 as a minimum requirement soon.
 
+= Q: Are Organic Builder Widgets compatible with the WordPress 5 block editor? =
+
+A: Yes. However, builder widgets are primarily added within the WordPress Customizer. As a result, the plugin is agnostic of the WordPress editor. So, builder widgets can be used with either the classic or Gutenberg editors. Additionally, the plugin includes the "Widget Area" block for use with the WordPress 5 (Gutenberg) block editor. Meaning, builder widgets can be added along side blocks on any page or post.
+
 == Screenshots ==
 
 1. The Organic StartUp Theme using widgets for the various content sections on the home page.
 2. The Organic Content Slideshow widget.
-3. The Organic Hero widget within the WordPress customizer.
-4. The default WordPress image widget within the customizer.
-5. A list of some of the custom widgets included as seen within the customizer.
+3. The Organic Hero widget within the WordPress Customizer.
+4. The default WordPress image widget within the Customizer.
+5. A list of some of the custom widgets included as seen within the Customizer.
 
 == Changelog ==
+
+= 1.4 =
+* Improved JS for displaying Customizer button when page template is applied
+* Updated intro page announcing Builder Widgets Pro
+* Updated README with additional information and FAQs
+* Updated translation string and files
+
+= 1.3.17 =
+* Added fallback JS for displaying Customizer button when page template is applied
+* Updated thumbnail sizes for Blog Widget to reduce size and load time
 
 = 1.3.16 =
 * More performance updates for repeatable field JS

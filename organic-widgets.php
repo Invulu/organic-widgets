@@ -9,7 +9,7 @@
  * Plugin Name:       Organic Builder Widgets
  * Plugin URI:        https://organicthemes.com/organic-customizer-widgets
  * Description:       Transform the core WordPress Customizer into a page builder. Display and arrange widgets on any page as beautiful content sections, such as featured content slideshows, testimonials, team members, portfolios, feature lists, pricing tables and more. Whoa, cool.
- * Version:           1.3.16
+ * Version:           1.4
  * Author:            Organic Themes
  * Author URI:        https://organicthemes.com
  * License:           GPL-2.0+
@@ -19,7 +19,7 @@
  */
 
 // Current Version (Keep in sync with Version # above).
-define( 'ORGANIC_WIDGETS_CURRENT_VERSION', '1.3.16' );
+define( 'ORGANIC_WIDGETS_CURRENT_VERSION', '1.4' );
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -114,7 +114,6 @@ function run_organic_widgets() {
 	$plugin = new Organic_Widgets();
 
 	// Define Constants.
-	define( 'ORGANIC_WIDGETS_18N', $plugin->get_plugin_name() );
 	define( 'ORGANIC_WIDGETS_BASE_DIR', plugin_dir_url( __FILE__ ) );
 	define( 'ORGANIC_WIDGETS_BLOCKS_DIR', plugin_dir_url( __FILE__ ) . 'admin/blocks/' );
 	define( 'ORGANIC_WIDGETS_ADMIN_IMG_DIR', plugin_dir_url( __FILE__ ) . 'admin/img/' );
@@ -183,7 +182,7 @@ function organic_widgets_classic_editor_plugin_active() {
 function organic_widgets_action_links( $links ) {
 
 	$links = array_merge( array(
-		'<a class="plugin-upgrade-link" href="' . esc_url( 'https://organicthemes.com/builder/' ) . '" target="_blank"><i class="fa fa-arrow-circle-up"></i> ' . __( 'Upgrade Available', ORGANIC_WIDGETS_18N ) . '</a>'
+		'<a class="plugin-upgrade-link" href="' . esc_url( 'https://organicthemes.com/builder/' ) . '" target="_blank"><i class="fa fa-arrow-circle-up"></i> ' . __( 'Upgrade Available', 'organic-widgets' ) . '</a>'
 	), $links );
 
 	return $links;
@@ -212,8 +211,8 @@ function organic_widgets_welcome_screen() {
 
 	// Add Menu Item.
 	add_menu_page(
-		esc_html__( 'Organic Widgets', ORGANIC_WIDGETS_18N ),
-		esc_html__( 'Organic Widgets', ORGANIC_WIDGETS_18N ),
+		esc_html__( 'Organic Widgets', 'organic-widgets' ),
+		esc_html__( 'Organic Widgets', 'organic-widgets' ),
 		'manage_options',
 		'organic-widgets',
 		'organic_widgets_welcome_screen_content',
@@ -225,7 +224,7 @@ function organic_widgets_welcome_screen() {
 	add_submenu_page(
 		'organic-widgets',
 		'Organic Widgets Settings',
-		esc_html__( 'Settings', ORGANIC_WIDGETS_18N ),
+		esc_html__( 'Settings', 'organic-widgets' ),
 		'manage_options',
 		'organic-widgets-settings',
 		'organic_widgets_settings_screen_content'
@@ -242,7 +241,7 @@ function organic_widgets_welcome_screen() {
 	add_submenu_page(
 		'organic-widgets',
 		'Upgrade',
-		esc_html__( 'Upgrade', ORGANIC_WIDGETS_18N ),
+		esc_html__( 'Upgrade', 'organic-widgets' ),
 		'manage_options',
 		'https://organicthemes.com/builder/'
 	);
@@ -283,7 +282,7 @@ function organic_widgets_settings_callback() {
 
 	<div class="organic-widgets-display-settings">
 
-		<h3><?php _e( 'Active Widgets', ORGANIC_WIDGETS_18N ); ?></h3>
+		<h3><?php _e( 'Active Widgets', 'organic-widgets' ); ?></h3>
 
 		<?php
 		foreach ( $organic_widgets as $organic_widget ) {
@@ -294,7 +293,7 @@ function organic_widgets_settings_callback() {
 			}
 			?>
 
-			<div class="organic-widgets-display-toggle"><label><input type="checkbox" name="organic_widgets_settings[<?php echo esc_attr( $slug ); ?>]" value="1" <?php checked( $options[$slug], 1, 1 ); ?> /> <?php esc_html_e( $name, ORGANIC_WIDGETS_18N ); ?></label></div>
+			<div class="organic-widgets-display-toggle"><label><input type="checkbox" name="organic_widgets_settings[<?php echo esc_attr( $slug ); ?>]" value="1" <?php checked( $options[$slug], 1, 1 ); ?> /> <?php esc_html_e( $name, 'organic-widgets' ); ?></label></div>
 
 		<?php } ?>
 
