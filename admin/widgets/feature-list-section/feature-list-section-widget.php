@@ -127,7 +127,7 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 										<p><?php if ( array_key_exists( 'text', $repeatable ) ) { echo $repeatable['text']; } ?></p>
 
 										<?php if ( '' != $repeatable['link_url'] ) { ?>
-											<a class="button" href="<?php echo esc_url( $repeatable['link_url'] ); ?>"><?php esc_html__( 'Learn More', 'organic-widgets' ); ?></a>
+											<a class="button" href="<?php echo esc_url( $repeatable['link_url'] ); ?>"><?php esc_html_e( 'Learn More', 'organic-widgets' ); ?></a>
 										<?php } ?>
 
 									</div>
@@ -144,7 +144,7 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 
 			<?php if ( ! empty( $button_url ) ) { ?>
 				<div class="organic-widgets-button-holder">
-					<a class="organic-widgets-button button" href="<?php echo esc_url( $button_url );?>"><?php if ( ! empty( $button_text ) ) { echo esc_html( $button_text ); } else { esc_html_e( 'See More', 'organic-widgets' ); } ?></a>
+					<a class="organic-widgets-button button" href="<?php echo esc_url( $button_url ); ?>"><?php if ( ! empty( $button_text ) ) { echo esc_html( $button_text ); } else { esc_html_e( 'See More', 'organic-widgets' ); } ?></a>
 				</div>
 			<?php } ?>
 
