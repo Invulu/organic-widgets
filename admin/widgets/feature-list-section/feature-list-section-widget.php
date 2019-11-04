@@ -127,7 +127,13 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 										<p><?php if ( array_key_exists( 'text', $repeatable ) ) { echo $repeatable['text']; } ?></p>
 
 										<?php if ( '' != $repeatable['link_url'] ) { ?>
-											<a class="button" href="<?php echo esc_url( $repeatable['link_url'] ); ?>"><?php esc_html_e( 'Learn More', 'organic-widgets' ); ?></a>
+										<a class="button" href="<?php echo esc_url( $repeatable['link_url'] ); ?>">
+											<?php if ( '' != $repeatable['link_text'] ) { ?>
+												<?php echo wp_kses_post( $repeatable['link_text'] ); ?>
+											<?php } else { ?>
+												<?php esc_html_e( 'Learn More', 'organic-widgets' ); ?>
+											<?php } ?>
+										</a>
 										<?php } ?>
 
 									</div>
@@ -345,6 +351,11 @@ class Organic_Widgets_Feature_List_Section_Widget extends Organic_Widgets_Custom
 					<p>
 						<label><?php esc_html_e( 'Feature Title:', 'organic-widgets' ) ?></label>
 						<input class="widefat organic-widgets-feature-list-title-input organic-widgets-repeatable-form-item-input" data-input-name="title" data-activator="true" type="text" value="<?php if ( $repeatable && array_key_exists( 'title', $repeatable ) ) echo esc_html($repeatable['title']); ?>" data-feature-id="<?php echo $id; ?>"/>
+					</p>
+
+					<p>
+						<label><?php esc_html_e( 'Feature Link Text:', 'organic-widgets' ) ?></label>
+						<input class="widefat organic-widgets-feature-list-link-text-input organic-widgets-repeatable-form-item-input" data-input-name="link_text" type="text" value="<?php if ( $repeatable && array_key_exists( 'link_text', $repeatable ) ) echo esc_html( $repeatable['link_text'] ); ?>" data-feature-id="<?php echo $id; ?>" />
 					</p>
 
 					<p>
