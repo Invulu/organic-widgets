@@ -522,7 +522,6 @@ img.organic-widgets-hide-img,
 }
 .organic-widgets-testimonial-stars {
   text-align: center;
-  margin-top: 6px;
 }
 .organic-widgets-testimonial-stars .fa {
   color: #cc9900;
@@ -564,6 +563,7 @@ img.organic-widgets-hide-img,
   font-style: italic;
   text-align: center;
   padding-top: 18px;
+  margin: 0px;
 }
 
 /************************************************

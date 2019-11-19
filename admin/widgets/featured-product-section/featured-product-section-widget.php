@@ -269,6 +269,8 @@ class Organic_Widgets_Featured_Product_Section_Widget extends Organic_Widgets_Cu
 			<label for="<?php echo $this->get_field_id( 'bg_image_fixed' ); ?>"><?php _e('Fixed Position Background Image', 'organic-widgets' ); ?></label>
 		</p>
 
+		<br/>
+
 		<?php $this->section_background_input_markup( $instance, $this->bg_options );
 
 	}
@@ -423,16 +425,18 @@ class Organic_Widgets_Featured_Product_Section_Widget extends Organic_Widgets_Cu
 	 */
 	public function admin_setup() {
 
-		// Text Editor
+		// Text Editor.
 		wp_enqueue_editor();
-		wp_enqueue_script( 'organic-widgets-featured-product-widgets-text-title', plugin_dir_url( __FILE__ ) . 'js/featured-product-widgets.js', array( 'jquery' ) );
+		wp_enqueue_script( 'organic-widgets-featured-product-widgets-text-title', plugin_dir_url( __FILE__ ) . 'js/featured-product-widgets.js', array( 'jquery', 'wp-embed', 'underscore' ) );
 		wp_localize_script( 'organic-widgets-featured-product-widgets-text-title', 'OrganicFeaturedProductWidget', array(
 			'id_base' => $this->id_base,
 		) );
 		wp_add_inline_script( 'organic-widgets-featured-product-widgets-text-title', 'wp.organicFeaturedProductWidget.init();', 'after' );
 
-		// Content Aligner
-		wp_enqueue_script( 'organic-widgets-module-content-aligner', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-content-aligner.js', array( 'jquery' ) );
+		// Content Aligner.
+		if ( ! wp_script_is( 'organic-widgets-module-content-aligner' ) && is_customize_preview() ) {
+			wp_enqueue_script( 'organic-widgets-module-content-aligner', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-content-aligner.js', array( 'jquery' ), '1.0', true );
+		}
 
 		wp_enqueue_media();
 

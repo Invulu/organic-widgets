@@ -2,9 +2,9 @@
 Contributors: jqlee85, itsdavidmorgan, organicthemes, raid33, wordpresspagebuilder
 Donate link: https://organicthemes.com
 Tags: builder, customizer, widgets, slideshows, testimonials, portfolio, fontawesome, icons, pricing tables, page builder, full-width sections, custom widget areas, bundle, custom widgets
-Stable tag: 1.4.2
+Stable tag: 1.4.3
 Requires at least: 4.8
-Tested up to: 5.2
+Tested up to: 5.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -20,7 +20,7 @@ Display and arrange the custom widgets as content sections on any page — such 
 
 Additionally, the Builder Widgets plugin includes the Widget Area Block for the Gutenberg block editor. This custom block allows you to register multiple widget areas within any page or post using the block editor. As a result, blocks and traditional widgets can be used together to create dynamic page content!
 
-Upgrade to [Organic Builder Widgets Pro](https://organicthemes.com/builder/ "Organic Builder Widgets Pro") for only **$39/yr** and receive **4 additional widgets** and many more options for existing widgets, including options for changing fonts, layouts, custom heights and widths, adding filterable portfolios, blog pagination, and much more!
+Upgrade to [Organic Builder Widgets Pro](https://organicthemes.com/builder/ "Organic Builder Widgets Pro") for only **$39/yr** and receive **12 additional widgets** and many more options for existing widgets, including options for changing fonts, layouts, custom heights and widths, adding filterable portfolios, blog pagination, and much more!
 
 Organic Builder Widgets includes a new page template, that when applied, creates a new widget area on that page. This allows the WordPress Customizer to be used as a page builder by adding widgets as content sections to any page using the "Organic Custom" page template. Drag and drop the widgets into your desired order, and the Customizer will update in real-time to reflect your changes. Each widget includes basic styles and options, but will otherwise inherit styles from the active theme.
 
@@ -150,6 +150,11 @@ A: Yes. However, builder widgets are primarily added within the WordPress Custom
 5. A list of some of the custom widgets included as seen within the Customizer.
 
 == Changelog ==
+
+= 1.4.3 =
+* Updated Masonry setup script
+* Compatibility fixes for WP 5.3 update
+* Fixed various JS TypeErrors
 
 = 1.4.2 =
 * Added option to change button text in Feature List widget

@@ -221,14 +221,16 @@ class Organic_Widgets_Portfolio_Section_Widget extends Organic_Widgets_Custom_Wi
 			<label for="<?php echo $this->get_field_id( 'num_columns' ); ?>"><?php _e('Number of Columns:', 'organic-widgets' ) ?></label>
 			<select id="<?php echo $this->get_field_id( 'num_columns' ); ?>" name="<?php echo $this->get_field_name('num_columns'); ?>" class="widefat" style="width:100%;">
 				<option <?php selected( $num_columns, '2'); ?> value="2">2</option>
-		    <option <?php selected( $num_columns, '3'); ?> value="3">3</option>
-		    <option <?php selected( $num_columns, '4'); ?> value="4">4</option>
+				<option <?php selected( $num_columns, '3'); ?> value="3">3</option>
+				<option <?php selected( $num_columns, '4'); ?> value="4">4</option>
 			</select>
 		</p>
 
+		<br/>
+
 		<?php $this->section_background_input_markup( $instance, $this->bg_options ); ?>
 
-  <?php
+		<?php
 	}
 
 	/**
@@ -301,7 +303,7 @@ class Organic_Widgets_Portfolio_Section_Widget extends Organic_Widgets_Custom_Wi
 
 		// Text Editor.
 		wp_enqueue_editor();
-		wp_enqueue_script( 'organic-widgets-portfolio-section-text-title', plugin_dir_url( __FILE__ ) . 'js/portfolio-section-widgets.js', array( 'jquery' ), '1.0', true );
+		wp_enqueue_script( 'organic-widgets-portfolio-section-text-title', plugin_dir_url( __FILE__ ) . 'js/portfolio-section-widgets.js', array( 'jquery', 'wp-embed', 'underscore' ), '1.0', true );
 		wp_localize_script( 'organic-widgets-portfolio-section-text-title', 'OrganicPortfolioSectionWidget', array(
 			'id_base' => $this->id_base,
 		) );

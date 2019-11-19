@@ -258,6 +258,8 @@ class Organic_Widgets_Content_Slideshow_Section_Widget extends Organic_Widgets_C
 			<input type="number" min="1" max="10" value="<?php echo $max_posts; ?>" id="<?php echo $this->get_field_id('max_posts'); ?>" name="<?php echo $this->get_field_name('max_posts'); ?>" class="widefat" style="width:100%;"/>
 		</p>
 
+		<br/>
+
 		<?php $this->section_background_input_markup( $instance, $this->bg_options ); ?>
 
 		<?php
@@ -313,8 +315,10 @@ class Organic_Widgets_Content_Slideshow_Section_Widget extends Organic_Widgets_C
 
 		wp_enqueue_media();
 
-		// Content Aligner
-		wp_enqueue_script( 'organic-widgets-module-content-aligner', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-content-aligner.js', array( 'jquery' ) );
+		// Content Aligner.
+		if ( ! wp_script_is( 'organic-widgets-module-content-aligner' ) && is_customize_preview() ) {
+			wp_enqueue_script( 'organic-widgets-module-content-aligner', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-content-aligner.js', array( 'jquery' ), '1.0', true );
+		}
 
 		wp_enqueue_style( 'wp-color-picker' );
 		wp_enqueue_script( 'wp-color-picker' );

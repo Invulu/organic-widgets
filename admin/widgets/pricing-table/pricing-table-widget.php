@@ -41,7 +41,9 @@ class Organic_Widgets_Pricing_Table_Widget extends Organic_Widgets_Custom_Widget
 		add_action( 'admin_footer-widgets.php', array( $this, 'render_control_template_scripts' ) );
 
 		// Public scripts.
-		add_action( 'wp_enqueue_scripts', array( $this, 'public_scripts' ) );
+		if ( is_active_widget( false, false, $this->id_base ) || is_customize_preview() ) {
+			add_action( 'customize_preview_init', array( $this, 'public_scripts' ) );
+		}
 	}
 	/**
 	 * Front-end display of widget.
@@ -372,21 +374,23 @@ class Organic_Widgets_Pricing_Table_Widget extends Organic_Widgets_Custom_Widget
 
 		// Text Editor.
 		wp_enqueue_editor();
-		wp_enqueue_script( 'organic-widgets-pricing-tables-text-title', plugin_dir_url( __FILE__ ) . 'js/pricing-table-widgets.js', array( 'jquery' ), '1.0', true );
+		wp_enqueue_script( 'organic-widgets-pricing-tables-text-title', plugin_dir_url( __FILE__ ) . 'js/pricing-table-widgets.js', array( 'jquery', 'wp-embed', 'underscore' ), '1.0', true );
 		wp_localize_script( 'organic-widgets-pricing-tables-text-title', 'OrganicPricingTableWidget', array(
 			'id_base' => $this->id_base,
 		) );
 		wp_add_inline_script( 'organic-widgets-pricing-tables-text-title', 'wp.organicPricingTableWidget.init();', 'after' );
 
 		// Groupable Widget.
-		wp_enqueue_script( 'organic-widgets-module-groupable-widgets', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-groupable-widgets.js', array( 'jquery' ), '1.0', true );
-		wp_localize_script( 'organic-widgets-module-groupable-widgets', 'GroupableWidgets', array(
-			'active_pane' => false,
-			'widgets'     => array(),
-		) );
+		if ( ! wp_script_is( 'organic-widgets-module-groupable-widgets' ) && is_customize_preview() ) {
+			wp_enqueue_script( 'organic-widgets-module-groupable-widgets', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-groupable-widgets.js', array( 'jquery' ), '1.0', true );
+			wp_localize_script( 'organic-widgets-module-groupable-widgets', 'GroupableWidgets', array(
+				'active_pane' => false,
+				'widgets'     => array(),
+			) );
+		}
 
 		// Repeatable Form Items.
-		if ( ! wp_script_is( 'organic-widgets-module-repeatable-form-item-js' ) ) {
+		if ( ! wp_script_is( 'organic-widgets-module-repeatable-form-item-js' ) && is_customize_preview() ) {
 			wp_enqueue_script( 'organic-widgets-module-repeatable-form-item-js', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-repeatable-form-items.js', array( 'jquery' ), '1.0', true );
 		}
 

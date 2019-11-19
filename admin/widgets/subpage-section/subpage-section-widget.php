@@ -158,7 +158,7 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 
 		?>
 
-		<p><b><?php _e('Select Existing Page:', 'organic-widgets' ) ?></b></p>
+		<p><?php _e('Select Existing Page:', 'organic-widgets' ) ?></p>
 
 		<p>
 			<?php wp_dropdown_pages( array(
@@ -170,6 +170,8 @@ class Organic_Widgets_Subpage_Section_Widget extends Organic_Widgets_Custom_Widg
 				'option_none_value' => '0',
 			) ); ?>
 		</p>
+
+		<br/>
 
 		<?php $this->section_background_input_markup( $instance, $this->bg_options );
 

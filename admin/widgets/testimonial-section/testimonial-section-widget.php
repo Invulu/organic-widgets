@@ -253,13 +253,15 @@ class Organic_Widgets_Testimonial_Section_Widget extends Organic_Widgets_Custom_
 			<select id="<?php echo $this->get_field_id( 'posts_per_slide' ); ?>" name="<?php echo $this->get_field_name( 'posts_per_slide' ); ?>" class="widefat" style="width:100%;">
 				<option <?php selected( $posts_per_slide, '1'); ?> value="1">1</option>
 				<option <?php selected( $posts_per_slide, '2'); ?> value="2">2</option>
-		    <option <?php selected( $posts_per_slide, '3'); ?> value="3">3</option>
+				<option <?php selected( $posts_per_slide, '3'); ?> value="3">3</option>
 			</select>
 		</p>
 
+		<br/>
+
 		<?php $this->section_background_input_markup( $instance, $this->bg_options ); ?>
 
-  <?php
+		<?php
 	}
 
 	/**
@@ -359,7 +361,7 @@ class Organic_Widgets_Testimonial_Section_Widget extends Organic_Widgets_Custom_
 
 		// Text Editor
 		wp_enqueue_editor();
-		wp_enqueue_script( 'organic-widgets-testimonial-section-widgets-text-title', plugin_dir_url( __FILE__ ) . 'js/testimonial-section-widgets.js', array( 'jquery' ) );
+		wp_enqueue_script( 'organic-widgets-testimonial-section-widgets-text-title', plugin_dir_url( __FILE__ ) . 'js/testimonial-section-widgets.js', array( 'jquery', 'wp-embed', 'underscore' ) );
 		wp_localize_script( 'organic-widgets-testimonial-section-widgets-text-title', 'OrganicTestimonialSectionWidget', array(
 			'id_base' => $this->id_base,
 		) );

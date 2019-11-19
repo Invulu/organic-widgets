@@ -212,15 +212,17 @@ class Organic_Widgets_Team_Section_Widget extends Organic_Widgets_Custom_Widget 
 			<select id="<?php echo $this->get_field_id('num_columns'); ?>" name="<?php echo $this->get_field_name('num_columns'); ?>" class="widefat" style="width:100%;">
 				<option <?php selected( $num_columns, '1'); ?> value="1">1</option>
 				<option <?php selected( $num_columns, '2'); ?> value="2">2</option>
-		    <option <?php selected( $num_columns, '3'); ?> value="3">3</option>
-		    <option <?php selected( $num_columns, '4'); ?> value="4">4</option>
+				<option <?php selected( $num_columns, '3'); ?> value="3">3</option>
+				<option <?php selected( $num_columns, '4'); ?> value="4">4</option>
 				<option <?php selected( $num_columns, '5'); ?> value="5">5</option>
 			</select>
 		</p>
 
+		<br/>
+
 		<?php $this->section_background_input_markup( $instance, $this->bg_options ); ?>
 
-  <?php
+		<?php
 	}
 
 	/**
@@ -320,7 +322,7 @@ class Organic_Widgets_Team_Section_Widget extends Organic_Widgets_Custom_Widget 
 
 		// Text Editor
 		wp_enqueue_editor();
-		wp_enqueue_script( 'organic-widgets-team-section-widgets-text-title', plugin_dir_url( __FILE__ ) . 'js/team-section-widgets.js', array( 'jquery', 'masonry', ) );
+		wp_enqueue_script( 'organic-widgets-team-section-widgets-text-title', plugin_dir_url( __FILE__ ) . 'js/team-section-widgets.js', array( 'jquery', 'masonry', 'wp-embed', 'underscore' ) );
 		wp_localize_script( 'organic-widgets-team-section-widgets-text-title', 'OrganicTeamSectionWidget', array(
 			'id_base' => $this->id_base,
 		) );

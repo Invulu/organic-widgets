@@ -723,7 +723,7 @@ input.organic-widgets-input-range::-moz-focus-outer {
   width: 10%;
   padding: 0;
   display: inline;
-  padding: 4px 0 5px;
+  padding: 4px 0px;
 }
 .organic-widgets-repeatable-actions .organic-widgets-repeatable-move-button, .organic-widgets-repeatable-actions .organic-widgets-repeatable-delete-button {
   width: 33%;
@@ -733,6 +733,7 @@ input.organic-widgets-input-range::-moz-focus-outer {
 }
 .organic-widgets-move-up, .organic-widgets-move-down {
   color: #666;
+  padding: 6px 0px;
   border: 1px solid #bbb;
 }
 .organic-widgets-repeatable-actions .organic-widgets-move-up {

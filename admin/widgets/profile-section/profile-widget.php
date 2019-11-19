@@ -354,19 +354,21 @@ class Organic_Widgets_Profile_Widget extends Organic_Widgets_Custom_Widget {
 	 */
 	public function admin_setup() {
 
-		// Text Editor
+		// Text Editor.
 		wp_enqueue_editor();
-		wp_enqueue_script( 'organic-widgets-profile-widgets-text-title', plugin_dir_url( __FILE__ ) . 'js/profile-widgets.js', array( 'jquery' ) );
+		wp_enqueue_script( 'organic-widgets-profile-widgets-text-title', plugin_dir_url( __FILE__ ) . 'js/profile-widgets.js', array( 'jquery', 'wp-embed', 'underscore' ), '1.0', true );
 		wp_localize_script( 'organic-widgets-profile-widgets-text-title', 'OrganicProfileWidget', array(
 			'id_base' => $this->id_base,
 		) );
 		wp_add_inline_script( 'organic-widgets-profile-widgets-text-title', 'wp.organicProfileWidget.init();', 'after' );
 
-		wp_enqueue_script( 'organic-widgets-module-groupable-widgets', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-groupable-widgets.js', array( 'jquery' ) );
-		wp_localize_script( 'organic-widgets-module-groupable-widgets', 'GroupableWidgets', array(
-			'active_pane' => false,
-			'widgets' => array()
-		) );
+		if ( ! wp_script_is( 'organic-widgets-module-groupable-widgets' ) && is_customize_preview() ) {
+			wp_enqueue_script( 'organic-widgets-module-groupable-widgets', ORGANIC_WIDGETS_ADMIN_JS_DIR . 'organic-widgets-module-groupable-widgets.js', array( 'jquery' ), '1.0', true );
+			wp_localize_script( 'organic-widgets-module-groupable-widgets', 'GroupableWidgets', array(
+				'active_pane' => false,
+				'widgets'     => array(),
+			) );
+		}
 
 		wp_enqueue_media();
 
