@@ -24,7 +24,7 @@ class Organic_Widgets_Pricing_Table_Widget extends Organic_Widgets_Custom_Widget
 			'organic_widgets_pricing_table', // Base ID.
 			__( 'Organic Pricing Table', 'organic-widgets' ), // Name.
 			array(
-				'description' => __( 'Display a table of features and prices', 'organic-widgets' ),
+				'description'                 => __( 'Display a table of features and prices', 'organic-widgets' ),
 				'customize_selective_refresh' => false,
 			) // Args.
 		);
@@ -42,9 +42,10 @@ class Organic_Widgets_Pricing_Table_Widget extends Organic_Widgets_Custom_Widget
 
 		// Public scripts.
 		if ( is_active_widget( false, false, $this->id_base ) || is_customize_preview() ) {
-			add_action( 'customize_preview_init', array( $this, 'public_scripts' ) );
+			add_action( 'wp_enqueue_scripts', array( $this, 'public_scripts' ) );
 		}
 	}
+
 	/**
 	 * Front-end display of widget.
 	 *
