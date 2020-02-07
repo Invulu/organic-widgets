@@ -32,7 +32,7 @@
   }
 
   function hideEditor () {
-    var wpContentEditorDiv = $('#postdivrich, #editor .editor-block-list__layout')
+    var wpContentEditorDiv = $('#postdivrich, #editor .block-editor-block-list__layout, #editor .editor-block-list__layout')
     var organicCustomEditDiv = $(document.createElement('div'))
 
     if (!organicWidgets.isCustomTemplate) {

@@ -180,8 +180,35 @@ class Organic_Widgets_Blocks {
 			}
 		}
 
+		$saved_widgets = self::find_saved_widgets_recursive( $saved_widgets, $post_id, $blocks );
+
 		update_option( 'organic_widget-area', $saved_widgets, true );
 
+	}
+
+	/**
+	 * Walk the post content blocks recursively and find widget area blocks.
+	 *
+	 * @param array $saved_widgets
+	 * @param int $post_id post id.
+	 * @param array $blocks
+	 * @return array $saved_widgets
+	 */
+	protected static function find_saved_widgets_recursive( &$saved_widgets, $post_id, $blocks ) {
+
+		if ( ! empty( $blocks ) ) {
+			foreach ( $blocks as $block ) {
+				if ( isset( $block['blockName'] ) && 'organic/widget-area' === $block['blockName'] ) {
+					if ( '' !== trim( $block['attrs']['widget_area_title'] ) ) {
+						$saved_widgets[ $post_id ][] = $block['attrs']['widget_area_title'];
+					}
+				} elseif ( isset( $block['innerBlocks'] ) && ! empty( $block['innerBlocks'] ) ) {
+					self::find_saved_widgets_recursive( $saved_widgets, $post_id, $block['innerBlocks'] );
+				}
+			}
+		}
+
+		return $saved_widgets;
 	}
 
 	/**
