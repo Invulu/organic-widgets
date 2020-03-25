@@ -85,20 +85,18 @@ class Organic_Widgets_Public {
 	 * @since    1.0.0
 	 */
 	public function enqueue_scripts() {
-
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/organic-widgets-public.js', array( 'jquery' ), $this->version, false );
-
+		wp_enqueue_script( 'yt-player-api', 'http://www.youtube.com/player_api', array(), '1.0', true );
 	}
 
 	/**
-   * Echo video bg scripts to page
-   *
-   * @since    	1.0.0
-   *
-   */
-  public function video_bg_script() {
+	 * Echo video bg scripts to page
+	 *
+	 * @since 1.0.0
+	 */
+	public function video_bg_script() {
 
-		// Global Variable
+		// Global Variable.
 		global $organic_widgets_video_bgs;
 
 		if ( ! is_array( $organic_widgets_video_bgs ) || ! count( $organic_widgets_video_bgs ) ) {
@@ -128,49 +126,49 @@ class Organic_Widgets_Public {
 		//if device is not small or ios, load video background from youtube
 		if (!iOSOrSmall()) {
 			// This code loads the IFrame Player API code asynchronously
-			var tag = document.createElement('script');
-			tag.src = 'https://www.youtube.com/iframe_api';
-			var firstScriptTag = document.getElementsByTagName('script')[0];
-			firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+			// var tag = document.createElement('script');
+			// tag.src = 'https://www.youtube.com/iframe_api';
+			// var firstScriptTag = document.getElementsByTagName('script')[0];
+			// firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 			// This function creates an <iframe> (and YouTube player)
 			// after the API code downloads.
 			function onYouTubeIframeAPIReady() { ";
 
-		//Loop through all widgets with video bg
+		// Loop through all widgets with video bg.
 		foreach( $organic_widgets_video_bgs as $widget ) {
 
-  		if ( $widget['video_type'] == 'youtube' && $widget['video_id'] ) {
-  			echo "var player".$widget['clean_widget_id'].";
-					player".$widget['clean_widget_id']." = new YT.Player('".$widget['clean_widget_id']."', {
-  					height: '1014',
-  					width: '1920',
+			if ( $widget['video_type'] == 'youtube' && $widget['video_id'] ) {
+				echo "var player" . $widget['clean_widget_id'] . ";
+					player" . $widget['clean_widget_id'] . " = new YT.Player('" . $widget['clean_widget_id'] . "', {
+						height: '1014',
+						width: '1920',
 						// fitToBackground: true,
-  					videoId: '".$widget['video_id']."',
+						videoId: '" . $widget['video_id'] . "',
 						playerVars: {
-  						'loop':  '1',
+							'loop':  '1',
   						'modestbranding': '1',
   						'autoplay':  '1',
   						'showinfo':  '0',
   						'controls':  '0',
   						'start': '0',
-  						'playlist': '".esc_html__( $widget['video_id'] )."',
+  						'playlist': '" . esc_html__( $widget['video_id'] ) . "',
   						'rel': '0',
 							'enablejsapi': '1',
-							'origin': '".get_site_url()."',
+							'origin': '" . get_site_url() . "',
 							'iv_load_policy': '3'
   					},
 						events: {
-  						'onReady': onPlayerReady".$widget['clean_widget_id'].",
-  						'onStateChange': onPlayerStateChange".$widget['clean_widget_id']."
+  						'onReady': onPlayerReady" . $widget['clean_widget_id'] . ",
+  						'onStateChange': onPlayerStateChange" . $widget['clean_widget_id'] . "
   					}
   				});";
 
-			}//End if
-		}//End foreach
+			} // End if.
+		} // End foreach.
 
-			echo "}";//End onYouTubeIframeAPIReady()
+			echo "}"; // End onYouTubeIframeAPIReady().
 
-		//Loop through all widgets with video bg
+		// Loop through all widgets with video bg.
 		foreach( $organic_widgets_video_bgs as $widget ) {
 
 			if ( $widget['video_type'] == 'youtube' && $widget['video_id'] ) {
@@ -184,9 +182,9 @@ class Organic_Widgets_Public {
 							height = jQuery('#".$widget['widget_id']."').outerHeight();
 							width = Math.round( height * 1.78);
 						}
-						event.target.a.style.width = width + 'px';
-						event.target.a.style.maxWidth = width + 'px';
-						event.target.a.style.height = height + 'px';
+						// event.target.a.style.width = width + 'px';
+						// event.target.a.style.maxWidth = width + 'px';
+						// event.target.a.style.height = height + 'px';
 	  			}
 	  			// Fade out overlay image
 	  			function onPlayerStateChange".$widget['clean_widget_id']."(event) {
@@ -198,9 +196,9 @@ class Organic_Widgets_Public {
 									height = jQuery('#".$widget['widget_id']."').outerHeight();
 									width = Math.round( height * 1.78);
 								}
-								event.target.a.style.width = width + 'px';
-								event.target.a.style.maxWidth = width + 'px';
-			  				event.target.a.style.height = height + 'px';
+								// event.target.a.style.width = width + 'px';
+								// event.target.a.style.maxWidth = width + 'px';
+			  				// event.target.a.style.height = height + 'px';
 								jQuery('.organic-widgets-video-bg-wrapper').find('iframe').fadeTo('slow', 1);
 								jQuery('.organic-widgets-video-bg-wrapper').find('video').fadeTo('slow', 1);
 							}, 100);

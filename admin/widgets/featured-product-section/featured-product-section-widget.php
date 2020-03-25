@@ -260,63 +260,29 @@ class Organic_Widgets_Featured_Product_Section_Widget extends Organic_Widgets_Cu
 
 		<p class="organic-widgets-input-half">
 			<label for="<?php echo $this->get_field_id( 'button_one_text' ); ?>"><?php esc_html_e( 'Featured Link Text:', 'organic-widgets' ); ?></label>
-			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'button_one_text' ); ?>" name="<?php echo $this->get_field_name( 'button_one_text' ); ?>" value="
-			<?php
-			if ( ! empty( $instance['button_one_text'] ) ) {
-				echo $instance['button_one_text'];
-			}
-			?>
-			" />
+			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'button_one_text' ); ?>" name="<?php echo $this->get_field_name( 'button_one_text' ); ?>" value="<?php if ( ! empty( $instance['button_one_text'] ) ) { echo $instance['button_one_text']; } ?>" />
 		</p>
 		<p class="organic-widgets-input-half last">
 			<label for="<?php echo $this->get_field_id( 'button_one_url' ); ?>"><?php esc_html_e( 'Featured Link URL:', 'organic-widgets' ); ?></label>
-			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'button_one_url' ); ?>" name="<?php echo $this->get_field_name( 'button_one_url' ); ?>" value="
-			<?php
-			if ( ! empty( $instance['button_one_url'] ) ) {
-				echo $instance['button_one_url'];
-			}
-			?>
-			" />
+			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'button_one_url' ); ?>" name="<?php echo $this->get_field_name( 'button_one_url' ); ?>" value="<?php if ( ! empty( $instance['button_one_url'] ) ) { echo $instance['button_one_url']; } ?>" />
 		</p>
 
 		<p class="organic-widgets-input-half">
 			<label for="<?php echo $this->get_field_id( 'button_two_text' ); ?>"><?php esc_html_e( 'Alternate Link Text:', 'organic-widgets' ); ?></label>
-			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'button_two_text' ); ?>" name="<?php echo $this->get_field_name( 'button_two_text' ); ?>" value="
-			<?php
-			if ( ! empty( $instance['button_two_text'] ) ) {
-				echo $instance['button_two_text'];
-			}
-			?>
-			" />
+			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'button_two_text' ); ?>" name="<?php echo $this->get_field_name( 'button_two_text' ); ?>" value="<?php if ( ! empty( $instance['button_two_text'] ) ) { echo $instance['button_two_text']; } ?>" />
 		</p>
 		<p class="organic-widgets-input-half last">
 			<label for="<?php echo $this->get_field_id( 'button_two_url' ); ?>"><?php esc_html_e( 'Alternate Link URL:', 'organic-widgets' ); ?></label>
-			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'button_two_url' ); ?>" name="<?php echo $this->get_field_name( 'button_two_url' ); ?>" value="
-			<?php
-			if ( ! empty( $instance['button_two_url'] ) ) {
-				echo $instance['button_two_url'];
-			}
-			?>
-			" />
+			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'button_two_url' ); ?>" name="<?php echo $this->get_field_name( 'button_two_url' ); ?>" value="<?php if ( ! empty( $instance['button_two_url'] ) ) { echo $instance['button_two_url']; } ?>" />
 		</p>
 
 		<p>
 			<label for="<?php echo $this->get_field_id( 'featured_image' ); ?>"><?php esc_html_e( 'Product Image:', 'organic-widgets' ); ?></label>
 			<div class="uploader">
 				<input type="submit" class="button" name="<?php echo $this->get_field_name( 'featured_image_uploader_button' ); ?>" id="<?php echo $this->get_field_id( 'featured_image_uploader_button' ); ?>" value="
-				<?php
-				if ( $featured_image_id ) {
-					esc_html_e( 'Change Image', 'organic-widgets' );
-				} else {
-					esc_html_e( 'Select Image', 'organic-widgets' ); }
-				?>
-				" onclick="organicWidgetFeaturedImage.uploader( '<?php echo $this->id; ?>', '<?php echo $this->id_prefix; ?>' ); return false;" />
-				<input type="submit" class="organic-widgets-remove-image-button button" name="<?php echo $this->get_field_name( 'featured_image_remover_button' ); ?>" id="<?php echo $this->get_field_id( 'featured_image_remover_button' ); ?>" value="<?php _e( 'Remove Image', 'organic-widgets' ); ?>" onclick="organicWidgetFeaturedImage.remover( '<?php echo $this->id; ?>', '<?php echo $this->id_prefix; ?>', 'featured_image_remover_button' ); return false;"
-				<?php
-				if ( $featured_image_id < 1 ) {
-					echo( 'style="display:none;"' ); }
-				?>
-				/>
+				<?php if ( $featured_image_id ) { esc_html_e( 'Change Image', 'organic-widgets' ); } else { esc_html_e( 'Select Image', 'organic-widgets' ); } ?>" onclick="organicWidgetFeaturedImage.uploader( '<?php echo $this->id; ?>', '<?php echo $this->id_prefix; ?>' ); return false;" />
+				<input type="submit" class="organic-widgets-remove-image-button button" name="<?php echo $this->get_field_name( 'featured_image_remover_button' ); ?>" id="<?php echo $this->get_field_id( 'featured_image_remover_button' ); ?>"
+				value="<?php esc_html_e( 'Remove Image', 'organic-widgets' ); ?>" onclick="organicWidgetFeaturedImage.remover( '<?php echo $this->id; ?>', '<?php echo $this->id_prefix; ?>', 'featured_image_remover_button' ); return false;" <?php if ( $featured_image_id < 1 ) { echo( 'style="display:none;"' ); } ?> />
 				<div class="organic-widgets-widget-image-preview" id="<?php echo $this->get_field_id( 'featured_image_preview' ); ?>">
 					<?php echo $this->get_featured_image_html( $instance ); ?>
 				</div>
@@ -327,12 +293,7 @@ class Organic_Widgets_Featured_Product_Section_Widget extends Organic_Widgets_Cu
 
 		<p>
 			<label for="<?php echo $this->get_field_id( 'button_three_url' ); ?>"><?php esc_html_e( 'Product Image Link URL:', 'organic-widgets' ); ?></label>
-			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'button_three_url' ); ?>" name="<?php echo $this->get_field_name( 'button_three_url' ); ?>" value="
-			<?php
-			if ( ! empty( $instance['button_three_url'] ) ) {
-				echo $instance['button_three_url'];}
-			?>
-			" />
+			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'button_three_url' ); ?>" name="<?php echo $this->get_field_name( 'button_three_url' ); ?>" value="<?php if ( ! empty( $instance['button_three_url'] ) ) { echo $instance['button_three_url']; } ?>" />
 		</p>
 
 		<?php $this->content_aligner_input_markup( $instance ); ?>

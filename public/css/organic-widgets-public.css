@@ -1308,29 +1308,18 @@ body.customize-posts-content {
 .organic-widgets-video-bg-section {
   position: relative;
 }
-.organic-widgets-video-bg-wrapper {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  overflow: hidden;
-  z-index: 3;
-}
 .organic-widgets-video-bg-container {
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: auto;
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  overflow: hidden;
 }
 .organic-widgets-video-bg-center {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 0;
+  left: 0;
   width: 100%;
-  height: auto;
-  text-align: center;
+  height: 100%;
+  pointer-events: none;
 }
 .organic-widgets-video-bg {
   position: relative;
@@ -1341,8 +1330,8 @@ body.customize-posts-content {
 }
 iframe.organic-widgets-video-bg {
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 50% !important;
+  left: 50% !important;
   transform: translate(-50%, -50%);
 }
 .organic-widgets-video-bg-shade {
@@ -1352,6 +1341,12 @@ iframe.organic-widgets-video-bg {
   position: absolute;
   top: 0;
   left: 0;
+}
+@media (min-aspect-ratio: 16/9) {
+  .organic-widgets-video-bg-center { height: 300%; top: -100%; }
+}
+@media (max-aspect-ratio: 16/9) {
+  .organic-widgets-video-bg-center { width: 300%; left: -100%; }
 }
 
 /************************************************

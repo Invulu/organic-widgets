@@ -74,26 +74,26 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 		?>
 
 		<?php /** BEGIN .organic-widgets-section */ ?>
-		<div class="organic-widgets-section organic-widgets-hero-section<?php if ($full_window_height) echo ' organic-widgets-full-height-section'; ?><?php if ($bg_image_fixed) echo ' organic-widgets-fixed-bg-img'; ?><?php if ($bg_video) echo ' ocw-bg-dark'; ?>" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
+		<div class="organic-widgets-section organic-widgets-hero-section<?php if ( $full_window_height ) echo ' organic-widgets-full-height-section'; ?><?php if ($bg_image_fixed) echo ' organic-widgets-fixed-bg-img'; ?><?php if ($bg_video) echo ' ocw-bg-dark'; ?>" <?php if ( 0 < $bg_image_id ) { ?>style="background-image:url(<?php echo $bg_image; ?>);"<?php } elseif ($bg_color) { ?>style="background-color:<?php echo $bg_color; ?>;"<?php } ?>>
 
 			<?php
 			// Video Background Section.
 			if ( $bg_video ) {
 
-				//Prep arguments
+				// Prep arguments.
 				$video_info = array(
-					'video' => $bg_video,
-					'video_type' => $this->get_video_type( $bg_video ),
-					'video_id' => $this->youtube_id_from_url( $bg_video ),
-					'widget_id' => $this->id,
-					'clean_widget_id' => $this->sanitize_js_variable( $this->id )
+					'video'           => $bg_video,
+					'video_type'      => $this->get_video_type( $bg_video ),
+					'video_id'        => $this->youtube_id_from_url( $bg_video ),
+					'widget_id'       => $this->id,
+					'clean_widget_id' => $this->sanitize_js_variable( $this->id ),
 				);
 
-				// Add video bg to global var
+				// Add video bg to global var.
 				$this->add_video_bg( $video_info );
 
-				// Output video HTML
-				$this->video_bg_html($video_info);
+				// Output video HTML.
+				$this->video_bg_html( $video_info );
 
 			}
 			?>
