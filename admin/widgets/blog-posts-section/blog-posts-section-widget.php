@@ -143,7 +143,7 @@ class Organic_Widgets_Blog_Posts_Section_Widget extends Organic_Widgets_Custom_W
 									<?php /** BEGIN .organic-widgets-post-meta */ ?>
 									<div class="organic-widgets-post-meta">
 										<p class="organic-widgets-post-date">
-											<?php echo esc_html( get_the_modified_date() ); ?>
+											<?php echo get_the_date( get_option( 'date_format' ) ); ?>
 										</p>
 										<p class="organic-widgets-post-author">
 											<?php esc_html_e( 'By ', 'organic-widgets' ); ?><?php esc_url( the_author_posts_link() ); ?>
