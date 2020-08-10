@@ -1,14 +1,14 @@
-=== Organic Builder Widgets - An Easier Page Builder ===
+=== Organic Builder Widgets - Simple WordPress Page Builder ===
 Contributors: jqlee85, itsdavidmorgan, organicthemes, raid33, wordpresspagebuilder
 Donate link: https://organicthemes.com
 Tags: builder, customizer, widgets, slideshows, testimonials, portfolio, fontawesome, icons, pricing tables, page builder, full-width sections, custom widget areas, bundle, custom widgets, widget area, block
-Stable tag: 1.4.9
+Stable tag: 1.4.10
 Requires at least: 4.8
-Tested up to: 5.4
+Tested up to: 5.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-A simple page builder, Organic Builder Widgets provides a collection of 12 custom widgets to be used in the Customizer as content sections.
+A simple WordPress page builder, Organic Builder Widgets provides a collection of 12 custom widgets to be used in the Customizer as content sections.
 
 == Description ==
 
@@ -150,6 +150,13 @@ A: Yes. However, builder widgets are primarily added within the WordPress Custom
 5. A list of some of the custom widgets included as seen within the Customizer.
 
 == Changelog ==
+
+= 1.4.10 =
+* Added single column option to Portfolio Widget
+* Updated portfolio featured image to display at full size in single column
+* Added Organic Blocks Bundle dismissible notice
+* Updated README for WordPress 5.5 release
+* Added escaping and PHPCS formatting for Portfolio Widget
 
 = 1.4.9 =
 * Fixed post date display in Blog Widget

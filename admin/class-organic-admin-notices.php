@@ -13,14 +13,14 @@
 /**
  * The admin notice functionality of the plugin.
  *
- * @package		Organic_Widgets
+ * @package Organic_Widgets
  * @subpackage Organic_Widgets/admin
- * @author		 Organic Themes <info@organicthemes.com>
+ * @author Organic Themes <info@organicthemes.com>
  */
 class Organic_Widgets_Admin_Notices {
 
-	/** Function organic_widgets_admin_notice */
-	function organic_widgets_admin_notice_active() {
+	/** Function organic_widgets_admin_notice_active */
+	public function organic_widgets_admin_notice_active() {
 
 		if ( ! PAnD::is_admin_notice_active( 'notice-organic-widgets-activated-forever' ) ) {
 			return;
@@ -39,8 +39,28 @@ class Organic_Widgets_Admin_Notices {
 
 	}
 
+	/** Function organic_widgets_admin_notice_blocks_bundle */
+	public function organic_widgets_admin_notice_blocks_bundle() {
+
+		if ( ! PAnD::is_admin_notice_active( 'notice-organic-widgets-blocks-bundle-forever' ) ) {
+			return;
+		}
+		?>
+
+			<div data-dismissible="notice-organic-widgets-blocks-bundle-forever" class="notice updated is-dismissible">
+
+				<h4 style="margin-bottom: 0px;"><?php printf( __( 'Get the new <a href="%1$s" target="_blank">Organic Blocks Bundle</a> plugin! A growing collection of premium blocks for the Gutenberg editor.', 'organic-widgets' ), 'https://organicthemes.com/blocks/' ); ?></h4>
+				<p><?php esc_html_e( 'Create Content Slideshows, Testimonial Sliders, Portfolios, Featured Page Sections, Personal Profiles, and much more using Organic Blocks in the Gutenberg editor.', 'organic-widgets' ); ?></p>
+				<p><?php printf( __( '<a class="button button-primary" href="%1$s" target="_blank">Get The Bundle</a>', 'organic-widgets' ), 'https://organicthemes.com/blocks/' ); ?></p>
+
+			</div>
+
+		<?php
+
+	}
+
 	/** Function organic_widgets_admin_notice_1_week */
-	function organic_widgets_admin_notice_1_week() {
+	public function organic_widgets_admin_notice_1_week() {
 
 		$install_date = get_option( 'organic_widgets_install_date' );
 		$display_date = date( 'Y-m-d h:i:s' );
@@ -70,7 +90,7 @@ class Organic_Widgets_Admin_Notices {
 	}
 
 	/** Function organic_widgets_admin_notice_2_weeks */
-	function organic_widgets_admin_notice_2_weeks() {
+	public function organic_widgets_admin_notice_2_weeks() {
 
 		$install_date = get_option( 'organic_widgets_install_date' );
 		$display_date = date( 'Y-m-d h:i:s' );
@@ -99,7 +119,7 @@ class Organic_Widgets_Admin_Notices {
 	}
 
 	/** Function organic_widgets_admin_notice */
-	function organic_widgets_admin_notice_1_month() {
+	public function organic_widgets_admin_notice_1_month() {
 
 		$install_date = get_option( 'organic_widgets_install_date' );
 		// $install_date = date( '2018-02-12 12:00:00' ); // Testing date.

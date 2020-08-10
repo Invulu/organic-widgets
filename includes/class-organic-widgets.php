@@ -243,6 +243,7 @@ class Organic_Widgets {
 		$plugin_admin_notices = new Organic_Widgets_Admin_Notices( $this->get_plugin_name(), $this->get_version() );
 		add_action( 'admin_init', array( 'PAnD', 'init' ) );
 		$this->loader->add_action( 'admin_notices', $plugin_admin_notices, 'organic_widgets_admin_notice_active', 10 );
+		$this->loader->add_action( 'admin_notices', $plugin_admin_notices, 'organic_widgets_admin_notice_blocks_bundle', 10 );
 		$this->loader->add_action( 'admin_notices', $plugin_admin_notices, 'organic_widgets_admin_notice_1_week', 10 );
 		$this->loader->add_action( 'admin_notices', $plugin_admin_notices, 'organic_widgets_admin_notice_2_weeks', 10 );
 		// $this->loader->add_action( 'admin_notices', $plugin_admin_notices, 'organic_widgets_admin_notice_1_month', 10 );
