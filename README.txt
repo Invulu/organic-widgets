@@ -2,9 +2,9 @@
 Contributors: jqlee85, itsdavidmorgan, organicthemes, raid33, wordpresspagebuilder
 Donate link: https://organicthemes.com
 Tags: builder, customizer, widgets, slideshows, testimonials, portfolio, fontawesome, icons, pricing tables, page builder, full-width sections, custom widget areas, bundle, custom widgets, widget area, block
-Stable tag: 1.4.10
+Stable tag: 1.4.11
 Requires at least: 4.8
-Tested up to: 5.5
+Tested up to: 5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -44,6 +44,8 @@ Organic Builder Widgets includes a new page template, that when applied, creates
 = Blocks Included =
 
 * **Widget Area Block** [View Block](https://wordpress.org/plugins/organic-widget-area-block/ "Widget Area Block") – A Gutenberg block for creating custom widget areas within the block editor. As a result, blocks and widgets can be used together!
+
+In need of more blocks? Consider the [Organic Blocks Bundle](https://organicthemes.com/blocks/ "Organic Blocks Bundle") plugin. It provides a growing collection of premium blocks for the Gutenberg editor.
 
 = Pro Widgets =
 
@@ -150,6 +152,9 @@ A: Yes. However, builder widgets are primarily added within the WordPress Custom
 5. A list of some of the custom widgets included as seen within the Customizer.
 
 == Changelog ==
+
+= 1.4.11 =
+* Significantly improved admin script for page template detection in Gutenberg AND Classic editors
 
 = 1.4.10 =
 * Added single column option to Portfolio Widget

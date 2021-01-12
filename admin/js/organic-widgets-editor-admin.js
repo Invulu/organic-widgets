@@ -7,22 +7,20 @@
 
   function checkSelectedTemplate () {
     var selectedTemplate = $('#page_template').find(':selected').val()
-    // var gutenbergTemplate = $('select[id^="template-selector"]').find(':selected').val()
 
-    // Customizer button for Gutenberg and Classic editor
-    if ($('#editor' + name).length === 0) {
-      if (selectedTemplate.indexOf('organic-custom-template.php') !== -1) {
-        hideEditor()
-      } else {
-        showEditor()
-      }
-    } else if ($('#postdivrich' + name).length === 0) {
-      if ($('.editor-page-attributes__template select').val() === 'templates/organic-custom-template.php') {
-        hideEditor()
-      } else {
-        showEditor()
-      }
-    } else {
+    // Check if Block Editor
+    if ($('.block-editor').length !== 0) {
+      const { select, subscribe } = wp.data
+      subscribe(() => {
+        if (select('core/editor').getEditedPostAttribute('template') === 'templates/organic-custom-template.php') {
+          if ($('#organic-widgets-post-editor').length === 0) {
+            hideEditor()
+          }
+        } else if ($('#organic-widgets-post-editor').length !== 0) {
+          showEditor()
+        }
+      })
+    } else { // Check if Classic Editor
       if (selectedTemplate.indexOf('organic-custom-template.php') !== -1) {
         hideEditor()
       } else {
@@ -32,7 +30,7 @@
   }
 
   function hideEditor () {
-    var wpContentEditorDiv = $('#postdivrich, #editor .block-editor-writing-flow')
+    var wpContentEditorDiv = $('#post-body #titlediv, #editor .block-editor-writing-flow .editor-post-title')
     var organicCustomEditDiv = $(document.createElement('div'))
 
     if (!organicWidgets.isCustomTemplate) {
@@ -58,13 +56,13 @@
     organicCustomEditDiv.attr('id', 'organic-widgets-post-editor')
     organicCustomEditDiv.addClass('postbox')
     organicCustomEditDiv.html('<div class="organic-widgets-post-editor-content"><h2><img src="' + organicWidgets.leafIcon + '"/><span>Organic Custom Widgets Page</span></h2><div class="information"><p><strong>Please Note:</strong> Only Widgets are displayed using this page template.</p> <p>Click "Customize Page" to add Builder Widgets to the page.</p></div>' + setPageTemplate + customizeButton + '</div>')
-    wpContentEditorDiv.before(organicCustomEditDiv)
+    wpContentEditorDiv.after(organicCustomEditDiv)
     // wpContentEditorDiv.hide()
     updatePostListener()
   }
 
   function showEditor () {
-    $('#postdivrich, #editor .block-editor-writing-flow').show()
+    $('#post-body #titlediv, #editor .block-editor-writing-flow').show()
     $('#organic-widgets-post-editor').remove()
   }
 
@@ -82,7 +80,7 @@
   }
 
   function updatePostListener () {
-    var wpContentEditorDiv = $('#postdivrich, #editor .block-editor-writing-flow')
+    var wpContentEditorDiv = $('#postdivrich, #editor .block-editor-writing-flow .editor-post-title')
     $('#organic-widgets-update-post').on('click', function () {
       $('#post').submit()
     })
@@ -108,11 +106,17 @@
     })
   }
 
-  $(document).on('change', '#page_template, .editor-page-attributes__template select', function () {
+  $(document).bind('change', '#page_template, .editor-page-attributes__template select', function () {
     checkSelectedTemplate()
   })
 
-  $(window)
-    .load(checkSelectedTemplate)
+  $(window).load(checkSelectedTemplate)
 
+  if (wp.domReady) {
+    wp.domReady(function () {
+      setTimeout(function () {
+        checkSelectedTemplate()
+      }, 1500)
+    })
+  }
 })(jQuery)
