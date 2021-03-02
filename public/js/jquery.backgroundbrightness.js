@@ -118,7 +118,7 @@
         img.crossOrigin = "Anonymous";
         img.src = imageSrc;
         img.style.display = "none";
-        document.body.appendChild(img);
+        // document.body.appendChild(img); // Adds HTML img tag in footer twice
 
         var colorSum = 0;
 
