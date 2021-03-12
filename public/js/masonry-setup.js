@@ -22,7 +22,7 @@
     }
   }
 
-  $(window).load(masonrySetup)
+  $(window).on('load', masonrySetup)
 
   $(window).on('load', function () {
     // Check for customizer and listen for changes that require rebindings

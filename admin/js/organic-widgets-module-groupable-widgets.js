@@ -208,7 +208,7 @@
 
   }
 
-  $(window).on("load", function() {
+  $(window).on('load', function() {
 		markWidgetGroups();
     if ( typeof wp.customize !== "undefined" ) {
 			wp.customize.state.bind('change', function() {

@@ -110,7 +110,7 @@
     checkSelectedTemplate()
   })
 
-  $(window).load(checkSelectedTemplate)
+  $(window).on('load', checkSelectedTemplate)
 
   if (wp.domReady) {
     wp.domReady(function () {
