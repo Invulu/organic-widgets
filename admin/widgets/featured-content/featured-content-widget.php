@@ -244,6 +244,8 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 			) ); ?>
 		</p>
 
+		<br/>
+
 		<?php $this->section_background_input_markup( $instance, $this->bg_options );
 
 	}
@@ -269,7 +271,7 @@ class Organic_Widgets_Content_Widget extends Organic_Widgets_Custom_Widget {
 			</p>
 			<p>
 				<label for="{{ elementIdPrefix }}text" class="screen-reader-text"><?php esc_html_e( 'Content:' ); ?></label>
-				<textarea id="{{ elementIdPrefix }}text" class="widefat text wp-editor-area" style="height: 200px" rows="16" cols="20"></textarea>
+				<textarea id="{{ elementIdPrefix }}text" class="widefat text" style="height: 200px" rows="16" cols="20"></textarea>
 			</p>
 		</script>
 		<?php

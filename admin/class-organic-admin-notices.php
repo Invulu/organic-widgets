@@ -49,8 +49,8 @@ class Organic_Widgets_Admin_Notices {
 
 			<div data-dismissible="notice-organic-widgets-blocks-bundle-forever" class="notice updated is-dismissible">
 
-				<h4 style="margin-bottom: 0px;"><?php printf( __( 'Get the new <a href="%1$s" target="_blank">Organic Blocks Bundle</a> plugin! A growing collection of premium blocks for the Gutenberg editor.', 'organic-widgets' ), 'https://organicthemes.com/blocks/' ); ?></h4>
-				<p><?php esc_html_e( 'Create Content Slideshows, Testimonial Sliders, Portfolios, Featured Page Sections, Personal Profiles, and much more using Organic Blocks in the Gutenberg editor.', 'organic-widgets' ); ?></p>
+				<h4 style="margin-bottom: 0px;"><?php printf( __( 'Get the <a href="%1$s" target="_blank">WordPress Blocks Bundle</a> plugin! A growing collection of premium blocks for the Gutenberg block editor.', 'organic-widgets' ), 'https://organicthemes.com/blocks/' ); ?></h4>
+				<p><?php esc_html_e( 'Create Content Slideshows, Testimonial Sliders, Portfolios, Featured Page Sections, Personal Profiles, and much more using Organic Blocks.', 'organic-widgets' ); ?></p>
 				<p><?php printf( __( '<a class="button button-primary" href="%1$s" target="_blank">Get The Bundle</a>', 'organic-widgets' ), 'https://organicthemes.com/blocks/' ); ?></p>
 
 			</div>

@@ -148,6 +148,10 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 
 		<?php
 
+		if ( is_active_widget( false, false, $this->id_base, true ) ) {
+			wp_enqueue_script( 'yt-player-api', 'https://www.youtube.com/player_api', array(), '1.0', true );
+		}
+
 		echo $args['after_widget'];
 
 	}
@@ -253,6 +257,8 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 			<label for="<?php echo $this->get_field_id( 'bg_image_fixed' ); ?>"><?php _e('Fixed Position Background Image', 'organic-widgets' ); ?></label>
 		</p>
 
+		<br/>
+
 		<?php $this->section_background_input_markup( $instance, $this->bg_options );
 
 	}
@@ -307,7 +313,7 @@ class Organic_Widgets_Hero_Section_Widget extends Organic_Widgets_Custom_Widget 
 			</p>
 			<p>
 				<label for="{{ elementIdPrefix }}text" class="screen-reader-text"><?php esc_html_e( 'Content:' ); ?></label>
-				<textarea id="{{ elementIdPrefix }}text" class="widefat text wp-editor-area" style="height: 200px" rows="16" cols="20"></textarea>
+				<textarea id="{{ elementIdPrefix }}text" class="widefat text" style="height: 200px" rows="16" cols="20"></textarea>
 			</p>
 		</script>
 		<?php

@@ -146,6 +146,11 @@ class Organic_Widgets {
 		include_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/persist-admin-notices-dismissal/persist-admin-notices-dismissal.php';
 
 		/**
+		 * The file responsible for recommended plugins
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/tgm-plugin-activation.php';
+
+		/**
 		 * The classes responsible for registering widgets
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widgets/class-organic-widgets-custom-widget.php';
@@ -245,7 +250,7 @@ class Organic_Widgets {
 		$this->loader->add_action( 'admin_notices', $plugin_admin_notices, 'organic_widgets_admin_notice_active', 10 );
 		$this->loader->add_action( 'admin_notices', $plugin_admin_notices, 'organic_widgets_admin_notice_blocks_bundle', 10 );
 		$this->loader->add_action( 'admin_notices', $plugin_admin_notices, 'organic_widgets_admin_notice_1_week', 10 );
-		$this->loader->add_action( 'admin_notices', $plugin_admin_notices, 'organic_widgets_admin_notice_2_weeks', 10 );
+		// $this->loader->add_action( 'admin_notices', $plugin_admin_notices, 'organic_widgets_admin_notice_2_weeks', 10 );
 		// $this->loader->add_action( 'admin_notices', $plugin_admin_notices, 'organic_widgets_admin_notice_1_month', 10 );
 
 		// Content Import Hooks

@@ -365,7 +365,7 @@ class Organic_Widgets_Featured_Product_Section_Widget extends Organic_Widgets_Cu
 			</p>
 			<p>
 				<label for="{{ elementIdPrefix }}text" class="screen-reader-text"><?php esc_html_e( 'Content:' ); ?></label>
-				<textarea id="{{ elementIdPrefix }}text" class="widefat text wp-editor-area" style="height: 200px" rows="16" cols="20"></textarea>
+				<textarea id="{{ elementIdPrefix }}text" class="widefat text" style="height: 200px" rows="16" cols="20"></textarea>
 			</p>
 		</script>
 		<?php

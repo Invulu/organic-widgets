@@ -2,7 +2,7 @@
 Contributors: jqlee85, itsdavidmorgan, organicthemes, raid33, wordpresspagebuilder
 Donate link: https://organicthemes.com
 Tags: builder, customizer, widgets, slideshows, testimonials, portfolio, fontawesome, icons, pricing tables, page builder, full-width sections, custom widget areas, bundle, custom widgets, widget area, block
-Stable tag: 1.4.13
+Stable tag: 1.4.14
 Requires at least: 4.8
 Tested up to: 5.7
 License: GPLv2 or later
@@ -152,6 +152,14 @@ A: Yes. However, builder widgets are primarily added within the WordPress Custom
 5. A list of some of the custom widgets included as seen within the Customizer.
 
 == Changelog ==
+
+= 1.4.14 =
+* Added TGM required plugin scripts
+* Required Classic Widgets plugin in preparation for next WP update
+* Added text alignment options to TinyMCE for all widgets
+* Fixed class for textarea fields in widgets
+* Enqueued YouTube API for Hero Widget only if active
+* Removed one admin notice
 
 = 1.4.13 =
 * Updated deprecated jQuery window load function
