@@ -44,7 +44,7 @@ function organic_widgets_register_required_plugins() {
 		// Recommended plugins.
 		array(
 			'name'     => 'Classic Widgets',
-			'slug'     => 'class-widgets',
+			'slug'     => 'classic-widgets',
 			'required' => true,
 		),
 		array(
