@@ -2,9 +2,9 @@
 Contributors: jqlee85, itsdavidmorgan, organicthemes, raid33, wordpresspagebuilder
 Donate link: https://organicthemes.com
 Tags: builder, customizer, widgets, slideshows, testimonials, portfolio, fontawesome, icons, pricing tables, page builder, full-width sections, custom widget areas, bundle, custom widgets, widget area, block
-Stable tag: 1.4.14.1
+Stable tag: 1.4.15
 Requires at least: 4.8
-Tested up to: 5.7
+Tested up to: 5.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -152,6 +152,10 @@ A: Yes. However, builder widgets are primarily added within the WordPress Custom
 5. A list of some of the custom widgets included as seen within the Customizer.
 
 == Changelog ==
+
+= 1.4.15 =
+* Added remove_theme_support( 'widgets-block-editor' ) function in favor of recommending Classic Widgets plugin
+  * Ensures classic widgets are not replaced by block widgets during WP 5.8 update
 
 = 1.4.14.1 =
 * Fixed misspelling of Classic Widgets extension

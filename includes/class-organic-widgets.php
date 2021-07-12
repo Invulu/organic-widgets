@@ -148,7 +148,7 @@ class Organic_Widgets {
 		/**
 		 * The file responsible for recommended plugins
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/tgm-plugin-activation.php';
+		// require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/tgm-plugin-activation.php';
 
 		/**
 		 * The classes responsible for registering widgets
@@ -280,6 +280,7 @@ class Organic_Widgets {
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
 		$this->loader->add_action( 'wp_footer', $plugin_public, 'video_bg_script' );
 		$this->loader->add_filter( 'body_class', $plugin_public, 'add_body_class' );
+		$this->loader->add_action( 'after_setup_theme', $plugin_public, 'theme_support' ); // Remove WP 5.8 block widget support. Restores classic widgets.
 
 	}
 
