@@ -18,7 +18,7 @@
  */
 
 /**
- * Include the TGM_Plugin_Activation class.
+ * Include the Organic_Widgets_TGM_Plugin_Activation class.
  *
  * Depending on your implementation, you may want to change the include call:
  *
@@ -42,11 +42,6 @@ function organic_widgets_register_required_plugins() {
 	$plugins = array(
 
 		// Recommended plugins.
-		array(
-			'name'     => 'Classic Widgets',
-			'slug'     => 'classic-widgets',
-			'required' => true,
-		),
 		array(
 			'name'     => 'Profile Block',
 			'slug'     => 'organic-profile-block',
