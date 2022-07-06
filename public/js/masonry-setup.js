@@ -12,17 +12,18 @@
       gutter: '.organic-widgets-grid-spacer',
       itemSelector: '.organic-widgets-masonry-wrapper'
     })
-    if (typeof wp.customize !== 'undefined') {
-      wp.customize.selectiveRefresh.bind('sidebar-updated', function () {
-        $container.masonry('reloadItems')
-        $container.masonry('layout')
-        $gallery.masonry('reloadItems')
-        $gallery.masonry('layout')
-      })
-    }
+    // if (typeof wp.customize !== 'undefined') {
+    //   wp.customize.selectiveRefresh.bind('sidebar-updated', function () {
+    //     $container.masonry('reloadItems')
+    //     $container.masonry('layout')
+    //     $gallery.masonry('reloadItems')
+    //     $gallery.masonry('layout')
+    //   })
+    // }
   }
 
   $(window).on('load', masonrySetup)
+  $(window).on('resize', masonrySetup)
 
   $(window).on('load', function () {
     // Check for customizer and listen for changes that require rebindings
